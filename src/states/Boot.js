@@ -2,10 +2,22 @@ import Phaser from 'phaser';
 
 export default class extends Phaser.State {
   init () {
-    this.stage.backgroundColor = '#EDEEC9';
+    // Boot Log
+    console.log('%c Boot it up! ', 'background: #222; color: #bada55');
+
+    // Backgroundcolor Black
+    this.stage.backgroundColor = '#000000';
   }
 
   create () {
-      this.state.start('Preload');
+
+    // Start Physics
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    // Enable Pixel Rendering
+    this.stage.smoothed = false;
+
+    // Start the Preload State
+    this.state.start('Preload');
   }
 }

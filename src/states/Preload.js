@@ -1,19 +1,21 @@
 import Phaser from 'phaser';
 import WebFont from 'webfontloader';
+import Input from '../prefabs/Input';
 
 export default class extends Phaser.State {
-  init () {
+  init (){
     this.fontsReady = false;
     this.fontsLoaded = this.fontsLoaded.bind(this);
   }
 
-  preload () {
+  preload (){
     // Load Sprites
-    this.load.image('loaderBg', './assets/sprites/loader-bg.png');
-    this.load.image('loaderBar', './assets/sprites/loader-bar.png');
+    this.load.image('loaderBg', 'assets/sprites/loader-bg.png');
+    this.load.image('loaderBar', 'assets/sprites/loader-bar.png');
     this.load.image('mushroom', 'assets/sprites/mushroom2.png');
 
     // Load Maps
+    this.load.tilemap('testlevel', 'assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
 
     // Load Music
 
@@ -22,25 +24,39 @@ export default class extends Phaser.State {
     // Load Spritesheets
 
     // Load Tilesets
+    this.load.image('gameTileset', 'assets/tilesets/sum.png');
 
     // Load Videos
 
     // Load Fonts
-    WebFont.load({
-      google: {
-        families: ['Bangers']
-      },
-      active: this.fontsLoaded
-    });
+    // WebFont.load({
+    //   google: {
+    //     families: ['Bangers']
+    //   },
+    //   active: this.fontsLoaded
+    // });
   }
 
-  render () {
+  create(){
+    // Check for XBOX or PS Controller
+    this.inputClass = new Input(this.game);
+    this.state.start('Game');
+  }
+
+  render (){
     if (this.fontsReady) {
       this.state.start('Game');
     }
   }
 
-  fontsLoaded () {
+  fontsLoaded (){
     this.fontsReady = true;
+  }
+
+  loadUpdate(){
+    // Log Loadingprogress
+    this.loadingprogress = this.load.onFileComplete.add(function( progress ) {
+      console.log("%c Loadingprogress: " + progress + " % ", "background: #222; color: #bada55");
+    });
   }
 }
