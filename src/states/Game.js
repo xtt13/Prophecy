@@ -9,6 +9,9 @@ export default class extends Phaser.State {
   }
 
   create () {
+    // Toggle Fullscreen onclick
+    this.input.onDown.add(this.toggleFullScreen, this);
+
     this.level = new Level(this.game, 'testlevel');
   }
 
@@ -16,5 +19,9 @@ export default class extends Phaser.State {
     if (__DEV__) {
       //this.game.debug.spriteInfo(this.mushroom, 32, 32);
     }
+  }
+
+  toggleFullScreen(){
+    this.game.scale.startFullScreen(false);
   }
 }

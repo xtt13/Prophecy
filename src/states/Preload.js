@@ -38,6 +38,7 @@ export default class extends Phaser.State {
   }
 
   create(){
+
     // Check for XBOX or PS Controller
     this.inputClass = new Input(this.game);
     this.state.start('Game');
@@ -59,4 +60,5 @@ export default class extends Phaser.State {
       console.log("%c Loadingprogress: " + progress + " % ", "background: #222; color: #bada55");
     });
   }
+
 }

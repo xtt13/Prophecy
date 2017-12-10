@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import "phaser-tilemap-plus";
+import Player from '../prefabs/Player';
 
 export default class {
   constructor(game, currentLevel){
@@ -29,6 +30,8 @@ export default class {
 
 	this.loadItems();
 	this.loadEnemies();
+
+	this.player = new Player(this.game, 100, 100, 'player');
     
   }
 
