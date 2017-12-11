@@ -15,9 +15,14 @@ export default class extends Phaser.State {
     this.level = new Level(this.game, 'testlevel');
   }
 
+  update(){
+    this.level.update();
+  }
+
   render () {
+    // Debugging
     if (__DEV__) {
-      //this.game.debug.spriteInfo(this.mushroom, 32, 32);
+
     }
   }
 

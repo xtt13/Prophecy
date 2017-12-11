@@ -10,5 +10,7 @@ export default {
 	enableDebug: true
   },
 
-  localStorageName: 'prophecy'
+  localStorageName: 'prophecy',
+  weather: true,
+  
 };

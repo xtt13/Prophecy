@@ -1,19 +1,24 @@
 import Phaser from 'phaser';
+import config from './../config';
 
 export default class {
   constructor (game, type) {
 
-  	createWeather(type);
+    if(config.weather){
+      this.createWeather(type);
+    }
   }
 
   createWeather(type){
-    switch(option) {
+    switch(type) {
     case 'Snow':
-        addSnow();
+        this.addSnow();
         break;
+
     case 'Storm':
-        addStorm();
+        this.addStorm();
         break;
+        
     default:
         
     }
@@ -24,6 +29,10 @@ export default class {
   }
 
   addStorm(){
+
+  }
+
+  updateWeather(){
 
   }
 }
