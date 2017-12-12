@@ -3,7 +3,7 @@ import Player from './Player';
 
 export default class extends Player{
   constructor(game){
-    super(game);
+    super(game, 100, 200);
   	this.game = game;
     this.gamepadSupport = false;
     this.pad1;
@@ -164,7 +164,6 @@ addKeyboardKeys(){
 onGamepadDown(button){
 
   if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_LEFT){
-      console.log('walk left');
       this.walk('left', 200);
     } else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_RIGHT){
       this.walk('right', 200);
@@ -194,7 +193,7 @@ onUp(button){
 };
 
 update(){
-  console.log('update');
+  //console.log('update');
 };
 
 

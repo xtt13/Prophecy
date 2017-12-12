@@ -12,7 +12,9 @@ export default class extends Phaser.State {
     // Load Sprites
     this.load.image('loaderBg', 'assets/sprites/loader-bg.png');
     this.load.image('loaderBar', 'assets/sprites/loader-bar.png');
-    this.load.image('mushroom', 'assets/sprites/mushroom2.png');
+    //this.load.image('mushroom', 'assets/sprites/mushroom2.png');
+
+    this.load.image('player', 'assets/sprites/mushroom2.png');
 
     // Load Maps
     this.load.tilemap('testlevel', 'assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
@@ -39,9 +41,7 @@ export default class extends Phaser.State {
 
   create(){
 
-    // Check for XBOX or PS Controller
-    this.inputClass = new Input(this.game);
-    this.state.start('Game');
+    this.state.start('Game', true, false, this.inputClass);
   }
 
   render (){

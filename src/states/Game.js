@@ -1,6 +1,5 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
-import Mushroom from '../prefabs/Mushroom';
 import Level from '../prefabs/Level';
 
 export default class extends Phaser.State {
@@ -13,6 +12,7 @@ export default class extends Phaser.State {
     this.input.onDown.add(this.toggleFullScreen, this);
 
     this.level = new Level(this.game, 'testlevel');
+
   }
 
   update(){
