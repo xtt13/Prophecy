@@ -5,9 +5,8 @@
     "author": "Michael Dorn <work@michaeldorn.at>",
     "main": "index.js",
     "scripts": {
-        "start": "webpack --config webpack.production.config.js",
         "dev": "webpack",
-        "deploy": "webpack --config webpack.production.config.js",
+        "deploy": "webpack --config webpack.production.config.js && cd deploy && now --public",
         "cordova": "webpack --config webpack.cordova.config.js",
         "test": "eslint ./src/**/**.js"
     },
@@ -53,7 +52,7 @@
         }
     },
     "now": {
-        "engines": {
+        "target": {
             "node": "7.x.x"
         }
     }

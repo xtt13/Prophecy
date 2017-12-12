@@ -33,7 +33,7 @@ export default class{
 	this.loadItems();
 	this.loadEnemies();
 	this.weather = new Weather(this.game, 'Snow');
-
+	
 	//this.player = new Player(this.game, 100, 100);
 
 	// Check for XBOX or PS Controller

@@ -14,10 +14,10 @@ export default class extends Phaser.Sprite {
 	game.add.existing(this);
   }
 
-  // setCoordinates(x, y){
-  // 	this.x = x;
-  // 	this.y = y;
-  // }
+  setPlayerCoordinates(x, y){
+  	this.x = x;
+  	this.y = y;
+  }
 
   walk(direction, speed) {
 

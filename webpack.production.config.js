@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Phaser webpack config
 var phaserModule = path.join(__dirname, '/node_modules/phaser-ce/');
@@ -23,13 +24,13 @@ module.exports = {
 
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'deploy/dist'),
     publicPath: './dist/',
     filename: 'bundle.js'
   },
   plugins: [
     definePlugin,
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['deploy']),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.optimize.UglifyJsPlugin({
       drop_console: true,
@@ -38,6 +39,12 @@ module.exports = {
         comments: false
       }
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'assets/**/*'),
+        to: path.resolve(__dirname, 'deploy')
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */}),
     new HtmlWebpackPlugin({
       filename: '../index.html',
