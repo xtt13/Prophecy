@@ -3,15 +3,20 @@ import "phaser-tilemap-plus";
 import Player from '../prefabs/Player';
 import Weather from '../prefabs/Weather';
 import Input from '../prefabs/Input';
+import config from './../config';
 
 export default class{
-  constructor(game, currentLevel){
+  constructor(game, inputClass, currentLevel){
   	this.game = game;
+    this.inputClass = inputClass;
   	this.currentLevel = currentLevel;
   	this.loadLevel();
   }
 
   loadLevel(){
+
+
+
   	// JSON Map Data
 	this.map = this.game.add.tilemap(this.currentLevel);
 
@@ -22,7 +27,7 @@ export default class{
   this.groundLayer = this.map.createLayer('Layer1');
 
 	// Scale Layers
-	this.groundLayer.setScale(3);
+	this.groundLayer.setScale(config.scaleRate);
 
 	//  Resize the world
 	this.groundLayer.resizeWorld();
@@ -34,12 +39,23 @@ export default class{
 	this.loadEnemies();
 	this.weather = new Weather(this.game, 'Snow');
 	
-	//this.player = new Player(this.game, 100, 100);
+	
 
 	// Check for XBOX or PS Controller
-    this.inputClass = new Input(this.game);
+  //this.inputClass = new Input(this.game);
+
+  const tilemapProperties = this.map.plus.properties;
+  console.log(tilemapProperties);
+
+  this.player = new Player(this.game, 2200, 2200);
+  this.inputClass.setPlayer(this.player);
+
+  this.map.plus.physics.enableObjectLayer("Collision");
+  console.log(this.map.plus);
+
     
   }
+
 
   loadEnemies(){
 
@@ -54,6 +70,7 @@ export default class{
   }
 
   update(){
-  	// Update Weather
+    const player = this.player;
+  	this.map.plus.physics.collideWith(player);
   }
 }

@@ -10,14 +10,10 @@ export default class extends Phaser.State {
 
   preload (){
     // Load Sprites
-    this.load.image('loaderBg', 'assets/sprites/loader-bg.png');
-    this.load.image('loaderBar', 'assets/sprites/loader-bar.png');
-    //this.load.image('mushroom', 'assets/sprites/mushroom2.png');
 
     //this.load.image('player', 'assets/sprites/player.png');
 
     // Load Maps
-    this.load.tilemap('testlevel', 'assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('map1', 'assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
 
     // Load Music
@@ -28,7 +24,6 @@ export default class extends Phaser.State {
     this.load.spritesheet('player', 'assets/sprites/player.png', 46, 46);
 
     // Load Tilesets
-    this.load.image('gameTileset', 'assets/tilesets/sum.png');
     this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
 
     // Load Videos
@@ -43,6 +38,9 @@ export default class extends Phaser.State {
   }
 
   create(){
+
+      // Check for XBOX or PS Controller
+    this.inputClass = new Input(this.game);
 
     this.state.start('Game', true, false, this.inputClass);
   }

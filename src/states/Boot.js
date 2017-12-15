@@ -11,6 +11,8 @@ export default class extends Phaser.State {
 
   create () {
 
+    this.game.plugins.add(Phaser.Plugin.TilemapPlus);
+
     // Start Physics
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 

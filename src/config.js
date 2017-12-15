@@ -12,6 +12,7 @@ export default {
 
   localStorageName: 'prophecy',
   weather: true,
-  playerHealth: 5
+  playerHealth: 5,
+  scaleRate: 3
 
 };
