@@ -16,11 +16,9 @@ export default class{
 	this.map = this.game.add.tilemap(this.currentLevel);
 
 	//  Connect with Tileset
-	//this.map.addTilesetImage('sum', 'gameTileset', 16, 16);
   this.map.addTilesetImage('Tileset', 'gameTileset2', 36, 36);
 
 	//  Define Layers
-	//this.groundLayer = this.map.createLayer('Background');
   this.groundLayer = this.map.createLayer('Layer1');
 
 	// Scale Layers
