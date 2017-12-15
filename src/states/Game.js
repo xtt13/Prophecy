@@ -11,7 +11,7 @@ export default class extends Phaser.State {
     // Toggle Fullscreen onclick
     this.input.onDown.add(this.toggleFullScreen, this);
 
-    this.level = new Level(this.game, 'testlevel');
+    this.level = new Level(this.game, 'map1');
 
   }
 
