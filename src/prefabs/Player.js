@@ -21,14 +21,9 @@ export default class extends Phaser.Sprite {
 	game.add.existing(this);
   }
 
-  setPlayerCoordinates(x, y){
-  	this.x = x;
-  	this.y = y;
-  }
-
   walk(direction, speed) {
 
-  		
+  	//console.log("Direction: " + direction + ", Speed: " + speed);
 
 	switch(direction) {
 	    case 'up':
@@ -44,6 +39,7 @@ export default class extends Phaser.Sprite {
 	        break;
 
 	    default:
+	    	this.body.velocity.y = 0;
 
 	}
 
@@ -61,14 +57,22 @@ export default class extends Phaser.Sprite {
 	        break;
 
 	    default:
+	    	this.body.velocity.x = 0;
 
 	}
 
   }
 
-  idle(){;
-  	this.body.velocity.x = 0;
-  	this.body.velocity.y = 0;
+  idle(direction){
+  	if(direction == "x"){
+  		this.body.velocity.x = 0;
+  	} else if(direction == "x"){
+  		this.body.velocity.y = 0;
+  	} else {
+  		this.body.velocity.x = 0;
+  		this.body.velocity.y = 0;
+  	}
+  
   }
 
   fight(){

@@ -28,6 +28,9 @@ export default class extends Phaser.State {
 
     // Load Videos
 
+    // Load Weather Sprites
+    this.load.image('rain', 'assets/sprites/rain.png');
+
     // Load Fonts
     // WebFont.load({
     //   google: {

@@ -37,7 +37,7 @@ export default class{
 
 	this.loadItems();
 	this.loadEnemies();
-	this.weather = new Weather(this.game, 'Snow');
+	this.weather = new Weather(this.game, 'Storm');
 	
 	
 
@@ -72,5 +72,8 @@ export default class{
   update(){
     const player = this.player;
   	this.map.plus.physics.collideWith(player);
+
+    // Update Weather
+    this.weather.updateWeather();
   }
 }

@@ -162,20 +162,20 @@ export default class {
 addKeyboardKeys(){
 
   this.button_W = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
-  this.button_W.onDown.add(this.onKeyboardDown, this);
-  this.button_W.onUp.add(this.onKeyboardUp, this);
+  // this.button_W.onDown.add(this.onKeyboardDown, this);
+  // this.button_W.onUp.add(this.onKeyboardUp, this);
 
   this.button_S = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
-  this.button_S.onDown.add(this.onKeyboardDown, this);
-  this.button_S.onUp.add(this.onKeyboardUp, this);
+  // this.button_S.onDown.add(this.onKeyboardDown, this);
+  // this.button_S.onUp.add(this.onKeyboardUp, this);
 
   this.button_A = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
-  this.button_A.onDown.add(this.onKeyboardDown, this);
-  this.button_A.onUp.add(this.onKeyboardUp, this);
+  // this.button_A.onDown.add(this.onKeyboardDown, this);
+  // this.button_A.onUp.add(this.onKeyboardUp, this);
 
   this.button_D = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
-  this.button_D.onDown.add(this.onKeyboardDown, this);
-  this.button_D.onUp.add(this.onKeyboardUp, this);
+  // this.button_D.onDown.add(this.onKeyboardDown, this);
+  // this.button_D.onUp.add(this.onKeyboardUp, this);
 
 };
 
@@ -193,20 +193,6 @@ onGamepadDown(button){
 
 };
 
-onKeyboardDown(button){
-
-  if (button.event.code === 'KeyA'){
-   this.player.walk('left', 200);
-  } else if (button.event.code === 'KeyD'){
-   this.player.walk('right', 200);
-  } else if (button.event.code === 'KeyW'){
-   this.player.walk('up', 200);
-  } else if (button.event.code === 'KeyS'){
-   this.player.walk('down', 200);
-  }
-
-};
-
 onGamepadUp(button){
 
   if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_LEFT){
@@ -221,47 +207,61 @@ onGamepadUp(button){
 
 };
 
-onKeyboardUp(button){
+update(){
 
-  if (button.event.code === 'KeyA'){
-   this.player.walk('idle');
-  } else if (button.event.code === 'KeyD'){
-   this.player.walk('idle');
-  } else if (button.event.code === 'KeyW'){
-   this.player.walk('idle');
-  } else if (button.event.code === 'KeyS'){
-   this.player.walk('idle');
+  // console.log("Y: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y));
+  // console.log("X: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X));
+
+  // Gamepad Controls
+  if(this.pad1.connected){
+    if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X !== false) && !this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) !== false){
+
+      if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1){
+          this.player.walk('left', 200);
+      }else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1){
+         this.player.walk('right', 200);
+      }
+
+      if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1){
+          this.player.walk('up', 200);
+      } else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1){
+          this.player.walk('down', 200);
+      }
+
+    } else {
+      //console.log('idle');
+      //this.player.idle();
+    }
+  }
+
+
+  // Keyboard Movement
+  if(this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+      if (this.button_A.isDown){
+
+          this.player.walk('left', 200);
+
+      }else if (this.button_D.isDown){
+
+          this.player.walk('right', 200);
+
+      }
+
+      if (this.button_W.isDown) {
+
+          this.player.walk('up', 200);
+
+      } else if (this.button_S.isDown){
+
+          this.player.walk('down', 200);
+
+      }
+  } else {
+      this.player.idle();
   }
 
 }
 
-update(){
-
-  console.log("Y: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y))
-  console.log("X: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X))
-
-  // Controls
-  if(this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X !== false) && !this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) !== false){
-
-    if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1){
-        this.player.walk('left', 200);
-    }else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1){
-       this.player.walk('right', 200);
-    }
-
-    if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1){
-        this.player.walk('up', 200);
-    } else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1){
-        this.player.walk('down', 200);
-    }
-
-  } else {
-    console.log('idle');
-    this.player.idle();
-  }
-
-
-};
 
 
 
