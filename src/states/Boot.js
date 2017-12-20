@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import 'phaser-tilemap-plus';
 
 export default class extends Phaser.State {
   init () {
@@ -10,6 +11,17 @@ export default class extends Phaser.State {
   }
 
   create () {
+    // this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+    // this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+    // scale the game 2x
+    // this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;  
+    // this.scale.setUserScale(3, 3);
+
+    // enable crisp rendering
+    this.game.renderer.renderSession.roundPixels = true;  
+    Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
     this.game.plugins.add(Phaser.Plugin.TilemapPlus);
 

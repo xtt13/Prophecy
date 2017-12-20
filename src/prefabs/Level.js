@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import "phaser-tilemap-plus";
 import Player from '../prefabs/Player';
+import Enemy from '../prefabs/Enemy';
 import Weather from '../prefabs/Weather';
 import Input from '../prefabs/Input';
 import config from './../config';
@@ -31,6 +32,7 @@ export default class{
 
 	//  Resize the world
 	this.groundLayer.resizeWorld();
+  //this.game.world.setBounds(0, 0, 2000, 2000);
 
 	// Set Collisions
 	//this.map.setCollisionBetween(0, 5000, true, 'Collision');
@@ -45,13 +47,19 @@ export default class{
   //this.inputClass = new Input(this.game);
 
   const tilemapProperties = this.map.plus.properties;
-  console.log(tilemapProperties);
+  // console.log(tilemapProperties);
 
-  this.player = new Player(this.game, 2200, 2200);
+  this.player = new Player(this.game, this.game.world.centerX, this.game.world.centerY);
   this.inputClass.setPlayer(this.player);
 
+  this.enemies = [];
+  for (var i = 0; i < 10; i++) {
+    this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(2000, 2400), this.game.rnd.integerInRange(2000, 2400), this.player));
+  }
+  // this.enemy = new Enemy(this.game, 2200, 2400, this.player);
+
   this.map.plus.physics.enableObjectLayer("Collision");
-  console.log(this.map.plus);
+  // console.log(this.map.plus);
 
     
   }
@@ -70,8 +78,18 @@ export default class{
   }
 
   update(){
+
+    for (var i = 0; i < this.enemies.length; i++) {
+      this.enemies[i].update();
+      this.game.physics.arcade.collide(this.enemies[i], this.enemies);
+      this.game.physics.arcade.collide(this.player, this.enemies);
+      this.game.world.bringToTop(this.player);
+    }
+
     const player = this.player;
   	this.map.plus.physics.collideWith(player);
+
+    // this.enemy.update();
 
     // Update Weather
     this.weather.updateWeather();

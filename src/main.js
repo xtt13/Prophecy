@@ -1,6 +1,8 @@
 import 'pixi';
 import 'p2';
 import Phaser from 'phaser';
+// import ParticleStorm from './plugins/particle-storm.min.js';
+// console.log(ParticleStorm);
 
 import BootState from './states/Boot';
 import PreloadState from './states/Preload';

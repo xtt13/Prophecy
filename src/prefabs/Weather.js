@@ -1,9 +1,10 @@
 import Phaser from 'phaser';
 import config from './../config';
 
+
 export default class {
   constructor (game, type) {
-
+    //let manager = this.game.plugins.add(ParticleStorm);
     this.game = game;
 
     if(config.weather){

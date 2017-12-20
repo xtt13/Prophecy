@@ -14,7 +14,7 @@ var definePlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
 });
 
-module.exports = {
+module.exports = { 
   entry: {
     app: [
       'babel-polyfill',
@@ -32,7 +32,15 @@ module.exports = {
   watch: true,
   plugins: [
     definePlugin,
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */}),
+    new webpack.optimize.CommonsChunkPlugin({ 
+      name: 'vendor', 
+      filename: 'vendor.bundle.js'
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({ 
+    //   name: 'particle-storm', 
+    //   filename: 'particle-storm.min.js',
+    //   template: './src/plugins.particle-storm.min.js'
+    // }),
     new HtmlWebpackPlugin({
       filename: '../index.html',
       template: './src/index.html',
@@ -70,6 +78,9 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
+  },
+  externals: {
+    'particle-storm': 'particle-storm.min' 
   },
   resolve: {
     alias: {
