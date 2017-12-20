@@ -82,20 +82,20 @@ export default class {
 
 
       // D-PAD Buttons
-      this.gamepad_buttonDPadLeft = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_LEFT);
-      this.gamepad_buttonDPadRight = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_RIGHT);
-      this.gamepad_buttonDPadUp = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP);
-      this.gamepad_buttonDPadDown = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN);
+      // this.gamepad_buttonDPadLeft = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_LEFT);
+      // this.gamepad_buttonDPadRight = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_RIGHT);
+      // this.gamepad_buttonDPadUp = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP);
+      // this.gamepad_buttonDPadDown = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN);
 
-      this.gamepad_buttonDPadLeft.onDown.add(this.onGamepadDown, this);
-      this.gamepad_buttonDPadRight.onDown.add(this.onGamepadDown, this);
-      this.gamepad_buttonDPadUp.onDown.add(this.onGamepadDown, this);
-      this.gamepad_buttonDPadDown.onDown.add(this.onGamepadDown, this);
+      // this.gamepad_buttonDPadLeft.onDown.add(this.onGamepadDown, this);
+      // this.gamepad_buttonDPadRight.onDown.add(this.onGamepadDown, this);
+      // this.gamepad_buttonDPadUp.onDown.add(this.onGamepadDown, this);
+      // this.gamepad_buttonDPadDown.onDown.add(this.onGamepadDown, this);
 
-      this.gamepad_buttonDPadLeft.onUp.add(this.onGamepadUp, this);
-      this.gamepad_buttonDPadRight.onUp.add(this.onGamepadUp, this);
-      this.gamepad_buttonDPadUp.onUp.add(this.onGamepadUp, this);
-      this.gamepad_buttonDPadDown.onUp.add(this.onGamepadUp, this);
+      // this.gamepad_buttonDPadLeft.onUp.add(this.onGamepadUp, this);
+      // this.gamepad_buttonDPadRight.onUp.add(this.onGamepadUp, this);
+      // this.gamepad_buttonDPadUp.onUp.add(this.onGamepadUp, this);
+      // this.gamepad_buttonDPadDown.onUp.add(this.onGamepadUp, this);
 
 
       // LB and RB Buttons
@@ -214,51 +214,54 @@ update(){
 
   // Gamepad Controls
   if(this.pad1.connected){
-    if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X !== false) && !this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) !== false){
-
+   
       if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1){
           this.player.walk('left', 200);
+          console.log('left');
       }else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1){
          this.player.walk('right', 200);
+         console.log('right');
+      } else {
+        this.player.idle("x");
       }
 
       if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1){
           this.player.walk('up', 200);
+          console.log('up');
       } else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1){
           this.player.walk('down', 200);
+          console.log('down');
+      } else {
+        this.player.idle("y");
       }
 
+  } else {
+    // Keyboard Movement
+    if(this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+        if (this.button_A.isDown){
+
+            this.player.walk('left', 80);
+
+        }else if (this.button_D.isDown){
+
+            this.player.walk('right', 80);
+
+        }
+
+        if (this.button_W.isDown) {
+
+            this.player.walk('up', 80);
+
+        } else if (this.button_S.isDown){
+
+            this.player.walk('down', 80);
+
+        }
     } else {
-      //console.log('idle');
-      //this.player.idle();
+        this.player.idle();
     }
   }
 
-
-  // Keyboard Movement
-  if(this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-      if (this.button_A.isDown){
-
-          this.player.walk('left', 200);
-
-      }else if (this.button_D.isDown){
-
-          this.player.walk('right', 200);
-
-      }
-
-      if (this.button_W.isDown) {
-
-          this.player.walk('up', 200);
-
-      } else if (this.button_S.isDown){
-
-          this.player.walk('down', 200);
-
-      }
-  } else {
-      this.player.idle();
-  }
 
 }
 

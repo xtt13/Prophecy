@@ -16,8 +16,15 @@ export default class extends Phaser.State {
     // this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 
     // scale the game 2x
-    // this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;  
-    // this.scale.setUserScale(3, 3);
+    this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;  
+    this.scale.setUserScale(3, 3);
+    this.game.scale.pageAlignVertically = true;
+    this.game.scale.pageAlignHorizontally = true;
+
+    // this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    // this.game.scale.setMinMax(800, 600, 2000, 1800);
+
 
     // enable crisp rendering
     this.game.renderer.renderSession.roundPixels = true;  

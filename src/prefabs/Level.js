@@ -28,7 +28,7 @@ export default class{
   this.groundLayer = this.map.createLayer('Layer1');
 
 	// Scale Layers
-	this.groundLayer.setScale(config.scaleRate);
+	//this.groundLayer.setScale(config.scaleRate);
 
 	//  Resize the world
 	this.groundLayer.resizeWorld();
@@ -54,7 +54,7 @@ export default class{
 
   this.enemies = [];
   for (var i = 0; i < 10; i++) {
-    this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(2000, 2400), this.game.rnd.integerInRange(2000, 2400), this.player));
+    this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 100, this.game.world.centerX + 100), this.game.rnd.integerInRange(this.game.world.centerY + 100, this.game.world.centerY - 100), this.player));
   }
   // this.enemy = new Enemy(this.game, 2200, 2400, this.player);
 

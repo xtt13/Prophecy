@@ -8,7 +8,7 @@ export default class extends Phaser.Sprite {
     this.game = game;
     this.health = config.playerHealth;
     this.anchor.setTo(0.5);
-    this.scale.set(config.scaleRate);
+    // this.scale.set(config.scaleRate);
 
     this.animations.add('idle', [0,1,2,3,4], 5, true);
     this.animations.play('idle');
@@ -66,7 +66,7 @@ export default class extends Phaser.Sprite {
   idle(direction){
   	if(direction == "x"){
   		this.body.velocity.x = 0;
-  	} else if(direction == "x"){
+  	} else if(direction == "y"){
   		this.body.velocity.y = 0;
   	} else {
   		this.body.velocity.x = 0;

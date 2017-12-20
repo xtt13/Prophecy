@@ -2,8 +2,8 @@
 export default {
 
   phaserConfig: {
-	width: window.innerWidth,
-	height: window.innerHeight,
+	width: 500,
+	height: 300,
 	renderer: Phaser.AUTO,
 	antialias: true,
 	multiTexture: false,
@@ -11,7 +11,7 @@ export default {
   },
 
   localStorageName: 'prophecy',
-  weather: false,
+  weather: true,
   playerHealth: 5,
   scaleRate: 3
 

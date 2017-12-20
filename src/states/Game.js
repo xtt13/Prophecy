@@ -25,7 +25,7 @@ export default class extends Phaser.State {
     // Debugging
     if (__DEV__) {
       //this.game.debug.body(this.level.player, 32, 32);    
-      this.game.debug.cameraInfo(this.game.camera, 32, 32);
+      // this.game.debug.cameraInfo(this.game.camera, 32, 32);
     }
   }
 
