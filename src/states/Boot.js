@@ -11,19 +11,21 @@ export default class extends Phaser.State {
   }
 
   create () {
-    // this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
-    // this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    const mobile = this.isMobileDevice();
+    if(!mobile){
+        this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+        this.scale.scaleMode = Phaser.ScaleManager. SHOW_ALL;  
+        this.game.scale.pageAlignVertically = true;
+        this.game.scale.pageAlignHorizontally = true;
+    } else {
+        this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+        this.scale.scaleMode = Phaser.ScaleManager.RESIZE;  
+        this.game.scale.pageAlignVertically = true;
+        this.game.scale.pageAlignHorizontally = true;
+    }
 
-    // scale the game 2x
-    this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;  
-    this.scale.setUserScale(3, 3);
-    this.game.scale.pageAlignVertically = true;
-    this.game.scale.pageAlignHorizontally = true;
 
-    // this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    // this.game.scale.setMinMax(800, 600, 2000, 1800);
 
 
     // enable crisp rendering
@@ -44,4 +46,8 @@ export default class extends Phaser.State {
     // Start the Preload State
     this.state.start('Preload');
   }
+
+    isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    }
 }

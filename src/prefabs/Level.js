@@ -55,9 +55,9 @@ export default class{
   ];
 
   
-  this.game.time.events.add(Phaser.Timer.SECOND * 10, function(){
-    this.GUICLASS.createMessage(message, false);
-  }, this);
+  // this.game.time.events.add(Phaser.Timer.SECOND * 10, function(){
+  //   this.GUICLASS.createMessage(message, false);
+  // }, this);
 
   // Create Enemies
   this.enemies = [];
@@ -74,14 +74,15 @@ export default class{
   this.map.plus.events.regions.onEnterAdd(this.player, (region) => {
 
       if (region.properties.onWakeUp) {
-          console.log('Enter');
+          console.log('Inside');
+          this.GUICLASS.createMessage(message, false);
       }
   });
   this.map.plus.events.regions.onLeaveAdd(this.player, (region) => {
 
-      if (region.properties.onWakeUp) {
-          console.log('Leave');
-      }
+      // if (region.properties.onWakeUp) {
+      //     console.log('Leave');
+      // }
   });
     
   }

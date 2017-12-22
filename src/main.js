@@ -10,7 +10,6 @@ import config from './config';
 
 class Game extends Phaser.Game {
   constructor () {
-    // document.fonts.load('10pt "pixelart"');
     const docElement = document.documentElement;
     // const width = docElement.clientWidth > config.phaserConfig.gameWidth ? config.phaserConfig.gameWidth : docElement.clientWidth;
     // const height = docElement.clientHeight > config.phaserConfig.gameHeight ? config.phaserConfig.gameHeight : docElement.clientHeight;

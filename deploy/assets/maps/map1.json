@@ -59,7 +59,7 @@
          "name":"Events",
          "objects":[
                 {
-                 "height":74.2927897895038,
+                 "height":19.1235466425582,
                  "id":5,
                  "name":"",
                  "properties":
@@ -73,9 +73,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":70.4829031336318,
-                 "x":684.82712639299,
-                 "y":610.534336603486
+                 "width":31.4046892378788,
+                 "x":704.031942208173,
+                 "y":744.285327925824
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -83,7 +83,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":7,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "properties":
     {
@@ -118,6 +118,29 @@
          "spacing":0,
          "tilecount":10,
          "tileheight":36,
+         "tiles":
+            {
+             "6":
+                {
+                 "animation":[
+                        {
+                         "duration":100,
+                         "tileid":3
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":4
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":5
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":6
+                        }]
+                }
+            },
          "tilewidth":36
         }],
  "tilewidth":36,

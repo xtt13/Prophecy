@@ -11,6 +11,7 @@ export default class extends Phaser.State {
   create () {
     // Toggle Fullscreen onclick
     this.input.onDown.add(this.toggleFullScreen, this);
+    this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
 
     this.GUI = new GUI(this.game);
 
@@ -35,6 +36,6 @@ export default class extends Phaser.State {
   }
 
   toggleFullScreen(){
-    this.game.scale.startFullScreen(false);
+    this.game.scale.startFullScreen(false, false);
   }
 }
