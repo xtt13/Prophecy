@@ -61,7 +61,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -177,12 +177,14 @@
                     {
                      "bridge":true,
                      "direction":"top",
-                     "length":6
+                     "id":1,
+                     "length":7
                     },
                  "propertytypes":
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "id":"int",
                      "length":"int"
                     },
                  "rotation":0,
@@ -261,7 +263,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],

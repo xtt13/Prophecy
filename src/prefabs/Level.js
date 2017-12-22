@@ -96,28 +96,25 @@ export default class{
         if(this.activatedBridges.includes(bridgeID)) return;
         const bridgeDirection = region.properties.direction;
         const bridgeLength = region.properties.length;
-        console.log(region);
 
         var bridgeX = this.groundLayer.getTileX(this.player.x);
         var bridgeY = this.groundLayer.getTileY(this.player.y);
 
         var collX = this.collisionLayer.getTileX(this.player.x);
         var collY = this.collisionLayer.getTileY(this.player.y);
-        console.log(collX, collY);
 
         let bridgeCounter = 0;
-        window.setInterval(() => {
+        let bridgeInterval = setInterval(() => {
           bridgeY--;
           collY--;
-          
           this.map.putTile(2, bridgeX, bridgeY, this.groundLayer);
           this.map.putTile(2, bridgeX-1, bridgeY, this.groundLayer);
-
           this.map.removeTile(collX, collY, this.collisionLayer);
           this.map.removeTile(collX-1, collY, this.collisionLayer);
           this.game.camera.shake(0.0015, 500);
           bridgeCounter++;
-          if(bridgeCounter == bridgeLength) return;
+          console.log(bridgeCounter);
+          if(bridgeCounter === bridgeLength) clearInterval(bridgeInterval);
         }, 500);
 
         this.activatedBridges.push(bridgeID);
