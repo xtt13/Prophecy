@@ -4,7 +4,6 @@ import config from './../config';
 
 export default class {
   constructor (game, type) {
-    //let manager = this.game.plugins.add(ParticleStorm);
     this.game = game;
 
     if(config.weather){
@@ -28,23 +27,37 @@ export default class {
   }
 
   addSnow(){
-
+      let emitter = game.add.emitter(-500, 0, 400);
+      emitter.fixedToCamera = true;
+      emitter.width = this.game.camera.width * 2;
+      emitter.angle = -10; // uncomment to set an angle for the rain.
+      emitter.makeParticles('snow');
+      emitter.minParticleScale = 0.1;
+      emitter.maxParticleScale = 0.5;
+      emitter.setYSpeed(0, 1);
+      emitter.setXSpeed(-1, 1);
+      emitter.minRotation = 0;
+      emitter.maxRotation = 0;
+      emitter.start(false, 4600, 5, 0);
   }
 
   addStorm(){
-      let emitter = this.game.add.emitter(this.game.world.centerX - 200, 0, 400);
+      // (x, y, maxParticles)
+      let emitter = this.game.add.emitter(-500, 0, 400);
       emitter.fixedToCamera = true;
-      emitter.width = this.game.world.width;
+      emitter.width = this.game.camera.width * 2;
       emitter.angle = -30;
       emitter.makeParticles('rain');
       emitter.minParticleScale = 0.1;
-      emitter.maxParticleScale = 0.7;
-      emitter.setYSpeed(900, 2000);
+      emitter.maxParticleScale = 0.5;
+      emitter.setYSpeed(90, 200);
+      // emitter.setYSpeed(900, 2000);
       emitter.setXSpeed(-5, 5);
       emitter.minRotation = 0;
       emitter.maxRotation = 0;
 
-      emitter.start(false, 1000, 1, 0);
+      // (explode, lifespan, frequency, quantity)
+      emitter.start(false, 3000, 1, 0);
 
       this.lightningBitmap = this.game.add.bitmapData(window.innerWidth, window.innerHeight + 500);   
       this.lightning = this.game.add.image(this.game.camera.width/2, 0, this.lightningBitmap);

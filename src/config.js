@@ -2,8 +2,8 @@
 export default {
 
   phaserConfig: {
-	width: 500,
-	height: 300,
+	width: 480,
+	height: 280,
 	renderer: Phaser.AUTO,
 	antialias: true,
 	multiTexture: false,

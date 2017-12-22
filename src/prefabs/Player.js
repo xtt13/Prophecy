@@ -7,6 +7,7 @@ export default class extends Phaser.Sprite {
 
     this.game = game;
     this.health = config.playerHealth;
+    this.movable = true;
     this.anchor.setTo(0.5);
     // this.scale.set(config.scaleRate);
 
@@ -23,43 +24,49 @@ export default class extends Phaser.Sprite {
 
   walk(direction, speed) {
 
-  	//console.log("Direction: " + direction + ", Speed: " + speed);
+    if(this.movable){
+      //console.log("Direction: " + direction + ", Speed: " + speed);
 
-	switch(direction) {
-	    case 'up':
-	        this.body.velocity.y = -speed;
-	        break;
+      switch(direction) {
+          case 'up':
+              this.body.velocity.y = -speed;
+              break;
 
-	    case 'down':
-	        this.body.velocity.y = speed;
-	        break;
+          case 'down':
+              this.body.velocity.y = speed;
+              break;
 
-	    case 'idle':
-	        this.body.velocity.y = 0;
-	        break;
+          case 'idle':
+              this.body.velocity.y = 0;
+              break;
 
-	    default:
-	    	this.body.velocity.y = 0;
+          default:
+            this.body.velocity.y = 0;
 
-	}
+      }
 
-	switch(direction){
-		case 'left':
-	        this.body.velocity.x = -speed;
-	        break;
+      switch(direction){
+        case 'left':
+              this.body.velocity.x = -speed;
+              break;
 
-	    case 'right':
-	        this.body.velocity.x = speed;
-	        break;
+          case 'right':
+              this.body.velocity.x = speed;
+              break;
 
-	    case 'idle':
-	        this.body.velocity.x = 0;
-	        break;
+          case 'idle':
+              this.body.velocity.x = 0;
+              break;
 
-	    default:
-	    	this.body.velocity.x = 0;
+          default:
+            this.body.velocity.x = 0;
 
-	}
+      }
+    } else {
+      this.body.velocity.set(0);
+    }
+
+  	
 
   }
 

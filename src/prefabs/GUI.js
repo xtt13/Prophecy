@@ -1,9 +1,10 @@
 import Phaser from 'phaser';
+import Message from './Message';
 
 export default class {
   constructor (game) {
-
-  	createGUI();
+    this.game = game;
+  	this.createGUI();
   }
 
   createGUI(){
@@ -20,6 +21,15 @@ export default class {
         break;
     default:
         
-	}
+	 }
+
+  }
+
+  createMessage(message, playerMovable){
+    this.message = new Message(this.game, message, playerMovable, this.player);
+  }
+
+  setPlayer(player){
+    this.player = player;
   }
 }

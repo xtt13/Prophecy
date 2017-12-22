@@ -110,7 +110,7 @@
              "orientation":"orthogonal",
              "width":16
             },
-         "image":"..\/tilesets\/testtileset.png",
+         "image":"tilesets\/testtileset.png",
          "imageheight":36,
          "imagewidth":360,
          "margin":0,

@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
 import Level from '../prefabs/Level';
+import GUI from '../prefabs/GUI';
 
 export default class extends Phaser.State {
   init (inputClass) {
@@ -11,14 +12,18 @@ export default class extends Phaser.State {
     // Toggle Fullscreen onclick
     this.input.onDown.add(this.toggleFullScreen, this);
 
+    this.GUI = new GUI(this.game);
+
     // Später mit unique Tileset auf JSON verknüpfen
-    this.level = new Level(this.game, this.inputClass, 'map1');
+    this.level = new Level(this.game, this.inputClass, this.GUI, 'map1');
 
   }
 
   update(){
     this.inputClass.update();
     this.level.update();
+    
+    // this.game.world.bringToTop(this.GUI.message.text);
   }
 
   render () {
