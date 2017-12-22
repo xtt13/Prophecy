@@ -1,10 +1,11 @@
 import Phaser from 'phaser';
 
 export default class {
-  constructor (game, message, movable, player) {
+  constructor (game, message, movable, readable, player) {
     this.game = game;
     this.message = message;
     this.movable = movable;
+    this.readable = readable;
     this.player = player;
 
     this.line = [];
@@ -15,11 +16,17 @@ export default class {
     this.wordDelay = 120;
     this.lineDelay = 3500;
 
-    this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 20);
+    if(this.readable){
+      this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 51);
+    } else {
+      this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 32);
+    }
+
+    // this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 20);
     this.text.scale.set(0.26);
     this.text.maxWidth = 1000;
     this.text.textHeight = 1500;
-    this.game.cache.getBitmapFont('pxlfont').font.lineHeight = 50;
+    this.game.cache.getBitmapFont('pxlfont').font.lineHeight = 100;
     console.log(this.text);
     this.text.fixedToCamera = true;
     this.text.smoothed = false;

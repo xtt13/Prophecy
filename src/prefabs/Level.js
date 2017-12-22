@@ -9,10 +9,15 @@ import config from './../config';
 
 export default class{
   constructor(game, inputClass, GUIclass, currentLevel){
+
   	this.game = game;
     this.inputClass = inputClass;
     this.GUICLASS = GUIclass;
   	this.currentLevel = currentLevel;
+
+    this.characters = [];
+
+
   	this.loadLevel();
   }
 
@@ -34,10 +39,6 @@ export default class{
   console.log(this.map);
   this.map.plus.animation.enable();
 
-	this.loadItems();
-	this.loadEnemies();
-	this.weather = new Weather(this.game, tilemapProperties.weather);
-
   // Create Player
   this.player = new Player(this.game, tilemapProperties.playerStartX, tilemapProperties.playerStartY);
 
@@ -54,18 +55,14 @@ export default class{
 
   ];
 
-  
-  // this.game.time.events.add(Phaser.Timer.SECOND * 10, function(){
-  //   this.GUICLASS.createMessage(message, false);
-  // }, this);
-
   // Create Enemies
-  this.enemies = [];
-  for (var i = 0; i < 0; i++) {
-    this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 50, this.game.world.centerX + 50), this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50), this.player));
-  }
+  // this.enemies = [];
+  // for (var i = 0; i < 0; i++) {
+  //   this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 50, this.game.world.centerX + 50), this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50), this.player));
+  // }
 
-  this.priest = new Character(this.game, this.game.world.centerX, this.game.world.centerY, this.player);
+  this.loadItems();
+  this.loadPeople();
 
   // Map Events
   this.map.plus.physics.enableObjectLayer("Collision");
@@ -73,27 +70,49 @@ export default class{
   this.map.plus.events.regions.enableObjectLayer("Events");
   this.map.plus.events.regions.onEnterAdd(this.player, (region) => {
 
-      if (region.properties.onWakeUp) {
-          console.log('Inside');
-          this.GUICLASS.createMessage(message, false);
+      if (region.properties.message) {
+          this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
       }
   });
-  this.map.plus.events.regions.onLeaveAdd(this.player, (region) => {
 
-      // if (region.properties.onWakeUp) {
-      //     console.log('Leave');
-      // }
-  });
+  this.weather = new Weather(this.game, tilemapProperties.weather);
     
   }
 
 
-  loadEnemies(){
+  loadPeople(){
+    let elementsArr = this.findObjectsByType('character', this.map, 'People');
 
-  }
+    elementsArr.forEach(function(element){
+
+      if(element.properties.character == 'death'){
+        console.log(this.player);
+        this.characters.push(new Character(this.game, element.x, element.y, this.player));
+      }
+    }, this);
+
+  } 
 
   loadItems(){
 
+  }
+
+  findObjectsByType(targetType, tilemap, layer){
+    let result = [];
+
+    tilemap.objects[layer].forEach(function(element){
+
+    let container = Object.keys(element.properties).toString();
+
+    if(container == targetType) {
+      element.y -= tilemap.tileHeight/2;
+      element.x += tilemap.tileHeight/2;
+      result.push(element);
+    }
+
+    }, this);
+
+    return result;
   }
 
   loadWeather(){
@@ -101,10 +120,11 @@ export default class{
   }
 
   update(){
+
   
-    this.game.physics.arcade.collide(this.enemies, this.enemies);   
-    this.game.physics.arcade.collide(this.enemies, this.player);
-    this.game.physics.arcade.collide(this.priest, this.player);
+    // this.game.physics.arcade.collide(this.enemies, this.enemies);   
+    // this.game.physics.arcade.collide(this.enemies, this.player);
+    this.game.physics.arcade.collide(this.characters, this.player);
     this.game.world.bringToTop(this.player);
 
     // TilemapPlus Physics

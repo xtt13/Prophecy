@@ -25,8 +25,8 @@ export default class {
 
   }
 
-  createMessage(message, playerMovable){
-    this.message = new Message(this.game, message, playerMovable, this.player);
+  createMessage(message, playerMovable, readable){
+    this.message = new Message(this.game, message, playerMovable, readable, this.player);
   }
 
   setPlayer(player){

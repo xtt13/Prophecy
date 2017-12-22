@@ -64,18 +64,135 @@
                  "name":"",
                  "properties":
                     {
-                     "onWakeUp":true
+                     "message":true,
+                     "movable":false,
+                     "readable":false
                     },
                  "propertytypes":
                     {
-                     "onWakeUp":"bool"
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":31.4046892378788,
-                 "x":704.031942208173,
-                 "y":744.285327925824
+                 "x":650.012058293455,
+                 "y":896.000746579924
+                }, 
+                {
+                 "height":19.1235,
+                 "id":12,
+                 "name":"",
+                 "properties":
+                    {
+                     "message":true,
+                     "movable":false,
+                     "readable":true
+                    },
+                 "propertytypes":
+                    {
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.4047,
+                 "x":883.096569602322,
+                 "y":957.62404391989
+                }, 
+                {
+                 "height":212.790530630423,
+                 "id":16,
+                 "name":"",
+                 "properties":
+                    {
+                     "message":true,
+                     "movable":true,
+                     "readable":true
+                    },
+                 "propertytypes":
+                    {
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":142.892545526119,
+                 "x":684.832102042986,
+                 "y":1009.34520937015
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"People",
+         "objects":[
+                {
+                 "height":11.4935923222803,
+                 "id":10,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"death"
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":18.3897477156485,
+                 "x":655.134762369979,
+                 "y":878.110453422217
+                }, 
+                {
+                 "height":11.4936,
+                 "id":11,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"death"
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":18.3897,
+                 "x":890.178749218436,
+                 "y":941.325207355899
+                }, 
+                {
+                 "height":11.4936,
+                 "id":13,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"death"
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":18.3897,
+                 "x":705.131912829722,
+                 "y":645.939884673295
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -83,7 +200,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":9,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "properties":
     {
