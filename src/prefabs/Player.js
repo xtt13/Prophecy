@@ -9,6 +9,7 @@ export default class extends Phaser.Sprite {
     this.health = config.playerHealth;
     this.movable = true;
     this.anchor.setTo(0.5);
+    this.playerSpeed = 200;
     // this.scale.set(config.scaleRate);
 
     this.animations.add('idle', [0,1,2,3,4], 5, true);
@@ -29,11 +30,11 @@ export default class extends Phaser.Sprite {
 
       switch(direction) {
           case 'up':
-              this.body.velocity.y = -speed;
+              this.body.velocity.y = -this.playerSpeed;
               break;
 
           case 'down':
-              this.body.velocity.y = speed;
+              this.body.velocity.y = this.playerSpeed;
               break;
 
           case 'idle':
@@ -47,11 +48,11 @@ export default class extends Phaser.Sprite {
 
       switch(direction){
         case 'left':
-              this.body.velocity.x = -speed;
+              this.body.velocity.x = -this.playerSpeed;
               break;
 
           case 'right':
-              this.body.velocity.x = speed;
+              this.body.velocity.x = this.playerSpeed;
               break;
 
           case 'idle':

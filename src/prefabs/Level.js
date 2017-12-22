@@ -6,6 +6,7 @@ import Character from '../prefabs/Character';
 import Weather from '../prefabs/Weather';
 import Input from '../prefabs/Input';
 import config from './../config';
+import dialogues from './../dialogues';
 
 export default class{
   constructor(game, inputClass, GUIclass, currentLevel){
@@ -16,6 +17,8 @@ export default class{
   	this.currentLevel = currentLevel;
 
     this.characters = [];
+    this.playedDialogues = [];
+    this.activatedBridges = [];
 
 
   	this.loadLevel();
@@ -31,12 +34,14 @@ export default class{
 
 	//  Define Layers
   this.groundLayer = this.map.createLayer('Layer1');
+  this.collisionLayer = this.map.createLayer('CollisionLayer');
 
 	//  Resize the world
 	this.groundLayer.resizeWorld();
 
+  this.map.setCollisionBetween(0, 20, true, 'CollisionLayer');
+
   const tilemapProperties = this.map.plus.properties;
-  console.log(this.map);
   this.map.plus.animation.enable();
 
   // Create Player
@@ -49,11 +54,11 @@ export default class{
 
 
 
-  const message = [
-    "If a person who has an evil heart gets the Triforce, a Hero is destined to appear... and he alone must face the person who began the Great Cataclysm. ",
-    "If the evil one destroys the Hero, nothing can save the world from his wicked reign. Only a person of the Knights Of Hyrule, who protected the royalty of Hylia, can become the Hero."
+  // const message = [
+  //   "If a person who has an evil heart gets the Triforce, a Hero is destined to appear... and he alone must face the person who began the Great Cataclysm. ",
+  //   "If the evil one destroys the Hero, nothing can save the world from his wicked reign. Only a person of the Knights Of Hyrule, who protected the royalty of Hylia, can become the Hero."
 
-  ];
+  // ];
 
   // Create Enemies
   // this.enemies = [];
@@ -68,10 +73,55 @@ export default class{
   this.map.plus.physics.enableObjectLayer("Collision");
 
   this.map.plus.events.regions.enableObjectLayer("Events");
+
+  // Enter Events
   this.map.plus.events.regions.onEnterAdd(this.player, (region) => {
 
-      if (region.properties.message) {
-          this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
+      if(region.properties.message) {
+          const message_id = region.properties.id
+          const all_messages = Object.values(dialogues.dialogues);
+          for (var i = 0; i < all_messages.length; i++) {
+            if(i+1 == message_id){
+              if(this.playedDialogues.includes(message_id)) return;
+              const message = all_messages[i];
+              this.playedDialogues.push(message_id);
+              this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
+              break;
+            }
+          }      
+      }
+
+      if(region.properties.bridge){
+        const bridgeID = region.properties.id;
+        if(this.activatedBridges.includes(bridgeID)) return;
+        const bridgeDirection = region.properties.direction;
+        const bridgeLength = region.properties.length;
+        console.log(region);
+
+        var bridgeX = this.groundLayer.getTileX(this.player.x);
+        var bridgeY = this.groundLayer.getTileY(this.player.y);
+
+        var collX = this.collisionLayer.getTileX(this.player.x);
+        var collY = this.collisionLayer.getTileY(this.player.y);
+        console.log(collX, collY);
+
+        let bridgeCounter = 0;
+        window.setInterval(() => {
+          bridgeY--;
+          collY--;
+          
+          this.map.putTile(2, bridgeX, bridgeY, this.groundLayer);
+          this.map.putTile(2, bridgeX-1, bridgeY, this.groundLayer);
+
+          this.map.removeTile(collX, collY, this.collisionLayer);
+          this.map.removeTile(collX-1, collY, this.collisionLayer);
+          this.game.camera.shake(0.0015, 500);
+          bridgeCounter++;
+          if(bridgeCounter == bridgeLength) return;
+        }, 500);
+
+        this.activatedBridges.push(bridgeID);
+        
       }
   });
 
@@ -86,7 +136,6 @@ export default class{
     elementsArr.forEach(function(element){
 
       if(element.properties.character == 'death'){
-        console.log(this.player);
         this.characters.push(new Character(this.game, element.x, element.y, this.player));
       }
     }, this);
@@ -125,6 +174,7 @@ export default class{
     // this.game.physics.arcade.collide(this.enemies, this.enemies);   
     // this.game.physics.arcade.collide(this.enemies, this.player);
     this.game.physics.arcade.collide(this.characters, this.player);
+    this.game.physics.arcade.collide(this.player, this.collisionLayer);
     this.game.world.bringToTop(this.player);
 
     // TilemapPlus Physics

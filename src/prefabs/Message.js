@@ -9,7 +9,6 @@ export default class {
     this.player = player;
 
     this.line = [];
-    console.log('INSIDE');
     this.wordIndex = 0;
     this.lineIndex = 0;
 
@@ -18,6 +17,7 @@ export default class {
 
     if(this.readable){
       this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 51);
+      this.text = this.game.add.bitmapText(this.game.camera.width / 2 - 100, this.game.camera.height - 80, 'pxlfont', '', 51);
     } else {
       this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 32);
     }
@@ -27,7 +27,6 @@ export default class {
     this.text.maxWidth = 1000;
     this.text.textHeight = 1500;
     this.game.cache.getBitmapFont('pxlfont').font.lineHeight = 100;
-    console.log(this.text);
     this.text.fixedToCamera = true;
     this.text.smoothed = false;
 
@@ -36,7 +35,8 @@ export default class {
     }
 
     this.nextLine();
-  	
+  	 
+    return "test";
     }
 
     nextLine(){
@@ -70,7 +70,7 @@ export default class {
     }
 
     update(){
-      
+      this.game.world.bringToTop(this);
     }
 
   
