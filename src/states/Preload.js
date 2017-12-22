@@ -30,6 +30,9 @@ export default class extends Phaser.State {
 
     // Load Videos
 
+    // Load Mobile Controll
+    this.game.load.atlas('dpad', 'assets/input/dpad.png', 'assets/input/dpad.json');
+
     // Load Weather Sprites
     this.load.image('rain', 'assets/sprites/rain.png');
     this.load.image('snow', 'assets/sprites/snow.png');

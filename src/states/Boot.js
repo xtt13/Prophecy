@@ -20,7 +20,8 @@ export default class extends Phaser.State {
         this.game.scale.pageAlignHorizontally = true;
     } else {
         this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.scale.scaleMode = Phaser.ScaleManager.RESIZE;  
+        // this.scale.scaleMode = Phaser.ScaleManager.RESIZE;  
+        this.scale.scaleMode = Phaser.ScaleManager. SHOW_ALL;  
         this.game.scale.pageAlignVertically = true;
         this.game.scale.pageAlignHorizontally = true;
     }

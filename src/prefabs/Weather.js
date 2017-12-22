@@ -6,6 +6,8 @@ export default class {
   constructor (game, type) {
     this.game = game;
 
+    this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+
     if(config.weather){
       this.createWeather(type);
     }
@@ -19,6 +21,10 @@ export default class {
 
     case 'Storm':
         this.addStorm();
+        break;
+
+    case "SnowWind":
+        this.addSnowWind();
         break;
         
     default:
@@ -135,6 +141,26 @@ export default class {
         }
 
         this.lightningBitmap.dirty = true;
+  }
+
+  addSnowWind(){
+    // let snowparticles = {
+    //     image: [ 'snow'],
+    //     lifespan: 2000,
+    //     vx: { min: -5, max: 5 },
+    //     vy: { value: 0, control: [ { x: 0, y: 1 }, { x: 0.3, y: 1 }, { x: 0.9, y: 0.01 }, { x: 1, y: 0 } ] },
+    //     scale: {min: 0.1, max: 0.5},
+    //     //rotation: { initial: -90, value: 180, control: [ { x: 0, y: 0 }, { x: 0.2, y: 0.5 }, { x: 0.4, y: 1 }, { x: 0.6, y: 0.5 }, { x: 1, y:0 } ] }
+    // };
+
+
+    // this.manager.addData('snow', snowparticles);
+    // console.log(this.manager);
+    // this.emitter = this.manager.createEmitter();
+    // this.emitter.force.y = 0.025;
+    // this.emitter.addToWorld();
+    // this.emitter.emit('snow', [700, 800], 650, { repeat: -1, frequency: 10 });
+    // console.log(this.emitter);
   }
 
   updateWeather(){

@@ -17,6 +17,7 @@ export default class extends Phaser.State {
 
     // Später mit unique Tileset auf JSON verknüpfen
     this.level = new Level(this.game, this.inputClass, this.GUI, 'map1');
+    this.inputClass.checkController();
 
   }
 

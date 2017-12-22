@@ -8,6 +8,11 @@ import GameState from './states/Game';
 
 import config from './config';
 
+require('script-loader!../src/plugins/particle-storm.min.js');
+require('script-loader!../src/plugins/phaser-virtual-joystick.min.js');
+
+
+
 class Game extends Phaser.Game {
   constructor () {
     const docElement = document.documentElement;

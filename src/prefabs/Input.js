@@ -1,11 +1,13 @@
 import Phaser from 'phaser';
 import Player from './Player';
+import config from './../config';
 
 export default class {
   constructor(game){
 
   	this.game = game;
     this.gamepadSupport = false;
+    this.useMobileControl = false;
     this.pad1;
 
     this.checkController();
@@ -46,12 +48,40 @@ export default class {
         } else {
           this.showMessage("No Controller connected", true);
           this.noControllerConnected = true;
-          this.useKeyboard();
+
+          if(this.isMobileDevice() || config.forceMobile){
+            console.log('Use Mobile');
+            this.useMobileControl = true;
+            this.useMobile();
+          } else {
+            this.useKeyboard();
+          }
         }  
 
     } else {
-      this.useKeyboard();
+      if(this.isMobileDevice() || config.forceMobile){
+        console.log('Use Mobile');
+        this.useMobileControll = true;
+        this.useMobile();
+      } else {
+        this.useKeyboard();
+      }
+      
     }
+  }
+
+
+  useMobile(){
+    this.pad = this.game.plugins.add(Phaser.VirtualJoystick);
+    this.stick = this.pad.addDPad(0, 0, 200, 'dpad');
+    this.stick.scale = 0.5;
+    this.stick.alignBottomLeft(0);
+    this.stick.showOnTouch = true;
+    screen.orientation.lock('landscape');
+  }
+
+  isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   }
 
   useKeyboard(){
@@ -234,6 +264,33 @@ update(){
       } else {
         this.player.idle("y");
       }
+
+  } else if (this.useMobileControl){
+
+    if (this.stick.isDown){
+            this.player.idle();
+            
+
+            if (this.stick.direction === Phaser.LEFT)
+            {   
+
+                this.player.walk('left', 80);
+            }
+            else if (this.stick.direction === Phaser.RIGHT){
+
+                this.player.walk('right', 80);
+            }
+            else if (this.stick.direction === Phaser.UP){
+
+                this.player.walk('up', 80);
+            }
+            else if (this.stick.direction === Phaser.DOWN){
+
+                this.player.walk('down', 80);
+            }
+        } else {
+            this.player.idle();
+        }
 
   } else {
     // Keyboard Movement
