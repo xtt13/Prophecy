@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var exec = require('script-loader');
+var PrettierPlugin = require("prettier-webpack-plugin");
 
 // require('script-loader!../src/plugins/particle-storm.min.js');
 
@@ -35,15 +36,20 @@ module.exports = {
   watch: true,
   plugins: [
     definePlugin,
+    new PrettierPlugin({
+      tabWidth: 2,
+      printWidth: 120,
+      useTabs: true,
+      singleQuote: true,
+      bracketSpacing: true,
+      semi: true,
+      encoding: 'utf-8',
+      extensions: [ ".js"]
+    }),
     new webpack.optimize.CommonsChunkPlugin({ 
       name: 'vendor', 
       filename: 'vendor.bundle.js'
     }),
-    // new webpack.optimize.CommonsChunkPlugin({ 
-    //   name: 'particle-storm', 
-    //   filename: 'particle-storm.min.js',
-    //   template: './src/plugins.particle-storm.min.js'
-    // }),
     new HtmlWebpackPlugin({
       filename: '../index.html',
       template: './src/index.html',

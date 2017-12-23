@@ -1,169 +1,166 @@
 import Phaser from 'phaser';
 import config from './../config';
 
-
 export default class {
-  constructor (game, type) {
-    this.game = game;
+	constructor(game, type) {
+		this.game = game;
 
-    this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
-    if(config.weather){
-      this.createWeather(type);
-    }
-  }
+		if (config.weather) {
+			this.createWeather(type);
+		}
+	}
 
-  createWeather(type){
-    switch(type) {
-    case 'Snow':
-        this.addSnow();
-        break;
+	createWeather(type) {
+		switch (type) {
+			case 'Snow':
+				this.addSnow();
+				break;
 
-    case 'Storm':
-        this.addStorm();
-        break;
+			case 'Storm':
+				this.addStorm();
+				break;
 
-    case "SnowWind":
-        this.addSnowWind();
-        break;
-        
-    default:
-        
-    }
-  }
+			case 'SnowWind':
+				this.addSnowWind();
+				break;
 
-  addSnow(){
-      let emitter = game.add.emitter(-500, 0, 400);
-      emitter.fixedToCamera = true;
-      emitter.width = this.game.camera.width * 2;
-      emitter.angle = -10; // uncomment to set an angle for the rain.
-      emitter.makeParticles('snow');
-      emitter.minParticleScale = 0.1;
-      emitter.maxParticleScale = 0.5;
-      emitter.setYSpeed(0, 1);
-      emitter.setXSpeed(-1, 1);
-      emitter.minRotation = 0;
-      emitter.maxRotation = 0;
-      emitter.start(false, 4600, 5, 0);
-  }
+			default:
+		}
+	}
 
-  addStorm(){
-      // (x, y, maxParticles)
-      let emitter = this.game.add.emitter(-500, 0, 400);
-      emitter.fixedToCamera = true;
-      emitter.width = this.game.camera.width * 2;
-      emitter.angle = -30;
-      emitter.makeParticles('rain');
-      emitter.minParticleScale = 0.1;
-      emitter.maxParticleScale = 0.5;
-      emitter.setYSpeed(90, 200);
-      // emitter.setYSpeed(900, 2000);
-      emitter.setXSpeed(-5, 5);
-      emitter.minRotation = 0;
-      emitter.maxRotation = 0;
+	addSnow() {
+		let emitter = game.add.emitter(-500, 0, 400);
+		emitter.fixedToCamera = true;
+		emitter.width = this.game.camera.width * 2;
+		emitter.angle = -10;
+		emitter.makeParticles('snow');
+		emitter.minParticleScale = 0.1;
+		emitter.maxParticleScale = 0.5;
+		emitter.setYSpeed(0, 1);
+		emitter.setXSpeed(-1, 1);
+		emitter.minRotation = 0;
+		emitter.maxRotation = 0;
+		emitter.start(false, 4600, 5, 0);
+	}
 
-      // (explode, lifespan, frequency, quantity)
-      emitter.start(false, 3000, 1, 0);
+	addStorm() {
+		// (x, y, maxParticles)
+		let emitter = this.game.add.emitter(-500, 0, 400);
+		emitter.fixedToCamera = true;
+		emitter.width = this.game.camera.width * 2;
+		emitter.angle = -30;
+		emitter.makeParticles('rain');
+		emitter.minParticleScale = 0.1;
+		emitter.maxParticleScale = 0.5;
+		emitter.setYSpeed(90, 200);
+		emitter.setXSpeed(-5, 5);
+		emitter.minRotation = 0;
+		emitter.maxRotation = 0;
 
-      this.lightningBitmap = this.game.add.bitmapData(window.innerWidth, window.innerHeight + 500);   
-      this.lightning = this.game.add.image(this.game.camera.width/2, 0, this.lightningBitmap);
-      this.lightning.anchor.setTo(0.5, 0.5); 
+		// (explode, lifespan, frequency, quantity)
+		emitter.start(false, 3000, 1, 0);
 
-      this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.zap, this);
+		this.lightningBitmap = this.game.add.bitmapData(window.innerWidth, window.innerHeight + 500);
+		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
+		this.lightning.anchor.setTo(0.5, 0.5);
 
-  }
+		this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.zap, this);
+	}
 
-  zap(){
-      this.lightningBitmap.x = this.game.camera.x;
-      this.lightningBitmap.y = this.game.camera.y;
-      this.lightning.x = this.game.camera.x;
-      this.lightning.y = this.game.camera.y;
+	zap() {
+		this.lightningBitmap.x = this.game.camera.x;
+		this.lightningBitmap.y = this.game.camera.y;
+		this.lightning.x = this.game.camera.x;
+		this.lightning.y = this.game.camera.y;
 
-      this.createLightningTexture(this.game.rnd.integerInRange(this.game.camera.x, this.game.camera.x + this.game.camera.width), 0, 45, 3, false);
+		this.createLightningTexture(
+			this.game.rnd.integerInRange(this.game.camera.x, this.game.camera.x + this.game.camera.width),
+			0,
+			45,
+			3,
+			false
+		);
 
-      this.lightning.alpha = 1;
+		this.lightning.alpha = 1;
 
-      this.game.add.tween(this.lightning)
-          .to({ alpha: 0.5 }, 100, Phaser.Easing.Bounce.Out)
-          .to({ alpha: 1.0 }, 100, Phaser.Easing.Bounce.Out)
-          .to({ alpha: 0.5 }, 100, Phaser.Easing.Bounce.Out)
-          .to({ alpha: 1.0 }, 100, Phaser.Easing.Bounce.Out)
-          .to({ alpha: 0 }, 250, Phaser.Easing.Cubic.In)
-          .start();
+		this.game.add
+			.tween(this.lightning)
+			.to({ alpha: 0.5 }, 100, Phaser.Easing.Bounce.Out)
+			.to({ alpha: 1.0 }, 100, Phaser.Easing.Bounce.Out)
+			.to({ alpha: 0.5 }, 100, Phaser.Easing.Bounce.Out)
+			.to({ alpha: 1.0 }, 100, Phaser.Easing.Bounce.Out)
+			.to({ alpha: 0 }, 250, Phaser.Easing.Cubic.In)
+			.start();
 
-      this.game.camera.flash(0xFFFFFF, 200);
-      this.game.camera.shake(0.005, 500);
+		this.game.camera.flash(0xffffff, 200);
+		this.game.camera.shake(0.005, 500);
+	}
 
-  }
+	createLightningTexture(x, y, segments, boltWidth, branch) {
+		let ctx = this.lightningBitmap.context;
+		let width = this.lightningBitmap.width;
+		let height = this.lightningBitmap.height;
 
-  createLightningTexture(x, y, segments, boltWidth, branch){
-        let ctx = this.lightningBitmap.context;
-        let width = this.lightningBitmap.width;
-        let height = this.lightningBitmap.height;
+		if (!branch) ctx.clearRect(0, 0, width, height);
 
-        if (!branch) ctx.clearRect(0, 0, width, height);
+		for (let i = 0; i < segments; i++) {
+			ctx.strokeStyle = 'rgb(255, 255, 255)';
+			ctx.lineWidth = boltWidth;
 
-        for(var i = 0; i < segments; i++) {
+			ctx.beginPath();
+			ctx.moveTo(x, y);
 
-            ctx.strokeStyle = 'rgb(255, 255, 255)';
-            ctx.lineWidth = boltWidth;
+			if (branch) {
+				x += this.game.rnd.integerInRange(-10, 10);
+			} else {
+				x += this.game.rnd.integerInRange(-30, 30);
+			}
+			if (x <= 10) x = 10;
+			if (x >= width - 10) x = width - 10;
 
-            ctx.beginPath();
-            ctx.moveTo(x, y);
+			if (branch) {
+				y += this.game.rnd.integerInRange(10, 20);
+			} else {
+				y += this.game.rnd.integerInRange(20, height / segments);
+			}
+			if ((!branch && i == segments - 1) || y > height) {
+				y = height;
+			}
 
-            if (branch) {
-                x += this.game.rnd.integerInRange(-10, 10);
-            } else {
-                x += this.game.rnd.integerInRange(-30, 30);
-            }
-            if (x <= 10) x = 10;
-            if (x >= width-10) x = width-10;
+			ctx.lineTo(x, y);
+			ctx.stroke();
 
-            if (branch) {
-                y += this.game.rnd.integerInRange(10, 20);
-            } else {
-                y += this.game.rnd.integerInRange(20, height/segments);
-            }
-            if ((!branch && i == segments - 1) || y > height) {
-                y = height;
-            }
+			if (y >= height) break;
 
-            ctx.lineTo(x, y);
-            ctx.stroke();
+			if (!branch) {
+				if (Math.random() * 100 <= 20) {
+					this.createLightningTexture(x, y, 10, 1, true);
+				}
+			}
+		}
 
-            if (y >= height) break;
+		this.lightningBitmap.dirty = true;
+	}
 
-            if (!branch) {
-                if (Math.random() * 100 <= 20) {
-                    this.createLightningTexture(x, y, 10, 1, true);
-                }
-            }
-        }
+	addSnowWind() {
+		// let snowparticles = {
+		//     image: [ 'snow'],
+		//     lifespan: 2000,
+		//     vx: { min: -5, max: 5 },
+		//     vy: { value: 0, control: [ { x: 0, y: 1 }, { x: 0.3, y: 1 }, { x: 0.9, y: 0.01 }, { x: 1, y: 0 } ] },
+		//     scale: {min: 0.1, max: 0.5},
+		//     //rotation: { initial: -90, value: 180, control: [ { x: 0, y: 0 }, { x: 0.2, y: 0.5 }, { x: 0.4, y: 1 }, { x: 0.6, y: 0.5 }, { x: 1, y:0 } ] }
+		// };
+		// this.manager.addData('snow', snowparticles);
+		// console.log(this.manager);
+		// this.emitter = this.manager.createEmitter();
+		// this.emitter.force.y = 0.025;
+		// this.emitter.addToWorld();
+		// this.emitter.emit('snow', [700, 800], 650, { repeat: -1, frequency: 10 });
+		// console.log(this.emitter);
+	}
 
-        this.lightningBitmap.dirty = true;
-  }
-
-  addSnowWind(){
-    // let snowparticles = {
-    //     image: [ 'snow'],
-    //     lifespan: 2000,
-    //     vx: { min: -5, max: 5 },
-    //     vy: { value: 0, control: [ { x: 0, y: 1 }, { x: 0.3, y: 1 }, { x: 0.9, y: 0.01 }, { x: 1, y: 0 } ] },
-    //     scale: {min: 0.1, max: 0.5},
-    //     //rotation: { initial: -90, value: 180, control: [ { x: 0, y: 0 }, { x: 0.2, y: 0.5 }, { x: 0.4, y: 1 }, { x: 0.6, y: 0.5 }, { x: 1, y:0 } ] }
-    // };
-
-
-    // this.manager.addData('snow', snowparticles);
-    // console.log(this.manager);
-    // this.emitter = this.manager.createEmitter();
-    // this.emitter.force.y = 0.025;
-    // this.emitter.addToWorld();
-    // this.emitter.emit('snow', [700, 800], 650, { repeat: -1, frequency: 10 });
-    // console.log(this.emitter);
-  }
-
-  updateWeather(){
-
-  }
+	updateWeather() {}
 }
