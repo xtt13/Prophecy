@@ -1,9 +1,11 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
+import PhaserEasystar from 'phaser-easystar-ts';
 import Player from '../prefabs/Player';
 import Enemy from '../prefabs/Enemy';
 import Character from '../prefabs/Character';
 import Weather from '../prefabs/Weather';
+import Bridgebuilder from '../prefabs/Bridgebuilder';
 import Input from '../prefabs/Input';
 import config from './../config';
 import dialogues from './../dialogues';
@@ -48,12 +50,6 @@ export default class {
 		this.inputClass.setPlayer(this.player);
 		this.GUICLASS.setPlayer(this.player);
 
-		// const message = [
-		//   "If a person who has an evil heart gets the Triforce, a Hero is destined to appear... and he alone must face the person who began the Great Cataclysm. ",
-		//   "If the evil one destroys the Hero, nothing can save the world from his wicked reign. Only a person of the Knights Of Hyrule, who protected the royalty of Hylia, can become the Hero."
-
-		// ];
-
 		// Create Enemies
 		// this.enemies = [];
 		// for (let i = 0; i < 0; i++) {
@@ -62,6 +58,8 @@ export default class {
 
 		this.loadItems();
 		this.loadPeople();
+
+		// this.pathfinder = new Pathfinder(this.game, this.map, this.player);
 
 		// Map Events
 		this.map.plus.physics.enableObjectLayer('Collision');
@@ -87,28 +85,15 @@ export default class {
 			if (region.properties.bridge) {
 				const bridgeID = region.properties.id;
 				if (this.activatedBridges.includes(bridgeID)) return;
-				const bridgeDirection = region.properties.direction;
-				const bridgeLength = region.properties.length;
 
-				let bridgeX = this.groundLayer.getTileX(this.player.x);
-				let bridgeY = this.groundLayer.getTileY(this.player.y);
-
-				let collX = this.collisionLayer.getTileX(this.player.x);
-				let collY = this.collisionLayer.getTileY(this.player.y);
-
-				let bridgeCounter = 0;
-				let bridgeInterval = setInterval(() => {
-					bridgeY--;
-					collY--;
-					this.map.putTile(2, bridgeX, bridgeY, this.groundLayer);
-					this.map.putTile(2, bridgeX - 1, bridgeY, this.groundLayer);
-					this.map.removeTile(collX, collY, this.collisionLayer);
-					this.map.removeTile(collX - 1, collY, this.collisionLayer);
-					this.game.camera.shake(0.0015, 500);
-					bridgeCounter++;
-					console.log(bridgeCounter);
-					if (bridgeCounter === bridgeLength) clearInterval(bridgeInterval);
-				}, 500);
+				this.bridgebuilder = new Bridgebuilder(
+					this.game,
+					region,
+					this.player,
+					this.map,
+					this.groundLayer,
+					this.collisionLayer
+				);
 
 				this.activatedBridges.push(bridgeID);
 			}

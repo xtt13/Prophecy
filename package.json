@@ -40,8 +40,8 @@
         "cordova-browser": "^4.1.0",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-whitelist": "^1.3.2",
-        "easystarjs": "^0.4.1",
         "phaser-ce": "^2.8.3",
+        "phaser-easystar-ts": "^0.1.4",
         "phaser-tilemap-plus": "^0.10.1",
         "webfontloader": "^1.6.28"
     },

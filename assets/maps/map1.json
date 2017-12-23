@@ -176,7 +176,7 @@
                  "properties":
                     {
                      "bridge":true,
-                     "direction":"top",
+                     "direction":"up",
                      "id":1,
                      "length":7
                     },
@@ -191,8 +191,8 @@
                  "type":"",
                  "visible":true,
                  "width":62.9543649971467,
-                 "x":1338.0523973815,
-                 "y":508.973135338017
+                 "x":1335.70249725226,
+                 "y":510.14808540264
                 }],
          "opacity":1,
          "type":"objectgroup",
