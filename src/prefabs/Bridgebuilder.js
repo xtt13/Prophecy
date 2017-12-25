@@ -9,6 +9,8 @@ export default class {
 		this.collisionLayer = collisionLayer;
 		this.region = region;
 
+		console.log(region);
+
 		this.buildBridge();
 	}
 
@@ -16,11 +18,17 @@ export default class {
 		const bridgeDirection = this.region.properties.direction;
 		const bridgeLength = this.region.properties.length;
 
-		let bridgeX = this.groundLayer.getTileX(this.player.x);
-		let bridgeY = this.groundLayer.getTileY(this.player.y);
+		// let bridgeX = this.groundLayer.getTileX(this.player.x);
+		// let bridgeY = this.groundLayer.getTileY(this.player.y);
 
-		let collX = this.collisionLayer.getTileX(this.player.x);
-		let collY = this.collisionLayer.getTileY(this.player.y);
+		// let collX = this.collisionLayer.getTileX(this.player.x);
+		// let collY = this.collisionLayer.getTileY(this.player.y);
+
+		let bridgeX = this.groundLayer.getTileX(this.region.left) + 1;
+		let bridgeY = this.groundLayer.getTileY(this.region.top);
+
+		let collX = this.collisionLayer.getTileX(this.region.left) + 1;
+		let collY = this.collisionLayer.getTileY(this.region.top);
 
 		let bridgeCounter = 0;
 		let bridgeInterval = setInterval(() => {

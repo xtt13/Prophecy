@@ -25,6 +25,8 @@ export default class {
 	}
 
 	loadLevel() {
+
+		this.game.stage.backgroundColor = '#a7efff';
 		// JSON Map Data
 		this.map = this.game.add.tilemap(this.currentLevel);
 
