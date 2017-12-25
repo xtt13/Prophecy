@@ -4,6 +4,7 @@ import PhaserEasystar from 'phaser-easystar-ts';
 import Player from '../prefabs/Player';
 import Enemy from '../prefabs/Enemy';
 import Character from '../prefabs/Character';
+import Pathfinder from '../prefabs/Pathfinder';
 import Weather from '../prefabs/Weather';
 import Bridgebuilder from '../prefabs/Bridgebuilder';
 import Input from '../prefabs/Input';
@@ -61,8 +62,6 @@ export default class {
 		this.loadItems();
 		this.loadPeople();
 
-		// this.pathfinder = new Pathfinder(this.game, this.map, this.player);
-
 		// Map Events
 		this.map.plus.physics.enableObjectLayer('Collision');
 
@@ -98,6 +97,10 @@ export default class {
 				);
 
 				this.activatedBridges.push(bridgeID);
+			}
+
+			if(region.properties.pathfinder){
+				this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
 			}
 		});
 
@@ -135,6 +138,10 @@ export default class {
 	loadWeather() {}
 
 	update() {
+		if(this.pathfinder){
+			this.pathfinder.followPath();
+		}
+		
 		// this.game.physics.arcade.collide(this.enemies, this.enemies);
 		// this.game.physics.arcade.collide(this.enemies, this.player);
 		this.game.physics.arcade.collide(this.characters, this.player);

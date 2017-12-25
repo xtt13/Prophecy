@@ -27,6 +27,7 @@ export default class extends Phaser.State {
 
 		// enable crisp rendering
 		this.game.renderer.renderSession.roundPixels = true;
+		this.game.time.advancedTiming = true;
 		Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
 		this.game.plugins.add(Phaser.Plugin.TilemapPlus);
