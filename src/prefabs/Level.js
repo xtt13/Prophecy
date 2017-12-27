@@ -27,7 +27,9 @@ export default class {
 
 	loadLevel() {
 
-		this.game.stage.backgroundColor = '#a7efff';
+		// this.game.stage.backgroundColor = '#a7efff';
+		this.game.stage.backgroundColor = '#000000';
+
 		// JSON Map Data
 		this.map = this.game.add.tilemap(this.currentLevel);
 
@@ -100,7 +102,20 @@ export default class {
 			}
 
 			if(region.properties.pathfinder){
-				this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
+
+				// (game, map, objectToMove, {target.x, target.y}), layer);
+				// this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
+				if(this.pathfinder == undefined){
+					this.pathfinder = new Pathfinder(this.game, this.map, this.characters[0], {x: this.player.x, y: this.player.y}, this.groundLayer);
+					this.game.camera.follow(this.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+					this.player.movable = false;
+					this.game.time.events.add(Phaser.Timer.SECOND * 3, function(){
+						this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+						this.player.movable = true;
+						this.GUICLASS.createMessage(['Hello!'], false, true);
+					}, this);
+				}
+				
 			}
 		});
 

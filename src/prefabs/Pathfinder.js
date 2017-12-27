@@ -23,6 +23,8 @@ export default class {
         this.movingTween.onComplete.add(() => {
             this.followingPath = false;
             this.player.movable = true;
+            // this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
+            // console.log('END');
             this.followPath();
         });
 
@@ -31,13 +33,8 @@ export default class {
         this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
 	}
 
-	setup(){
-
-	}
-
 	findPathTo(tilex, tiley) {
     	this.pathfinder.setCallbackFunction((path) => {
-        console.log(this.trail);
         this.trail.destroy(true, true);
         if (path === null) {
             return;
@@ -60,14 +57,22 @@ export default class {
     }
 
     followPath(){
+
+        // if(this.pathToFollow.length == 0){
+        //     console.log('HOPE');
+        //     this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
+        // }
         if (!this.pathToFollow.length || this.followingPath) {
         return;
         }
+
         this.player.movable = false;
         var next = this.pathToFollow.shift();
         if (!next) {
             return;
         }
+
+
         // remove the lit path as we walk it
         this.trail.forEach((marker) => {
             if (marker.data.cellX === next.x && marker.data.cellY === next.y) {
@@ -81,7 +86,7 @@ export default class {
         this.followingPath = true;
         this.movingTween.target = this.player;
         this.movingTween.timeline = [];
-        this.movingTween.to({x, y}, 300); 
+        this.movingTween.to({x, y}, 200); 
         this.movingTween.start();
     }
 
