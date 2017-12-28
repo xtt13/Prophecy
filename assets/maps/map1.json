@@ -203,14 +203,16 @@
                      "bridge":true,
                      "direction":"up",
                      "id":2,
-                     "length":6
+                     "length":6,
+                     "requiredID":2
                     },
                  "propertytypes":
                     {
                      "bridge":"bool",
                      "direction":"string",
                      "id":"int",
-                     "length":"int"
+                     "length":"int",
+                     "requiredID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -366,99 +368,46 @@
          "name":"Items",
          "objects":[
                 {
-                 "height":32.3040380047506,
-                 "id":29,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"key"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":38.9548693586698,
-                 "x":57.957244655582,
-                 "y":628.978622327791
-                }, 
-                {
-                 "height":32.304,
-                 "id":31,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"key"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":38.9549,
-                 "x":1026.03746005674,
-                 "y":425.716888084027
-                }, 
-                {
-                 "height":32.304,
-                 "id":32,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"key"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":38.9549,
-                 "x":1026.03746005674,
-                 "y":383.461666545937
-                }, 
-                {
                  "height":32.304,
                  "id":33,
                  "name":"",
                  "properties":
                     {
+                     "id":2,
                      "type":"key"
                     },
                  "propertytypes":
                     {
+                     "id":"int",
                      "type":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":38.9549,
-                 "x":1023.62287596885,
-                 "y":300.158515513703
+                 "x":411.71811406409,
+                 "y":288.253753608941
                 }, 
                 {
                  "height":32.304,
-                 "id":34,
+                 "id":35,
                  "name":"",
                  "properties":
                     {
+                     "id":3,
                      "type":"key"
                     },
                  "propertytypes":
                     {
+                     "id":"int",
                      "type":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":38.9549,
-                 "x":1024.8301680128,
-                 "y":341.206445007847
+                 "x":449.672624775356,
+                 "y":118.558179424925
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -466,7 +415,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":35,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "properties":
     {

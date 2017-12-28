@@ -4,8 +4,7 @@ import Input from '../prefabs/Input';
 
 export default class extends Phaser.State {
 	init() {
-		this.fontsReady = false;
-		this.fontsLoaded = this.fontsLoaded.bind(this);
+
 	}
 
 	preload() {
@@ -42,29 +41,14 @@ export default class extends Phaser.State {
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
 		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
 
-		// WebFont.load({
-		//   google: {
-		//     families: ['Bangers']
-		//   },
-		//   active: this.fontsLoaded
-		// });
 	}
 
 	create() {
-		// Check for XBOX or PS Controller
-		this.inputClass = new Input(this.game);
-
 		this.state.start('Game', true, false, this.inputClass);
 	}
 
 	render() {
-		if (this.fontsReady) {
-			this.state.start('Game');
-		}
-	}
 
-	fontsLoaded() {
-		this.fontsReady = true;
 	}
 
 	loadUpdate() {

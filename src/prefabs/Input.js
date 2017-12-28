@@ -3,9 +3,13 @@ import Player from './Player';
 import config from './../config';
 
 export default class {
-	constructor(game) {
+	constructor(game, player) {
 
 		this.game = game;
+
+		if(player !== undefined){
+			this.player = player;
+		}
 
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
@@ -14,15 +18,15 @@ export default class {
 		this.checkController();
 	}
 
-	setPlayer(player) {
-		this.player = player;
+	// setPlayer(player) {
+	// 	this.player = player;
 
-		if (this.gamepadSupport && !this.noControllerConnected) {
-			this.useController();
-		} else {
-			this.useKeyboard();
-		}
-	}
+	// 	if (this.gamepadSupport && !this.noControllerConnected) {
+	// 		this.useController();
+	// 	} else {
+	// 		this.useKeyboard();
+	// 	}
+	// }
 
 	showMessage(message, error) {
 		if (error) {
@@ -215,6 +219,7 @@ export default class {
 		// console.log("X: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X));
 
 		// Gamepad Controls
+		if(this.player){
 		if (this.pad1.connected) {
 			if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 				this.player.walk('left', 200);
@@ -256,6 +261,7 @@ export default class {
 			if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 				if (this.button_A.isDown) {
 					this.player.walk('left', 80);
+					
 				} else if (this.button_D.isDown) {
 					this.player.walk('right', 80);
 				}
@@ -269,5 +275,6 @@ export default class {
 				this.player.idle();
 			}
 		}
+	}
 	}
 }

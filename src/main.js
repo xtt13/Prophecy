@@ -13,11 +13,14 @@ require('script-loader!../src/plugins/phaser-virtual-joystick.min.js');
 
 class Game extends Phaser.Game {
 	constructor() {
-		const docElement = document.documentElement;
-		// const width = docElement.clientWidth > config.phaserConfig.gameWidth ? config.phaserConfig.gameWidth : docElement.clientWidth;
-		// const height = docElement.clientHeight > config.phaserConfig.gameHeight ? config.phaserConfig.gameHeight : docElement.clientHeight;
 
-		super(config.phaserConfig);
+		var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 && navigator.userAgent && !navigator.userAgent.match('CriOS');
+		if(isSafari){
+			super(480, 280, Phaser.CANVAS, true, false, true);
+		} else {
+			super(config.phaserConfig);
+		}
+		
 
 		this.state.add('Boot', BootState, false);
 		this.state.add('Preload', PreloadState, false);

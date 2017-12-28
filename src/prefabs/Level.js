@@ -15,16 +15,16 @@ import dialogues from './../dialogues';
 export default class {
 	constructor(game, inputClass, GUIclass, currentLevel) {
 		this.game = game;
-		this.inputClass = inputClass;
+		// this.inputClass = inputClass;
 		// this.inputClass = new Input(this.game);
 		this.GUICLASS = GUIclass;
 		this.currentLevel = currentLevel;
 
 		this.characters = [];
 		this.items = [];
-		this.test = "BLA";
 		this.playedDialogues = [];
 		this.activatedBridges = [];
+		this.itemIDs = [];
 
 		this.night = true;
 
@@ -33,7 +33,7 @@ export default class {
 
 	loadLevel() {
 		// this.game.stage.backgroundColor = '#a7efff';
-		this.game.stage.backgroundColor = '#000000';
+		this.game.stage.backgroundColor = 0x000000;
 
 		// JSON Map Data
 		this.map = this.game.add.tilemap(this.currentLevel);
@@ -57,7 +57,8 @@ export default class {
 		this.player = new Player(this.game, tilemapProperties.playerStartX, tilemapProperties.playerStartY);
 
 		// Map Player to Inputclass
-		this.inputClass.setPlayer(this.player);
+		this.inputClass = new Input(this.game, this.player);
+		// this.inputClass.setPlayer(this.player);
 		this.GUICLASS.setPlayer(this.player);
 
 		// Create Enemies
@@ -92,7 +93,9 @@ export default class {
 
 			if (region.properties.bridge) {
 				const bridgeID = region.properties.id;
+				const requiredID = region.properties.requiredID;
 				if (this.activatedBridges.includes(bridgeID)) return;
+				if(requiredID !== undefined && !this.itemIDs.includes(requiredID)) return;
 
 				this.bridgebuilder = new Bridgebuilder(
 					this.game,
@@ -141,7 +144,7 @@ export default class {
 			// this.lightSprite.anchor.set(0.5);
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
+			// this.characters[0].blendMode = Phaser.blendModes.DARKEN;
 
 		}
 
@@ -149,7 +152,7 @@ export default class {
 
 	loadPeople() {
 		let elementsArr = this.findObjectsByType('character', this.map, 'People');
-
+		
 		elementsArr.forEach(function(element) {
 			if (element.properties.character == 'death') {
 				this.characters.push(new Character(this.game, element.x, element.y, this.player));
@@ -159,10 +162,10 @@ export default class {
 
 	loadItems() {
 		let elementsArr = this.findObjectsByType('type', this.map, 'Items');
-
+		
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'key') {
-				this.items.push(new Item(this.game, element.x, element.y, 'item'));
+				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties.id));
 			}
 		}, this);
 	}
@@ -171,9 +174,9 @@ export default class {
 		let result = [];
 
 		tilemap.objects[layer].forEach(function(element) {
-			let container = Object.keys(element.properties).toString();
-
-			if (container == targetType) {
+			let container = Object.keys(element.properties);
+			if (container.indexOf(targetType) || container.toString() == targetType) {
+				
 				element.y -= tilemap.tileHeight / 2;
 				element.x += tilemap.tileHeight / 2;
 				result.push(element);
@@ -204,6 +207,7 @@ export default class {
 	}
 
 	update() {
+		this.inputClass.update();
 		if (this.pathfinder) {
 			this.pathfinder.followPath();
 		}
@@ -230,6 +234,8 @@ export default class {
 	}
 
 	collisionHandlerItem(player, item){
+		// this.game.state.restart();
+		this.itemIDs.push(item.id);
 		item.destroy();
 		this.items.splice(item, 1);
 	}
