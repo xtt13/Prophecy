@@ -26,17 +26,21 @@ export default class {
 		this.activatedBridges = [];
 		this.itemIDs = [];
 
-		this.night = true;
+		this.night = false;
 
 		this.loadLevel();
 	}
 
 	loadLevel() {
 		// this.game.stage.backgroundColor = '#a7efff';
-		this.game.stage.backgroundColor = 0x000000;
+		this.game.stage.backgroundColor = '#000000';
 
 		// JSON Map Data
 		this.map = this.game.add.tilemap(this.currentLevel);
+
+		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+        this.backgroundLayer = this.map.createLayer('Clouds');
+        this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
 		//  Connect with Tileset
 		this.map.addTilesetImage('Tileset', 'gameTileset2', 36, 36);
@@ -144,7 +148,7 @@ export default class {
 			// this.lightSprite.anchor.set(0.5);
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-			// this.characters[0].blendMode = Phaser.blendModes.DARKEN;
+			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
 
 		}
 
@@ -234,7 +238,6 @@ export default class {
 	}
 
 	collisionHandlerItem(player, item){
-		// this.game.state.restart();
 		this.itemIDs.push(item.id);
 		item.destroy();
 		this.items.splice(item, 1);

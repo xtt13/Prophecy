@@ -11,6 +11,7 @@ export default class extends Phaser.State {
 		// Load Sprites
 
 		//this.load.image('player', 'assets/sprites/player.png');
+		this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3x.png');
 
 		// Load Maps
 		this.load.tilemap('map1', 'assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
@@ -27,6 +28,7 @@ export default class extends Phaser.State {
 
 		// Load Tilesets
 		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
+		this.load.image('Clouds', 'assets/tilesets/tilespriteClouds.png');
 
 		// Load Videos
 

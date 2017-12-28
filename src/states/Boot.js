@@ -5,6 +5,7 @@ export default class extends Phaser.State {
 	init() {
 		// Boot Log
 		console.log('%c Boot it up! ', 'background: #0061ff; color: #bada55');
+
 	}
 
 	create() {
@@ -36,10 +37,6 @@ export default class extends Phaser.State {
 
 		// Enable Pixel Rendering
 		this.stage.smoothed = false;
-
-		
-		// Backgroundcolor Black
-		this.stage.backgroundColor = '#000000';
 
 		// Start the Preload State
 		this.state.start('Preload');
