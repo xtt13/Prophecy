@@ -19,6 +19,13 @@ export default class {
 		}
 	}
 
+	update() {
+		if (this.message) {
+			this.game.world.bringToTop(this.message.background);
+			this.game.world.bringToTop(this.message.text);
+		}
+	}
+
 	createMessage(message, playerMovable, readable) {
 		this.message = new Message(this.game, message, playerMovable, readable, this.player);
 	}

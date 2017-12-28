@@ -4,7 +4,9 @@ import config from './../config';
 
 export default class {
 	constructor(game) {
+
 		this.game = game;
+
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.pad1;

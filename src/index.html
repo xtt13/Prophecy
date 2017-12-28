@@ -18,7 +18,13 @@
             background-color: black;
         }
         canvas {
-            image-rendering: pixelated;
+            image-rendering: optimizeSpeed;             /* Older versions of FF          */
+            image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+            image-rendering: -webkit-optimize-contrast; /* Safari                        */
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+            image-rendering: pixelated;                 /* Awesome future-browsers       */
+            -ms-interpolation-mode: nearest-neighbor;
         }
     </style>
 
@@ -27,7 +33,6 @@
 <body>
 
     <div id="content"></div>
-    <!-- <script src="src/plugins/particle-storm.min.js"></script> -->
     <!-- uncomment the line bellow for cordova feature -->
     <!-- <script type="text/javascript" src="cordova.js"></script> -->
 </body>

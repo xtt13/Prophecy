@@ -30,7 +30,7 @@ export default class extends Phaser.State {
 	render() {
 		// Debugging
 		if (__DEV__) {
-			this.game.debug.text(game.time.fps.toString(), 2, 20, "#00ff00");
+			this.game.debug.text(game.time.fps.toString(), 2, 20, '#00ff00');
 			// this.game.debug.spriteInfo(this.level.player, 32, 32);
 			// this.game.debug.cameraInfo(this.game.camera, 32, 32);
 		}

@@ -8,6 +8,7 @@ import Pathfinder from '../prefabs/Pathfinder';
 import Weather from '../prefabs/Weather';
 import Bridgebuilder from '../prefabs/Bridgebuilder';
 import Input from '../prefabs/Input';
+import Item from '../prefabs/Item';
 import config from './../config';
 import dialogues from './../dialogues';
 
@@ -15,18 +16,22 @@ export default class {
 	constructor(game, inputClass, GUIclass, currentLevel) {
 		this.game = game;
 		this.inputClass = inputClass;
+		// this.inputClass = new Input(this.game);
 		this.GUICLASS = GUIclass;
 		this.currentLevel = currentLevel;
 
 		this.characters = [];
+		this.items = [];
+		this.test = "BLA";
 		this.playedDialogues = [];
 		this.activatedBridges = [];
+
+		this.night = true;
 
 		this.loadLevel();
 	}
 
 	loadLevel() {
-
 		// this.game.stage.backgroundColor = '#a7efff';
 		this.game.stage.backgroundColor = '#000000';
 
@@ -101,25 +106,45 @@ export default class {
 				this.activatedBridges.push(bridgeID);
 			}
 
-			if(region.properties.pathfinder){
-
+			if (region.properties.pathfinder) {
 				// (game, map, objectToMove, {target.x, target.y}), layer);
 				// this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
-				if(this.pathfinder == undefined){
-					this.pathfinder = new Pathfinder(this.game, this.map, this.characters[0], {x: this.player.x, y: this.player.y}, this.groundLayer);
+				if (this.pathfinder == undefined) {
+					this.pathfinder = new Pathfinder(
+						this.game,
+						this.map,
+						this.characters[0],
+						{ x: this.player.x, y: this.player.y },
+						this.groundLayer
+					);
 					this.game.camera.follow(this.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.player.movable = false;
-					this.game.time.events.add(Phaser.Timer.SECOND * 3, function(){
-						this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
-						this.player.movable = true;
-						this.GUICLASS.createMessage(['Hello!'], false, true);
-					}, this);
+					this.game.time.events.add(
+						Phaser.Timer.SECOND * 3,
+						function() {
+							this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+							this.player.movable = true;
+							this.GUICLASS.createMessage(['Hello!'], false, true);
+						},
+						this
+					);
 				}
-				
 			}
 		});
 
 		this.weather = new Weather(this.game, tilemapProperties.weather);
+
+		if (this.night) {
+			this.shadowTexture = this.game.add.bitmapData(this.game.width + 300, this.game.height + 300);
+			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
+			this.lightSprite.alpha = 0.99;
+			// this.lightSprite.anchor.set(0.5);
+
+			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
+			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
+
+		}
+
 	}
 
 	loadPeople() {
@@ -132,7 +157,15 @@ export default class {
 		}, this);
 	}
 
-	loadItems() {}
+	loadItems() {
+		let elementsArr = this.findObjectsByType('type', this.map, 'Items');
+
+		elementsArr.forEach(function(element) {
+			if (element.properties.type == 'key') {
+				this.items.push(new Item(this.game, element.x, element.y, 'item'));
+			}
+		}, this);
+	}
 
 	findObjectsByType(targetType, tilemap, layer) {
 		let result = [];
@@ -150,17 +183,36 @@ export default class {
 		return result;
 	}
 
-	loadWeather() {}
+	updateShadowTexture() {
+		this.shadowTexture.context.fillStyle = 'rgb(10, 10, 10)';
+		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
+
+		var radius = 200 + this.game.rnd.integerInRange(1, 20),
+			heroX = this.player.x - this.game.camera.x,
+			heroY = this.player.y - this.game.camera.y;
+
+		var gradient = this.shadowTexture.context.createRadialGradient(heroX, heroY, 100 * 0.75, heroX, heroY, radius);
+		gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
+		gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+
+		this.shadowTexture.context.beginPath();
+		this.shadowTexture.context.fillStyle = gradient;
+		this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
+		this.shadowTexture.context.fill();
+
+		this.shadowTexture.dirty = true;
+	}
 
 	update() {
-		if(this.pathfinder){
+		if (this.pathfinder) {
 			this.pathfinder.followPath();
 		}
-		
+
 		// this.game.physics.arcade.collide(this.enemies, this.enemies);
 		// this.game.physics.arcade.collide(this.enemies, this.player);
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
+		this.game.physics.arcade.collide(this.player, this.items, this.collisionHandlerItem, null, this);
 		this.game.world.bringToTop(this.player);
 
 		// TilemapPlus Physics
@@ -169,5 +221,16 @@ export default class {
 
 		// Update Weather
 		this.weather.updateWeather();
+		this.GUICLASS.update();
+
+		if (this.night) {
+			this.lightSprite.reset(this.game.camera.x - 10, this.game.camera.y - 10);
+			this.updateShadowTexture();
+		}
+	}
+
+	collisionHandlerItem(player, item){
+		item.destroy();
+		this.items.splice(item, 1);
 	}
 }

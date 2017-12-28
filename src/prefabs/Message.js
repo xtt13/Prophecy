@@ -21,7 +21,7 @@ export default class {
 		var width = 300;
 		var height = 85;
 		var bmd = game.add.bitmapData(width, height);
-		 
+
 		bmd.ctx.beginPath();
 		bmd.ctx.rect(0, 0, width, height);
 		bmd.ctx.fillStyle = '#000000';
@@ -39,11 +39,13 @@ export default class {
 				51
 			);
 		} else {
-			this.text = this.game.add.bitmapText(this.game.camera.width / 2 - 100,
+			this.text = this.game.add.bitmapText(
+				this.game.camera.width / 2 - 100,
 				this.game.camera.height - 60,
 				'pxlfont',
 				'',
-				32);
+				32
+			);
 		}
 
 		// this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 20);
