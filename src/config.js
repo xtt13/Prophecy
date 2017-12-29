@@ -13,5 +13,6 @@ export default {
 	weather: true,
 	playerHealth: 5,
 	scaleRate: 3,
-	forceMobile: false
+	forceMobile: false,
+	night: false
 };
