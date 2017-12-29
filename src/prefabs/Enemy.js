@@ -20,31 +20,32 @@ export default class extends Phaser.Sprite {
 		this.animations.play('walk');
 
 		this.game.physics.enable(this);
-		this.body.setSize(10, 6, 5, 7);
+		// this.body.setSize(10, 6, 5, 7);
+		this.body.setSize(13, 10, 5, 7);
 
 		game.add.existing(this);
 	}
 
 	update() {
 		// console.log(Math.ceil(this.game.physics.arcade.distanceBetween(this, this.player)));
-		if (
-			this.game.physics.arcade.distanceBetween(this, this.player) < 100
-		) {
+		if (this.game.physics.arcade.distanceBetween(this, this.player) < 100) {
 			this.game.physics.arcade.moveToObject(this, this.player, 50);
 			this.finderCall = true;
-			if(this.pathfinder){
+			if (this.pathfinder) {
 				this.pathfinder.pathToFollow.length = 0;
 			}
 		}
 
-		if(this.game.physics.arcade.distanceBetween(this, this.player) > 100 && this.finderCall){
+		if (this.game.physics.arcade.distanceBetween(this, this.player) < 400 && this.finderCall) {
 			console.log('call');
+
 			this.pathfinder = new Pathfinder(
 				this.game,
 				this.map,
 				this,
 				{ x: this.player.x, y: this.player.y },
 				this.layer,
+				true,
 				300,
 				this
 			);

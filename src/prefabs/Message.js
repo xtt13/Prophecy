@@ -27,25 +27,13 @@ export default class {
 		bmd.ctx.fillStyle = '#000000';
 		bmd.ctx.globalAlpha = 0.8;
 		bmd.ctx.fill();
-		this.background = game.add.sprite(this.game.camera.width / 2 - bmd.width/2, this.game.camera.height - 90, bmd);
+		this.background = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - 90, bmd);
 		this.background.fixedToCamera = true;
 
 		if (this.readable) {
-			this.text = this.game.add.bitmapText(
-				this.background.x + 20,
-				this.game.camera.height - 80,
-				'pxlfont',
-				'',
-				51
-			);
+			this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 80, 'pxlfont', '', 51);
 		} else {
-			this.text = this.game.add.bitmapText(
-				this.background.x + 20,
-				this.game.camera.height - 60,
-				'pxlfont',
-				'',
-				32
-			);
+			this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 60, 'pxlfont', '', 32);
 		}
 
 		// this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 20);

@@ -4,10 +4,9 @@ import config from './../config';
 
 export default class {
 	constructor(game, player) {
-
 		this.game = game;
 
-		if(player !== undefined){
+		if (player !== undefined) {
 			this.player = player;
 		}
 
@@ -219,62 +218,61 @@ export default class {
 		// console.log("X: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X));
 
 		// Gamepad Controls
-		if(this.player){
-		if (this.pad1.connected) {
-			if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-				this.player.walk('left', 200);
-				console.log('left');
-			} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-				this.player.walk('right', 200);
-				console.log('right');
-			} else {
-				this.player.idle('x');
-			}
-
-			if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-				this.player.walk('up', 200);
-				console.log('up');
-			} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-				this.player.walk('down', 200);
-				console.log('down');
-			} else {
-				this.player.idle('y');
-			}
-		} else if (this.useMobileControl) {
-			if (this.stick.isDown) {
-				this.player.idle();
-
-				if (this.stick.direction === Phaser.LEFT) {
-					this.player.walk('left', 80);
-				} else if (this.stick.direction === Phaser.RIGHT) {
-					this.player.walk('right', 80);
-				} else if (this.stick.direction === Phaser.UP) {
-					this.player.walk('up', 80);
-				} else if (this.stick.direction === Phaser.DOWN) {
-					this.player.walk('down', 80);
-				}
-			} else {
-				this.player.idle();
-			}
-		} else {
-			// Keyboard Movement
-			if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-				if (this.button_A.isDown) {
-					this.player.walk('left', 80);
-					
-				} else if (this.button_D.isDown) {
-					this.player.walk('right', 80);
+		if (this.player) {
+			if (this.pad1.connected) {
+				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+					this.player.walk('left', 200);
+					console.log('left');
+				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+					this.player.walk('right', 200);
+					console.log('right');
+				} else {
+					this.player.idle('x');
 				}
 
-				if (this.button_W.isDown) {
-					this.player.walk('up', 80);
-				} else if (this.button_S.isDown) {
-					this.player.walk('down', 80);
+				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+					this.player.walk('up', 200);
+					console.log('up');
+				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+					this.player.walk('down', 200);
+					console.log('down');
+				} else {
+					this.player.idle('y');
+				}
+			} else if (this.useMobileControl) {
+				if (this.stick.isDown) {
+					this.player.idle();
+
+					if (this.stick.direction === Phaser.LEFT) {
+						this.player.walk('left', 80);
+					} else if (this.stick.direction === Phaser.RIGHT) {
+						this.player.walk('right', 80);
+					} else if (this.stick.direction === Phaser.UP) {
+						this.player.walk('up', 80);
+					} else if (this.stick.direction === Phaser.DOWN) {
+						this.player.walk('down', 80);
+					}
+				} else {
+					this.player.idle();
 				}
 			} else {
-				this.player.idle();
+				// Keyboard Movement
+				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+					if (this.button_A.isDown) {
+						this.player.walk('left', 80);
+					} else if (this.button_D.isDown) {
+						this.player.walk('right', 80);
+					}
+
+					if (this.button_W.isDown) {
+						this.player.walk('up', 80);
+					} else if (this.button_S.isDown) {
+						this.player.walk('down', 80);
+					}
+				} else {
+					this.player.idle();
+				}
 			}
 		}
-	}
 	}
 }

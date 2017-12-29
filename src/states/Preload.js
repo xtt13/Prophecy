@@ -3,9 +3,7 @@ import WebFont from 'webfontloader';
 import Input from '../prefabs/Input';
 
 export default class extends Phaser.State {
-	init() {
-
-	}
+	init() {}
 
 	preload() {
 		// Load Sprites
@@ -43,16 +41,13 @@ export default class extends Phaser.State {
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
 		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
-
 	}
 
 	create() {
 		this.state.start('Game', true, false);
 	}
 
-	render() {
-
-	}
+	render() {}
 
 	loadUpdate() {
 		// Log Loadingprogress

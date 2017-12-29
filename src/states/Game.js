@@ -34,6 +34,12 @@ export default class extends Phaser.State {
 			// this.game.debug.spriteInfo(this.level.player, 32, 32);
 			// this.game.debug.cameraInfo(this.game.camera, 32, 32);
 			// this.level.weather.emitter.debug(20, 200);
+
+			// for (var i = 0; i < this.level.enemies.length; i++) {
+			// 	game.debug.body(this.level.enemies[i]);
+			// }
+
+			// game.debug.body(this.level.enemies);
 		}
 	}
 

@@ -237,8 +237,8 @@
                  "type":"",
                  "visible":true,
                  "width":81.7471535142449,
-                 "x":516.640701722839,
-                 "y":753.728158393948
+                 "x":682.878116848102,
+                 "y":739.679926129841
                 }, 
                 {
                  "height":27.0737,
@@ -266,7 +266,7 @@
                  "y":1337.83036042131
                 }, 
                 {
-                 "height":76.6866,
+                 "height":69.6200864411271,
                  "id":36,
                  "name":"",
                  "properties":
@@ -282,7 +282,74 @@
                  "visible":true,
                  "width":81.7472,
                  "x":138.631454025793,
-                 "y":-40.0860675148135
+                 "y":4.07964222814206
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"Enemies",
+         "objects":[
+                {
+                 "height":22.002200220022,
+                 "id":37,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.002200220022,
+                 "x":194.876630520195,
+                 "y":718.214678610718
+                }, 
+                {
+                 "height":22.0022,
+                 "id":39,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":1179.65290618799,
+                 "y":131.962732284221
+                }, 
+                {
+                 "height":22.0022,
+                 "id":40,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":333.605749461218,
+                 "y":1365.29250930332
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -401,7 +468,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":37,
+ "nextobjectid":41,
  "orientation":"orthogonal",
  "properties":
     {

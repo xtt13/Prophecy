@@ -44,20 +44,18 @@ export default class {
 		this.inputClass = new Input(this.game, this.player);
 		this.GUICLASS.setPlayer(this.player);
 
-
 		this.loadItems();
 		this.loadEnemies();
 		this.loadPeople();
 		this.manageEvents();
-	
+
 		// Create Weather
 		this.weather = new Weather(this.game, this.tilemapProperties.weather);
-
 	}
 
 	loadPeople() {
 		let elementsArr = this.findObjectsByType('character', this.map, 'People');
-		
+
 		elementsArr.forEach(function(element) {
 			if (element.properties.character == 'death') {
 				this.characters.push(new Character(this.game, element.x, element.y, this.player));
@@ -67,7 +65,7 @@ export default class {
 
 	loadItems() {
 		let elementsArr = this.findObjectsByType('type', this.map, 'Items');
-		
+
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'key') {
 				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties.id));
@@ -77,9 +75,26 @@ export default class {
 
 	loadEnemies() {
 		// Create Enemies
-		for (let i = 0; i < 1; i++) {
-		  this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 50, this.game.world.centerX + 50), this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50), this.player, this.map, this.groundLayer));
-		}
+		// for (let i = 0; i < 0; i++) {
+		// 	this.enemies.push(
+		// 		new Enemy(
+		// 			this.game,
+		// 			this.game.rnd.integerInRange(this.game.world.centerX - 40, this.game.world.centerX + 40),
+		// 			this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50),
+		// 			this.player,
+		// 			this.map,
+		// 			this.groundLayer
+		// 		)
+		// 	);
+		// }
+
+		let elementsArr = this.findObjectsByType('type', this.map, 'Enemies');
+
+		elementsArr.forEach(function(element) {
+			if (element.properties.type == 'seed') {
+				this.enemies.push(new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer));
+			}
+		}, this);
 	}
 
 	findObjectsByType(targetType, tilemap, layer) {
@@ -88,7 +103,6 @@ export default class {
 		tilemap.objects[layer].forEach(function(element) {
 			let container = Object.keys(element.properties);
 			if (container.indexOf(targetType) || container.toString() == targetType) {
-				
 				element.y -= tilemap.tileHeight / 2;
 				element.x += tilemap.tileHeight / 2;
 				result.push(element);
@@ -143,13 +157,13 @@ export default class {
 		this.GUICLASS.update();
 	}
 
-	initMap(){
+	initMap() {
 		// JSON Map Data
 		this.map = this.game.add.tilemap(this.currentLevel);
 
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-        this.backgroundLayer = this.map.createLayer('Clouds');
-        this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+		this.backgroundLayer = this.map.createLayer('Clouds');
+		this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
 		//  Connect with Tileset
 		this.map.addTilesetImage('Tileset', 'gameTileset2', 36, 36);
@@ -167,7 +181,7 @@ export default class {
 		this.map.plus.animation.enable();
 	}
 
-	manageEvents(){
+	manageEvents() {
 		// Map Events
 		this.map.plus.physics.enableObjectLayer('Collision');
 		this.map.plus.events.regions.enableObjectLayer('Events');
@@ -192,7 +206,7 @@ export default class {
 				const bridgeID = region.properties.id;
 				const requiredID = region.properties.requiredID;
 				if (this.activatedBridges.includes(bridgeID)) return;
-				if(requiredID !== undefined && !this.itemIDs.includes(requiredID)) return;
+				if (requiredID !== undefined && !this.itemIDs.includes(requiredID)) return;
 
 				this.bridgebuilder = new Bridgebuilder(
 					this.game,
@@ -216,12 +230,13 @@ export default class {
 						this.characters[0],
 						{ x: this.player.x, y: this.player.y },
 						this.groundLayer,
+						false,
 						200
 					);
 					this.game.camera.follow(this.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.player.movable = false;
 					this.game.time.events.add(
-						Phaser.Timer.SECOND * 4,
+						Phaser.Timer.SECOND * 3,
 						function() {
 							this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 							this.player.movable = true;
@@ -232,20 +247,20 @@ export default class {
 				}
 			}
 
-			if(region.properties.endLevel){
+			if (region.properties.endLevel) {
 				this.game.camera.fade(0x000000, 4000);
 				this.game.time.events.add(
-						Phaser.Timer.SECOND * 5,
-						function() {
-							this.game.state.restart();
-						},
-						this
-					);
+					Phaser.Timer.SECOND * 5,
+					function() {
+						this.game.state.restart();
+					},
+					this
+				);
 			}
 		});
 	}
 
-	collisionHandlerItem(player, item){
+	collisionHandlerItem(player, item) {
 		this.itemIDs.push(item.id);
 		item.destroy();
 		this.items.splice(item, 1);
