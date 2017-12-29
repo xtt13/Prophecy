@@ -26,7 +26,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
-		// console.log(this.game.physics.arcade.distanceBetween(this, this.player));
+		// console.log(Math.ceil(this.game.physics.arcade.distanceBetween(this, this.player)));
 		if (
 			this.game.physics.arcade.distanceBetween(this, this.player) < 100
 		) {
@@ -37,7 +37,7 @@ export default class extends Phaser.Sprite {
 			}
 		}
 
-		if(this.game.physics.arcade.distanceBetween(this, this.player) > 200 && this.finderCall){
+		if(this.game.physics.arcade.distanceBetween(this, this.player) > 100 && this.finderCall){
 			console.log('call');
 			this.pathfinder = new Pathfinder(
 				this.game,
@@ -45,7 +45,8 @@ export default class extends Phaser.Sprite {
 				this,
 				{ x: this.player.x, y: this.player.y },
 				this.layer,
-				300
+				300,
+				this
 			);
 			this.finderCall = false;
 		}

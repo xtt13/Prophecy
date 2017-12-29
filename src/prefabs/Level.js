@@ -77,7 +77,7 @@ export default class {
 
 	loadEnemies() {
 		// Create Enemies
-		for (let i = 0; i < 3; i++) {
+		for (let i = 0; i < 1; i++) {
 		  this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 50, this.game.world.centerX + 50), this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50), this.player, this.map, this.groundLayer));
 		}
 	}

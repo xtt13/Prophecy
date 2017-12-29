@@ -2,13 +2,15 @@ import Phaser from 'phaser';
 import PhaserEasystar from 'phaser-easystar-ts';
 
 export default class {
-	constructor(game, map, player, target, layer, movingSpeed) {
+	constructor(game, map, player, target, layer, movingSpeed, finderCallObject) {
 		this.game = game;
 		this.map = map;
 		this.player = player;
 		this.layer = layer;
 		this.target = target;
 		this.movingSpeed = movingSpeed;
+
+		this.finderCallObject = finderCallObject;
 
 		this.pathToFollow = [];
 		this.walkables = [2];
@@ -61,13 +63,14 @@ export default class {
 	}
 
 	followPath() {
-		// if(this.pathToFollow.length == 0){
-		//     console.log('HOPE');
-		//     this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
-		// }
+
 		if (!this.pathToFollow.length || this.followingPath) {
 			return;
 		}
+
+		if(this.pathToFollow.length == 1){
+			this.finderCallObject.finderCall = true;
+		} 
 
 		this.player.movable = false;
 		var next = this.pathToFollow.shift();
