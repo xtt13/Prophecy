@@ -2,12 +2,13 @@ import Phaser from 'phaser';
 import PhaserEasystar from 'phaser-easystar-ts';
 
 export default class {
-	constructor(game, map, player, target, layer) {
+	constructor(game, map, player, target, layer, movingSpeed) {
 		this.game = game;
 		this.map = map;
 		this.player = player;
 		this.layer = layer;
 		this.target = target;
+		this.movingSpeed = movingSpeed;
 
 		this.pathToFollow = [];
 		this.walkables = [2];
@@ -87,7 +88,7 @@ export default class {
 		this.followingPath = true;
 		this.movingTween.target = this.player;
 		this.movingTween.timeline = [];
-		this.movingTween.to({ x, y }, 200);
+		this.movingTween.to({ x, y }, this.movingSpeed);
 		this.movingTween.start();
 	}
 }

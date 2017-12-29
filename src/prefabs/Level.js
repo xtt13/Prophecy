@@ -23,6 +23,7 @@ export default class {
 		this.playedDialogues = [];
 		this.activatedBridges = [];
 		this.itemIDs = [];
+		this.enemies = [];
 
 		this.night = false;
 
@@ -76,10 +77,9 @@ export default class {
 
 	loadEnemies() {
 		// Create Enemies
-		// this.enemies = [];
-		// for (let i = 0; i < 0; i++) {
-		//   this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 50, this.game.world.centerX + 50), this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50), this.player));
-		// }
+		for (let i = 0; i < 3; i++) {
+		  this.enemies.push(new Enemy(this.game, this.game.rnd.integerInRange(this.game.world.centerX - 50, this.game.world.centerX + 50), this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50), this.player, this.map, this.groundLayer));
+		}
 	}
 
 	findObjectsByType(targetType, tilemap, layer) {
@@ -120,12 +120,15 @@ export default class {
 
 	update() {
 		this.inputClass.update();
+
 		if (this.pathfinder) {
 			this.pathfinder.followPath();
 		}
 
-		// this.game.physics.arcade.collide(this.enemies, this.enemies);
-		// this.game.physics.arcade.collide(this.enemies, this.player);
+		this.game.physics.arcade.collide(this.enemies, this.enemies);
+		this.game.physics.arcade.collide(this.enemies, this.player);
+		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
+
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.player, this.items, this.collisionHandlerItem, null, this);
@@ -212,7 +215,8 @@ export default class {
 						this.map,
 						this.characters[0],
 						{ x: this.player.x, y: this.player.y },
-						this.groundLayer
+						this.groundLayer,
+						200
 					);
 					this.game.camera.follow(this.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.player.movable = false;
