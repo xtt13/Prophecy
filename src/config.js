@@ -10,7 +10,7 @@ export default {
 	},
 
 	localStorageName: 'prophecy',
-	weather: false,
+	weather: true,
 	playerHealth: 5,
 	scaleRate: 3,
 	forceMobile: false

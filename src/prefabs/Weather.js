@@ -4,7 +4,7 @@ import config from './../config';
 export default class {
 	constructor(game, type) {
 		this.game = game;
-
+		this.currentWeather = type;
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
 		if (config.weather) {
@@ -24,6 +24,10 @@ export default class {
 
 			case 'SnowWind':
 				this.addSnowWind();
+				break;
+
+			case 'Leaves':
+				this.addLeaves();
 				break;
 
 			default:
@@ -162,5 +166,32 @@ export default class {
 		// console.log(this.emitter);
 	}
 
-	updateWeather() {}
+	addLeaves(){
+        let snowparticles = {
+            image: [ 'leave'],
+            lifespan: 10000,
+            vx: { min: -5, max: 5 },
+            vy: { value: 0, control: [ { x: 0, y: 1 }, { x: 0.3, y: 1 }, { x: 0.9, y: 0.01 }, { x: 1, y: 0 } ] },
+            scale: {min: 0.5, max: 2},
+            alpha: { value: 1, delta: 0.005 },
+            rotation: { initial: -90, value: 180, control: [ { x: 0, y: 0 }, { x: 0.2, y: 0.5 }, { x: 0.4, y: 1 }, { x: 0.6, y: 0.5 }, { x: 1, y:0 } ] }
+        };
+
+        this.manager.addData('leaves', snowparticles);
+        this.emitter = this.manager.createEmitter();
+        this.emitter.force.y = 0.010;
+        this.emitter.addToWorld();
+        this.emitter.emit('leaves', [this.game.camera.x, this.game.world.width], 0, { repeat: -1, frequency: 200 });
+        console.log(this.emitter);
+	}
+
+	updateWeather() {
+		// console.log(this.currentWeather);
+		// if(this.currentWeather == 'Leaves'){
+		//     let wind = Math.max(Math.min(wind + (Math.random() - 0.5) * 0.02, 0.05), -0.05);
+  //           this.emitter.force.x = wind;
+		// }
+
+
+	}
 }

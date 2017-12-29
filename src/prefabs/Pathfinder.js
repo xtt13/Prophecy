@@ -81,8 +81,8 @@ export default class {
 			}
 		});
 
-		var x = next.x * 36 + 2;
-		var y = next.y * 36 + 2;
+		var x = next.x * 36 + 18;
+		var y = next.y * 36 + 18;
 		// console.log("moving to", x, y, next);
 		this.followingPath = true;
 		this.movingTween.target = this.player;

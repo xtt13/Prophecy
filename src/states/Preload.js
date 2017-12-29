@@ -38,6 +38,7 @@ export default class extends Phaser.State {
 		// Load Weather Sprites
 		this.load.image('rain', 'assets/sprites/rain.png');
 		this.load.image('snow', 'assets/sprites/snow.png');
+		this.load.image('leave', 'assets/sprites/leave.png');
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');

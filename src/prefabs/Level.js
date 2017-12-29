@@ -32,6 +32,9 @@ export default class {
 	}
 
 	loadLevel() {
+		// FadeIn
+		this.game.camera.flash(0x000000, 2000);
+
 		// this.game.stage.backgroundColor = '#a7efff';
 		this.game.stage.backgroundColor = '#000000';
 
@@ -46,7 +49,7 @@ export default class {
 		this.map.addTilesetImage('Tileset', 'gameTileset2', 36, 36);
 
 		//  Define Layers
-		this.groundLayer = this.map.createLayer('Layer1');
+		this.groundLayer = this.map.createLayer('BackgroundLayer');
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 
 		//  Resize the world
@@ -127,7 +130,7 @@ export default class {
 					this.game.camera.follow(this.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.player.movable = false;
 					this.game.time.events.add(
-						Phaser.Timer.SECOND * 3,
+						Phaser.Timer.SECOND * 4,
 						function() {
 							this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 							this.player.movable = true;
@@ -136,6 +139,17 @@ export default class {
 						this
 					);
 				}
+			}
+
+			if(region.properties.endLevel){
+				this.game.camera.fade(0x000000, 4000);
+				this.game.time.events.add(
+						Phaser.Timer.SECOND * 5,
+						function() {
+							this.game.state.restart();
+						},
+						this
+					);
 			}
 		});
 

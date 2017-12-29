@@ -9,7 +9,7 @@ export default class extends Phaser.Sprite {
 		this.health = config.playerHealth;
 		this.movable = true;
 		this.anchor.setTo(0.5);
-		this.playerSpeed = 200;
+		this.playerSpeed = 130;
 		// this.scale.set(config.scaleRate);
 
 		this.animations.add('idle', [0, 1, 2, 3, 4], 5, true);
