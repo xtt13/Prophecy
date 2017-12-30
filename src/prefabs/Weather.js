@@ -6,21 +6,12 @@ export default class {
 		this.game = game;
 		this.currentWeather = type;
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
-		this.night = config.night;
 
 		if (config.weather) {
 			this.createWeather(type);
 		}
 
-		if (this.night) {
-			this.shadowTexture = this.game.add.bitmapData(this.game.width + 300, this.game.height + 300);
-			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
-			this.lightSprite.alpha = 0.99;
-			// this.lightSprite.anchor.set(0.5);
 
-			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
-		}
 	}
 
 	createWeather(type) {
@@ -207,9 +198,5 @@ export default class {
 		//    this.emitter.force.x = wind;
 		// }
 
-		if (config.night) {
-			this.lightSprite.reset(this.game.camera.x - 10, this.game.camera.y - 10);
-			this.updateShadowTexture();
-		}
 	}
 }

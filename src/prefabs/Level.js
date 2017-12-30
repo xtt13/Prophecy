@@ -25,12 +25,13 @@ export default class {
 		this.itemIDs = [];
 		this.enemies = [];
 
-		this.night = false;
+		this.night = config.night;
 
 		this.loadLevel();
 	}
 
 	loadLevel() {
+
 		// FadeIn on Load
 		this.game.camera.flash(0x000000, 2000);
 
@@ -45,12 +46,22 @@ export default class {
 		this.GUICLASS.setPlayer(this.player);
 
 		this.loadItems();
-		this.loadEnemies();
+		if(config.enemies) this.loadEnemies();
+		
 		this.loadPeople();
 		this.manageEvents();
 
 		// Create Weather
 		this.weather = new Weather(this.game, this.tilemapProperties.weather);
+
+		if (config.night) {
+			this.shadowTexture = this.game.add.bitmapData(this.game.width + 300, this.game.height + 300);
+			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
+			this.lightSprite.alpha = 0.99;
+
+			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
+			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
+		}
 	}
 
 	loadPeople() {
@@ -74,19 +85,6 @@ export default class {
 	}
 
 	loadEnemies() {
-		// Create Enemies
-		// for (let i = 0; i < 0; i++) {
-		// 	this.enemies.push(
-		// 		new Enemy(
-		// 			this.game,
-		// 			this.game.rnd.integerInRange(this.game.world.centerX - 40, this.game.world.centerX + 40),
-		// 			this.game.rnd.integerInRange(this.game.world.centerY + 50, this.game.world.centerY - 50),
-		// 			this.player,
-		// 			this.map,
-		// 			this.groundLayer
-		// 		)
-		// 	);
-		// }
 
 		let elementsArr = this.findObjectsByType('type', this.map, 'Enemies');
 
@@ -116,7 +114,7 @@ export default class {
 		this.shadowTexture.context.fillStyle = 'rgb(10, 10, 10)';
 		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
 
-		var radius = 200 + this.game.rnd.integerInRange(1, 20),
+		var radius = 100 + this.game.rnd.integerInRange(1, 8),
 			heroX = this.player.x - this.game.camera.x,
 			heroY = this.player.y - this.game.camera.y;
 
@@ -133,6 +131,7 @@ export default class {
 	}
 
 	update() {
+
 		this.inputClass.update();
 
 		if (this.pathfinder) {
@@ -155,6 +154,11 @@ export default class {
 		// Update Weather
 		this.weather.updateWeather();
 		this.GUICLASS.update();
+
+		if (config.night) {
+			this.lightSprite.reset(this.game.camera.x - 10, this.game.camera.y - 10);
+			this.updateShadowTexture();
+		}
 	}
 
 	initMap() {
@@ -163,6 +167,7 @@ export default class {
 
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 		this.backgroundLayer = this.map.createLayer('Clouds');
+		console.log(this.backgroundLayer);
 		this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
 		//  Connect with Tileset

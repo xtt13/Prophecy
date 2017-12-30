@@ -36,7 +36,7 @@ export default class extends Phaser.Sprite {
 			}
 		}
 
-		if (this.game.physics.arcade.distanceBetween(this, this.player) < 400 && this.finderCall) {
+		if (this.game.physics.arcade.distanceBetween(this, this.player) > 100 && this.finderCall) {
 			console.log('call');
 
 			this.pathfinder = new Pathfinder(

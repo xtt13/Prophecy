@@ -21,10 +21,9 @@ export default class extends Phaser.State {
 	}
 
 	update() {
-		// this.inputClass.update();
+
 		this.level.update();
 
-		// this.game.world.bringToTop(this.GUI.message.text);
 	}
 
 	render() {

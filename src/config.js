@@ -14,5 +14,6 @@ export default {
 	playerHealth: 5,
 	scaleRate: 3,
 	forceMobile: false,
-	night: false
+	night: false,
+	enemies: true
 };
