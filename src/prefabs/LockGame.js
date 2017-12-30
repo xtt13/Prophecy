@@ -13,10 +13,11 @@ export default class {
 		this.player = player;
 
 		this.run = true;
+		this.firstSetup = true;
 		this.currentTry = 1;
 
 		this.x = x;
-		this.y = y - 40;
+		this.y = y;
 
 		this.setupGame();
 	}
@@ -27,17 +28,15 @@ export default class {
 
 		this.ring = this.game.add.sprite(this.x, this.y, "LockGameRing");
 		this.ring.anchor.set(0.5);
-        this.ring.alpha = 0.5;
         this.ring.smoothed = false;
+        this.ring.alpha = 0.5;
         this.ring.scale.set(this.scaleRate);
-        // this.ring.fixedToCamera = true;
 
 		this.ball = this.game.add.sprite(this.x, this.y, "LockGameBall");
 		this.ball.anchor.set(0.5);
 		this.ball.ballAngle = -90;
 		this.ball.smoothed = false;
 		this.ball.scale.set(this.scaleRate);
-		// this.ball.fixedToCamera = true;
 
 		this.placeBall();      
 
@@ -47,7 +46,6 @@ export default class {
 		this.bar.crossingBall = false;
 		this.bar.smoothed = false;
 		this.bar.rotationDirection = 0;
-		// this.bar.fixedToCamera = true;
 		this.bar.scale.set(this.scaleRate);
 
 		this.firstTry = this.game.add.sprite(this.x - 40, this.y, "LockGameBall");
@@ -65,6 +63,29 @@ export default class {
 		this.thirdTry.ballAngle = -90;
 		this.thirdTry.scale.set(this.scaleRate);
 
+		if(this.firstSetup){
+			this.ring.alpha = 0;
+			this.ball.alpha = 0;
+			this.bar.alpha = 0;
+
+			this.firstTry.alpha = 0;
+			this.secondTry.alpha = 0;
+			this.thirdTry.alpha = 0;
+
+			this.game.add.tween(this.ring).to( { alpha: 0.5 }, 2000, Phaser.Easing.Linear.None, true);
+			this.game.add.tween(this.bar).to( { alpha: 0.5 }, 2000, Phaser.Easing.Linear.None, true);
+			this.game.add.tween(this.ball).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+
+			this.game.add.tween(this.firstTry).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+			this.game.add.tween(this.secondTry).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+			this.game.add.tween(this.thirdTry).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+
+			this.game.add.tween(this.player).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+
+			this.firstSetup = false;
+		}
+
+
         this.game.input.onDown.add(this.startMoving, this);
 	}
 
@@ -75,8 +96,8 @@ export default class {
           } while (this.angleDifferenceFunc(this.newAngle, this.ball.ballAngle) < 40)
 
           this.ball.ballAngle = this.newAngle;  
-          this.ball.x = this.ring.x + 87 * Math.cos(Phaser.Math.degToRad(this.ball.ballAngle));
-          this.ball.y = this.ring.y + 87 * Math.sin(Phaser.Math.degToRad(this.ball.ballAngle));  
+          this.ball.x = this.ring.x + 88 * Math.cos(Phaser.Math.degToRad(this.ball.ballAngle));
+          this.ball.y = this.ring.y + 88 * Math.sin(Phaser.Math.degToRad(this.ball.ballAngle));  
 	}
 
 	startMoving(){
@@ -89,7 +110,7 @@ export default class {
 	changeDirection(){
           this.angleDifference = Math.abs(this.ball.ballAngle - this.bar.angle);
           if(this.angleDifference > this.maxAngleDifference){
-               this.fail();
+               // this.fail();
           }
           else{
 
@@ -117,6 +138,8 @@ export default class {
 						this.game.add.tween(this.firstTry).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 						this.game.add.tween(this.secondTry).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 						this.game.add.tween(this.thirdTry).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+
+						this.game.add.tween(this.player).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 
 						this.player.movable = true;
 
@@ -153,6 +176,12 @@ export default class {
       	this.dead = true;
       	this.currentTry = 1;
       	this.rotationSpeed = 3;
+
+      	this.game.camera.flash(0xff0000, 200);
+      	
+      	if("vibrate" in window.navigator) {
+    		window.navigator.vibrate(500);
+		}
 
 		this.bar.destroy();
 		this.ring.destroy();
