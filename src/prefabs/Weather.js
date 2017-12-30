@@ -72,7 +72,8 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-		this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.zap, this);
+		let randomSecond = this.game.rnd.integerInRange(10, 18)
+		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
 	}
 
 	zap() {
@@ -102,6 +103,9 @@ export default class {
 
 		this.game.camera.flash(0xffffff, 200);
 		this.game.camera.shake(0.005, 500);
+		if("vibrate" in window.navigator) {
+    		window.navigator.vibrate(100);
+		}
 	}
 
 	createLightningTexture(x, y, segments, boltWidth, branch) {

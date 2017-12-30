@@ -11,6 +11,10 @@ export default class extends Phaser.State {
 		//this.load.image('player', 'assets/sprites/player.png');
 		this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3x.png');
 
+		this.load.image('LockGameRing', 'assets/sprites/LockGameRing.png');
+		this.load.image('LockGameBar', 'assets/sprites/LockGameBar.png');
+		this.load.image('LockGameBall', 'assets/sprites/LockGameBall.png');
+
 		// Load Maps
 		this.load.tilemap('map1', 'assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
 

@@ -8,6 +8,7 @@ import Pathfinder from '../prefabs/Pathfinder';
 import Weather from '../prefabs/Weather';
 import Bridgebuilder from '../prefabs/Bridgebuilder';
 import Input from '../prefabs/Input';
+import LockGame from '../prefabs/LockGame';
 import Item from '../prefabs/Item';
 import config from './../config';
 import dialogues from './../dialogues';
@@ -62,6 +63,8 @@ export default class {
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
 			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
 		}
+
+		
 	}
 
 	loadPeople() {
@@ -159,6 +162,10 @@ export default class {
 			this.lightSprite.reset(this.game.camera.x - 10, this.game.camera.y - 10);
 			this.updateShadowTexture();
 		}
+
+		if(this.lockGame){
+			this.lockGame.update();
+		}
 	}
 
 	initMap() {
@@ -167,6 +174,8 @@ export default class {
 
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 		this.backgroundLayer = this.map.createLayer('Clouds');
+		this.backgroundLayer.tint = 0x262626;
+
 		console.log(this.backgroundLayer);
 		this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
@@ -266,6 +275,7 @@ export default class {
 	}
 
 	collisionHandlerItem(player, item) {
+		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
 		this.itemIDs.push(item.id);
 		item.destroy();
 		this.items.splice(item, 1);

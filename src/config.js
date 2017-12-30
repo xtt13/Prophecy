@@ -15,5 +15,5 @@ export default {
 	scaleRate: 3,
 	forceMobile: false,
 	night: false,
-	enemies: true
+	enemies: false
 };
