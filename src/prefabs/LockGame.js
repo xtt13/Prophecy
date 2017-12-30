@@ -178,8 +178,8 @@ export default class {
       	this.rotationSpeed = 3;
 
       	this.game.camera.flash(0xff0000, 200);
-      	
-      	if("vibrate" in window.navigator) {
+
+ 		if(window.navigator.vibrate !== undefined && "vibrate" in window.navigator) {
     		window.navigator.vibrate(500);
 		}
 

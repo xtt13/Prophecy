@@ -75,7 +75,7 @@ export default class {
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
 		this.stick.showOnTouch = true;
-		screen.orientation.lock('landscape');
+		// screen.orientation.lock('landscape');
 	}
 
 	isMobileDevice() {
