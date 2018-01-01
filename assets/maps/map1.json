@@ -266,33 +266,14 @@
                  "y":1337.83036042131
                 }, 
                 {
-                 "height":69.6200864411271,
-                 "id":36,
-                 "name":"",
-                 "properties":
-                    {
-                     "endLevel":true
-                    },
-                 "propertytypes":
-                    {
-                     "endLevel":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":81.7472,
-                 "x":138.631454025793,
-                 "y":4.07964222814206
-                }, 
-                {
-                 "height":34.5030431438127,
+                 "height":28.8702981194041,
                  "id":44,
                  "name":"",
                  "properties":
                     {
                      "port":true,
                      "targetID":1,
-                     "targetMap":"map1"
+                     "targetMap":"map2"
                     },
                  "propertytypes":
                     {
@@ -303,9 +284,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":83.4194408026757,
-                 "x":619.661517056856,
-                 "y":43.7852677257525
+                 "width":67.9293919855521,
+                 "x":145.860847587949,
+                 "y":3.54748109171134
                 }, 
                 {
                  "height":31.1585183946488,
@@ -398,8 +379,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":708.454663068592,
-                 "y":118.658177827116
+                 "x":171.562041592887,
+                 "y":316.618585745532
                 }],
          "opacity":1,
          "type":"objectgroup",

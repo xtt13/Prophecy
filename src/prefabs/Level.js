@@ -46,13 +46,10 @@ export default class {
 
 		this.loadEntryPoints();
 
-		console.log(this.customStartPoints);
-
 		if(this.instructions == undefined){
 			this.startPoint.x = this.defaultStartPoint.x;
 			this.startPoint.y = this.defaultStartPoint.y;
 		} else {
-
 			for (var i = 0; i < this.customStartPoints.length; i++) {
 				if(this.customStartPoints[i].id == this.instructions.targetID){
 					this.startPoint.x = this.customStartPoints[i].x;
@@ -60,6 +57,7 @@ export default class {
 				}
 			}
 		}
+		console.log(this.startPoint);
 
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y);
