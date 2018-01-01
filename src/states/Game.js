@@ -4,7 +4,8 @@ import Level from '../prefabs/Level';
 import GUI from '../prefabs/GUI';
 
 export default class extends Phaser.State {
-	init() {
+	init(instruction) {
+		this.instruction = instruction;
 		console.log('%c ' + 'GameState' + ' ', 'background: #0061ff; color: #bada55');
 	}
 
@@ -16,7 +17,7 @@ export default class extends Phaser.State {
 		this.GUI = new GUI(this.game);
 
 		// Später mit unique Tileset auf JSON verknüpfen
-		this.level = new Level(this.game, this.inputClass, this.GUI, 'map1');
+		this.level = new Level(this.game, this.inputClass, this.GUI, this.instruction);
 		// this.inputClass.checkController();
 	}
 

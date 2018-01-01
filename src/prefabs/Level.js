@@ -14,10 +14,11 @@ import config from './../config';
 import dialogues from './../dialogues';
 
 export default class {
-	constructor(game, inputClass, GUIclass, currentLevel) {
+	constructor(game, inputClass, GUIclass, instructions) {
 		this.game = game;
 		this.GUICLASS = GUIclass;
-		this.currentLevel = currentLevel;
+		this.instructions = instructions;
+		console.log(this.instructions);
 
 		this.characters = [];
 		this.items = [];
@@ -25,6 +26,10 @@ export default class {
 		this.activatedBridges = [];
 		this.itemIDs = [];
 		this.enemies = [];
+
+		this.startPoint = {};
+		this.customStartPoints = [];
+		this.defaultStartPoint = {};
 
 		this.night = config.night;
 
@@ -39,8 +44,25 @@ export default class {
 		// Load Map
 		this.initMap();
 
+		this.loadEntryPoints();
+
+		console.log(this.customStartPoints);
+
+		if(this.instructions == undefined){
+			this.startPoint.x = this.defaultStartPoint.x;
+			this.startPoint.y = this.defaultStartPoint.y;
+		} else {
+
+			for (var i = 0; i < this.customStartPoints.length; i++) {
+				if(this.customStartPoints[i].id == this.instructions.targetID){
+					this.startPoint.x = this.customStartPoints[i].x;
+					this.startPoint.y = this.customStartPoints[i].y;
+				}
+			}
+		}
+
 		// Create Player
-		this.player = new Player(this.game, this.tilemapProperties.playerStartX, this.tilemapProperties.playerStartY);
+		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y);
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this.player);
@@ -65,6 +87,24 @@ export default class {
 		}
 
 		
+	}
+
+	loadEntryPoints(){
+		let elementsArr = this.findObjectsByType('startPointType', this.map, 'EntryPoints');
+
+		elementsArr.forEach(function(element) {
+			if (element.properties.startPointType == 'default') {
+				this.defaultStartPoint = {x: element.x, y: element.y};
+			}
+
+			if (element.properties.startPointType == 'custom') {
+				let point = [];
+				point['id'] = element.properties.id;
+				point['x'] = element.x;
+				point['y'] = element.y;
+				this.customStartPoints.push(point);
+			}
+		}, this);
 	}
 
 	loadPeople() {
@@ -170,7 +210,11 @@ export default class {
 
 	initMap() {
 		// JSON Map Data
-		this.map = this.game.add.tilemap(this.currentLevel);
+		if(this.instructions == undefined){
+			this.map = this.game.add.tilemap('map1');
+		} else {
+			this.map = this.game.add.tilemap(this.instructions.map);
+		}
 
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 		this.backgroundLayer = this.map.createLayer('Clouds');
@@ -266,10 +310,16 @@ export default class {
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 5,
 					function() {
-						this.game.state.restart();
+						this.game.state.restart(true, false);
 					},
 					this
 				);
+			}
+
+			if(region.properties.port){
+				let targetMap = region.properties.targetMap;
+				let targetID = region.properties.targetID;
+				this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
 			}
 		});
 	}
