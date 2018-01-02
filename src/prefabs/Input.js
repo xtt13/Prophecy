@@ -84,7 +84,7 @@ export default class {
 		this.stick = this.pad.addDPad(0, 0, 200, 'dpad');
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
-		this.stick.showOnTouch = false;
+		this.stick.showOnTouch = true;
 		console.log(this.stick);
 		// screen.orientation.lock('landscape');
 	}

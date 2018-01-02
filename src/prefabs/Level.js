@@ -320,6 +320,9 @@ export default class {
 			if(region.properties.port){
 				let targetMap = region.properties.targetMap;
 				let targetID = region.properties.targetID;
+				if(this.inputClass.stick){
+					this.inputClass.stick.destroy();
+				}
 				this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
 			}
 		});
