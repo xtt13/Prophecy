@@ -247,6 +247,7 @@ export default class {
 
 		// Enter Events
 		this.map.plus.events.regions.onEnterAdd(this.player, region => {
+
 			if (region.properties.message) {
 				const message_id = region.properties.id;
 				const all_messages = Object.values(dialogues.dialogues);
@@ -279,7 +280,7 @@ export default class {
 				this.activatedBridges.push(bridgeID);
 			}
 
-			if (region.properties.pathfinder) {
+			if (region.properties.pathfinderMessage) {
 				// (game, map, objectToMove, {target.x, target.y}), layer);
 				// this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
 				if (this.pathfinder == undefined) {
@@ -297,9 +298,21 @@ export default class {
 					this.game.time.events.add(
 						Phaser.Timer.SECOND * 3,
 						function() {
+
 							this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 							this.player.movable = true;
-							this.GUICLASS.createMessage(['Hello!'], false, true);
+
+							const message_id = region.properties.messageID;
+							const all_messages = Object.values(dialogues.dialogues);
+							for (let i = 0; i < all_messages.length; i++) {
+								if (i + 1 == message_id) {
+									if (this.playedDialogues.includes(message_id)) return;
+									const message = all_messages[i];
+									this.playedDialogues.push(message_id);
+									this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
+									break;
+								}
+							}
 						},
 						this
 					);

@@ -12,6 +12,8 @@ export default class extends Phaser.Sprite {
 		this.anchor.setTo(0.5);
 		this.map = map;
 		this.layer = layer;
+		this.closeSpeed = this.game.rnd.integerInRange(20, 60);
+		this.farSpeed = this.game.rnd.integerInRange(200, 400);
 
 		this.finderCall = true;
 		// this.scale.set(-5);
@@ -28,15 +30,16 @@ export default class extends Phaser.Sprite {
 
 	update() {
 		// console.log(Math.ceil(this.game.physics.arcade.distanceBetween(this, this.player)));
-		if (this.game.physics.arcade.distanceBetween(this, this.player) < 100) {
-			this.game.physics.arcade.moveToObject(this, this.player, 50);
+		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
+		if (this.distanceBetweenEnemiePlayer < 100) {
+			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			this.finderCall = true;
 			if (this.pathfinder) {
 				this.pathfinder.pathToFollow.length = 0;
 			}
 		}
 
-		if (this.game.physics.arcade.distanceBetween(this, this.player) > 100 && this.finderCall) {
+		if (this.distanceBetweenEnemiePlayer > 100 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
 			console.log('call');
 
 			this.pathfinder = new Pathfinder(
@@ -46,7 +49,7 @@ export default class extends Phaser.Sprite {
 				{ x: this.player.x, y: this.player.y },
 				this.layer,
 				true,
-				300,
+				this.farSpeed,
 				this
 			);
 			this.finderCall = false;
