@@ -18,7 +18,7 @@ export default class {
 		this.game = game;
 		this.GUICLASS = GUIclass;
 		this.instructions = instructions;
-		console.log(this.instructions);
+		// console.log(this.instructions);
 
 		this.characters = [];
 		this.items = [];
@@ -57,14 +57,17 @@ export default class {
 				}
 			}
 		}
-		console.log(this.startPoint);
+		// console.log(this.startPoint);
 
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y);
 
 		// Init InputClass
+		// console.log(this.game);
+		// console.log(this.inputClass);
 		this.inputClass = new Input(this.game, this.player);
 		this.GUICLASS.setPlayer(this.player);
+
 
 		this.loadItems();
 		if(config.enemies) this.loadEnemies();
@@ -209,7 +212,7 @@ export default class {
 	initMap() {
 		// JSON Map Data
 		if(this.instructions == undefined){
-			this.map = this.game.add.tilemap('map1');
+			this.map = this.game.add.tilemap(config.startMap);
 		} else {
 			this.map = this.game.add.tilemap(this.instructions.map);
 		}

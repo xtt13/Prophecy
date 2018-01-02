@@ -10,6 +10,7 @@ export default class extends Phaser.State {
 	}
 
 	create() {
+			
 		// Toggle Fullscreen onclick
 		this.input.onDown.add(this.toggleFullScreen, this);
 		this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
@@ -38,7 +39,7 @@ export default class extends Phaser.State {
 			// for (var i = 0; i < this.level.enemies.length; i++) {
 			// 	game.debug.body(this.level.enemies[i]);
 			// }
-
+			// this.level.inputClass.stick.debug();
 			// game.debug.body(this.level.enemies);
 		}
 	}

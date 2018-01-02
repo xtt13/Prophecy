@@ -82,6 +82,7 @@ export default class {
 
 			this.game.add.tween(this.player).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
 
+			this.player.body.immovable = true;
 			this.firstSetup = false;
 		}
 
@@ -141,6 +142,7 @@ export default class {
 
 						this.game.add.tween(this.player).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 
+						this.player.body.immovable = false;
 						this.player.movable = true;
 
 					break;

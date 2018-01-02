@@ -13,7 +13,8 @@ export default {
 	weather: true,
 	playerHealth: 5,
 	scaleRate: 3,
-	forceMobile: false,
+	forceMobile: true,
 	night: false,
-	enemies: true
+	enemies: true,
+	startMap: 'map3'
 };

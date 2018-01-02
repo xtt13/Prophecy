@@ -70,11 +70,22 @@ export default class {
 	}
 
 	useMobile() {
+
+		if(this.stick){
+			this.stick.destroy();
+		}
+
+		if(this.pad){
+			this.pad.destroy();
+		}
+
 		this.pad = this.game.plugins.add(Phaser.VirtualJoystick);
+		// console.log(this.pad);
 		this.stick = this.pad.addDPad(0, 0, 200, 'dpad');
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
-		this.stick.showOnTouch = true;
+		this.stick.showOnTouch = false;
+		console.log(this.stick);
 		// screen.orientation.lock('landscape');
 	}
 
