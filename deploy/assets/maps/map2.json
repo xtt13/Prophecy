@@ -102,11 +102,11 @@
                  "type":"",
                  "visible":true,
                  "width":166.125,
-                 "x":908.027592505698,
-                 "y":0.871346594717835
+                 "x":909.027592505698,
+                 "y":3.87134659471783
                 }, 
                 {
-                 "height":5.34129361830147,
+                 "height":8.36724111811235,
                  "id":50,
                  "name":"",
                  "properties":
@@ -126,30 +126,7 @@
                  "visible":true,
                  "width":166.125,
                  "x":331.202146735487,
-                 "y":0.8493597332082
-                }, 
-                {
-                 "height":69.3817993454462,
-                 "id":58,
-                 "name":"",
-                 "properties":
-                    {
-                     "port":true,
-                     "targetID":1,
-                     "targetMap":"map4"
-                    },
-                 "propertytypes":
-                    {
-                     "port":"bool",
-                     "targetID":"int",
-                     "targetMap":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0.944321007138863,
-                 "x":0.339093566162807,
-                 "y":972.83013688994
+                 "y":1.8493597332082
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -220,7 +197,7 @@
                  "visible":true,
                  "width":14.1413,
                  "x":991.722753941547,
-                 "y":33.0284249430219
+                 "y":38.0284249430219
                 }, 
                 {
                  "height":14.1413,
@@ -241,28 +218,7 @@
                  "visible":true,
                  "width":14.1413,
                  "x":405.853334448317,
-                 "y":31.0064380815123
-                }, 
-                {
-                 "height":14.1413,
-                 "id":59,
-                 "name":"",
-                 "properties":
-                    {
-                     "id":4,
-                     "startPointType":"custom"
-                    },
-                 "propertytypes":
-                    {
-                     "id":"int",
-                     "startPointType":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":14.1413,
-                 "x":-11.4564613482442,
-                 "y":1021.43234892545
+                 "y":49.0064380815123
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -425,16 +381,18 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":60,
+ "nextobjectid":58,
  "orientation":"orthogonal",
  "properties":
     {
-     "night":false,
-     "weather":"NiceWeather"
+     "playerStartX":720,
+     "playerStartY":650,
+     "weather":"Storm"
     },
  "propertytypes":
     {
-     "night":"bool",
+     "playerStartX":"int",
+     "playerStartY":"int",
      "weather":"string"
     },
  "renderorder":"right-down",

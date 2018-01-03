@@ -2,9 +2,10 @@ import Phaser from 'phaser';
 import config from './../config';
 
 export default class {
-	constructor(game, type) {
+	constructor(game, type, backgroundLayer) {
 		this.game = game;
 		this.currentWeather = type;
+		this.backgroundLayer = backgroundLayer;
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
 		if (config.weather) {
@@ -32,6 +33,10 @@ export default class {
 				this.addLeaves();
 				break;
 
+			case 'NiceWeather':
+				this.addSun();
+				break;
+
 			default:
 		}
 	}
@@ -52,6 +57,8 @@ export default class {
 	}
 
 	addStorm() {
+		this.backgroundLayer.tint = 0x262626;
+
 		// (x, y, maxParticles)
 		let emitter = this.game.add.emitter(-500, 0, 400);
 		emitter.fixedToCamera = true;
@@ -194,6 +201,10 @@ export default class {
 		this.emitter.addToWorld();
 		this.emitter.emit('leaves', [this.game.camera.x, this.game.world.width], 0, { repeat: -1, frequency: 200 });
 		console.log(this.emitter);
+	}
+
+	addSun(){
+		
 	}
 
 	updateWeather() {

@@ -570,14 +570,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "playerStartX":720,
-     "playerStartY":650,
+     "night":false,
      "weather":"Storm"
     },
  "propertytypes":
     {
-     "playerStartX":"int",
-     "playerStartY":"int",
+     "night":"bool",
      "weather":"string"
     },
  "renderorder":"right-down",

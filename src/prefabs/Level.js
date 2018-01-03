@@ -31,7 +31,7 @@ export default class {
 		this.customStartPoints = [];
 		this.defaultStartPoint = {};
 
-		this.night = config.night;
+		this.night = false;
 
 		this.loadLevel();
 	}
@@ -76,15 +76,16 @@ export default class {
 		this.manageEvents();
 
 		// Create Weather
-		this.weather = new Weather(this.game, this.tilemapProperties.weather);
+		this.weather = new Weather(this.game, this.tilemapProperties.weather, this.backgroundLayer);
 
-		if (config.night) {
-			this.shadowTexture = this.game.add.bitmapData(this.game.width + 300, this.game.height + 300);
+		if (this.night) {
+			this.backgroundLayer.tint = 0x262626;
+			this.shadowTexture = this.game.add.bitmapData(this.game.width + 200, this.game.height + 200);
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
-			this.lightSprite.alpha = 0.99;
+			this.lightSprite.alpha = 0.95;
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-			this.characters[0].blendMode = Phaser.blendModes.DARKEN;
+			this.weather.lightning.bringToTop();
 		}
 
 		
@@ -163,8 +164,8 @@ export default class {
 			heroY = this.player.y - this.game.camera.y;
 
 		var gradient = this.shadowTexture.context.createRadialGradient(heroX, heroY, 100 * 0.75, heroX, heroY, radius);
-		gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
-		gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+	    gradient.addColorStop(0, 'rgba(255, 227, 134, 1.0)');
+	    gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
 
 		this.shadowTexture.context.beginPath();
 		this.shadowTexture.context.fillStyle = gradient;
@@ -199,8 +200,8 @@ export default class {
 		this.weather.updateWeather();
 		this.GUICLASS.update();
 
-		if (config.night) {
-			this.lightSprite.reset(this.game.camera.x - 10, this.game.camera.y - 10);
+		if (this.night) {
+			this.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
 			this.updateShadowTexture();
 		}
 
@@ -219,9 +220,7 @@ export default class {
 
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 		this.backgroundLayer = this.map.createLayer('Clouds');
-		this.backgroundLayer.tint = 0x262626;
 
-		console.log(this.backgroundLayer);
 		this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
 		//  Connect with Tileset
@@ -237,6 +236,8 @@ export default class {
 		this.map.setCollisionBetween(0, 20, true, 'CollisionLayer');
 
 		this.tilemapProperties = this.map.plus.properties;
+		console.log(this.tilemapProperties);
+		this.night = this.tilemapProperties.night;
 		this.map.plus.animation.enable();
 	}
 

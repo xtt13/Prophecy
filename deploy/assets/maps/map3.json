@@ -130,7 +130,7 @@
                  "visible":true,
                  "width":14.1413,
                  "x":977.047419215827,
-                 "y":1430.67647871393
+                 "y":1415.67647871393
                 }, 
                 {
                  "height":14.1413,
@@ -204,12 +204,14 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "night":false,
+     "playerStartX":720,
+     "playerStartY":650,
      "weather":"Storm"
     },
  "propertytypes":
     {
-     "night":"bool",
+     "playerStartX":"int",
+     "playerStartY":"int",
      "weather":"string"
     },
  "renderorder":"right-down",

@@ -14,7 +14,7 @@ export default {
 	playerHealth: 5,
 	scaleRate: 3,
 	forceMobile: false,
-	night: false,
+	night: true,
 	enemies: true,
-	startMap: 'map2'
+	startMap: 'map3'
 };

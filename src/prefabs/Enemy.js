@@ -18,7 +18,8 @@ export default class extends Phaser.Sprite {
 		this.finderCall = true;
 		// this.scale.set(-5);
 
-		this.animations.add('walk', [0, 1, 2, 3, 4], 5, true);
+		this.animations.add('walk', [0, 1, 2, 3, 4], 15, true);
+		this.animations.add('idle', [0], 1, true);
 		this.animations.play('walk');
 
 		this.game.physics.enable(this);
@@ -29,10 +30,13 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
-		// console.log(Math.ceil(this.game.physics.arcade.distanceBetween(this, this.player)));
+		
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
+		
 		if (this.distanceBetweenEnemiePlayer < 100) {
+
 			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+
 			this.finderCall = true;
 			if (this.pathfinder) {
 				this.pathfinder.pathToFollow.length = 0;
