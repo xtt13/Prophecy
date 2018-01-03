@@ -23,6 +23,11 @@ export default class {
 		if (this.message) {
 			this.game.world.bringToTop(this.message.background);
 			this.game.world.bringToTop(this.message.text);
+
+			if(this.upperBar){
+				this.game.world.bringToTop(this.upperBar);
+				this.game.world.bringToTop(this.downBar);
+			}
 		}
 	}
 

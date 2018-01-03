@@ -198,6 +198,11 @@ export default class {
 
 		// Update Weather
 		this.weather.updateWeather();
+		
+		if(this.weather.clouds){
+			this.game.world.bringToTop(this.weather.clouds);
+		}
+
 		this.GUICLASS.update();
 
 		if (this.night) {
@@ -208,6 +213,7 @@ export default class {
 		if(this.lockGame){
 			this.lockGame.update();
 		}
+
 	}
 
 	initMap() {
@@ -289,7 +295,7 @@ export default class {
 						this.game,
 						this.map,
 						this.characters[0],
-						{ x: this.player.x, y: this.player.y },
+						{ x: this.player.x, y: this.player.y - 50 },
 						this.groundLayer,
 						false,
 						200

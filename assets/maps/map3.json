@@ -205,7 +205,7 @@
  "properties":
     {
      "night":false,
-     "weather":"Storm"
+     "weather":"NiceWeather"
     },
  "propertytypes":
     {

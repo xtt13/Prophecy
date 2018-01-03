@@ -49,8 +49,9 @@ export default class {
 		emitter.makeParticles('snow');
 		emitter.minParticleScale = 0.1;
 		emitter.maxParticleScale = 0.5;
-		emitter.setYSpeed(0, 1);
-		emitter.setXSpeed(-1, 1);
+		emitter.setYSpeed(0, 0.1);
+		// emitter.setXSpeed(-1, 1);
+		// emitter.maxParticleSpeed = 100;
 		emitter.minRotation = 0;
 		emitter.maxRotation = 0;
 		emitter.start(false, 4600, 5, 0);
@@ -81,6 +82,10 @@ export default class {
 
 		let randomSecond = this.game.rnd.integerInRange(10, 18)
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
+
+		// this.addFog();
+		this.addClouds();
+
 	}
 
 	zap() {
@@ -160,6 +165,39 @@ export default class {
 		}
 
 		this.lightningBitmap.dirty = true;
+	}
+
+	addFog(){
+		let fog = this.game.add.bitmapData(this.game.width, this.game.height);
+ 
+	    fog.ctx.rect(0, 0, this.game.width, this.game.height);
+	    // fog.ctx.fillStyle = '#b2ddc8';
+	    fog.ctx.fillStyle = '#000000';
+	    fog.ctx.fill();
+	 
+	    this.fogSprite = this.game.add.sprite(0, 0, fog);
+	    this.fogSprite.fixedToCamera = true;
+	    this.fogSprite.alpha = 0.6;
+	    this.game.add.tween(this.fogSprite).to( { alpha: 0.4 }, 10000, null, true, 0, 0, true);
+	}
+
+	addClouds(){
+		this.clouds = this.game.add.group(); 
+        this.clouds.createMultiple(20, "cloud", 0, true);
+
+        this.clouds.forEach((cloud) => {
+        	// cloud.scale.set(this.game.rnd.realInRange(2, 8));
+        	cloud.scale.set(2);
+        	cloud.x = this.game.world.randomX;
+        	cloud.y = this.game.world.randomY;
+    	});
+
+        this.game.add.tween(this.clouds.scale).to({
+          x: 2,
+          y: 2
+        }, 60000, "Linear", true);
+
+        
 	}
 
 	addSnowWind() {
