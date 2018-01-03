@@ -37,6 +37,7 @@ export default class {
 				},
 				this
 			);
+			// this.followPath();
 		});
 
 		this.pathfinder = new PhaserEasystar(this.game);

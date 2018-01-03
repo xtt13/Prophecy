@@ -85,6 +85,7 @@ export default class {
 			this.lightSprite.alpha = 0.95;
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
+			this.weather.clouds.destroy();
 			this.weather.lightning.bringToTop();
 		}
 
@@ -198,7 +199,7 @@ export default class {
 
 		// Update Weather
 		this.weather.updateWeather();
-		
+
 		if(this.weather.clouds){
 			this.game.world.bringToTop(this.weather.clouds);
 		}
@@ -317,6 +318,19 @@ export default class {
 									const message = all_messages[i];
 									this.playedDialogues.push(message_id);
 									this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
+									this.game.time.events.add(
+										Phaser.Timer.SECOND * 8,
+										() => {
+											this.pathfinder = new Pathfinder(
+												this.game,
+												this.map,
+												this.characters[0],
+												{ x: 515, y: 107 },
+												this.groundLayer,
+												false,
+												200
+											);
+										});
 									break;
 								}
 							}

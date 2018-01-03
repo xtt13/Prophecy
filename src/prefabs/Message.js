@@ -50,6 +50,7 @@ export default class {
 
 		if (!this.movable) {
 			this.player.movable = false;
+			this.player.body.immovable = true;
 		}
 
 		this.nextLine();
@@ -86,6 +87,7 @@ export default class {
 		this.removeBars();
 		if (!this.movable) {
 			this.player.movable = true;
+			this.player.body.immovable = false;
 		}
 	}
 

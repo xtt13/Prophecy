@@ -195,7 +195,7 @@ export default class {
         this.game.add.tween(this.clouds.scale).to({
           x: 2,
           y: 2
-        }, 60000, "Linear", true);
+        }, 60000, "Linear", true, 0, 0, true);
 
         
 	}
