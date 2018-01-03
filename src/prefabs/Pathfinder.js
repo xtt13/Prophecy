@@ -16,7 +16,7 @@ export default class {
 		this.showPaths = false;
 
 		this.pathToFollow = [];
-		this.walkables = [2];
+		this.walkables = [2, 9];
 
 		this.blocked = false;
 		this.followingPath = false;

@@ -408,8 +408,8 @@
                  "type":"",
                  "visible":true,
                  "width":22.002200220022,
-                 "x":194.876630520195,
-                 "y":718.214678610718
+                 "x":90.6968890867822,
+                 "y":966.739844921751
                 }, 
                 {
                  "height":22.0022,
@@ -525,8 +525,8 @@
                  "type":"",
                  "visible":true,
                  "width":38.9549,
-                 "x":71.8771885398673,
-                 "y":644.002126710893
+                 "x":235.05027753196,
+                 "y":667.850501255891
                 }, 
                 {
                  "height":32.304,
@@ -570,14 +570,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "playerStartX":720,
-     "playerStartY":650,
+     "night":false,
      "weather":"Storm"
     },
  "propertytypes":
     {
-     "playerStartX":"int",
-     "playerStartY":"int",
+     "night":"bool",
      "weather":"string"
     },
  "renderorder":"right-down",

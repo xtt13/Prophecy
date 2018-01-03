@@ -67,13 +67,13 @@ export default class {
 		emitter.makeParticles('rain');
 		emitter.minParticleScale = 0.1;
 		emitter.maxParticleScale = 0.5;
-		emitter.setYSpeed(90, 200);
+		emitter.setYSpeed(200, 310);
 		emitter.setXSpeed(-5, 5);
-		emitter.minRotation = 0;
+		emitter.minRotation = 180;
 		emitter.maxRotation = 0;
 
 		// (explode, lifespan, frequency, quantity)
-		emitter.start(false, 3000, 1, 0);
+		emitter.start(false, 2500, 1, 0);
 
 		this.lightningBitmap = this.game.add.bitmapData(window.innerWidth, window.innerHeight + 500);
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);

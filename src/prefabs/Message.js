@@ -15,11 +15,15 @@ export default class {
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
+
+
 		// let background = new Phaser.Rectangle(130, 30, 800, 50);
+
+		this.addBars();
 
 		var drawnObject;
 		var width = 300;
-		var height = 85;
+		var height = 65;
 		var bmd = game.add.bitmapData(width, height);
 
 		bmd.ctx.beginPath();
@@ -79,8 +83,39 @@ export default class {
 	removeMessage() {
 		this.text.destroy();
 		this.background.destroy();
+		this.removeBars();
 		if (!this.movable) {
 			this.player.movable = true;
 		}
+	}
+
+	addBars(){
+		var drawnObject;
+		var width = this.game.camera.width;
+		var height = 20;
+		var bmd = game.add.bitmapData(width, height);
+
+		bmd.ctx.beginPath();
+		bmd.ctx.rect(0, 0, width, height);
+		bmd.ctx.fillStyle = '#000000';
+		bmd.ctx.globalAlpha = 1;
+		bmd.ctx.fill();
+
+		this.upperBar = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height, bmd);
+		this.upperBar.fixedToCamera = true;
+
+		this.downBar = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - this.game.camera.height - 20, bmd);
+		this.downBar.fixedToCamera = true;
+
+		// this.game.add.tween(this.upperBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.upperBar.cameraOffset).to( { y: this.upperBar.y - 20 }, 1000, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.downBar.cameraOffset).to( { y: this.downBar.y + 20 }, 1000, Phaser.Easing.Linear.None, true);
+	}
+
+	removeBars(){
+		this.game.add.tween(this.upperBar.cameraOffset).to( { y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.downBar.cameraOffset).to( { y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.upperBar).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.downBar).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
 	}
 }
