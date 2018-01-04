@@ -116,9 +116,6 @@ export default class {
 		this.game.camera.flash(0xffffff, 200);
 		this.game.camera.shake(0.005, 500);
 
-		if(window.navigator.vibrate !== undefined && "vibrate" in window.navigator) {
-    		window.navigator.vibrate(100);
-		}
 	}
 
 	createLightningTexture(x, y, segments, boltWidth, branch) {

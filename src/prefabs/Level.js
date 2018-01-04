@@ -89,6 +89,9 @@ export default class {
 			this.weather.lightning.bringToTop();
 		}
 
+		this.GUICLASS.createNotification("saving", "Saving ...");
+
+
 		
 	}
 
