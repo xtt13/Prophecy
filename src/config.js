@@ -11,10 +11,10 @@ export default {
 
 	localStorageName: 'prophecy',
 	weather: true,
-	playerHealth: 5,
+	playerHealth: 100,
 	scaleRate: 3,
 	forceMobile: false,
 	night: true,
 	enemies: true,
-	startMap: 'map1'
+	startMap: 'map3'
 };

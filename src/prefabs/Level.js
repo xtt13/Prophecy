@@ -18,7 +18,11 @@ export default class {
 		this.game = game;
 		this.GUICLASS = GUIclass;
 		this.instructions = instructions;
-		// console.log(this.instructions);
+
+		if(this.instructions){
+			this.currentMap = instructions.map;
+		}
+		
 
 		this.characters = [];
 		this.items = [];
@@ -52,6 +56,7 @@ export default class {
 		} else {
 			for (var i = 0; i < this.customStartPoints.length; i++) {
 				if(this.customStartPoints[i].id == this.instructions.targetID){
+					this.lastTargetID = this.instructions.targetID;
 					this.startPoint.x = this.customStartPoints[i].x;
 					this.startPoint.y = this.customStartPoints[i].y;
 				}
@@ -188,7 +193,7 @@ export default class {
 		}
 
 		this.game.physics.arcade.collide(this.enemies, this.enemies);
-		this.game.physics.arcade.collide(this.enemies, this.player);
+		this.game.physics.arcade.collide(this.enemies, this.player, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.characters, this.player);

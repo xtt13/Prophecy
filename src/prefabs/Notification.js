@@ -18,7 +18,7 @@ export default class {
 		bmd.ctx.beginPath();
 		bmd.ctx.rect(0, 0, width, height);
 		bmd.ctx.fillStyle = '#000000';
-		bmd.ctx.globalAlpha = 1;
+		bmd.ctx.globalAlpha = 0.8;;
 		bmd.ctx.fill();
 
 		this.notificationBar = game.add.sprite(this.game.camera.width - bmd.width - 20, -20, bmd);

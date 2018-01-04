@@ -10,7 +10,6 @@ export default class extends Phaser.Sprite {
 		this.movable = true;
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
-		// this.scale.set(config.scaleRate);
 
 		this.animations.add('idle', [0, 1, 2, 3, 4], 5, true);
 		this.animations.play('idle');
@@ -90,5 +89,15 @@ export default class extends Phaser.Sprite {
 
 	fight() {}
 
-	getdamage() {}
+	getDamage(enemy, player) {
+
+		enemy.destroy();
+
+		this.player.health -= 10;
+		this.game.camera.flash(0xc10000, 200);
+
+		if(this.player.health <= 0){
+			this.game.state.restart(true, false, {map: this.currentMap, targetID: this.lastTargetID });
+		}
+	}
 }
