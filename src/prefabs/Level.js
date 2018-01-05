@@ -32,7 +32,7 @@ export default class {
 		// Arrays
 		this.characters = [];
 		this.items = [];
-		this.playedDialogues = [];
+		this.playedDialogues = this.safe.getPlayedDialogues();
 		this.activatedBridges = [];
 		this.itemIDs = this.safe.getItemIDs();
 		this.enemies = [];
@@ -323,6 +323,7 @@ export default class {
 						if (this.playedDialogues.includes(message_id)) return;
 						const message = all_messages[i];
 						this.playedDialogues.push(message_id);
+						this.safe.setPlayedDialogues(this.playedDialogues);
 						this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 						break;
 					}
@@ -354,6 +355,12 @@ export default class {
 			if (region.properties.pathfinderMessage) {
 				// (game, map, objectToMove, {target.x, target.y}), layer);
 				// this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
+
+				const message_id = region.properties.messageID;
+				if (this.playedDialogues.includes(message_id)) return;
+				this.playedDialogues.push(message_id);
+				this.safe.setPlayedDialogues(this.playedDialogues);
+
 				if (this.pathfinder == undefined) {
 					this.pathfinder = new Pathfinder(
 						this.game,
@@ -379,11 +386,7 @@ export default class {
 							for (let i = 0; i < all_messages.length; i++) {
 								if (i + 1 == message_id) {
 
-									if (this.playedDialogues.includes(message_id)) return;
-
 									const message = all_messages[i];
-
-									this.playedDialogues.push(message_id);
 
 									this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 
@@ -413,9 +416,11 @@ export default class {
 			if(region.properties.port){
 				let targetMap = region.properties.targetMap;
 				let targetID = region.properties.targetID;
+
 				if(this.inputClass.stick){
 					this.inputClass.stick.destroy();
 				}
+				
 				console.log(this.gameData);
 				this.gameData.currentMap = targetMap;
 				this.gameData.targetID = targetID;

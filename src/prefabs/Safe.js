@@ -51,6 +51,21 @@ export default class {
 
 	}
 
+	setPlayedDialogues(playedDialogues){
+		localStorage.setItem("playedDialogues", JSON.stringify(playedDialogues));
+	}
+
+	getPlayedDialogues(){
+		let playedDialogues = JSON.parse(localStorage.getItem("playedDialogues"));
+
+		if(playedDialogues == null){
+			let playedDialogues = [];
+			return playedDialogues;
+		} else {
+			return playedDialogues;
+		}
+	}
+
 	resetLocalStorage(){
 		localStorage.clear();
 	}
