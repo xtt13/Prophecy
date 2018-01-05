@@ -15,15 +15,17 @@ import dialogues from './../dialogues';
 
 export default class {
 	constructor(game, inputClass, GUIclass, instructions) {
+
 		this.game = game;
 		this.GUICLASS = GUIclass;
 		this.instructions = instructions;
 
+		// If there are instructions -> map them
 		if(this.instructions){
 			this.currentMap = instructions.map;
 		}
 		
-
+		// Arrays
 		this.characters = [];
 		this.items = [];
 		this.playedDialogues = [];
@@ -31,12 +33,15 @@ export default class {
 		this.itemIDs = [];
 		this.enemies = [];
 
+		// Accesspoints
 		this.startPoint = {};
 		this.customStartPoints = [];
 		this.defaultStartPoint = {};
 
+		// Vars
 		this.night = false;
 
+		// Method
 		this.loadLevel();
 	}
 
@@ -48,8 +53,10 @@ export default class {
 		// Load Map
 		this.initMap();
 
+		// Load Entry Points
 		this.loadEntryPoints();
 
+		// Choose Start Points
 		if(this.instructions == undefined){
 			this.startPoint.x = this.defaultStartPoint.x;
 			this.startPoint.y = this.defaultStartPoint.y;
@@ -62,52 +69,62 @@ export default class {
 				}
 			}
 		}
-		// console.log(this.startPoint);
 
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y);
 
 		// Init InputClass
-		// console.log(this.game);
-		// console.log(this.inputClass);
 		this.inputClass = new Input(this.game, this.player);
+
+		// Set Player inside GUIClass
 		this.GUICLASS.setPlayer(this.player);
 
-
+		// Load Items
 		this.loadItems();
+
+		// Load Enemies
 		if(config.enemies) this.loadEnemies();
 		
+		// Load GamePeople
 		this.loadPeople();
+
+		// Manage Game Events
 		this.manageEvents();
 
 		// Create Weather
 		this.weather = new Weather(this.game, this.tilemapProperties.weather, this.backgroundLayer);
 
+		// Create Night
 		if (this.night) {
 			this.backgroundLayer.tint = 0x262626;
 			this.shadowTexture = this.game.add.bitmapData(this.game.width + 200, this.game.height + 200);
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
-			this.lightSprite.alpha = 0.95;
+			this.lightSprite.alpha = 0.99;
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
 			this.weather.clouds.destroy();
 			this.weather.lightning.bringToTop();
 		}
 
+		// Test Notification
 		this.GUICLASS.createNotification("saving", "Saving ...");
 
-
-		
 	}
 
 	loadEntryPoints(){
+
+		// Get array of startpoints from JSON-Map
 		let elementsArr = this.findObjectsByType('startPointType', this.map, 'EntryPoints');
 
+		// Find and map startpoints
 		elementsArr.forEach(function(element) {
+
+			// Find Default Startpoint
 			if (element.properties.startPointType == 'default') {
 				this.defaultStartPoint = {x: element.x, y: element.y};
 			}
 
+			// Find Custom Startpoints
 			if (element.properties.startPointType == 'custom') {
 				let point = [];
 				point['id'] = element.properties.id;
@@ -119,8 +136,11 @@ export default class {
 	}
 
 	loadPeople() {
+
+		// Get array of people information from JSON-Map
 		let elementsArr = this.findObjectsByType('character', this.map, 'People');
 
+		// Find specific people
 		elementsArr.forEach(function(element) {
 			if (element.properties.character == 'death') {
 				this.characters.push(new Character(this.game, element.x, element.y, this.player));
@@ -129,8 +149,11 @@ export default class {
 	}
 
 	loadItems() {
+
+		// Get array of items from JSON-Map
 		let elementsArr = this.findObjectsByType('type', this.map, 'Items');
 
+		// Find specific items
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'key') {
 				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties.id));
@@ -140,8 +163,10 @@ export default class {
 
 	loadEnemies() {
 
+		// Get array of enemies from JSON-Map
 		let elementsArr = this.findObjectsByType('type', this.map, 'Enemies');
 
+		// Find specific enemy
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'seed') {
 				this.enemies.push(new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer));
@@ -149,6 +174,7 @@ export default class {
 		}, this);
 	}
 
+	// Searchmethod for JSON-Map
 	findObjectsByType(targetType, tilemap, layer) {
 		let result = [];
 
@@ -164,6 +190,7 @@ export default class {
 		return result;
 	}
 
+	// Night Method
 	updateShadowTexture() {
 		this.shadowTexture.context.fillStyle = 'rgb(10, 10, 10)';
 		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
@@ -184,14 +211,18 @@ export default class {
 		this.shadowTexture.dirty = true;
 	}
 
+	// Update Method 
 	update() {
 
+		// Update InputClass
 		this.inputClass.update();
 
+		// If Pathfinder == true -> follow path
 		if (this.pathfinder) {
 			this.pathfinder.followPath();
 		}
 
+		// Collisionhandler
 		this.game.physics.arcade.collide(this.enemies, this.enemies);
 		this.game.physics.arcade.collide(this.enemies, this.player, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
@@ -199,6 +230,7 @@ export default class {
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.player, this.items, this.collisionHandlerItem, null, this);
+
 		this.game.world.bringToTop(this.player);
 
 		// TilemapPlus Physics
@@ -208,17 +240,21 @@ export default class {
 		// Update Weather
 		this.weather.updateWeather();
 
+		// If clouds == true -> bringtoTop (Layer)
 		if(this.weather.clouds){
 			this.game.world.bringToTop(this.weather.clouds);
 		}
 
+		// Update GUIClass
 		this.GUICLASS.update();
 
+		// If night == true
 		if (this.night) {
 			this.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
 			this.updateShadowTexture();
 		}
 
+		// If Lockpicker == true -> update()
 		if(this.lockGame){
 			this.lockGame.update();
 		}
@@ -226,16 +262,19 @@ export default class {
 	}
 
 	initMap() {
-		// JSON Map Data
+
+		// If there are no instructions for a specific map
 		if(this.instructions == undefined){
+			// Default / config-map
 			this.map = this.game.add.tilemap(config.startMap);
 		} else {
+			// Load specific map
 			this.map = this.game.add.tilemap(this.instructions.map);
 		}
 
+		// Background Cloud Layer
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 		this.backgroundLayer = this.map.createLayer('Clouds');
-
 		this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
 		//  Connect with Tileset
@@ -248,22 +287,31 @@ export default class {
 		//  Resize the world
 		this.groundLayer.resizeWorld();
 
+		// Set Collision Tiles
 		this.map.setCollisionBetween(0, 20, true, 'CollisionLayer');
 
+		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;
-		console.log(this.tilemapProperties);
+
+		// Get Properties for Nightmode
 		this.night = this.tilemapProperties.night;
+
+		// Enable Tile Animations
 		this.map.plus.animation.enable();
 	}
 
 	manageEvents() {
-		// Map Events
+
+		// Enable Custom Collision Detection
 		this.map.plus.physics.enableObjectLayer('Collision');
+
+		// Enable Events
 		this.map.plus.events.regions.enableObjectLayer('Events');
 
-		// Enter Events
+		// If Player enters Event-Area
 		this.map.plus.events.regions.onEnterAdd(this.player, region => {
 
+			// If Player enters Message-Area
 			if (region.properties.message) {
 				const message_id = region.properties.id;
 				const all_messages = Object.values(dialogues.dialogues);
@@ -278,6 +326,7 @@ export default class {
 				}
 			}
 
+			// If Player enters Bridge-Area
 			if (region.properties.bridge) {
 				const bridgeID = region.properties.id;
 				const requiredID = region.properties.requiredID;
@@ -296,6 +345,7 @@ export default class {
 				this.activatedBridges.push(bridgeID);
 			}
 
+			// If Player enters Pathfinder-Message Area
 			if (region.properties.pathfinderMessage) {
 				// (game, map, objectToMove, {target.x, target.y}), layer);
 				// this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
@@ -320,12 +370,18 @@ export default class {
 
 							const message_id = region.properties.messageID;
 							const all_messages = Object.values(dialogues.dialogues);
+
 							for (let i = 0; i < all_messages.length; i++) {
 								if (i + 1 == message_id) {
+
 									if (this.playedDialogues.includes(message_id)) return;
+
 									const message = all_messages[i];
+
 									this.playedDialogues.push(message_id);
+
 									this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
+
 									this.game.time.events.add(
 										Phaser.Timer.SECOND * 8,
 										() => {
@@ -348,17 +404,7 @@ export default class {
 				}
 			}
 
-			if (region.properties.endLevel) {
-				this.game.camera.fade(0x000000, 4000);
-				this.game.time.events.add(
-					Phaser.Timer.SECOND * 5,
-					function() {
-						this.game.state.restart(true, false);
-					},
-					this
-				);
-			}
-
+			// If Player enters Port-Area
 			if(region.properties.port){
 				let targetMap = region.properties.targetMap;
 				let targetID = region.properties.targetID;
@@ -370,6 +416,7 @@ export default class {
 		});
 	}
 
+	// Item Collision Handler
 	collisionHandlerItem(player, item) {
 		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
 		this.itemIDs.push(item.id);

@@ -15,10 +15,6 @@ export default class {
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
-
-
-		// let background = new Phaser.Rectangle(130, 30, 800, 50);
-
 		this.addBars();
 
 		var drawnObject;
@@ -31,6 +27,7 @@ export default class {
 		bmd.ctx.fillStyle = '#000000';
 		bmd.ctx.globalAlpha = 0.8;
 		bmd.ctx.fill();
+
 		this.background = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - 90, bmd);
 		this.background.fixedToCamera = true;
 
@@ -40,7 +37,6 @@ export default class {
 			this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 60, 'pxlfont', '', 32);
 		}
 
-		// this.text = this.game.add.bitmapText(130, 30, 'pxlfont', '', 20);
 		this.text.scale.set(0.26);
 		this.text.maxWidth = 1000;
 		this.text.textHeight = 1500;
@@ -54,11 +50,10 @@ export default class {
 		}
 
 		this.nextLine();
-
-		return 'test';
 	}
 
 	nextLine() {
+
 		if (this.lineIndex === this.message.length) {
 			this.game.time.events.add(Phaser.Timer.SECOND * 2, this.removeMessage, this);
 			return;
@@ -72,6 +67,7 @@ export default class {
 	}
 
 	nextWord() {
+
 		this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
 		this.wordIndex++;
 
@@ -82,6 +78,7 @@ export default class {
 	}
 
 	removeMessage() {
+
 		this.text.destroy();
 		this.background.destroy();
 		this.removeBars();
@@ -92,6 +89,7 @@ export default class {
 	}
 
 	addBars(){
+
 		var drawnObject;
 		var width = this.game.camera.width;
 		var height = 20;
@@ -109,17 +107,15 @@ export default class {
 		this.downBar = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - this.game.camera.height - 20, bmd);
 		this.downBar.fixedToCamera = true;
 
-		// this.game.add.tween(this.upperBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 		this.game.add.tween(this.upperBar.cameraOffset).to( { y: this.upperBar.y - 20 }, 1000, Phaser.Easing.Linear.None, true);
 		this.game.add.tween(this.downBar.cameraOffset).to( { y: this.downBar.y + 20 }, 1000, Phaser.Easing.Linear.None, true);
 
 	}
 
 	removeBars(){
+		
 		this.upperBarTween = this.game.add.tween(this.upperBar.cameraOffset).to( { y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
 		this.downBarTween = this.game.add.tween(this.downBar.cameraOffset).to( { y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
-		// this.game.add.tween(this.upperBar).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
-		// this.game.add.tween(this.downBar).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
 
 		this.upperBarTween.onComplete.add(function(){
             this.upperBar.destroy();

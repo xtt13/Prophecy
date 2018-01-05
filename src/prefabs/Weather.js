@@ -6,16 +6,16 @@ export default class {
 		this.game = game;
 		this.currentWeather = type;
 		this.backgroundLayer = backgroundLayer;
+
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
 		if (config.weather) {
 			this.createWeather(type);
 		}
-
-
 	}
 
 	createWeather(type) {
+
 		switch (type) {
 			case 'Snow':
 				this.addSnow();
@@ -42,6 +42,7 @@ export default class {
 	}
 
 	addSnow() {
+
 		let emitter = game.add.emitter(-500, 0, 400);
 		emitter.fixedToCamera = true;
 		emitter.width = this.game.camera.width * 2;
@@ -50,14 +51,13 @@ export default class {
 		emitter.minParticleScale = 0.1;
 		emitter.maxParticleScale = 0.5;
 		emitter.setYSpeed(0, 0.1);
-		// emitter.setXSpeed(-1, 1);
-		// emitter.maxParticleSpeed = 100;
 		emitter.minRotation = 0;
 		emitter.maxRotation = 0;
 		emitter.start(false, 4600, 5, 0);
 	}
 
 	addStorm() {
+
 		this.backgroundLayer.tint = 0x262626;
 
 		// (x, y, maxParticles)
@@ -80,7 +80,8 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-		let randomSecond = this.game.rnd.integerInRange(10, 18)
+		let randomSecond = this.game.rnd.integerInRange(10, 18);
+
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
 
 		// this.addFog();
@@ -119,6 +120,7 @@ export default class {
 	}
 
 	createLightningTexture(x, y, segments, boltWidth, branch) {
+
 		let ctx = this.lightningBitmap.context;
 		let width = this.lightningBitmap.width;
 		let height = this.lightningBitmap.height;
@@ -165,10 +167,10 @@ export default class {
 	}
 
 	addFog(){
+
 		let fog = this.game.add.bitmapData(this.game.width, this.game.height);
  
 	    fog.ctx.rect(0, 0, this.game.width, this.game.height);
-	    // fog.ctx.fillStyle = '#b2ddc8';
 	    fog.ctx.fillStyle = '#000000';
 	    fog.ctx.fill();
 	 
@@ -179,6 +181,7 @@ export default class {
 	}
 
 	addClouds(){
+
 		this.clouds = this.game.add.group(); 
         this.clouds.createMultiple(20, "cloud", 0, true);
 
@@ -243,7 +246,7 @@ export default class {
 	}
 
 	updateWeather() {
-		// console.log(this.currentWeather);
+		
 		// if(this.currentWeather == 'Leaves'){
 		//     let wind = Math.max(Math.min(wind + (Math.random() - 0.5) * 0.02, 0.05), -0.05);
 		//    this.emitter.force.x = wind;

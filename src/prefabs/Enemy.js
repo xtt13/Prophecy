@@ -8,22 +8,21 @@ export default class extends Phaser.Sprite {
 
 		this.game = game;
 		this.player = player;
-		this.health = 100;
-		this.anchor.setTo(0.5);
 		this.map = map;
 		this.layer = layer;
+
+		this.health = 100;
+		this.finderCall = true;
 		this.closeSpeed = this.game.rnd.integerInRange(20, 60);
 		this.farSpeed = this.game.rnd.integerInRange(200, 400);
 
-		this.finderCall = true;
-		// this.scale.set(-5);
+		this.anchor.setTo(0.5);
 
 		this.animations.add('walk', [0, 1, 2, 3, 4], 15, true);
 		this.animations.add('idle', [0], 1, true);
 		this.animations.play('walk');
 
 		this.game.physics.enable(this);
-		// this.body.setSize(10, 6, 5, 7);
 		this.body.setSize(13, 10, 5, 7);
 
 		game.add.existing(this);
@@ -44,7 +43,8 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (this.distanceBetweenEnemiePlayer > 100 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
-			console.log('call');
+			
+			// console.log('Calculate');
 
 			this.pathfinder = new Pathfinder(
 				this.game,

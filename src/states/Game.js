@@ -15,11 +15,10 @@ export default class extends Phaser.State {
 		this.input.onDown.add(this.toggleFullScreen, this);
 		this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
 
+		// Set GUIClass
 		this.GUI = new GUI(this.game);
 
-		// Später mit unique Tileset auf JSON verknüpfen
 		this.level = new Level(this.game, this.inputClass, this.GUI, this.instruction);
-		// this.inputClass.checkController();
 	}
 
 	update() {
@@ -39,6 +38,7 @@ export default class extends Phaser.State {
 			// for (var i = 0; i < this.level.enemies.length; i++) {
 			// 	game.debug.body(this.level.enemies[i]);
 			// }
+			
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.body(this.level.enemies);
 			this.game.debug.text('Health: ' + this.level.player.health, 50, 20);

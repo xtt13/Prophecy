@@ -71,6 +71,7 @@ export default class extends Phaser.Sprite {
 			// } else if(direction == 'down'){
 			// 	this.body.velocity.y = this.playerSpeed;
 			// }
+			
 		} else {
 			this.body.velocity.set(0);
 		}

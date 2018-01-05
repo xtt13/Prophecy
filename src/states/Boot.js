@@ -8,24 +8,19 @@ export default class extends Phaser.State {
 	}
 
 	create() {
-		const mobile = this.isMobileDevice();
-		if (!mobile) {
-			this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			this.game.scale.pageAlignVertically = true;
-			this.game.scale.pageAlignHorizontally = true;
-		} else {
-			this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			this.game.scale.pageAlignVertically = true;
-			this.game.scale.pageAlignHorizontally = true;
-		}
+
+		// Game Scaling
+		this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		this.game.scale.pageAlignVertically = true;
+		this.game.scale.pageAlignHorizontally = true;
 
 		// enable crisp rendering
 		this.game.renderer.renderSession.roundPixels = true;
 		this.game.time.advancedTiming = true;
 		Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
+		// Add Tilemap Plus Plugin
 		this.game.plugins.add(Phaser.Plugin.TilemapPlus);
 
 		// Start Physics
@@ -41,7 +36,4 @@ export default class extends Phaser.State {
 		this.state.start('Preload');
 	}
 
-	isMobileDevice() {
-		return typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
-	}
 }

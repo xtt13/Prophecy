@@ -4,20 +4,19 @@ import config from './../config';
 export default class {
 	constructor(game, x, y, player) {
 		this.game = game;
+		this.x = x;
+		this.y = y;
+		this.player = player;
+
 		this.bgColors = [0x62bd18, 0xff5300, 0xd21034, 0xff475c, 0x8f16b2, 0x588c7e, 0x8c4646];
 		this.tintColor = game.rnd.pick(this.bgColors);
 		this.rotationSpeed = 3;
 		this.maxAngleDifference = 10;
 		this.scaleRate = 0.5;
 		this.dead = false;
-		this.player = player;
-
 		this.run = true;
 		this.firstSetup = true;
 		this.currentTry = 1;
-
-		this.x = x;
-		this.y = y;
 
 		this.setupGame();
 	}
