@@ -2,11 +2,13 @@ import Phaser from 'phaser';
 import config from './../config';
 
 export default class extends Phaser.Sprite {
-	constructor(game, x, y) {
+	constructor(game, x, y, gameData, safe) {
 		super(game, x, y, 'player');
 
 		this.game = game;
-		this.health = config.playerHealth;
+		this.gameData = gameData;
+		this.health = gameData.playerHealth;
+		this.safe = safe;
 		this.movable = true;
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
@@ -95,9 +97,12 @@ export default class extends Phaser.Sprite {
 		enemy.destroy();
 
 		this.player.health -= 10;
+		this.gameData.playerHealth = this.player.health;
 		this.game.camera.flash(0xc10000, 200);
 
 		if(this.player.health <= 0){
+			this.gameData.playerHealth = 100;
+			this.safe.saveGameConfig(this.gameData);
 			this.game.state.restart(true, false, {map: this.currentMap, targetID: this.lastTargetID });
 		}
 	}

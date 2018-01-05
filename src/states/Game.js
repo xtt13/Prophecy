@@ -7,6 +7,7 @@ export default class extends Phaser.State {
 	init(instruction) {
 		this.instruction = instruction;
 		console.log('%c ' + 'GameState' + ' ', 'background: #0061ff; color: #bada55');
+
 	}
 
 	create() {
@@ -18,7 +19,7 @@ export default class extends Phaser.State {
 		// Set GUIClass
 		this.GUI = new GUI(this.game);
 
-		this.level = new Level(this.game, this.inputClass, this.GUI, this.instruction);
+		this.level = new Level(this.game, this.inputClass, this.GUI);
 	}
 
 	update() {
@@ -38,6 +39,8 @@ export default class extends Phaser.State {
 			// for (var i = 0; i < this.level.enemies.length; i++) {
 			// 	game.debug.body(this.level.enemies[i]);
 			// }
+
+			// this.game.debug.quadTree(this.game.physics.arcade.quadTree);
 			
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.body(this.level.enemies);

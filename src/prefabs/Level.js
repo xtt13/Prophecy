@@ -10,6 +10,7 @@ import Bridgebuilder from '../prefabs/Bridgebuilder';
 import Input from '../prefabs/Input';
 import LockGame from '../prefabs/LockGame';
 import Item from '../prefabs/Item';
+import Safe from '../prefabs/Safe';
 import config from './../config';
 import dialogues from './../dialogues';
 
@@ -18,12 +19,15 @@ export default class {
 
 		this.game = game;
 		this.GUICLASS = GUIclass;
-		this.instructions = instructions;
 
-		// If there are instructions -> map them
-		if(this.instructions){
-			this.currentMap = instructions.map;
-		}
+		this.safe = new Safe(this.game);
+		this.gameData = this.safe.getGameConfig();
+		this.currentMap = this.gameData.currentMap;
+
+
+		console.log(this.gameData);
+
+
 		
 		// Arrays
 		this.characters = [];
@@ -57,13 +61,14 @@ export default class {
 		this.loadEntryPoints();
 
 		// Choose Start Points
-		if(this.instructions == undefined){
+		if(this.gameData.currentMap == "map1" || this.gameData.targetID == undefined){
 			this.startPoint.x = this.defaultStartPoint.x;
 			this.startPoint.y = this.defaultStartPoint.y;
 		} else {
+
 			for (var i = 0; i < this.customStartPoints.length; i++) {
-				if(this.customStartPoints[i].id == this.instructions.targetID){
-					this.lastTargetID = this.instructions.targetID;
+				if(this.customStartPoints[i].id == this.gameData.targetID){
+					this.lastTargetID = this.gameData.targetID;
 					this.startPoint.x = this.customStartPoints[i].x;
 					this.startPoint.y = this.customStartPoints[i].y;
 				}
@@ -71,7 +76,8 @@ export default class {
 		}
 
 		// Create Player
-		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y);
+		console.log(this.startPoint.x, this.startPoint.y);
+		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this.gameData, this.safe);
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this.player);
@@ -224,6 +230,7 @@ export default class {
 
 		// Collisionhandler
 		this.game.physics.arcade.collide(this.enemies, this.enemies);
+		// this.game.physics.arcade.collide(this.enemies, this.player);
 		this.game.physics.arcade.collide(this.enemies, this.player, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
@@ -263,14 +270,9 @@ export default class {
 
 	initMap() {
 
-		// If there are no instructions for a specific map
-		if(this.instructions == undefined){
-			// Default / config-map
-			this.map = this.game.add.tilemap(config.startMap);
-		} else {
-			// Load specific map
-			this.map = this.game.add.tilemap(this.instructions.map);
-		}
+
+		this.map = this.game.add.tilemap(this.gameData.currentMap);
+		
 
 		// Background Cloud Layer
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
@@ -411,6 +413,10 @@ export default class {
 				if(this.inputClass.stick){
 					this.inputClass.stick.destroy();
 				}
+				console.log(this.gameData);
+				this.gameData.currentMap = targetMap;
+				this.gameData.targetID = targetID;
+				this.safe.saveGameConfig(this.gameData);
 				this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
 			}
 		});
