@@ -1,15 +1,16 @@
 import Phaser from 'phaser';
 import config from './../config';
+import CryptoJS from 'crypto-js';
 
 export default class {
 	constructor(game) {
 		this.game = game;
+		// let message = CryptoJS.SHA256("Message");
+		// console.log(message);
+		// console.log(CryptoJS.SHA256);
 	}
 
-	saveGameConfig(playerData){
-		playerData.test = "Hallo";
-		console.log('Save:');
-		console.log(playerData);
+	setGameConfig(playerData){
 		localStorage.setItem("playerData", JSON.stringify(playerData));
 	}
 
@@ -31,6 +32,22 @@ export default class {
 			return playerData;
 		}
 
+
+	}
+
+	setItemIDs(itemsIDs){
+		localStorage.setItem("itemIDs", JSON.stringify(itemsIDs));
+	}
+
+	getItemIDs(){
+		let itemIDs = JSON.parse(localStorage.getItem("itemIDs"));
+
+		if(itemIDs == null){
+			let itemIDs = [];
+			return itemIDs;
+		} else {
+			return itemIDs;
+		}
 
 	}
 

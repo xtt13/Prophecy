@@ -34,7 +34,7 @@ export default class {
 		this.items = [];
 		this.playedDialogues = [];
 		this.activatedBridges = [];
-		this.itemIDs = [];
+		this.itemIDs = this.safe.getItemIDs();
 		this.enemies = [];
 
 		// Accesspoints
@@ -61,7 +61,7 @@ export default class {
 		this.loadEntryPoints();
 
 		// Choose Start Points
-		if(this.gameData.currentMap == "map1" || this.gameData.targetID == undefined){
+		if(this.gameData.targetID == undefined){
 			this.startPoint.x = this.defaultStartPoint.x;
 			this.startPoint.y = this.defaultStartPoint.y;
 		} else {
@@ -161,6 +161,7 @@ export default class {
 
 		// Find specific items
 		elementsArr.forEach(function(element) {
+			if (this.itemIDs.includes(element.properties.id)) return;
 			if (element.properties.type == 'key') {
 				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties.id));
 			}
@@ -333,6 +334,8 @@ export default class {
 				const bridgeID = region.properties.id;
 				const requiredID = region.properties.requiredID;
 				if (this.activatedBridges.includes(bridgeID)) return;
+				console.log(this.itemIDs);
+				console.log(requiredID);
 				if (requiredID !== undefined && !this.itemIDs.includes(requiredID)) return;
 
 				this.bridgebuilder = new Bridgebuilder(
@@ -416,7 +419,7 @@ export default class {
 				console.log(this.gameData);
 				this.gameData.currentMap = targetMap;
 				this.gameData.targetID = targetID;
-				this.safe.saveGameConfig(this.gameData);
+				this.safe.setGameConfig(this.gameData);
 				this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
 			}
 		});
@@ -425,7 +428,10 @@ export default class {
 	// Item Collision Handler
 	collisionHandlerItem(player, item) {
 		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
+		console.log(this.itemIDs);
 		this.itemIDs.push(item.id);
+		this.safe.setItemIDs(this.itemIDs);
+		this.GUICLASS.createNotification("item", "Key");
 		item.destroy();
 		this.items.splice(item, 1);
 	}
