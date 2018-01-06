@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Item from '../prefabs/Item';
+import LockGame from '../prefabs/LockGame';
 import config from './../config';
 
 export default class extends Phaser.Sprite {
@@ -111,5 +112,18 @@ export default class extends Phaser.Sprite {
 			this.safe.setGameConfig(this.gameData);
 			this.game.state.restart(true, false, {map: this.currentMap, targetID: this.lastTargetID });
 		}
+	}
+
+	collideWithItem(player, item){
+		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
+		
+		if(!this.itemIDs.includes(item.id)){
+			this.itemIDs.push(item.id);
+			this.safe.setItemIDs(this.itemIDs);
+			this.GUICLASS.createNotification("item", "Quest Update ...");
+		}
+		
+		item.destroy();
+		this.items.splice(item, 1);
 	}
 }

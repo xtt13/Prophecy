@@ -13,7 +13,7 @@ import Item from '../prefabs/Item';
 import Safe from '../prefabs/Safe';
 import Eventmanager from '../prefabs/Eventmanager';
 import config from './../config';
-import dialogues from './../dialogues';
+
 
 export default class {
 	constructor(game, inputClass, GUIclass, instructions) {
@@ -235,7 +235,7 @@ export default class {
 
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
-		this.game.physics.arcade.collide(this.player, this.items, this.collisionHandlerItem, null, this);
+		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		this.game.world.bringToTop(this.player);
 
@@ -301,14 +301,4 @@ export default class {
 		this.map.plus.animation.enable();
 	}
 
-	// Item Collision Handler
-	collisionHandlerItem(player, item) {
-		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
-		console.log(this.itemIDs);
-		this.itemIDs.push(item.id);
-		this.safe.setItemIDs(this.itemIDs);
-		this.GUICLASS.createNotification("item", "Key");
-		item.destroy();
-		this.items.splice(item, 1);
-	}
 }

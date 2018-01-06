@@ -1,7 +1,9 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
+
 import Pathfinder from '../prefabs/Pathfinder';
 import Bridgebuilder from '../prefabs/Bridgebuilder';
+
 import dialogues from './../dialogues';
 
 export default class {
@@ -12,7 +14,6 @@ export default class {
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
 		
-		console.log('HI');
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 
 			if(region.properties.message){
@@ -37,7 +38,7 @@ export default class {
 				if (this.level.playedDialogues.includes(message_id)) return;
 
 				const message = all_messages[i];
-				
+
 				this.level.playedDialogues.push(message_id);
 				this.level.safe.setPlayedDialogues(this.level.playedDialogues);
 				this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
