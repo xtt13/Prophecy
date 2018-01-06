@@ -1,14 +1,17 @@
 import Phaser from 'phaser';
+import Item from '../prefabs/Item';
 import config from './../config';
 
 export default class extends Phaser.Sprite {
-	constructor(game, x, y, gameData, safe) {
+	constructor(game, x, y, level) {
 		super(game, x, y, 'player');
 
 		this.game = game;
-		this.gameData = gameData;
-		this.health = gameData.playerHealth;
-		this.safe = safe;
+		this.level = level;
+		console.log(this.level);
+		this.gameData = this.level.gameData;
+		this.health = this.gameData.playerHealth;
+		this.safe = this.level.safe;
 		this.movable = true;
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
@@ -93,6 +96,9 @@ export default class extends Phaser.Sprite {
 	fight() {}
 
 	getDamage(enemy, player) {
+		if(enemy.itemType !== undefined && enemy.itemType == 'key'){
+			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', enemy.dropItemID));
+		}
 
 		enemy.destroy();
 

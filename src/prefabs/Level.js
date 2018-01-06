@@ -11,6 +11,7 @@ import Input from '../prefabs/Input';
 import LockGame from '../prefabs/LockGame';
 import Item from '../prefabs/Item';
 import Safe from '../prefabs/Safe';
+import Eventmanager from '../prefabs/Eventmanager';
 import config from './../config';
 import dialogues from './../dialogues';
 
@@ -24,10 +25,7 @@ export default class {
 		this.gameData = this.safe.getGameConfig();
 		this.currentMap = this.gameData.currentMap;
 
-
 		console.log(this.gameData);
-
-
 		
 		// Arrays
 		this.characters = [];
@@ -77,7 +75,7 @@ export default class {
 
 		// Create Player
 		console.log(this.startPoint.x, this.startPoint.y);
-		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this.gameData, this.safe);
+		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this.player);
@@ -94,8 +92,8 @@ export default class {
 		// Load GamePeople
 		this.loadPeople();
 
-		// Manage Game Events
-		this.manageEvents();
+		// EventManager
+		this.eventManager = new Eventmanager(this.game, this);
 
 		// Create Weather
 		this.weather = new Weather(this.game, this.tilemapProperties.weather, this.backgroundLayer);
@@ -176,7 +174,7 @@ export default class {
 		// Find specific enemy
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'seed') {
-				this.enemies.push(new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer));
+				this.enemies.push(new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties.dropItemID, element.properties.itemType));
 			}
 		}, this);
 	}
@@ -301,133 +299,6 @@ export default class {
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
-	}
-
-	manageEvents() {
-
-		// Enable Custom Collision Detection
-		this.map.plus.physics.enableObjectLayer('Collision');
-
-		// Enable Events
-		this.map.plus.events.regions.enableObjectLayer('Events');
-
-		// If Player enters Event-Area
-		this.map.plus.events.regions.onEnterAdd(this.player, region => {
-
-			// If Player enters Message-Area
-			if (region.properties.message) {
-				const message_id = region.properties.id;
-				const all_messages = Object.values(dialogues.dialogues);
-				for (let i = 0; i < all_messages.length; i++) {
-					if (i + 1 == message_id) {
-						if (this.playedDialogues.includes(message_id)) return;
-						const message = all_messages[i];
-						this.playedDialogues.push(message_id);
-						this.safe.setPlayedDialogues(this.playedDialogues);
-						this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
-						break;
-					}
-				}
-			}
-
-			// If Player enters Bridge-Area
-			if (region.properties.bridge) {
-				const bridgeID = region.properties.id;
-				const requiredID = region.properties.requiredID;
-				if (this.activatedBridges.includes(bridgeID)) return;
-				console.log(this.itemIDs);
-				console.log(requiredID);
-				if (requiredID !== undefined && !this.itemIDs.includes(requiredID)) return;
-
-				this.bridgebuilder = new Bridgebuilder(
-					this.game,
-					region,
-					this.player,
-					this.map,
-					this.groundLayer,
-					this.collisionLayer
-				);
-
-				this.activatedBridges.push(bridgeID);
-			}
-
-			// If Player enters Pathfinder-Message Area
-			if (region.properties.pathfinderMessage) {
-				// (game, map, objectToMove, {target.x, target.y}), layer);
-				// this.pathfinder = new Pathfinder(this.game, this.map, this.player, {x: 710, y: 316}, this.groundLayer);
-
-				const message_id = region.properties.messageID;
-				if (this.playedDialogues.includes(message_id)) return;
-				this.playedDialogues.push(message_id);
-				this.safe.setPlayedDialogues(this.playedDialogues);
-
-				if (this.pathfinder == undefined) {
-					this.pathfinder = new Pathfinder(
-						this.game,
-						this.map,
-						this.characters[0],
-						{ x: this.player.x, y: this.player.y - 50 },
-						this.groundLayer,
-						false,
-						200
-					);
-					this.game.camera.follow(this.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
-					this.player.movable = false;
-					this.game.time.events.add(
-						Phaser.Timer.SECOND * 3,
-						function() {
-
-							this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
-							this.player.movable = true;
-
-							const message_id = region.properties.messageID;
-							const all_messages = Object.values(dialogues.dialogues);
-
-							for (let i = 0; i < all_messages.length; i++) {
-								if (i + 1 == message_id) {
-
-									const message = all_messages[i];
-
-									this.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
-
-									this.game.time.events.add(
-										Phaser.Timer.SECOND * 8,
-										() => {
-											this.pathfinder = new Pathfinder(
-												this.game,
-												this.map,
-												this.characters[0],
-												{ x: 515, y: 107 },
-												this.groundLayer,
-												false,
-												200
-											);
-										});
-									break;
-								}
-							}
-						},
-						this
-					);
-				}
-			}
-
-			// If Player enters Port-Area
-			if(region.properties.port){
-				let targetMap = region.properties.targetMap;
-				let targetID = region.properties.targetID;
-
-				if(this.inputClass.stick){
-					this.inputClass.stick.destroy();
-				}
-				
-				console.log(this.gameData);
-				this.gameData.currentMap = targetMap;
-				this.gameData.targetID = targetID;
-				this.safe.setGameConfig(this.gameData);
-				this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
-			}
-		});
 	}
 
 	// Item Collision Handler

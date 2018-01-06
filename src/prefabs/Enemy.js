@@ -3,13 +3,15 @@ import config from './../config';
 import Pathfinder from './Pathfinder';
 
 export default class extends Phaser.Sprite {
-	constructor(game, x, y, player, map, layer) {
+	constructor(game, x, y, player, map, layer, dropItemID, itemType) {
 		super(game, x, y, 'enemy');
 
 		this.game = game;
 		this.player = player;
 		this.map = map;
 		this.layer = layer;
+		this.dropItemID = dropItemID;
+		this.itemType = itemType;
 
 		this.health = 100;
 		this.finderCall = true;
