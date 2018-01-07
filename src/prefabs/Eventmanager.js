@@ -3,6 +3,7 @@ import 'phaser-tilemap-plus';
 
 import Pathfinder from '../prefabs/Pathfinder';
 import Bridgebuilder from '../prefabs/Bridgebuilder';
+import Questmap from '../prefabs/Questmap';
 
 import dialogues from './../dialogues';
 
@@ -24,6 +25,12 @@ export default class {
 				this.addPathfinderMessage(region)
 			} else if(region.properties.port){
 				this.addPort(region);
+			} else if(region.properties.fightArea){
+				this.fightArea(region);
+			} else if(region.properties.showQuestmap){
+				this.showQuestmap(region);
+			} else if(region.properties.addQuest){
+				this.addQuest(region);
 			}
 		});
 	}
@@ -132,6 +139,7 @@ export default class {
 		let targetMap = region.properties.targetMap;
 		let targetID = region.properties.targetID;
 
+		console.log(this.level.inputClass.stick);
 		if(this.level.inputClass.stick){
 			this.level.inputClass.stick.destroy();
 		}
@@ -141,6 +149,28 @@ export default class {
 		this.level.safe.setGameConfig(this.level.gameData);
 
 		this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
+	}
+
+	fightArea(region){
+		this.game.add.tween(this.level.groundLayer).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+		this.game.add.tween(this.level.backgroundLayer).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+		this.game.add.tween(this.level.player).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+
+		for (var i = 0; i < this.level.enemies.length; i++) {		
+			this.game.add.tween(this.level.enemies[i]).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+		}
+	}
+
+	showQuestmap(region){
+		this.level.GUICLASS.createQuestmap();
+	}
+
+	addQuest(region){
+		this.quests = this.level.safe.getQuests();
+		if (this.quests.includes(region.properties.questMessage)) return;
+		this.quests.push(region.properties.questMessage);
+		this.level.safe.setQuests(this.quests);
+		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}
 
 }

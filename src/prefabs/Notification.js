@@ -10,7 +10,6 @@ export default class {
 	}
 
 	createNotification(){
-		var drawnObject;
 		var width = 50;
 		var height = 20;
 		this.bmd = game.add.bitmapData(width, height);

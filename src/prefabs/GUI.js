@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Message from './Message';
 import Notification from './Notification';
+import Questmap from './Questmap';
 
 export default class {
 	constructor(game) {
@@ -24,12 +25,21 @@ export default class {
 		if (this.message) {
 			this.game.world.bringToTop(this.message.background);
 			this.game.world.bringToTop(this.message.text);
-			// this.game.world.bringToTop(this.notification.notificationBar);
+		}
 
-			if(this.upperBar){
-				this.game.world.bringToTop(this.upperBar);
-				this.game.world.bringToTop(this.downBar);
-			}
+		if(this.notification.notificationBar){
+			this.game.world.bringToTop(this.notification.notificationBar);
+			this.game.world.bringToTop(this.notification.text);
+		}
+
+		if(this.upperBar){
+			this.game.world.bringToTop(this.upperBar);
+			this.game.world.bringToTop(this.downBar);
+		}
+
+		if(this.questMap){
+			this.game.world.bringToTop(this.questMap.questmapBackground);
+			this.game.world.bringToTop(this.questMap.text);
 		}
 	}
 
@@ -42,7 +52,12 @@ export default class {
 
 	}
 
-	setPlayer(player) {
-		this.player = player;
+	createQuestmap(){
+		this.questMap = new Questmap(this.game, this);
+	}
+
+	setLevel(level) {
+		this.level = level;
+		this.player = this.level.player;
 	}
 }

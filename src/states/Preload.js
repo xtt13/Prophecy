@@ -6,6 +6,14 @@ export default class extends Phaser.State {
 	init() {}
 
 	preload() {
+		// this.stage.backgroundColor = "#000000";
+
+		// this.text = this.game.add.bitmapText(300, 300, 'pxlfont', '', 51);
+		// this.text.anchor.set(0.5);
+		// this.text.tint = 0xFFFFFF;
+		// this.text.text = 'Loading';
+		// this.text.scale.set(0.26);
+
 		// Load Sprites
 
 		//this.load.image('player', 'assets/sprites/player.png');
@@ -48,7 +56,7 @@ export default class extends Phaser.State {
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
-		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
+		// this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
 	}
 
 	create() {
@@ -59,7 +67,8 @@ export default class extends Phaser.State {
 
 	loadUpdate() {
 		// Log Loadingprogress
-		this.loadingprogress = this.load.onFileComplete.add(function(progress) {
+		this.loadingprogress = this.load.onFileComplete.add((progress) => {
+			// this.text.text = progress;
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
 		});
 	}

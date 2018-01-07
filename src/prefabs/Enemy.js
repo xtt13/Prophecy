@@ -16,7 +16,7 @@ export default class extends Phaser.Sprite {
 		this.health = 100;
 		this.finderCall = true;
 		this.closeSpeed = this.game.rnd.integerInRange(20, 60);
-		this.farSpeed = this.game.rnd.integerInRange(200, 400);
+		this.farSpeed = this.game.rnd.integerInRange(300, 500);
 
 		this.anchor.setTo(0.5);
 
@@ -34,9 +34,24 @@ export default class extends Phaser.Sprite {
 		
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 		
-		if (this.distanceBetweenEnemiePlayer < 100) {
+		if (this.distanceBetweenEnemiePlayer < 120) {
 
-			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+			if (this.distanceBetweenEnemiePlayer < 100) {
+
+				this.game.physics.arcade.moveToObject(this, this.player, 0);
+
+				// Attack
+				// if(this.distanceBetweenEnemiePlayer < 80){
+
+				// 	this.game.physics.arcade.moveToObject(this, this.player, 150);
+				// }
+
+			} else {
+				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+			}
+
+
+			
 
 			this.finderCall = true;
 			if (this.pathfinder) {
@@ -44,7 +59,7 @@ export default class extends Phaser.Sprite {
 			}
 		}
 
-		if (this.distanceBetweenEnemiePlayer > 100 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
+		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
 			
 			// console.log('Calculate');
 

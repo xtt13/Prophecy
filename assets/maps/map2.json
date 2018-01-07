@@ -150,6 +150,27 @@
                  "width":0.944321007138863,
                  "x":0.339093566162807,
                  "y":972.83013688994
+                }, 
+                {
+                 "height":63.5584547151923,
+                 "id":115,
+                 "name":"",
+                 "properties":
+                    {
+                     "addQuest":true,
+                     "questMessage":"This is your first quest!"
+                    },
+                 "propertytypes":
+                    {
+                     "addQuest":"bool",
+                     "questMessage":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":140.896318780604,
+                 "x":504.391435623391,
+                 "y":1153.8775566068
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1455,7 +1476,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":114,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "properties":
     {

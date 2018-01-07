@@ -36,4 +36,8 @@ export default class extends Phaser.State {
 		this.state.start('Preload');
 	}
 
+	preload(){
+		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
+	}
+
 }

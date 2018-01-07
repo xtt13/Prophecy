@@ -14,7 +14,6 @@ import Safe from '../prefabs/Safe';
 import Eventmanager from '../prefabs/Eventmanager';
 import config from './../config';
 
-
 export default class {
 	constructor(game, inputClass, GUIclass, instructions) {
 
@@ -81,7 +80,7 @@ export default class {
 		this.inputClass = new Input(this.game, this.player);
 
 		// Set Player inside GUIClass
-		this.GUICLASS.setPlayer(this.player);
+		this.GUICLASS.setLevel(this);
 
 		// Load Items
 		this.loadItems();
@@ -112,6 +111,7 @@ export default class {
 
 		// Test Notification
 		this.GUICLASS.createNotification("saving", "Saving ...");
+
 
 	}
 
@@ -251,9 +251,6 @@ export default class {
 			this.game.world.bringToTop(this.weather.clouds);
 		}
 
-		// Update GUIClass
-		this.GUICLASS.update();
-
 		// If night == true
 		if (this.night) {
 			this.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
@@ -264,6 +261,9 @@ export default class {
 		if(this.lockGame){
 			this.lockGame.update();
 		}
+
+		// Update GUIClass
+		this.GUICLASS.update();
 
 	}
 

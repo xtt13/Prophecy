@@ -66,6 +66,21 @@ export default class {
 		}
 	}
 
+	setQuests(quests){
+		localStorage.setItem("quests", JSON.stringify(quests));
+	}
+
+	getQuests(){
+		let quests = JSON.parse(localStorage.getItem("quests"));
+
+		if(quests == null){
+			let quests = [];
+			return quests;
+		} else {
+			return quests;
+		}
+	}
+
 	resetLocalStorage(){
 		localStorage.clear();
 	}
