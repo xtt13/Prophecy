@@ -356,12 +356,16 @@
                  "properties":
                     {
                      "id":1,
+                     "questID":2,
+                     "questMessage":"Find the invisible bridge!",
                      "removeQuestID":1,
                      "type":"key"
                     },
                  "propertytypes":
                     {
                      "id":"int",
+                     "questID":"int",
+                     "questMessage":"string",
                      "removeQuestID":"int",
                      "type":"string"
                     },

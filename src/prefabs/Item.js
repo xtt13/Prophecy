@@ -8,6 +8,7 @@ export default class extends Phaser.Sprite {
 		this.type = type;
 		this.id = properties.id;
 		this.questID = properties.questID;
+		this.questMessage = properties.questMessage;
 		this.removeQuestID = properties.removeQuestID;
 		this.anchor.setTo(0.5);
 

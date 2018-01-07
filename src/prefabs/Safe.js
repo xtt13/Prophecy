@@ -83,7 +83,8 @@ export default class {
 
 		for (var i = 0; i < quests.length; i++) {
 			if(quests[i][0] == id){
-				quests.splice(quests[i], 1);
+				quests[i][1] = "";
+				// quests.splice(quests[i], 1);
 			}
 		}
 

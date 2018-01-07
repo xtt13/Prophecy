@@ -171,8 +171,8 @@ export default class {
 		this.stopSearch = false;
 
 		for (var i = 0; i < this.quests.length; i++) {
-			if(this.quests[i][0] == region.properties.questID){
-				this.stop = true;
+			if(this.quests[i][0] == region.properties.questID){					
+				this.stopSearch = true;
 			} 		
 		}
 

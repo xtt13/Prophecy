@@ -125,8 +125,26 @@ export default class extends Phaser.Sprite {
 		if(item.removeQuestID !== undefined){
 			this.safe.removeQuest(item.removeQuestID);
 		}
-		
-		item.destroy();
-		this.items.splice(item, 1);
+		if(item.questID !== undefined){
+			this.quests = this.safe.getQuests();
+			this.stopSearch = false;
+			for (var i = 0; i < this.quests.length; i++) {
+				if(this.quests[i][0] == item.questID){
+					this.stop = true;
+				} 		
+			}
+
+			if(this.stopSearch) return;
+
+			this.quests.push(
+				[item.questID, item.questMessage, false]
+			);
+
+			this.safe.setQuests(this.quests);
+			this.GUICLASS.createNotification('quest', 'Questupdate');
+			}
+			
+			item.destroy();
+			this.items.splice(item, 1);
 	}
 }

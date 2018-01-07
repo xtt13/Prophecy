@@ -51,6 +51,7 @@ export default class {
 			this.text.fixedToCamera = true;
 
 			for (var i = 0; i < this.quests.length; i++) {
+				if(this.quests[i][1] == "") continue;
 				this.text.text += this.quests[i][1] + "\n";
 			}
 
