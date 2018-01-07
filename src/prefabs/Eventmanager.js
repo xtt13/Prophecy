@@ -167,8 +167,22 @@ export default class {
 
 	addQuest(region){
 		this.quests = this.level.safe.getQuests();
-		if (this.quests.includes(region.properties.questMessage)) return;
-		this.quests.push(region.properties.questMessage);
+
+		this.stopSearch = false;
+
+		for (var i = 0; i < this.quests.length; i++) {
+			if(this.quests[i][0] == region.properties.questID){
+				this.stop = true;
+			} 		
+		}
+
+		if(this.stopSearch) return;
+
+		
+
+		this.quests.push(
+			[region.properties.questID, region.properties.questMessage, false]);
+
 		this.level.safe.setQuests(this.quests);
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}

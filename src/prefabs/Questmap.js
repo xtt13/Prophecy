@@ -51,11 +51,8 @@ export default class {
 			this.text.fixedToCamera = true;
 
 			for (var i = 0; i < this.quests.length; i++) {
-				this.text.text += this.quests[i] + "\n";
+				this.text.text += this.quests[i][1] + "\n";
 			}
-
-
-
 
 			this.questmapBackground.alpha = 0;
 			this.text.alpha = 0;

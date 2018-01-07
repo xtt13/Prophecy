@@ -24,7 +24,6 @@ export default class {
 		this.gameData = this.safe.getGameConfig();
 		this.currentMap = this.gameData.currentMap;
 
-		console.log(this.gameData);
 		
 		// Arrays
 		this.characters = [];
@@ -73,7 +72,6 @@ export default class {
 		}
 
 		// Create Player
-		console.log(this.startPoint.x, this.startPoint.y);
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
 		// // Init InputClass
@@ -164,7 +162,7 @@ export default class {
 		elementsArr.forEach(function(element) {
 			if (this.itemIDs.includes(element.properties.id)) return;
 			if (element.properties.type == 'key') {
-				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties.id));
+				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties));
 			}
 		}, this);
 	}

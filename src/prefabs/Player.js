@@ -9,7 +9,6 @@ export default class extends Phaser.Sprite {
 
 		this.game = game;
 		this.level = level;
-		console.log(this.level);
 		this.gameData = this.level.gameData;
 		this.health = this.gameData.playerHealth;
 		this.safe = this.level.safe;
@@ -115,12 +114,16 @@ export default class extends Phaser.Sprite {
 	}
 
 	collideWithItem(player, item){
-		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
+		// this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
 		
 		if(!this.itemIDs.includes(item.id)){
 			this.itemIDs.push(item.id);
 			this.safe.setItemIDs(this.itemIDs);
 			this.GUICLASS.createNotification("item", "Quest Update ...");
+		}
+
+		if(item.removeQuestID !== undefined){
+			this.safe.removeQuest(item.removeQuestID);
 		}
 		
 		item.destroy();

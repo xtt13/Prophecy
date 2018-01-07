@@ -202,7 +202,6 @@ export default class {
 
 		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 
-		console.log(this.level.GUICLASS.questMap);
 		this.button_TAB.onDown.add(this.level.GUICLASS.questMap.showMap, this.level.GUICLASS.questMap);
 		this.button_TAB.onUp.add(this.level.GUICLASS.questMap.closeMap, this.level.GUICLASS.questMap);
 	}

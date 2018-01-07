@@ -158,11 +158,13 @@
                  "properties":
                     {
                      "addQuest":true,
+                     "questID":2,
                      "questMessage":"This is your first quest!"
                     },
                  "propertytypes":
                     {
                      "addQuest":"bool",
+                     "questID":"int",
                      "questMessage":"string"
                     },
                  "rotation":0,
@@ -179,11 +181,13 @@
                  "properties":
                     {
                      "addQuest":true,
+                     "questID":3,
                      "questMessage":"This is your second quest!"
                     },
                  "propertytypes":
                     {
                      "addQuest":"bool",
+                     "questID":"int",
                      "questMessage":"string"
                     },
                  "rotation":0,
@@ -200,11 +204,13 @@
                  "properties":
                     {
                      "addQuest":true,
+                     "questID":4,
                      "questMessage":"This is your third quest!"
                     },
                  "propertytypes":
                     {
                      "addQuest":"bool",
+                     "questID":"int",
                      "questMessage":"string"
                     },
                  "rotation":0,

@@ -16,11 +16,8 @@ export default class {
 
 	getGameConfig(){
 		let playerData = JSON.parse(localStorage.getItem("playerData"));
-		console.log('Get:');
-		console.log(playerData);
 
 		if(playerData == null){
-			console.log('First Save');
 
 			let playerData = {
 				playerHealth: 100,
@@ -79,6 +76,18 @@ export default class {
 		} else {
 			return quests;
 		}
+	}
+
+	removeQuest(id){
+		let quests = this.getQuests();
+
+		for (var i = 0; i < quests.length; i++) {
+			if(quests[i][0] == id){
+				quests.splice(quests[i], 1);
+			}
+		}
+
+		this.setQuests(quests);
 	}
 
 	resetLocalStorage(){

@@ -253,19 +253,21 @@
                  "properties":
                     {
                      "addQuest":true,
+                     "questID":1,
                      "questMessage":"Find the compass in order to get to the village"
                     },
                  "propertytypes":
                     {
                      "addQuest":"bool",
+                     "questID":"int",
                      "questMessage":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":69.8172499458241,
-                 "x":684.980422831881,
-                 "y":723.215765819356
+                 "width":106.656846010488,
+                 "x":648.574233779742,
+                 "y":941.219493119664
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -354,11 +356,13 @@
                  "properties":
                     {
                      "id":1,
+                     "removeQuestID":1,
                      "type":"key"
                     },
                  "propertytypes":
                     {
                      "id":"int",
+                     "removeQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
