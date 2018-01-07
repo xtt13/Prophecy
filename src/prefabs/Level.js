@@ -15,7 +15,7 @@ import Eventmanager from '../prefabs/Eventmanager';
 import config from './../config';
 
 export default class {
-	constructor(game, inputClass, GUIclass, instructions) {
+	constructor(game, GUIclass, instructions) {
 
 		this.game = game;
 		this.GUICLASS = GUIclass;
@@ -76,8 +76,8 @@ export default class {
 		console.log(this.startPoint.x, this.startPoint.y);
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
-		// Init InputClass
-		this.inputClass = new Input(this.game, this.player);
+		// // Init InputClass
+		// this.inputClass = new Input(this.game, this);
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
@@ -111,6 +111,9 @@ export default class {
 
 		// Test Notification
 		this.GUICLASS.createNotification("saving", "Saving ...");
+
+		// Init InputClass
+		this.inputClass = new Input(this.game, this);
 
 
 	}

@@ -19,7 +19,7 @@ export default class extends Phaser.State {
 		// Set GUIClass
 		this.GUI = new GUI(this.game);
 
-		this.level = new Level(this.game, this.inputClass, this.GUI);
+		this.level = new Level(this.game, this.GUI);
 	}
 
 	update() {

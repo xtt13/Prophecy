@@ -6,10 +6,13 @@ import Questmap from './Questmap';
 export default class {
 	constructor(game) {
 		this.game = game;
+		
 		this.createGUI();
 	}
 
-	createGUI() {}
+	createGUI() {
+		this.questMap = new Questmap(this.game, this);
+	}
 
 	updateGUI(option, value) {
 		switch (option) {
@@ -25,19 +28,18 @@ export default class {
 		if (this.message) {
 			this.game.world.bringToTop(this.message.background);
 			this.game.world.bringToTop(this.message.text);
+			this.game.world.bringToTop(this.message.upperBar);
+			this.game.world.bringToTop(this.message.downBar);
 		}
 
 		if(this.notification.notificationBar){
 			this.game.world.bringToTop(this.notification.notificationBar);
 			this.game.world.bringToTop(this.notification.text);
+
 		}
 
-		if(this.upperBar){
-			this.game.world.bringToTop(this.upperBar);
-			this.game.world.bringToTop(this.downBar);
-		}
 
-		if(this.questMap){
+		if(this.questMap.questmapBackground){
 			this.game.world.bringToTop(this.questMap.questmapBackground);
 			this.game.world.bringToTop(this.questMap.text);
 		}
@@ -49,11 +51,6 @@ export default class {
 
 	createNotification(type, message){
 		this.notification = new Notification(this.game, type, message);
-
-	}
-
-	createQuestmap(){
-		this.questMap = new Questmap(this.game, this);
 	}
 
 	setLevel(level) {

@@ -50,6 +50,7 @@ export default class {
 
 		this.removeTween.onComplete.add(function(){
             this.notificationBar.destroy();
+            this.notificationBar = false;
             this.text.destroy();
             this.bmd.destroy();
         }, this);

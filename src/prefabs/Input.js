@@ -3,11 +3,12 @@ import Player from './Player';
 import config from './../config';
 
 export default class {
-	constructor(game, player) {
+	constructor(game, level) {
 		this.game = game;
 
-		if (player !== undefined) {
-			this.player = player;
+		if (level !== undefined) {
+			this.level = level;
+			this.player = this.level.player;
 		}
 
 		this.gamepadSupport = false;
@@ -198,6 +199,12 @@ export default class {
 		this.button_D = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
 		// this.button_D.onDown.add(this.onKeyboardDown, this);
 		// this.button_D.onUp.add(this.onKeyboardUp, this);
+
+		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
+
+		console.log(this.level.GUICLASS.questMap);
+		this.button_TAB.onDown.add(this.level.GUICLASS.questMap.showMap, this.level.GUICLASS.questMap);
+		this.button_TAB.onUp.add(this.level.GUICLASS.questMap.closeMap, this.level.GUICLASS.questMap);
 	}
 
 	onGamepadDown(button) {
@@ -283,6 +290,14 @@ export default class {
 				} else {
 					this.player.idle();
 				}
+
+				// if(this.button_TAB.isDown){
+				// 	// this.level.GUICLASS.createQuestmap();
+				// 	// console.log(this.level.GUICLASS.questMap);
+				// 	console.log('HI');
+				// 	// this.level.GUICLASS.questMap.showMap();
+				// }
+
 			}
 		}
 	}

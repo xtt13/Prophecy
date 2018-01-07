@@ -171,6 +171,48 @@
                  "width":140.896318780604,
                  "x":504.391435623391,
                  "y":1153.8775566068
+                }, 
+                {
+                 "height":63.5585,
+                 "id":116,
+                 "name":"",
+                 "properties":
+                    {
+                     "addQuest":true,
+                     "questMessage":"This is your second quest!"
+                    },
+                 "propertytypes":
+                    {
+                     "addQuest":"bool",
+                     "questMessage":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":140.896,
+                 "x":288.38797111808,
+                 "y":1014.09632435636
+                }, 
+                {
+                 "height":63.5585,
+                 "id":117,
+                 "name":"",
+                 "properties":
+                    {
+                     "addQuest":true,
+                     "questMessage":"This is your third quest!"
+                    },
+                 "propertytypes":
+                    {
+                     "addQuest":"bool",
+                     "questMessage":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":140.896,
+                 "x":1091.39285770549,
+                 "y":1029.4124938553
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1476,7 +1518,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":116,
+ "nextobjectid":118,
  "orientation":"orthogonal",
  "properties":
     {

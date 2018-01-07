@@ -120,6 +120,7 @@ export default class {
 		this.upperBarTween.onComplete.add(function(){
             this.upperBar.destroy();
             this.downBar.destroy();
+            this.upperBar = false;
         }, this);
 	}
 }

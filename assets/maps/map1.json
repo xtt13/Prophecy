@@ -172,25 +172,6 @@
                  "y":255.68478275002
                 }, 
                 {
-                 "height":76.6865692776066,
-                 "id":27,
-                 "name":"",
-                 "properties":
-                    {
-                     "pathfinder":true
-                    },
-                 "propertytypes":
-                    {
-                     "pathfinder":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":81.7471535142449,
-                 "x":682.878116848102,
-                 "y":739.679926129841
-                }, 
-                {
                  "height":27.0737,
                  "id":28,
                  "name":"",
@@ -264,6 +245,27 @@
                  "width":62.9544,
                  "x":148.309000194363,
                  "y":5.89949596695823
+                }, 
+                {
+                 "height":63.5585,
+                 "id":49,
+                 "name":"",
+                 "properties":
+                    {
+                     "addQuest":true,
+                     "questMessage":"Find the compass in order to get to the village"
+                    },
+                 "propertytypes":
+                    {
+                     "addQuest":"bool",
+                     "questMessage":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":69.8172499458241,
+                 "x":684.980422831881,
+                 "y":723.215765819356
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -383,7 +385,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":47,
+ "nextobjectid":50,
  "orientation":"orthogonal",
  "properties":
     {
