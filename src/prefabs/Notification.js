@@ -24,10 +24,10 @@ export default class {
 		this.notificationBar.fixedToCamera = true;
 		this.notificationBar.alpha = 0;
 
-		// this.text = this.game.add.bitmapText(this.notificationBar.x, this.notificationBar.y - 4, 'pxlfont', '', 51);
-		// this.text.scale.set(0.26);
+		this.text = this.game.add.bitmapText(this.notificationBar.x, this.notificationBar.y - 4, 'pxlfont', '', 51);
+		this.text.scale.set(0.26);
 
-		this.text = this.game.add.bitmapText(this.notificationBar.x, this.notificationBar.y - 4, 'pxlfont', '', 15);
+		// this.text = this.game.add.bitmapText(this.notificationBar.x, this.notificationBar.y - 4, 'pxlfont', '', 15);
 		this.text.text = this.message;
 		this.text.alpha = 0;
 		this.text.fixedToCamera = true;

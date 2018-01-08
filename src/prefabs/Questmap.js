@@ -53,7 +53,7 @@ export default class {
 		this.bmd.ctx.globalAlpha = 0.9;
 		this.bmd.ctx.fill();
 
-			this.questmapBackground = game.add.sprite(this.game.camera.width / 2, this.game.camera.width / 2 - this.bmd.height - 20, this.bmd);
+			this.questmapBackground = game.add.sprite(this.game.camera.width / 2, this.game.camera.height / 2 - this.bmd.height / 2, this.bmd);
 			this.questmapBackground.anchor.set(0.5);
 			this.questmapBackground.fixedToCamera = true;
 
@@ -74,7 +74,7 @@ export default class {
 			this.game.add.tween(this.text).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
 			this.game.add.tween(this.questmapBackground.cameraOffset).to( { y: this.questmapBackground.y + 120 }, 800, Phaser.Easing.Back.Out, true);
-			this.game.add.tween(this.questmapBackground).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+			this.game.add.tween(this.questmapBackground).to( { alpha: 1 }, 800, Phaser.Easing.Linear.None, true);
 
 			
 

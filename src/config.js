@@ -1,7 +1,8 @@
 // Game Configuration
 export default {
 	phaserConfig: {
-		width: 480,
+		// width: 580,
+		width: 580,
 		height: 280,
 		renderer: Phaser.AUTO,
 		antialias: true,
