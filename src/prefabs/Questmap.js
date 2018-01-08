@@ -11,6 +11,8 @@ export default class {
 		this.activeClose = true;
 
 		this.questmapBackground;
+
+		this.show = false;
 	}
 
 	addQuest(){
@@ -21,10 +23,20 @@ export default class {
 
 	}
 
-	showMap() {
-		if(this.activeOpen){
+	toggleMap(){
+		if(!this.show){
+			this.showMap();
+			this.show = true;
+		} else {
+			this.closeMap();
+			this.show = false;
+		}
+	}
 
-		this.activeOpen = false;
+	showMap() {
+
+		console.log('Show Questmap');
+
 
 		this.level = this.GUI.level;
 
@@ -64,14 +76,16 @@ export default class {
 			this.game.add.tween(this.questmapBackground.cameraOffset).to( { y: this.questmapBackground.y + 120 }, 800, Phaser.Easing.Back.Out, true);
 			this.game.add.tween(this.questmapBackground).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
-			}
+			
 
 	}
 
 	closeMap(){
+
+		console.log('Close Questmap');
 		
-		if(this.activeClose && this.activeOpen == false && this.questmapBackground){
-		this.activeOpen = true;
+		
+		
 
 		this.tween = this.game.add.tween(this.questmapBackground.cameraOffset).to( { y: 100}, 800, Phaser.Easing.Back.Out, true);
 		this.game.add.tween(this.questmapBackground).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
@@ -80,13 +94,11 @@ export default class {
 		this.game.add.tween(this.text).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
 
 		this.tween.onComplete.add(function(){
-            this.questmapBackground.destroy();
-            this.text.destroy();
-            this.questmapBackground = false;
-            
-            this.activeClose = true;
+            // this.questmapBackground.destroy();
+            // this.text.destroy();
+            // this.questmapBackground = false;
         }, this);
-	}
+	
 	}
 
 

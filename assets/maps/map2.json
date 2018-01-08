@@ -44,12 +44,16 @@
                     {
                      "messageID":4,
                      "pathfinderMessage":true,
+                     "questID":6,
+                     "questMessage":"Kill all enemies!",
                      "readable":true
                     },
                  "propertytypes":
                     {
                      "messageID":"int",
                      "pathfinderMessage":"bool",
+                     "questID":"int",
+                     "questMessage":"string",
                      "readable":"bool"
                     },
                  "rotation":0,
@@ -158,8 +162,8 @@
                  "properties":
                     {
                      "addQuest":true,
-                     "questID":2,
-                     "questMessage":"This is your first quest!"
+                     "questID":3,
+                     "questMessage":"Defend yourself!"
                     },
                  "propertytypes":
                     {
@@ -181,8 +185,8 @@
                  "properties":
                     {
                      "addQuest":true,
-                     "questID":3,
-                     "questMessage":"This is your second quest!"
+                     "questID":5,
+                     "questMessage":"Hello I'm a quest!"
                     },
                  "propertytypes":
                     {
@@ -205,7 +209,7 @@
                     {
                      "addQuest":true,
                      "questID":4,
-                     "questMessage":"This is your third quest!"
+                     "questMessage":"Be a hero!"
                     },
                  "propertytypes":
                     {

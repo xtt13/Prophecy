@@ -60,10 +60,11 @@ export default class {
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
-		console.log(this.level.itemIDs);
-		console.log(requiredID);
-
 		if (requiredID !== undefined && !this.level.itemIDs.includes(requiredID)) return;
+
+		if(region.properties.removeQuestID !== undefined){
+			this.level.safe.removeQuest(region.properties.removeQuestID);
+		}
 
 		this.level.bridgebuilder = new Bridgebuilder(
 			this.game,
@@ -116,6 +117,27 @@ export default class {
 							this.game.time.events.add(
 								Phaser.Timer.SECOND * 8,
 								() => {
+									this.quests = this.level.safe.getQuests();
+
+									this.stopSearch = false;
+
+									for (var i = 0; i < this.quests.length; i++) {
+										if(this.quests[i][0] == region.properties.questID){					
+											this.stopSearch = true;
+										} 		
+									}
+
+									if(this.stopSearch) return;
+
+									
+
+									this.quests.push(
+										[region.properties.questID, region.properties.questMessage, false]);
+
+									this.level.safe.setQuests(this.quests);
+									this.level.GUICLASS.createNotification('quest', 'Questupdate');
+
+									
 									this.level.pathfinder = new Pathfinder(
 										this.game,
 										this.level.map,
@@ -139,7 +161,6 @@ export default class {
 		let targetMap = region.properties.targetMap;
 		let targetID = region.properties.targetID;
 
-		console.log(this.level.inputClass.stick);
 		if(this.level.inputClass.stick){
 			this.level.inputClass.stick.destroy();
 		}

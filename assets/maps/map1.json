@@ -154,6 +154,7 @@
                      "direction":"up",
                      "id":2,
                      "length":6,
+                     "removeQuestID":2,
                      "requiredID":1
                     },
                  "propertytypes":
@@ -162,6 +163,7 @@
                      "direction":"string",
                      "id":"int",
                      "length":"int",
+                     "removeQuestID":"int",
                      "requiredID":"int"
                     },
                  "rotation":0,
@@ -373,8 +375,8 @@
                  "type":"",
                  "visible":true,
                  "width":38.9549,
-                 "x":235.05027753196,
-                 "y":667.850501255891
+                 "x":228.908400164778,
+                 "y":668.874147483755
                 }],
          "opacity":1,
          "type":"objectgroup",

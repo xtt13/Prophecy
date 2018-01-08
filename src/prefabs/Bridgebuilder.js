@@ -9,8 +9,6 @@ export default class {
 		this.collisionLayer = collisionLayer;
 		this.region = region;
 
-		console.log(region);
-
 		this.buildBridge();
 	}
 

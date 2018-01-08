@@ -115,16 +115,16 @@ export default class extends Phaser.Sprite {
 
 	collideWithItem(player, item){
 		// this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
-		
+
 		if(!this.itemIDs.includes(item.id)){
 			this.itemIDs.push(item.id);
 			this.safe.setItemIDs(this.itemIDs);
-			this.GUICLASS.createNotification("item", "Quest Update ...");
 		}
 
 		if(item.removeQuestID !== undefined){
 			this.safe.removeQuest(item.removeQuestID);
 		}
+
 		if(item.questID !== undefined){
 			this.quests = this.safe.getQuests();
 			this.stopSearch = false;
@@ -141,8 +141,9 @@ export default class extends Phaser.Sprite {
 			);
 
 			this.safe.setQuests(this.quests);
+			console.log('Questupdate');
 			this.GUICLASS.createNotification('quest', 'Questupdate');
-			}
+		}
 			
 			item.destroy();
 			this.items.splice(item, 1);
