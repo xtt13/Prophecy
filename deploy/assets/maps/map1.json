@@ -154,6 +154,7 @@
                      "direction":"up",
                      "id":2,
                      "length":6,
+                     "removeQuestID":2,
                      "requiredID":1
                     },
                  "propertytypes":
@@ -162,6 +163,7 @@
                      "direction":"string",
                      "id":"int",
                      "length":"int",
+                     "removeQuestID":"int",
                      "requiredID":"int"
                     },
                  "rotation":0,
@@ -170,25 +172,6 @@
                  "width":62.9544,
                  "x":149.059659608837,
                  "y":255.68478275002
-                }, 
-                {
-                 "height":76.6865692776066,
-                 "id":27,
-                 "name":"",
-                 "properties":
-                    {
-                     "pathfinder":true
-                    },
-                 "propertytypes":
-                    {
-                     "pathfinder":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":81.7471535142449,
-                 "x":682.878116848102,
-                 "y":739.679926129841
                 }, 
                 {
                  "height":27.0737,
@@ -264,6 +247,29 @@
                  "width":62.9544,
                  "x":148.309000194363,
                  "y":5.89949596695823
+                }, 
+                {
+                 "height":63.5585,
+                 "id":49,
+                 "name":"",
+                 "properties":
+                    {
+                     "addQuest":true,
+                     "questID":1,
+                     "questMessage":"Find the compass in order to get to the village"
+                    },
+                 "propertytypes":
+                    {
+                     "addQuest":"bool",
+                     "questID":"int",
+                     "questMessage":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":106.656846010488,
+                 "x":648.574233779742,
+                 "y":941.219493119664
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -352,19 +358,25 @@
                  "properties":
                     {
                      "id":1,
+                     "questID":2,
+                     "questMessage":"Find the invisible bridge!",
+                     "removeQuestID":1,
                      "type":"key"
                     },
                  "propertytypes":
                     {
                      "id":"int",
+                     "questID":"int",
+                     "questMessage":"string",
+                     "removeQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":38.9549,
-                 "x":235.05027753196,
-                 "y":667.850501255891
+                 "x":228.908400164778,
+                 "y":668.874147483755
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -383,7 +395,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":47,
+ "nextobjectid":50,
  "orientation":"orthogonal",
  "properties":
     {

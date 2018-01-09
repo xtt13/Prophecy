@@ -31,6 +31,8 @@ export default class {
 				this.showQuestmap(region);
 			} else if(region.properties.addQuest){
 				this.addQuest(region);
+			} else if(region.properties.openDoor){
+				this.openDoor(region);
 			}
 		});
 	}
@@ -206,6 +208,11 @@ export default class {
 
 		this.level.safe.setQuests(this.quests);
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
+	}
+
+	openDoor(region){
+		this.level.door.animations.play('open', 5, false);
+		// this.game.camera.shake(0.0015, 10000, true);
 	}
 
 }

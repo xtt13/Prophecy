@@ -76,6 +76,11 @@ export default class {
 
 		// // Init InputClass
 		// this.inputClass = new Input(this.game, this);
+		if(this.currentMap == "map3"){
+			this.door = this.game.add.sprite(864, 792, 'templeDoor');
+			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 5, true);
+		}
+		
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);

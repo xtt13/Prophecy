@@ -153,7 +153,7 @@ export default class {
 			this.gamepad_buttonBack = this.pad1.getButton(Phaser.Gamepad.XBOX360_BACK);
 			this.gamepad_buttonStart = this.pad1.getButton(Phaser.Gamepad.XBOX360_START);
 
-			this.gamepad_buttonBack.onDown.add(this.onGamepadDown, this);
+			this.gamepad_buttonBack.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
 			this.gamepad_buttonStart.onDown.add(this.onGamepadDown, this);
 
 			// Sticks Press Buttons

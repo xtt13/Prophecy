@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
+import Musicplayer from '../prefabs/Musicplayer';
 
 export default class extends Phaser.State {
 	init() {
@@ -31,6 +32,8 @@ export default class extends Phaser.State {
 
 		// Enable Pixel Rendering
 		this.stage.smoothed = false;
+
+		this.musicPlayer = new Musicplayer(this.game);
 
 		// Start the Preload State
 		this.state.start('Preload');
