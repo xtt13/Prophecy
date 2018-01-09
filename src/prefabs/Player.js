@@ -109,7 +109,7 @@ export default class extends Phaser.Sprite {
 		if(this.player.health <= 0){
 			this.gameData.playerHealth = 100;
 			this.safe.setGameConfig(this.gameData);
-			this.game.state.restart(true, false, {map: this.currentMap, targetID: this.lastTargetID });
+			this.game.state.restart(true, false, {map: this.currentMap, targetID: this.lastTargetID, restartType: 'revive'});
 		}
 	}
 

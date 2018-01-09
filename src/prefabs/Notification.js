@@ -36,8 +36,8 @@ export default class {
 		this.text.anchor.set(0.5);
 		this.notificationBar.anchor.set(0.5);
 
-		console.log('Beginn Text: ' + this.text.cameraOffset);
-		console.log('Beginn notificationBar: ' + this.notificationBar.cameraOffset);
+		// console.log('Beginn Text: ' + this.text.cameraOffset);
+		// console.log('Beginn notificationBar: ' + this.notificationBar.cameraOffset);
 
 		this.game.add.tween(this.text.cameraOffset).to( { y: this.text.y + 40 }, 800, Phaser.Easing.Back.Out, true);
 		this.game.add.tween(this.notificationBar.cameraOffset).to( { y: this.notificationBar.y + 40 }, 800, Phaser.Easing.Back.Out, true);
@@ -45,8 +45,8 @@ export default class {
 		this.game.add.tween(this.text).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 		this.game.add.tween(this.notificationBar).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
-		console.log('Beginn Text End: ' + this.text.cameraOffset);
-		console.log('Beginn notificationBar End: ' + this.notificationBar.cameraOffset);
+		// console.log('Beginn Text End: ' + this.text.cameraOffset);
+		// console.log('Beginn notificationBar End: ' + this.notificationBar.cameraOffset);
 
 		this.game.time.events.add(Phaser.Timer.SECOND * 4, this.removeNotification, this);
 	}

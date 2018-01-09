@@ -5,7 +5,12 @@ import GUI from '../prefabs/GUI';
 
 export default class extends Phaser.State {
 	init(instruction) {
-		this.instruction = instruction;
+		if(instruction == undefined){
+			this.instruction = false;
+		} else {
+			this.instruction = instruction;
+		}
+		
 		console.log('%c ' + 'GameState' + ' ', 'background: #0061ff; color: #bada55');
 
 	}
@@ -19,7 +24,7 @@ export default class extends Phaser.State {
 		// Set GUIClass
 		this.GUI = new GUI(this.game);
 
-		this.level = new Level(this.game, this.GUI);
+		this.level = new Level(this.game, this.GUI, this.instruction);
 	}
 
 	update() {

@@ -15,7 +15,7 @@ import Eventmanager from '../prefabs/Eventmanager';
 import config from './../config';
 
 export default class {
-	constructor(game, GUIclass, instructions) {
+	constructor(game, GUIclass, instruction) {
 
 		this.game = game;
 		this.GUICLASS = GUIclass;
@@ -23,6 +23,7 @@ export default class {
 		this.safe = new Safe(this.game);
 		this.gameData = this.safe.getGameConfig();
 		this.currentMap = this.gameData.currentMap;
+		this.restartType = instruction.restartType;
 
 		
 		// Arrays
@@ -46,12 +47,22 @@ export default class {
 	}
 
 	loadLevel() {
-
-		// FadeIn on Load
-		this.game.camera.flash(0x000000, 2000);
+		
 
 		// Load Map
 		this.initMap();
+
+
+		// FadeIn on Load
+		// if(this.restartType !== false && this.restartType == "revive"){
+		// 	this.game.camera.flash(0x000000, 2000);
+		// 	this.backgroundLayer.alpha = 0;
+		// 	this.groundLayer.alpha = 0;
+		// 	this.game.add.tween(this.backgroundLayer).to( { alpha: 1 }, 4000, "Linear", true);
+		// 	this.game.add.tween(this.groundLayer).to( { alpha: 1 }, 4000, "Linear", true);
+		// } else {
+			this.game.camera.flash(0x000000, 2000);
+		// }
 
 		// Load Entry Points
 		this.loadEntryPoints();
@@ -78,7 +89,8 @@ export default class {
 		// this.inputClass = new Input(this.game, this);
 		if(this.currentMap == "map3"){
 			this.door = this.game.add.sprite(864, 792, 'templeDoor');
-			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 5, true);
+			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
+			this.door.animations.add('idle', [17], 1, true);
 		}
 		
 
@@ -234,7 +246,7 @@ export default class {
 		}
 
 		// Collisionhandler
-		this.game.physics.arcade.collide(this.enemies, this.enemies);
+		this.game.physics.arcade.collide(this.enemies);
 		// this.game.physics.arcade.collide(this.enemies, this.player);
 		this.game.physics.arcade.collide(this.enemies, this.player, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);

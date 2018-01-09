@@ -211,7 +211,11 @@ export default class {
 	}
 
 	openDoor(region){
-		this.level.door.animations.play('open', 5, false);
+		if(this.level.gameData.targetID == 3){
+			this.level.door.animations.play('idle', 1, true);
+		} else {
+			this.level.door.animations.play('open', 8, false);
+		}
 		// this.game.camera.shake(0.0015, 10000, true);
 	}
 
