@@ -112,14 +112,16 @@
                     {
                      "bridge":true,
                      "direction":"up",
+                     "duration":500,
                      "id":3,
                      "length":7,
-                     "requiredID":1
+                     "requiredID":2
                     },
                  "propertytypes":
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "duration":"int",
                      "id":"int",
                      "length":"int",
                      "requiredID":"int"
@@ -181,6 +183,7 @@
                     {
                      "bridge":true,
                      "direction":"down",
+                     "duration":1,
                      "id":3,
                      "length":7,
                      "requiredID":1
@@ -189,6 +192,7 @@
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "duration":"int",
                      "id":"int",
                      "length":"int",
                      "requiredID":"int"
@@ -344,7 +348,7 @@
  "properties":
     {
      "night":false,
-     "weather":"Snow"
+     "weather":"TempleFlies"
     },
  "propertytypes":
     {

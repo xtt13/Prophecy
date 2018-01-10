@@ -15,6 +15,7 @@ export default class {
 	buildBridge() {
 		const bridgeDirection = this.region.properties.direction;
 		const bridgeLength = this.region.properties.length;
+		const bridgeDuration = this.region.properties.duration;
 
 		// let bridgeX = this.groundLayer.getTileX(this.player.x);
 		// let bridgeY = this.groundLayer.getTileY(this.player.y);
@@ -64,11 +65,11 @@ export default class {
 				this.map.removeTile(collX, collY - 1, this.collisionLayer);
 			}
 
-			this.game.camera.shake(0.0015, 500);
+			this.game.camera.shake(0.0015, bridgeDuration);
 
 			bridgeCounter++;
 
 			if (bridgeCounter === bridgeLength) clearInterval(bridgeInterval);
-		}, 500);
+		}, bridgeDuration);
 	}
 }

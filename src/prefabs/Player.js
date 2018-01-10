@@ -76,7 +76,6 @@ export default class extends Phaser.Sprite {
 			// } else if(direction == 'down'){
 			// 	this.body.velocity.y = this.playerSpeed;
 			// }
-			
 		} else {
 			this.body.velocity.set(0);
 		}
@@ -96,8 +95,11 @@ export default class extends Phaser.Sprite {
 	fight() {}
 
 	getDamage(enemy, player) {
-		if(enemy.itemType !== undefined && enemy.itemType == 'key'){
-			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', enemy.dropItemID));
+		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+			console.log(enemy.dropItemID);
+			let properties = {};
+			properties.id = enemy.dropItemID;
+			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
 		}
 
 		enemy.destroy();
@@ -106,46 +108,48 @@ export default class extends Phaser.Sprite {
 		this.gameData.playerHealth = this.player.health;
 		this.game.camera.flash(0xc10000, 200);
 
-		if(this.player.health <= 0){
+		if (this.player.health <= 0) {
 			this.gameData.playerHealth = 100;
 			this.safe.setGameConfig(this.gameData);
-			this.game.state.restart(true, false, {map: this.currentMap, targetID: this.lastTargetID, restartType: 'revive'});
+			this.game.state.restart(true, false, {
+				map: this.currentMap,
+				targetID: this.lastTargetID,
+				restartType: 'revive'
+			});
 		}
 	}
 
-	collideWithItem(player, item){
-		// this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
-
-		if(!this.itemIDs.includes(item.id)){
+	collideWithItem(player, item) {
+		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
+		console.log(item);
+		if (!this.itemIDs.includes(item.id)) {
 			this.itemIDs.push(item.id);
 			this.safe.setItemIDs(this.itemIDs);
 		}
 
-		if(item.removeQuestID !== undefined){
+		if (item.removeQuestID !== undefined) {
 			this.safe.removeQuest(item.removeQuestID);
 		}
 
-		if(item.questID !== undefined){
+		if (item.questID !== undefined) {
 			this.quests = this.safe.getQuests();
 			this.stopSearch = false;
 			for (var i = 0; i < this.quests.length; i++) {
-				if(this.quests[i][0] == item.questID){
+				if (this.quests[i][0] == item.questID) {
 					this.stop = true;
-				} 		
+				}
 			}
 
-			if(this.stopSearch) return;
+			if (this.stopSearch) return;
 
-			this.quests.push(
-				[item.questID, item.questMessage, false]
-			);
+			this.quests.push([item.questID, item.questMessage, false]);
 
 			this.safe.setQuests(this.quests);
 			console.log('Questupdate');
 			this.GUICLASS.createNotification('quest', 'Questupdate');
 		}
-			
-			item.destroy();
-			this.items.splice(item, 1);
+
+		item.destroy();
+		this.items.splice(item, 1);
 	}
 }

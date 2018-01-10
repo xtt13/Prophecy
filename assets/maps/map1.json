@@ -69,6 +69,7 @@
                     {
                      "bridge":true,
                      "direction":"up",
+                     "duration":500,
                      "id":1,
                      "length":7
                     },
@@ -76,6 +77,7 @@
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "duration":"int",
                      "id":"int",
                      "length":"int"
                     },
@@ -94,6 +96,7 @@
                     {
                      "bridge":true,
                      "direction":"down",
+                     "duration":500,
                      "id":1,
                      "length":7
                     },
@@ -101,6 +104,7 @@
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "duration":"int",
                      "id":"int",
                      "length":"int"
                     },
@@ -119,6 +123,7 @@
                     {
                      "bridge":true,
                      "direction":"up",
+                     "duration":500,
                      "id":2,
                      "length":6,
                      "removeQuestID":2,
@@ -128,6 +133,7 @@
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "duration":"int",
                      "id":"int",
                      "length":"int",
                      "removeQuestID":"int",
@@ -171,6 +177,7 @@
                     {
                      "bridge":true,
                      "direction":"down",
+                     "duration":500,
                      "id":2,
                      "length":6,
                      "requiredID":1
@@ -179,6 +186,7 @@
                     {
                      "bridge":"bool",
                      "direction":"string",
+                     "duration":"int",
                      "id":"int",
                      "length":"int",
                      "requiredID":"int"

@@ -9,7 +9,7 @@ export default class {
 		this.game.time.events.add(Phaser.Timer.SECOND * 1, this.createNotification, this);
 	}
 
-	createNotification(){
+	createNotification() {
 		var width = 50;
 		var height = 20;
 		this.bmd = game.add.bitmapData(width, height);
@@ -39,11 +39,13 @@ export default class {
 		// console.log('Beginn Text: ' + this.text.cameraOffset);
 		// console.log('Beginn notificationBar: ' + this.notificationBar.cameraOffset);
 
-		this.game.add.tween(this.text.cameraOffset).to( { y: this.text.y + 40 }, 800, Phaser.Easing.Back.Out, true);
-		this.game.add.tween(this.notificationBar.cameraOffset).to( { y: this.notificationBar.y + 40 }, 800, Phaser.Easing.Back.Out, true);
+		this.game.add.tween(this.text.cameraOffset).to({ y: this.text.y + 40 }, 800, Phaser.Easing.Back.Out, true);
+		this.game.add
+			.tween(this.notificationBar.cameraOffset)
+			.to({ y: this.notificationBar.y + 40 }, 800, Phaser.Easing.Back.Out, true);
 
-		this.game.add.tween(this.text).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
-		this.game.add.tween(this.notificationBar).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.text).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.notificationBar).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
 		// console.log('Beginn Text End: ' + this.text.cameraOffset);
 		// console.log('Beginn notificationBar End: ' + this.notificationBar.cameraOffset);
@@ -51,19 +53,18 @@ export default class {
 		this.game.time.events.add(Phaser.Timer.SECOND * 4, this.removeNotification, this);
 	}
 
-	removeNotification(){
-
-		this.removeTween = this.game.add.tween(this.text).to( { alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
-		this.game.add.tween(this.notificationBar).to( { alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
+	removeNotification() {
+		this.removeTween = this.game.add.tween(this.text).to({ alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
+		this.game.add.tween(this.notificationBar).to({ alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
 
 		this.notificationBar.cameraOffset.y = -20;
 		this.text.cameraOffset.y = -20;
 
-		this.removeTween.onComplete.add(function(){
-            this.notificationBar.destroy();
-            this.notificationBar = false;
-            this.text.destroy();
-            this.bmd.destroy();
-        }, this);
+		this.removeTween.onComplete.add(function() {
+			this.notificationBar.destroy();
+			this.notificationBar = false;
+			this.text.destroy();
+			this.bmd.destroy();
+		}, this);
 	}
 }

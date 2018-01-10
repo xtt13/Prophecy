@@ -71,12 +71,11 @@ export default class {
 	}
 
 	useMobile() {
-
-		if(this.stick){
+		if (this.stick) {
 			this.stick.destroy();
 		}
 
-		if(this.pad){
+		if (this.pad) {
 			this.pad.destroy();
 		}
 
@@ -296,7 +295,6 @@ export default class {
 				// 	console.log('HI');
 				// 	// this.level.GUICLASS.questMap.showMap();
 				// }
-
 			}
 		}
 	}

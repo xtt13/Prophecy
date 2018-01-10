@@ -15,10 +15,13 @@ export default class {
 	}
 
 	createWeather(type) {
-
 		switch (type) {
 			case 'Snow':
 				this.addSnow();
+				break;
+
+			case 'TempleFlies':
+				this.addTempleFlies();
 				break;
 
 			case 'Storm':
@@ -42,7 +45,6 @@ export default class {
 	}
 
 	addSnow() {
-
 		let emitter = game.add.emitter(-500, 0, 400);
 		emitter.fixedToCamera = true;
 		emitter.width = this.game.camera.width * 2;
@@ -56,8 +58,29 @@ export default class {
 		emitter.start(false, 4600, 5, 0);
 	}
 
-	addStorm() {
+	addTempleFlies() {
+		console.log('Testweather');
+		let emitter = game.add.emitter(this.game.camera.width / 2, 1100, 100);
+		// emitter.fixedToCamera = true;
+		emitter.width = this.game.camera.width * 2;
+		emitter.height = this.game.camera.height;
+		emitter.angle = -10;
+		emitter.minParticleScale = 0.1;
+		emitter.maxParticleScale = 0.5;
+		// emitter.maxParticleSpeed.setTo(2, 2);
+	
+		emitter.setYSpeed(5, 10);
+		emitter.setXSpeed(20, -20);
 
+		emitter.gravity = 0.5;
+		emitter.minRotation = 0;
+		emitter.maxRotation = 0;
+		emitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
+		emitter.makeParticles('fly');
+		emitter.start(false, 10000, 5, 0);
+	}
+
+	addStorm() {
 		this.backgroundLayer.tint = 0x262626;
 
 		// (x, y, maxParticles)
@@ -86,7 +109,6 @@ export default class {
 
 		// this.addFog();
 		this.addClouds();
-
 	}
 
 	zap() {
@@ -116,11 +138,9 @@ export default class {
 
 		this.game.camera.flash(0xffffff, 200);
 		this.game.camera.shake(0.005, 500);
-
 	}
 
 	createLightningTexture(x, y, segments, boltWidth, branch) {
-
 		let ctx = this.lightningBitmap.context;
 		let width = this.lightningBitmap.width;
 		let height = this.lightningBitmap.height;
@@ -166,38 +186,42 @@ export default class {
 		this.lightningBitmap.dirty = true;
 	}
 
-	addFog(){
-
+	addFog() {
 		let fog = this.game.add.bitmapData(this.game.width, this.game.height);
- 
-	    fog.ctx.rect(0, 0, this.game.width, this.game.height);
-	    fog.ctx.fillStyle = '#000000';
-	    fog.ctx.fill();
-	 
-	    this.fogSprite = this.game.add.sprite(0, 0, fog);
-	    this.fogSprite.fixedToCamera = true;
-	    this.fogSprite.alpha = 0.6;
-	    this.game.add.tween(this.fogSprite).to( { alpha: 0.4 }, 10000, null, true, 0, 0, true);
+
+		fog.ctx.rect(0, 0, this.game.width, this.game.height);
+		fog.ctx.fillStyle = '#000000';
+		fog.ctx.fill();
+
+		this.fogSprite = this.game.add.sprite(0, 0, fog);
+		this.fogSprite.fixedToCamera = true;
+		this.fogSprite.alpha = 0.6;
+		this.game.add.tween(this.fogSprite).to({ alpha: 0.4 }, 10000, null, true, 0, 0, true);
 	}
 
-	addClouds(){
+	addClouds() {
+		this.clouds = this.game.add.group();
+		this.clouds.createMultiple(20, 'cloud', 0, true);
 
-		this.clouds = this.game.add.group(); 
-        this.clouds.createMultiple(20, "cloud", 0, true);
+		this.clouds.forEach(cloud => {
+			// cloud.scale.set(this.game.rnd.realInRange(2, 8));
+			cloud.scale.set(2);
+			cloud.x = this.game.world.randomX;
+			cloud.y = this.game.world.randomY;
+		});
 
-        this.clouds.forEach((cloud) => {
-        	// cloud.scale.set(this.game.rnd.realInRange(2, 8));
-        	cloud.scale.set(2);
-        	cloud.x = this.game.world.randomX;
-        	cloud.y = this.game.world.randomY;
-    	});
-
-        this.game.add.tween(this.clouds.scale).to({
-          x: 2,
-          y: 2
-        }, 60000, "Linear", true, 0, 0, true);
-
-        
+		this.game.add.tween(this.clouds.scale).to(
+			{
+				x: 2,
+				y: 2
+			},
+			60000,
+			'Linear',
+			true,
+			0,
+			0,
+			true
+		);
 	}
 
 	addSnowWind() {
@@ -241,16 +265,12 @@ export default class {
 		console.log(this.emitter);
 	}
 
-	addSun(){
-		
-	}
+	addSun() {}
 
 	updateWeather() {
-		
 		// if(this.currentWeather == 'Leaves'){
 		//     let wind = Math.max(Math.min(wind + (Math.random() - 0.5) * 0.02, 0.05), -0.05);
 		//    this.emitter.force.x = wind;
 		// }
-
 	}
 }

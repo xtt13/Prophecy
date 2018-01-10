@@ -54,6 +54,7 @@ export default class extends Phaser.State {
 		// Load Weather Sprites
 		this.load.image('rain', 'assets/sprites/rain.png');
 		this.load.image('snow', 'assets/sprites/snow.png');
+		this.load.image('fly', 'assets/sprites/fly.png');
 		this.load.image('leave', 'assets/sprites/leave.png');
 		this.load.image('cloud', 'assets/sprites/cloud.png');
 
@@ -70,7 +71,7 @@ export default class extends Phaser.State {
 
 	loadUpdate() {
 		// Log Loadingprogress
-		this.loadingprogress = this.load.onFileComplete.add((progress) => {
+		this.loadingprogress = this.load.onFileComplete.add(progress => {
 			// this.text.text = progress;
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
 		});

@@ -6,7 +6,7 @@ import Questmap from './Questmap';
 export default class {
 	constructor(game) {
 		this.game = game;
-		
+
 		this.createGUI();
 	}
 
@@ -32,14 +32,12 @@ export default class {
 			this.game.world.bringToTop(this.message.downBar);
 		}
 
-		if(this.notification.notificationBar){
+		if (this.notification.notificationBar) {
 			this.game.world.bringToTop(this.notification.notificationBar);
 			this.game.world.bringToTop(this.notification.text);
-
 		}
 
-
-		if(this.questMap.questmapBackground){
+		if (this.questMap.questmapBackground) {
 			this.game.world.bringToTop(this.questMap.questmapBackground);
 			this.game.world.bringToTop(this.questMap.text);
 		}
@@ -49,7 +47,7 @@ export default class {
 		this.message = new Message(this.game, message, playerMovable, readable, this.player);
 	}
 
-	createNotification(type, message){
+	createNotification(type, message) {
 		this.notification = new Notification(this.game, type, message);
 	}
 

@@ -14,36 +14,34 @@ export default class {
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
-		
-		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 
-			if(region.properties.message){
+		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
+			if (region.properties.message) {
 				this.addMessage(region);
-			} else if(region.properties.bridge){
+			} else if (region.properties.bridge) {
 				this.addBridge(region);
-			} else if(region.properties.pathfinderMessage){
-				this.addPathfinderMessage(region)
-			} else if(region.properties.port){
+			} else if (region.properties.pathfinderMessage) {
+				this.addPathfinderMessage(region);
+			} else if (region.properties.port) {
 				this.addPort(region);
-			} else if(region.properties.fightArea){
+			} else if (region.properties.fightArea) {
 				this.fightArea(region);
-			} else if(region.properties.showQuestmap){
+			} else if (region.properties.showQuestmap) {
 				this.showQuestmap(region);
-			} else if(region.properties.addQuest){
+			} else if (region.properties.addQuest) {
 				this.addQuest(region);
-			} else if(region.properties.openDoor){
+			} else if (region.properties.openDoor) {
 				this.openDoor(region);
 			}
 		});
 	}
 
-	addMessage(region){
+	addMessage(region) {
 		const message_id = region.properties.id;
 		const all_messages = Object.values(dialogues.dialogues);
 
 		for (let i = 0; i < all_messages.length; i++) {
 			if (i + 1 == message_id) {
-
 				if (this.level.playedDialogues.includes(message_id)) return;
 
 				const message = all_messages[i];
@@ -56,7 +54,7 @@ export default class {
 		}
 	}
 
-	addBridge(region){
+	addBridge(region) {
 		const bridgeID = region.properties.id;
 		const requiredID = region.properties.requiredID;
 
@@ -64,7 +62,7 @@ export default class {
 
 		if (requiredID !== undefined && !this.level.itemIDs.includes(requiredID)) return;
 
-		if(region.properties.removeQuestID !== undefined){
+		if (region.properties.removeQuestID !== undefined) {
 			this.level.safe.removeQuest(region.properties.removeQuestID);
 		}
 
@@ -80,7 +78,7 @@ export default class {
 		this.level.activatedBridges.push(bridgeID);
 	}
 
-	addPathfinderMessage(region){
+	addPathfinderMessage(region) {
 		const message_id = region.properties.messageID;
 
 		if (this.level.playedDialogues.includes(message_id)) return;
@@ -102,7 +100,6 @@ export default class {
 			this.game.time.events.add(
 				Phaser.Timer.SECOND * 3,
 				function() {
-
 					this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.level.player.movable = true;
 
@@ -111,45 +108,38 @@ export default class {
 
 					for (let i = 0; i < all_messages.length; i++) {
 						if (i + 1 == message_id) {
-
 							const message = all_messages[i];
 
 							this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 
-							this.game.time.events.add(
-								Phaser.Timer.SECOND * 8,
-								() => {
-									this.quests = this.level.safe.getQuests();
+							this.game.time.events.add(Phaser.Timer.SECOND * 8, () => {
+								this.quests = this.level.safe.getQuests();
 
-									this.stopSearch = false;
+								this.stopSearch = false;
 
-									for (var i = 0; i < this.quests.length; i++) {
-										if(this.quests[i][0] == region.properties.questID){					
-											this.stopSearch = true;
-										} 		
+								for (var i = 0; i < this.quests.length; i++) {
+									if (this.quests[i][0] == region.properties.questID) {
+										this.stopSearch = true;
 									}
+								}
 
-									if(this.stopSearch) return;
+								if (this.stopSearch) return;
 
-									
+								this.quests.push([region.properties.questID, region.properties.questMessage, false]);
 
-									this.quests.push(
-										[region.properties.questID, region.properties.questMessage, false]);
+								this.level.safe.setQuests(this.quests);
+								this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
-									this.level.safe.setQuests(this.quests);
-									this.level.GUICLASS.createNotification('quest', 'Questupdate');
-
-									
-									this.level.pathfinder = new Pathfinder(
-										this.game,
-										this.level.map,
-										this.level.characters[0],
-										{ x: 515, y: 107 },
-										this.level.groundLayer,
-										false,
-										200
-									);
-								});
+								this.level.pathfinder = new Pathfinder(
+									this.game,
+									this.level.map,
+									this.level.characters[0],
+									{ x: 515, y: 107 },
+									this.level.groundLayer,
+									false,
+									200
+								);
+							});
 							break;
 						}
 					}
@@ -159,11 +149,11 @@ export default class {
 		}
 	}
 
-	addPort(region){
+	addPort(region) {
 		let targetMap = region.properties.targetMap;
 		let targetID = region.properties.targetID;
 
-		if(this.level.inputClass.stick){
+		if (this.level.inputClass.stick) {
 			this.level.inputClass.stick.destroy();
 		}
 
@@ -171,52 +161,56 @@ export default class {
 		this.level.gameData.targetID = targetID;
 		this.level.safe.setGameConfig(this.level.gameData);
 
-		this.game.state.restart(true, false, {map: targetMap, targetID: targetID });
+		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
 	}
 
-	fightArea(region){
-		this.game.add.tween(this.level.groundLayer).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
-		this.game.add.tween(this.level.backgroundLayer).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
-		this.game.add.tween(this.level.player).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+	fightArea(region) {
+		this.game.add
+			.tween(this.level.groundLayer)
+			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+		this.game.add
+			.tween(this.level.backgroundLayer)
+			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+		this.game.add
+			.tween(this.level.player)
+			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
 
-		for (var i = 0; i < this.level.enemies.length; i++) {		
-			this.game.add.tween(this.level.enemies[i]).to( { tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+		for (var i = 0; i < this.level.enemies.length; i++) {
+			this.game.add
+				.tween(this.level.enemies[i])
+				.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
 		}
 	}
 
-	showQuestmap(region){
+	showQuestmap(region) {
 		this.level.GUICLASS.createQuestmap();
 	}
 
-	addQuest(region){
+	addQuest(region) {
 		this.quests = this.level.safe.getQuests();
 
 		this.stopSearch = false;
 
 		for (var i = 0; i < this.quests.length; i++) {
-			if(this.quests[i][0] == region.properties.questID){					
+			if (this.quests[i][0] == region.properties.questID) {
 				this.stopSearch = true;
-			} 		
+			}
 		}
 
-		if(this.stopSearch) return;
+		if (this.stopSearch) return;
 
-		
-
-		this.quests.push(
-			[region.properties.questID, region.properties.questMessage, false]);
+		this.quests.push([region.properties.questID, region.properties.questMessage, false]);
 
 		this.level.safe.setQuests(this.quests);
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}
 
-	openDoor(region){
-		if(this.level.gameData.targetID == 3){
+	openDoor(region) {
+		if (this.level.gameData.targetID == 3) {
 			this.level.door.animations.play('idle', 1, true);
 		} else {
 			this.level.door.animations.play('open', 8, false);
 		}
 		// this.game.camera.shake(0.0015, 10000, true);
 	}
-
 }

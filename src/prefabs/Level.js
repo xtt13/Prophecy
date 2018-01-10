@@ -16,7 +16,6 @@ import config from './../config';
 
 export default class {
 	constructor(game, GUIclass, instruction) {
-
 		this.game = game;
 		this.GUICLASS = GUIclass;
 
@@ -25,7 +24,6 @@ export default class {
 		this.currentMap = this.gameData.currentMap;
 		this.restartType = instruction.restartType;
 
-		
 		// Arrays
 		this.characters = [];
 		this.items = [];
@@ -47,34 +45,21 @@ export default class {
 	}
 
 	loadLevel() {
-		
-
 		// Load Map
 		this.initMap();
 
-
-		// FadeIn on Load
-		// if(this.restartType !== false && this.restartType == "revive"){
-		// 	this.game.camera.flash(0x000000, 2000);
-		// 	this.backgroundLayer.alpha = 0;
-		// 	this.groundLayer.alpha = 0;
-		// 	this.game.add.tween(this.backgroundLayer).to( { alpha: 1 }, 4000, "Linear", true);
-		// 	this.game.add.tween(this.groundLayer).to( { alpha: 1 }, 4000, "Linear", true);
-		// } else {
-			this.game.camera.flash(0x000000, 2000);
-		// }
+		this.game.camera.flash(0x000000, 2000);
 
 		// Load Entry Points
 		this.loadEntryPoints();
 
 		// Choose Start Points
-		if(this.gameData.targetID == undefined){
+		if (this.gameData.targetID == undefined) {
 			this.startPoint.x = this.defaultStartPoint.x;
 			this.startPoint.y = this.defaultStartPoint.y;
 		} else {
-
 			for (var i = 0; i < this.customStartPoints.length; i++) {
-				if(this.customStartPoints[i].id == this.gameData.targetID){
+				if (this.customStartPoints[i].id == this.gameData.targetID) {
 					this.lastTargetID = this.gameData.targetID;
 					this.startPoint.x = this.customStartPoints[i].x;
 					this.startPoint.y = this.customStartPoints[i].y;
@@ -85,14 +70,12 @@ export default class {
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
-		// // Init InputClass
-		// this.inputClass = new Input(this.game, this);
-		if(this.currentMap == "map3"){
+		// Customizations
+		if (this.currentMap == 'map3') {
 			this.door = this.game.add.sprite(864, 792, 'templeDoor');
 			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
 			this.door.animations.add('idle', [17], 1, true);
 		}
-		
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
@@ -101,8 +84,8 @@ export default class {
 		this.loadItems();
 
 		// Load Enemies
-		if(config.enemies) this.loadEnemies();
-		
+		if (config.enemies) this.loadEnemies();
+
 		// Load GamePeople
 		this.loadPeople();
 
@@ -125,25 +108,21 @@ export default class {
 		}
 
 		// Test Notification
-		this.GUICLASS.createNotification("saving", "Saving ...");
+		this.GUICLASS.createNotification('saving', 'Saving ...');
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);
-
-
 	}
 
-	loadEntryPoints(){
-
+	loadEntryPoints() {
 		// Get array of startpoints from JSON-Map
 		let elementsArr = this.findObjectsByType('startPointType', this.map, 'EntryPoints');
 
 		// Find and map startpoints
 		elementsArr.forEach(function(element) {
-
 			// Find Default Startpoint
 			if (element.properties.startPointType == 'default') {
-				this.defaultStartPoint = {x: element.x, y: element.y};
+				this.defaultStartPoint = { x: element.x, y: element.y };
 			}
 
 			// Find Custom Startpoints
@@ -158,7 +137,6 @@ export default class {
 	}
 
 	loadPeople() {
-
 		// Get array of people information from JSON-Map
 		let elementsArr = this.findObjectsByType('character', this.map, 'People');
 
@@ -171,7 +149,6 @@ export default class {
 	}
 
 	loadItems() {
-
 		// Get array of items from JSON-Map
 		let elementsArr = this.findObjectsByType('type', this.map, 'Items');
 
@@ -185,14 +162,24 @@ export default class {
 	}
 
 	loadEnemies() {
-
 		// Get array of enemies from JSON-Map
 		let elementsArr = this.findObjectsByType('type', this.map, 'Enemies');
 
 		// Find specific enemy
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'seed') {
-				this.enemies.push(new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties.dropItemID, element.properties.itemType));
+				this.enemies.push(
+					new Enemy(
+						this.game,
+						element.x,
+						element.y,
+						this.player,
+						this.map,
+						this.groundLayer,
+						element.properties.dropItemID,
+						element.properties.itemType
+					)
+				);
 			}
 		}, this);
 	}
@@ -223,8 +210,8 @@ export default class {
 			heroY = this.player.y - this.game.camera.y;
 
 		var gradient = this.shadowTexture.context.createRadialGradient(heroX, heroY, 100 * 0.75, heroX, heroY, radius);
-	    gradient.addColorStop(0, 'rgba(255, 227, 134, 1.0)');
-	    gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+		gradient.addColorStop(0, 'rgba(255, 227, 134, 1.0)');
+		gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
 
 		this.shadowTexture.context.beginPath();
 		this.shadowTexture.context.fillStyle = gradient;
@@ -234,9 +221,8 @@ export default class {
 		this.shadowTexture.dirty = true;
 	}
 
-	// Update Method 
+	// Update Method
 	update() {
-
 		// Update InputClass
 		this.inputClass.update();
 
@@ -265,7 +251,7 @@ export default class {
 		this.weather.updateWeather();
 
 		// If clouds == true -> bringtoTop (Layer)
-		if(this.weather.clouds){
+		if (this.weather.clouds) {
 			this.game.world.bringToTop(this.weather.clouds);
 		}
 
@@ -276,20 +262,16 @@ export default class {
 		}
 
 		// If Lockpicker == true -> update()
-		if(this.lockGame){
+		if (this.lockGame) {
 			this.lockGame.update();
 		}
 
 		// Update GUIClass
 		this.GUICLASS.update();
-
 	}
 
 	initMap() {
-
-
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
-		
 
 		// Background Cloud Layer
 		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
@@ -318,5 +300,4 @@ export default class {
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
 	}
-
 }

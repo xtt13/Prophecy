@@ -31,13 +31,10 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
-		
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
-		
+
 		if (this.distanceBetweenEnemiePlayer < 120) {
-
 			if (this.distanceBetweenEnemiePlayer < 100) {
-
 				this.game.physics.arcade.moveToObject(this, this.player, 0);
 
 				// Attack
@@ -45,13 +42,9 @@ export default class extends Phaser.Sprite {
 
 				// 	this.game.physics.arcade.moveToObject(this, this.player, 150);
 				// }
-
 			} else {
 				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			}
-
-
-			
 
 			this.finderCall = true;
 			if (this.pathfinder) {
@@ -60,7 +53,6 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
-			
 			// console.log('Calculate');
 
 			this.pathfinder = new Pathfinder(

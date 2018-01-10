@@ -10,15 +10,14 @@ export default class {
 		// console.log(CryptoJS.SHA256);
 	}
 
-	setGameConfig(playerData){
-		localStorage.setItem("playerData", JSON.stringify(playerData));
+	setGameConfig(playerData) {
+		localStorage.setItem('playerData', JSON.stringify(playerData));
 	}
 
-	getGameConfig(){
-		let playerData = JSON.parse(localStorage.getItem("playerData"));
+	getGameConfig() {
+		let playerData = JSON.parse(localStorage.getItem('playerData'));
 
-		if(playerData == null){
-
+		if (playerData == null) {
 			let playerData = {
 				playerHealth: 100,
 				currentMap: 'map1'
@@ -28,34 +27,31 @@ export default class {
 		} else {
 			return playerData;
 		}
-
-
 	}
 
-	setItemIDs(itemsIDs){
-		localStorage.setItem("itemIDs", JSON.stringify(itemsIDs));
+	setItemIDs(itemsIDs) {
+		localStorage.setItem('itemIDs', JSON.stringify(itemsIDs));
 	}
 
-	getItemIDs(){
-		let itemIDs = JSON.parse(localStorage.getItem("itemIDs"));
+	getItemIDs() {
+		let itemIDs = JSON.parse(localStorage.getItem('itemIDs'));
 
-		if(itemIDs == null){
+		if (itemIDs == null) {
 			let itemIDs = [];
 			return itemIDs;
 		} else {
 			return itemIDs;
 		}
-
 	}
 
-	setPlayedDialogues(playedDialogues){
-		localStorage.setItem("playedDialogues", JSON.stringify(playedDialogues));
+	setPlayedDialogues(playedDialogues) {
+		localStorage.setItem('playedDialogues', JSON.stringify(playedDialogues));
 	}
 
-	getPlayedDialogues(){
-		let playedDialogues = JSON.parse(localStorage.getItem("playedDialogues"));
+	getPlayedDialogues() {
+		let playedDialogues = JSON.parse(localStorage.getItem('playedDialogues'));
 
-		if(playedDialogues == null){
+		if (playedDialogues == null) {
 			let playedDialogues = [];
 			return playedDialogues;
 		} else {
@@ -63,14 +59,14 @@ export default class {
 		}
 	}
 
-	setQuests(quests){
-		localStorage.setItem("quests", JSON.stringify(quests));
+	setQuests(quests) {
+		localStorage.setItem('quests', JSON.stringify(quests));
 	}
 
-	getQuests(){
-		let quests = JSON.parse(localStorage.getItem("quests"));
+	getQuests() {
+		let quests = JSON.parse(localStorage.getItem('quests'));
 
-		if(quests == null){
+		if (quests == null) {
 			let quests = [];
 			return quests;
 		} else {
@@ -78,12 +74,12 @@ export default class {
 		}
 	}
 
-	removeQuest(id){
+	removeQuest(id) {
 		let quests = this.getQuests();
 
 		for (var i = 0; i < quests.length; i++) {
-			if(quests[i][0] == id){
-				quests[i][1] = "";
+			if (quests[i][0] == id) {
+				quests[i][1] = '';
 				// quests.splice(quests[i], 1);
 			}
 		}
@@ -91,8 +87,7 @@ export default class {
 		this.setQuests(quests);
 	}
 
-	resetLocalStorage(){
+	resetLocalStorage() {
 		localStorage.clear();
 	}
-	
 }

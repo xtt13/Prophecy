@@ -9,7 +9,6 @@ export default class extends Phaser.State {
 	}
 
 	create() {
-
 		// Game Scaling
 		this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -39,8 +38,7 @@ export default class extends Phaser.State {
 		this.state.start('Preload');
 	}
 
-	preload(){
+	preload() {
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
 	}
-
 }

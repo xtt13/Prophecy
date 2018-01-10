@@ -5,18 +5,16 @@ import GUI from '../prefabs/GUI';
 
 export default class extends Phaser.State {
 	init(instruction) {
-		if(instruction == undefined){
+		if (instruction == undefined) {
 			this.instruction = false;
 		} else {
 			this.instruction = instruction;
 		}
-		
-		console.log('%c ' + 'GameState' + ' ', 'background: #0061ff; color: #bada55');
 
+		console.log('%c ' + 'GameState' + ' ', 'background: #0061ff; color: #bada55');
 	}
 
 	create() {
-			
 		// Toggle Fullscreen onclick
 		this.input.onDown.add(this.toggleFullScreen, this);
 		this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
@@ -28,9 +26,7 @@ export default class extends Phaser.State {
 	}
 
 	update() {
-
 		this.level.update();
-
 	}
 
 	render() {
@@ -46,7 +42,7 @@ export default class extends Phaser.State {
 			// }
 
 			// this.game.debug.quadTree(this.game.physics.arcade.quadTree);
-			
+
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.body(this.level.enemies);
 			this.game.debug.text(this.level.player.health, 50, 20);

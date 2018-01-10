@@ -53,7 +53,6 @@ export default class {
 	}
 
 	nextLine() {
-
 		if (this.lineIndex === this.message.length) {
 			this.game.time.events.add(Phaser.Timer.SECOND * 2, this.removeMessage, this);
 			return;
@@ -67,7 +66,6 @@ export default class {
 	}
 
 	nextWord() {
-
 		this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
 		this.wordIndex++;
 
@@ -78,7 +76,6 @@ export default class {
 	}
 
 	removeMessage() {
-
 		this.text.destroy();
 		this.background.destroy();
 		this.removeBars();
@@ -88,8 +85,7 @@ export default class {
 		}
 	}
 
-	addBars(){
-
+	addBars() {
 		var drawnObject;
 		var width = this.game.camera.width;
 		var height = 20;
@@ -104,23 +100,33 @@ export default class {
 		this.upperBar = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height, bmd);
 		this.upperBar.fixedToCamera = true;
 
-		this.downBar = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - this.game.camera.height - 20, bmd);
+		this.downBar = game.add.sprite(
+			this.game.camera.width / 2 - bmd.width / 2,
+			this.game.camera.height - this.game.camera.height - 20,
+			bmd
+		);
 		this.downBar.fixedToCamera = true;
 
-		this.game.add.tween(this.upperBar.cameraOffset).to( { y: this.upperBar.y - 20 }, 1000, Phaser.Easing.Linear.None, true);
-		this.game.add.tween(this.downBar.cameraOffset).to( { y: this.downBar.y + 20 }, 1000, Phaser.Easing.Linear.None, true);
-
+		this.game.add
+			.tween(this.upperBar.cameraOffset)
+			.to({ y: this.upperBar.y - 20 }, 1000, Phaser.Easing.Linear.None, true);
+		this.game.add
+			.tween(this.downBar.cameraOffset)
+			.to({ y: this.downBar.y + 20 }, 1000, Phaser.Easing.Linear.None, true);
 	}
 
-	removeBars(){
-		
-		this.upperBarTween = this.game.add.tween(this.upperBar.cameraOffset).to( { y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
-		this.downBarTween = this.game.add.tween(this.downBar.cameraOffset).to( { y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
+	removeBars() {
+		this.upperBarTween = this.game.add
+			.tween(this.upperBar.cameraOffset)
+			.to({ y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
+		this.downBarTween = this.game.add
+			.tween(this.downBar.cameraOffset)
+			.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
 
-		this.upperBarTween.onComplete.add(function(){
-            this.upperBar.destroy();
-            this.downBar.destroy();
-            this.upperBar = false;
-        }, this);
+		this.upperBarTween.onComplete.add(function() {
+			this.upperBar.destroy();
+			this.downBar.destroy();
+			this.upperBar = false;
+		}, this);
 	}
 }

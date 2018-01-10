@@ -40,8 +40,8 @@ export default class {
 		});
 
 		this.pathfinder = new PhaserEasystar(this.game);
-		
-		if(this.cornerCutting){
+
+		if (this.cornerCutting) {
 			this.pathfinder.easystar.enableCornerCutting();
 			this.pathfinder.easystar.enableDiagonals();
 		}
@@ -106,7 +106,7 @@ export default class {
 
 		var x = next.x * 36 + 18;
 		var y = next.y * 36 + 18;
-		
+
 		this.followingPath = true;
 		this.movingTween.target = this.player;
 		this.movingTween.timeline = [];
