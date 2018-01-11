@@ -15,10 +15,6 @@ export default class {
 		this.show = false;
 	}
 
-	addQuest() {}
-
-	removeQuest() {}
-
 	toggleMap() {
 		if (!this.show) {
 			this.showMap();
@@ -30,12 +26,13 @@ export default class {
 	}
 
 	showMap() {
+
 		console.log('Show Questmap');
 
 		this.level = this.GUI.level;
 
 		this.quests = this.level.safe.getQuests();
-		// this.level.safe.setQuests(this.quests);
+		console.log(this.quests);
 
 		var width = 400;
 		var height = 200;
@@ -68,7 +65,12 @@ export default class {
 
 		for (let prop in this.quests) {
 			if(!isNaN(prop)){
-				this.text.text += this.quests[prop].questMessage + '\n';
+				if(this.quests[prop].questKillEnemyAmount !== undefined){
+					this.text.text += this.quests[prop].questMessage + ': ' + this.quests[prop].questDeadEnemies + '/' + this.quests[prop].questKillEnemyAmount + '\n';
+				} else {
+					this.text.text += this.quests[prop].questMessage + '\n';
+				}
+				
 			}
 		}
 

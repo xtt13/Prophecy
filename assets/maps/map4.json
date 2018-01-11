@@ -144,10 +144,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -163,10 +165,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -182,10 +186,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -201,10 +207,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -220,10 +228,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -239,10 +249,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -258,10 +270,12 @@
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":9,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,

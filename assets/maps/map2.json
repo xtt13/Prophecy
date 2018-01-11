@@ -42,7 +42,11 @@
                  "name":"",
                  "properties":
                     {
+                     "characterID":1,
+                     "endDestinationX":515,
+                     "endDestinationY":107,
                      "messageID":4,
+                     "messageWaitingDuration":3,
                      "pathfinderMessage":true,
                      "questID":6,
                      "questKillEnemyAmount":8,
@@ -53,7 +57,11 @@
                     },
                  "propertytypes":
                     {
+                     "characterID":"int",
+                     "endDestinationX":"int",
+                     "endDestinationY":"int",
                      "messageID":"int",
+                     "messageWaitingDuration":"int",
                      "pathfinderMessage":"bool",
                      "questID":"int",
                      "questKillEnemyAmount":"int",
@@ -383,6 +391,8 @@
                      "dropItemID":2,
                      "itemType":"key",
                      "killQuestID":6,
+                     "questID":7,
+                     "questMessage":"Enter the temple!",
                      "type":"seed"
                     },
                  "propertytypes":
@@ -390,6 +400,8 @@
                      "dropItemID":"int",
                      "itemType":"string",
                      "killQuestID":"int",
+                     "questID":"int",
+                     "questMessage":"string",
                      "type":"string"
                     },
                  "rotation":0,
@@ -604,18 +616,20 @@
                  "name":"",
                  "properties":
                     {
-                     "character":"death"
+                     "character":"testman",
+                     "id":1
                     },
                  "propertytypes":
                     {
-                     "character":"string"
+                     "character":"string",
+                     "id":"int"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":18.3897477156485,
-                 "x":591.195468824634,
-                 "y":880.89487296668
+                 "x":578.493023603929,
+                 "y":870.309501949426
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -644,7 +658,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":134,
+ "nextobjectid":136,
  "orientation":"orthogonal",
  "properties":
     {

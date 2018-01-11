@@ -95,6 +95,7 @@ export default class {
 		emitter.setXSpeed(-5, 5);
 		emitter.minRotation = 180;
 		emitter.maxRotation = 0;
+		emitter.gravity = 200;
 
 		// (explode, lifespan, frequency, quantity)
 		emitter.start(false, 2500, 1, 0);

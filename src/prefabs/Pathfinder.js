@@ -16,7 +16,7 @@ export default class {
 		this.showPaths = false;
 
 		this.pathToFollow = [];
-		this.walkables = [2, 9];
+		this.walkables = [2, 9, 11];
 
 		this.blocked = false;
 		this.followingPath = false;
@@ -46,7 +46,7 @@ export default class {
 			this.pathfinder.easystar.enableDiagonals();
 		}
 
-		this.pathfinder.easystar.setIterationsPerCalculation(1000);
+		this.pathfinder.easystar.setIterationsPerCalculation(1);
 		this.pathfinder.setGrid(this.map.layers[0].data, this.walkables);
 		this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
 	}

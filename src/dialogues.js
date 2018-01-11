@@ -6,6 +6,8 @@ export default {
 			'If the evil one destroys the Hero, nothing can save the world from his wicked reign. Only a person of the Knights Of Hyrule, who protected the royalty of Hylia,'
 		],
 		'3': ['Test3', 'Test4'],
-		'4': ['Please help us! Our village is invaded by enemies', 'Kill them all!']
+		'4': ['Please help us! Our village is invaded by enemies', 'Kill them all!'],
+		'5': ['The oracle is already waiting for you!'],
+		'6': ['I am the oracle!', 'Be our hero and prove your power!', 'Go into the dark forest and kill three Enemies!']
 	}
 };

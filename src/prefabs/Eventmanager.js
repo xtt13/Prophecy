@@ -32,6 +32,8 @@ export default class {
 				this.addQuest(region);
 			} else if (region.properties.openDoor) {
 				this.openDoor(region);
+			} else if (region.properties.movePlayerToXY){
+				this.movePlayerToXY(region);
 			}
 		});
 	}
@@ -43,6 +45,14 @@ export default class {
 		for (let i = 0; i < all_messages.length; i++) {
 			if (i + 1 == message_id) {
 				if (this.level.playedDialogues.includes(message_id)) return;
+
+				if (region.properties.removeQuestID !== undefined) {
+					this.level.questManager.removeQuest(region.properties.removeQuestID);
+				}
+
+				if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+				this.level.questManager.addQuest(region.properties);
+				this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
 				const message = all_messages[i];
 
@@ -56,14 +66,13 @@ export default class {
 
 	addBridge(region) {
 		const bridgeID = region.properties.id;
-		const requiredID = region.properties.requiredID;
+		const requiredID = region.properties.requiredItemID;
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
 		if (requiredID !== undefined && !this.level.itemIDs.includes(requiredID)) return;
 
 		if (region.properties.removeQuestID !== undefined) {
-			// this.level.safe.removeQuest(region.properties.removeQuestID);
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
 		}
 
@@ -79,28 +88,59 @@ export default class {
 		this.level.activatedBridges.push(bridgeID);
 	}
 
+	movePlayerToXY(region){
+		const targetX = region.properties.targetX;
+		const targetY = region.properties.targetY;
+
+
+		if (this.level.pathfinder == undefined) {
+
+			this.level.pathfinder = new Pathfinder(
+				this.game,
+				this.level.map,
+				this.level.player,
+				{ x: targetX, y: targetY },
+				this.level.groundLayer,
+				false,
+				200
+			);
+		}
+	}
+
 	addPathfinderMessage(region) {
 		const message_id = region.properties.messageID;
+		const characterID = region.properties.characterID;
 
 		if (this.level.playedDialogues.includes(message_id)) return;
 		this.level.playedDialogues.push(message_id);
 		this.level.safe.setPlayedDialogues(this.level.playedDialogues);
 
+		for (var i = 0; i < this.level.characters.length; i++) {
+			if(this.level.characters[i].id == characterID){
+				this.pathfinderCharacter = this.level.characters[i];
+			} else {
+				console.warn('Character not found!');
+			}
+			
+		}
+
 		if (this.level.pathfinder == undefined) {
 			this.level.pathfinder = new Pathfinder(
 				this.game,
 				this.level.map,
-				this.level.characters[0],
+				this.pathfinderCharacter,
 				{ x: this.level.player.x, y: this.level.player.y - 50 },
 				this.level.groundLayer,
 				false,
 				200
 			);
+
 			this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 			this.level.player.movable = false;
+
 			this.game.time.events.add(
-				Phaser.Timer.SECOND * 3,
-				function() {
+				Phaser.Timer.SECOND * region.properties.messageWaitingDuration,
+				() => {
 					this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.level.player.movable = true;
 
@@ -121,15 +161,20 @@ export default class {
 
 								this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
-								this.level.pathfinder = new Pathfinder(
-									this.game,
-									this.level.map,
-									this.level.characters[0],
-									{ x: 515, y: 107 },
-									this.level.groundLayer,
-									false,
-									200
-								);
+								if (region.properties.endDestinationX !== 'currentPosition' && region.properties.endDestinationY !== 'currentPosition'){
+									this.endDestinationX = region.properties.endDestinationX;
+									this.endDestinationY = region.properties.endDestinationY;
+
+									this.level.pathfinder = new Pathfinder(
+										this.game,
+										this.level.map,
+										this.pathfinderCharacter,
+										{ x: this.endDestinationX, y: this.endDestinationY },
+										this.level.groundLayer,
+										false,
+										300
+									);
+								}
 							});
 							break;
 						}

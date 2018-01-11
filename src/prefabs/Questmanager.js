@@ -14,7 +14,7 @@ export default class {
 			'id': properties.questID,
 			'questMessage': properties.questMessage,
 			'questKillEnemyType': properties.questKillEnemyType,
-			'questDeadEnemies' : 0,
+			'questDeadEnemies' : 1,
 			'questKillEnemyAmount': properties.questKillEnemyAmount
 		}
 		this.quests[properties.questID] = quest;
@@ -45,7 +45,8 @@ export default class {
 		this.quests = this.level.safe.getQuests();
 
 		if(questID in this.quests){
-			if(this.quests[questID].questDeadEnemies > this.quests[questID].questKillEnemyAmount){
+			console.log(this.quests[questID].questDeadEnemies, this.quests[questID].questKillEnemyAmount);
+			if(this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount){
 				this.level.GUICLASS.createNotification('quest', 'Questupdate');
 				this.removeQuest(questID);
 			} else {

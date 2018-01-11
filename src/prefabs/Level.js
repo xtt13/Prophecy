@@ -141,13 +141,11 @@ export default class {
 
 	loadPeople() {
 		// Get array of people information from JSON-Map
-		let elementsArr = this.findObjectsByType('character', this.map, 'People');
+		let elementsArr = this.findObjectsByType('id', this.map, 'People');
 
 		// Find specific people
 		elementsArr.forEach(function(element) {
-			if (element.properties.character == 'death') {
-				this.characters.push(new Character(this.game, element.x, element.y, this.player));
-			}
+			this.characters.push(new Character(this.game, element, this.player));
 		}, this);
 	}
 
@@ -184,7 +182,6 @@ export default class {
 				);
 			}
 		}, this);
-		console.log(this.enemies);
 	}
 
 	// Searchmethod for JSON-Map
@@ -235,7 +232,7 @@ export default class {
 		}
 
 		// Collisionhandler
-		this.game.physics.arcade.collide(this.enemies);
+		this.game.physics.arcade.collide(this.enemies, this.enemies);
 		// this.game.physics.arcade.collide(this.enemies, this.player);
 		this.game.physics.arcade.collide(this.enemies, this.player, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);

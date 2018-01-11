@@ -127,7 +127,7 @@
                      "id":2,
                      "length":6,
                      "removeQuestID":2,
-                     "requiredID":1
+                     "requiredItemID":1
                     },
                  "propertytypes":
                     {
@@ -137,7 +137,7 @@
                      "id":"int",
                      "length":"int",
                      "removeQuestID":"int",
-                     "requiredID":"int"
+                     "requiredItemID":"int"
                     },
                  "rotation":0,
                  "type":"",

@@ -8,6 +8,10 @@ export default class extends Phaser.State {
 		console.log('%c Boot it up! ', 'background: #0061ff; color: #bada55');
 	}
 
+	preload(){
+		this.game.load.audio('track1', 'assets/music/test1.mp3');
+	}
+
 	create() {
 		// Game Scaling
 		this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;

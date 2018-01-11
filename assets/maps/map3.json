@@ -115,7 +115,7 @@
                      "duration":500,
                      "id":3,
                      "length":7,
-                     "requiredID":2
+                     "requiredItemID":2
                     },
                  "propertytypes":
                     {
@@ -124,14 +124,14 @@
                      "duration":"int",
                      "id":"int",
                      "length":"int",
-                     "requiredID":"int"
+                     "requiredItemID":"int"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":62.9544,
-                 "x":868.619113807898,
-                 "y":1156.23812592155
+                 "x":869.229297778365,
+                 "y":1157.45849386248
                 }, 
                 {
                  "height":251.474992133748,
@@ -203,6 +203,41 @@
                  "width":62.9544,
                  "x":868.705047318574,
                  "y":867.823133269099
+                }, 
+                {
+                 "height":76.6866,
+                 "id":63,
+                 "name":"",
+                 "properties":
+                    {
+                     "characterID":2,
+                     "endDestinationX":956,
+                     "endDestinationY":1200,
+                     "messageID":5,
+                     "messageWaitingDuration":1,
+                     "pathfinderMessage":true,
+                     "questID":8,
+                     "questMessage":"Talk to the oracle!",
+                     "readable":true
+                    },
+                 "propertytypes":
+                    {
+                     "characterID":"int",
+                     "endDestinationX":"int",
+                     "endDestinationY":"int",
+                     "messageID":"int",
+                     "messageWaitingDuration":"int",
+                     "pathfinderMessage":"bool",
+                     "questID":"int",
+                     "questMessage":"string",
+                     "readable":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":172.939,
+                 "x":900.828358662373,
+                 "y":1309.79071641255
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -315,7 +350,28 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "height":11.4936,
+                 "id":62,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"testman",
+                     "id":2
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":18.3897,
+                 "x":836.248774249412,
+                 "y":1197.95849849261
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -343,7 +399,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":58,
+ "nextobjectid":64,
  "orientation":"orthogonal",
  "properties":
     {
