@@ -35,7 +35,7 @@ export default class {
 		this.level = this.GUI.level;
 
 		this.quests = this.level.safe.getQuests();
-		this.level.safe.setQuests(this.quests);
+		// this.level.safe.setQuests(this.quests);
 
 		var width = 400;
 		var height = 200;
@@ -66,9 +66,10 @@ export default class {
 		this.text.alpha = 0;
 		this.text.fixedToCamera = true;
 
-		for (var i = 0; i < this.quests.length; i++) {
-			if (this.quests[i][1] == '') continue;
-			this.text.text += this.quests[i][1] + '\n';
+		for (let prop in this.quests) {
+			if(!isNaN(prop)){
+				this.text.text += this.quests[prop].questMessage + '\n';
+			}
 		}
 
 		this.questmapBackground.alpha = 0;

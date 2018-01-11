@@ -12,6 +12,7 @@ import LockGame from '../prefabs/LockGame';
 import Item from '../prefabs/Item';
 import Safe from '../prefabs/Safe';
 import Eventmanager from '../prefabs/Eventmanager';
+import Questmanager from '../prefabs/Questmanager';
 import config from './../config';
 
 export default class {
@@ -23,6 +24,8 @@ export default class {
 		this.gameData = this.safe.getGameConfig();
 		this.currentMap = this.gameData.currentMap;
 		this.restartType = instruction.restartType;
+
+		this.questManager = new Questmanager(this.game, this);
 
 		// Arrays
 		this.characters = [];
@@ -176,12 +179,12 @@ export default class {
 						this.player,
 						this.map,
 						this.groundLayer,
-						element.properties.dropItemID,
-						element.properties.itemType
+						element.properties
 					)
 				);
 			}
 		}, this);
+		console.log(this.enemies);
 	}
 
 	// Searchmethod for JSON-Map

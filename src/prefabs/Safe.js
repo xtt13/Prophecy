@@ -64,10 +64,13 @@ export default class {
 	}
 
 	getQuests() {
+
 		let quests = JSON.parse(localStorage.getItem('quests'));
 
 		if (quests == null) {
-			let quests = [];
+			let quests = {
+				'masteredQuests': {}
+			};
 			return quests;
 		} else {
 			return quests;
@@ -85,6 +88,17 @@ export default class {
 		}
 
 		this.setQuests(quests);
+
+		// let quests = this.getQuests();
+
+		// for (var i = 0; i < quests.length; i++) {
+		// 	if (quests[i][0] == id) {
+		// 		quests[i][1] = '';
+		// 		// quests.splice(quests[i], 1);
+		// 	}
+		// }
+
+		// this.setQuests(quests);
 	}
 
 	resetLocalStorage() {

@@ -63,7 +63,8 @@ export default class {
 		if (requiredID !== undefined && !this.level.itemIDs.includes(requiredID)) return;
 
 		if (region.properties.removeQuestID !== undefined) {
-			this.level.safe.removeQuest(region.properties.removeQuestID);
+			// this.level.safe.removeQuest(region.properties.removeQuestID);
+			this.level.questManager.removeQuest(region.properties.removeQuestID);
 		}
 
 		this.level.bridgebuilder = new Bridgebuilder(
@@ -113,21 +114,11 @@ export default class {
 							this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 
 							this.game.time.events.add(Phaser.Timer.SECOND * 8, () => {
-								this.quests = this.level.safe.getQuests();
 
-								this.stopSearch = false;
+								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
 
-								for (var i = 0; i < this.quests.length; i++) {
-									if (this.quests[i][0] == region.properties.questID) {
-										this.stopSearch = true;
-									}
-								}
+								this.level.questManager.addQuest(region.properties);
 
-								if (this.stopSearch) return;
-
-								this.quests.push([region.properties.questID, region.properties.questMessage, false]);
-
-								this.level.safe.setQuests(this.quests);
 								this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
 								this.level.pathfinder = new Pathfinder(
@@ -187,21 +178,10 @@ export default class {
 	}
 
 	addQuest(region) {
-		this.quests = this.level.safe.getQuests();
+		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
 
-		this.stopSearch = false;
+		this.level.questManager.addQuest(region.properties);
 
-		for (var i = 0; i < this.quests.length; i++) {
-			if (this.quests[i][0] == region.properties.questID) {
-				this.stopSearch = true;
-			}
-		}
-
-		if (this.stopSearch) return;
-
-		this.quests.push([region.properties.questID, region.properties.questMessage, false]);
-
-		this.level.safe.setQuests(this.quests);
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}
 

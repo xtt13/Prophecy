@@ -104,6 +104,10 @@ export default class extends Phaser.Sprite {
 
 		enemy.destroy();
 
+		if(enemy.killQuestID !== undefined){
+			this.questManager.checkKillCondition(enemy.killQuestID);
+		}
+
 		this.player.health -= 10;
 		this.gameData.playerHealth = this.player.health;
 		this.game.camera.flash(0xc10000, 200);
@@ -120,31 +124,33 @@ export default class extends Phaser.Sprite {
 	}
 
 	collideWithItem(player, item) {
-		this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
+		// this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
+
 		console.log(item);
+
 		if (!this.itemIDs.includes(item.id)) {
 			this.itemIDs.push(item.id);
 			this.safe.setItemIDs(this.itemIDs);
 		}
 
 		if (item.removeQuestID !== undefined) {
-			this.safe.removeQuest(item.removeQuestID);
+			console.log('Remove');
+			this.questManager.removeQuest(item.removeQuestID);
 		}
 
 		if (item.questID !== undefined) {
-			this.quests = this.safe.getQuests();
-			this.stopSearch = false;
-			for (var i = 0; i < this.quests.length; i++) {
-				if (this.quests[i][0] == item.questID) {
-					this.stop = true;
-				}
+			if (this.questManager.checkIfQuestExists(item.questID)) return;
+
+			let quest = {
+				'questID': item.questID,
+				'questMessage': item.questMessage,
+				'questKillEnemyType': undefined,
+				'questDeadEnemies' : undefined,
+				'questKillEnemyAmount': undefined
 			}
 
-			if (this.stopSearch) return;
+			this.questManager.addQuest(quest);
 
-			this.quests.push([item.questID, item.questMessage, false]);
-
-			this.safe.setQuests(this.quests);
 			console.log('Questupdate');
 			this.GUICLASS.createNotification('quest', 'Questupdate');
 		}
