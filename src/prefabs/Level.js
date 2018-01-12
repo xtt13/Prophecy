@@ -41,7 +41,7 @@ export default class {
 		this.defaultStartPoint = {};
 
 		// Vars
-		this.night = false;
+		this.dayCycle = false;
 
 		// Method
 		this.loadLevel();
@@ -99,15 +99,46 @@ export default class {
 		this.weather = new Weather(this.game, this.tilemapProperties.weather, this.backgroundLayer);
 
 		// Create Night
-		if (this.night) {
+		if (this.dayCycle) {
+
+
 			this.backgroundLayer.tint = 0x262626;
 			this.shadowTexture = this.game.add.bitmapData(this.game.width + 200, this.game.height + 200);
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
-			this.lightSprite.alpha = 0.99;
+
+			this.time = new Date();
+			this.hours = this.time.getHours();
+			this.hours = 24;
+			this.timeValue = this.hours / 24;
+			this.timeValue = Math.round(this.timeValue * 10) / 10;
+
+			if(this.timeValue >= 0 && this.timeValue <= 0.2){
+				console.log('Night');
+				this.lightSprite.alpha = 0.99;
+			} else if(this.timeValue >= 0.2 && this.timeValue <= 0.3){
+				console.log('Dawn');
+				this.lightSprite.alpha = 0.7;
+			} else if(this.timeValue >= 0.3 && this.timeValue <= 0.7){
+				console.log('Day');
+				this.lightSprite.alpha = 0;
+			} else if(this.timeValue >= 0.7 && this.timeValue <= 0.8){
+				console.log('Dusk');
+				this.lightSprite.alpha = 0.7;
+			} else if(this.timeValue >= 0.8 && this.timeValue <= 1){
+				console.log('Night');
+				this.lightSprite.alpha = 0.99;
+			}
+			
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-			this.weather.clouds.destroy();
-			this.weather.lightning.bringToTop();
+			if(this.weather.clouds){
+				this.weather.clouds.destroy();
+			}
+			
+			if(this.weather.lightning){
+				this.weather.lightning.bringToTop();
+			}
+			
 		}
 
 		// Test Notification
@@ -168,6 +199,10 @@ export default class {
 
 		// Find specific enemy
 		elementsArr.forEach(function(element) {
+		const killQuestID = element.properties.killQuestID;
+
+		if(killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)){
+
 			if (element.properties.type == 'seed') {
 				this.enemies.push(
 					new Enemy(
@@ -181,6 +216,8 @@ export default class {
 					)
 				);
 			}
+		}
+
 		}, this);
 	}
 
@@ -256,7 +293,7 @@ export default class {
 		}
 
 		// If night == true
-		if (this.night) {
+		if (this.dayCycle) {
 			this.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
 			this.updateShadowTexture();
 		}
@@ -295,7 +332,7 @@ export default class {
 		this.tilemapProperties = this.map.plus.properties;
 
 		// Get Properties for Nightmode
-		this.night = this.tilemapProperties.night;
+		this.dayCycle = this.tilemapProperties.dayCycle;
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();

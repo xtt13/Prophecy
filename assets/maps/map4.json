@@ -326,12 +326,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "night":true,
+     "dayCycle":true,
      "weather":"Storm"
     },
  "propertytypes":
     {
-     "night":"bool",
+     "dayCycle":"bool",
      "weather":"string"
     },
  "renderorder":"right-down",

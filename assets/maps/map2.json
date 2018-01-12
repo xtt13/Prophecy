@@ -73,9 +73,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":172.93932433275,
-                 "x":651.739326812515,
-                 "y":1028.82583360315
+                 "width":70.2724907281424,
+                 "x":721.853261957125,
+                 "y":1111.4601143093
                 }, 
                 {
                  "height":4.95876122166646,
@@ -662,12 +662,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "night":false,
+     "dayCycle":true,
      "weather":"NiceWeather"
     },
  "propertytypes":
     {
-     "night":"bool",
+     "dayCycle":"bool",
      "weather":"string"
     },
  "renderorder":"right-down",

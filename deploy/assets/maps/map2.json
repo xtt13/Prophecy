@@ -42,26 +42,40 @@
                  "name":"",
                  "properties":
                     {
+                     "characterID":1,
+                     "endDestinationX":515,
+                     "endDestinationY":107,
                      "messageID":4,
+                     "messageWaitingDuration":3,
                      "pathfinderMessage":true,
                      "questID":6,
+                     "questKillEnemyAmount":8,
+                     "questKillEnemyMap":"map2",
+                     "questKillEnemyType":"seed",
                      "questMessage":"Kill all enemies!",
                      "readable":true
                     },
                  "propertytypes":
                     {
+                     "characterID":"int",
+                     "endDestinationX":"int",
+                     "endDestinationY":"int",
                      "messageID":"int",
+                     "messageWaitingDuration":"int",
                      "pathfinderMessage":"bool",
                      "questID":"int",
+                     "questKillEnemyAmount":"int",
+                     "questKillEnemyMap":"string",
+                     "questKillEnemyType":"string",
                      "questMessage":"string",
                      "readable":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":172.93932433275,
-                 "x":651.739326812515,
-                 "y":1028.82583360315
+                 "width":70.2724907281424,
+                 "x":721.853261957125,
+                 "y":1111.4601143093
                 }, 
                 {
                  "height":4.95876122166646,
@@ -349,147 +363,16 @@
          "objects":[
                 {
                  "height":22.0022,
-                 "id":74,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":920.235750847082,
-                 "y":458.492865230871
-                }, 
-                {
-                 "height":22.0022,
-                 "id":75,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":575.866356538589,
-                 "y":466.243944845532
-                }, 
-                {
-                 "height":22.0022,
-                 "id":76,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":691.02525367069,
-                 "y":466.243944845532
-                }, 
-                {
-                 "height":22.0022,
-                 "id":77,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":796.218477012512,
-                 "y":457.385568143063
-                }, 
-                {
-                 "height":22.0022,
-                 "id":78,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":559.256900221459,
-                 "y":562.578791484885
-                }, 
-                {
-                 "height":22.0022,
-                 "id":79,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":562.578791484885,
-                 "y":627.909319665596
-                }, 
-                {
-                 "height":22.0022,
-                 "id":80,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":581.402841977633,
-                 "y":702.098224548776
-                }, 
-                {
-                 "height":22.0022,
                  "id":81,
                  "name":"",
                  "properties":
                     {
+                     "killQuestID":6,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
+                     "killQuestID":"int",
                      "type":"string"
                     },
                  "rotation":0,
@@ -501,102 +384,221 @@
                 }, 
                 {
                  "height":22.0022,
-                 "id":82,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":816.149824593068,
-                 "y":715.38578960248
-                }, 
-                {
-                 "height":22.0022,
-                 "id":83,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":883.694946949396,
-                 "y":704.312818724394
-                }, 
-                {
-                 "height":22.0022,
-                 "id":84,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":929.094127549552,
-                 "y":626.802022577788
-                }, 
-                {
-                 "height":22.0022,
-                 "id":85,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":925.928740323002,
-                 "y":552.20531704725
-                }, 
-                {
-                 "height":22.0022,
                  "id":103,
                  "name":"",
                  "properties":
                     {
                      "dropItemID":2,
                      "itemType":"key",
+                     "killQuestID":6,
+                     "questID":7,
+                     "questMessage":"Enter the temple!",
                      "type":"seed"
                     },
                  "propertytypes":
                     {
                      "dropItemID":"int",
                      "itemType":"string",
+                     "killQuestID":"int",
+                     "questID":"int",
+                     "questMessage":"string",
                      "type":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":22.0022,
-                 "x":1286.75108691175,
-                 "y":972.278713974089
+                 "x":866.078009988673,
+                 "y":703.849226794602
+                }, 
+                {
+                 "height":22.0022,
+                 "id":125,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":564.586506837607,
+                 "y":678.101464102564
+                }, 
+                {
+                 "height":22.0022,
+                 "id":126,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":561.915566666667,
+                 "y":556.573686324786
+                }, 
+                {
+                 "height":22.0022,
+                 "id":127,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":564.586506837607,
+                 "y":467.097190598291
+                }, 
+                {
+                 "height":22.0022,
+                 "id":128,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":692.791635042735,
+                 "y":452.40701965812
+                }, 
+                {
+                 "height":22.0022,
+                 "id":129,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":833.015994017094,
+                 "y":445.729669230769
+                }, 
+                {
+                 "height":22.0022,
+                 "id":130,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":939.853600854701,
+                 "y":501.819412820513
+                }, 
+                {
+                 "height":22.0022,
+                 "id":131,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":934.51172051282,
+                 "y":608.65701965812
+                }, 
+                {
+                 "height":22.0022,
+                 "id":132,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":917.150609401709,
+                 "y":686.114284615385
+                }, 
+                {
+                 "height":22.0022,
+                 "id":133,
+                 "name":"",
+                 "properties":
+                    {
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":816.990352991453,
+                 "y":715.494626495726
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -614,18 +616,20 @@
                  "name":"",
                  "properties":
                     {
-                     "character":"death"
+                     "character":"testman",
+                     "id":1
                     },
                  "propertytypes":
                     {
-                     "character":"string"
+                     "character":"string",
+                     "id":"int"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":18.3897477156485,
-                 "x":591.195468824634,
-                 "y":880.89487296668
+                 "x":578.493023603929,
+                 "y":870.309501949426
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -654,7 +658,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":125,
+ "nextobjectid":136,
  "orientation":"orthogonal",
  "properties":
     {

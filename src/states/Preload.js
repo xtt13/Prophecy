@@ -17,7 +17,7 @@ export default class extends Phaser.State {
 		// Load Sprites
 
 		//this.load.image('player', 'assets/sprites/player.png');
-		this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3x.png');
+		// this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3xblur.png');
 
 		this.load.image('LockGameRing', 'assets/sprites/LockGameRing.png');
 		this.load.image('LockGameBar', 'assets/sprites/LockGameBar.png');
@@ -31,6 +31,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map5', 'assets/maps/map5.json', null, Phaser.Tilemap.TILED_JSON);
 
 		// Load Music
+		this.load.audio('track1', 'assets/music/test1.mp3');
 
 		// Load Sounds
 
@@ -65,6 +66,10 @@ export default class extends Phaser.State {
 	}
 
 	create() {
+		this.music = this.game.add.audio('track1');
+		this.music.volume = 0.5;
+		this.music.play();
+
 		this.state.start('Game', true, false);
 	}
 

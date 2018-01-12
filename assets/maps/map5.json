@@ -95,7 +95,7 @@
                      "questKillEnemyAmount":3,
                      "questKillEnemyMap":"map4",
                      "questKillEnemyType":"seed",
-                     "questMessage":"Kill three Enemies in the wood",
+                     "questMessage":"Kill three Enemies in the dark forest",
                      "readable":true,
                      "removeQuestID":8
                     },
@@ -220,12 +220,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "night":false,
+     "dayCycle":false,
      "weather":"niceWeather"
     },
  "propertytypes":
     {
-     "night":"bool",
+     "dayCycle":"bool",
      "weather":"string"
     },
  "renderorder":"right-down",
