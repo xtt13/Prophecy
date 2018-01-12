@@ -45,6 +45,7 @@ export default class extends Phaser.State {
 
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.body(this.level.enemies);
+			// this.game.debug.body(this.level.player);
 			this.game.debug.text(this.level.player.health, 50, 20);
 		}
 	}

@@ -66,11 +66,14 @@ export default class {
 
 	addBridge(region) {
 		const bridgeID = region.properties.id;
-		const requiredID = region.properties.requiredItemID;
+		const requiredItemID = region.properties.requiredItemID;
+		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
+
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
-		if (requiredID !== undefined && !this.level.itemIDs.includes(requiredID)) return;
+		if (requiredItemID !== undefined && !this.level.itemIDs.includes(requiredItemID)) return;
 
 		if (region.properties.removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
@@ -110,6 +113,9 @@ export default class {
 	addPathfinderMessage(region) {
 		const message_id = region.properties.messageID;
 		const characterID = region.properties.characterID;
+		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
+
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
 
 		if (this.level.playedDialogues.includes(message_id)) return;
 		this.level.playedDialogues.push(message_id);

@@ -16,7 +16,7 @@ export default class extends Phaser.Sprite {
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
 
-		this.animations.add('idle', [0, 1, 2, 3, 4], 5, true);
+		this.animations.add('idle', [0, 1, 2, 3], 5, true);
 		this.animations.play('idle');
 
 		this.game.physics.enable(this);

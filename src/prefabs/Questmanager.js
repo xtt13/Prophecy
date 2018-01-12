@@ -41,6 +41,15 @@ export default class {
 		}
 	}
 
+	checkIfQuestWasDone(masteredQuestID){
+		this.quests = this.level.safe.getQuests();
+		if((masteredQuestID in this.quests.masteredQuests)){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	checkKillCondition(questID){
 		this.quests = this.level.safe.getQuests();
 

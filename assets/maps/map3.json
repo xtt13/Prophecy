@@ -115,7 +115,8 @@
                      "duration":500,
                      "id":3,
                      "length":7,
-                     "requiredItemID":2
+                     "requiredItemID":2,
+                     "requiredMasteredQuestID":6
                     },
                  "propertytypes":
                     {
@@ -124,7 +125,8 @@
                      "duration":"int",
                      "id":"int",
                      "length":"int",
-                     "requiredItemID":"int"
+                     "requiredItemID":"int",
+                     "requiredMasteredQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -218,7 +220,8 @@
                      "pathfinderMessage":true,
                      "questID":8,
                      "questMessage":"Talk to the oracle!",
-                     "readable":true
+                     "readable":true,
+                     "requiredMasteredQuestID":6
                     },
                  "propertytypes":
                     {
@@ -230,7 +233,8 @@
                      "pathfinderMessage":"bool",
                      "questID":"int",
                      "questMessage":"string",
-                     "readable":"bool"
+                     "readable":"bool",
+                     "requiredMasteredQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
