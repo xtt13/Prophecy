@@ -183,6 +183,8 @@ export default class {
 	}
 
 	addKeyboardKeys() {
+		this.cursors = this.game.input.keyboard.createCursorKeys();
+
 		this.button_W = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
 		// this.button_W.onDown.add(this.onKeyboardDown, this);
 		// this.button_W.onUp.add(this.onKeyboardUp, this);

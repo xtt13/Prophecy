@@ -662,12 +662,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "night":false,
+     "dayCycle":true,
      "weather":"NiceWeather"
     },
  "propertytypes":
     {
-     "night":"bool",
+     "dayCycle":"bool",
      "weather":"string"
     },
  "renderorder":"right-down",

@@ -60,24 +60,24 @@ export default class {
 
 	addTempleFlies() {
 		console.log('Testweather');
-		let emitter = game.add.emitter(this.game.camera.width / 2, 1100, 100);
+		this.templeFliesEmitter = this.game.add.emitter(this.game.camera.width / 2, 1100, 100);
 		// emitter.fixedToCamera = true;
-		emitter.width = this.game.camera.width * 2;
-		emitter.height = this.game.camera.height;
-		emitter.angle = -10;
-		emitter.minParticleScale = 0.1;
-		emitter.maxParticleScale = 0.5;
+		this.templeFliesEmitter.width = this.game.camera.width * 2;
+		this.templeFliesEmitter.height = this.game.camera.height;
+		this.templeFliesEmitter.angle = -10;
+		this.templeFliesEmitter.minParticleScale = 0.1;
+		this.templeFliesEmitter.maxParticleScale = 0.5;
 		// emitter.maxParticleSpeed.setTo(2, 2);
 	
-		emitter.setYSpeed(5, 10);
-		emitter.setXSpeed(20, -20);
+		this.templeFliesEmitter.setYSpeed(5, 10);
+		this.templeFliesEmitter.setXSpeed(20, -20);
 
-		emitter.gravity = 0.5;
-		emitter.minRotation = 0;
-		emitter.maxRotation = 0;
-		emitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
-		emitter.makeParticles('fly');
-		emitter.start(false, 10000, 5, 0);
+		this.templeFliesEmitter.gravity = 0.5;
+		this.templeFliesEmitter.minRotation = 0;
+		this.templeFliesEmitter.maxRotation = 0;
+		this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
+		this.templeFliesEmitter.makeParticles('fly');
+		this.templeFliesEmitter.start(false, 10000, 5, 0);
 	}
 
 	addStorm() {
