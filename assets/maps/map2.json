@@ -663,11 +663,13 @@
  "properties":
     {
      "dayCycle":true,
+     "music":"HopeMerged",
      "weather":"NiceWeather"
     },
  "propertytypes":
     {
      "dayCycle":"bool",
+     "music":"string",
      "weather":"string"
     },
  "renderorder":"right-down",

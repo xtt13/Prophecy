@@ -350,11 +350,13 @@
  "properties":
     {
      "dayCycle":true,
+     "music":"track1",
      "weather":"Storm"
     },
  "propertytypes":
     {
      "dayCycle":"bool",
+     "music":"string",
      "weather":"string"
     },
  "renderorder":"right-down",

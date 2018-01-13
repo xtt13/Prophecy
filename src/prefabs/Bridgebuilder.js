@@ -17,12 +17,6 @@ export default class {
 		const bridgeLength = this.region.properties.length;
 		const bridgeDuration = this.region.properties.duration;
 
-		// let bridgeX = this.groundLayer.getTileX(this.player.x);
-		// let bridgeY = this.groundLayer.getTileY(this.player.y);
-
-		// let collX = this.collisionLayer.getTileX(this.player.x);
-		// let collY = this.collisionLayer.getTileY(this.player.y);
-
 		let bridgeX = this.groundLayer.getTileX(this.region.left) + 1;
 		let bridgeY = this.groundLayer.getTileY(this.region.top);
 

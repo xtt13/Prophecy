@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import WebFont from 'webfontloader';
 import Input from '../prefabs/Input';
+import Musicplayer from '../prefabs/Musicplayer';
 
 export default class extends Phaser.State {
 	init() {}
@@ -66,9 +67,9 @@ export default class extends Phaser.State {
 	}
 
 	create() {
-		this.music = this.game.add.audio('track1');
-		this.music.volume = 0.5;
-		this.music.play();
+
+		this.game.musicPlayer = new Musicplayer(this.game);
+
 
 		this.state.start('Game', true, false);
 	}

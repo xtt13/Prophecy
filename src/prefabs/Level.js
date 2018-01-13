@@ -13,6 +13,7 @@ import Item from '../prefabs/Item';
 import Safe from '../prefabs/Safe';
 import Eventmanager from '../prefabs/Eventmanager';
 import Questmanager from '../prefabs/Questmanager';
+import Daycycle from '../prefabs/Daycycle';
 import config from './../config';
 
 export default class {
@@ -50,6 +51,8 @@ export default class {
 	loadLevel() {
 		// Load Map
 		this.initMap();
+
+		this.game.musicPlayer.initMap(this.tilemapProperties.music);
 
 		this.game.camera.flash(0x000000, 2000);
 
@@ -98,72 +101,10 @@ export default class {
 		// Create Weather
 		this.weather = new Weather(this.game, this.tilemapProperties.weather, this.backgroundLayer);
 
-		// Create Night
-		if (this.dayCycle) {
+		// Daycycle Class
+		this.dayCycleClass = new Daycycle(this.game, this);
 
-			this.shadowTexture = this.game.add.bitmapData(this.game.width + 200, this.game.height + 200);
-			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
-
-			this.time = new Date();
-			this.hours = this.time.getHours();
-			// this.hours = 13;
-			this.timeValue = this.hours / 24;
-			this.timeValue = Math.round(this.timeValue * 10) / 10;
-
-			if(this.timeValue >= 0 && this.timeValue <= 0.2){
-				console.log('Night');
-				this.lightSprite.alpha = 0.99;
-				this.backgroundLayer.tint = 0x070707;
-				this.player.tint = 0x383838;
-				for (var i = 0; i < this.characters.length; i++) {
-				this.characters[i].tint = 0x383838;
-				}
-			} else if(this.timeValue >= 0.2 && this.timeValue <= 0.3){
-				console.log('Dawn');
-				this.backgroundLayer.tint = 0x848484;
-				this.lightSprite.alpha = 0.7;
-				this.player.tint = 0x383838;
-				for (var i = 0; i < this.characters.length; i++) {
-				this.characters[i].tint = 0x383838;
-				}
-			} else if(this.timeValue >= 0.3 && this.timeValue <= 0.7){
-				console.log('Day');
-				this.lightSprite.alpha = 0;
-			} else if(this.timeValue >= 0.7 && this.timeValue <= 0.8){
-				console.log('Dusk');
-				this.backgroundLayer.tint = 0x848484;
-				this.lightSprite.alpha = 0.7;
-				this.player.tint = 0x383838;
-				for (var i = 0; i < this.characters.length; i++) {
-				this.characters[i].tint = 0x383838;
-				}
-			} else if(this.timeValue >= 0.8 && this.timeValue <= 1){
-				console.log('Night');
-				this.backgroundLayer.tint = 0x070707;
-				this.lightSprite.alpha = 0.99;
-				this.player.tint = 0x383838;
-				for (var i = 0; i < this.characters.length; i++) {
-				this.characters[i].tint = 0x383838;
-				}
-			}
-
-			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-			
-
-			// this.player.blendMode = Phaser.blendModes.MULTIPLY;
-			
-
-			if(this.weather.clouds){
-				this.weather.clouds.destroy();
-			}
-			
-			if(this.weather.lightning){
-				this.weather.lightning.bringToTop();
-			}
-			
-		}
-
-		// Test Notification
+		// Saving Notification
 		this.GUICLASS.createNotification('saving', 'Saving ...');
 
 		// Init InputClass
@@ -259,26 +200,7 @@ export default class {
 		return result;
 	}
 
-	// Night Method
-	updateShadowTexture() {
-		this.shadowTexture.context.fillStyle = 'rgb(0, 15, 119)';
-		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
-
-		// var radius = 100 + this.game.rnd.integerInRange(1, 8),
-		// 	heroX = this.player.x - this.game.camera.x,
-		// 	heroY = this.player.y - this.game.camera.y;
-
-		// var gradient = this.shadowTexture.context.createRadialGradient(heroX, heroY, 100 * 0.75, heroX, heroY, radius);
-		// gradient.addColorStop(0, 'rgba(255, 227, 134, 1.0)');
-		// gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-
-		// this.shadowTexture.context.beginPath();
-		// this.shadowTexture.context.fillStyle = gradient;
-		// this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
-		// this.shadowTexture.context.fill();
-
-		// this.shadowTexture.dirty = true;
-	}
+	
 
 	// Update Method
 	update() {
@@ -316,8 +238,8 @@ export default class {
 
 		// If night == true
 		if (this.dayCycle) {
-			this.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
-			this.updateShadowTexture();
+			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
+			this.dayCycleClass.updateShadowTexture();
 		}
 
 		// If Lockpicker == true -> update()

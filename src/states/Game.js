@@ -33,6 +33,8 @@ export default class extends Phaser.State {
 		// Debugging
 		if (__DEV__) {
 			this.game.debug.text(game.time.fps.toString(), 20, 20, '#00ff00');
+			// this.game.debug.soundInfo(this.game.musicPlayer.music, 20, 50);
+			// console.log(this.game.musicPlayer);
 			// this.game.debug.spriteInfo(this.level.player, 32, 32);
 			// this.game.debug.cameraInfo(this.game.camera, 32, 32);
 			// this.level.weather.emitter.debug(20, 200);
