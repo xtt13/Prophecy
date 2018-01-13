@@ -408,11 +408,13 @@
  "properties":
     {
      "dayCycle":true,
+     "music":"HopeMerged",
      "weather":"TempleFlies"
     },
  "propertytypes":
     {
      "dayCycle":"bool",
+     "music":"string",
      "weather":"string"
     },
  "renderorder":"right-down",

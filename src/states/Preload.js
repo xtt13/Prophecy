@@ -32,7 +32,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map5', 'assets/maps/map5.json', null, Phaser.Tilemap.TILED_JSON);
 
 		// Load Music
-		this.load.audio('track1', 'assets/music/test1.mp3');
+		this.load.audio('LostMerged', 'assets/music/LostMerged.mp3');
 
 		// Load Sounds
 

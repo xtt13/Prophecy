@@ -9,7 +9,9 @@ export default class {
 	}
 
 	initMap(key){
-		if(key !== undefined){
+		console.log(key);
+		if(key !== undefined ){
+			if(this.music.key !== key){
 			if(this.music.isPlaying){
 
 				console.log('FadeOut');
@@ -23,7 +25,7 @@ export default class {
 
 					this.music = this.game.add.audio(key, 0.5, true);
 					this.music.onDecoded.add(() => {
-						this.music.fadeIn(this.fadeDuration);
+						this.music.fadeIn(this.fadeDuration, true);
 					}, this);
 
 				});
@@ -36,10 +38,13 @@ export default class {
 
 				this.music = this.game.add.audio(key, 0.5, true);
 				this.music.onDecoded.add(() => {
-					this.music.fadeIn(this.fadeDuration);
+					this.music.fadeIn(this.fadeDuration, true);
 				}, this);
 				
 			}
+		}
+		} else {
+			console.warn('Key undefined');
 		}
 
 	}
@@ -65,7 +70,7 @@ export default class {
 		this.game.load.onLoadComplete.add(() => {
 			this.music = this.game.add.audio(key, 0.5, true);
 			this.music.onDecoded.add(() => {
-				this.music.fadeIn(this.fadeDuration);
+				this.music.fadeIn(this.fadeDuration, true);
 			}, this);
 		}, this);
 	}
