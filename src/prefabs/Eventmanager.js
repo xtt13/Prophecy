@@ -247,6 +247,8 @@ export default class {
 		this.level.gameData.targetID = targetID;
 		this.level.safe.setGameConfig(this.level.gameData);
 
+		console.log('TargetMap: ' + targetMap);
+
 		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
 	}
 

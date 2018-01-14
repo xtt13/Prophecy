@@ -40,6 +40,10 @@ export default class {
 				this.addSun();
 				break;
 
+			case 'AutumnGlimmer':
+				this.addAutumnGlimmer();
+				break;
+
 			default:
 		}
 	}
@@ -110,6 +114,37 @@ export default class {
 
 		// this.addFog();
 		this.addClouds();
+	}
+
+	addAutumnGlimmer(){
+		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
+		this.autumnGlimmerEmitter.fixedToCamera = true;
+		console.log(this.game.world.bounds.height);
+		this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
+		this.autumnGlimmerEmitter.height = this.game.world.bounds.height;
+		// this.autumnGlimmerEmitter.angle = -10;
+		this.autumnGlimmerEmitter.minParticleScale = 0.1;
+		this.autumnGlimmerEmitter.maxParticleScale = 0.5;
+		// emitter.maxParticleSpeed.setTo(2, 2);
+
+		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
+	
+		this.autumnGlimmerEmitter.setYSpeed(50, 100);
+		this.autumnGlimmerEmitter.setXSpeed(-100, 100);
+		this.autumnGlimmerEmitter.minParticleScale = 0.25;
+		this.autumnGlimmerEmitter.maxParticleScale = 1;
+
+		this.autumnGlimmerEmitter.gravity = 0.5;
+
+		this.autumnGlimmerEmitter.minRotation = 25;
+		// this.autumnGlimmerEmitter.maxRotation = 0;
+
+		this.autumnGlimmerEmitter.setAlpha(0.5, 1);
+		// this.autumnGlimmerEmitter.autoAlpha = true;
+		// this.autumnGlimmerEmitter.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
+
+		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
+		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
 	}
 
 	zap() {

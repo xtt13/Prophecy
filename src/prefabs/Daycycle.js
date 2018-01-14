@@ -45,6 +45,12 @@ export default class {
 					this.level.characters[i].tint = 0x383838;
 				}
 
+				if(this.level.weather.clouds){
+					this.level.weather.clouds.forEach(cloud => {
+						cloud.tint = 0x383838;
+					});
+				}
+
 			} else if(this.timeValue >= 8 && this.timeValue <= 18){
 				console.log('Day');
 
@@ -60,6 +66,14 @@ export default class {
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x383838;
 				}
+
+				if(this.level.weather.clouds){
+					this.level.weather.clouds.forEach(cloud => {
+						cloud.tint = 0x383838;
+					});
+				}
+
+
 
 			} else if(this.timeValue >= 21 && this.timeValue <= 24){
 				console.log('Night');

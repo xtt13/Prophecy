@@ -257,6 +257,7 @@ export default class {
 	}
 
 	initMap() {
+		console.log('LoadMap: ' + this.gameData.currentMap);
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 
 		// Background Cloud Layer
