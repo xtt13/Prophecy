@@ -4,6 +4,7 @@ import 'phaser-tilemap-plus';
 import Pathfinder from '../prefabs/Pathfinder';
 import Bridgebuilder from '../prefabs/Bridgebuilder';
 import Questmap from '../prefabs/Questmap';
+import Enemy from '../prefabs/Enemy';
 
 import dialogues from './../dialogues';
 
@@ -18,8 +19,10 @@ export default class {
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 			if (region.properties.message) {
 				this.addMessage(region);
-			} else if (region.properties.bridge) {
+			} else if (region.properties.addBridge) {
 				this.addBridge(region);
+			}else if (region.properties.removeBridge) {
+				this.removeBridge(region);
 			} else if (region.properties.pathfinderMessage) {
 				this.addPathfinderMessage(region);
 			} else if (region.properties.port) {
@@ -34,6 +37,16 @@ export default class {
 				this.openDoor(region);
 			} else if (region.properties.movePlayerToXY){
 				this.movePlayerToXY(region);
+			} else if (region.properties.spawnEnemies){
+				this.spawnEnemies(region);
+			} else if (region.properties.lockCamera){
+				this.lockCamera(region);
+			}
+		});
+
+		this.level.map.plus.events.regions.onLeaveAdd(this.level.player, region => {
+			if (region.properties.lockCamera){
+				this.followPlayer(region);
 			}
 		});
 	}
@@ -87,8 +100,39 @@ export default class {
 			this.level.groundLayer,
 			this.level.collisionLayer
 		);
+		this.level.bridgebuilder.buildBridge();
 
 		this.level.activatedBridges.push(bridgeID);
+	}
+
+	removeBridge(region){
+		const bridgeID = region.properties.id;
+		const requiredItemID = region.properties.requiredItemID;
+		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
+
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
+
+		if (this.level.activatedBridges.includes(bridgeID)) return;
+
+		if (requiredItemID !== undefined && !this.level.itemIDs.includes(requiredItemID)) return;
+
+		if (region.properties.removeQuestID !== undefined) {
+			this.level.questManager.removeQuest(region.properties.removeQuestID);
+		}
+
+		this.level.bridgebuilder = new Bridgebuilder(
+			this.game,
+			region,
+			this.level.player,
+			this.level.map,
+			this.level.groundLayer,
+			this.level.collisionLayer
+		);
+
+		this.level.bridgebuilder.removeBridge();
+
+		this.level.activatedBridges.push(bridgeID);
+
 	}
 
 	movePlayerToXY(region){
@@ -243,5 +287,63 @@ export default class {
 			this.level.door.animations.play('open', 8, false);
 		}
 		// this.game.camera.shake(0.0015, 10000, true);
+	}
+
+	spawnEnemies(region){
+		console.log(region);
+
+		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
+
+		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+		this.level.questManager.addQuest(region.properties);
+		this.level.GUICLASS.createNotification('quest', 'Questupdate');
+
+		for (var i = 0; i < region.properties.amount; i++) {
+			const rndX = this.game.rnd.integerInRange(0, 1);
+			const rndY = this.game.rnd.integerInRange(0, 1);
+
+			const x = (rndX ? region.left : region.right);
+			const y = (rndY ? region.top : region.bottom);
+
+			this.level.enemies.push(
+				new Enemy(
+					this.game,
+					x,
+					y,
+					this.level.player,
+					this.level.map,
+					this.level.groundLayer,
+					region.properties
+				)
+			);
+		}
+
+	}
+
+	lockCamera(region){
+		console.log(region);
+
+		const diff1 = region.right - region.left;
+		const diff2 = region.bottom - region.top;
+		const cameraX = region.left + (diff1 / 2);
+		const cameraY = region.bottom - (diff2 / 2);
+
+		console.log(cameraX, cameraY);
+
+		this.game.camera.unfollow();
+		// this.game.camera.lerp = 0.1;
+		// this.game.camera.focusOnXY(cameraX, cameraY);
+
+		this.game.add.tween(this.game.camera).to({x: cameraX - (this.game.camera.width / 2), y: cameraY - (this.game.camera.height / 2)}, 750, Phaser.Easing.Quadratic.InOut, true);
+
+	}
+
+	followPlayer(region){
+		this.followTween = this.game.add.tween(this.game.camera).to({x: this.level.player.x - (this.game.camera.width / 2), y: this.level.player.y - (this.game.camera.height / 2)}, 400, Phaser.Easing.Quadratic.InOut, true);
+	
+		this.followTween.onComplete.add(() => {
+			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+		}, this);
 	}
 }

@@ -67,7 +67,7 @@
                  "name":"",
                  "properties":
                     {
-                     "bridge":true,
+                     "addBridge":true,
                      "direction":"up",
                      "duration":500,
                      "id":1,
@@ -75,7 +75,7 @@
                     },
                  "propertytypes":
                     {
-                     "bridge":"bool",
+                     "addBridge":"bool",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",
@@ -94,7 +94,7 @@
                  "name":"",
                  "properties":
                     {
-                     "bridge":true,
+                     "addBridge":true,
                      "direction":"down",
                      "duration":500,
                      "id":1,
@@ -102,7 +102,7 @@
                     },
                  "propertytypes":
                     {
-                     "bridge":"bool",
+                     "addBridge":"bool",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",
@@ -121,7 +121,7 @@
                  "name":"",
                  "properties":
                     {
-                     "bridge":true,
+                     "addBridge":true,
                      "direction":"up",
                      "duration":500,
                      "id":2,
@@ -131,7 +131,7 @@
                     },
                  "propertytypes":
                     {
-                     "bridge":"bool",
+                     "addBridge":"bool",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",
@@ -175,7 +175,7 @@
                  "name":"",
                  "properties":
                     {
-                     "bridge":true,
+                     "addBridge":true,
                      "direction":"down",
                      "duration":500,
                      "id":2,
@@ -184,7 +184,7 @@
                     },
                  "propertytypes":
                     {
-                     "bridge":"bool",
+                     "addBridge":"bool",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",

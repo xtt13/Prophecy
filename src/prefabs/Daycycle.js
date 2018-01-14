@@ -17,12 +17,9 @@ export default class {
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
 
 			this.time = new Date();
-			this.hours = this.time.getHours();
-			// this.hours = 7;
-			this.timeValue = this.hours / 24;
-			this.timeValue = Math.round(this.timeValue * 10) / 10;
+			this.timeValue = this.time.getHours();
 
-			if(this.timeValue >= 0 && this.timeValue <= 0.2){
+			if(this.timeValue >= 0 && this.timeValue <= 6){
 				console.log('Night');
 
 				this.lightSprite.alpha = 0.99;
@@ -37,7 +34,7 @@ export default class {
 					this.level.weather.clouds.destroy();
 				}
 
-			} else if(this.timeValue >= 0.2 && this.timeValue <= 0.3){
+			} else if(this.timeValue >= 6 && this.timeValue <= 8){
 				console.log('Dawn');
 
 				this.level.backgroundLayer.tint = 0x848484;
@@ -48,12 +45,12 @@ export default class {
 					this.level.characters[i].tint = 0x383838;
 				}
 
-			} else if(this.timeValue >= 0.3 && this.timeValue <= 0.7){
+			} else if(this.timeValue >= 8 && this.timeValue <= 18){
 				console.log('Day');
 
 				this.lightSprite.alpha = 0;
 
-			} else if(this.timeValue >= 0.7 && this.timeValue <= 0.8){
+			} else if(this.timeValue >= 18 && this.timeValue <= 21){
 				console.log('Dusk');
 
 				this.level.backgroundLayer.tint = 0x848484;
@@ -64,7 +61,7 @@ export default class {
 					this.level.characters[i].tint = 0x383838;
 				}
 
-			} else if(this.timeValue >= 0.8 && this.timeValue <= 1){
+			} else if(this.timeValue >= 21 && this.timeValue <= 24){
 				console.log('Night');
 
 				this.level.backgroundLayer.tint = 0x070707;

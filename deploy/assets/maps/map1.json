@@ -350,11 +350,13 @@
  "properties":
     {
      "dayCycle":true,
+     "music":"LostMerged",
      "weather":"Storm"
     },
  "propertytypes":
     {
      "dayCycle":"bool",
+     "music":"string",
      "weather":"string"
     },
  "renderorder":"right-down",
