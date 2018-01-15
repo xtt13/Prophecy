@@ -13,6 +13,8 @@ export default class {
 		this.game = game;
 		this.level = level;
 
+		this.spawnEnemiesRunning = false;
+
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
 
@@ -292,14 +294,17 @@ export default class {
 	}
 
 	spawnEnemies(region){
-		console.log(region);
 
-		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
+		// Prevent from always spawning when triggering event!
+		if(this.spawnEnemiesRunning) return;
 
-		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-		this.level.questManager.addQuest(region.properties);
-		this.level.GUICLASS.createNotification('quest', 'Questupdate');
+		if (this.level.questManager.checkIfQuestWasDone(region.properties.questID)) return;
+
+		this.spawnEnemiesRunning = true;
+
+		if (!this.level.questManager.checkIfQuestExists(region.properties.questID)){
+			this.level.questManager.addQuest(region.properties);
+		}
 
 		for (var i = 0; i < region.properties.amount; i++) {
 			const rndX = this.game.rnd.integerInRange(0, 1);

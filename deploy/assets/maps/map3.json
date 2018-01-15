@@ -110,7 +110,7 @@
                  "name":"",
                  "properties":
                     {
-                     "bridge":true,
+                     "addBridge":true,
                      "direction":"up",
                      "duration":500,
                      "id":3,
@@ -120,7 +120,7 @@
                     },
                  "propertytypes":
                     {
-                     "bridge":"bool",
+                     "addBridge":"bool",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",
@@ -183,7 +183,7 @@
                  "name":"",
                  "properties":
                     {
-                     "bridge":true,
+                     "addBridge":true,
                      "direction":"down",
                      "duration":1,
                      "id":3,
@@ -192,7 +192,7 @@
                     },
                  "propertytypes":
                     {
-                     "bridge":"bool",
+                     "addBridge":"bool",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",
@@ -403,7 +403,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":64,
+ "nextobjectid":65,
  "orientation":"orthogonal",
  "properties":
     {

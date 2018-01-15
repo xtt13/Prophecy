@@ -31,6 +31,21 @@ export default class extends Phaser.Sprite {
 		this.body.bounce.set(1);
 
 		game.add.existing(this);
+
+		this.y = 0;
+		this.startTween = this.game.add
+			.tween(this)
+			.to({ y: y }, 1500, Phaser.Easing.Bounce.Out, true);
+
+		this.startTween.onStart.add(() => {
+			this.game.time.events.add(
+				500,
+				() => {
+					this.game.camera.shake(0.005, 500);
+				});
+			
+		}, this);
+
 	}
 
 	update() {
@@ -41,10 +56,10 @@ export default class extends Phaser.Sprite {
 				this.game.physics.arcade.moveToObject(this, this.player, 10);
 
 				// Attack
-				// if(this.distanceBetweenEnemiePlayer < 80){
+				if(this.distanceBetweenEnemiePlayer < 50){
 
-				// 	this.game.physics.arcade.moveToObject(this, this.player, 150);
-				// }
+					this.game.physics.arcade.moveToObject(this, this.player, 150);
+				}
 			} else {
 				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			}

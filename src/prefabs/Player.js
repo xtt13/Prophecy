@@ -103,7 +103,7 @@ export default class extends Phaser.Sprite {
 			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
 		}
 
-		enemy.destroy();
+		
 
 		if(enemy.killQuestID !== undefined){
 			this.questManager.checkKillCondition(enemy.killQuestID);
@@ -111,6 +111,7 @@ export default class extends Phaser.Sprite {
 
 		this.player.health -= 10;
 		this.gameData.playerHealth = this.player.health;
+		this.safe.setGameConfig(this.gameData);
 		this.game.camera.flash(0xc10000, 200);
 
 		if (this.player.health <= 0) {
@@ -122,6 +123,8 @@ export default class extends Phaser.Sprite {
 				restartType: 'revive'
 			});
 		}
+
+		enemy.destroy();
 	}
 
 	collideWithItem(player, item) {

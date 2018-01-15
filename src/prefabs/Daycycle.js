@@ -19,7 +19,7 @@ export default class {
 			this.time = new Date();
 			this.timeValue = this.time.getHours();
 
-			if(this.timeValue >= 0 && this.timeValue <= 6){
+			if(this.timeValue >= 0 && this.timeValue < 6){
 				console.log('Night');
 
 				this.lightSprite.alpha = 0.99;
@@ -34,7 +34,7 @@ export default class {
 					this.level.weather.clouds.destroy();
 				}
 
-			} else if(this.timeValue >= 6 && this.timeValue <= 8){
+			} else if(this.timeValue >= 6 && this.timeValue < 8){
 				console.log('Dawn');
 
 				this.level.backgroundLayer.tint = 0x848484;
@@ -51,12 +51,12 @@ export default class {
 					});
 				}
 
-			} else if(this.timeValue >= 8 && this.timeValue <= 18){
+			} else if(this.timeValue >= 8 && this.timeValue < 18){
 				console.log('Day');
 
 				this.lightSprite.alpha = 0;
 
-			} else if(this.timeValue >= 18 && this.timeValue <= 21){
+			} else if(this.timeValue >= 18 && this.timeValue < 21){
 				console.log('Dusk');
 
 				this.level.backgroundLayer.tint = 0x848484;
@@ -75,7 +75,7 @@ export default class {
 
 
 
-			} else if(this.timeValue >= 21 && this.timeValue <= 24){
+			} else if(this.timeValue >= 21 && this.timeValue < 24){
 				console.log('Night');
 
 				this.level.backgroundLayer.tint = 0x070707;

@@ -44,6 +44,7 @@ export default class {
 	checkIfQuestWasDone(masteredQuestID){
 		this.quests = this.level.safe.getQuests();
 		if((masteredQuestID in this.quests.masteredQuests)){
+			console.log('Quest was done!');
 			return true;
 		} else {
 			return false;

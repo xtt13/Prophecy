@@ -122,7 +122,7 @@
                  "y":363.85194074996
                 }, 
                 {
-                 "height":143.453262694041,
+                 "height":54.5901743668105,
                  "id":65,
                  "name":"",
                  "properties":
@@ -134,7 +134,6 @@
                      "questKillEnemyMap":"map4",
                      "questKillEnemyType":"seed",
                      "questMessage":"Kill all enemies!",
-                     "requiredMasteredQuestID":1,
                      "spawnEnemies":true,
                      "type":"seed"
                     },
@@ -147,16 +146,15 @@
                      "questKillEnemyMap":"string",
                      "questKillEnemyType":"string",
                      "questMessage":"string",
-                     "requiredMasteredQuestID":"int",
                      "spawnEnemies":"bool",
                      "type":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":178.945149367681,
+                 "width":168.674541169057,
                  "x":954.848781123253,
-                 "y":234.285984533704
+                 "y":324.042169226032
                 }, 
                 {
                  "height":238.357681466944,
@@ -199,6 +197,41 @@
                  "width":71.4317982670906,
                  "x":756.179733717263,
                  "y":3.13142297827364
+                }, 
+                {
+                 "height":69.0353986194995,
+                 "id":74,
+                 "name":"",
+                 "properties":
+                    {
+                     "amount":4,
+                     "killQuestID":11,
+                     "questID":11,
+                     "questKillEnemyAmount":4,
+                     "questKillEnemyMap":"map4",
+                     "questKillEnemyType":"seed",
+                     "questMessage":"Kill all enemies!",
+                     "spawnEnemies":true,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "amount":"int",
+                     "killQuestID":"int",
+                     "questID":"int",
+                     "questKillEnemyAmount":"int",
+                     "questKillEnemyMap":"string",
+                     "questKillEnemyType":"string",
+                     "questMessage":"string",
+                     "spawnEnemies":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":68.9363718723037,
+                 "x":1188.56891501294,
+                 "y":540.870566436583
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -465,7 +498,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":73,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "properties":
     {
