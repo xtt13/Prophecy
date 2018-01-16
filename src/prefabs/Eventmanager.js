@@ -307,11 +307,15 @@ export default class {
 		}
 
 		for (var i = 0; i < region.properties.amount; i++) {
+
 			const rndX = this.game.rnd.integerInRange(0, 1);
 			const rndY = this.game.rnd.integerInRange(0, 1);
 
 			const x = (rndX ? region.left : region.right);
 			const y = (rndY ? region.top : region.bottom);
+
+			// const x = this.game.rnd.integerInRange(region.left, region.right);
+			// const y = this.game.rnd.integerInRange(region.top, region.bottom);
 
 			this.level.enemies.push(
 				new Enemy(
@@ -324,6 +328,14 @@ export default class {
 					region.properties
 				)
 			);
+
+			// for (var i = 0; i < this.level.enemies.length; i++) {
+				
+			// 	this.game.add
+			// 	.tween(this.level.enemies[i])
+			// 	.from( { y: -200 }, 1500, Phaser.Easing.Bounce.Out, true);
+
+			// }
 		}
 
 	}

@@ -37,7 +37,7 @@ export default class {
 				break;
 
 			case 'NiceWeather':
-				this.addSun();
+				// this.addSun();
 				break;
 
 			case 'AutumnGlimmer':
@@ -112,11 +112,11 @@ export default class {
 
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
 
-		// this.addFog();
+		this.addWindLeaves();
 		this.addClouds();
 	}
 
-	addAutumnGlimmer(){
+	addWindLeaves(){
 		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
 		this.autumnGlimmerEmitter.fixedToCamera = true;
 		console.log(this.game.world.bounds.height);
@@ -129,8 +129,8 @@ export default class {
 
 		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
 	
-		this.autumnGlimmerEmitter.setYSpeed(50, 100);
-		this.autumnGlimmerEmitter.setXSpeed(-100, 100);
+		this.autumnGlimmerEmitter.setYSpeed(300);
+		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
 		this.autumnGlimmerEmitter.minParticleScale = 0.25;
 		this.autumnGlimmerEmitter.maxParticleScale = 1;
 
@@ -145,6 +145,7 @@ export default class {
 
 		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
 		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
+
 	}
 
 	zap() {
@@ -172,7 +173,7 @@ export default class {
 			.to({ alpha: 0 }, 250, Phaser.Easing.Cubic.In)
 			.start();
 
-		this.game.camera.flash(0xffffff, 200);
+		this.game.camera.flash(0xffffff, 450);
 		this.game.camera.shake(0.005, 500);
 	}
 
@@ -278,35 +279,7 @@ export default class {
 		// console.log(this.emitter);
 	}
 
-	addLeaves() {
-		let snowparticles = {
-			image: ['leave'],
-			lifespan: 10000,
-			vx: { min: -5, max: 5 },
-			vy: { value: 0, control: [{ x: 0, y: 1 }, { x: 0.3, y: 1 }, { x: 0.9, y: 0.01 }, { x: 1, y: 0 }] },
-			scale: { min: 0.5, max: 2 },
-			alpha: { value: 1, delta: 0.005 },
-			rotation: {
-				initial: -90,
-				value: 180,
-				control: [{ x: 0, y: 0 }, { x: 0.2, y: 0.5 }, { x: 0.4, y: 1 }, { x: 0.6, y: 0.5 }, { x: 1, y: 0 }]
-			}
-		};
-
-		this.manager.addData('leaves', snowparticles);
-		this.emitter = this.manager.createEmitter();
-		this.emitter.force.y = 0.01;
-		this.emitter.addToWorld();
-		this.emitter.emit('leaves', [this.game.camera.x, this.game.world.width], 0, { repeat: -1, frequency: 200 });
-		console.log(this.emitter);
-	}
-
-	addSun() {}
-
 	updateWeather() {
-		// if(this.currentWeather == 'Leaves'){
-		//     let wind = Math.max(Math.min(wind + (Math.random() - 0.5) * 0.02, 0.05), -0.05);
-		//    this.emitter.force.x = wind;
-		// }
+
 	}
 }

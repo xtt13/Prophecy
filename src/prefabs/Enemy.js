@@ -20,6 +20,8 @@ export default class extends Phaser.Sprite {
 		this.closeSpeed = this.game.rnd.integerInRange(10, 70);
 		this.farSpeed = this.game.rnd.integerInRange(400, 600);
 
+		this.startMoving = false;
+
 		this.anchor.setTo(0.5);
 
 		this.animations.add('walk', [0, 1, 2, 3, 4], 15, true);
@@ -29,22 +31,28 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
+		this.body.enable = false;
 
-		game.add.existing(this);
-
-		this.y = 0;
 		this.startTween = this.game.add
 			.tween(this)
-			.to({ y: y }, 1500, Phaser.Easing.Bounce.Out, true);
+			.from( { y: 0 }, 1500, Phaser.Easing.Bounce.Out, true);
 
 		this.startTween.onStart.add(() => {
 			this.game.time.events.add(
 				500,
 				() => {
 					this.game.camera.shake(0.005, 500);
+					
 				});
 			
 		}, this);
+
+		this.startTween.onComplete.add(() => {
+			this.body.enable = true;
+			this.startMoving = true;	
+		}, this);
+
+		game.add.existing(this);
 
 	}
 
@@ -53,14 +61,17 @@ export default class extends Phaser.Sprite {
 
 		if (this.distanceBetweenEnemiePlayer < 120) {
 			if (this.distanceBetweenEnemiePlayer < 100) {
-				this.game.physics.arcade.moveToObject(this, this.player, 10);
+				this.game.physics.arcade.moveToObject(this, this.player, 0);
+				this.animations.play('idle');
 
 				// Attack
 				if(this.distanceBetweenEnemiePlayer < 50){
+					this.animations.play('walk');
 
 					this.game.physics.arcade.moveToObject(this, this.player, 150);
 				}
 			} else {
+				this.animations.play('walk');
 				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			}
 
@@ -86,7 +97,7 @@ export default class extends Phaser.Sprite {
 			this.finderCall = false;
 		}
 
-		if (this.pathfinder) {
+		if (this.pathfinder && this.startMoving) {
 			this.pathfinder.followPath();
 		}
 
