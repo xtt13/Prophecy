@@ -96,7 +96,6 @@
                      "duration":100,
                      "id":8,
                      "length":4,
-                     "putBackgroundTile":3,
                      "removeBridge":true,
                      "removeQuestID":2,
                      "requiredItemID":2
@@ -107,7 +106,6 @@
                      "duration":"int",
                      "id":"int",
                      "length":"int",
-                     "putBackgroundTile":"int",
                      "removeBridge":"bool",
                      "removeQuestID":"int",
                      "requiredItemID":"int"

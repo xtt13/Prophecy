@@ -99,7 +99,7 @@ export default class {
 		this.eventManager = new Eventmanager(this.game, this);
 
 		// Create Weather
-		this.weather = new Weather(this.game, this.tilemapProperties.weather, this.backgroundLayer);
+		this.weather = new Weather(this.game, this.tilemapProperties.weather, this, this.backgroundLayer);
 
 		// Daycycle Class
 		this.dayCycleClass = new Daycycle(this.game, this);

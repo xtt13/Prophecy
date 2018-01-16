@@ -2,8 +2,9 @@ import Phaser from 'phaser';
 import config from './../config';
 
 export default class {
-	constructor(game, type, backgroundLayer) {
+	constructor(game, type, level, backgroundLayer) {
 		this.game = game;
+		this.level = level;
 		this.currentWeather = type;
 		this.backgroundLayer = backgroundLayer;
 
@@ -174,6 +175,13 @@ export default class {
 			.start();
 
 		this.game.camera.flash(0xffffff, 450);
+
+		if(this.level.dayCycleClass.night){
+			this.game.add
+			.tween(this.level.dayCycleClass.lightSprite)
+			.to({ alpha: 0 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
+		}
+
 		this.game.camera.shake(0.005, 500);
 	}
 
