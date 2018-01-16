@@ -223,12 +223,18 @@ export default class {
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		this.game.world.bringToTop(this.player);
+		this.game.world.bringToTop(this.foregroundLayer);
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
 		this.map.plus.events.regions.triggerWith(this.player);
 
-		this.game.world.bringToTop(this.foregroundLayer);
+		// If night == true
+		if (this.dayCycle) {
+			this.game.world.bringToTop(this.dayCycleClass.lightSprite);
+			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
+			this.dayCycleClass.updateShadowTexture();
+		}
 
 		// Update Weather
 		this.weather.updateWeather();
@@ -236,12 +242,6 @@ export default class {
 		// If clouds == true -> bringtoTop (Layer)
 		if (this.weather.clouds) {
 			this.game.world.bringToTop(this.weather.clouds);
-		}
-
-		// If night == true
-		if (this.dayCycle) {
-			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
-			this.dayCycleClass.updateShadowTexture();
 		}
 
 		// If Lockpicker == true -> update()
@@ -278,6 +278,7 @@ export default class {
 
 		//  Resize the world
 		this.groundLayer.resizeWorld();
+		this.foregroundLayer.resizeWorld();
 
 		// Set Collision Tiles
 		this.map.setCollisionBetween(0, 20, true, 'CollisionLayer');

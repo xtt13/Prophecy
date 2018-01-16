@@ -12,6 +12,7 @@ export default class extends Phaser.Sprite {
 		this.layer = layer;
 		this.dropItemID = properties.dropItemID;
 		this.itemType = properties.itemType;
+		this.jumpDown = properties.jumpDown;
 		// console.log(properties);
 		this.killQuestID = properties.killQuestID;
 
@@ -31,26 +32,32 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
-		this.body.enable = false;
+		// this.body.enable = false;
 
-		this.startTween = this.game.add
+		if(this.jumpDown){
+			this.startTween = this.game.add
 			.tween(this)
 			.from( { y: 0 }, 1500, Phaser.Easing.Bounce.Out, true);
 
-		this.startTween.onStart.add(() => {
-			this.game.time.events.add(
-				500,
-				() => {
-					this.game.camera.shake(0.005, 500);
-					
-				});
-			
-		}, this);
+			this.startTween.onStart.add(() => {
+				this.game.time.events.add(
+					500,
+					() => {
+						// this.game.camera.shake(0.005, 500);
+						
+					});
+				
+			}, this);
 
-		this.startTween.onComplete.add(() => {
-			this.body.enable = true;
-			this.startMoving = true;	
-		}, this);
+			this.startTween.onComplete.add(() => {
+				// this.body.enable = true;
+				this.startMoving = true;	
+			}, this);
+
+		} else {
+			// this.body.enable = true;
+			this.startMoving = true;
+		}
 
 		game.add.existing(this);
 

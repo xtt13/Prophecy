@@ -288,6 +288,9 @@ export default class {
 	}
 
 	updateWeather() {
+		if(this.lightning){
+			this.game.world.bringToTop(this.lightning);
+		}
 
 	}
 }

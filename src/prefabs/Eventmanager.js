@@ -108,6 +108,7 @@ export default class {
 	}
 
 	removeBridge(region){
+
 		const bridgeID = region.properties.id;
 		const requiredItemID = region.properties.requiredItemID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
@@ -115,8 +116,6 @@ export default class {
 		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
-
-		if (requiredItemID !== undefined && !this.level.itemIDs.includes(requiredItemID)) return;
 
 		if (region.properties.removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
