@@ -20,13 +20,13 @@ export default class {
 
 			this.time = new Date();
 			this.timeValue = this.time.getHours();
-			// this.timeValue = 12;
+			this.timeValue = 12;
 
 			if(this.timeValue >= 0 && this.timeValue < 6){
 				console.log('Night');
 				this.night = true;
 
-				this.lightSprite.alpha = 0.99;
+				this.lightSprite.alpha = 0.97;
 				this.level.backgroundLayer.tint = 0x070707;
 				this.level.player.tint = 0x383838;
 
@@ -84,7 +84,7 @@ export default class {
 				this.night = true;
 
 				this.level.backgroundLayer.tint = 0x070707;
-				this.lightSprite.alpha = 0.99;
+				this.lightSprite.alpha = 0.97;
 				this.level.player.tint = 0x383838;
 
 				for (var i = 0; i < this.level.characters.length; i++) {

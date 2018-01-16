@@ -48,7 +48,7 @@ export default class extends Phaser.State {
 
 		// Load Tilesets
 		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
-		this.load.image('Clouds', 'assets/tilesets/tilespriteClouds.png');
+		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
 
 		// Load Videos
 

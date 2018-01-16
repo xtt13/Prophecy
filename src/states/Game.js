@@ -40,8 +40,10 @@ export default class extends Phaser.State {
 			// this.level.weather.emitter.debug(20, 200);
 
 			// for (var i = 0; i < this.level.enemies.length; i++) {
-			// 	game.debug.body(this.level.enemies[i]);
+			// 	this.game.debug.body(this.level.enemies[i]);
 			// }
+
+			// this.game.debug.body(this.level.player);
 
 			// this.game.debug.quadTree(this.game.physics.arcade.quadTree);
 

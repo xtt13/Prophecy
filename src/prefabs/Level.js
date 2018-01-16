@@ -228,6 +228,8 @@ export default class {
 		this.map.plus.physics.collideWith(this.player);
 		this.map.plus.events.regions.triggerWith(this.player);
 
+		this.game.world.bringToTop(this.foregroundLayer);
+
 		// Update Weather
 		this.weather.updateWeather();
 
@@ -250,6 +252,7 @@ export default class {
 		if(this.weather.templeFliesEmitter){
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
+		
 
 		// Update GUIClass
 		this.GUICLASS.update();
@@ -271,6 +274,7 @@ export default class {
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
+		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 
 		//  Resize the world
 		this.groundLayer.resizeWorld();

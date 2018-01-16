@@ -20,7 +20,7 @@ export default class extends Phaser.Sprite {
 		this.animations.play('idle');
 
 		this.game.physics.enable(this);
-		this.body.setSize(8, 20, 18, 20);
+		this.body.setSize(8, 22, 15, 20);
 
 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
