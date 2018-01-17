@@ -37,7 +37,7 @@ export default class extends Phaser.Sprite {
 		if(this.jumpDown){
 			this.startTween = this.game.add
 			.tween(this)
-			.from( { y: 0 }, 1500, Phaser.Easing.Bounce.Out, true);
+			.from( { y: this.game.camera.height }, 1500, Phaser.Easing.Bounce.Out, true);
 
 			this.startTween.onStart.add(() => {
 				this.game.time.events.add(
@@ -89,7 +89,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
-			// console.log('Calculate');
+			console.log('Calculate');
 
 			this.pathfinder = new Pathfinder(
 				this.game,

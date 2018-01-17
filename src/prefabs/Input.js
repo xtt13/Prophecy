@@ -14,6 +14,7 @@ export default class {
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.pad1;
+		this.maxSpeed = 150;
 
 		this.checkController();
 	}
@@ -80,13 +81,22 @@ export default class {
 		}
 
 		this.pad = this.game.plugins.add(Phaser.VirtualJoystick);
+
 		// console.log(this.pad);
-		this.stick = this.pad.addDPad(0, 0, 200, 'dpad');
+
+		// this.stick = this.pad.addDPad(0, 0, 200, 'dpad');
+		// this.stick.scale = 0.5;
+		// this.stick.alignBottomLeft(0);
+		// this.stick.showOnTouch = true;
+		// console.log(this.stick);
+
+		this.stick = this.pad.addStick(0, 0, 200, 'generic');
+
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
 		this.stick.showOnTouch = true;
-		console.log(this.stick);
-		// screen.orientation.lock('landscape');
+		
+
 	}
 
 	isMobileDevice() {
@@ -258,21 +268,30 @@ export default class {
 					this.player.idle('y');
 				}
 			} else if (this.useMobileControl) {
-				if (this.stick.isDown) {
-					this.player.idle();
 
-					if (this.stick.direction === Phaser.LEFT) {
-						this.player.walk('left', 80);
-					} else if (this.stick.direction === Phaser.RIGHT) {
-						this.player.walk('right', 80);
-					} else if (this.stick.direction === Phaser.UP) {
-						this.player.walk('up', 80);
-					} else if (this.stick.direction === Phaser.DOWN) {
-						this.player.walk('down', 80);
-					}
-				} else {
-					this.player.idle();
-				}
+				// if (this.stick.isDown) {
+				// 	this.player.idle();
+
+				// 	if (this.stick.direction === Phaser.LEFT) {
+				// 		this.player.walk('left', 80);
+				// 	} else if (this.stick.direction === Phaser.RIGHT) {
+				// 		this.player.walk('right', 80);
+				// 	} else if (this.stick.direction === Phaser.UP) {
+				// 		this.player.walk('up', 80);
+				// 	} else if (this.stick.direction === Phaser.DOWN) {
+				// 		this.player.walk('down', 80);
+				// 	}
+				// } else {
+				// 	this.player.idle();
+				// }
+
+				if (this.stick.isDown){
+		            this.game.physics.arcade.velocityFromRotation(this.stick.rotation, this.stick.force * this.maxSpeed, this.player.body.velocity);
+		            // this.player.rotation = this.stick.rotation;
+			    } else {
+			        this.player.body.velocity.set(0);
+			    }
+
 			} else {
 				// Keyboard Movement
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {

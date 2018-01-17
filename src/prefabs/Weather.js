@@ -8,6 +8,12 @@ export default class {
 		this.currentWeather = type;
 		this.backgroundLayer = backgroundLayer;
 
+		this.isSafari =
+		navigator.vendor &&
+		navigator.vendor.indexOf('Apple') > -1 &&
+		navigator.userAgent &&
+		!navigator.userAgent.match('CriOS');
+
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
 		if (config.weather) {
@@ -113,8 +119,10 @@ export default class {
 
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
 
-		this.addWindLeaves();
-		this.addClouds();
+		if(!this.isSafari){
+			this.addWindLeaves();
+			this.addClouds();
+		}
 	}
 
 	addWindLeaves(){
@@ -180,6 +188,7 @@ export default class {
 			this.game.add
 			.tween(this.level.dayCycleClass.lightSprite)
 			.to({ alpha: 0 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
+
 		}
 
 		this.game.camera.shake(0.005, 500);

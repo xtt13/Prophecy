@@ -152,8 +152,7 @@
                      "id":8,
                      "length":4,
                      "removeBridge":true,
-                     "removeQuestID":2,
-                     "requiredItemID":2
+                     "removeQuestID":2
                     },
                  "propertytypes":
                     {
@@ -162,8 +161,7 @@
                      "id":"int",
                      "length":"int",
                      "removeBridge":"bool",
-                     "removeQuestID":"int",
-                     "requiredItemID":"int"
+                     "removeQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -179,6 +177,7 @@
                  "properties":
                     {
                      "amount":8,
+                     "jumpDown":true,
                      "killQuestID":11,
                      "questID":11,
                      "questKillEnemyAmount":8,
@@ -191,6 +190,7 @@
                  "propertytypes":
                     {
                      "amount":"int",
+                     "jumpDown":"bool",
                      "killQuestID":"int",
                      "questID":"int",
                      "questKillEnemyAmount":"int",

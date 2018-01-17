@@ -16,8 +16,16 @@ export default class extends Phaser.State {
 
 	create() {
 		// Toggle Fullscreen onclick
-		this.input.onDown.add(this.toggleFullScreen, this);
-		this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
+		let isSafari =
+		navigator.vendor &&
+		navigator.vendor.indexOf('Apple') > -1 &&
+		navigator.userAgent &&
+		!navigator.userAgent.match('CriOS');
+
+		if (!isSafari) {
+			this.input.onDown.add(this.toggleFullScreen, this);
+			this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
+		}
 
 		// Set GUIClass
 		this.GUI = new GUI(this.game);
