@@ -241,8 +241,6 @@ export default class {
 		let targetID = region.properties.targetID;
 
 		if (this.level.inputClass.stick) {
-			console.log(this.level.inputClass.stick);
-			// this.level.inputClass.stick.destroy();
 			this.level.inputClass.stick.alpha = 0;
 			this.level.inputClass.stick.enabled = false;
 		}

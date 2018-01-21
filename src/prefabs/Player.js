@@ -117,6 +117,12 @@ export default class extends Phaser.Sprite {
 		if (this.player.health <= 0) {
 			this.gameData.playerHealth = 100;
 			this.safe.setGameConfig(this.gameData);
+
+		if (this.inputClass.stick) {
+			this.inputClass.stick.alpha = 0;
+			this.inputClass.stick.enabled = false;
+		}
+
 			this.game.state.restart(true, false, {
 				map: this.currentMap,
 				targetID: this.lastTargetID,

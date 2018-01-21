@@ -41,6 +41,20 @@ export default class {
 			this.game.world.bringToTop(this.questMap.questmapBackground);
 			this.game.world.bringToTop(this.questMap.text);
 		}
+
+		// let onePSx = this.game.world.width / 100;
+		// onePSx = onePSx.toFixed(1);
+		
+		// let xValue = (this.player.x / onePSx) / 100;
+		// xValue = xValue.toFixed(1);
+
+		// let onePSy = this.game.world.height / 100;
+		// onePSy = onePSy.toFixed(1);
+		
+		// let yValue = (this.player.y / onePSy) / 100;
+		// yValue = yValue.toFixed(1);
+
+		// console.log(xValue, yValue);
 	}
 
 	createMessage(message, playerMovable, readable) {

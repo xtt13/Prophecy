@@ -229,8 +229,9 @@ export default class {
 		this.map.plus.physics.collideWith(this.player);
 		this.map.plus.events.regions.triggerWith(this.player);
 
+
 		// If night == true
-		if (this.dayCycle) {
+		if (this.dayCycle){
 			this.game.world.bringToTop(this.dayCycleClass.lightSprite);
 			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
 			this.dayCycleClass.updateShadowTexture();
@@ -256,6 +257,8 @@ export default class {
 
 		// Update GUIClass
 		this.GUICLASS.update();
+
+		// console.log(this.player.x, this.player.y);
 		
 	}
 
@@ -291,5 +294,6 @@ export default class {
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
+
 	}
 }

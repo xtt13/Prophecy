@@ -366,6 +366,17 @@
                  "width":50.4344,
                  "x":756.724667656153,
                  "y":899.709732256957
+                }, 
+                {
+                 "height":0.951593,
+                 "id":104,
+                 "name":"",
+                 "rotation":44.5894,
+                 "type":"",
+                 "visible":true,
+                 "width":50.4344,
+                 "x":756.45028459567,
+                 "y":576.164151152544
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -681,12 +692,12 @@
          "name":"Clouds",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":40,
          "x":0,
          "y":0
         }],
- "nextobjectid":104,
+ "nextobjectid":105,
  "orientation":"orthogonal",
  "properties":
     {

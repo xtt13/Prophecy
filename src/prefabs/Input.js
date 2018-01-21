@@ -19,16 +19,6 @@ export default class {
 		this.checkController();
 	}
 
-	// setPlayer(player) {
-	// 	this.player = player;
-
-	// 	if (this.gamepadSupport && !this.noControllerConnected) {
-	// 		this.useController();
-	// 	} else {
-	// 		this.useKeyboard();
-	// 	}
-	// }
-
 	showMessage(message, error) {
 		if (error) {
 			console.log('%c ' + message + ' ', 'background: #f00; color: #fff');
@@ -95,7 +85,7 @@ export default class {
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
 		this.stick.showOnTouch = true;
-		
+
 
 	}
 
@@ -288,6 +278,21 @@ export default class {
 				if (this.stick.isDown){
 		            this.game.physics.arcade.velocityFromRotation(this.stick.rotation, this.stick.force * this.maxSpeed, this.player.body.velocity);
 		            // this.player.rotation = this.stick.rotation;
+
+		            // console.log(this.stick.force);
+
+		      		this.stickRotation = this.stick.rotation.toFixed(1);
+
+		      		if(this.stickRotation <= 2 && this.stickRotation >= 1){
+		      			console.log('Down');
+		      		} else if(this.stickRotation >= -1 && this.stickRotation <= 1){
+		      			console.log('Right');
+		      		} else if(this.stickRotation <= -1 && this.stickRotation >= -2){
+		      			console.log('Up');
+		      		} else {
+		      			console.log('Left');
+		      		}
+
 			    } else {
 			        this.player.body.velocity.set(0);
 			    }
@@ -309,13 +314,6 @@ export default class {
 				} else {
 					this.player.idle();
 				}
-
-				// if(this.button_TAB.isDown){
-				// 	// this.level.GUICLASS.createQuestmap();
-				// 	// console.log(this.level.GUICLASS.questMap);
-				// 	console.log('HI');
-				// 	// this.level.GUICLASS.questMap.showMap();
-				// }
 			}
 		}
 	}

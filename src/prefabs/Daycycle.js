@@ -26,12 +26,12 @@ export default class {
 				console.log('Night');
 				this.night = true;
 
-				this.lightSprite.alpha = 0.97;
+				this.lightSprite.alpha = 0.85;
 				this.level.backgroundLayer.tint = 0x070707;
-				this.level.player.tint = 0x383838;
+				this.level.player.tint = 0x888888;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
-					this.level.characters[i].tint = 0x383838;
+					this.level.characters[i].tint = 0x888888;
 				}
 
 				if(this.level.weather.clouds){
@@ -87,11 +87,11 @@ export default class {
 
 				this.level.backgroundLayer.tint = 0x070707;
 
-				this.lightSprite.alpha = 0.97;
-				this.level.player.tint = 0x383838;
+				this.lightSprite.alpha = 0.85;
+				this.level.player.tint = 0x888888;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
-					this.level.characters[i].tint = 0x383838;
+					this.level.characters[i].tint = 0x888888;
 				}
 
 				if(this.level.weather.clouds){
