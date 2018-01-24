@@ -603,7 +603,7 @@
                  "name":"",
                  "properties":
                     {
-                     "character":"testman",
+                     "character":"priest",
                      "id":1
                     },
                  "propertytypes":
@@ -649,12 +649,14 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "athmoSound":"",
      "dayCycle":true,
      "music":"HopeMerged",
      "weather":"NiceWeather"
     },
  "propertytypes":
     {
+     "athmoSound":"string",
      "dayCycle":"bool",
      "music":"string",
      "weather":"string"

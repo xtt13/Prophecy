@@ -9,63 +9,72 @@ export default class {
 		this.fadeVolumeTo = 1;
 		this.fadeDuration = 2000;
 
-		this.sound = this.game.add.audio('AtmoWindRain', this.globalVolume, true);
 	}
 
-	initSound(key) {
-		console.log('A');
+
+	initSound(key){
+		// If Key is not undefined
 		if (key !== undefined) {
+		console.log('SoundKey is not undefined!');
+
+			// If Key is not a empty string
 			if(key !== ""){
-			console.log('B');
-			if (this.sound.key !== key) {
-				console.log('C');
-				if (this.sound.isPlaying) {
+			console.log('SoundKey is not a empty string!');
+
+				// If Sound is currently playing
+				if (this.sound && this.sound.isPlaying && this.sound.key !== key) {
+
+					// Fade it out
 					this.sound.fadeOut(this.fadeDuration);
 
-					this.game.time.events.add(Phaser.Timer.SECOND * 2, () => {
-						if (!this.checkCache(key)) {
-							this.loadSound(key);
-						}
+					// Wait
+					this.game.time.events.add(Phaser.Timer.SECOND * (this.fadeDuration / 1000), () => {
 
+						// Check if sound is in cache
+						if (!this.checkCache(key)) {
+							// Load Sound and play it
+							this.loadSound(key);
+						} else {
+
+							// Play sound from cache
+							this.sound = this.game.add.audio(key, this.globalVolume, true);
+							this.sound.onDecoded.add(() => {
+								this.sound.play();
+								this.game.add
+									.tween(this.sound)
+									.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
+							}, this);
+						}	
+					});
+
+				} else {
+					// Initalize Sound
+					// Check if sound is in cache
+					if (!this.checkCache(key)) {
+						// Load Sound and play it
+						this.loadSound(key);
+					} else {
+
+						// Play sound from cache
 						this.sound = this.game.add.audio(key, this.globalVolume, true);
 						this.sound.onDecoded.add(() => {
-							// this.music.fadeIn(this.fadeDuration, true);
 							this.sound.play();
 							this.game.add
 								.tween(this.sound)
 								.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
 						}, this);
-					});
-				} else {
-					if (!this.checkCache(key)) {
-						this.loadSound(key);
 					}
-
-					// this.sound = this.game.add.audio(key, this.globalVolume, true);
-					// this.sound.onDecoded.add(() => {
-					// 	this.sound.play();
-					// 	this.game.add
-					// 		.tween(this.sound)
-					// 		.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
-					// }, this);
 				}
+
 			} else {
-				this.sound = this.game.add.audio('AtmoWindRain', this.globalVolume, true);
-				this.sound.onDecoded.add(() => {
-				this.sound.play();
-				this.game.add
-						.tween(this.sound)
-						.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
-				}, this);
+				// If no sound is defined -> Fade out!
+				console.log('Empty String -> Fade out!')
+				if(this.sound && this.sound.isPlaying){
+					this.sound.fadeOut(this.fadeDuration);
+				}
 			}
-		} else {
-			if(this.sound.isPlaying){
-				this.sound.fadeOut(this.fadeDuration);
-			}
-		}
 		} else {
 			console.warn('SoundKey undefined');
-			// this.sound.stop();
 		}
 	}
 
@@ -84,7 +93,6 @@ export default class {
 		this.game.load.onLoadComplete.add(() => {
 			this.sound = this.game.add.audio(key, this.globalVolume, true);
 			this.sound.onDecoded.add(() => {
-				// this.sound.fadeIn(this.fadeDuration, true);
 				this.sound.play();
 				this.game.add
 					.tween(this.sound)

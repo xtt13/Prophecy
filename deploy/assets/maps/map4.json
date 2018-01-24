@@ -492,12 +492,14 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "athmoSound":"AtmoWindRain",
      "dayCycle":true,
      "music":"LostMerged",
      "weather":"Storm"
     },
  "propertytypes":
     {
+     "athmoSound":"string",
      "dayCycle":"bool",
      "music":"string",
      "weather":"string"
