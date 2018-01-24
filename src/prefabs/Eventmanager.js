@@ -23,7 +23,7 @@ export default class {
 				this.addMessage(region);
 			} else if (region.properties.addBridge) {
 				this.addBridge(region);
-			}else if (region.properties.removeBridge) {
+			} else if (region.properties.removeBridge) {
 				this.removeBridge(region);
 			} else if (region.properties.pathfinderMessage) {
 				this.addPathfinderMessage(region);
@@ -37,17 +37,17 @@ export default class {
 				this.addQuest(region);
 			} else if (region.properties.openDoor) {
 				this.openDoor(region);
-			} else if (region.properties.movePlayerToXY){
+			} else if (region.properties.movePlayerToXY) {
 				this.movePlayerToXY(region);
-			} else if (region.properties.spawnEnemies){
+			} else if (region.properties.spawnEnemies) {
 				this.spawnEnemies(region);
-			} else if (region.properties.lockCamera){
+			} else if (region.properties.lockCamera) {
 				this.lockCamera(region);
 			}
 		});
 
 		this.level.map.plus.events.regions.onLeaveAdd(this.level.player, region => {
-			if (region.properties.lockCamera){
+			if (region.properties.lockCamera) {
 				this.followPlayer(region);
 			}
 		});
@@ -84,7 +84,11 @@ export default class {
 		const requiredItemID = region.properties.requiredItemID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 
-		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
+		if (
+			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+			requiredMasteredQuestID !== undefined
+		)
+			return;
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
@@ -107,13 +111,16 @@ export default class {
 		this.level.activatedBridges.push(bridgeID);
 	}
 
-	removeBridge(region){
-
+	removeBridge(region) {
 		const bridgeID = region.properties.id;
 		const requiredItemID = region.properties.requiredItemID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 
-		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
+		if (
+			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+			requiredMasteredQuestID !== undefined
+		)
+			return;
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
@@ -133,16 +140,13 @@ export default class {
 		this.level.bridgebuilder.removeBridge();
 
 		this.level.activatedBridges.push(bridgeID);
-
 	}
 
-	movePlayerToXY(region){
+	movePlayerToXY(region) {
 		const targetX = region.properties.targetX;
 		const targetY = region.properties.targetY;
 
-
 		if (this.level.pathfinder == undefined) {
-
 			this.level.pathfinder = new Pathfinder(
 				this.game,
 				this.level.map,
@@ -160,19 +164,22 @@ export default class {
 		const characterID = region.properties.characterID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 
-		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) && requiredMasteredQuestID !== undefined) return;
+		if (
+			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+			requiredMasteredQuestID !== undefined
+		)
+			return;
 
 		if (this.level.playedDialogues.includes(message_id)) return;
 		this.level.playedDialogues.push(message_id);
 		this.level.safe.setPlayedDialogues(this.level.playedDialogues);
 
 		for (var i = 0; i < this.level.characters.length; i++) {
-			if(this.level.characters[i].id == characterID){
+			if (this.level.characters[i].id == characterID) {
 				this.pathfinderCharacter = this.level.characters[i];
 			} else {
 				console.warn('Character not found!');
 			}
-			
 		}
 
 		if (this.level.pathfinder == undefined) {
@@ -205,14 +212,16 @@ export default class {
 							this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 
 							this.game.time.events.add(Phaser.Timer.SECOND * 8, () => {
-
 								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
 
 								this.level.questManager.addQuest(region.properties);
 
 								this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
-								if (region.properties.endDestinationX !== 'currentPosition' && region.properties.endDestinationY !== 'currentPosition'){
+								if (
+									region.properties.endDestinationX !== 'currentPosition' &&
+									region.properties.endDestinationY !== 'currentPosition'
+								) {
 									this.endDestinationX = region.properties.endDestinationX;
 									this.endDestinationY = region.properties.endDestinationY;
 
@@ -250,6 +259,16 @@ export default class {
 		this.level.safe.setGameConfig(this.level.gameData);
 
 		console.log('TargetMap: ' + targetMap);
+
+		console.log(this.level.weather.weatherSound);
+		// if (this.level.weather.weatherSound) {
+		// 	// this.level.weather.weatherSound.fadeOut(1000);
+		// 	// this.game.add.tween(this.level.weather.weatherSound).to( { volume: 0 }, 2000, Phaser.Easing.Linear.None, true);
+		// 	this.level.weather.weatherSound.stop();
+		// }
+		// if(this.game.soundManager.sound){
+		// 	this.game.soundManager.sound.fadeOut(2000);
+		// }
 
 		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
 	}
@@ -293,60 +312,49 @@ export default class {
 		// this.game.camera.shake(0.0015, 10000, true);
 	}
 
-	spawnEnemies(region){
-
+	spawnEnemies(region) {
 		// Prevent from always spawning when triggering event!
-		if(this.spawnEnemiesRunning) return;
+		if (this.spawnEnemiesRunning) return;
 
 		if (this.level.questManager.checkIfQuestWasDone(region.properties.questID)) return;
 
 		this.spawnEnemiesRunning = true;
 
-		if (!this.level.questManager.checkIfQuestExists(region.properties.questID)){
+		if (!this.level.questManager.checkIfQuestExists(region.properties.questID)) {
 			this.level.questManager.addQuest(region.properties);
 		}
 
 		for (var i = 0; i < region.properties.amount; i++) {
-
 			const rndX = this.game.rnd.integerInRange(0, 1);
 			const rndY = this.game.rnd.integerInRange(0, 1);
 
-			const x = (rndX ? region.left : region.right);
-			const y = (rndY ? region.top : region.bottom);
+			const x = rndX ? region.left : region.right;
+			const y = rndY ? region.top : region.bottom;
 
 			// const x = this.game.rnd.integerInRange(region.left, region.right);
 			// const y = this.game.rnd.integerInRange(region.top, region.bottom);
 
 			this.level.enemies.push(
-				new Enemy(
-					this.game,
-					x,
-					y,
-					this.level.player,
-					this.level.map,
-					this.level.groundLayer,
-					region.properties
-				)
+				new Enemy(this.game, x, y, this.level.player, this.level.map, this.level.groundLayer, region.properties)
 			);
 
 			// for (var i = 0; i < this.level.enemies.length; i++) {
-				
+
 			// 	this.game.add
 			// 	.tween(this.level.enemies[i])
 			// 	.from( { y: -200 }, 1500, Phaser.Easing.Bounce.Out, true);
 
 			// }
 		}
-
 	}
 
-	lockCamera(region){
+	lockCamera(region) {
 		console.log(region);
 
 		const diff1 = region.right - region.left;
 		const diff2 = region.bottom - region.top;
-		const cameraX = region.left + (diff1 / 2);
-		const cameraY = region.bottom - (diff2 / 2);
+		const cameraX = region.left + diff1 / 2;
+		const cameraY = region.bottom - diff2 / 2;
 
 		console.log(cameraX, cameraY);
 
@@ -354,13 +362,26 @@ export default class {
 		// this.game.camera.lerp = 0.1;
 		// this.game.camera.focusOnXY(cameraX, cameraY);
 
-		this.game.add.tween(this.game.camera).to({x: cameraX - (this.game.camera.width / 2), y: cameraY - (this.game.camera.height / 2)}, 750, Phaser.Easing.Quadratic.InOut, true);
-
+		this.game.add
+			.tween(this.game.camera)
+			.to(
+				{ x: cameraX - this.game.camera.width / 2, y: cameraY - this.game.camera.height / 2 },
+				750,
+				Phaser.Easing.Quadratic.InOut,
+				true
+			);
 	}
 
-	followPlayer(region){
-		this.followTween = this.game.add.tween(this.game.camera).to({x: this.level.player.x - (this.game.camera.width / 2), y: this.level.player.y - (this.game.camera.height / 2)}, 400, Phaser.Easing.Quadratic.InOut, true);
-	
+	followPlayer(region) {
+		this.followTween = this.game.add
+			.tween(this.game.camera)
+			.to(
+				{ x: this.level.player.x - this.game.camera.width / 2, y: this.level.player.y - this.game.camera.height / 2 },
+				400,
+				Phaser.Easing.Quadratic.InOut,
+				true
+			);
+
 		this.followTween.onComplete.add(() => {
 			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 		}, this);

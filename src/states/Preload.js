@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import WebFont from 'webfontloader';
 import Input from '../prefabs/Input';
 import Musicplayer from '../prefabs/Musicplayer';
+import Soundmanager from '../prefabs/Soundmanager';
 
 export default class extends Phaser.State {
 	init() {}
@@ -36,6 +37,15 @@ export default class extends Phaser.State {
 		this.load.audio('LostMerged', 'assets/music/LostMerged.mp3');
 
 		// Load Sounds
+		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
+		
+		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
+
+		this.load.audio('ThunderNear1', 'assets/sounds/ThunderNear1.mp3');
+		this.load.audio('ThunderNear2', 'assets/sounds/ThunderNear2.mp3');
+		this.load.audio('ThunderNear3', 'assets/sounds/ThunderNear3.mp3');
+		this.load.audio('ThunderNear4', 'assets/sounds/ThunderNear4.mp3');
+		this.load.audio('ThunderNear5', 'assets/sounds/ThunderNear5.mp3');
 
 		// Load Spritesheets
 		// this.load.spritesheet('player', 'assets/sprites/player.png', 46, 46);
@@ -64,7 +74,6 @@ export default class extends Phaser.State {
 		this.load.image('glimmerParticle', 'assets/sprites/glimmerParticle.png');
 		this.load.image('leave', 'assets/sprites/leave.png');
 		this.load.image('cloud', 'assets/sprites/cloud.png');
-		
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
@@ -72,9 +81,8 @@ export default class extends Phaser.State {
 	}
 
 	create() {
-
 		this.game.musicPlayer = new Musicplayer(this.game);
-
+		this.game.soundManager = new Soundmanager(this.game);
 
 		this.state.start('Game', true, false);
 	}

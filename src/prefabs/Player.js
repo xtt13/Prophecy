@@ -103,9 +103,7 @@ export default class extends Phaser.Sprite {
 			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
 		}
 
-		
-
-		if(enemy.killQuestID !== undefined){
+		if (enemy.killQuestID !== undefined) {
 			this.questManager.checkKillCondition(enemy.killQuestID);
 		}
 
@@ -118,10 +116,10 @@ export default class extends Phaser.Sprite {
 			this.gameData.playerHealth = 100;
 			this.safe.setGameConfig(this.gameData);
 
-		if (this.inputClass.stick) {
-			this.inputClass.stick.alpha = 0;
-			this.inputClass.stick.enabled = false;
-		}
+			if (this.inputClass.stick) {
+				this.inputClass.stick.alpha = 0;
+				this.inputClass.stick.enabled = false;
+			}
 
 			this.game.state.restart(true, false, {
 				map: this.currentMap,
@@ -152,12 +150,12 @@ export default class extends Phaser.Sprite {
 			if (this.questManager.checkIfQuestExists(item.questID)) return;
 
 			let quest = {
-				'questID': item.questID,
-				'questMessage': item.questMessage,
-				'questKillEnemyType': undefined,
-				'questDeadEnemies' : undefined,
-				'questKillEnemyAmount': undefined
-			}
+				questID: item.questID,
+				questMessage: item.questMessage,
+				questKillEnemyType: undefined,
+				questDeadEnemies: undefined,
+				questKillEnemyAmount: undefined
+			};
 
 			this.questManager.addQuest(quest);
 

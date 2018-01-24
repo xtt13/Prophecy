@@ -34,33 +34,27 @@ export default class extends Phaser.Sprite {
 		this.body.bounce.set(1);
 		// this.body.enable = false;
 
-		if(this.jumpDown){
+		if (this.jumpDown) {
 			this.startTween = this.game.add
-			.tween(this)
-			.from( { y: this.game.camera.height }, 1500, Phaser.Easing.Bounce.Out, true);
+				.tween(this)
+				.from({ y: this.game.camera.height }, 1500, Phaser.Easing.Bounce.Out, true);
 
 			this.startTween.onStart.add(() => {
-				this.game.time.events.add(
-					500,
-					() => {
-						// this.game.camera.shake(0.005, 500);
-						
-					});
-				
+				this.game.time.events.add(500, () => {
+					// this.game.camera.shake(0.005, 500);
+				});
 			}, this);
 
 			this.startTween.onComplete.add(() => {
 				// this.body.enable = true;
-				this.startMoving = true;	
+				this.startMoving = true;
 			}, this);
-
 		} else {
 			// this.body.enable = true;
 			this.startMoving = true;
 		}
 
 		game.add.existing(this);
-
 	}
 
 	update() {
@@ -72,7 +66,7 @@ export default class extends Phaser.Sprite {
 				this.animations.play('idle');
 
 				// Attack
-				if(this.distanceBetweenEnemiePlayer < 50){
+				if (this.distanceBetweenEnemiePlayer < 50) {
 					this.animations.play('walk');
 
 					this.game.physics.arcade.moveToObject(this, this.player, 150);

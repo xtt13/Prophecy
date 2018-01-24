@@ -8,21 +8,21 @@ export default class {
 		this.level = level;
 	}
 
-	addQuest(properties){
+	addQuest(properties) {
 		this.quests = this.level.safe.getQuests();
 		let quest = {
-			'id': properties.questID,
-			'questMessage': properties.questMessage,
-			'questKillEnemyType': properties.questKillEnemyType,
-			'questDeadEnemies' : 1,
-			'questKillEnemyAmount': properties.questKillEnemyAmount
-		}
+			id: properties.questID,
+			questMessage: properties.questMessage,
+			questKillEnemyType: properties.questKillEnemyType,
+			questDeadEnemies: 1,
+			questKillEnemyAmount: properties.questKillEnemyAmount
+		};
 		this.quests[properties.questID] = quest;
 		console.log(this.quests);
 		this.level.safe.setQuests(this.quests);
 	}
 
-	removeQuest(questID){
+	removeQuest(questID) {
 		console.log('removeInside');
 		this.quests = this.level.safe.getQuests();
 		let masteredQuest = this.quests[questID];
@@ -32,18 +32,18 @@ export default class {
 		console.log(this.quests);
 	}
 
-	checkIfQuestExists(questID){
+	checkIfQuestExists(questID) {
 		this.quests = this.level.safe.getQuests();
-		if((questID in this.quests || questID in this.quests.masteredQuests)){
+		if (questID in this.quests || questID in this.quests.masteredQuests) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	checkIfQuestWasDone(masteredQuestID){
+	checkIfQuestWasDone(masteredQuestID) {
 		this.quests = this.level.safe.getQuests();
-		if((masteredQuestID in this.quests.masteredQuests)){
+		if (masteredQuestID in this.quests.masteredQuests) {
 			console.log('Quest was done!');
 			return true;
 		} else {
@@ -51,12 +51,12 @@ export default class {
 		}
 	}
 
-	checkKillCondition(questID){
+	checkKillCondition(questID) {
 		this.quests = this.level.safe.getQuests();
 
-		if(questID in this.quests){
+		if (questID in this.quests) {
 			console.log(this.quests[questID].questDeadEnemies, this.quests[questID].questKillEnemyAmount);
-			if(this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount){
+			if (this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount) {
 				this.level.GUICLASS.createNotification('quest', 'Questupdate');
 				this.removeQuest(questID);
 			} else {
@@ -65,8 +65,5 @@ export default class {
 				console.log(this.quests);
 			}
 		}
-
 	}
-
-
 }

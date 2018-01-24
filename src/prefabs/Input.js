@@ -85,8 +85,6 @@ export default class {
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
 		this.stick.showOnTouch = true;
-
-
 	}
 
 	isMobileDevice() {
@@ -258,7 +256,6 @@ export default class {
 					this.player.idle('y');
 				}
 			} else if (this.useMobileControl) {
-
 				// if (this.stick.isDown) {
 				// 	this.player.idle();
 
@@ -275,28 +272,30 @@ export default class {
 				// 	this.player.idle();
 				// }
 
-				if (this.stick.isDown){
-		            this.game.physics.arcade.velocityFromRotation(this.stick.rotation, this.stick.force * this.maxSpeed, this.player.body.velocity);
-		            // this.player.rotation = this.stick.rotation;
+				if (this.stick.isDown) {
+					this.game.physics.arcade.velocityFromRotation(
+						this.stick.rotation,
+						this.stick.force * this.maxSpeed,
+						this.player.body.velocity
+					);
+					// this.player.rotation = this.stick.rotation;
 
-		            // console.log(this.stick.force);
+					// console.log(this.stick.force);
 
-		      		this.stickRotation = this.stick.rotation.toFixed(1);
+					this.stickRotation = this.stick.rotation.toFixed(1);
 
-		      		if(this.stickRotation <= 2 && this.stickRotation >= 1){
-		      			console.log('Down');
-		      		} else if(this.stickRotation >= -1 && this.stickRotation <= 1){
-		      			console.log('Right');
-		      		} else if(this.stickRotation <= -1 && this.stickRotation >= -2){
-		      			console.log('Up');
-		      		} else {
-		      			console.log('Left');
-		      		}
-
-			    } else {
-			        this.player.body.velocity.set(0);
-			    }
-
+					if (this.stickRotation <= 2 && this.stickRotation >= 1) {
+						console.log('Down');
+					} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
+						console.log('Right');
+					} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
+						console.log('Up');
+					} else {
+						console.log('Left');
+					}
+				} else {
+					this.player.body.velocity.set(0);
+				}
 			} else {
 				// Keyboard Movement
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {

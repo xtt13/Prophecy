@@ -10,7 +10,7 @@ export default class {
 
 		// this.bgColors = [0x62bd18, 0xff5300, 0xd21034, 0xff475c, 0x8f16b2, 0x588c7e, 0x8c4646];
 		// this.tintColor = game.rnd.pick(this.bgColors);
-		
+
 		this.rotationSpeed = 3;
 		this.maxAngleDifference = 10;
 		this.scaleRate = 0.5;

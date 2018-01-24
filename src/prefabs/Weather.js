@@ -9,10 +9,10 @@ export default class {
 		this.backgroundLayer = backgroundLayer;
 
 		this.isSafari =
-		navigator.vendor &&
-		navigator.vendor.indexOf('Apple') > -1 &&
-		navigator.userAgent &&
-		!navigator.userAgent.match('CriOS');
+			navigator.vendor &&
+			navigator.vendor.indexOf('Apple') > -1 &&
+			navigator.userAgent &&
+			!navigator.userAgent.match('CriOS');
 
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
@@ -79,7 +79,7 @@ export default class {
 		this.templeFliesEmitter.minParticleScale = 0.1;
 		this.templeFliesEmitter.maxParticleScale = 0.5;
 		// emitter.maxParticleSpeed.setTo(2, 2);
-	
+
 		this.templeFliesEmitter.setYSpeed(5, 10);
 		this.templeFliesEmitter.setXSpeed(20, -20);
 
@@ -115,17 +115,23 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-		let randomSecond = this.game.rnd.integerInRange(10, 18);
+		this.lightningSounds = [];
+		for (let i = 1; i <= 5; i++) {
+			let lightningSound = this.game.add.audio('ThunderNear' + i, 0.2);
+			this.lightningSounds.push(lightningSound);
+		}
 
+		let randomSecond = this.game.rnd.integerInRange(10, 18);
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
 
-		if(!this.isSafari){
+		if (!this.isSafari) {
 			this.addWindLeaves();
 			this.addClouds();
 		}
+
 	}
 
-	addWindLeaves(){
+	addWindLeaves() {
 		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
 		this.autumnGlimmerEmitter.fixedToCamera = true;
 		console.log(this.game.world.bounds.height);
@@ -137,7 +143,7 @@ export default class {
 		// emitter.maxParticleSpeed.setTo(2, 2);
 
 		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
-	
+
 		this.autumnGlimmerEmitter.setYSpeed(300);
 		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
 		this.autumnGlimmerEmitter.minParticleScale = 0.25;
@@ -154,7 +160,6 @@ export default class {
 
 		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
 		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
-
 	}
 
 	zap() {
@@ -184,12 +189,14 @@ export default class {
 
 		this.game.camera.flash(0xffffff, 450);
 
-		if(this.level.dayCycleClass.night){
+		if (this.level.dayCycleClass.night) {
 			this.game.add
-			.tween(this.level.dayCycleClass.lightSprite)
-			.to({ alpha: 0 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
-
+				.tween(this.level.dayCycleClass.lightSprite)
+				.to({ alpha: 0 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 		}
+
+		this.lightningSound = this.game.rnd.pick(this.lightningSounds);
+		this.lightningSound.play();
 
 		this.game.camera.shake(0.005, 500);
 	}
@@ -297,9 +304,8 @@ export default class {
 	}
 
 	updateWeather() {
-		if(this.lightning){
+		if (this.lightning) {
 			this.game.world.bringToTop(this.lightning);
 		}
-
 	}
 }

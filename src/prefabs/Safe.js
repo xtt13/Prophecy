@@ -64,12 +64,11 @@ export default class {
 	}
 
 	getQuests() {
-
 		let quests = JSON.parse(localStorage.getItem('quests'));
 
 		if (quests == null) {
 			let quests = {
-				'masteredQuests': {}
+				masteredQuests: {}
 			};
 			return quests;
 		} else {

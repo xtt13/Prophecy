@@ -418,12 +418,14 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "athmoSound":"AtmoWaterStill",
      "dayCycle":true,
      "music":"HopeMerged",
      "weather":"TempleFlies"
     },
  "propertytypes":
     {
+     "athmoSound":"string",
      "dayCycle":"bool",
      "music":"string",
      "weather":"string"

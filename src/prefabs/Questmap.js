@@ -26,7 +26,6 @@ export default class {
 	}
 
 	showMap() {
-
 		console.log('Show Questmap');
 
 		this.level = this.GUI.level;
@@ -64,26 +63,29 @@ export default class {
 		this.text.fixedToCamera = true;
 
 		for (let prop in this.quests) {
-			if(!isNaN(prop)){
-				if(this.quests[prop].questKillEnemyAmount !== undefined){
-					this.text.text += this.quests[prop].questMessage + ': ' + this.quests[prop].questDeadEnemies + '/' + this.quests[prop].questKillEnemyAmount + '\n';
+			if (!isNaN(prop)) {
+				if (this.quests[prop].questKillEnemyAmount !== undefined) {
+					this.text.text +=
+						this.quests[prop].questMessage +
+						': ' +
+						this.quests[prop].questDeadEnemies +
+						'/' +
+						this.quests[prop].questKillEnemyAmount +
+						'\n';
 				} else {
 					this.text.text += this.quests[prop].questMessage + '\n';
 				}
-				
 			}
 		}
 
 		let counter = 0;
 		let maxEntries = 3;
 		for (let prop in this.quests.masteredQuests) {
-			if(!isNaN(prop) && counter < maxEntries){
-					console.log(this.quests.masteredQuests[prop].questMessage);	
-					counter++;	
+			if (!isNaN(prop) && counter < maxEntries) {
+				console.log(this.quests.masteredQuests[prop].questMessage);
+				counter++;
 			}
 		}
-
-
 
 		this.questmapBackground.alpha = 0;
 		this.text.alpha = 0;

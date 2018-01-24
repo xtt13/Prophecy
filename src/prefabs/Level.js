@@ -53,6 +53,7 @@ export default class {
 		this.initMap();
 
 		this.game.musicPlayer.initMap(this.tilemapProperties.music);
+		this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
 
 		this.game.camera.flash(0x000000, 2000);
 
@@ -162,25 +163,15 @@ export default class {
 
 		// Find specific enemy
 		elementsArr.forEach(function(element) {
-		const killQuestID = element.properties.killQuestID;
+			const killQuestID = element.properties.killQuestID;
 
-		if(killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)){
-
-			if (element.properties.type == 'seed') {
-				this.enemies.push(
-					new Enemy(
-						this.game,
-						element.x,
-						element.y,
-						this.player,
-						this.map,
-						this.groundLayer,
-						element.properties
-					)
-				);
+			if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
+				if (element.properties.type == 'seed') {
+					this.enemies.push(
+						new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+					);
+				}
 			}
-		}
-
 		}, this);
 	}
 
@@ -199,8 +190,6 @@ export default class {
 
 		return result;
 	}
-
-	
 
 	// Update Method
 	update() {
@@ -229,9 +218,8 @@ export default class {
 		this.map.plus.physics.collideWith(this.player);
 		this.map.plus.events.regions.triggerWith(this.player);
 
-
 		// If night == true
-		if (this.dayCycle){
+		if (this.dayCycle) {
 			this.game.world.bringToTop(this.dayCycleClass.lightSprite);
 			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
 			this.dayCycleClass.updateShadowTexture();
@@ -250,16 +238,14 @@ export default class {
 			this.lockGame.update();
 		}
 
-		if(this.weather.templeFliesEmitter){
+		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
-		
 
 		// Update GUIClass
 		this.GUICLASS.update();
 
 		// console.log(this.player.x, this.player.y);
-		
 	}
 
 	initMap() {
@@ -294,6 +280,5 @@ export default class {
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
-
 	}
 }
