@@ -17,6 +17,8 @@ export default class extends Phaser.Sprite {
 		this.playerSpeed = 130;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
+		this.animations.add('run', [4, 5, 6, 7, 8, 9], 10, true);
+
 		this.animations.play('idle');
 
 		this.game.physics.enable(this);
@@ -96,39 +98,42 @@ export default class extends Phaser.Sprite {
 	fight() {}
 
 	getDamage(enemy, player) {
-		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
-			console.log(enemy.dropItemID);
-			let properties = {};
-			properties.id = enemy.dropItemID;
-			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
-		}
+		// if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+		// 	console.log(enemy.dropItemID);
+		// 	let properties = {};
+		// 	properties.id = enemy.dropItemID;
+		// 	this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
+		// }
 
-		if (enemy.killQuestID !== undefined) {
-			this.questManager.checkKillCondition(enemy.killQuestID);
-		}
+		// if (enemy.killQuestID !== undefined) {
+		// 	this.questManager.checkKillCondition(enemy.killQuestID);
+		// }
 
-		this.player.health -= 10;
-		this.gameData.playerHealth = this.player.health;
-		this.safe.setGameConfig(this.gameData);
-		this.game.camera.flash(0xc10000, 200);
+		// this.player.health -= 10;
+		// this.gameData.playerHealth = this.player.health;
+		// this.safe.setGameConfig(this.gameData);
+		// this.game.camera.flash(0xc10000, 200);
 
-		if (this.player.health <= 0) {
-			this.gameData.playerHealth = 100;
-			this.safe.setGameConfig(this.gameData);
+		// if (this.player.health <= 0) {
+		// 	this.gameData.playerHealth = 100;
+		// 	this.safe.setGameConfig(this.gameData);
 
-			if (this.inputClass.stick) {
-				this.inputClass.stick.alpha = 0;
-				this.inputClass.stick.enabled = false;
-			}
+		// 	if (this.inputClass.stick) {
+		// 		this.inputClass.stick.alpha = 0;
+		// 		this.inputClass.stick.enabled = false;
+		// 	}
 
-			this.game.state.restart(true, false, {
-				map: this.currentMap,
-				targetID: this.lastTargetID,
-				restartType: 'revive'
-			});
-		}
+		// 	this.game.state.restart(true, false, {
+		// 		map: this.currentMap,
+		// 		targetID: this.lastTargetID,
+		// 		restartType: 'revive'
+		// 	});
+		// }
 
-		enemy.destroy();
+		// enemy.destroy();
+
+		// enemy.body.velocity.x = player.body.velocity.x;
+		// enemy.body.velocity.y = player.body.velocity.y;
 	}
 
 	collideWithItem(player, item) {

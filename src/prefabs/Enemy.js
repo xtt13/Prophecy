@@ -32,6 +32,7 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
+		this.body.drag.set(200);
 		// this.body.enable = false;
 
 		if (this.jumpDown) {
@@ -60,47 +61,47 @@ export default class extends Phaser.Sprite {
 	update() {
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
-		if (this.distanceBetweenEnemiePlayer < 120) {
-			if (this.distanceBetweenEnemiePlayer < 100) {
-				this.game.physics.arcade.moveToObject(this, this.player, 0);
-				this.animations.play('idle');
+		// if (this.distanceBetweenEnemiePlayer < 120) {
+		// 	if (this.distanceBetweenEnemiePlayer < 100) {
+		// 		this.game.physics.arcade.moveToObject(this, this.player, 0);
+		// 		this.animations.play('idle');
 
-				// Attack
-				if (this.distanceBetweenEnemiePlayer < 50) {
-					this.animations.play('walk');
+		// 		// Attack
+		// 		if (this.distanceBetweenEnemiePlayer < 50) {
+		// 			this.animations.play('walk');
 
-					this.game.physics.arcade.moveToObject(this, this.player, 150);
-				}
-			} else {
-				this.animations.play('walk');
-				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
-			}
+		// 			this.game.physics.arcade.moveToObject(this, this.player, 150);
+		// 		}
+		// 	} else {
+		// 		this.animations.play('walk');
+		// 		this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+		// 	}
 
-			this.finderCall = true;
-			if (this.pathfinder) {
-				this.pathfinder.pathToFollow.length = 0;
-			}
-		}
+		// 	this.finderCall = true;
+		// 	if (this.pathfinder) {
+		// 		this.pathfinder.pathToFollow.length = 0;
+		// 	}
+		// }
 
-		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
-			console.log('Calculate');
+		// if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
+		// 	console.log('Calculate');
 
-			this.pathfinder = new Pathfinder(
-				this.game,
-				this.map,
-				this,
-				{ x: this.player.x, y: this.player.y },
-				this.layer,
-				true,
-				this.farSpeed,
-				this
-			);
-			this.finderCall = false;
-		}
+		// 	this.pathfinder = new Pathfinder(
+		// 		this.game,
+		// 		this.map,
+		// 		this,
+		// 		{ x: this.player.x, y: this.player.y },
+		// 		this.layer,
+		// 		true,
+		// 		this.farSpeed,
+		// 		this
+		// 	);
+		// 	this.finderCall = false;
+		// }
 
-		if (this.pathfinder && this.startMoving) {
-			this.pathfinder.followPath();
-		}
+		// if (this.pathfinder && this.startMoving) {
+		// 	this.pathfinder.followPath();
+		// }
 
 		// console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));

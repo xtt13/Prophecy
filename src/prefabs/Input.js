@@ -199,6 +199,8 @@ export default class {
 		// this.button_D.onDown.add(this.onKeyboardDown, this);
 		// this.button_D.onUp.add(this.onKeyboardUp, this);
 
+		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
 		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 
 		this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
@@ -298,34 +300,57 @@ export default class {
 				}
 			} else {
 				// Keyboard Movement
-				console.log("Left: " + this.button_A.isDown, "Right: " + this.button_D.isDown, "Top: " + this.button_W.isDown, "Down: " + this.button_S.isDown);
 
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 					if (this.button_A.isDown) {
 						// this.player.walk('left', 80);
+						this.player.animations.play('run');
 						this.player.body.velocity.x = -130;
 
 					} else if (this.button_D.isDown) {
 						// this.player.walk('right', 80);
+						this.player.animations.play('run');
 						this.player.body.velocity.x = 130;
 					} else {
+						// this.player.animations.play('idle');
 						this.player.body.velocity.x = 0;
 					}
 
 					if (this.button_W.isDown) {
 						// this.player.walk('up', 80);
+						this.player.animations.play('run');
 						this.player.body.velocity.y = -130;
 
 					} else if (this.button_S.isDown) {
 						// this.player.walk('down', 80);
+						this.player.animations.play('run');
 						this.player.body.velocity.y = 130;
 					} else {
+						// this.player.animations.play('idle');
 						this.player.body.velocity.y = 0;
 					}
 
 				} else {					
 					this.player.body.velocity.y = 0;
 					this.player.body.velocity.x = 0;
+					this.player.animations.play('idle');
+				}
+
+				if(this.button_SPACEBAR.isDown){
+					// this.player.body.setSize(40, 40, 0, 0);
+
+					// this.game.add.tween(this.player.body).to( {width: 40, height: 40}, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+					// this.game.add.tween(this.player.body).to( { x: 3, y: 3 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+					// this.game.add.tween(this.player.body.height).to( 40, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+					console.log(this.player.body);
+					console.log(this.player.body.width);
+					console.log(this.player.body.height);
+
+				} else {
+					// this.player.body.setSize(8, 22, 15, 20);
 				}
 			}
 		}
