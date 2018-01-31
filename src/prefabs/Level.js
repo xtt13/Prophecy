@@ -46,6 +46,7 @@ export default class {
 
 		// Method
 		this.loadLevel();
+
 	}
 
 	loadLevel() {

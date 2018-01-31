@@ -298,20 +298,34 @@ export default class {
 				}
 			} else {
 				// Keyboard Movement
+				console.log("Left: " + this.button_A.isDown, "Right: " + this.button_D.isDown, "Top: " + this.button_W.isDown, "Down: " + this.button_S.isDown);
+
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 					if (this.button_A.isDown) {
-						this.player.walk('left', 80);
+						// this.player.walk('left', 80);
+						this.player.body.velocity.x = -130;
+
 					} else if (this.button_D.isDown) {
-						this.player.walk('right', 80);
+						// this.player.walk('right', 80);
+						this.player.body.velocity.x = 130;
+					} else {
+						this.player.body.velocity.x = 0;
 					}
 
 					if (this.button_W.isDown) {
-						this.player.walk('up', 80);
+						// this.player.walk('up', 80);
+						this.player.body.velocity.y = -130;
+
 					} else if (this.button_S.isDown) {
-						this.player.walk('down', 80);
+						// this.player.walk('down', 80);
+						this.player.body.velocity.y = 130;
+					} else {
+						this.player.body.velocity.y = 0;
 					}
-				} else {
-					this.player.idle();
+
+				} else {					
+					this.player.body.velocity.y = 0;
+					this.player.body.velocity.x = 0;
 				}
 			}
 		}
