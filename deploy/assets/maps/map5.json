@@ -250,14 +250,16 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "athmoSound":"AtmoWindRain",
+     "athmoSound":"",
      "dayCycle":false,
+     "music":"",
      "weather":"niceWeather"
     },
  "propertytypes":
     {
      "athmoSound":"string",
      "dayCycle":"bool",
+     "music":"string",
      "weather":"string"
     },
  "renderorder":"right-down",

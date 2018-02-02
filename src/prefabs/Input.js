@@ -239,40 +239,30 @@ export default class {
 		if (this.player) {
 			if (this.pad1.connected) {
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-					this.player.walk('left', 200);
+					this.player.body.velocity.x = -100;
 					console.log('left');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-					this.player.walk('right', 200);
+					this.player.body.velocity.x = 100;
 					console.log('right');
 				} else {
 					this.player.idle('x');
 				}
 
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-					this.player.walk('up', 200);
+					// this.player.walk('up', 200);
+					this.player.body.velocity.y = -100;
+					this.player.animations.play('run');
 					console.log('up');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-					this.player.walk('down', 200);
+					// this.player.walk('down', 200);
+					this.player.body.velocity.y = 100;
+					this.player.animations.play('run');
 					console.log('down');
 				} else {
 					this.player.idle('y');
+					this.player.animations.play('idle');
 				}
 			} else if (this.useMobileControl) {
-				// if (this.stick.isDown) {
-				// 	this.player.idle();
-
-				// 	if (this.stick.direction === Phaser.LEFT) {
-				// 		this.player.walk('left', 80);
-				// 	} else if (this.stick.direction === Phaser.RIGHT) {
-				// 		this.player.walk('right', 80);
-				// 	} else if (this.stick.direction === Phaser.UP) {
-				// 		this.player.walk('up', 80);
-				// 	} else if (this.stick.direction === Phaser.DOWN) {
-				// 		this.player.walk('down', 80);
-				// 	}
-				// } else {
-				// 	this.player.idle();
-				// }
 
 				if (this.stick.isDown) {
 					this.game.physics.arcade.velocityFromRotation(
@@ -288,6 +278,7 @@ export default class {
 
 					if (this.stickRotation <= 2 && this.stickRotation >= 1) {
 						console.log('Down');
+						this.player.animations.play('run');
 					} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
 						console.log('Right');
 					} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
@@ -296,6 +287,7 @@ export default class {
 						console.log('Left');
 					}
 				} else {
+					this.player.animations.play('idle');
 					this.player.body.velocity.set(0);
 				}
 			} else {
@@ -345,9 +337,9 @@ export default class {
 
 					// this.game.add.tween(this.player.body.height).to( 40, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
-					console.log(this.player.body);
-					console.log(this.player.body.width);
-					console.log(this.player.body.height);
+					// console.log(this.player.body);
+					// console.log(this.player.body.width);
+					// console.log(this.player.body.height);
 
 				} else {
 					// this.player.body.setSize(8, 22, 15, 20);
