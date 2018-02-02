@@ -24,8 +24,13 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(8, 22, 15, 20);
 
-		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+		
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+
+		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+			console.log('peng');
+			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.04, 0.04);
+		});
 
 		game.add.existing(this);
 	}
