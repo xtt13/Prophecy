@@ -84,7 +84,7 @@ export default class extends Phaser.State {
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 
-		this.state.start('Game', true, false);
+		this.state.start('MainMenu', true, false);
 	}
 
 	render() {}
