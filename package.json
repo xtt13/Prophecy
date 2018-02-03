@@ -8,7 +8,9 @@
         "dev": "webpack",
         "deploy": "./deploy.sh",
         "cordova": "webpack --config webpack.cordova.config.js",
-        "test": "eslint ./src/**/**.js"
+        "test": "eslint ./src/**/**.js",
+        "buildmac": "./buildMac.sh",
+        "buildwin": "./buildWin.sh"
     },
     "license": "MIT",
     "devDependencies": {

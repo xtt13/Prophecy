@@ -56,7 +56,11 @@ export default class {
 		this.game.musicPlayer.initMap(this.tilemapProperties.music);
 		this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
 
-		this.game.camera.flash(0x000000, 2000);
+		if(this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100){
+			this.game.camera.flash(0x000000, 8000, true);
+		} else {
+			this.game.camera.flash(0x000000, 2000);
+		}
 
 		// Load Entry Points
 		this.loadEntryPoints();
