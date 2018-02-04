@@ -25,7 +25,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../ProphecyDesktopApplication/dist'),
-    publicPath: '../ProphecyDesktopApplication/dist/',
+    publicPath: 'dist/',
     filename: 'bundle.js'
   },
   plugins: [
@@ -35,9 +35,8 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.optimize.UglifyJsPlugin({
       drop_console: true,
-      minimize: true,
       output: {
-        comments: false
+        comments: true
       }
     }),
     new CopyWebpackPlugin([
@@ -52,15 +51,7 @@ module.exports = {
       template: './../ProphecyDesktopApplication/template/index.html',
       chunks: ['vendor', 'app'],
       chunksSortMode: 'manual',
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        minifyCSS: true,
-        minifyJS: true,
-        minifyURLs: true,
-        removeComments: true,
-        removeEmptyAttributes: true
-      },
+      
       hash: true
     })
   ],
