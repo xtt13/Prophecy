@@ -4,9 +4,12 @@ export default class extends Phaser.State {
 	init() {
 		// Boot Log
 		// console.log('%c Boot it up! ', 'background: #0061ff; color: #bada55');
+		
 	}
 
 	create() {
+		this.notificationSwitch = true;
+		this.startSwitch = true;
 
 		this.game.camera.flash(0x000000, 5000);
 		this.game.soundManager.initSound('AtmoWindRain');
@@ -67,9 +70,43 @@ export default class extends Phaser.State {
 			});
 			
 		}, this);
+
+		this.pad1 = this.game.input.gamepad.pad1;
+		console.log(this.pad1);
 	}
 
 	preload() {
+	}
+
+	update(){
+
+		if (this.game.input.gamepad.supported && this.game.input.gamepad.active) {
+
+			this.pad1 = this.game.input.gamepad.pad1;
+
+			if(this.notificationSwitch){
+
+				if (typeof ipc !== 'undefined' && this.pad1.connected) {
+				  	let myNotification = new Notification('Input', {
+				  		body: '🎮 New Controller Connected'
+				  	});
+				  	this.notificationSwitch = false;
+				}	
+			}
+
+			if(this.pad1.isDown(Phaser.Gamepad.XBOX360_A)){
+				if(this.startSwitch){					
+					this.startSwitch = false;
+					this.game.camera.fade(0x000000, 4000, true);
+					this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
+					this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
+						this.state.start('Game', true, false);
+					});
+				}
+			}
+
+		}
+
 	}
 
 	toggleFullScreen() {

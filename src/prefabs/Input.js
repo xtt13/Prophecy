@@ -14,9 +14,10 @@ export default class {
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.pad1;
-		this.maxSpeed = 150;
+		this.maxSpeed = 150;	
 
 		this.checkController();
+
 	}
 
 	showMessage(message, error) {
@@ -37,8 +38,10 @@ export default class {
 			if (this.pad1.connected) {
 				this.showMessage('Controller 1 connected 🎮');
 				this.noControllerConnected = false;
+
 				this.useController();
 			} else {
+				console.log('NOPEEE');
 				this.showMessage('No Controller connected', true);
 				this.noControllerConnected = true;
 
