@@ -10,7 +10,8 @@
         "cordova": "webpack --config webpack.cordova.config.js",
         "test": "eslint ./src/**/**.js",
         "buildmac": "./buildMac.sh",
-        "buildwin": "./buildWin.sh"
+        "buildwin": "./buildWin.sh",
+        "mac": "./runMac.sh"
     },
     "license": "MIT",
     "devDependencies": {

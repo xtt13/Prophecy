@@ -49,13 +49,12 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */}),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      template: './../ProphecyDesktopApplication/index.html',
+      template: './../ProphecyDesktopApplication/template/index.html',
       chunks: ['vendor', 'app'],
       chunksSortMode: 'manual',
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
-        html5: true,
         minifyCSS: true,
         minifyJS: true,
         minifyURLs: true,
