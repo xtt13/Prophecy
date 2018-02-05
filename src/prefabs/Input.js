@@ -41,7 +41,6 @@ export default class {
 
 				this.useController();
 			} else {
-				console.log('NOPEEE');
 				this.showMessage('No Controller connected', true);
 				this.noControllerConnected = true;
 
@@ -240,13 +239,13 @@ export default class {
 
 		// Gamepad Controls
 		if (this.player) {
-			if (this.pad1.connected) {
+			if (this.pad1 !== undefined && this.pad1.connected) {
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 					this.player.body.velocity.x = -100;
-					console.log('left');
+					// console.log('left');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
 					this.player.body.velocity.x = 100;
-					console.log('right');
+					// console.log('right');
 				} else {
 					this.player.idle('x');
 				}
@@ -255,12 +254,12 @@ export default class {
 					// this.player.walk('up', 200);
 					this.player.body.velocity.y = -100;
 					this.player.animations.play('run');
-					console.log('up');
+					// console.log('up');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
 					// this.player.walk('down', 200);
 					this.player.body.velocity.y = 100;
 					this.player.animations.play('run');
-					console.log('down');
+					// console.log('down');
 				} else {
 					this.player.idle('y');
 					this.player.animations.play('idle');
@@ -280,14 +279,14 @@ export default class {
 					this.stickRotation = this.stick.rotation.toFixed(1);
 
 					if (this.stickRotation <= 2 && this.stickRotation >= 1) {
-						console.log('Down');
+						// console.log('Down');
 						this.player.animations.play('run');
 					} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
-						console.log('Right');
+						// console.log('Right');
 					} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
-						console.log('Up');
+						// console.log('Up');
 					} else {
-						console.log('Left');
+						// console.log('Left');
 					}
 				} else {
 					this.player.animations.play('idle');

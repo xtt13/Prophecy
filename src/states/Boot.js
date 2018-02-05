@@ -25,9 +25,6 @@ export default class extends Phaser.State {
 		// Start Physics
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-		// Init Gamepads
-		this.input.gamepad.start();
-
 		// Enable Pixel Rendering
 		this.stage.smoothed = false;
 

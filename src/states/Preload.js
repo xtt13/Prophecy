@@ -38,6 +38,7 @@ export default class extends Phaser.State {
 
 		// Load Sounds
 		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
+		this.load.audio('startGame', 'assets/sounds/startGame.mp3');
 		
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 

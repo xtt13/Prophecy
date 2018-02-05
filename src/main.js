@@ -3,7 +3,7 @@ import 'p2';
 import Phaser from 'phaser';
 
 import BootState from './states/Boot';
-import MainMenuState from './states/MainMenuState';
+import MainMenuState from './states/MainMenu';
 import PreloadState from './states/Preload';
 import GameState from './states/Game';
 

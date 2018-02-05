@@ -8,6 +8,7 @@ export default class extends Phaser.State {
 	}
 
 	create() {
+
 		this.notificationSwitch = true;
 		this.startSwitch = true;
 
@@ -64,6 +65,8 @@ export default class extends Phaser.State {
 
 		this.input.onDown.add(function(){
 			this.game.camera.fade(0x000000, 4000, true);
+			this.startSound = game.add.audio('startGame', 0.3);
+    		this.startSound.play();
 			this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 			this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
 				this.state.start('Game', true, false);
@@ -71,8 +74,24 @@ export default class extends Phaser.State {
 			
 		}, this);
 
+		this.input.gamepad.start();
 		this.pad1 = this.game.input.gamepad.pad1;
-		console.log(this.pad1);
+		this.pad1.addCallbacks(this, { onConnect: () => {
+				if (typeof ipc !== 'undefined' && this.pad1.connected) {
+				  	let myNotification = new Notification('Input', {
+				  		body: '🎮 New Controller Connected',
+				  		silent: true
+				  	});
+				  	
+				}
+				this.subText.text = 'Press A-Button To Move On';
+
+		}
+
+		 });
+
+
+
 	}
 
 	preload() {
@@ -80,7 +99,19 @@ export default class extends Phaser.State {
 
 	update(){
 
-		if (this.game.input.gamepad.supported && this.game.input.gamepad.active) {
+
+		if(!this.pad1.connected){
+			this.subText.text = 'Click To Move On';	
+		} else {
+			// this.gamepadbuttonA = this.pad1.getButton(Phaser.Gamepad.XBOX360_A);
+			// console.log(this.gamepadbuttonA);
+			// this.gamepadbuttonA.events.onInputUp.add(()=>{
+			// 	// this.game.scale.startFullScreen(false, false);
+			// 	console.log('hello');
+			// });
+		}
+
+		if (this.game.input.gamepad.supported) {
 
 			this.pad1 = this.game.input.gamepad.pad1;
 
@@ -88,8 +119,10 @@ export default class extends Phaser.State {
 
 				if (typeof ipc !== 'undefined' && this.pad1.connected) {
 				  	let myNotification = new Notification('Input', {
-				  		body: '🎮 New Controller Connected'
+				  		body: '🎮 New Controller Connected',
+				  		silent: true
 				  	});
+				  	this.subText.text = 'Press A-Button To Move On';
 				  	this.notificationSwitch = false;
 				}	
 			}
@@ -98,6 +131,8 @@ export default class extends Phaser.State {
 				if(this.startSwitch){					
 					this.startSwitch = false;
 					this.game.camera.fade(0x000000, 4000, true);
+					this.startSound = game.add.audio('startGame', 0.3);
+    				this.startSound.play();
 					this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 					this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
 						this.state.start('Game', true, false);
