@@ -11,6 +11,7 @@ export default class extends Phaser.State {
 
 		this.notificationSwitch = true;
 		this.startSwitch = true;
+		this.playOnce = false;
 
 		this.game.camera.flash(0x000000, 5000);
 		this.game.soundManager.initSound('AtmoWindRain');
@@ -58,12 +59,14 @@ export default class extends Phaser.State {
 			navigator.userAgent &&
 			!navigator.userAgent.match('CriOS');
 
-		if (!isSafari) {
+		if (!isSafari && typeof ipc == 'undefined') {
 			this.input.onDown.add(this.toggleFullScreen, this);
 			this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
 		}
 
 		this.input.onDown.add(function(){
+			if(this.playOnce) return;
+			this.playOnce = true;
 			this.game.camera.fade(0x000000, 4000, true);
 			this.startSound = game.add.audio('startGame', 0.3);
     		this.startSound.play();

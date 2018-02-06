@@ -15,6 +15,7 @@ export default class extends Phaser.Sprite {
 		this.movable = true;
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
+		this.movementBlocked = false;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
 		this.animations.add('run', [4, 5, 6, 7, 8, 9], 10, true);
@@ -176,5 +177,14 @@ export default class extends Phaser.Sprite {
 
 		item.destroy();
 		this.items.splice(item, 1);
+	}
+
+	update(){
+		// if(this.body.blocked.down || this.body.blocked.up || this.body.blocked.left || this.body.blocked.right){
+		// 	this.animations.play('idle');
+		// 	this.movementBlocked = true;
+		// } else {
+		// 	this.movementBlocked = false;
+		// }
 	}
 }

@@ -34,7 +34,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map6', 'assets/maps/map6.json', null, Phaser.Tilemap.TILED_JSON);
 
 		// Load Music
-		this.load.audio('LostMerged', 'assets/music/LostMerged.mp3');
+		this.load.audio('MainTitle', 'assets/music/MainTitle.mp3');
 
 		// Load Sounds
 		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
@@ -85,7 +85,7 @@ export default class extends Phaser.State {
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 
-		this.state.start('MainMenu', true, false);
+		this.state.start('Game', true, false);
 	}
 
 	render() {}

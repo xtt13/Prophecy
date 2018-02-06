@@ -33,6 +33,8 @@ export default class {
 				this.fightArea(region);
 			} else if (region.properties.showQuestmap) {
 				this.showQuestmap(region);
+			} else if (region.properties.startMusic) {
+				this.startMusic(region);
 			} else if (region.properties.addQuest) {
 				this.addQuest(region);
 			} else if (region.properties.openDoor) {
@@ -43,6 +45,8 @@ export default class {
 				this.spawnEnemies(region);
 			} else if (region.properties.lockCamera) {
 				this.lockCamera(region);
+			} else if (region.properties.foreGroundShift) {
+				this.foreGroundShift(region);
 			}
 		});
 
@@ -50,6 +54,12 @@ export default class {
 			if (region.properties.lockCamera) {
 				this.followPlayer(region);
 			}
+
+			if (region.properties.foreGroundShift) {
+				this.foreGroundReset(region);
+			}
+
+
 		});
 	}
 
@@ -385,5 +395,18 @@ export default class {
 		this.followTween.onComplete.add(() => {
 			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 		}, this);
+	}
+
+	startMusic(region){
+		this.game.musicPlayer.initMap(this.level.tilemapProperties, true, 10000);
+	}
+
+	foreGroundShift(region){
+		console.log('SHIFT');
+		this.level.foreGroundShift = true;
+	}
+
+	foreGroundReset(region){
+		this.level.foreGroundShift = false;
 	}
 }

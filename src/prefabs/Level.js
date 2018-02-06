@@ -43,6 +43,7 @@ export default class {
 
 		// Vars
 		this.dayCycle = false;
+		this.foreGroundShift = false;
 
 		// Method
 		this.loadLevel();
@@ -53,7 +54,7 @@ export default class {
 		// Load Map
 		this.initMap();
 
-		this.game.musicPlayer.initMap(this.tilemapProperties.music);
+		this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
 		this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
 
 		if(this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100){
@@ -217,7 +218,11 @@ export default class {
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		this.game.world.bringToTop(this.player);
-		this.game.world.bringToTop(this.foregroundLayer);
+
+		if(!this.foreGroundShift){
+			this.game.world.bringToTop(this.foregroundLayer);
+		}
+		
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
@@ -251,6 +256,8 @@ export default class {
 		this.GUICLASS.update();
 
 		// console.log(this.player.x, this.player.y);
+
+	
 	}
 
 	initMap() {
@@ -267,11 +274,14 @@ export default class {
 
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
+		this.detailGroundLayer = this.map.createLayer('DetailBackgroundLayer');
+		console.log('CREATE DLAYER');
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 
 		//  Resize the world
 		this.groundLayer.resizeWorld();
+		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
 
 		// Set Collision Tiles

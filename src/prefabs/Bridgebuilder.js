@@ -27,26 +27,46 @@ export default class {
 				this.bridgeY--;
 				this.collY--;
 
-				this.map.putTile(2, this.bridgeX, this.bridgeY, this.groundLayer);
-				this.map.putTile(2, this.bridgeX - 1, this.bridgeY, this.groundLayer);
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
+
+				if ((bridgeCounter + 1) == bridgeLength) {
+					this.map.putTile(37, this.bridgeX, this.bridgeY, this.groundLayer);
+					this.map.putTile(38, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+					this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+					this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+				} else {
+					this.map.putTile(59, this.bridgeX, this.bridgeY, this.groundLayer);
+					this.map.putTile(58, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+					this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+					this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+				}
+
+
 			} else if (bridgeDirection == 'down') {
 				this.bridgeY++;
 				this.collY++;
 
-				this.map.putTile(2, this.bridgeX, this.bridgeY, this.groundLayer);
-				this.map.putTile(2, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+				// this.map.putTile(48, this.bridgeX, this.bridgeY, this.groundLayer);
+				// this.map.putTile(47, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+				// this.map.putTile(37, this.bridgeX, this.bridgeY-1, this.groundLayer);
+				// this.map.putTile(38, this.bridgeX - 1, this.bridgeY-1, this.groundLayer);
+
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
 
 				if (bridgeCounter + 1 == bridgeLength) {
-					this.map.putTile(2, this.bridgeX, this.bridgeY + 1, this.groundLayer);
-					this.map.putTile(2, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+					this.map.putTile(37, this.bridgeX, this.bridgeY, this.groundLayer);
+					this.map.putTile(38, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+					this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+					this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
 				} else {
-					this.map.putTile(22, this.bridgeX, this.bridgeY + 1, this.groundLayer);
-					this.map.putTile(22, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+					this.map.putTile(37, this.bridgeX, this.bridgeY, this.groundLayer);
+					this.map.putTile(38, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+					this.map.putTile(48, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+					this.map.putTile(47, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
 				}
+
 			} else if (bridgeDirection == 'left') {
 				console.log('HEY');
 

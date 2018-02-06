@@ -6,14 +6,19 @@ export default class {
 		this.fadeDuration = 2000;
 
 		this.globalVolume = 0;
-		this.fadeVolumeTo = 0.1;
-		this.fadeDuration = 3000;
+		this.fadeVolumeTo = 1;
+		
 		// this.music = this.game.add.audio('track1', this.globalVolume, true);
 
-		this.initMap();
 	}
 
-		initMap(key){
+		initMap(properties, start, fadeDuration){
+
+		this.fadeDuration = fadeDuration;
+		let key = properties.music;
+
+		if(start !== undefined && !start) return;
+
 		// If Key is not undefined
 		if (key !== undefined) {
 		console.log('MusicKey is not undefined!');

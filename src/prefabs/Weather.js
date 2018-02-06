@@ -282,7 +282,7 @@ export default class {
 			0,
 			0,
 			true
-		);
+		).loop(true);
 	}
 
 	addSnowWind() {
