@@ -31,7 +31,7 @@ export default class extends Phaser.Sprite {
 
 		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
 			console.log('peng');
-			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.04, 0.04);
+			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 		});
 
 		game.add.existing(this);

@@ -19,22 +19,22 @@ export default class {
 
 			this.time = new Date();
 			this.timeValue = this.time.getHours();
-			this.timeValue = 11;
+			// this.timeValue = 11;
 
 			if (this.timeValue >= 0 && this.timeValue < 6) {
 				console.log('Night');
 				this.night = true;
 
-				this.lightSprite.alpha = 0.85;
+				this.lightSprite.alpha = 0.90;
 				this.level.backgroundLayer.tint = 0x070707;
-				this.level.player.tint = 0x888888;
+				this.level.player.tint = 0x999999;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x888888;
 				}
 
 				if (this.level.weather.clouds) {
-					this.level.weather.clouds.destroy();
+					this.level.weather.clouds.alpha = 0;
 				}
 			} else if (this.timeValue >= 6 && this.timeValue < 8) {
 				console.log('Dawn');
@@ -80,15 +80,15 @@ export default class {
 
 				this.level.backgroundLayer.tint = 0x070707;
 
-				this.lightSprite.alpha = 0.85;
-				this.level.player.tint = 0x888888;
+				this.lightSprite.alpha = 0.90;
+				this.level.player.tint = 0x444444;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x888888;
 				}
 
 				if (this.level.weather.clouds) {
-					this.level.weather.clouds.destroy();
+					this.level.weather.clouds.alpha = 0;
 				}
 			}
 

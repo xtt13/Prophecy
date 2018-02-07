@@ -11,7 +11,8 @@
         "test": "eslint ./src/**/**.js",
         "buildmac": "./buildMac.sh",
         "buildwin": "./buildWin.sh",
-        "mac": "./runMac.sh"
+        "mac": "./runMac.sh",
+        "update": "webpack --config webpack.production.config.js && firebase deploy"
     },
     "license": "MIT",
     "devDependencies": {

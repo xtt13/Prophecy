@@ -193,6 +193,9 @@ export default class {
 			this.game.add
 				.tween(this.level.dayCycleClass.lightSprite)
 				.to({ alpha: 0 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
+			this.game.add
+				.tween(this.clouds)
+				.to({ alpha: 100 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 		}
 
 		this.lightningSound = this.game.rnd.pick(this.lightningSounds);

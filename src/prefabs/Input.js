@@ -297,14 +297,26 @@ export default class {
 
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 					if (this.button_A.isDown) {
-						// this.player.walk('left', 80);
+
 						this.player.animations.play('run');
-						this.player.body.velocity.x = -130;
+
+						if(this.button_W.isDown || this.button_W.isDown){
+							this.player.body.velocity.x = -65;
+						} else {
+							this.player.body.velocity.x = -130;
+						}
+						
 
 					} else if (this.button_D.isDown) {
-						// this.player.walk('right', 80);
+						
 						this.player.animations.play('run');
-						this.player.body.velocity.x = 130;
+
+						if(this.button_W.isDown || this.button_W.isDown){
+							this.player.body.velocity.x = 65;
+						} else {
+							this.player.body.velocity.x = 130;
+						}
+						
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.x = 0;
