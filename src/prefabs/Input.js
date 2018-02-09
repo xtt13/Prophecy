@@ -15,6 +15,7 @@ export default class {
 		this.useMobileControl = false;
 		this.pad1;
 		this.maxSpeed = 150;	
+		this.playerSpeed = 130;
 
 		this.checkController();
 
@@ -301,9 +302,9 @@ export default class {
 						this.player.animations.play('run');
 
 						if(this.button_W.isDown || this.button_W.isDown){
-							this.player.body.velocity.x = -65;
+							this.player.body.velocity.x = -this.playerSpeed/2;
 						} else {
-							this.player.body.velocity.x = -130;
+							this.player.body.velocity.x = -this.playerSpeed;
 						}
 						
 
@@ -312,11 +313,11 @@ export default class {
 						this.player.animations.play('run');
 
 						if(this.button_W.isDown || this.button_W.isDown){
-							this.player.body.velocity.x = 65;
+							this.player.body.velocity.x = this.playerSpeed/2;
 						} else {
-							this.player.body.velocity.x = 130;
+							this.player.body.velocity.x = this.playerSpeed;
 						}
-						
+
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.x = 0;
@@ -325,12 +326,12 @@ export default class {
 					if (this.button_W.isDown) {
 						// this.player.walk('up', 80);
 						this.player.animations.play('run');
-						this.player.body.velocity.y = -130;
+						this.player.body.velocity.y = -this.playerSpeed;
 
 					} else if (this.button_S.isDown) {
 						// this.player.walk('down', 80);
 						this.player.animations.play('run');
-						this.player.body.velocity.y = 130;
+						this.player.body.velocity.y = this.playerSpeed;
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.y = 0;

@@ -55,6 +55,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('priest', 'assets/sprites/priest.png', 41, 41);
 		this.load.spritesheet('enemy', 'assets/sprites/enemy.png', 18, 18);
 		this.load.spritesheet('item', 'assets/sprites/testitem.png', 25, 27);
+		this.load.spritesheet('treeleaves', 'assets/sprites/treeleaves.png', 3, 3);
 
 		this.load.spritesheet('templeDoor', 'assets/sprites/templeDoor.png', 72, 108);
 
@@ -85,7 +86,7 @@ export default class extends Phaser.State {
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 
-		this.state.start('Game', true, false);
+		this.state.start('MainMenu', true, false);
 	}
 
 	render() {}

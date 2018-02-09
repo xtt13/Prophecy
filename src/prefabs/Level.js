@@ -35,6 +35,7 @@ export default class {
 		this.activatedBridges = [];
 		this.itemIDs = this.safe.getItemIDs();
 		this.enemies = [];
+		this.emitter = [];
 
 		// Accesspoints
 		this.startPoint = {};
@@ -102,6 +103,9 @@ export default class {
 		// Load GamePeople
 		this.loadPeople();
 
+		// Load Custom Emitter
+		this.loadEmitter();
+
 		// EventManager
 		this.eventManager = new Eventmanager(this.game, this);
 
@@ -161,6 +165,33 @@ export default class {
 				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties));
 			}
 		}, this);
+	}
+
+	loadEmitter(){
+		// Get array of items from JSON-Map
+		let elementsArr = this.findObjectsByType('type', this.map, 'CustomEmitter');
+
+		//Find specific emitter
+		elementsArr.forEach(function(element) {
+			if (element.properties.type == 'emitter') {
+				let x = element.x + (element.width / 2);
+				let y = element.y + (element.height / 2);
+
+				let customEmitter = this.game.add.emitter(x, y, 10);
+				customEmitter.width = element.width;
+				customEmitter.height = element.height;
+				customEmitter.minParticleScale = 0.5;
+				customEmitter.maxParticleScale = 1;
+				customEmitter.gravity = 0.5;
+				customEmitter.setScale(-1, 1, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
+				customEmitter.setYSpeed(100);
+				customEmitter.setXSpeed(-100, 100);
+				customEmitter.gravity = 0.5;
+				customEmitter.makeParticles('treeleaves', [0, 1]);
+				customEmitter.start(false, 3000, 400, 0);
+			}
+		}, this);
+
 	}
 
 	loadEnemies() {

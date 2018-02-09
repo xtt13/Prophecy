@@ -125,7 +125,7 @@ export default class {
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
 
 		if (!this.isSafari) {
-			this.addWindLeaves();
+			// this.addWindLeaves();
 			this.addClouds();
 		}
 

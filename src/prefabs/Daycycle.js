@@ -19,18 +19,18 @@ export default class {
 
 			this.time = new Date();
 			this.timeValue = this.time.getHours();
-			// this.timeValue = 11;
+			this.timeValue = 13;
 
 			if (this.timeValue >= 0 && this.timeValue < 6) {
 				console.log('Night');
 				this.night = true;
 
 				this.lightSprite.alpha = 0.90;
-				this.level.backgroundLayer.tint = 0x070707;
+				this.level.backgroundLayer.tint = 0x000000;
 				this.level.player.tint = 0x999999;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
-					this.level.characters[i].tint = 0x888888;
+					this.level.characters[i].tint = 0x999999;
 				}
 
 				if (this.level.weather.clouds) {
@@ -41,7 +41,7 @@ export default class {
 
 				this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.7;
-				this.level.player.tint = 0x383838;
+				// this.level.player.tint = 0x383838;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x383838;
@@ -63,7 +63,7 @@ export default class {
 
 				this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.7;
-				this.level.player.tint = 0x383838;
+				// this.level.player.tint = 0x454545;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x383838;
@@ -78,13 +78,13 @@ export default class {
 				console.log('Night');
 				this.night = true;
 
-				this.level.backgroundLayer.tint = 0x070707;
+				this.level.backgroundLayer.tint = 0x000000;
 
 				this.lightSprite.alpha = 0.90;
-				this.level.player.tint = 0x444444;
+				this.level.player.tint = 0x999999;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
-					this.level.characters[i].tint = 0x888888;
+					this.level.characters[i].tint = 0x999999;
 				}
 
 				if (this.level.weather.clouds) {
@@ -94,7 +94,6 @@ export default class {
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
 
-			// this.level.player.blendMode = Phaser.blendModes.MULTIPLY;
 
 			if (this.level.weather.lightning) {
 				this.level.weather.lightning.bringToTop();
@@ -106,19 +105,5 @@ export default class {
 		this.shadowTexture.context.fillStyle = 'rgb(0, 15, 119)';
 		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
 
-		// var radius = 100 + this.game.rnd.integerInRange(1, 8),
-		// 	heroX = this.player.x - this.game.camera.x,
-		// 	heroY = this.player.y - this.game.camera.y;
-
-		// var gradient = this.shadowTexture.context.createRadialGradient(heroX, heroY, 100 * 0.75, heroX, heroY, radius);
-		// gradient.addColorStop(0, 'rgba(255, 227, 134, 1.0)');
-		// gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-
-		// this.shadowTexture.context.beginPath();
-		// this.shadowTexture.context.fillStyle = gradient;
-		// this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
-		// this.shadowTexture.context.fill();
-
-		// this.shadowTexture.dirty = true;
 	}
 }

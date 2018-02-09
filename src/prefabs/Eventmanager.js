@@ -47,16 +47,18 @@ export default class {
 				this.lockCamera(region);
 			} else if (region.properties.foreGroundShift) {
 				this.foreGroundShift(region);
+			} else if (region.properties.stairs) {
+				this.stairsEnter(region);
 			}
 		});
 
 		this.level.map.plus.events.regions.onLeaveAdd(this.level.player, region => {
 			if (region.properties.lockCamera) {
 				this.followPlayer(region);
-			}
-
-			if (region.properties.foreGroundShift) {
+			} else if (region.properties.foreGroundShift) {
 				this.foreGroundReset(region);
+			} else if (region.properties.stairs) {
+				this.stairsLeave(region);
 			}
 
 
@@ -408,5 +410,15 @@ export default class {
 
 	foreGroundReset(region){
 		this.level.foreGroundShift = false;
+	}
+
+	stairsEnter(region){
+		this.level.inputClass.playerSpeed -= 60;
+		this.level.player.animations._anims.run.speed += 10 ;
+	}
+
+	stairsLeave(region){
+		this.level.inputClass.playerSpeed += 60;
+		this.level.player.animations._anims.run.speed -= 10 ;
 	}
 }
