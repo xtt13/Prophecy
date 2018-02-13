@@ -16,7 +16,7 @@ export default class {
 		this.showPaths = false;
 
 		this.pathToFollow = [];
-		this.walkables = [2, 9, 11];
+		this.walkables = [2, 9, 11, 35];
 
 		this.blocked = false;
 		this.followingPath = false;
@@ -48,11 +48,13 @@ export default class {
 
 		this.pathfinder.easystar.setIterationsPerCalculation(1);
 		this.pathfinder.setGrid(this.map.layers[0].data, this.walkables);
+		console.log(this.map.layers[0].data);
 		this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
 	}
 
 	findPathTo(tilex, tiley) {
 		this.pathfinder.setCallbackFunction(path => {
+			console.log(path);
 			this.trail.destroy(true, true);
 			if (path === null) {
 				return;
@@ -81,6 +83,7 @@ export default class {
 	}
 
 	followPath() {
+		
 		if (!this.pathToFollow.length || this.followingPath) {
 			return;
 		}

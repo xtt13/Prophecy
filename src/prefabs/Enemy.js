@@ -101,6 +101,7 @@ export default class extends Phaser.Sprite {
 
 		if (this.pathfinder && this.startMoving) {
 			this.pathfinder.followPath();
+			
 		}
 
 		// console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));

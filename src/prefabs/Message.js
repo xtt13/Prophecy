@@ -15,6 +15,8 @@ export default class {
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
+		this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+
 		this.addBars();
 
 		var drawnObject;
@@ -127,6 +129,7 @@ export default class {
 			this.upperBar.destroy();
 			this.downBar.destroy();
 			this.upperBar = false;
+			this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 		}, this);
 	}
 }

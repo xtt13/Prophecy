@@ -19,7 +19,7 @@ export default class {
 
 			this.time = new Date();
 			this.timeValue = this.time.getHours();
-			this.timeValue = 13;
+			this.timeValue = 23;
 
 			if (this.timeValue >= 0 && this.timeValue < 6) {
 				console.log('Night');

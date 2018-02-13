@@ -306,7 +306,7 @@ export default class {
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
 		this.detailGroundLayer = this.map.createLayer('DetailBackgroundLayer');
-		console.log('CREATE DLAYER');
+
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 
