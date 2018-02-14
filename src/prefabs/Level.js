@@ -315,6 +315,10 @@ export default class {
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
 
+		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
+		this.foregroundLayer.alpha = 0.9;
+		console.log(this.foregroundLayer);
+
 		// Set Collision Tiles
 		this.map.setCollisionBetween(0, 20, true, 'CollisionLayer');
 

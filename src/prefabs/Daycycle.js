@@ -19,7 +19,7 @@ export default class {
 
 			this.time = new Date();
 			this.timeValue = this.time.getHours();
-			this.timeValue = 23;
+			this.timeValue = 11;
 
 			if (this.timeValue >= 0 && this.timeValue < 6) {
 				console.log('Night');
@@ -81,7 +81,7 @@ export default class {
 				this.level.backgroundLayer.tint = 0x000000;
 
 				this.lightSprite.alpha = 0.90;
-				this.level.player.tint = 0x999999;
+				this.level.player.tint = 0xDDDDDD;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x999999;

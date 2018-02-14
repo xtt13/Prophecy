@@ -136,18 +136,23 @@ export default class {
 				this.map.putTile(3, this.bridgeX, this.bridgeY, this.collisionLayer);
 				this.map.putTile(3, this.bridgeX - 1, this.bridgeY, this.collisionLayer);
 
+	
+
 				if (bridgeCounter == 0) {
-					this.map.putTile(22, this.bridgeX, this.bridgeY, this.groundLayer);
-					this.map.putTile(22, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+					this.map.putTile(36, this.bridgeX, this.bridgeY, this.groundLayer);
+					this.map.putTile(36, this.bridgeX - 1, this.bridgeY, this.groundLayer);
 				} else {
-					this.map.removeTile(this.collX, this.collY, this.groundLayer);
-					this.map.removeTile(this.collX - 1, this.collY, this.groundLayer);
+					this.map.putTile(3, this.bridgeX, this.bridgeY, this.groundLayer);
+					this.map.putTile(3, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+
+					this.map.putTile(49, this.bridgeX, this.bridgeY+1, this.groundLayer);
+					this.map.putTile(49, this.bridgeX - 1, this.bridgeY+1, this.groundLayer);
 				}
 
-				if (putBackgroundTile !== undefined) {
-					this.map.putTile(putBackgroundTile, this.bridgeX, this.bridgeY, this.groundLayer);
-					this.map.putTile(putBackgroundTile, this.bridgeX - 1, this.bridgeY, this.groundLayer);
-				}
+				// if (putBackgroundTile !== undefined) {
+				// 	this.map.putTile(putBackgroundTile, this.bridgeX, this.bridgeY, this.groundLayer);
+				// 	this.map.putTile(putBackgroundTile, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+				// }
 			} else if (bridgeDirection == 'left') {
 				this.bridgeX--;
 				this.collX--;
