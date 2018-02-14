@@ -2,16 +2,19 @@ import Phaser from 'phaser';
 import Message from './Message';
 import Notification from './Notification';
 import Questmap from './Questmap';
+import Gamemap from './Gamemap';
 
 export default class {
-	constructor(game) {
+	constructor(game, level) {
 		this.game = game;
+		this.level = level;
 
 		this.createGUI();
 	}
 
 	createGUI() {
 		this.questMap = new Questmap(this.game, this);
+		this.gameMap = new Gamemap(this.game, this, this.level);
 	}
 
 	updateGUI(option, value) {
@@ -40,6 +43,13 @@ export default class {
 		if (this.questMap.questmapBackground) {
 			this.game.world.bringToTop(this.questMap.questmapBackground);
 			this.game.world.bringToTop(this.questMap.text);
+		}
+
+		if (this.gameMap.gameMapbackground) {
+			this.game.world.bringToTop(this.gameMap.gameMapbackground);
+			this.game.world.bringToTop(this.gameMap.mapGroup);
+			
+			// this.game.world.bringToTop(this.gameMap.playerDot);
 		}
 
 		// let onePSx = this.game.world.width / 100;

@@ -63,6 +63,9 @@ export default class extends Phaser.State {
 		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
 
+		// Load GameMaps
+		this.load.image('gameMap', 'assets/sprites/gameMap.png');
+
 		// Load Videos
 
 		// Load Mobile Controll

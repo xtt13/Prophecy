@@ -206,8 +206,8 @@ export default class {
 
 		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 
-		this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
-		// this.button_TAB.onUp.add(this.level.GUICLASS.questMap.closeMap, this.level.GUICLASS.questMap);
+		// this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
+		this.button_TAB.onDown.add(this.level.GUICLASS.gameMap.toggleMap, this.level.GUICLASS.gameMap);
 	}
 
 	onGamepadDown(button) {

@@ -1,7 +1,6 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
 import Level from '../prefabs/Level';
-import GUI from '../prefabs/GUI';
 
 export default class extends Phaser.State {
 	init(instruction) {
@@ -27,10 +26,8 @@ export default class extends Phaser.State {
 			this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
 		}
 
-		// Set GUIClass
-		this.GUI = new GUI(this.game);
 
-		this.level = new Level(this.game, this.GUI, this.instruction);
+		this.level = new Level(this.game, this.instruction);
 	}
 
 	update() {

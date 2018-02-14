@@ -14,12 +14,13 @@ import Safe from '../prefabs/Safe';
 import Eventmanager from '../prefabs/Eventmanager';
 import Questmanager from '../prefabs/Questmanager';
 import Daycycle from '../prefabs/Daycycle';
+import GUI from '../prefabs/GUI';
 import config from './../config';
 
 export default class {
-	constructor(game, GUIclass, instruction) {
+	constructor(game, instruction) {
 		this.game = game;
-		this.GUICLASS = GUIclass;
+		this.GUICLASS = new GUI(this.game, this);
 
 		this.safe = new Safe(this.game);
 		this.gameData = this.safe.getGameConfig();
