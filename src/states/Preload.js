@@ -88,17 +88,14 @@ export default class extends Phaser.State {
 
 	}
 
-	
-
-	
 
 	preload() {
 		// this.stage.backgroundColor = "#000000";
 
-		// this.text = this.game.add.bitmapText(300, 300, 'pxlfont', '', 51);
-		// this.text.anchor.set(0.5);
-		// this.text.tint = 0xFFFFFF;
-		// this.text.text = 'Loading';
+		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
+		this.text.anchor.set(0.5);
+		this.text.tint = 0xFFFFFF;
+		this.text.text = '';
 		// this.text.scale.set(0.26);
 
 		// Load Sprites
@@ -126,6 +123,7 @@ export default class extends Phaser.State {
 		this.load.audio('startGame', 'assets/sounds/startGame.mp3');
 		this.load.audio('AxWaterfall', 'assets/sounds/AxWaterfall.mp3');
 		this.load.audio('AxOpenPlain', 'assets/sounds/AxOpenPlain.mp3');
+		this.load.audio('achivement', 'assets/sounds/achivement.mp3');
 		
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
@@ -174,7 +172,12 @@ export default class extends Phaser.State {
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 
-		this.state.start('Game', true, false);
+		if (__DEV__) {
+			this.state.start('Game', true, false);
+		} else {
+			this.state.start('MainMenu', true, false);
+		}
+		
 	}
 
 	render() {}
@@ -182,7 +185,7 @@ export default class extends Phaser.State {
 	loadUpdate() {
 		// Log Loadingprogress
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
-			// this.text.text = progress;
+			this.text.text = progress + "%";
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
 		});
 	}

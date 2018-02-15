@@ -274,6 +274,27 @@
                  "width":172.939,
                  "x":900.828358662373,
                  "y":1309.79071641255
+                }, 
+                {
+                 "height":108.371545556806,
+                 "id":65,
+                 "name":"",
+                 "properties":
+                    {
+                     "soundArea":true,
+                     "soundkey":"AxOpenPlain"
+                    },
+                 "propertytypes":
+                    {
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":205.350842519685,
+                 "x":302.928660394689,
+                 "y":1238.07334663562
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -435,13 +456,13 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":65,
+ "nextobjectid":66,
  "orientation":"orthogonal",
  "properties":
     {
      "athmoSound":"AtmoWaterStill",
      "dayCycle":true,
-     "music":"HopeMerged",
+     "music":"",
      "startMusic":true,
      "weather":"TempleFlies"
     },

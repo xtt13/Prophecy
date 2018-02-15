@@ -490,7 +490,7 @@
                 {
                  "height":42.0855740004677,
                  "id":133,
-                 "name":"",
+                 "name":"CustomEmitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -509,7 +509,7 @@
                 {
                  "height":42.0856,
                  "id":136,
-                 "name":"",
+                 "name":"CustomEmitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -528,7 +528,7 @@
                 {
                  "height":42.0856,
                  "id":137,
-                 "name":"",
+                 "name":"CustomEmitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -547,7 +547,7 @@
                 {
                  "height":42.0856,
                  "id":138,
-                 "name":"",
+                 "name":"CustomEmitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -566,7 +566,7 @@
                 {
                  "height":42.0856,
                  "id":141,
-                 "name":"",
+                 "name":"Custom Emitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -585,7 +585,7 @@
                 {
                  "height":42.0856,
                  "id":142,
-                 "name":"",
+                 "name":"Custom Emitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -603,7 +603,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -614,7 +614,7 @@
                 {
                  "height":212.790530630423,
                  "id":16,
-                 "name":"",
+                 "name":"Message",
                  "properties":
                     {
                      "id":2,
@@ -633,13 +633,13 @@
                  "type":"",
                  "visible":true,
                  "width":142.892545526119,
-                 "x":792.832102042986,
-                 "y":1009.34520937015
+                 "x":792.292261835687,
+                 "y":1008.80536916285
                 }, 
                 {
                  "height":17.7052533018986,
                  "id":18,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -666,7 +666,7 @@
                 {
                  "height":27.0737,
                  "id":24,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -693,7 +693,7 @@
                 {
                  "height":27.0737,
                  "id":25,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -724,7 +724,7 @@
                 {
                  "height":3.6530001260572,
                  "id":44,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -747,7 +747,7 @@
                 {
                  "height":27.0737,
                  "id":46,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -776,7 +776,7 @@
                 {
                  "height":63.5585,
                  "id":49,
-                 "name":"",
+                 "name":"Questmessage",
                  "properties":
                     {
                      "addQuest":true,
@@ -799,7 +799,7 @@
                 {
                  "height":63.5585,
                  "id":113,
-                 "name":"",
+                 "name":"StartMusic",
                  "properties":
                     {
                      "startMusic":true
@@ -818,7 +818,7 @@
                 {
                  "height":63.5585,
                  "id":114,
-                 "name":"",
+                 "name":"StartMusic",
                  "properties":
                     {
                      "startMusic":true
@@ -837,7 +837,7 @@
                 {
                  "height":38.3620033490638,
                  "id":115,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -856,7 +856,7 @@
                 {
                  "height":32.6077942233552,
                  "id":116,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -873,28 +873,9 @@
                  "y":670.412802780196
                 }, 
                 {
-                 "height":22.9969573622548,
-                 "id":117,
-                 "name":"",
-                 "properties":
-                    {
-                     "foreGroundShift":true
-                    },
-                 "propertytypes":
-                    {
-                     "foreGroundShift":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":17.2700943451614,
-                 "x":829.547988311789,
-                 "y":611.893075742906
-                }, 
-                {
                  "height":41.0678831670673,
                  "id":120,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -913,7 +894,7 @@
                 {
                  "height":34.4496467583498,
                  "id":124,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -932,7 +913,7 @@
                 {
                  "height":34.4496,
                  "id":125,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -951,7 +932,7 @@
                 {
                  "height":22.1693866388308,
                  "id":128,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -970,7 +951,7 @@
                 {
                  "height":22.1694,
                  "id":131,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -989,7 +970,7 @@
                 {
                  "height":26.1126713464901,
                  "id":139,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -1008,7 +989,7 @@
                 {
                  "height":54.2973395551638,
                  "id":145,
-                 "name":"",
+                 "name":"Stairs",
                  "properties":
                     {
                      "stairs":true
@@ -1027,7 +1008,7 @@
                 {
                  "height":54.2973,
                  "id":146,
-                 "name":"",
+                 "name":"Stairs",
                  "properties":
                     {
                      "stairs":true
@@ -1046,7 +1027,7 @@
                 {
                  "height":54.2973,
                  "id":147,
-                 "name":"",
+                 "name":"Stairs",
                  "properties":
                     {
                      "stairs":true
@@ -1065,7 +1046,7 @@
                 {
                  "height":54.2973,
                  "id":148,
-                 "name":"",
+                 "name":"Stairs",
                  "properties":
                     {
                      "stairs":true
@@ -1084,7 +1065,7 @@
                 {
                  "height":22.1694,
                  "id":156,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -1102,7 +1083,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1113,7 +1094,7 @@
                 {
                  "height":14.1412713002899,
                  "id":41,
-                 "name":"",
+                 "name":"StartPointDefault",
                  "properties":
                     {
                      "startPointType":"default"
@@ -1126,13 +1107,13 @@
                  "type":"",
                  "visible":true,
                  "width":14.14127130029,
-                 "x":810.188147842769,
-                 "y":649.347246245734
+                 "x":816.103674127424,
+                 "y":648.952877826757
                 }, 
                 {
                  "height":14.1413,
                  "id":43,
-                 "name":"",
+                 "name":"CustomStartPoint",
                  "properties":
                     {
                      "id":2,
@@ -1152,7 +1133,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1162,7 +1143,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1172,7 +1153,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1183,7 +1164,7 @@
                 {
                  "height":32.304,
                  "id":33,
-                 "name":"",
+                 "name":"Item",
                  "properties":
                     {
                      "id":1,
@@ -1209,7 +1190,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
