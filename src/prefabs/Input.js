@@ -17,6 +17,10 @@ export default class {
 		this.maxSpeed = 150;	
 		this.playerSpeed = 130;
 
+
+		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
+		this.pyfootsteps.allowMultiple = true;
+
 		this.checkController();
 
 	}
@@ -187,20 +191,20 @@ export default class {
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 
 		this.button_W = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
-		// this.button_W.onDown.add(this.onKeyboardDown, this);
-		// this.button_W.onUp.add(this.onKeyboardUp, this);
+		this.button_W.onDown.add(this.addMovementSound, this);
+		this.button_W.onUp.add(this.removeMovementSound, this);
 
 		this.button_S = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
-		// this.button_S.onDown.add(this.onKeyboardDown, this);
-		// this.button_S.onUp.add(this.onKeyboardUp, this);
+		this.button_S.onDown.add(this.addMovementSound, this);
+		this.button_S.onUp.add(this.removeMovementSound, this);
 
 		this.button_A = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
-		// this.button_A.onDown.add(this.onKeyboardDown, this);
-		// this.button_A.onUp.add(this.onKeyboardUp, this);
+		this.button_A.onDown.add(this.addMovementSound, this);
+		this.button_A.onUp.add(this.removeMovementSound, this);
 
 		this.button_D = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
-		// this.button_D.onDown.add(this.onKeyboardDown, this);
-		// this.button_D.onUp.add(this.onKeyboardUp, this);
+		this.button_D.onDown.add(this.addMovementSound, this);
+		this.button_D.onUp.add(this.removeMovementSound, this);
 
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -224,6 +228,28 @@ export default class {
 			this.player.walk('up', 200);
 		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_DOWN) {
 			this.player.walk('down', 200);
+		}
+	}
+
+	addMovementSound(){
+		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+
+			this.pyfootsteps.play('gravel1');
+
+
+				
+			
+		} else {
+			// this.loop = undefined;
+			// clearInterval(this.loop);
+			// this.pyfootsteps.stop('gravel1');
+		}
+	}
+
+	removeMovementSound(){
+		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+		} else {
+			this.pyfootsteps.stop('gravel1');
 		}
 	}
 
@@ -313,6 +339,8 @@ export default class {
 				// Keyboard Movement
 
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+					
+
 					if (this.button_A.isDown) {
 
 						this.player.animations.play('run');
@@ -353,7 +381,7 @@ export default class {
 						this.player.body.velocity.y = 0;
 					}
 
-				} else {					
+				} else {		
 					this.player.body.velocity.y = 0;
 					this.player.body.velocity.x = 0;
 					this.player.animations.play('idle');

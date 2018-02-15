@@ -54,6 +54,7 @@ export default class {
 
 							// Play music from cache
 							this.music = this.game.add.audio(key, this.globalVolume, true);
+							this.music.allowMultiple = false;
 							this.music.onDecoded.add(() => {
 								this.music.play();
 								this.game.add
@@ -82,6 +83,7 @@ export default class {
 
 						// Play music from cache
 						this.music = this.game.add.audio(key, this.globalVolume, true);
+						this.music.allowMultiple = false;
 						this.music.onDecoded.add(() => {
 							this.music.play();
 							this.game.add
@@ -134,6 +136,7 @@ export default class {
 		this.game.load.onLoadStart.add(function() {}, this);
 		this.game.load.onLoadComplete.add(() => {
 			this.music = this.game.add.audio(key, this.globalVolume, true);
+			this.music.allowMultiple = false;
 			this.music.onDecoded.add(() => {
 				// this.music.fadeIn(this.fadeDuration, true);
 				this.music.play();

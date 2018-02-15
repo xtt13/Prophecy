@@ -164,7 +164,7 @@
                     {
                      "port":true,
                      "targetID":2,
-                     "targetMap":"map4"
+                     "targetMap":"map6"
                     },
                  "propertytypes":
                     {
@@ -178,62 +178,6 @@
                  "width":68.6202221717024,
                  "x":757.604889989192,
                  "y":1434.23723237143
-                }, 
-                {
-                 "height":27.0737,
-                 "id":71,
-                 "name":"",
-                 "properties":
-                    {
-                     "addBridge":true,
-                     "direction":"up",
-                     "duration":500,
-                     "id":7,
-                     "length":4
-                    },
-                 "propertytypes":
-                    {
-                     "addBridge":"bool",
-                     "direction":"string",
-                     "duration":"int",
-                     "id":"int",
-                     "length":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":62.9544,
-                 "x":760.132239380697,
-                 "y":1264.60856973613
-                }, 
-                {
-                 "height":27.0737,
-                 "id":72,
-                 "name":"",
-                 "properties":
-                    {
-                     "direction":"down",
-                     "duration":100,
-                     "id":8,
-                     "length":4,
-                     "removeBridge":true,
-                     "removeQuestID":2
-                    },
-                 "propertytypes":
-                    {
-                     "direction":"string",
-                     "duration":"int",
-                     "id":"int",
-                     "length":"int",
-                     "removeBridge":"bool",
-                     "removeQuestID":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":62.9544,
-                 "x":760.017846198375,
-                 "y":1084.64861142714
                 }, 
                 {
                  "height":215.838786346158,

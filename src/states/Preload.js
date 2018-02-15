@@ -36,7 +36,61 @@ export default class extends Phaser.State {
 		    }
 		};
 
+		this.pxFootstepsJSON = {
+		    spritemap: {
+		        'grass1': {
+		            start: 0,
+		            end: 0.625,
+		            loop: true
+		        },
+		        'grass2': {
+		            start: 0.625,
+		            end: 1.250,
+		            loop: false
+		        },
+		        'grass3': {
+		            start: 1.250,
+		            end: 1.875,
+		            loop: false
+		        },
+		        'hard1': {
+		            start: 2,
+		            end: 2.625,
+		            loop: false
+		        },
+		        'hard2': {
+		            start: 2.625,
+		            end: 3.250,
+		            loop: false
+		        },
+		        'hard3': {
+		            start: 3.250,
+		            end: 3.875,
+		            loop: false
+		        },
+		        'gravel1': {
+		            start: 4,
+		            end: 4.3,
+		            loop: true
+		        },
+		        'gravel2': {
+		            start: 4.625,
+		            end: 5.250,
+		            loop: false
+		        },
+		        'gravel3': {
+		            start: 5.250,
+		            end: 5.870,
+		            loop: false
+		        }
+		    }
+		};
+
 	}
+
+	
+
+	
 
 	preload() {
 		// this.stage.backgroundColor = "#000000";
@@ -71,11 +125,13 @@ export default class extends Phaser.State {
 		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
 		this.load.audio('startGame', 'assets/sounds/startGame.mp3');
 		this.load.audio('AxWaterfall', 'assets/sounds/AxWaterfall.mp3');
+		this.load.audio('AxOpenPlain', 'assets/sounds/AxOpenPlain.mp3');
 		
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
 		// Load AudioSpriteSheets
 		this.load.audiosprite('AxThunderstrike', 'assets/sounds/AxThunderstrike.mp3', null, this.AxThunderstrikeJSON);
+		this.load.audiosprite('PxFootsteps', 'assets/sounds/PxFootsteps.mp3', null, this.pxFootstepsJSON);
 
 		// Load Spritesheets
 		// this.load.spritesheet('player', 'assets/sprites/player.png', 46, 46);

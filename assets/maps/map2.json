@@ -93,7 +93,7 @@
                 {
                  "height":76.6865692776066,
                  "id":27,
-                 "name":"",
+                 "name":"Pathfinder Message",
                  "properties":
                     {
                      "characterID":1,
@@ -134,7 +134,7 @@
                 {
                  "height":4.95876122166646,
                  "id":45,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -157,7 +157,7 @@
                 {
                  "height":5.68591654377262,
                  "id":49,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -180,7 +180,7 @@
                 {
                  "height":5.34129361830147,
                  "id":50,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -203,7 +203,7 @@
                 {
                  "height":69.3817993454462,
                  "id":58,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -226,7 +226,7 @@
                 {
                  "height":63.5584547151923,
                  "id":115,
-                 "name":"",
+                 "name":"Questmessage",
                  "properties":
                     {
                      "addQuest":true,
@@ -249,7 +249,7 @@
                 {
                  "height":63.5585,
                  "id":116,
-                 "name":"",
+                 "name":"Questmessage",
                  "properties":
                     {
                      "addQuest":true,
@@ -272,7 +272,7 @@
                 {
                  "height":63.5585,
                  "id":117,
-                 "name":"",
+                 "name":"Questmessage",
                  "properties":
                     {
                      "addQuest":true,
@@ -293,30 +293,9 @@
                  "y":1029.4124938553
                 }, 
                 {
-                 "height":192.736185383244,
-                 "id":145,
-                 "name":"",
-                 "properties":
-                    {
-                     "soundArea":true,
-                     "soundkey":"AxWaterfall"
-                    },
-                 "propertytypes":
-                    {
-                     "soundArea":"bool",
-                     "soundkey":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":284.090909090909,
-                 "x":1017.1568627451,
-                 "y":-11.1408199643494
-                }, 
-                {
                  "height":192.736,
                  "id":146,
-                 "name":"",
+                 "name":"AxWaterfall",
                  "properties":
                     {
                      "soundArea":true,
@@ -336,8 +315,8 @@
                 }, 
                 {
                  "height":192.736,
-                 "id":147,
-                 "name":"",
+                 "id":150,
+                 "name":"AxWaterfall",
                  "properties":
                     {
                      "soundArea":true,
@@ -352,13 +331,34 @@
                  "type":"",
                  "visible":true,
                  "width":284.091,
-                 "x":-10.1557362204724,
-                 "y":570.954834645669
+                 "x":-4.64091984732826,
+                 "y":566.663624863686
+                }, 
+                {
+                 "height":164.38267393675,
+                 "id":151,
+                 "name":"AxWaterfall",
+                 "properties":
+                    {
+                     "soundArea":true,
+                     "soundkey":"AxWaterfall"
+                    },
+                 "propertytypes":
+                    {
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":284.091,
+                 "x":1061.88034514722,
+                 "y":41.0365801526717
                 }, 
                 {
                  "height":192.736,
-                 "id":148,
-                 "name":"",
+                 "id":152,
+                 "name":"AxWaterfall",
                  "properties":
                     {
                      "soundArea":true,
@@ -373,8 +373,8 @@
                  "type":"",
                  "visible":true,
                  "width":284.091,
-                 "x":1188.66316141732,
-                 "y":557.175307086614
+                 "x":1149.12134841876,
+                 "y":557.939524536532
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -389,7 +389,7 @@
                 {
                  "height":14.1412713002899,
                  "id":41,
-                 "name":"",
+                 "name":"StartPointDefault",
                  "properties":
                     {
                      "startPointType":"default"
@@ -408,7 +408,7 @@
                 {
                  "height":14.1413,
                  "id":48,
-                 "name":"",
+                 "name":"CustomStartpoint",
                  "properties":
                     {
                      "id":1,
@@ -429,7 +429,7 @@
                 {
                  "height":14.1413,
                  "id":51,
-                 "name":"",
+                 "name":"CustomStartpoint",
                  "properties":
                     {
                      "id":2,
@@ -450,7 +450,7 @@
                 {
                  "height":14.1413,
                  "id":52,
-                 "name":"",
+                 "name":"CostomStartpoint",
                  "properties":
                     {
                      "id":3,
@@ -471,7 +471,7 @@
                 {
                  "height":14.1413,
                  "id":59,
-                 "name":"",
+                 "name":"CustomStartpoint",
                  "properties":
                     {
                      "id":4,
@@ -502,7 +502,7 @@
                 {
                  "height":22.0022,
                  "id":103,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "dropItemID":2,
@@ -532,146 +532,8 @@
                 }, 
                 {
                  "height":22.0022,
-                 "id":127,
-                 "name":"",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":564.586506837607,
-                 "y":467.097190598291
-                }, 
-                {
-                 "height":22.0022,
-                 "id":136,
-                 "name":"",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":571.469108263726,
-                 "y":551.422332453503
-                }, 
-                {
-                 "height":22.0022,
-                 "id":137,
-                 "name":"",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":572.582818030961,
-                 "y":624.92717709099
-                }, 
-                {
-                 "height":22.0022,
-                 "id":138,
-                 "name":"",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":589.288464539481,
-                 "y":701.773151030181
-                }, 
-                {
-                 "height":22.0022,
-                 "id":139,
-                 "name":"",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":689.5223435906,
-                 "y":465.666680376434
-                }, 
-                {
-                 "height":22.0022,
-                 "id":140,
-                 "name":"",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":854.35138914133,
-                 "y":453.415872936853
-                }, 
-                {
-                 "height":22.0022,
                  "id":141,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -693,8 +555,8 @@
                 }, 
                 {
                  "height":22.0022,
-                 "id":142,
-                 "name":"",
+                 "id":153,
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -711,8 +573,146 @@
                  "type":"",
                  "visible":true,
                  "width":22.0022,
-                 "x":738.525573348925,
-                 "y":702.886860797416
+                 "x":815.765923403505,
+                 "y":450.012659849465
+                }, 
+                {
+                 "height":22.0022,
+                 "id":154,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":633.477319381395,
+                 "y":451.188715359285
+                }, 
+                {
+                 "height":22.0022,
+                 "id":155,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":558.209766752911,
+                 "y":488.822491673527
+                }, 
+                {
+                 "height":22.0022,
+                 "id":156,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":579.378765929672,
+                 "y":561.737933282371
+                }, 
+                {
+                 "height":22.0022,
+                 "id":157,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":569.970321851111,
+                 "y":621.716764283194
+                }, 
+                {
+                 "height":22.0022,
+                 "id":158,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":597.019598576973,
+                 "y":707.568816500059
+                }, 
+                {
+                 "height":22.0022,
+                 "id":159,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":6,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":731.08992669646,
+                 "y":701.688538950959
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -727,7 +727,7 @@
                 {
                  "height":11.4935923222803,
                  "id":10,
-                 "name":"",
+                 "name":"Priest",
                  "properties":
                     {
                      "character":"priest",
@@ -772,7 +772,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":149,
+ "nextobjectid":160,
  "orientation":"orthogonal",
  "properties":
     {

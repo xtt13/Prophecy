@@ -276,15 +276,11 @@ export default class {
 
 		console.log('TargetMap: ' + targetMap);
 
-		console.log(this.level.weather.weatherSound);
-		// if (this.level.weather.weatherSound) {
-		// 	// this.level.weather.weatherSound.fadeOut(1000);
-		// 	// this.game.add.tween(this.level.weather.weatherSound).to( { volume: 0 }, 2000, Phaser.Easing.Linear.None, true);
-		// 	this.level.weather.weatherSound.stop();
-		// }
-		// if(this.game.soundManager.sound){
-		// 	this.game.soundManager.sound.fadeOut(2000);
-		// }
+		if(this.level.inputClass.pyfootsteps){
+			this.level.inputClass.pyfootsteps.stop('gravel1');
+		}
+		
+		
 
 		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
 	}
@@ -428,10 +424,10 @@ export default class {
 
 	soundAreaEnter(region){
 		this.areaSound = game.add.audio(region.properties.soundkey);
-		this.areaSound.fadeIn(3000);
+		this.areaSound.fadeIn(2000);
 	}
 
 	soundAreaLeave(region){
-		this.areaSound.fadeOut(3000);
+		this.areaSound.fadeOut(2000);
 	}
 }

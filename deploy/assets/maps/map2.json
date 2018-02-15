@@ -291,6 +291,90 @@
                  "width":140.896,
                  "x":1091.39285770549,
                  "y":1029.4124938553
+                }, 
+                {
+                 "height":192.736185383244,
+                 "id":145,
+                 "name":"",
+                 "properties":
+                    {
+                     "soundArea":true,
+                     "soundkey":"AxWaterfall"
+                    },
+                 "propertytypes":
+                    {
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":284.090909090909,
+                 "x":1017.1568627451,
+                 "y":-11.1408199643494
+                }, 
+                {
+                 "height":192.736,
+                 "id":146,
+                 "name":"",
+                 "properties":
+                    {
+                     "soundArea":true,
+                     "soundkey":"AxWaterfall"
+                    },
+                 "propertytypes":
+                    {
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":284.091,
+                 "x":-14.0927440944883,
+                 "y":-7.78532283464567
+                }, 
+                {
+                 "height":192.736,
+                 "id":147,
+                 "name":"",
+                 "properties":
+                    {
+                     "soundArea":true,
+                     "soundkey":"AxWaterfall"
+                    },
+                 "propertytypes":
+                    {
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":284.091,
+                 "x":-10.1557362204724,
+                 "y":570.954834645669
+                }, 
+                {
+                 "height":192.736,
+                 "id":148,
+                 "name":"",
+                 "properties":
+                    {
+                     "soundArea":true,
+                     "soundkey":"AxWaterfall"
+                    },
+                 "propertytypes":
+                    {
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":284.091,
+                 "x":1188.66316141732,
+                 "y":557.175307086614
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -688,7 +772,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":145,
+ "nextobjectid":149,
  "orientation":"orthogonal",
  "properties":
     {
