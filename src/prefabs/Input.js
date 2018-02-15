@@ -206,8 +206,13 @@ export default class {
 
 		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 
+
+
 		// this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
 		this.button_TAB.onDown.add(this.level.GUICLASS.gameMap.toggleMap, this.level.GUICLASS.gameMap);
+
+		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
+		this.button_0.onDown.add(this.resetLocalStorage, this);
 	}
 
 	onGamepadDown(button) {
@@ -220,6 +225,17 @@ export default class {
 		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_DOWN) {
 			this.player.walk('down', 200);
 		}
+	}
+
+	resetLocalStorage(){
+		this.level.GUICLASS.createNotification('saving', 'Reset Account!');
+		localStorage.clear();
+		this.game.musicPlayer.fadeOut();
+		this.game.time.events.add(
+				Phaser.Timer.SECOND * 3,
+				() => {
+					this.game.state.start('MainMenu', true, false);
+		});
 	}
 
 	onGamepadUp(button) {

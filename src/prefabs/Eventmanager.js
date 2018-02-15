@@ -49,6 +49,8 @@ export default class {
 				this.foreGroundShift(region);
 			} else if (region.properties.stairs) {
 				this.stairsEnter(region);
+			} else if (region.properties.soundArea) {
+				this.soundAreaEnter(region);
 			}
 		});
 
@@ -59,6 +61,8 @@ export default class {
 				this.foreGroundReset(region);
 			} else if (region.properties.stairs) {
 				this.stairsLeave(region);
+			} else if (region.properties.soundArea) {
+				this.soundAreaLeave(region);
 			}
 
 
@@ -420,5 +424,14 @@ export default class {
 	stairsLeave(region){
 		this.level.inputClass.playerSpeed += 60;
 		this.level.player.animations._anims.run.speed -= 10 ;
+	}
+
+	soundAreaEnter(region){
+		this.areaSound = game.add.audio(region.properties.soundkey);
+		this.areaSound.fadeIn(3000);
+	}
+
+	soundAreaLeave(region){
+		this.areaSound.fadeOut(3000);
 	}
 }

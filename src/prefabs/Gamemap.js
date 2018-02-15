@@ -9,14 +9,14 @@ export default class {
 
 		this.mapValues = {
 			"map1": {
-				x: 144,
-				y: 128,
+				x: 145,
+				y: 124,
 				width: 32,
 				height: 32
 			},
 			"map2": {
 				x: 134,
-				y: 96,
+				y: 94,
 				width: 32,
 				height: 32
 			},
@@ -28,7 +28,7 @@ export default class {
 			},
 			"map4": {
 				x: 104,
-				y: 107,
+				y: 103,
 				width: 32,
 				height: 32
 			},
@@ -49,16 +49,10 @@ export default class {
 
 			this.createMap();
 
-			this.game.time.events.add(
-				Phaser.Timer.SECOND * 0.1,
-				() => {
-					this.game.paused = true;
-			});
 			
 			
 		} else {
 			// clearInterval(this.reloadInterval);
-			this.game.paused = false;
 			this.removeMap();
 			this.show = false;
 			
@@ -92,7 +86,10 @@ export default class {
 
 		this.map = this.game.add.sprite(140, 40, 'gameMap');
 		this.map.fixedToCamera = true;
+		// this.map.anchor.set(0.5);
+		// this.map.scale.set(1.5);
 		this.mapGroup.add(this.map);
+
 
 
 		this.bmdPlayer = game.add.bitmapData(3, 3);
@@ -116,7 +113,8 @@ export default class {
 		for (let prop in this.mapValues) {
 			if(prop == this.level.currentMap){
 				this.piece = this.mapValues[prop];
-				// console.log(this.piece);
+				console.log("HIHDIFH");
+				console.log(this.mapValues[prop]);
 			}
 		}
 
@@ -128,12 +126,19 @@ export default class {
 			80 + this.playerPY - 35,
 			this.bmdPlayer
 		);
-		this.playerDot.anchor.set(0.5);
+		// this.playerDot.anchor.set(0.5);
 
 		this.playerDot.fixedToCamera = true;
+
+		// this.playerDot.anchor.set(0.5);
 		this.mapGroup.add(this.playerDot);
 
+		// this.mapGroup.fixedToCamera = true;
 
+		// this.mapGroup.scale.set(1.1);
+		// console.log(this.mapGroup.y);
+		// this.mapGroup.x = -200;
+		// this.mapGroup.y = -120;
 
 	}
 

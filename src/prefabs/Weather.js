@@ -115,11 +115,6 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-		this.lightningSounds = [];
-		for (let i = 1; i <= 5; i++) {
-			let lightningSound = this.game.add.audio('ThunderNear' + i, 0.2);
-			this.lightningSounds.push(lightningSound);
-		}
 
 		let randomSecond = this.game.rnd.integerInRange(10, 18);
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
@@ -198,8 +193,12 @@ export default class {
 				.to({ alpha: 100 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 		}
 
-		this.lightningSound = this.game.rnd.pick(this.lightningSounds);
-		this.lightningSound.play();
+
+		this.strike = this.game.rnd.pick(['hit1', 'hit2', 'hit3', 'hit4', 'hit5']);
+
+		this.thunderstrike = this.game.add.audioSprite('AxThunderstrike');
+		this.thunderstrike.allowMultiple = true;
+		this.thunderstrike.play(this.strike);
 
 		this.game.camera.shake(0.005, 500);
 	}

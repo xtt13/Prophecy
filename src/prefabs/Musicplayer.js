@@ -110,6 +110,16 @@ export default class {
 		}
 	}
 
+	fadeOut(){
+		if(this.music && this.music.isPlaying){
+			this.music.fadeOut(3000);
+			this.game.time.events.add(Phaser.Timer.SECOND * (3000 / 1000), () => {
+				this.music.destroy();
+				this.music = undefined;
+			});
+		}
+	}
+
 	checkCache(key) {
 		if (this.game.cache.checkSoundKey(key)) {
 			return true;

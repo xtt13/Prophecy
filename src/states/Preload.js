@@ -5,7 +5,38 @@ import Musicplayer from '../prefabs/Musicplayer';
 import Soundmanager from '../prefabs/Soundmanager';
 
 export default class extends Phaser.State {
-	init() {}
+	init() {
+		this.AxThunderstrikeJSON = {
+		    spritemap: {
+		        'hit1': {
+		            start: 1,
+		            end: 4,
+		            loop: false
+		        },
+		        'hit2': {
+		            start: 4,
+		            end: 8,
+		            loop: false
+		        },
+		        'hit3': {
+		            start: 8,
+		            end: 12,
+		            loop: false
+		        },
+		        'hit4': {
+		            start: 12,
+		            end: 16,
+		            loop: false
+		        },
+		        'hit5': {
+		            start: 16,
+		            end: 20,
+		            loop: false
+		        }
+		    }
+		};
+
+	}
 
 	preload() {
 		// this.stage.backgroundColor = "#000000";
@@ -39,14 +70,12 @@ export default class extends Phaser.State {
 		// Load Sounds
 		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
 		this.load.audio('startGame', 'assets/sounds/startGame.mp3');
+		this.load.audio('AxWaterfall', 'assets/sounds/AxWaterfall.mp3');
 		
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
-		this.load.audio('ThunderNear1', 'assets/sounds/ThunderNear1.mp3');
-		this.load.audio('ThunderNear2', 'assets/sounds/ThunderNear2.mp3');
-		this.load.audio('ThunderNear3', 'assets/sounds/ThunderNear3.mp3');
-		this.load.audio('ThunderNear4', 'assets/sounds/ThunderNear4.mp3');
-		this.load.audio('ThunderNear5', 'assets/sounds/ThunderNear5.mp3');
+		// Load AudioSpriteSheets
+		this.load.audiosprite('AxThunderstrike', 'assets/sounds/AxThunderstrike.mp3', null, this.AxThunderstrikeJSON);
 
 		// Load Spritesheets
 		// this.load.spritesheet('player', 'assets/sprites/player.png', 46, 46);

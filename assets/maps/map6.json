@@ -39,7 +39,7 @@
          "name":"CollisionLayer",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":40,
          "x":0,
          "y":0
@@ -138,7 +138,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -354,10 +354,33 @@
                  "width":62.9544,
                  "x":760.04847309107,
                  "y":400.347096961895
+                }, 
+                {
+                 "height":2.64279,
+                 "id":93,
+                 "name":"",
+                 "properties":
+                    {
+                     "port":true,
+                     "targetID":1,
+                     "targetMap":"map7"
+                    },
+                 "propertytypes":
+                    {
+                     "port":"bool",
+                     "targetID":"int",
+                     "targetMap":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":68.6202,
+                 "x":757.833219663285,
+                 "y":1.07685907103642
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -404,6 +427,27 @@
                  "width":14.1413,
                  "x":784.042771025847,
                  "y":1377.79108043171
+                }, 
+                {
+                 "height":14.1413,
+                 "id":94,
+                 "name":"",
+                 "properties":
+                    {
+                     "id":2,
+                     "startPointType":"custom"
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "startPointType":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":14.1413,
+                 "x":784.905167532289,
+                 "y":27.5542469497116
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -452,7 +496,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":93,
+ "nextobjectid":95,
  "orientation":"orthogonal",
  "properties":
     {
