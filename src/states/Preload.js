@@ -147,7 +147,7 @@ export default class extends Phaser.State {
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
 
 		// Load GameMaps
-		this.load.image('gameMap', 'assets/sprites/gameMap.png');
+		this.load.image('newGameMap', 'assets/sprites/newGameMap.png');
 
 		// Load Videos
 

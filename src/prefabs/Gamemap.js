@@ -9,53 +9,46 @@ export default class {
 
 		this.mapValues = {
 			"map1": {
-				x: 145,
-				y: 124,
-				width: 32,
-				height: 32
+				x: 112,
+				y: 128,
+				width: 64,
+				height: 64
 			},
 			"map2": {
-				x: 134,
-				y: 94,
-				width: 32,
-				height: 32
+				x: 92,
+				y: 66,
+				width: 64,
+				height: 64
 			},
 			"map3": {
-				x: 133,
-				y: 65,
-				width: 32,
-				height: 32
+				x: 91,
+				y: 2,
+				width: 64,
+				height: 64
 			},
 			"map4": {
-				x: 104,
-				y: 103,
-				width: 32,
-				height: 32
+				x: 27,
+				y: 85,
+				width: 64,
+				height: 64
 			},
 			"map6": {
-				x: 105,
-				y: 76,
-				width: 30,
-				height: 30
+				x: 27,
+				y: 21,
+				width: 64,
+				height: 64
 			}
 		}
 		
 	}
 
 	toggleMap(){
-		this.reloadInterval;
 		if (!this.show) {
 			this.show = true;
-
-			this.createMap();
-
-			
-			
+			this.createMap();	
 		} else {
-			// clearInterval(this.reloadInterval);
 			this.removeMap();
-			this.show = false;
-			
+			this.show = false;	
 		}
 	}
 
@@ -84,18 +77,16 @@ export default class {
 		this.gameMapbackground.fixedToCamera = true;
 		// this.mapGroup.add(this.gameMapbackground);
 
-		this.map = this.game.add.sprite(140, 40, 'gameMap');
+		this.map = this.game.add.sprite(180, 40, 'newGameMap');
 		this.map.fixedToCamera = true;
-		// this.map.anchor.set(0.5);
-		// this.map.scale.set(1.5);
+		this.map.inputEnabled = true;
+		this.map.input.enableDrag(false);
+
 		this.mapGroup.add(this.map);
-
-
-
-		this.bmdPlayer = game.add.bitmapData(3, 3);
-
+		
+		this.bmdPlayer = game.add.bitmapData(6, 6);
 		this.bmdPlayer.ctx.beginPath();
-		this.bmdPlayer.ctx.rect(0, 0, 3, 3);
+		this.bmdPlayer.ctx.rect(0, 0, 6, 6);
 		this.bmdPlayer.ctx.fillStyle = '#FF00FF';
 		this.bmdPlayer.ctx.fill();
 
@@ -113,7 +104,6 @@ export default class {
 		for (let prop in this.mapValues) {
 			if(prop == this.level.currentMap){
 				this.piece = this.mapValues[prop];
-				console.log("HIHDIFH");
 				console.log(this.mapValues[prop]);
 			}
 		}
@@ -122,16 +112,16 @@ export default class {
 		this.playerPY = this.piece.y + (this.valueY * this.piece.height);
 
 		this.playerDot = game.add.sprite(
-			140 + this.playerPX,
-			80 + this.playerPY - 35,
+			this.map.x + this.playerPX,
+			this.map.y + this.playerPY,
 			this.bmdPlayer
 		);
-		// this.playerDot.anchor.set(0.5);
 
-		this.playerDot.fixedToCamera = true;
+		this.playerDot.anchor.set(0.5);
 
-		// this.playerDot.anchor.set(0.5);
-		this.mapGroup.add(this.playerDot);
+		// this.playerDot.fixedToCamera = true;
+
+		// this.mapGroup.add(this.playerDot);
 
 		// this.mapGroup.fixedToCamera = true;
 
@@ -153,9 +143,16 @@ export default class {
 
 	}
 
+	update(){
+		this.playerDot.x = this.map.x + this.playerPX;
+		this.playerDot.y = this.map.y + this.playerPY;
+		console.log(this.playerDot.x);
+	}
+
 	removeMap(){
 		if(this.gameMapbackground){
 			this.gameMapbackground.destroy();
+			this.gameMapbackground = false;
 			this.map.destroy();
 			this.playerDot.destroy();
 		}

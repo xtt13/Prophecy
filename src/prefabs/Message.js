@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 
 export default class {
-	constructor(game, message, movable, readable, player) {
+	constructor(game, message, movable, readable, player, level) {
 		this.game = game;
 		this.message = message;
 		this.movable = movable;
 		this.readable = readable;
 		this.player = player;
+		this.level = level;
 
 		this.line = [];
 		this.wordIndex = 0;
@@ -15,7 +16,9 @@ export default class {
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
-		this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+		this.followTween = this.game.add
+
+		this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
 
 		this.addBars();
 

@@ -48,8 +48,9 @@ export default class {
 		if (this.gameMap.gameMapbackground) {
 			this.game.world.bringToTop(this.gameMap.gameMapbackground);
 			this.game.world.bringToTop(this.gameMap.mapGroup);
+			this.game.world.bringToTop(this.gameMap.playerDot);
 			
-			// this.game.world.bringToTop(this.gameMap.playerDot);
+			this.gameMap.update();
 		}
 
 		// let onePSx = this.game.world.width / 100;
@@ -68,7 +69,7 @@ export default class {
 	}
 
 	createMessage(message, playerMovable, readable) {
-		this.message = new Message(this.game, message, playerMovable, readable, this.player);
+		this.message = new Message(this.game, message, playerMovable, readable, this.player, this.level);
 	}
 
 	createNotification(type, message) {
