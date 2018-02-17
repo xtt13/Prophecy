@@ -15,7 +15,7 @@ export default class extends Phaser.Sprite {
 		this.movable = true;
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
-		this.movementBlocked = false;
+		// this.movementBlocked = false;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
 		this.animations.add('run', [4, 5, 6, 7, 8, 9], 10, true);
@@ -29,10 +29,10 @@ export default class extends Phaser.Sprite {
 		this.game.renderer.renderSession.roundPixels = true;
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
-		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
-			console.log('peng');
-			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
-		});
+		// this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+		// 	console.log('peng');
+		// 	this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+		// });
 
 		game.add.existing(this);
 	}

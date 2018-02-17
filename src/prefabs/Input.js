@@ -213,7 +213,7 @@ export default class {
 
 
 		// this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
-		this.button_TAB.onDown.add(this.level.GUICLASS.gameMap.toggleMap, this.level.GUICLASS.gameMap);
+		this.button_TAB.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
@@ -234,10 +234,7 @@ export default class {
 	addMovementSound(){
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 
-			this.pyfootsteps.play('gravel1');
-
-
-				
+			this.pyfootsteps.play('gravel1');			
 			
 		} else {
 			// this.loop = undefined;
@@ -282,6 +279,9 @@ export default class {
 
 		// Gamepad Controls
 		if (this.player) {
+
+			if (!this.player.movable) return;
+
 			if (this.pad1 !== undefined && this.pad1.connected) {
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 					this.player.body.velocity.x = -100;

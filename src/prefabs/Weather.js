@@ -8,6 +8,8 @@ export default class {
 		this.currentWeather = type;
 		this.backgroundLayer = backgroundLayer;
 
+		this.enableStorm = true;
+
 		this.isSafari =
 			navigator.vendor &&
 			navigator.vendor.indexOf('Apple') > -1 &&
@@ -115,9 +117,10 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-
-		let randomSecond = this.game.rnd.integerInRange(10, 18);
-		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
+		if(this.enableStorm){
+			let randomSecond = this.game.rnd.integerInRange(10, 18);
+			this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
+		}
 
 		if (!this.isSafari) {
 			// this.addWindLeaves();

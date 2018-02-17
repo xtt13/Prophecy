@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
 
 export default class {
-	constructor(game, GUI, level) {
+	constructor(game, level, ingameMenu) {
 		this.game = game;
-		this.GUI = GUI;
 		this.level = level;
+		this.ingameMenu = ingameMenu;
 		this.show = false;
 
 		this.mapValues = {
@@ -55,34 +55,48 @@ export default class {
 	createMap(){
 		this.calculateValues();
 
-		this.mapGroup = this.game.add.group();
+		// this.level.weather.enableStorm = false;
+		// this.level.player.movable = false;
+		// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
-		let width = this.game.camera.width + 20;
-		let height = this.game.camera.height + 20;
+		// this.mapGroup = this.game.add.group();
 
-		this.bmd = game.add.bitmapData(width, height);
+		// let width = 400;
+		// let height = 200;
 
-		this.bmd.ctx.beginPath();
-		this.bmd.ctx.rect(0, 0, width, height);
-		this.bmd.ctx.fillStyle = '#000000';
-		// this.bmd.ctx.globalAlpha = 0.9;
-		this.bmd.ctx.fill();
+		// this.bmd = game.add.bitmapData(width, height);
 
-		this.gameMapbackground = game.add.sprite(
-			this.game.camera.width / 2,
-			this.game.camera.height / 2,
-			this.bmd
-		);
-		this.gameMapbackground.anchor.set(0.5);
-		this.gameMapbackground.fixedToCamera = true;
+		// this.bmd.ctx.beginPath();
+		// this.bmd.ctx.rect(0, 0, width, height);
+		// this.bmd.ctx.fillStyle = '#FF0000';
+		// this.bmd.ctx.globalAlpha = 1;
+		// this.bmd.ctx.fill();
+
+		// this.gameMapbackground = game.add.sprite(
+		// 	this.game.camera.width / 2,
+		// 	this.game.camera.height / 2,
+		// 	this.bmd
+		// );
+		// this.gameMapbackground.anchor.set(0.5);
+		// this.gameMapbackground.fixedToCamera = true;
+		// this.gameMapbackground.alpha = 0.5;
+
 		// this.mapGroup.add(this.gameMapbackground);
 
-		this.map = this.game.add.sprite(180, 40, 'newGameMap');
+		this.map = this.game.add.sprite(this.game.camera.width / 2 - 100, this.game.camera.height / 2 - 90, 'newGameMap');
 		this.map.fixedToCamera = true;
 		this.map.inputEnabled = true;
 		this.map.input.enableDrag(false);
 
-		this.mapGroup.add(this.map);
+
+		this.mask = this.game.add.graphics(300, 180);
+		this.mask.beginFill(0xffffff);
+		this.mask.drawRect((this.game.camera.width / 2) - 500, (this.game.camera.height / 2) - 259, 400, 180);
+		this.mask.fixedToCamera = true;
+
+		this.map.mask = this.mask;
+
+		// this.mapGroup.add(this.map);
 		
 		this.bmdPlayer = game.add.bitmapData(6, 6);
 		this.bmdPlayer.ctx.beginPath();
@@ -100,14 +114,13 @@ export default class {
 			this.playerDot.destroy();
 		}
 		// [this.level.currentMap]
-
 		for (let prop in this.mapValues) {
 			if(prop == this.level.currentMap){
 				this.piece = this.mapValues[prop];
-				console.log(this.mapValues[prop]);
 			}
 		}
 
+		console.log(this.piece);
 		this.playerPX = this.piece.x + (this.valueX * this.piece.width);
 		this.playerPY = this.piece.y + (this.valueY * this.piece.height);
 
@@ -137,8 +150,8 @@ export default class {
 		this.valueX =  Math.round(((this.level.player.x / this.game.world.width/100)*100) * 10) / 10;
 		this.valueY =  Math.round(((this.level.player.y / this.game.world.height/100)*100) * 10) / 10;
 
-		// console.log("ValuePlayerX: " + this.valueX);
-		// console.log("ValuePlayerY: " + this.valueY);
+		console.log("ValuePlayerX: " + this.valueX);
+		console.log("ValuePlayerY: " + this.valueY);
 
 
 	}
@@ -146,14 +159,18 @@ export default class {
 	update(){
 		this.playerDot.x = this.map.x + this.playerPX;
 		this.playerDot.y = this.map.y + this.playerPY;
-		console.log(this.playerDot.x);
 	}
 
 	removeMap(){
-		if(this.gameMapbackground){
+		if(this.map){
+			// this.level.weather.enableStorm = true;
+			// this.level.player.movable = true;
+			// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+
 			this.gameMapbackground.destroy();
 			this.gameMapbackground = false;
 			this.map.destroy();
+			this.mask.destroy();
 			this.playerDot.destroy();
 		}
 

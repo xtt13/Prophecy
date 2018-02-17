@@ -155,6 +155,10 @@ export default class extends Phaser.State {
 		this.load.atlas('dpad', 'assets/input/dpad.png', 'assets/input/dpad.json');
 		this.load.atlas('generic', 'assets/input/generic-joystick.png', 'assets/input/generic-joystick.json');
 
+		// GameButtons
+		this.load.spritesheet('mapButton', 'assets/input/mapButton.png', 60, 20);
+		this.load.spritesheet('questButton', 'assets/input/questButton.png', 60, 20);
+
 		// Load Weather Sprites
 		this.load.image('rain', 'assets/sprites/rain.png');
 		this.load.image('snow', 'assets/sprites/snow.png');
