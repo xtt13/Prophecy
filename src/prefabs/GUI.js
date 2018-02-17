@@ -63,12 +63,15 @@ export default class {
 			this.game.world.bringToTop(this.ingameMenu.questButton);
 
 			if(this.ingameMenu.gameMap.map){
-				// this.game.world.bringToTop(this.ingameMenu.gameMap.gameMapbackground);
 				this.game.world.bringToTop(this.ingameMenu.gameMap.mask);
-				
 				this.game.world.bringToTop(this.ingameMenu.gameMap.map);
-				// this.game.world.bringToTop(this.ingameMenu.gameMap.playerDot);
+				this.game.world.bringToTop(this.ingameMenu.gameMap.playerDot);
 
+				this.ingameMenu.gameMap.update();
+			}	
+
+			if(this.ingameMenu.questMap.text){
+				this.game.world.bringToTop(this.ingameMenu.questMap.text);
 			}
 
 		}

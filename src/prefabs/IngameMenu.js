@@ -11,6 +11,7 @@ export default class {
 		this.show = false;
 
 		this.gameMap = new Gamemap(this.game, this.level, this);
+		this.questMap = new Questmap(this.game, this.level, this);
 	}
 
 	toggleMenu() {
@@ -24,8 +25,9 @@ export default class {
 	}
 
 	showMenu() {
-		// this.questMap = new Questmap(this.game, this);
-		// this.gameMap = new Gamemap(this.game, this, this.level);
+		this.level.weather.enableStorm = false;
+		this.level.player.movable = false;
+		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
 		this.bmd = this.game.add.bitmapData(400, 200);
 
@@ -54,16 +56,6 @@ export default class {
 		);
 		this.menuBackground.fixedToCamera = true;
 
-
-		// this.menuLine = this.game.add.sprite(
-		// 	this.menuBackground.x,
-		// 	this.menuBackground.y,
-		// 	this.bmdLine
-		// );
-		// this.menuLine.fixedToCamera = true;
-
-
-
 		this.mapButton = this.game.add.button(this.menuBackground.x, this.menuBackground.y, 'mapButton', this.actionOnClick, this, 0, 1, 2);
 		this.mapButton.fixedToCamera = true;
 
@@ -76,14 +68,16 @@ export default class {
 
 		this.gameMap.createMap();
 
-		console.log(this.gameMap.map);
-		console.log(this.menuBackground);
-		// this.gameMap.map.mask = this.menuBackground;
-
 	}
 
 	closeMenu(){
+
 		if(this.menuBackground){
+
+			this.level.weather.enableStorm = true;
+			this.level.player.movable = true;
+			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+
 			this.menuBackground.destroy();
 			this.mapButton.destroy();
 			this.questButton.destroy();
@@ -92,18 +86,27 @@ export default class {
 			if(this.gameMap.map){
 				this.gameMap.map.destroy();
 				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if(this.questMap.text){
+				this.questMap.text.destroy();
+				this.questMap.text = false;
 			}
 		}
 	}
 
 	actionOnClick(button){
-		console.log(button.key);
-		// button.setFrames(2, 2, 2);
 
 		if(button.key == 'mapButton'){
 			this.mapButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
+
+			if(this.questMap.text){
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+			}
 
 			this.gameMap.createMap();
 
@@ -114,8 +117,11 @@ export default class {
 			if(this.gameMap.map){
 				this.gameMap.map.destroy();
 				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
 			}
+
+			this.questMap.showMap();
 		}
 	}
 

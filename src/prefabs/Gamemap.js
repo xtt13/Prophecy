@@ -120,7 +120,6 @@ export default class {
 			}
 		}
 
-		console.log(this.piece);
 		this.playerPX = this.piece.x + (this.valueX * this.piece.width);
 		this.playerPY = this.piece.y + (this.valueY * this.piece.height);
 

@@ -117,10 +117,10 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-		if(this.enableStorm){
-			let randomSecond = this.game.rnd.integerInRange(10, 18);
-			this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
-		}
+		
+		let randomSecond = this.game.rnd.integerInRange(10, 18);
+		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
+		
 
 		if (!this.isSafari) {
 			// this.addWindLeaves();
@@ -161,6 +161,9 @@ export default class {
 	}
 
 	zap() {
+
+		if(!this.enableStorm) return;
+
 		this.lightningBitmap.x = this.game.camera.x;
 		this.lightningBitmap.y = this.game.camera.y;
 		this.lightning.x = this.game.camera.x;
