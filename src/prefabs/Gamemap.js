@@ -131,6 +131,8 @@ export default class {
 
 		this.playerDot.anchor.set(0.5);
 
+		this.playerDot.mask = this.mask;
+
 		// this.playerDot.fixedToCamera = true;
 
 		// this.mapGroup.add(this.playerDot);

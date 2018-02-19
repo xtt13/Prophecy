@@ -17,6 +17,10 @@ export default class {
 		this.maxSpeed = 150;	
 		this.playerSpeed = 130;
 
+		this.game.input.addPointer();
+   		this.game.input.addPointer();
+
+   		console.log(this.game.input);
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = true;
@@ -124,15 +128,15 @@ export default class {
 			this.gamepad_buttonY.onDown.add(this.onGamepadDown, this);
 
 			// D-PAD Buttons
-			// this.gamepad_buttonDPadLeft = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_LEFT);
-			// this.gamepad_buttonDPadRight = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_RIGHT);
-			// this.gamepad_buttonDPadUp = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP);
-			// this.gamepad_buttonDPadDown = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN);
+			this.gamepad_buttonDPadLeft = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_LEFT);
+			this.gamepad_buttonDPadRight = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_RIGHT);
+			this.gamepad_buttonDPadUp = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP);
+			this.gamepad_buttonDPadDown = this.pad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN);
 
-			// this.gamepad_buttonDPadLeft.onDown.add(this.onGamepadDown, this);
-			// this.gamepad_buttonDPadRight.onDown.add(this.onGamepadDown, this);
-			// this.gamepad_buttonDPadUp.onDown.add(this.onGamepadDown, this);
-			// this.gamepad_buttonDPadDown.onDown.add(this.onGamepadDown, this);
+			this.gamepad_buttonDPadLeft.onDown.add(this.level.GUICLASS.ingameMenu.mapLeft, this.level.GUICLASS.ingameMenu);
+			this.gamepad_buttonDPadRight.onDown.add(this.level.GUICLASS.ingameMenu.mapRight, this.level.GUICLASS.ingameMenu);
+			this.gamepad_buttonDPadUp.onDown.add(this.level.GUICLASS.ingameMenu.mapUp, this.level.GUICLASS.ingameMenu);
+			this.gamepad_buttonDPadDown.onDown.add(this.level.GUICLASS.ingameMenu.mapDown, this.level.GUICLASS.ingameMenu);
 
 			// this.gamepad_buttonDPadLeft.onUp.add(this.onGamepadUp, this);
 			// this.gamepad_buttonDPadRight.onUp.add(this.onGamepadUp, this);
@@ -143,8 +147,8 @@ export default class {
 			this.gamepad_buttonLeftBumper = this.pad1.getButton(Phaser.Gamepad.XBOX360_LEFT_BUMPER);
 			this.gamepad_buttonRightBumper = this.pad1.getButton(Phaser.Gamepad.XBOX360_RIGHT_BUMPER);
 
-			this.gamepad_buttonLeftBumper.onDown.add(this.onGamepadDown, this);
-			this.gamepad_buttonRightBumper.onDown.add(this.onGamepadDown, this);
+			this.gamepad_buttonLeftBumper.onDown.add(this.level.GUICLASS.ingameMenu.prev, this.level.GUICLASS.ingameMenu);
+			this.gamepad_buttonRightBumper.onDown.add(this.level.GUICLASS.ingameMenu.next, this.level.GUICLASS.ingameMenu);
 
 			// LT and RT Buttons
 			this.gamepad_buttonLeftTrigger = this.pad1.getButton(Phaser.Gamepad.XBOX360_LEFT_TRIGGER);
@@ -157,7 +161,7 @@ export default class {
 			this.gamepad_buttonBack = this.pad1.getButton(Phaser.Gamepad.XBOX360_BACK);
 			this.gamepad_buttonStart = this.pad1.getButton(Phaser.Gamepad.XBOX360_START);
 
-			this.gamepad_buttonBack.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
+			this.gamepad_buttonBack.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
 			this.gamepad_buttonStart.onDown.add(this.onGamepadDown, this);
 
 			// Sticks Press Buttons
@@ -284,10 +288,10 @@ export default class {
 
 			if (this.pad1 !== undefined && this.pad1.connected) {
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-					this.player.body.velocity.x = -100;
+					this.player.body.velocity.x = -this.playerSpeed;
 					// console.log('left');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-					this.player.body.velocity.x = 100;
+					this.player.body.velocity.x = this.playerSpeed;
 					// console.log('right');
 				} else {
 					this.player.idle('x');
@@ -295,12 +299,12 @@ export default class {
 
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
 					// this.player.walk('up', 200);
-					this.player.body.velocity.y = -100;
+					this.player.body.velocity.y = -this.playerSpeed;
 					this.player.animations.play('run');
 					// console.log('up');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
 					// this.player.walk('down', 200);
-					this.player.body.velocity.y = 100;
+					this.player.body.velocity.y = this.playerSpeed;
 					this.player.animations.play('run');
 					// console.log('down');
 				} else {
@@ -312,12 +316,17 @@ export default class {
 				if (this.stick.isDown) {
 					this.game.physics.arcade.velocityFromRotation(
 						this.stick.rotation,
-						this.stick.force * this.maxSpeed,
+						this.stick.force * this.playerSpeed,
 						this.player.body.velocity
 					);
 					// this.player.rotation = this.stick.rotation;
 
 					// console.log(this.stick.force);
+
+					// if(this.game.input.pointer1.active && this.game.input.pointer2.active){
+					// 	console.log('2Finger');
+					// 	this.player.body.velocity.x = 200;
+					// }
 
 					this.stickRotation = this.stick.rotation.toFixed(1);
 

@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 import Questmap from './Questmap';
 import Gamemap from './Gamemap';
+import GameOptions from './GameOptions';
 
 export default class {
 	constructor(game, level) {
@@ -10,8 +11,11 @@ export default class {
 
 		this.show = false;
 
+		this.currentTab = 1;
+
 		this.gameMap = new Gamemap(this.game, this.level, this);
 		this.questMap = new Questmap(this.game, this.level, this);
+		this.gameOptions = new GameOptions(this.game, this.level, this);
 	}
 
 	toggleMenu() {
@@ -62,9 +66,13 @@ export default class {
 		this.questButton = this.game.add.button(this.menuBackground.x + 60, this.menuBackground.y, 'questButton', this.actionOnClick, this, 0, 1, 2);
 		this.questButton.fixedToCamera = true;
 
+		this.optionsButton = this.game.add.button(this.menuBackground.x + 120, this.menuBackground.y, 'optionsButton', this.actionOnClick, this, 0, 1, 2);
+		this.optionsButton.fixedToCamera = true;
+
 
 		this.mapButton.setFrames(2, 2, 2);
 		this.questButton.setFrames(0, 1, 2);
+		this.optionsButton.setFrames(0, 1, 2);
 
 		this.gameMap.createMap();
 
@@ -81,6 +89,7 @@ export default class {
 			this.menuBackground.destroy();
 			this.mapButton.destroy();
 			this.questButton.destroy();
+			this.optionsButton.destroy();
 			this.menuBackground = false;
 
 			if(this.gameMap.map){
@@ -100,8 +109,10 @@ export default class {
 	actionOnClick(button){
 
 		if(button.key == 'mapButton'){
+			if(this.gameMap.map) return;
 			this.mapButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
 
 			if(this.questMap.text){
 				this.questMap.text.destroy();
@@ -110,9 +121,11 @@ export default class {
 
 			this.gameMap.createMap();
 
-		} else {
+		} else if(button.key == 'questButton'){
+			if(this.questMap.text) return;
 			this.questButton.setFrames(2, 2, 2);
 			this.mapButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
 
 			if(this.gameMap.map){
 				this.gameMap.map.destroy();
@@ -122,7 +135,156 @@ export default class {
 			}
 
 			this.questMap.showMap();
+		} else if(button.key == 'optionsButton'){
+
+			this.optionsButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.mapButton.setFrames(0, 1, 2);
+
+			this.gameOptions.showOptions();
 		}
+	}
+
+	next(){
+		if(!this.show) return;
+		this.currentTab++;
+
+		if(this.currentTab > 3){
+			this.currentTab = 1;
+		}
+
+		if(this.currentTab == 1){
+
+			if(this.gameMap.map) return;
+			this.mapButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
+
+			if(this.questMap.text){
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+			}
+
+			this.gameMap.createMap();
+
+
+		} else if(this.currentTab == 2){
+
+			if(this.questMap.text) return;
+			this.questButton.setFrames(2, 2, 2);
+			this.mapButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
+
+			if(this.gameMap.map){
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
+
+			this.questMap.showMap();
+
+		} else if(this.currentTab == 3){
+			
+			this.optionsButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.mapButton.setFrames(0, 1, 2);
+
+			this.gameOptions.showOptions();
+
+		}
+
+	}
+
+	prev(){
+		if(!this.show) return;
+		this.currentTab--;
+
+		if(this.currentTab < 1){
+			this.currentTab = 3;
+		}
+
+		if(this.currentTab == 1){
+
+			if(this.gameMap.map) return;
+			this.mapButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
+
+			if(this.questMap.text){
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+			}
+
+			this.gameMap.createMap();
+
+
+		} else if(this.currentTab == 2){
+			
+			if(this.questMap.text) return;
+			this.questButton.setFrames(2, 2, 2);
+			this.mapButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
+
+			if(this.gameMap.map){
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
+
+			this.questMap.showMap();
+
+		} else if(this.currentTab == 3){
+			
+			this.optionsButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.mapButton.setFrames(0, 1, 2);
+
+			this.gameOptions.showOptions();
+
+		}
+
+	}
+
+	mapUp(){
+		if(!this.show) return;
+		if(this.gameMap.map){
+			console.log('move');
+			// this.gameMap.map.cameraOffset.y -= 20;
+			this.game.add.tween(this.gameMap.map.cameraOffset).to({ y: this.gameMap.map.cameraOffset.y + 40 }, 200, Phaser.Easing.Linear.None, true);
+		}
+		
+	}
+
+	mapDown(){
+		if(!this.show) return;
+		if(this.gameMap.map){
+			console.log('move');
+			// this.gameMap.map.cameraOffset.y += 20;
+			this.game.add.tween(this.gameMap.map.cameraOffset).to({ y: this.gameMap.map.cameraOffset.y - 40 }, 200, Phaser.Easing.Linear.None, true);
+		}
+		
+	}
+
+	mapLeft(){
+		if(!this.show) return;
+		if(this.gameMap.map){
+			console.log('move');
+			// this.gameMap.map.cameraOffset.x -= 20;
+			this.game.add.tween(this.gameMap.map.cameraOffset).to({ x: this.gameMap.map.cameraOffset.x + 40 }, 200, Phaser.Easing.Linear.None, true);
+		}
+		
+	}
+
+	mapRight(){
+		if(!this.show) return;
+		if(this.gameMap.map){
+			console.log('move');
+			// this.gameMap.map.cameraOffset.x += 20;
+			this.game.add.tween(this.gameMap.map.cameraOffset).to({ x: this.gameMap.map.cameraOffset.x - 40 }, 200, Phaser.Easing.Linear.None, true);
+		}
+		
 	}
 
 }
