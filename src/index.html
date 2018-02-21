@@ -26,13 +26,40 @@
             image-rendering: pixelated;                 /* Awesome future-browsers       */
             -ms-interpolation-mode: nearest-neighbor;
         }
+        #firebaseui-auth-container {
+ margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+        }
     </style>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 
 </head>
 
 <body>
 
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+    <div id="account-details"></div>
+
     <div id="content"></div>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCHYc6XlsGbGWUG4cq00xOtNmQLdzv9ROU",
+        authDomain: "prophecy-aa61c.firebaseapp.com",
+        databaseURL: "https://prophecy-aa61c.firebaseio.com",
+        projectId: "prophecy-aa61c",
+        storageBucket: "prophecy-aa61c.appspot.com",
+        messagingSenderId: "1088796181593"
+      };
+      firebase.initializeApp(config);
+    </script>
+<script src="src/firebase.js"></script>
     <!-- uncomment the line bellow for cordova feature -->
     <!-- <script type="text/javascript" src="cordova.js"></script> -->
 </body>

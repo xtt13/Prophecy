@@ -105,7 +105,7 @@
                 {
                  "height":42.0856,
                  "id":81,
-                 "name":"",
+                 "name":"Custom Emitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -124,7 +124,7 @@
                 {
                  "height":42.0856,
                  "id":82,
-                 "name":"",
+                 "name":"Custom Emitter",
                  "properties":
                     {
                      "type":"emitter"
@@ -153,7 +153,7 @@
                 {
                  "height":70.9878011152399,
                  "id":46,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -176,7 +176,7 @@
                 {
                  "height":23.1987215254275,
                  "id":63,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -205,7 +205,7 @@
                 {
                  "height":27.0737,
                  "id":64,
-                 "name":"",
+                 "name":"Remove Bridge",
                  "properties":
                     {
                      "direction":"down",
@@ -236,7 +236,7 @@
                 {
                  "height":54.5901743668105,
                  "id":65,
-                 "name":"",
+                 "name":"Spawn Enemies",
                  "properties":
                     {
                      "amount":4,
@@ -273,7 +273,7 @@
                 {
                  "height":238.357681466944,
                  "id":69,
-                 "name":"",
+                 "name":"Lock Camera",
                  "properties":
                     {
                      "lockCamera":true
@@ -286,13 +286,13 @@
                  "type":"",
                  "visible":true,
                  "width":339.650082045693,
-                 "x":873.252469271932,
-                 "y":203.570296862384
+                 "x":871.975797248292,
+                 "y":194.911865604561
                 }, 
                 {
                  "height":1.76416459989401,
                  "id":71,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -315,7 +315,7 @@
                 {
                  "height":22.1694,
                  "id":86,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -334,7 +334,7 @@
                 {
                  "height":32.6078,
                  "id":90,
-                 "name":"",
+                 "name":"FS",
                  "properties":
                     {
                      "foreGroundShift":true
@@ -363,7 +363,7 @@
                 {
                  "height":14.1412713002899,
                  "id":41,
-                 "name":"",
+                 "name":"StartpointDefault",
                  "properties":
                     {
                      "startPointType":"default"
@@ -382,7 +382,7 @@
                 {
                  "height":14.1413,
                  "id":48,
-                 "name":"",
+                 "name":"CustomStartpoint",
                  "properties":
                     {
                      "id":1,
@@ -403,7 +403,7 @@
                 {
                  "height":14.1413,
                  "id":72,
-                 "name":"",
+                 "name":"CustomStartpoint",
                  "properties":
                     {
                      "id":2,
@@ -434,7 +434,7 @@
                 {
                  "height":22.0022,
                  "id":55,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -457,7 +457,7 @@
                 {
                  "height":22.0022,
                  "id":75,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -480,7 +480,7 @@
                 {
                  "height":22.0022,
                  "id":76,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -503,7 +503,7 @@
                 {
                  "height":22.0022,
                  "id":77,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -526,7 +526,7 @@
                 {
                  "height":22.0022,
                  "id":78,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -549,7 +549,7 @@
                 {
                  "height":22.0022,
                  "id":79,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -572,7 +572,7 @@
                 {
                  "height":22.0022,
                  "id":80,
-                 "name":"",
+                 "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,

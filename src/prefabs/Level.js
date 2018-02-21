@@ -15,12 +15,14 @@ import Eventmanager from '../prefabs/Eventmanager';
 import Questmanager from '../prefabs/Questmanager';
 import Daycycle from '../prefabs/Daycycle';
 import GUI from '../prefabs/GUI';
+import Battery from '../prefabs/Battery';
 import config from './../config';
 
 export default class {
 	constructor(game, instruction) {
 		this.game = game;
 		this.GUICLASS = new GUI(this.game, this);
+		this.battery = new Battery(this.game, this);
 
 		this.safe = new Safe(this.game);
 		this.gameData = this.safe.getGameConfig();

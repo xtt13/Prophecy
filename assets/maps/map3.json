@@ -93,7 +93,7 @@
                 {
                  "height":4.73660211040442,
                  "id":45,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -116,7 +116,7 @@
                 {
                  "height":6.12722928325957,
                  "id":46,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -139,7 +139,7 @@
                 {
                  "height":27.0737,
                  "id":50,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -170,7 +170,7 @@
                 {
                  "height":251.474992133748,
                  "id":51,
-                 "name":"",
+                 "name":"OpenDoor",
                  "properties":
                     {
                      "openDoor":true
@@ -189,7 +189,7 @@
                 {
                  "height":26.0454604224761,
                  "id":54,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -212,7 +212,7 @@
                 {
                  "height":27.0737,
                  "id":56,
-                 "name":"",
+                 "name":"Bridge",
                  "properties":
                     {
                      "addBridge":true,
@@ -241,7 +241,7 @@
                 {
                  "height":76.6866,
                  "id":63,
-                 "name":"",
+                 "name":"Pathfinder Message",
                  "properties":
                     {
                      "characterID":2,
@@ -278,7 +278,7 @@
                 {
                  "height":108.371545556806,
                  "id":65,
-                 "name":"",
+                 "name":"AxOpenPlain",
                  "properties":
                     {
                      "soundArea":true,
@@ -309,7 +309,7 @@
                 {
                  "height":14.1412713002899,
                  "id":41,
-                 "name":"",
+                 "name":"StartPointDefault",
                  "properties":
                     {
                      "startPointType":"default"
@@ -328,7 +328,7 @@
                 {
                  "height":14.1413,
                  "id":48,
-                 "name":"",
+                 "name":"CustomStartPoint",
                  "properties":
                     {
                      "id":1,
@@ -370,7 +370,7 @@
                 {
                  "height":14.1413,
                  "id":55,
-                 "name":"",
+                 "name":"CustomStartPoint",
                  "properties":
                     {
                      "id":3,
@@ -411,7 +411,7 @@
                 {
                  "height":11.4936,
                  "id":62,
-                 "name":"",
+                 "name":"Testman",
                  "properties":
                     {
                      "character":"testman",

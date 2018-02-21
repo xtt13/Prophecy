@@ -71,7 +71,7 @@
                 {
                  "height":6.12722928325957,
                  "id":46,
-                 "name":"",
+                 "name":"Teleporter",
                  "properties":
                     {
                      "port":true,
@@ -94,7 +94,7 @@
                 {
                  "height":164.748363800496,
                  "id":54,
-                 "name":"",
+                 "name":"MovePlayer",
                  "properties":
                     {
                      "movePlayerToXY":true,
@@ -117,7 +117,7 @@
                 {
                  "height":68.6710922367408,
                  "id":55,
-                 "name":"",
+                 "name":"Message",
                  "properties":
                     {
                      "id":6,
@@ -154,7 +154,7 @@
                 {
                  "height":349.528625,
                  "id":56,
-                 "name":"",
+                 "name":"Lock Camera",
                  "properties":
                     {
                      "lockCamera":true
@@ -183,7 +183,7 @@
                 {
                  "height":14.1412713002899,
                  "id":41,
-                 "name":"",
+                 "name":"DefaultStartpoint",
                  "properties":
                     {
                      "startPointType":"default"
@@ -202,7 +202,7 @@
                 {
                  "height":14.1413,
                  "id":48,
-                 "name":"",
+                 "name":"Custom Startpoint",
                  "properties":
                     {
                      "id":1,
