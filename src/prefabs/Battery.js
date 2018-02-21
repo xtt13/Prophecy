@@ -9,9 +9,10 @@ export default class {
 	}
 
 	setup() {
-		this.test = navigator.getBattery().then(function(battery) {
+		this.batteryPromise = navigator.getBattery().then(function(battery) {
 			updateLevelInfo();
 			updateChargeInfo();
+
 
 			battery.addEventListener('chargingchange', function() {
 				updateChargeInfo();
@@ -19,6 +20,7 @@ export default class {
 
 			function updateChargeInfo() {
 				console.log('Battery charging? ' + (battery.charging ? 'Yes' : 'No'));
+				return battery
 			}
 
 			battery.addEventListener('levelchange', function() {
@@ -27,23 +29,29 @@ export default class {
 
 			function updateLevelInfo() {
 				console.log('Battery level: ' + battery.level * 100 + '%');
+				return battery
 
-				if (battery.level < 25) {
-					if (typeof ipc !== 'undefined') {
+			}
+
+			return battery
+
+		}).then(battery => {
+			console.log(battery);
+
+	    	if(battery.level * 100 < 25 && !battery.charging){
+	    		if (typeof ipc !== 'undefined') {
 						let myNotification = new Notification('Battery', {
 							body: '🔋 Your Battery Level is low!',
 							silent: true
 						});
 					} else {
-						// this.level.GUICLASS.createNotification('Battery', '🔋 Your Battery Level is low!');
-						return 'HIHIHI';
-					}
+
+						this.level.GUICLASS.createNotification('Battery', '🔋 Your Battery Level is low!');
+						
 				}
-			}
+	    	}
+	    
 		});
-		console.log('HELLO');
-		console.log(navigator);
-		console.log(this.test);
-		console.log(this.test.catch());
+
 	}
 }
