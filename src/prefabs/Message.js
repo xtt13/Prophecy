@@ -16,7 +16,7 @@ export default class {
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
-		this.followTween = this.game.add
+		this.followTween = this.game.add;
 
 		this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
 

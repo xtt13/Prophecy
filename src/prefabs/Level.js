@@ -51,7 +51,6 @@ export default class {
 
 		// Method
 		this.loadLevel();
-
 	}
 
 	loadLevel() {
@@ -61,7 +60,7 @@ export default class {
 		this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
 		this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
 
-		if(this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100){
+		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {
 			this.game.camera.flash(0x000000, 8000, true);
 		} else {
 			this.game.camera.flash(0x000000, 2000);
@@ -170,15 +169,15 @@ export default class {
 		}, this);
 	}
 
-	loadEmitter(){
+	loadEmitter() {
 		// Get array of items from JSON-Map
 		let elementsArr = this.findObjectsByType('type', this.map, 'CustomEmitter');
 
 		//Find specific emitter
 		elementsArr.forEach(function(element) {
 			if (element.properties.type == 'emitter') {
-				let x = element.x + (element.width / 2);
-				let y = element.y + (element.height / 2);
+				let x = element.x + element.width / 2;
+				let y = element.y + element.height / 2;
 
 				let customEmitter = this.game.add.emitter(x, y, 10);
 				customEmitter.width = element.width;
@@ -194,7 +193,6 @@ export default class {
 				customEmitter.start(false, 3000, 400, 0);
 			}
 		}, this);
-
 	}
 
 	loadEnemies() {
@@ -253,10 +251,9 @@ export default class {
 
 		this.game.world.bringToTop(this.player);
 
-		if(!this.foreGroundShift){
+		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
 		}
-		
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
@@ -290,8 +287,6 @@ export default class {
 		this.GUICLASS.update();
 
 		// console.log(this.player.x, this.player.y);
-
-	
 	}
 
 	initMap() {

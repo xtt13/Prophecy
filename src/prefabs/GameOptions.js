@@ -5,13 +5,7 @@ export default class {
 		this.game = game;
 		this.level = level;
 		this.ingameMenu = ingameMenu;
-
 	}
 
-	showOptions(){
-		
-	}
-
-	
-
+	showOptions() {}
 }

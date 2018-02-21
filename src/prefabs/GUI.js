@@ -63,18 +63,17 @@ export default class {
 			this.game.world.bringToTop(this.ingameMenu.questButton);
 			this.game.world.bringToTop(this.ingameMenu.optionsButton);
 
-			if(this.ingameMenu.gameMap.map){
+			if (this.ingameMenu.gameMap.map) {
 				this.game.world.bringToTop(this.ingameMenu.gameMap.mask);
 				this.game.world.bringToTop(this.ingameMenu.gameMap.map);
 				this.game.world.bringToTop(this.ingameMenu.gameMap.playerDot);
 
 				this.ingameMenu.gameMap.update();
-			}	
-
-			if(this.ingameMenu.questMap.text){
-				this.game.world.bringToTop(this.ingameMenu.questMap.text);
 			}
 
+			if (this.ingameMenu.questMap.text) {
+				this.game.world.bringToTop(this.ingameMenu.questMap.text);
+			}
 		}
 
 		// let onePSx = this.game.world.width / 100;

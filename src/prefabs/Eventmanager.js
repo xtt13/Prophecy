@@ -64,8 +64,6 @@ export default class {
 			} else if (region.properties.soundArea) {
 				this.soundAreaLeave(region);
 			}
-
-
 		});
 	}
 
@@ -276,11 +274,9 @@ export default class {
 
 		console.log('TargetMap: ' + targetMap);
 
-		if(this.level.inputClass.pyfootsteps){
+		if (this.level.inputClass.pyfootsteps) {
 			this.level.inputClass.pyfootsteps.stop('gravel1');
 		}
-		
-		
 
 		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
 	}
@@ -399,35 +395,35 @@ export default class {
 		}, this);
 	}
 
-	startMusic(region){
+	startMusic(region) {
 		this.game.musicPlayer.initMap(this.level.tilemapProperties, true, 10000);
 	}
 
-	foreGroundShift(region){
+	foreGroundShift(region) {
 		console.log('SHIFT');
 		this.level.foreGroundShift = true;
 	}
 
-	foreGroundReset(region){
+	foreGroundReset(region) {
 		this.level.foreGroundShift = false;
 	}
 
-	stairsEnter(region){
+	stairsEnter(region) {
 		this.level.inputClass.playerSpeed -= 60;
-		this.level.player.animations._anims.run.speed += 10 ;
+		this.level.player.animations._anims.run.speed += 10;
 	}
 
-	stairsLeave(region){
+	stairsLeave(region) {
 		this.level.inputClass.playerSpeed += 60;
-		this.level.player.animations._anims.run.speed -= 10 ;
+		this.level.player.animations._anims.run.speed -= 10;
 	}
 
-	soundAreaEnter(region){
+	soundAreaEnter(region) {
 		this.areaSound = game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(2000);
 	}
 
-	soundAreaLeave(region){
+	soundAreaLeave(region) {
 		this.areaSound.fadeOut(2000);
 	}
 }

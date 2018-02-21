@@ -117,16 +117,13 @@ export default class {
 		this.lightning = this.game.add.image(this.game.camera.width / 2, 0, this.lightningBitmap);
 		this.lightning.anchor.setTo(0.5, 0.5);
 
-		
 		let randomSecond = this.game.rnd.integerInRange(10, 18);
 		this.game.time.events.loop(Phaser.Timer.SECOND * randomSecond, this.zap, this);
-		
 
 		if (!this.isSafari) {
 			// this.addWindLeaves();
 			this.addClouds();
 		}
-
 	}
 
 	addWindLeaves() {
@@ -161,8 +158,7 @@ export default class {
 	}
 
 	zap() {
-
-		if(!this.enableStorm) return;
+		if (!this.enableStorm) return;
 
 		this.lightningBitmap.x = this.game.camera.x;
 		this.lightningBitmap.y = this.game.camera.y;
@@ -194,11 +190,8 @@ export default class {
 			this.game.add
 				.tween(this.level.dayCycleClass.lightSprite)
 				.to({ alpha: 0 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
-			this.game.add
-				.tween(this.clouds)
-				.to({ alpha: 100 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
+			this.game.add.tween(this.clouds).to({ alpha: 100 }, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 		}
-
 
 		this.strike = this.game.rnd.pick(['hit1', 'hit2', 'hit3', 'hit4', 'hit5']);
 
@@ -279,18 +272,21 @@ export default class {
 			cloud.y = this.game.world.randomY;
 		});
 
-		this.game.add.tween(this.clouds.scale).to(
-			{
-				x: 2,
-				y: 2
-			},
-			60000,
-			'Linear',
-			true,
-			0,
-			0,
-			true
-		).loop(true);
+		this.game.add
+			.tween(this.clouds.scale)
+			.to(
+				{
+					x: 2,
+					y: 2
+				},
+				60000,
+				'Linear',
+				true,
+				0,
+				0,
+				true
+			)
+			.loop(true);
 	}
 
 	addSnowWind() {

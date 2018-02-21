@@ -5,13 +5,12 @@ export default class {
 	constructor(game, level) {
 		this.game = game;
 		this.level = level;
-		// this.showMap();
+
 		this.activeOpen = true;
 		this.activeClose = true;
-
-		this.questmapBackground;
-
 		this.show = false;
+
+		this.questmapBackground;	
 	}
 
 	toggleMap() {
@@ -25,7 +24,6 @@ export default class {
 	}
 
 	showMap() {
-
 		this.quests = this.level.safe.getQuests();
 
 		this.text = this.game.add.bitmapText(
@@ -54,7 +52,6 @@ export default class {
 			}
 		}
 
-
 		let counter = 0;
 		let maxEntries = 3;
 		for (let prop in this.quests.masteredQuests) {
@@ -64,33 +61,9 @@ export default class {
 			}
 		}
 
-		// this.questmapBackground.alpha = 0;
-		// this.text.alpha = 0;
-
-		// this.game.add.tween(this.text.cameraOffset).to({ y: this.text.y + 120 }, 800, Phaser.Easing.Back.Out, true);
-		// this.game.add.tween(this.text).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
-
-		// this.game.add
-		// 	.tween(this.questmapBackground.cameraOffset)
-		// 	.to({ y: this.questmapBackground.y + 120 }, 800, Phaser.Easing.Back.Out, true);
-		// this.game.add.tween(this.questmapBackground).to({ alpha: 1 }, 800, Phaser.Easing.Linear.None, true);
 	}
 
 	closeMap() {
-		// console.log('Close Questmap');
-
-		// this.tween = this.game.add
-		// 	.tween(this.questmapBackground.cameraOffset)
-		// 	.to({ y: 100 }, 800, Phaser.Easing.Back.Out, true);
-		// this.game.add.tween(this.questmapBackground).to({ alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
-
-		// this.tween = this.game.add.tween(this.text.cameraOffset).to({ y: 10 }, 800, Phaser.Easing.Back.Out, true);
-		// this.game.add.tween(this.text).to({ alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
-
-		// this.tween.onComplete.add(function() {
-		// 	// this.questmapBackground.destroy();
-		// 	// this.text.destroy();
-		// 	// this.questmapBackground = false;
-		// }, this);
+		console.log('Close Questmap');
 	}
 }

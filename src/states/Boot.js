@@ -28,7 +28,6 @@ export default class extends Phaser.State {
 		// Enable Pixel Rendering
 		this.stage.smoothed = false;
 
-
 		// this.game.forceSingleRender = true;
 		// this.game.time.desiredFps = 60;
 

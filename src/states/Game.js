@@ -26,7 +26,6 @@ export default class extends Phaser.State {
 			this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
 		}
 
-
 		this.level = new Level(this.game, this.instruction);
 	}
 
@@ -38,7 +37,7 @@ export default class extends Phaser.State {
 		// Debugging
 		if (__DEV__) {
 			this.game.debug.text('Version: 1.1.1', 20, 20, '#00ff00');
-			this.game.debug.text(game.time.fps.toString() + " FPS", 20, 40, '#00ff00');
+			this.game.debug.text(game.time.fps.toString() + ' FPS', 20, 40, '#00ff00');
 			// this.game.debug.soundInfo(this.level.weather.weatherSound, 20, 50);
 			// this.game.debug.soundInfo(this.game.musicPlayer.music, 20, 50);
 			// this.game.debug.soundInfo(this.game.soundManager.sound, 20, 50);
@@ -58,7 +57,7 @@ export default class extends Phaser.State {
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.body(this.level.enemies);
 			// this.game.debug.body(this.level.player);
-			this.game.debug.text(this.level.player.health + " HP", 90, 40);
+			this.game.debug.text(this.level.player.health + ' HP', 90, 40);
 		}
 	}
 

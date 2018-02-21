@@ -8,34 +8,29 @@ export default class {
 		this.globalVolume = 0;
 		this.fadeVolumeTo = 1;
 		this.fadeDuration = 2000;
-
 	}
 
-
-	initSound(key){
+	initSound(key) {
 		// If Key is not undefined
 		if (key !== undefined) {
-		console.log('SoundKey is not undefined!');
+			console.log('SoundKey is not undefined!');
 
 			// If Key is not a empty string
-			if(key !== ""){
-			console.log('SoundKey is not a empty string!');
+			if (key !== '') {
+				console.log('SoundKey is not a empty string!');
 
 				// If Sound is currently playing
 				if (this.sound && this.sound.isPlaying && this.sound.key !== key) {
-
 					// Fade it out
 					this.sound.fadeOut(this.fadeDuration);
 
 					// Wait
 					this.game.time.events.add(Phaser.Timer.SECOND * (this.fadeDuration / 1000), () => {
-
 						// Check if sound is in cache
 						if (!this.checkCache(key)) {
 							// Load Sound and play it
 							this.loadSound(key);
 						} else {
-
 							// Play sound from cache
 							this.sound = this.game.add.audio(key, this.globalVolume, true);
 							this.sound.onDecoded.add(() => {
@@ -44,9 +39,8 @@ export default class {
 									.tween(this.sound)
 									.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
 							}, this);
-						}	
+						}
 					});
-
 				} else {
 					// Initalize Sound
 					// Check if sound is in cache
@@ -54,7 +48,6 @@ export default class {
 						// Load Sound and play it
 						this.loadSound(key);
 					} else {
-
 						// Play sound from cache
 						this.sound = this.game.add.audio(key, this.globalVolume, true);
 						this.sound.onDecoded.add(() => {
@@ -65,11 +58,10 @@ export default class {
 						}, this);
 					}
 				}
-
 			} else {
 				// If no sound is defined -> Fade out!
-				console.log('Empty String -> Fade out!')
-				if(this.sound && this.sound.isPlaying){
+				console.log('Empty String -> Fade out!');
+				if (this.sound && this.sound.isPlaying) {
 					this.sound.fadeOut(this.fadeDuration);
 				}
 			}

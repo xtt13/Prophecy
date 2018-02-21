@@ -179,7 +179,7 @@ export default class extends Phaser.Sprite {
 		this.items.splice(item, 1);
 	}
 
-	update(){
+	update() {
 		// if(this.body.blocked.down || this.body.blocked.up || this.body.blocked.left || this.body.blocked.right){
 		// 	this.animations.play('idle');
 		// 	this.movementBlocked = true;

@@ -83,7 +83,6 @@ export default class {
 	}
 
 	followPath() {
-		
 		if (!this.pathToFollow.length || this.followingPath) {
 			return;
 		}

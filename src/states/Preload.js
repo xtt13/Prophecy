@@ -7,94 +7,92 @@ import Soundmanager from '../prefabs/Soundmanager';
 export default class extends Phaser.State {
 	init() {
 		this.AxThunderstrikeJSON = {
-		    spritemap: {
-		        'hit1': {
-		            start: 1,
-		            end: 4,
-		            loop: false
-		        },
-		        'hit2': {
-		            start: 4,
-		            end: 8,
-		            loop: false
-		        },
-		        'hit3': {
-		            start: 8,
-		            end: 12,
-		            loop: false
-		        },
-		        'hit4': {
-		            start: 12,
-		            end: 16,
-		            loop: false
-		        },
-		        'hit5': {
-		            start: 16,
-		            end: 20,
-		            loop: false
-		        }
-		    }
+			spritemap: {
+				hit1: {
+					start: 1,
+					end: 4,
+					loop: false
+				},
+				hit2: {
+					start: 4,
+					end: 8,
+					loop: false
+				},
+				hit3: {
+					start: 8,
+					end: 12,
+					loop: false
+				},
+				hit4: {
+					start: 12,
+					end: 16,
+					loop: false
+				},
+				hit5: {
+					start: 16,
+					end: 20,
+					loop: false
+				}
+			}
 		};
 
 		this.pxFootstepsJSON = {
-		    spritemap: {
-		        'grass1': {
-		            start: 0,
-		            end: 0.625,
-		            loop: true
-		        },
-		        'grass2': {
-		            start: 0.625,
-		            end: 1.250,
-		            loop: false
-		        },
-		        'grass3': {
-		            start: 1.250,
-		            end: 1.875,
-		            loop: false
-		        },
-		        'hard1': {
-		            start: 2,
-		            end: 2.625,
-		            loop: false
-		        },
-		        'hard2': {
-		            start: 2.625,
-		            end: 3.250,
-		            loop: false
-		        },
-		        'hard3': {
-		            start: 3.250,
-		            end: 3.875,
-		            loop: false
-		        },
-		        'gravel1': {
-		            start: 4,
-		            end: 4.3,
-		            loop: true
-		        },
-		        'gravel2': {
-		            start: 4.625,
-		            end: 5.250,
-		            loop: false
-		        },
-		        'gravel3': {
-		            start: 5.250,
-		            end: 5.870,
-		            loop: false
-		        }
-		    }
+			spritemap: {
+				grass1: {
+					start: 0,
+					end: 0.625,
+					loop: true
+				},
+				grass2: {
+					start: 0.625,
+					end: 1.25,
+					loop: false
+				},
+				grass3: {
+					start: 1.25,
+					end: 1.875,
+					loop: false
+				},
+				hard1: {
+					start: 2,
+					end: 2.625,
+					loop: false
+				},
+				hard2: {
+					start: 2.625,
+					end: 3.25,
+					loop: false
+				},
+				hard3: {
+					start: 3.25,
+					end: 3.875,
+					loop: false
+				},
+				gravel1: {
+					start: 4,
+					end: 4.3,
+					loop: true
+				},
+				gravel2: {
+					start: 4.625,
+					end: 5.25,
+					loop: false
+				},
+				gravel3: {
+					start: 5.25,
+					end: 5.87,
+					loop: false
+				}
+			}
 		};
-
 	}
-
 
 	preload() {
 		// this.stage.backgroundColor = "#000000";
 
 		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
 		this.text.anchor.set(0.5);
-		this.text.tint = 0xFFFFFF;
+		this.text.tint = 0xffffff;
 		this.text.text = '';
 		// this.text.scale.set(0.26);
 
@@ -124,7 +122,7 @@ export default class extends Phaser.State {
 		this.load.audio('AxWaterfall', 'assets/sounds/AxWaterfall.mp3');
 		this.load.audio('AxOpenPlain', 'assets/sounds/AxOpenPlain.mp3');
 		this.load.audio('achivement', 'assets/sounds/achivement.mp3');
-		
+
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
 		// Load AudioSpriteSheets
@@ -182,7 +180,6 @@ export default class extends Phaser.State {
 		} else {
 			this.state.start('MainMenu', true, false);
 		}
-		
 	}
 
 	render() {}
@@ -190,7 +187,7 @@ export default class extends Phaser.State {
 	loadUpdate() {
 		// Log Loadingprogress
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
-			this.text.text = progress + "%";
+			this.text.text = progress + '%';
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
 		});
 	}

@@ -14,19 +14,18 @@ export default class {
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.pad1;
-		this.maxSpeed = 150;	
+		this.maxSpeed = 150;
 		this.playerSpeed = 130;
 
 		this.game.input.addPointer();
-   		this.game.input.addPointer();
+		this.game.input.addPointer();
 
-   		console.log(this.game.input);
+		console.log(this.game.input);
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = true;
 
 		this.checkController();
-
 	}
 
 	showMessage(message, error) {
@@ -214,8 +213,6 @@ export default class {
 
 		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 
-
-
 		// this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
 		this.button_TAB.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
 
@@ -235,11 +232,9 @@ export default class {
 		}
 	}
 
-	addMovementSound(){
+	addMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-
-			this.pyfootsteps.play('gravel1');			
-			
+			this.pyfootsteps.play('gravel1');
 		} else {
 			// this.loop = undefined;
 			// clearInterval(this.loop);
@@ -247,21 +242,19 @@ export default class {
 		}
 	}
 
-	removeMovementSound(){
+	removeMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 		} else {
 			this.pyfootsteps.stop('gravel1');
 		}
 	}
 
-	resetLocalStorage(){
+	resetLocalStorage() {
 		this.level.GUICLASS.createNotification('saving', 'Reset Account!');
 		localStorage.clear();
 		this.game.musicPlayer.fadeOut();
-		this.game.time.events.add(
-				Phaser.Timer.SECOND * 3,
-				() => {
-					this.game.state.start('MainMenu', true, false);
+		this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
+			this.game.state.start('MainMenu', true, false);
 		});
 	}
 
@@ -283,7 +276,6 @@ export default class {
 
 		// Gamepad Controls
 		if (this.player) {
-
 			if (!this.player.movable) return;
 
 			if (this.pad1 !== undefined && this.pad1.connected) {
@@ -312,7 +304,6 @@ export default class {
 					this.player.animations.play('idle');
 				}
 			} else if (this.useMobileControl) {
-
 				if (this.stick.isDown) {
 					this.game.physics.arcade.velocityFromRotation(
 						this.stick.rotation,
@@ -348,29 +339,22 @@ export default class {
 				// Keyboard Movement
 
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-					
-
 					if (this.button_A.isDown) {
-
 						this.player.animations.play('run');
 
-						if(this.button_W.isDown || this.button_W.isDown){
-							this.player.body.velocity.x = -this.playerSpeed/2;
+						if (this.button_W.isDown || this.button_W.isDown) {
+							this.player.body.velocity.x = -this.playerSpeed / 2;
 						} else {
 							this.player.body.velocity.x = -this.playerSpeed;
 						}
-						
-
 					} else if (this.button_D.isDown) {
-						
 						this.player.animations.play('run');
 
-						if(this.button_W.isDown || this.button_W.isDown){
-							this.player.body.velocity.x = this.playerSpeed/2;
+						if (this.button_W.isDown || this.button_W.isDown) {
+							this.player.body.velocity.x = this.playerSpeed / 2;
 						} else {
 							this.player.body.velocity.x = this.playerSpeed;
 						}
-
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.x = 0;
@@ -380,7 +364,6 @@ export default class {
 						// this.player.walk('up', 80);
 						this.player.animations.play('run');
 						this.player.body.velocity.y = -this.playerSpeed;
-
 					} else if (this.button_S.isDown) {
 						// this.player.walk('down', 80);
 						this.player.animations.play('run');
@@ -389,26 +372,20 @@ export default class {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.y = 0;
 					}
-
-				} else {		
+				} else {
 					this.player.body.velocity.y = 0;
 					this.player.body.velocity.x = 0;
 					this.player.animations.play('idle');
 				}
 
-				if(this.button_SPACEBAR.isDown){
+				if (this.button_SPACEBAR.isDown) {
 					// this.player.body.setSize(40, 40, 0, 0);
-
 					// this.game.add.tween(this.player.body).to( {width: 40, height: 40}, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-
 					// this.game.add.tween(this.player.body).to( { x: 3, y: 3 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-
 					// this.game.add.tween(this.player.body.height).to( 40, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-
 					// console.log(this.player.body);
 					// console.log(this.player.body.width);
 					// console.log(this.player.body.height);
-
 				} else {
 					// this.player.body.setSize(8, 22, 15, 20);
 				}

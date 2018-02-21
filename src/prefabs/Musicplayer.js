@@ -7,33 +7,31 @@ export default class {
 
 		this.globalVolume = 0;
 		this.fadeVolumeTo = 1;
-		
-		// this.music = this.game.add.audio('track1', this.globalVolume, true);
 
+		// this.music = this.game.add.audio('track1', this.globalVolume, true);
 	}
 
-		initMap(properties, start, fadeDuration){
-
+	initMap(properties, start, fadeDuration) {
 		this.fadeDuration = fadeDuration;
 		let key = properties.music;
 
-		if(start !== undefined && !start) return;
+		if (start !== undefined && !start) return;
 
 		// If Key is not undefined
 		if (key !== undefined) {
-		console.log('MusicKey is not undefined!');
+			console.log('MusicKey is not undefined!');
 
 			// If Key is not a empty string
-			if(key !== ""){
-			console.log(key);
-			console.log(this.music);
-			console.log('MusicKey is not a empty string!');
+			if (key !== '') {
+				console.log(key);
+				console.log(this.music);
+				console.log('MusicKey is not a empty string!');
 
 				// If music is currently playing
 				if (this.music !== undefined && this.music.isPlaying) {
 					console.log(this.music.key, key);
 
-					if(this.music !== undefined && this.music.key == key){
+					if (this.music !== undefined && this.music.key == key) {
 						console.log('LET THE MUSIC CONTINUE OO');
 						return;
 					}
@@ -45,13 +43,11 @@ export default class {
 
 					// Wait
 					this.game.time.events.add(Phaser.Timer.SECOND * (this.fadeDuration / 1000), () => {
-
 						// Check if music is in cache
 						if (!this.checkCache(key)) {
 							// Load music and play it
 							this.loadMusic(key);
 						} else {
-
 							// Play music from cache
 							this.music = this.game.add.audio(key, this.globalVolume, true);
 							this.music.allowMultiple = false;
@@ -61,12 +57,10 @@ export default class {
 									.tween(this.music)
 									.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
 							}, this);
-						}	
+						}
 					});
-
 				} else {
-
-					if(this.music !== undefined && this.music.key == key){
+					if (this.music !== undefined && this.music.key == key) {
 						console.log(this.music.key, key);
 						console.log('LET THE MUSIC CONTINUE');
 						return;
@@ -80,7 +74,6 @@ export default class {
 						// Load music and play it
 						this.loadMusic(key);
 					} else {
-
 						// Play music from cache
 						this.music = this.game.add.audio(key, this.globalVolume, true);
 						this.music.allowMultiple = false;
@@ -92,12 +85,11 @@ export default class {
 						}, this);
 					}
 				}
-
 			} else {
 				// If no music is defined -> Fade out!
-				console.log('Empty String -> Fade out!')
+				console.log('Empty String -> Fade out!');
 				console.log(key);
-				if(this.music && this.music.isPlaying){
+				if (this.music && this.music.isPlaying) {
 					this.music.fadeOut(this.fadeDuration);
 
 					this.game.time.events.add(Phaser.Timer.SECOND * (this.fadeDuration / 1000), () => {
@@ -112,8 +104,8 @@ export default class {
 		}
 	}
 
-	fadeOut(){
-		if(this.music && this.music.isPlaying){
+	fadeOut() {
+		if (this.music && this.music.isPlaying) {
 			this.music.fadeOut(3000);
 			this.game.time.events.add(Phaser.Timer.SECOND * (3000 / 1000), () => {
 				this.music.destroy();

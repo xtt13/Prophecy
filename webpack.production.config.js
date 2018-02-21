@@ -62,7 +62,13 @@ module.exports = {
         removeEmptyAttributes: true
       },
       hash: true
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'src/firebase.js'),
+        to: path.resolve(__dirname, 'deploy/dist')
+      }
+    ])
   ],
   module: {
     rules: [

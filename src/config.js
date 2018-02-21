@@ -7,7 +7,7 @@ export default {
 		renderer: Phaser.AUTO,
 		antialias: true,
 		multiTexture: false,
-		enableDebug: (__DEV__) ? true : false
+		enableDebug: __DEV__ ? true : false
 	},
 
 	localStorageName: 'prophecy',
