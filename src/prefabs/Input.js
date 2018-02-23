@@ -23,7 +23,9 @@ export default class {
 		console.log(this.game.input);
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
-		this.pyfootsteps.allowMultiple = true;
+		this.pyfootsteps.allowMultiple = false;
+
+		this.currentUnderground = 'grass';
 
 		this.checkController();
 	}
@@ -234,7 +236,12 @@ export default class {
 
 	addMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-			this.pyfootsteps.play('gravel1');
+			if(this.currentUnderground == 'grass'){
+				this.pyfootsteps.play('gravel1', 4);
+			} else if (this.currentUnderground == 'stone'){
+				this.pyfootsteps.play('grass1', 4);
+			}
+			
 		} else {
 			// this.loop = undefined;
 			// clearInterval(this.loop);
@@ -245,7 +252,11 @@ export default class {
 	removeMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 		} else {
-			this.pyfootsteps.stop('gravel1');
+			if(this.currentUnderground == 'grass'){
+				this.pyfootsteps.stop('gravel1');
+			} else if (this.currentUnderground == 'stone'){
+				this.pyfootsteps.stop('grass1');
+			}
 		}
 	}
 
@@ -281,28 +292,23 @@ export default class {
 			if (this.pad1 !== undefined && this.pad1.connected) {
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 					this.player.body.velocity.x = -this.playerSpeed;
-					// console.log('left');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
 					this.player.body.velocity.x = this.playerSpeed;
-					// console.log('right');
 				} else {
 					this.player.idle('x');
 				}
 
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-					// this.player.walk('up', 200);
 					this.player.body.velocity.y = -this.playerSpeed;
 					this.player.animations.play('run');
-					// console.log('up');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-					// this.player.walk('down', 200);
 					this.player.body.velocity.y = this.playerSpeed;
 					this.player.animations.play('run');
-					// console.log('down');
 				} else {
 					this.player.idle('y');
 					this.player.animations.play('idle');
 				}
+
 			} else if (this.useMobileControl) {
 				if (this.stick.isDown) {
 					this.game.physics.arcade.velocityFromRotation(

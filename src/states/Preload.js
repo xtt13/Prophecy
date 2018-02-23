@@ -40,7 +40,7 @@ export default class extends Phaser.State {
 			spritemap: {
 				grass1: {
 					start: 0,
-					end: 0.625,
+					end: 0.15,
 					loop: true
 				},
 				grass2: {
@@ -55,8 +55,8 @@ export default class extends Phaser.State {
 				},
 				hard1: {
 					start: 2,
-					end: 2.625,
-					loop: false
+					end: 2.15,
+					loop: true
 				},
 				hard2: {
 					start: 2.625,
@@ -80,8 +80,8 @@ export default class extends Phaser.State {
 				},
 				gravel3: {
 					start: 5.25,
-					end: 5.87,
-					loop: false
+					end: 5.67,
+					loop: true
 				}
 			}
 		};
@@ -187,7 +187,10 @@ export default class extends Phaser.State {
 	loadUpdate() {
 		// Log Loadingprogress
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
-			this.text.text = progress + '%';
+			if (typeof ipc == 'undefined') {
+				this.text.text = progress + '%';
+			}
+			
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
 		});
 	}

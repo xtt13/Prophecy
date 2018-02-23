@@ -411,11 +411,17 @@ export default class {
 	stairsEnter(region) {
 		this.level.inputClass.playerSpeed -= 60;
 		this.level.player.animations._anims.run.speed += 10;
+		this.level.inputClass.pyfootsteps.stop('gravel1');
+		this.level.inputClass.pyfootsteps.play('grass1', 4);
+		this.level.inputClass.currentUnderground = 'stone';
 	}
 
 	stairsLeave(region) {
 		this.level.inputClass.playerSpeed += 60;
 		this.level.player.animations._anims.run.speed -= 10;
+		this.level.inputClass.pyfootsteps.stop('grass1');
+		this.level.inputClass.pyfootsteps.play('gravel1', 4);
+		this.level.inputClass.currentUnderground = 'grass';
 	}
 
 	soundAreaEnter(region) {
