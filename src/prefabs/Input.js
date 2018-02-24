@@ -14,8 +14,8 @@ export default class {
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.pad1;
-		this.maxSpeed = 150;
-		this.playerSpeed = 130;
+		// this.maxSpeed = 150;
+		this.playerSpeed = 100;
 
 		this.game.input.addPointer();
 		this.game.input.addPointer();

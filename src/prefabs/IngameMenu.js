@@ -173,6 +173,18 @@ export default class {
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
 
+			if (this.questMap.text) {
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+			}
+
+			if (this.gameMap.map) {
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
+
 			this.gameOptions.showOptions();
 		}
 	}
@@ -216,6 +228,18 @@ export default class {
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
 
+			if (this.questMap.text) {
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+			}
+
+			if (this.gameMap.map) {
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
+
 			this.gameOptions.showOptions();
 		}
 	}
@@ -258,6 +282,18 @@ export default class {
 			this.optionsButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
+
+			if (this.questMap.text) {
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+			}
+
+			if (this.gameMap.map) {
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
 
 			this.gameOptions.showOptions();
 		}

@@ -197,7 +197,7 @@ export default class {
 
 		this.thunderstrike = this.game.add.audioSprite('AxThunderstrike');
 		this.thunderstrike.allowMultiple = true;
-		this.thunderstrike.play(this.strike);
+		this.thunderstrike.play(this.strike, 0.2);
 
 		this.game.camera.shake(0.005, 500);
 	}

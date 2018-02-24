@@ -18,7 +18,7 @@ export default class extends Phaser.Sprite {
 		// this.movementBlocked = false;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
-		this.animations.add('run', [4, 5, 6, 7, 8, 9], 10, true);
+		this.animations.add('run', [4, 5, 6, 7, 8, 9], 12, true);
 
 		this.animations.play('idle');
 
