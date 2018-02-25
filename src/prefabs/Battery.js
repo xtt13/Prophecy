@@ -5,7 +5,13 @@ export default class {
 		this.game = game;
 		this.level = level;
 
-		this.setup();
+		if("getBattery" in navigator) {
+		    // API is supported
+		    this.setup();
+		} else {
+		    // API is not supported
+		}
+		
 	}
 
 	setup() {
