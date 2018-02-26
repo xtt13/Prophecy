@@ -44,6 +44,24 @@ export default class {
 		}
 	}
 
+	setGamePreferences(gamePreferences) {
+		localStorage.setItem('gamePreferences', JSON.stringify(gamePreferences));
+	}
+
+	getGamePreferences() {
+		let gamePreferences = JSON.parse(localStorage.getItem('gamePreferences'));
+
+		if (gamePreferences == null) {
+			let gamePreferences = {
+				muteMusic: false,
+				muteSound: false
+			};
+			return gamePreferences;
+		} else {
+			return gamePreferences;
+		}
+	}
+
 	setPlayedDialogues(playedDialogues) {
 		localStorage.setItem('playedDialogues', JSON.stringify(playedDialogues));
 	}

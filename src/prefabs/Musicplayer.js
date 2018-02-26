@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Safe from '../prefabs/Safe';
 
 export default class {
 	constructor(game) {
@@ -8,7 +9,6 @@ export default class {
 		this.globalVolume = 0;
 		this.fadeVolumeTo = 1;
 
-		// this.music = this.game.add.audio('track1', this.globalVolume, true);
 	}
 
 	initMap(properties, start, fadeDuration) {

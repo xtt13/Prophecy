@@ -57,8 +57,23 @@ export default class {
 		// Load Map
 		this.initMap();
 
-		this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
-		this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
+		this.preferences = this.safe.getGamePreferences();
+
+		if(this.preferences.muteMusic){
+			this.muteMusic = true;
+		} else {
+			this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
+			this.muteMusic = false;
+		}
+
+		if(this.preferences.muteSound){
+			this.muteSound = true;
+		} else {
+			this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
+			this.muteSound = false;
+		}
+
+		
 
 		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {
 			this.game.camera.flash(0x000000, 8000, true);

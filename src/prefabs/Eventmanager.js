@@ -396,6 +396,7 @@ export default class {
 	}
 
 	startMusic(region) {
+		if(this.level.muteMusic) return;
 		this.game.musicPlayer.initMap(this.level.tilemapProperties, true, 10000);
 	}
 

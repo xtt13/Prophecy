@@ -6,10 +6,9 @@ export default class {
 		this.level = level;
 
 		if("getBattery" in navigator) {
-		    // API is supported
 		    this.setup();
 		} else {
-		    // API is not supported
+			console.log('Battery API not supported');
 		}
 		
 	}
@@ -42,7 +41,7 @@ export default class {
 			return battery
 
 		}).then(battery => {
-			console.log(battery);
+			// console.log(battery);
 
 	    	if(battery.level * 100 < 25 && !battery.charging){
 	    		if (typeof ipc !== 'undefined') {
@@ -50,7 +49,7 @@ export default class {
 							body: '🔋 Your Battery Level is low!',
 							silent: true
 						});
-					} else {
+				} else {
 
 						this.level.GUICLASS.createNotification('Battery', '🔋 Your Battery Level is low!');
 						

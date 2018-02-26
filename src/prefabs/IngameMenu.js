@@ -134,6 +134,12 @@ export default class {
 				this.questMap.text.destroy();
 				this.questMap.text = false;
 			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
+			}
 		}
 	}
 
@@ -151,6 +157,13 @@ export default class {
 				this.questMap.text = false;
 			}
 
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
+			}
+
+
 			this.gameMap.createMap();
 		} else if (button.key == 'questButton') {
 			// If Questmap is active --> return
@@ -165,6 +178,12 @@ export default class {
 				this.gameMap.mask.destroy();
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
 			}
 
 			this.questMap.showMap();
@@ -208,6 +227,12 @@ export default class {
 				this.questMap.text = false;
 			}
 
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
+			}
+
 			this.gameMap.createMap();
 		} else if (this.currentTab == 2) {
 			if (this.questMap.text) return;
@@ -220,6 +245,12 @@ export default class {
 				this.gameMap.mask.destroy();
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
 			}
 
 			this.questMap.showMap();
@@ -263,6 +294,12 @@ export default class {
 				this.questMap.text = false;
 			}
 
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
+			}
+
 			this.gameMap.createMap();
 		} else if (this.currentTab == 2) {
 			if (this.questMap.text) return;
@@ -275,6 +312,12 @@ export default class {
 				this.gameMap.mask.destroy();
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
 			}
 
 			this.questMap.showMap();

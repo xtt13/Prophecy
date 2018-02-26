@@ -74,6 +74,11 @@ export default class {
 			if (this.ingameMenu.questMap.text) {
 				this.game.world.bringToTop(this.ingameMenu.questMap.text);
 			}
+
+			if(this.ingameMenu.gameOptions.muteMusicButton){
+				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteMusicButton);
+				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteSoundButton);
+			}
 		}
 
 		// let onePSx = this.game.world.width / 100;

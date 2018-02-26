@@ -92,4 +92,14 @@ export default class {
 			}, this);
 		}, this);
 	}
+
+	fadeOut(){
+		if (this.sound && this.sound.isPlaying){
+			this.sound.fadeOut(3000);
+			this.game.time.events.add(Phaser.Timer.SECOND * (3000 / 1000), () => {
+				this.sound.destroy();
+				this.sound = undefined;
+			});
+		}
+	}
 }

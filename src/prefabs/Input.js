@@ -235,6 +235,7 @@ export default class {
 	}
 
 	addMovementSound() {
+		if(this.level.muteSound) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if(this.currentUnderground == 'grass'){
 				this.pyfootsteps.play('gravel1', 4);
