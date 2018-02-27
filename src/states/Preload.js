@@ -88,6 +88,9 @@ export default class extends Phaser.State {
 	}
 
 	preload() {
+		this.game.slickUI = this.game.plugins.add(Phaser.Plugin.SlickUI);
+		this.game.slickUI.load('assets/ui/kenney/kenney.json');
+
 		// this.stage.backgroundColor = "#000000";
 
 		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
@@ -122,6 +125,8 @@ export default class extends Phaser.State {
 		this.load.audio('AxWaterfall', 'assets/sounds/AxWaterfall.mp3');
 		this.load.audio('AxOpenPlain', 'assets/sounds/AxOpenPlain.mp3');
 		this.load.audio('achivement', 'assets/sounds/achivement.mp3');
+		this.load.audio('sfxBridge', 'assets/sounds/sfxBridge.mp3');
+		
 
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
@@ -171,6 +176,7 @@ export default class extends Phaser.State {
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
 		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
+		this.load.bitmapFont('minecraftia', 'assets/fonts/minecraftia-black.png', 'assets/fonts/minecraftia.xml');
 	}
 
 	create() {

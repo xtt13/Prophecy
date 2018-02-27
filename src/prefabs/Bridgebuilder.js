@@ -27,6 +27,10 @@ export default class {
 				this.bridgeY--;
 				this.collY--;
 
+				
+				this.bridgeSound = this.game.add.audio('sfxBridge', 3);
+				this.bridgeSound.play();
+
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
 

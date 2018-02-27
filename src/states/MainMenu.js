@@ -1,4 +1,7 @@
 import Phaser from 'phaser';
+// import SlickUI from '../plugins/slick-ui.min.js';
+// const SlickUI = require('script-loader!../plugins/slick-ui.min.js');
+// import {Element} from './../plugins/slick-ui.min';
 
 export default class extends Phaser.State {
 	init() {
@@ -99,6 +102,28 @@ export default class extends Phaser.State {
 				this.subText.text = 'Press A-Button To Move On';
 			}
 		});
+		
+		// console.log(SlickUI);
+		// console.log(this.game.slickUI);
+		// console.log(Phaser.State);
+
+		// this.panel;
+  //       this.game.slickUI.add(this.panel = new SlickUI.Element.Panel(8, 8, this.game.width - 16, this.game.height - 16));
+  //       this.panel.add(new SlickUI.Element.Text(10,10, "Text input")).centerHorizontally().text.alpha = 0.5;
+  //       this.panel.add(new SlickUI.Element.Text(12,34, "Your name"));
+
+  //       var textField = this.panel.add(new SlickUI.Element.TextField(10,58, this.panel.width - 20, 40));
+  //       textField.events.onOK.add(function () {
+  //           alert('Your name is: ' + textField.value);
+  //       });
+
+  //       textField.events.onToggle.add(function (open) {
+  //           console.log('You just ' + (open ? 'opened' : 'closed') + ' the virtual keyboard');
+  //       });
+        
+  //       textField.events.onKeyPress.add(function(key) {
+  //           console.log('You pressed: ' + key);
+  //       });
 	}
 
 	preload() {}
