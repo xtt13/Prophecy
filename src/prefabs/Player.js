@@ -175,6 +175,9 @@ export default class extends Phaser.Sprite {
 			this.GUICLASS.createNotification('quest', 'Questupdate');
 		}
 
+		this.itemPickUpSound = this.game.add.audio('sfxPickUp', 1);
+		this.itemPickUpSound.play();
+
 		item.destroy();
 		this.items.splice(item, 1);
 	}

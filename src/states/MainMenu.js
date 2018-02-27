@@ -1,7 +1,11 @@
 import Phaser from 'phaser';
-// import SlickUI from '../plugins/slick-ui.min.js';
-// const SlickUI = require('script-loader!../plugins/slick-ui.min.js');
+// import SlickUI from 'SlickUI';
+
+// let SlickUI = require('script-loader!../plugins/slick-ui.min.js');
+// import SlickUI = require('script-loader!../plugins/slick-ui.min.js');
 // import {Element} from './../plugins/slick-ui.min';
+
+// console.log(SlickUI);
 
 export default class extends Phaser.State {
 	init() {
@@ -33,6 +37,7 @@ export default class extends Phaser.State {
 			'Click To Move On',
 			10
 		);
+		this.subText.smoothed = false;
 		this.subText.anchor.set(0.5);
 
 		let emitter = this.game.add.emitter(-500, 0, 400);
@@ -102,10 +107,10 @@ export default class extends Phaser.State {
 				this.subText.text = 'Press A-Button To Move On';
 			}
 		});
-		
+
 		// console.log(SlickUI);
 		// console.log(this.game.slickUI);
-		// console.log(Phaser.State);
+		// console.log(SlickUI);
 
 		// this.panel;
   //       this.game.slickUI.add(this.panel = new SlickUI.Element.Panel(8, 8, this.game.width - 16, this.game.height - 16));

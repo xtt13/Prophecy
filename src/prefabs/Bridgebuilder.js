@@ -8,12 +8,19 @@ export default class {
 		this.groundLayer = groundLayer;
 		this.collisionLayer = collisionLayer;
 		this.region = region;
+
+		this.bridgeSound = this.game.add.audio('sfxBridge', 2);
+		this.bridgeSound.allowMultiple = true;
 	}
 
 	buildBridge() {
 		const bridgeDirection = this.region.properties.direction;
 		const bridgeLength = this.region.properties.length;
 		const bridgeDuration = this.region.properties.duration;
+
+		if(bridgeDuration < 100){
+			this.bridgeSound.volume = 0;
+		}
 
 		this.bridgeX = this.groundLayer.getTileX(this.region.left) + 1;
 		this.bridgeY = this.groundLayer.getTileY(this.region.top);
@@ -27,8 +34,6 @@ export default class {
 				this.bridgeY--;
 				this.collY--;
 
-				
-				this.bridgeSound = this.game.add.audio('sfxBridge', 3);
 				this.bridgeSound.play();
 
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
@@ -48,6 +53,8 @@ export default class {
 			} else if (bridgeDirection == 'down') {
 				this.bridgeY++;
 				this.collY++;
+
+				this.bridgeSound.play();
 
 				// this.map.putTile(48, this.bridgeX, this.bridgeY, this.groundLayer);
 				// this.map.putTile(47, this.bridgeX - 1, this.bridgeY, this.groundLayer);
@@ -74,6 +81,8 @@ export default class {
 				this.bridgeX--;
 				this.collX--;
 
+				this.bridgeSound.play();
+
 				this.map.putTile(2, this.bridgeX, this.bridgeY, this.groundLayer);
 				this.map.putTile(2, this.bridgeX, this.bridgeY - 1, this.groundLayer);
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
@@ -90,6 +99,8 @@ export default class {
 
 				this.bridgeX++;
 				this.collX++;
+
+				this.bridgeSound.play();
 			}
 
 			this.game.camera.shake(0.0015, bridgeDuration);
@@ -120,6 +131,8 @@ export default class {
 				this.bridgeY--;
 				this.collY--;
 
+				this.bridgeSound.play();
+
 				this.map.putTile(3, this.bridgeX, this.bridgeY, this.collisionLayer);
 				this.map.putTile(3, this.bridgeX - 1, this.bridgeY, this.collisionLayer);
 				this.map.removeTile(this.collX, this.collY, this.groundLayer);
@@ -133,6 +146,8 @@ export default class {
 				console.log(bridgeCounter, bridgeLength);
 				this.bridgeY++;
 				this.collY++;
+
+				this.bridgeSound.play();
 
 				this.map.putTile(3, this.bridgeX, this.bridgeY, this.collisionLayer);
 				this.map.putTile(3, this.bridgeX - 1, this.bridgeY, this.collisionLayer);
@@ -156,6 +171,8 @@ export default class {
 				this.bridgeX--;
 				this.collX--;
 
+				this.bridgeSound.play();
+
 				this.map.putTile(2, this.bridgeX, this.bridgeY, this.collisionLayer);
 				this.map.putTile(2, this.bridgeX, this.bridgeY - 1, this.collisionLayer);
 				this.map.removeTile(this.collX, this.collY, this.groundLayer);
@@ -163,6 +180,8 @@ export default class {
 			} else if (bridgeDirection == 'right') {
 				this.bridgeX++;
 				this.collX++;
+
+				this.bridgeSound.play();
 
 				this.map.putTile(2, this.bridgeX, this.bridgeY, this.collisionLayer);
 				this.map.putTile(2, this.bridgeX, this.bridgeY - 1, this.collisionLayer);
