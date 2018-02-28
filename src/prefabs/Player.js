@@ -5,7 +5,7 @@ import config from './../config';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, level) {
-		super(game, x, y, 'player');
+		super(game, x, y, 'player_beta');
 
 		this.game = game;
 		this.level = level;
@@ -18,12 +18,16 @@ export default class extends Phaser.Sprite {
 		// this.movementBlocked = false;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
-		this.animations.add('run', [4, 5, 6, 7, 8, 9], 12, true);
+		this.animations.add('idle_right', [28], 1, true);
+		this.animations.add('idle_left', [29], 1, true);
+		this.animations.add('run_down', [4, 5, 6, 7, 8, 9, 10, 11], 19, true);
+		this.animations.add('run_right', [12, 13, 14, 15, 16, 17, 18, 19], 12, true);
+		this.animations.add('run_left', [20, 21, 22, 23, 24, 25, 26, 27], 12, true);
 
 		this.animations.play('idle');
 
 		this.game.physics.enable(this);
-		this.body.setSize(8, 22, 15, 20);
+		this.body.setSize(8, 22, 21, 25);
 
 		this.game.camera.roundPx = false;
 		this.game.renderer.renderSession.roundPixels = true;
@@ -175,7 +179,7 @@ export default class extends Phaser.Sprite {
 			this.GUICLASS.createNotification('quest', 'Questupdate');
 		}
 
-		this.itemPickUpSound = this.game.add.audio('sfxPickUp', 1);
+		this.itemPickUpSound = this.game.add.audio('sfxPickUp', 2);
 		this.itemPickUpSound.play();
 
 		item.destroy();
