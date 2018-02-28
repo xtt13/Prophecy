@@ -48,6 +48,7 @@ export default class {
 		// Vars
 		this.dayCycle = false;
 		this.foreGroundShift = false;
+		this.fallDown = false;
 
 		// Method
 		this.loadLevel();
@@ -244,6 +245,8 @@ export default class {
 		return result;
 	}
 
+
+
 	// Update Method
 	update() {
 		// Update InputClass
@@ -253,6 +256,8 @@ export default class {
 		if (this.pathfinder) {
 			this.pathfinder.followPath();
 		}
+
+		// console.log(Phaser.Rectangle.intersects(this.player.getBounds(), this.collisionLayer.getBounds()));
 
 		// Collisionhandler
 		this.game.physics.arcade.collide(this.enemies, this.enemies);
@@ -264,7 +269,12 @@ export default class {
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
-		this.game.world.bringToTop(this.player);
+		if(!this.fallDown){
+			this.game.world.bringToTop(this.player);
+		} else {
+			this.game.world.moveDown(this.player);
+		}
+		
 
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);

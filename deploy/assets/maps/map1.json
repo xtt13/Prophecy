@@ -987,7 +987,7 @@
                  "y":1141.9840422539
                 }, 
                 {
-                 "height":54.2973395551638,
+                 "height":49.4204802525549,
                  "id":145,
                  "name":"Stairs",
                  "properties":
@@ -1003,26 +1003,7 @@
                  "visible":true,
                  "width":72.2658085954982,
                  "x":791.693869428722,
-                 "y":763.477592694485
-                }, 
-                {
-                 "height":54.2973,
-                 "id":146,
-                 "name":"Stairs",
-                 "properties":
-                    {
-                     "stairs":true
-                    },
-                 "propertytypes":
-                    {
-                     "stairs":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":72.2658,
-                 "x":792.033008777732,
-                 "y":1087.17774750126
+                 "y":756.975113624339
                 }, 
                 {
                  "height":54.2973,
@@ -1080,6 +1061,25 @@
                  "width":85.2517,
                  "x":245.865687732376,
                  "y":274.937738620303
+                }, 
+                {
+                 "height":49.4205,
+                 "id":157,
+                 "name":"Stairs",
+                 "properties":
+                    {
+                     "stairs":true
+                    },
+                 "propertytypes":
+                    {
+                     "stairs":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72.2658,
+                 "x":792.120371559782,
+                 "y":1081.14962157604
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1205,7 +1205,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":157,
+ "nextobjectid":158,
  "orientation":"orthogonal",
  "properties":
     {

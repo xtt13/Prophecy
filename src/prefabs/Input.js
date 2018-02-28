@@ -231,11 +231,14 @@ export default class {
 	addMovementSound() {
 		if(this.level.muteSound) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-			if(this.currentUnderground == 'grass'){
-				this.pyfootsteps.play('gravel1', 4);
-			} else if (this.currentUnderground == 'stone'){
-				this.pyfootsteps.play('grass1', 4);
+			if(!this.pyfootsteps.isPlaying){
+				if(this.currentUnderground == 'grass'){
+					this.pyfootsteps.play('gravel1', 4);
+				} else if (this.currentUnderground == 'stone'){
+					this.pyfootsteps.play('grass1', 4);
+				}
 			}
+
 			
 		} else {
 			// this.loop = undefined;
@@ -311,8 +314,19 @@ export default class {
 						this.stick.force * this.playerSpeed,
 						this.player.body.velocity
 					);
-					// this.player.rotation = this.stick.rotation;
 
+
+					// this.player.rotation = this.stick.rotation;
+					this.player.animations._anims.run_right.speed = 19;
+					this.player.animations._anims.run_left.speed = 19;
+					this.player.animations._anims.run_down.speed = 19;
+					this.player.animations._anims.run_up.speed = 19;
+					// console.log('HIER: ' + this.player.animations._anims.run_down.speed * this.stick.force);
+					this.player.animations._anims.run_down.speed = (this.player.animations._anims.run_down.speed * this.stick.force) + 0.1;
+					this.player.animations._anims.run_up.speed = (this.player.animations._anims.run_up.speed * this.stick.force) + 0.1;
+					this.player.animations._anims.run_right.speed = (this.player.animations._anims.run_right.speed * this.stick.force) + 0.1;
+					this.player.animations._anims.run_left.speed = (this.player.animations._anims.run_left.speed * this.stick.force) + 0.1;
+					// console.log(this.player.animations._anims.run_down.speed)
 					// console.log(this.stick.force);
 
 					// if(this.game.input.pointer1.active && this.game.input.pointer2.active){
@@ -338,7 +352,7 @@ export default class {
 						this.direction = 'right';
 					} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
 						// console.log('Up');
-						this.player.animations.play('run_down');
+						this.player.animations.play('run_up');
 						this.direction = 'up';
 					} else {
 						// console.log('Left');
@@ -362,6 +376,7 @@ export default class {
 					    default:
 					       
 					}
+					// this.player.animations._anims.run_down.speed = 19;
 					this.player.body.velocity.set(0);
 					this.pyfootsteps.stop();
 				}
@@ -370,7 +385,7 @@ export default class {
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 
 					if (this.button_A.isDown) {
-
+						this.player.animations._anims.run_left.speed = 19;
 						this.player.animations.play('run_left');
 						this.direction = 'left';
 						if (this.button_W.isDown || this.button_S.isDown) {
@@ -380,7 +395,7 @@ export default class {
 						}
 
 					} else if (this.button_D.isDown) {
-
+						this.player.animations._anims.run_right.speed = 19;
 						this.player.animations.play('run_right');
 						this.direction = 'right';
 						if (this.button_W.isDown || this.button_S.isDown) {
@@ -396,38 +411,76 @@ export default class {
 
 					if (this.button_W.isDown) {
 						this.direction = 'up';
-						this.player.animations.play('run_down');
+						this.player.animations._anims.run_down.speed = 19;
+						this.player.animations.play('run_up');
 						this.player.body.velocity.y = -this.playerSpeed;
+						// console.log(this.player.animations._anims.run_up.speed);
 
 					} else if (this.button_S.isDown) {
 						this.direction = 'down';
+						this.player.animations._anims.run_down.speed = 19;
 						this.player.animations.play('run_down');
 						this.player.body.velocity.y = this.playerSpeed;
-						console.log('S DOWN');
+						// console.log(this.player.animations._anims.run_down.speed);
+						// console.log('S DOWN');
 
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.y = 0;
 					}
 				} else {
-					this.player.body.velocity.y = 0;
-					this.player.body.velocity.x = 0;
+					// this.player.body.velocity.y = 0;
+					// this.player.body.velocity.x = 0;
+
+					this.game.add
+						.tween(this.player.body.velocity)
+						.to({ x: 0 }, 100, Phaser.Easing.Circular.Out, true);
+
+					this.game.add
+						.tween(this.player.body.velocity)
+						.to({ y: 0 }, 100, Phaser.Easing.Circular.Out, true);
+
+
+					// this.game.physics.arcade.computeVelocity(2, this.player.body, 20, 100, 20);
 					
 
-					console.log(this.direction);
+					// console.log(this.direction);
 					switch(this.direction) {
 					    case 'up':
-					        this.player.animations.play('idle');
-					        break;
+					        // this.player.animations.play('idle');
+					        this.player.animations.stop();
+
+					   //      this.game.add
+								// .tween(this.player.animations._anims.run_up)
+								// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+					   //      break;
+
 					    case 'down':
-					        this.player.animations.play('idle');
+					        // this.player.animations.play('idle');
+					        this.player.animations.stop();
+
+						  //   this.game.add
+								// .tween(this.player.animations._anims.run_down)
+								// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+
 					        break;
 					    case 'left':
-					     	this.player.animations.play('idle_left');
+					    this.player.animations.stop();
+					     	// this.player.animations.play('idle_left');
+
+					  //   this.game.add
+							// .tween(this.player.animations._anims.run_left)
+							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+
+
 					        break;
 						case 'right':
-					     	this.player.animations.play('idle_right');
-					        break;
+						this.player.animations.stop();
+					     	// this.player.animations.play('idle_right');
+					  //  	this.game.add
+							// .tween(this.player.animations._anims.run_right)
+							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+					  //       break;
 					    default:
 					       
 					}
