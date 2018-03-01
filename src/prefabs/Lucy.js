@@ -14,6 +14,8 @@ export default class extends Phaser.Sprite {
 
 		this.game.physics.enable(this);
 
+		// this.angle += 90;
+
 		let px = this.body.velocity.x;
     	let py = this.body.velocity.y;
 
@@ -32,7 +34,7 @@ export default class extends Phaser.Sprite {
 		// this.customEmitter.setScale(-1, 1, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
 		// this.customEmitter.setYSpeed(100);
 		// this.customEmitter.setXSpeed(-100, 100);
-		// customEmitter.gravity = 0.5;
+		this.customEmitter.gravity = 0.5;
 
 		this.customEmitter.minParticleSpeed.set(px, py);
     	this.customEmitter.maxParticleSpeed.set(px, py);

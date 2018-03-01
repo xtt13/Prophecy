@@ -28,7 +28,7 @@ export default class extends Phaser.Sprite {
 		this.animations.play('idle');
 
 		this.game.physics.enable(this);
-		this.body.setSize(8, 22, 21, 25);
+		this.body.setSize(8, 10, 21, 40);
 
 		this.game.camera.roundPx = false;
 		this.game.renderer.renderSession.roundPixels = true;

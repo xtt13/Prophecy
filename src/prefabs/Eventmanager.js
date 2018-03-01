@@ -21,8 +21,6 @@ export default class {
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 			if (region.properties.message) {
 				this.addMessage(region);
-			} else if (region.properties.fallDown) {
-				this.fallDown(region);
 			} else if (region.properties.addBridge) {
 				this.addBridge(region);
 			} else if (region.properties.removeBridge) {
@@ -158,18 +156,6 @@ export default class {
 		this.level.activatedBridges.push(bridgeID);
 	}
 
-	fallDown(region){
-		this.level.fallDown = true;
-		this.level.player.movable = false;
-		this.level.player.body.velocity.x = 0;
-		this.level.player.body.velocity.y = 250;
-		this.game.camera.fade(0x000000, 1000, true);
-		this.game.time.events.add(
-				Phaser.Timer.SECOND * 1, () => {
-					console.log('restart');
-					this.game.state.restart(true, false);
-				});
-	}
 
 	movePlayerToXY(region) {
 		const targetX = region.properties.targetX;
@@ -425,6 +411,7 @@ export default class {
 	}
 
 	stairsEnter(region) {
+		if(this.level.fallDown) return;
 		this.level.inputClass.playerSpeed -= 30;
 		this.level.player.animations._anims.run_down.speed += 10;
 		this.level.inputClass.pyfootsteps.stop('gravel1');
@@ -433,6 +420,7 @@ export default class {
 	}
 
 	stairsLeave(region) {
+		if(this.level.fallDown) return;
 		this.level.inputClass.playerSpeed += 30;
 		this.level.player.animations._anims.run_down.speed -= 10;
 		this.level.inputClass.pyfootsteps.stop('grass1');

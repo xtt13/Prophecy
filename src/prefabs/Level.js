@@ -50,6 +50,9 @@ export default class {
 		this.dayCycle = false;
 		this.foreGroundShift = false;
 		this.fallDown = false;
+		this.fallDownSwitch = true;
+		this.fallDownCounter = 0;
+		this.fallDownLayer = 0;
 
 		// Method
 		this.loadLevel();
@@ -270,13 +273,18 @@ export default class {
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.characters, this.player);
-		// this.game.physics.arcade.collide(this.player, this.collisionLayer);
+		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		if(!this.fallDown){
 			this.game.world.bringToTop(this.player);
 		} else {
-			this.game.world.moveDown(this.player);
+			
+			if(this.fallDownLayer < 12){
+				this.game.world.moveDown(this.player);
+				this.fallDownLayer++;
+			}
+			
 		}
 		
 
@@ -319,7 +327,100 @@ export default class {
 	}
 
 	fallDownFunction(){
-		console.log('FallDown');
+		// console.log('FallDown');
+
+		// if(this.fallDownSwitch){
+		// 	this.fallDown = true;
+		// 	this.inputClass.pyfootsteps.stop();	
+		// 	this.player.animations.stop();
+		// 	this.player.movable = false;
+		// 	this.game.camera.fade(0x000000, 1000, true);
+		// 	this.game.time.events.loop(50, () => {
+		// 		this.player.body.velocity.y = 300;
+		// 	}, this);
+		// 	this.game.time.events.add(
+		// 		Phaser.Timer.SECOND * 1, () => {
+		// 			console.log('restart');
+		// 			this.fallDownCounter = 0;
+		// 			this.game.state.restart(true, false);
+		// 	});
+		// 	this.fallDownSwitch = false;
+		// }
+
+
+		if(this.fallDownCounter > 30 && this.inputClass.direction == 'up'){
+			if(this.fallDownSwitch){
+			this.fallDown = true;
+			this.inputClass.pyfootsteps.stop();	
+			this.player.animations.stop();
+			this.player.movable = false;
+			this.game.camera.fade(0x000000, 1000, true);
+			this.game.time.events.loop(50, () => {
+				this.player.body.velocity.y = 300;
+			}, this);
+			this.game.time.events.add(
+				Phaser.Timer.SECOND * 1, () => {
+					console.log('restart');
+					this.fallDownCounter = 0;
+					this.game.state.restart(true, false);
+			});
+			this.fallDownSwitch = false;
+			}
+			}
+
+		
+
+		if(this.fallDownCounter > 20 && (this.inputClass.direction == 'left' || this.inputClass.direction == 'right')){
+		if(this.fallDownSwitch){
+			this.fallDown = true;
+			this.inputClass.pyfootsteps.stop();	
+			this.player.animations.stop();
+			this.player.movable = false;
+			this.game.camera.fade(0x000000, 1000, true);
+			this.game.time.events.loop(50, () => {
+				this.player.body.velocity.y = 300;
+			}, this);
+			this.game.time.events.add(
+				Phaser.Timer.SECOND * 1, () => {
+					console.log('restart');
+					this.fallDownCounter = 0;
+					this.game.state.restart(true, false);
+			});
+			this.fallDownSwitch = false;
+			}
+		}
+
+
+		if(this.fallDownCounter > 0 && this.inputClass.direction == 'down'){
+			if(this.fallDownSwitch){
+			this.fallDown = true;
+			this.inputClass.pyfootsteps.stop();	
+			this.player.animations.stop();
+			this.player.movable = false;
+			this.game.camera.fade(0x000000, 1000, true);
+			this.game.time.events.loop(50, () => {
+				this.player.body.velocity.y = 300;
+			}, this);
+			this.game.time.events.add(
+				Phaser.Timer.SECOND * 1, () => {
+					console.log('restart');
+					this.fallDownCounter = 0;
+					this.game.state.restart(true, false);
+			});
+			this.fallDownSwitch = false;
+			}
+		}
+
+
+
+
+		this.fallDownCounter++;
+		// console.log(this.fallDownCounter++);
+
+
+
+		
+
 	}
 
 	initMap() {
@@ -355,8 +456,8 @@ export default class {
 		// Set Collision Tiles
 		this.map.setCollisionBetween(0, 5, true, 'CollisionLayer');
 
-		this.map.setTileIndexCallback(3, this.fallDownFunction, this);
-		this.map.setTileLocationCallback(3, 0, 1, 1, this.fallDownFunction, this);
+		this.map.setTileIndexCallback(3, this.fallDownFunction, this, this.collisionLayer);
+		// this.map.setTileLocationCallback(3, 0, 1, 1, this.fallDownFunction, this);
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;

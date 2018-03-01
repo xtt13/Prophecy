@@ -229,7 +229,7 @@ export default class {
 	}
 
 	addMovementSound() {
-		if(this.level.muteSound) return;
+		if(this.level.muteSound || !this.player.movable) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if(!this.pyfootsteps.isPlaying){
 				if(this.currentUnderground == 'grass'){
@@ -237,10 +237,19 @@ export default class {
 				} else if (this.currentUnderground == 'stone'){
 					this.pyfootsteps.play('grass1', 4);
 				}
+
+				// if(!this.loop){
+				// 	this.loop = this.game.time.events.loop(500, () => {
+				// 		this.pyfootsteps.play('gravel2', 4);
+				// 	}, this);
+				// }
+
 			}
 
 			
 		} else {
+			// this.loop.destroy();
+			// this.loop = false;
 			// this.loop = undefined;
 			// clearInterval(this.loop);
 			// this.pyfootsteps.stop('gravel1');
@@ -250,6 +259,7 @@ export default class {
 	removeMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 		} else {
+
 			if(this.currentUnderground == 'grass'){
 				this.pyfootsteps.stop('gravel1');
 			} else if (this.currentUnderground == 'stone'){
