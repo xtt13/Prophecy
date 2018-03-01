@@ -11,6 +11,7 @@ import Input from '../prefabs/Input';
 import LockGame from '../prefabs/LockGame';
 import Item from '../prefabs/Item';
 import Safe from '../prefabs/Safe';
+import Lucy from '../prefabs/Lucy';
 import Eventmanager from '../prefabs/Eventmanager';
 import Questmanager from '../prefabs/Questmanager';
 import Daycycle from '../prefabs/Daycycle';
@@ -101,6 +102,9 @@ export default class {
 
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
+
+		// Create Lucy
+		this.lucy = new Lucy(this.game, this.player.x + 10, this.player.y - 10, this);
 
 		// Customizations
 		if (this.currentMap == 'map3') {
@@ -266,7 +270,7 @@ export default class {
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.characters, this.player);
-		this.game.physics.arcade.collide(this.player, this.collisionLayer);
+		// this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		if(!this.fallDown){
@@ -314,6 +318,10 @@ export default class {
 		// console.log(this.player.x, this.player.y);
 	}
 
+	fallDownFunction(){
+		console.log('FallDown');
+	}
+
 	initMap() {
 		console.log('LoadMap: ' + this.gameData.currentMap);
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
@@ -338,12 +346,17 @@ export default class {
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
 
+
+		
+
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
 		this.foregroundLayer.alpha = 0.9;
-		console.log(this.foregroundLayer);
 
 		// Set Collision Tiles
-		this.map.setCollisionBetween(0, 20, true, 'CollisionLayer');
+		this.map.setCollisionBetween(0, 5, true, 'CollisionLayer');
+
+		this.map.setTileIndexCallback(3, this.fallDownFunction, this);
+		this.map.setTileLocationCallback(3, 0, 1, 1, this.fallDownFunction, this);
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;

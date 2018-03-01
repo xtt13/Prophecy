@@ -290,18 +290,20 @@ export default class {
 			if (this.pad1 !== undefined && this.pad1.connected) {
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 					this.player.body.velocity.x = -this.playerSpeed;
+					this.player.animations.play('run_left');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
 					this.player.body.velocity.x = this.playerSpeed;
+					this.player.animations.play('run_right');
 				} else {
-					this.player.idle('x');
+					this.player.animations.stop();
 				}
 
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
 					this.player.body.velocity.y = -this.playerSpeed;
-					this.player.animations.play('run');
+					this.player.animations.play('run_up');
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
 					this.player.body.velocity.y = this.playerSpeed;
-					this.player.animations.play('run');
+					this.player.animations.play('run_down');
 				} else {
 					this.player.idle('y');
 					this.player.animations.play('idle');

@@ -29,7 +29,7 @@ export default class extends Phaser.Sprite {
 		this.animations.add('idle', [0], 1, true);
 		this.animations.play('walk');
 
-		this.game.physics.enable(this);
+		
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
 		this.body.drag.set(200);

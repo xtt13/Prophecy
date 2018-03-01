@@ -104,6 +104,9 @@ export default class extends Phaser.State {
 		//this.load.image('player', 'assets/sprites/player.png');
 		// this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3xblur.png');
 
+		this.load.image('lucy', 'assets/sprites/lucy.png');
+		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');
+
 		this.load.image('LockGameRing', 'assets/sprites/LockGameRing.png');
 		this.load.image('LockGameBar', 'assets/sprites/LockGameBar.png');
 		this.load.image('LockGameBall', 'assets/sprites/LockGameBall.png');
