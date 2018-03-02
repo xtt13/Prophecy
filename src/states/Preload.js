@@ -40,7 +40,7 @@ export default class extends Phaser.State {
 			spritemap: {
 				grass1: {
 					start: 0,
-					end: 0.15,
+					end: 0.2,
 					loop: true
 				},
 				grass2: {
@@ -106,6 +106,7 @@ export default class extends Phaser.State {
 
 		this.load.image('lucy', 'assets/sprites/lucy.png');
 		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');
+		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
 		this.load.image('LockGameRing', 'assets/sprites/LockGameRing.png');
 		this.load.image('LockGameBar', 'assets/sprites/LockGameBar.png');

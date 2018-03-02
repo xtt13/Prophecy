@@ -413,6 +413,8 @@ export default class {
 	stairsEnter(region) {
 		if(this.level.fallDown) return;
 		this.level.inputClass.playerSpeed -= 30;
+		
+		this.level.player.animations._anims.run_up.speed += 10;
 		this.level.player.animations._anims.run_down.speed += 10;
 		this.level.inputClass.pyfootsteps.stop('gravel1');
 		this.level.inputClass.pyfootsteps.play('grass1', 4);
@@ -422,7 +424,11 @@ export default class {
 	stairsLeave(region) {
 		if(this.level.fallDown) return;
 		this.level.inputClass.playerSpeed += 30;
-		this.level.player.animations._anims.run_down.speed -= 10;
+		// this.level.player.animations._anims.run_down.speed -= 20;
+		// this.level.player.animations._anims.run_up.speed -= 20;
+		this.level.player.animations._anims.run_down.speed = 15;
+		this.level.player.animations._anims.run_up.speed = 15;
+
 		this.level.inputClass.pyfootsteps.stop('grass1');
 		this.level.inputClass.pyfootsteps.play('gravel1', 4);
 		this.level.inputClass.currentUnderground = 'grass';

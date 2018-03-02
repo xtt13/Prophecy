@@ -77,7 +77,7 @@ export default class extends Phaser.State {
 			// this.game.debug.quadTree(this.game.physics.arcade.quadTree);
 
 			// this.level.inputClass.stick.debug();
-			// this.game.debug.body(this.level.enemies);
+			// this.game.debug.body(this.level.lucy);
 			// this.game.debug.body(this.level.player);
 			this.game.debug.text(this.level.player.health + ' HP', 90, 40);
 		}

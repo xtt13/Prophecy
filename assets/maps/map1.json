@@ -987,7 +987,7 @@
                  "y":1141.9840422539
                 }, 
                 {
-                 "height":49.4204802525549,
+                 "height":63.5013513891158,
                  "id":145,
                  "name":"Stairs",
                  "properties":
@@ -1004,44 +1004,6 @@
                  "width":72.2658085954982,
                  "x":791.693869428722,
                  "y":756.975113624339
-                }, 
-                {
-                 "height":54.2973,
-                 "id":147,
-                 "name":"Stairs",
-                 "properties":
-                    {
-                     "stairs":true
-                    },
-                 "propertytypes":
-                    {
-                     "stairs":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":72.2658,
-                 "x":216.166755524851,
-                 "y":1266.90442188553
-                }, 
-                {
-                 "height":54.2973,
-                 "id":148,
-                 "name":"Stairs",
-                 "properties":
-                    {
-                     "stairs":true
-                    },
-                 "propertytypes":
-                    {
-                     "stairs":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":72.2658,
-                 "x":215.684584156065,
-                 "y":799.409402493356
                 }, 
                 {
                  "height":22.1694,
@@ -1063,8 +1025,8 @@
                  "y":274.937738620303
                 }, 
                 {
-                 "height":49.4205,
-                 "id":157,
+                 "height":63.5014,
+                 "id":161,
                  "name":"Stairs",
                  "properties":
                     {
@@ -1078,8 +1040,46 @@
                  "type":"",
                  "visible":true,
                  "width":72.2658,
-                 "x":792.120371559782,
-                 "y":1081.14962157604
+                 "x":792.3671,
+                 "y":1081.7493
+                }, 
+                {
+                 "height":63.5014,
+                 "id":162,
+                 "name":"Stairs",
+                 "properties":
+                    {
+                     "stairs":true
+                    },
+                 "propertytypes":
+                    {
+                     "stairs":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72.2658,
+                 "x":216.054439166238,
+                 "y":1261.90417831777
+                }, 
+                {
+                 "height":63.5014,
+                 "id":163,
+                 "name":"Stairs",
+                 "properties":
+                    {
+                     "stairs":true
+                    },
+                 "propertytypes":
+                    {
+                     "stairs":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72.2658,
+                 "x":215.31919911036,
+                 "y":793.923882751268
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1128,8 +1128,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":278.590224294539,
-                 "y":41.5525021692443
+                 "x":281.019111864032,
+                 "y":28.0586823387267
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1205,7 +1205,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":161,
+ "nextobjectid":164,
  "orientation":"orthogonal",
  "properties":
     {

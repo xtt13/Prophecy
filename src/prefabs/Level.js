@@ -280,13 +280,14 @@ export default class {
 			this.game.world.bringToTop(this.player);
 		} else {
 			
-			if(this.fallDownLayer < 12){
+			if(this.fallDownLayer < 13){
 				this.game.world.moveDown(this.player);
 				this.fallDownLayer++;
 			}
 			
 		}
 		
+		this.game.world.bringToTop(this.lucy);
 
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
@@ -319,6 +320,8 @@ export default class {
 		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
+
+
 
 		// Update GUIClass
 		this.GUICLASS.update();
@@ -424,6 +427,8 @@ export default class {
 	}
 
 	initMap() {
+		this.fallDown = false;
+
 		console.log('LoadMap: ' + this.gameData.currentMap);
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 
@@ -447,14 +452,14 @@ export default class {
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
 
-
+		this.collisionLayer.debug = true;
 		
 
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
 		this.foregroundLayer.alpha = 0.9;
 
 		// Set Collision Tiles
-		this.map.setCollisionBetween(0, 5, true, 'CollisionLayer');
+		this.map.setCollisionBetween(0, 3, true, 'CollisionLayer');
 
 		this.map.setTileIndexCallback(3, this.fallDownFunction, this, this.collisionLayer);
 		// this.map.setTileLocationCallback(3, 0, 1, 1, this.fallDownFunction, this);

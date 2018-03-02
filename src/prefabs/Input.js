@@ -397,7 +397,7 @@ export default class {
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 
 					if (this.button_A.isDown) {
-						this.player.animations._anims.run_left.speed = 19;
+						// this.player.animations._anims.run_left.speed = 15;
 						this.player.animations.play('run_left');
 						this.direction = 'left';
 						if (this.button_W.isDown || this.button_S.isDown) {
@@ -407,7 +407,7 @@ export default class {
 						}
 
 					} else if (this.button_D.isDown) {
-						this.player.animations._anims.run_right.speed = 19;
+						// this.player.animations._anims.run_right.speed = 15;
 						this.player.animations.play('run_right');
 						this.direction = 'right';
 						if (this.button_W.isDown || this.button_S.isDown) {
@@ -423,14 +423,14 @@ export default class {
 
 					if (this.button_W.isDown) {
 						this.direction = 'up';
-						this.player.animations._anims.run_down.speed = 19;
+						// this.player.animations._anims.run_down.speed = 15;
 						this.player.animations.play('run_up');
 						this.player.body.velocity.y = -this.playerSpeed;
 						// console.log(this.player.animations._anims.run_up.speed);
 
 					} else if (this.button_S.isDown) {
 						this.direction = 'down';
-						this.player.animations._anims.run_down.speed = 19;
+						// this.player.animations._anims.run_down.speed = 15;
 						this.player.animations.play('run_down');
 						this.player.body.velocity.y = this.playerSpeed;
 						// console.log(this.player.animations._anims.run_down.speed);
@@ -470,6 +470,8 @@ export default class {
 					    case 'down':
 					        // this.player.animations.play('idle');
 					        this.player.animations.stop();
+
+					        // console.log(this.player.animations.frame);
 
 						  //   this.game.add
 								// .tween(this.player.animations._anims.run_down)
