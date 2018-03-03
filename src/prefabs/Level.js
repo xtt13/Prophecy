@@ -329,100 +329,87 @@ export default class {
 		// console.log(this.player.x, this.player.y);
 	}
 
-	fallDownFunction(){
-		console.log('FallDown');
-
-		// if(this.fallDownSwitch){
-		// 	this.fallDown = true;
-		// 	this.inputClass.pyfootsteps.stop();	
-		// 	this.player.animations.stop();
-		// 	this.player.movable = false;
-		// 	this.game.camera.fade(0x000000, 1000, true);
-		// 	this.game.time.events.loop(50, () => {
-		// 		this.player.body.velocity.y = 300;
-		// 	}, this);
-		// 	this.game.time.events.add(
-		// 		Phaser.Timer.SECOND * 1, () => {
-		// 			console.log('restart');
-		// 			this.fallDownCounter = 0;
-		// 			this.game.state.restart(true, false);
-		// 	});
-		// 	this.fallDownSwitch = false;
-		// }
-
-
-		if(this.fallDownCounter > 30 && this.inputClass.direction == 'up'){
-			if(this.fallDownSwitch){
-			this.fallDown = true;
-			this.inputClass.pyfootsteps.stop();	
-			this.player.animations.stop();
-			this.player.movable = false;
-			this.game.camera.fade(0x000000, 1000, true);
-			this.game.time.events.loop(50, () => {
-				this.player.body.velocity.y = 300;
-			}, this);
-			this.game.time.events.add(
-				Phaser.Timer.SECOND * 1, () => {
-					console.log('restart');
-					this.fallDownCounter = 0;
-					this.game.state.restart(true, false);
-			});
-			this.fallDownSwitch = false;
-			}
-			}
-
+	fallDownFunction(player, tile){
 		
-
-		if(this.fallDownCounter > 20 && (this.inputClass.direction == 'left' || this.inputClass.direction == 'right')){
-		if(this.fallDownSwitch){
-			this.fallDown = true;
-			this.inputClass.pyfootsteps.stop();	
-			this.player.animations.stop();
-			this.player.movable = false;
-			this.game.camera.fade(0x000000, 1000, true);
-			this.game.time.events.loop(50, () => {
-				this.player.body.velocity.y = 300;
-			}, this);
-			this.game.time.events.add(
-				Phaser.Timer.SECOND * 1, () => {
-					console.log('restart');
-					this.fallDownCounter = 0;
-					this.game.state.restart(true, false);
-			});
-			this.fallDownSwitch = false;
+		if((player.body.x + player.body.width) < (tile.worldX + tile.width) && this.inputClass.direction == 'left'){
+			if(this.fallDownSwitch){
+				this.fallDown = true;
+				this.inputClass.pyfootsteps.stop();	
+				this.player.animations.stop();
+				this.player.movable = false;
+				this.game.camera.fade(0x000000, 1000, true);
+				this.game.time.events.loop(50, () => {
+					this.player.body.velocity.y = 300;
+				}, this);
+				this.game.time.events.add(
+					Phaser.Timer.SECOND * 1, () => {
+						console.log('restart');
+						this.fallDownCounter = 0;
+						this.game.state.restart(true, false);
+				});
+				this.fallDownSwitch = false;
 			}
 		}
 
-
-		if(this.fallDownCounter > 0 && this.inputClass.direction == 'down'){
+		if((player.body.x) > (tile.worldX) && this.inputClass.direction == 'right'){
 			if(this.fallDownSwitch){
-			this.fallDown = true;
-			this.inputClass.pyfootsteps.stop();	
-			this.player.animations.stop();
-			this.player.movable = false;
-			this.game.camera.fade(0x000000, 1000, true);
-			this.game.time.events.loop(50, () => {
-				this.player.body.velocity.y = 300;
-			}, this);
-			this.game.time.events.add(
-				Phaser.Timer.SECOND * 1, () => {
-					console.log('restart');
-					this.fallDownCounter = 0;
-					this.game.state.restart(true, false);
-			});
-			this.fallDownSwitch = false;
+				this.fallDown = true;
+				this.inputClass.pyfootsteps.stop();	
+				this.player.animations.stop();
+				this.player.movable = false;
+				this.game.camera.fade(0x000000, 1000, true);
+				this.game.time.events.loop(50, () => {
+					this.player.body.velocity.y = 300;
+				}, this);
+				this.game.time.events.add(
+					Phaser.Timer.SECOND * 1, () => {
+						console.log('restart');
+						this.fallDownCounter = 0;
+						this.game.state.restart(true, false);
+				});
+				this.fallDownSwitch = false;
 			}
 		}
 
+		if((player.body.y + player.body.height) < (tile.worldY + tile.height - 10)  && this.inputClass.direction == 'up'){
+			if(this.fallDownSwitch){
+				this.fallDown = true;
+				this.inputClass.pyfootsteps.stop();	
+				this.player.animations.stop();
+				this.player.movable = false;
+				this.game.camera.fade(0x000000, 1000, true);
+				this.game.time.events.loop(50, () => {
+					this.player.body.velocity.y = 300;
+				}, this);
+				this.game.time.events.add(
+					Phaser.Timer.SECOND * 1, () => {
+						console.log('restart');
+						this.fallDownCounter = 0;
+						this.game.state.restart(true, false);
+				});
+				this.fallDownSwitch = false;
+			}
+		}
 
-
-
-		this.fallDownCounter++;
-		// console.log(this.fallDownCounter++);
-
-
-
-		
+		if((player.body.y) > (tile.worldY)  && this.inputClass.direction == 'down'){
+			if(this.fallDownSwitch){
+				this.fallDown = true;
+				this.inputClass.pyfootsteps.stop();	
+				this.player.animations.stop();
+				this.player.movable = false;
+				this.game.camera.fade(0x000000, 1000, true);
+				this.game.time.events.loop(50, () => {
+					this.player.body.velocity.y = 300;
+				}, this);
+				this.game.time.events.add(
+					Phaser.Timer.SECOND * 1, () => {
+						console.log('restart');
+						this.fallDownCounter = 0;
+						this.game.state.restart(true, false);
+				});
+				this.fallDownSwitch = false;
+			}
+		}
 
 	}
 
@@ -459,10 +446,9 @@ export default class {
 		this.foregroundLayer.alpha = 0.9;
 
 		// Set Collision Tiles
-		this.map.setCollisionBetween(3, true, 'CollisionLayer');
+		this.map.setCollision(4, true, 'CollisionLayer');
 
 		this.map.setTileIndexCallback(3, this.fallDownFunction, this, this.collisionLayer);
-		// this.map.setTileLocationCallback(3, 0, 1, 1, this.fallDownFunction, this);
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;

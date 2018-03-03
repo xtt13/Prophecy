@@ -458,16 +458,16 @@ export default class {
 					}
 
 				} else {
-					// this.player.body.velocity.y = 0;
-					// this.player.body.velocity.x = 0;
+					this.player.body.velocity.y = 0;
+					this.player.body.velocity.x = 0;
 
-					this.game.add
-						.tween(this.player.body.velocity)
-						.to({ x: 0 }, 100, Phaser.Easing.Circular.Out, true);
+					// this.game.add
+					// 	.tween(this.player.body.velocity)
+					// 	.to({ x: 0 }, 100, Phaser.Easing.Circular.Out, true);
 
-					this.game.add
-						.tween(this.player.body.velocity)
-						.to({ y: 0 }, 100, Phaser.Easing.Circular.Out, true);
+					// this.game.add
+					// 	.tween(this.player.body.velocity)
+					// 	.to({ y: 0 }, 100, Phaser.Easing.Circular.Out, true);
 
 
 					// this.game.physics.arcade.computeVelocity(2, this.player.body, 20, 100, 20);
@@ -482,11 +482,22 @@ export default class {
 					   //      this.game.add
 								// .tween(this.player.animations._anims.run_up)
 								// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
-					   //      break;
+
+					        break;
 
 					    case 'down':
 					        // this.player.animations.play('idle');
 					        this.player.animations.stop();
+
+					        // console.log(this.player.animations.frame);
+					        // if(this.player.animations.frame < 11){
+					        // 	this.player.animations.next();
+					        // } else {
+					        // 	this.player.animations.stop();
+					        // 	// this.player.animations.play('idle');
+					        // }
+
+
 
 					        // console.log(this.player.animations.frame);
 

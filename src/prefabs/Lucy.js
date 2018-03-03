@@ -42,7 +42,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.makeParticles('blackParticle');
 		this.customEmitter.start(false, 1500, 50, 0);
 
-		this.shadow = this.game.add.sprite(this.x, this.y + 20, 'lucyShadow');
+		this.shadow = this.game.add.sprite(this.x, this.y + 30, 'lucyShadow');
 		this.shadow.anchor.set(0.5);
 
 		this.shadow.animations.add('shadow', [6, 5, 4, 3, 2, 1, 0], 3, true);
@@ -86,12 +86,12 @@ export default class extends Phaser.Sprite {
 			}
 			
 		} else {
-			// this.shadow.x = this.x;
-			// this.shadow.y = this.y + 20;
+			this.shadow.x = this.x;
+			this.shadow.y = this.y + 30;
 			if(this.tweenSwitch){
 				// this.tweenShadow = this.game.add.tween(this.shadow).to( { y: this.player.y + 10}, 1000, "Linear", true, 0, 0, true).loop();
 				this.shadow.animations.play('shadow');
-				this.tween = this.game.add.tween(this).to( { y: this.y + 10}, 1050, "Linear", true, 0, 0, true).loop();
+				this.tween = this.game.add.tween(this).to( { bottom: this.bottom + 10}, 1050, "Linear", true, 0, 0, true).loop();
 				this.tweenSwitch = false;
 			}
 			
