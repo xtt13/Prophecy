@@ -38,7 +38,41 @@ export default class extends Phaser.Sprite {
 			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 		});
 
+		let px = this.body.velocity.x;
+    	let py = this.body.velocity.y;
+
+	    px *= -1;
+	    py *= -1;
+
+		this.customEmitter = this.game.add.emitter(this.x, this.y, 100);
+		this.customEmitter.width = 10;
+		this.customEmitter.height = 30;
+		this.customEmitter.minParticleScale = 1;
+		this.customEmitter.maxParticleScale = 4;
+		this.customEmitter.gravity = 0.5;
+		this.customEmitter.setAlpha(0.5, 1, 1000, null, true);
+		this.customEmitter.gravity = 0.5;
+
+		this.customEmitter.minParticleSpeed.set(px, py);
+    	this.customEmitter.maxParticleSpeed.set(px, py);
+
+		this.customEmitter.makeParticles('cyanParticle');
+
+
 		game.add.existing(this);
+	}
+
+	addParticles(){
+		console.log('start');
+		this.customEmitter.on = true;
+		this.customEmitter.x = this.x;
+		this.customEmitter.y = this.y;
+		this.customEmitter.start(false, 500, 1, 0);
+	}
+
+	removeParticles(){
+		console.log('end');
+		this.customEmitter.on = false;
 	}
 
 	walk(direction, speed) {
@@ -187,6 +221,9 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
+		this.customEmitter.x = this.x;
+		this.customEmitter.y = this.y;
+
 		// if(this.body.blocked.down || this.body.blocked.up || this.body.blocked.left || this.body.blocked.right){
 		// 	this.animations.play('idle');
 		// 	this.movementBlocked = true;

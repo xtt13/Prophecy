@@ -282,10 +282,12 @@ export default class {
 
 	beginnDash(){
 		this.dash = true;
+		this.player.addParticles();
 		this.playerSpeed = 250;
 		this.game.time.events.add(400, () => {
 			this.playerSpeed = 60;
 			this.dash = false;
+			this.player.removeParticles();
 		});
 	}
 
