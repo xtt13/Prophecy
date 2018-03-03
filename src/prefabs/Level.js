@@ -111,7 +111,7 @@ export default class {
 
 		// Customizations
 		if (this.currentMap == 'map3') {
-			this.door = this.game.add.sprite(864, 792, 'templeDoor');
+			this.door = this.game.add.sprite(865, 793, 'templeDoor');
 			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
 			this.door.animations.add('idle', [17], 1, true);
 		}
@@ -330,7 +330,7 @@ export default class {
 	}
 
 	fallDownFunction(){
-		// console.log('FallDown');
+		console.log('FallDown');
 
 		// if(this.fallDownSwitch){
 		// 	this.fallDown = true;
@@ -452,14 +452,14 @@ export default class {
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
 
-		this.collisionLayer.debug = true;
+		// this.collisionLayer.debug = true;
 		
 
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
 		this.foregroundLayer.alpha = 0.9;
 
 		// Set Collision Tiles
-		this.map.setCollisionBetween(0, 3, true, 'CollisionLayer');
+		this.map.setCollisionBetween(3, true, 'CollisionLayer');
 
 		this.map.setTileIndexCallback(3, this.fallDownFunction, this, this.collisionLayer);
 		// this.map.setTileLocationCallback(3, 0, 1, 1, this.fallDownFunction, this);

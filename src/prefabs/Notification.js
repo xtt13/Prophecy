@@ -6,10 +6,16 @@ export default class {
 		this.type = type;
 		this.message = message;
 
-		this.game.time.events.add(Phaser.Timer.SECOND * 1, this.createNotification, this);
+		this.game.time.events.add(Phaser.Timer.SECOND * 3, this.createNotification, this);
 	}
 
 	createNotification() {
+
+		if(this.type == 'success'){
+			this.archivementSound = this.game.add.audio('achivement', 2);
+			this.archivementSound.play();
+		}
+
 		var width = 50;
 		var height = 20;
 		this.bmd = game.add.bitmapData(width, height);

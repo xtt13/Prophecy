@@ -11,16 +11,16 @@ export default class {
 			this.player = this.level.player;
 		}
 
+		this.pad1;
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
-		this.pad1;
-		this.directon = 'down';
-		// this.maxSpeed = 150;
+
 		this.playerSpeed = 60;
+		this.directon = 'down';
+		this.currentUnderground = 'grass';
+
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = false;
-
-		this.currentUnderground = 'grass';
 
 		this.checkController();
 	}
@@ -396,23 +396,59 @@ export default class {
 				// Keyboard Movement
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 
+					if (this.button_W.isDown) {
+						this.direction = 'up';
+						// this.player.animations._anims.run_down.speed = 15;
+						this.player.body.velocity.y = -this.playerSpeed;
+
+						if(!this.button_A.isDown && !this.button_D.isDown){
+							this.player.animations.play('run_up');
+						}
+						// console.log(this.player.animations._anims.run_up.speed);
+
+					} else if (this.button_S.isDown) {
+						this.direction = 'down';
+						// this.player.animations._anims.run_down.speed = 15;
+						
+						this.player.body.velocity.y = this.playerSpeed;
+
+						if(!this.button_A.isDown && !this.button_D.isDown){
+							this.player.animations.play('run_down');
+						}
+						
+						// console.log(this.player.animations._anims.run_down.speed);
+						// console.log('S DOWN');
+
+					} else {
+						// this.player.animations.play('idle');
+						this.player.body.velocity.y = 0;
+					}
+
+
 					if (this.button_A.isDown) {
 						// this.player.animations._anims.run_left.speed = 15;
-						this.player.animations.play('run_left');
+
+						
+
 						this.direction = 'left';
+
 						if (this.button_W.isDown || this.button_S.isDown) {
 							this.player.body.velocity.x = -this.playerSpeed / 2;
 						} else {
+							this.player.animations.play('run_left');
 							this.player.body.velocity.x = -this.playerSpeed;
 						}
 
 					} else if (this.button_D.isDown) {
 						// this.player.animations._anims.run_right.speed = 15;
-						this.player.animations.play('run_right');
+						
+
 						this.direction = 'right';
+
 						if (this.button_W.isDown || this.button_S.isDown) {
 							this.player.body.velocity.x = this.playerSpeed / 2;
 						} else {
+							this.player.animations.play('run_right');
 							this.player.body.velocity.x = this.playerSpeed;
 						}
 
@@ -421,25 +457,6 @@ export default class {
 						this.player.body.velocity.x = 0;
 					}
 
-					if (this.button_W.isDown) {
-						this.direction = 'up';
-						// this.player.animations._anims.run_down.speed = 15;
-						this.player.animations.play('run_up');
-						this.player.body.velocity.y = -this.playerSpeed;
-						// console.log(this.player.animations._anims.run_up.speed);
-
-					} else if (this.button_S.isDown) {
-						this.direction = 'down';
-						// this.player.animations._anims.run_down.speed = 15;
-						this.player.animations.play('run_down');
-						this.player.body.velocity.y = this.playerSpeed;
-						// console.log(this.player.animations._anims.run_down.speed);
-						// console.log('S DOWN');
-
-					} else {
-						// this.player.animations.play('idle');
-						this.player.body.velocity.y = 0;
-					}
 				} else {
 					// this.player.body.velocity.y = 0;
 					// this.player.body.velocity.x = 0;
