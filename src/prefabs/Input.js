@@ -92,6 +92,12 @@ export default class {
 		this.stick.scale = 0.5;
 		this.stick.alignBottomLeft(0);
 		this.stick.showOnTouch = true;
+
+		this.buttonA = this.pad.addButton(0, 0, 'generic', 'button1-up', 'button1-down');
+		this.buttonA.scale = 0.5;
+		this.buttonA.alignBottomRight(50);
+		this.buttonA.onDown.add(this.beginnDash, this);
+
 	}
 
 	isMobileDevice() {

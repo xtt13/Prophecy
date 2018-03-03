@@ -36,6 +36,10 @@ export default class {
 
 				this.bridgeSound.play();
 
+				// if("vibrate" in window.navigator) {
+				// 	window.navigator.vibrate(100);
+				// }
+				
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
 

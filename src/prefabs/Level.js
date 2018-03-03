@@ -346,6 +346,10 @@ export default class {
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
 						console.log('restart');
+						if (this.inputClass.stick) {
+							this.inputClass.stick.alpha = 0;
+							this.inputClass.stick.enabled = false;
+						}
 						this.fallDownCounter = 0;
 						this.game.state.restart(true, false);
 				});
@@ -366,6 +370,10 @@ export default class {
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
 						console.log('restart');
+						if (this.inputClass.stick) {
+							this.inputClass.stick.alpha = 0;
+							this.inputClass.stick.enabled = false;
+						}
 						this.fallDownCounter = 0;
 						this.game.state.restart(true, false);
 				});
@@ -385,6 +393,10 @@ export default class {
 				}, this);
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
+						if (this.inputClass.stick) {
+							this.inputClass.stick.alpha = 0;
+							this.inputClass.stick.enabled = false;
+						}
 						console.log('restart');
 						this.fallDownCounter = 0;
 						this.game.state.restart(true, false);
@@ -405,6 +417,10 @@ export default class {
 				}, this);
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
+						if (this.inputClass.stick) {
+							this.inputClass.stick.alpha = 0;
+							this.inputClass.stick.enabled = false;
+						}
 						console.log('restart');
 						this.fallDownCounter = 0;
 						this.game.state.restart(true, false);
