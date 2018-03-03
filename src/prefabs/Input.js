@@ -14,6 +14,7 @@ export default class {
 		this.pad1;
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
+		this.dash = false;
 
 		this.playerSpeed = 60;
 		this.directon = 'down';
@@ -206,6 +207,8 @@ export default class {
 		this.button_D.onUp.add(this.removeMovementSound, this);
 
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
+		// this.button_SPACEBAR.onUp.add(this.endDash, this);
 
 		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 
@@ -274,6 +277,15 @@ export default class {
 		this.game.musicPlayer.fadeOut();
 		this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
 			this.game.state.start('MainMenu', true, false);
+		});
+	}
+
+	beginnDash(){
+		this.dash = true;
+		this.playerSpeed = 250;
+		this.game.time.events.add(400, () => {
+			this.playerSpeed = 60;
+			this.dash = false;
 		});
 	}
 
@@ -528,17 +540,6 @@ export default class {
 					}
 				}
 
-				if (this.button_SPACEBAR.isDown) {
-					// this.player.body.setSize(40, 40, 0, 0);
-					// this.game.add.tween(this.player.body).to( {width: 40, height: 40}, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-					// this.game.add.tween(this.player.body).to( { x: 3, y: 3 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-					// this.game.add.tween(this.player.body.height).to( 40, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-					// console.log(this.player.body);
-					// console.log(this.player.body.width);
-					// console.log(this.player.body.height);
-				} else {
-					// this.player.body.setSize(8, 22, 15, 20);
-				}
 			}
 		}
 	}

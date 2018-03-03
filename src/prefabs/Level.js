@@ -330,6 +330,8 @@ export default class {
 	}
 
 	fallDownFunction(player, tile){
+
+		if(this.inputClass.dash) return;
 		
 		if((player.body.x + player.body.width) < (tile.worldX + tile.width) && this.inputClass.direction == 'left'){
 			if(this.fallDownSwitch){

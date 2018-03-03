@@ -72,7 +72,7 @@ export default class extends Phaser.State {
 			// 	this.game.debug.body(this.level.enemies[i]);
 			// }
 
-			this.game.debug.body(this.level.player);
+			// this.game.debug.body(this.level.player);
 
 			// this.game.debug.pointer( this.game.input.activePointer );
 
