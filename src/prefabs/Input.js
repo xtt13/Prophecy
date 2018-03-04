@@ -234,6 +234,8 @@ export default class {
 			this.player.walk('up', 200);
 		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_DOWN) {
 			this.player.walk('down', 200);
+		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_A) {
+			this.beginnDash();
 		}
 	}
 
@@ -290,6 +292,7 @@ export default class {
 		this.dash = true;
 		this.player.addParticles();
 		this.playerSpeed = 250;
+
 		this.game.time.events.add(400, () => {
 			this.playerSpeed = 60;
 			this.dash = false;
@@ -315,32 +318,75 @@ export default class {
 
 		// Gamepad Controls
 		if (this.player) {
-			if (!this.player.movable) return;
+			if (!this.player.movable){
+				this.player.animations.stop();
+				this.player.body.velocity.x = 0;
+				this.player.body.velocity.y = 0;
+				return;
+			} 
 
 			if (this.pad1 !== undefined && this.pad1.connected) {
+				// console.log(this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X));
+
+				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+					if(this.direction == 'left' || this.direction == 'right'){
+						this.player.body.velocity.y = -this.playerSpeed;
+					} else {
+						this.player.animations.play('run_up');
+						this.player.body.velocity.y = -this.playerSpeed;
+					}
+					this.direction = 'up';
+	
+				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+					if(this.direction == 'left' || this.direction == 'right'){
+						this.player.body.velocity.y = this.playerSpeed;
+					} else {
+						this.player.animations.play('run_down');
+						this.player.body.velocity.y = this.playerSpeed;
+					}
+					this.direction = 'down';
+
+				} else {	
+					this.direction = '';
+					this.player.body.velocity.y = 0;
+				}
+
+
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-					this.player.body.velocity.x = -this.playerSpeed;
-					this.player.animations.play('run_left');
+
+					if(this.direction == 'up' || this.direction == 'down'){
+						this.player.body.velocity.x = -this.playerSpeed;
+					} else {
+						this.player.animations.play('run_left');
+						this.player.body.velocity.x = -this.playerSpeed;
+					}
+					this.direction = 'left';
+					
+
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-					this.player.body.velocity.x = this.playerSpeed;
-					this.player.animations.play('run_right');
-				} else {
+
+					if(this.direction == 'up' || this.direction == 'down'){
+						this.player.body.velocity.x = this.playerSpeed;
+					} else {
+						this.player.animations.play('run_right');
+						this.player.body.velocity.x = this.playerSpeed;
+					}
+					this.direction = 'right';		
+					
+
+				} else {			
+					this.direction = '';	
+					this.player.body.velocity.x = 0;
+				}
+
+				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) == 0 && this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0) {
 					this.player.animations.stop();
 				}
 
-				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-					this.player.body.velocity.y = -this.playerSpeed;
-					this.player.animations.play('run_up');
-				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-					this.player.body.velocity.y = this.playerSpeed;
-					this.player.animations.play('run_down');
-				} else {
-					this.player.idle('y');
-					this.player.animations.play('idle');
-				}
 
 			} else if (this.useMobileControl) {
 				if (this.stick.isDown) {
+					console.log(this.stick.rotation);
 					this.game.physics.arcade.velocityFromRotation(
 						this.stick.rotation,
 						this.stick.force * this.playerSpeed,
@@ -413,6 +459,7 @@ export default class {
 					this.pyfootsteps.stop();
 				}
 			} else {
+
 				// Keyboard Movement
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 

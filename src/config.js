@@ -15,7 +15,7 @@ export default {
 	weather: true,
 	playerHealth: 100,
 	scaleRate: 3,
-	forceMobile: true,
+	forceMobile: false,
 	night: true,
 	enemies: true,
 	startMap: 'map3'

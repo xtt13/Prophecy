@@ -94,7 +94,7 @@ export default class {
 	}
 
 	addStorm() {
-		this.backgroundLayer.tint = 0x262626;
+		this.backgroundLayer.tint = 0x303030;
 
 		// (x, y, maxParticles)
 		let emitter = this.game.add.emitter(-500, 0, 400);

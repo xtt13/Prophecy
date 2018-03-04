@@ -19,9 +19,13 @@ export default class {
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
 
 			this.time = new Date();
-			this.timeValue = this.time.getHours();
-			this.timeValue = 11;
 
+			if (__DEV__) {
+				this.timeValue = 11;
+			} else {
+				this.timeValue = this.time.getHours();
+			}
+			
 			if (this.timeValue >= 0 && this.timeValue < 6) {
 
 				console.log('Night');

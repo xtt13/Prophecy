@@ -15,6 +15,10 @@ export default class extends Phaser.Sprite {
 		this.movable = true;
 		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
+
+		this.baseImages = [];
+
+		this.zahl = 200;
 		// this.movementBlocked = false;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
@@ -44,7 +48,7 @@ export default class extends Phaser.Sprite {
 	    px *= -1;
 	    py *= -1;
 
-		this.customEmitter = this.game.add.emitter(this.x, this.y, 100);
+		this.customEmitter = this.game.add.emitter(this.x, this.y, 50);
 		this.customEmitter.width = 10;
 		this.customEmitter.height = 30;
 		this.customEmitter.minParticleScale = 1;
@@ -59,19 +63,33 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.makeParticles('cyanParticle');
 
 
+		this.multiplySprite = game.make.sprite(0, 0, this.key);
+		this.multiplySprite.anchor.set(0.5);
+		this.multiplySprite.alpha = 0.1;
+
+		this.bmd = this.game.add.bitmapData(100, 100);
+		// this.bmd.rect(0, 0, 100, 100, '#FFFFFF');
+		this.baseImages.push(this.bmd.addToWorld(x, y, 0.5, 0.5));
+		this.bmd.smoothed = false;
+		this.bmd.draw(this.multiplySprite, 50, 50);
+
+
+
 		game.add.existing(this);
 	}
 
 	addParticles(){
-		console.log('start');
+
+		// console.log('start');
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 		this.customEmitter.start(false, 500, 1, 0);
+
 	}
 
 	removeParticles(){
-		console.log('end');
+		// console.log('end');
 		this.customEmitter.on = false;
 	}
 
@@ -223,6 +241,35 @@ export default class extends Phaser.Sprite {
 	update() {
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
+
+		if(this.level.inputClass.dash){
+
+			this.multiplySprite.frame = this.frame;
+			this.multiplySprite.alpha = 0.05;
+			this.bmd.draw(this.multiplySprite, 50, 50);
+			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
+
+
+			if(this.baseImages[0] !== undefined){
+				this.game.time.events.add(
+					100, () => { 
+					this.baseImages[0].alpha = 0;
+					this.baseImages[0].destroy(true, false);
+					this.baseImages.shift();
+				});
+			}
+
+
+
+		} else {
+				this.game.time.events.add(
+					100, () => { 
+					this.bmd.clear();
+				});
+
+		}
+
+
 
 		// if(this.body.blocked.down || this.body.blocked.up || this.body.blocked.left || this.body.blocked.right){
 		// 	this.animations.play('idle');

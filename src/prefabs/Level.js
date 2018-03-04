@@ -278,6 +278,8 @@ export default class {
 
 		if(!this.fallDown){
 			this.game.world.bringToTop(this.player);
+			this.game.world.bringToTop(this.player.customEmitter);
+			// this.game.world.bringToTop(this.player.bmd);
 		} else {
 			
 			if(this.fallDownLayer < 13){
@@ -336,12 +338,15 @@ export default class {
 		if((player.body.x + player.body.width) < (tile.worldX + tile.width) && this.inputClass.direction == 'left'){
 			if(this.fallDownSwitch){
 				this.fallDown = true;
+				this.fallDownSound = this.game.add.audio('sfxfalldown');
+				this.fallDownSound.play();
 				this.inputClass.pyfootsteps.stop();	
 				this.player.animations.stop();
 				this.player.movable = false;
 				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(50, () => {
+				this.game.time.events.loop(1, () => {
 					this.player.body.velocity.y = 300;
+					this.player.body.velocity.x = -50;
 				}, this);
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
@@ -360,12 +365,15 @@ export default class {
 		if((player.body.x) > (tile.worldX) && this.inputClass.direction == 'right'){
 			if(this.fallDownSwitch){
 				this.fallDown = true;
+				this.fallDownSound = this.game.add.audio('sfxfalldown');
+				this.fallDownSound.play();
 				this.inputClass.pyfootsteps.stop();	
 				this.player.animations.stop();
 				this.player.movable = false;
 				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(50, () => {
+				this.game.time.events.loop(1, () => {
 					this.player.body.velocity.y = 300;
+					this.player.body.velocity.x = 50;
 				}, this);
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
@@ -384,11 +392,13 @@ export default class {
 		if((player.body.y + player.body.height) < (tile.worldY + tile.height - 10)  && this.inputClass.direction == 'up'){
 			if(this.fallDownSwitch){
 				this.fallDown = true;
+				this.fallDownSound = this.game.add.audio('sfxfalldown');
+				this.fallDownSound.play();
 				this.inputClass.pyfootsteps.stop();	
 				this.player.animations.stop();
 				this.player.movable = false;
 				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(50, () => {
+				this.game.time.events.loop(1, () => {
 					this.player.body.velocity.y = 300;
 				}, this);
 				this.game.time.events.add(
@@ -408,11 +418,13 @@ export default class {
 		if((player.body.y) > (tile.worldY)  && this.inputClass.direction == 'down'){
 			if(this.fallDownSwitch){
 				this.fallDown = true;
+				this.fallDownSound = this.game.add.audio('sfxfalldown');
+				this.fallDownSound.play();
 				this.inputClass.pyfootsteps.stop();	
 				this.player.animations.stop();
 				this.player.movable = false;
 				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(50, () => {
+				this.game.time.events.loop(1, () => {
 					this.player.body.velocity.y = 300;
 				}, this);
 				this.game.time.events.add(

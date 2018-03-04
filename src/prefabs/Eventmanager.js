@@ -204,8 +204,8 @@ export default class {
 				this.pathfinderCharacter,
 				{ x: this.level.player.x, y: this.level.player.y - 50 },
 				this.level.groundLayer,
-				false,
-				200
+				true,
+				400
 			);
 
 			this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
@@ -246,8 +246,8 @@ export default class {
 										this.pathfinderCharacter,
 										{ x: this.endDestinationX, y: this.endDestinationY },
 										this.level.groundLayer,
-										false,
-										300
+										true,
+										500
 									);
 								}
 							});
