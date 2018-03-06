@@ -1,24 +1,37 @@
 import Phaser from 'phaser';
 import config from './../config';
-import CryptoJS from 'crypto-js';
+import SecureLS from 'secure-ls';
 
 export default class {
 	constructor(game) {
 		this.game = game;
-		// let message = CryptoJS.SHA256("Message");
-		// console.log(message);
-		// console.log(CryptoJS.SHA256);
+
+		this.secureLS = config.secureLS;
+		console.log(this.secureLS);
+		this.ls = new SecureLS({encodingType: 'aes'});
+		// this.ls.set('meineVar', 'aöslkdfjaölsdfjkbblaaaaaa');
+		// this.ls.get('meineVar'));
+
 	}
 
 	setGameConfig(playerData) {
-		localStorage.setItem('playerData', JSON.stringify(playerData));
+		if(this.secureLS){
+			this.ls.set('playerData', JSON.stringify(playerData));
+		} else {
+			localStorage.setItem('playerData', JSON.stringify(playerData));
+		}
+		
 	}
 
 	getGameConfig() {
-		let playerData = JSON.parse(localStorage.getItem('playerData'));
-
+		if(this.secureLS){
+			var result = this.ls.get('playerData');
+			var playerData = (result !== '') ? JSON.parse(result) : null;
+		} else {
+			var playerData = JSON.parse(localStorage.getItem('playerData'));
+		}
 		if (playerData == null) {
-			let playerData = {
+			var playerData = {
 				playerHealth: 100,
 				currentMap: 'map1'
 			};
@@ -30,14 +43,24 @@ export default class {
 	}
 
 	setItemIDs(itemsIDs) {
-		localStorage.setItem('itemIDs', JSON.stringify(itemsIDs));
+		if(this.secureLS){
+			this.ls.set('itemIDs', JSON.stringify(itemsIDs));
+		} else {
+			localStorage.setItem('itemIDs', JSON.stringify(itemsIDs));
+		}
+		
 	}
 
 	getItemIDs() {
-		let itemIDs = JSON.parse(localStorage.getItem('itemIDs'));
+		if(this.secureLS){
+			var result = this.ls.get('itemIDs');
+			var itemIDs = (result !== '') ? JSON.parse(result) : null;
+		} else {
+			var itemIDs = JSON.parse(localStorage.getItem('itemIDs'));
+		}
 
 		if (itemIDs == null) {
-			let itemIDs = [];
+			var itemIDs = [];
 			return itemIDs;
 		} else {
 			return itemIDs;
@@ -45,14 +68,25 @@ export default class {
 	}
 
 	setGamePreferences(gamePreferences) {
-		localStorage.setItem('gamePreferences', JSON.stringify(gamePreferences));
+		if(this.secureLS){
+			this.ls.set('gamePreferences', JSON.stringify(gamePreferences));
+		} else {
+			localStorage.setItem('gamePreferences', JSON.stringify(gamePreferences));
+		}
 	}
 
 	getGamePreferences() {
-		let gamePreferences = JSON.parse(localStorage.getItem('gamePreferences'));
+		if(this.secureLS){
+			var result = this.ls.get('gamePreferences');
+			var gamePreferences = (result !== '') ? JSON.parse(result) : null;
+		} else {
+			var gamePreferences = JSON.parse(localStorage.getItem('gamePreferences'));
+		}
+
+		
 
 		if (gamePreferences == null) {
-			let gamePreferences = {
+			var gamePreferences = {
 				muteMusic: false,
 				muteSound: false
 			};
@@ -63,14 +97,23 @@ export default class {
 	}
 
 	setPlayedDialogues(playedDialogues) {
-		localStorage.setItem('playedDialogues', JSON.stringify(playedDialogues));
+		if(this.secureLS){
+			this.ls.set('playedDialogues', JSON.stringify(playedDialogues));
+		} else {
+			localStorage.setItem('playedDialogues', JSON.stringify(playedDialogues));
+		}
 	}
 
 	getPlayedDialogues() {
-		let playedDialogues = JSON.parse(localStorage.getItem('playedDialogues'));
+		if(this.secureLS){			
+			var result = this.ls.get('playedDialogues');
+			var playedDialogues = (result !== '') ? JSON.parse(result) : null;
+		} else {
+			var playedDialogues = JSON.parse(localStorage.getItem('playedDialogues'));
+		}
 
 		if (playedDialogues == null) {
-			let playedDialogues = [];
+			var playedDialogues = [];
 			return playedDialogues;
 		} else {
 			return playedDialogues;
@@ -78,14 +121,23 @@ export default class {
 	}
 
 	setQuests(quests) {
-		localStorage.setItem('quests', JSON.stringify(quests));
+		if(this.secureLS){
+			this.ls.set('quests', JSON.stringify(quests));
+		} else {
+			localStorage.setItem('quests', JSON.stringify(quests));
+		}
 	}
 
 	getQuests() {
-		let quests = JSON.parse(localStorage.getItem('quests'));
+		if(this.secureLS){
+			var result = this.ls.get('quests');
+			var quests = (result !== '') ? JSON.parse(result) : null;
+		} else {
+			var quests = JSON.parse(localStorage.getItem('quests'));
+		}
 
 		if (quests == null) {
-			let quests = {
+			var quests = {
 				masteredQuests: {}
 			};
 			return quests;
@@ -95,7 +147,7 @@ export default class {
 	}
 
 	removeQuest(id) {
-		let quests = this.getQuests();
+		var quests = this.getQuests();
 
 		for (var i = 0; i < quests.length; i++) {
 			if (quests[i][0] == id) {
@@ -106,16 +158,6 @@ export default class {
 
 		this.setQuests(quests);
 
-		// let quests = this.getQuests();
-
-		// for (var i = 0; i < quests.length; i++) {
-		// 	if (quests[i][0] == id) {
-		// 		quests[i][1] = '';
-		// 		// quests.splice(quests[i], 1);
-		// 	}
-		// }
-
-		// this.setQuests(quests);
 	}
 
 	resetLocalStorage() {

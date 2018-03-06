@@ -22,22 +22,29 @@ import config from './../config';
 export default class {
 	constructor(game, instruction) {
 		this.game = game;
+
 		this.GUICLASS = new GUI(this.game, this);
 		this.battery = new Battery(this.game, this);
-
 		this.safe = new Safe(this.game);
+		this.questManager = new Questmanager(this.game, this);
+
 		this.gameData = this.safe.getGameConfig();
+		this.itemIDs = this.safe.getItemIDs();
+		this.playedDialogues = this.safe.getPlayedDialogues();
 		this.currentMap = this.gameData.currentMap;
 		this.restartType = instruction.restartType;
 
-		this.questManager = new Questmanager(this.game, this);
+		this.dayCycle = false;
+		this.foreGroundShift = false;
+		this.fallDown = false;
+		this.fallDownSwitch = true;
+		this.fallDownCounter = 0;
+		this.fallDownLayer = 0;
 
 		// Arrays
 		this.characters = [];
-		this.items = [];
-		this.playedDialogues = this.safe.getPlayedDialogues();
-		this.activatedBridges = [];
-		this.itemIDs = this.safe.getItemIDs();
+		this.items = [];	
+		this.activatedBridges = [];	
 		this.enemies = [];
 		this.emitter = [];
 
@@ -45,14 +52,6 @@ export default class {
 		this.startPoint = {};
 		this.customStartPoints = [];
 		this.defaultStartPoint = {};
-
-		// Vars
-		this.dayCycle = false;
-		this.foreGroundShift = false;
-		this.fallDown = false;
-		this.fallDownSwitch = true;
-		this.fallDownCounter = 0;
-		this.fallDownLayer = 0;
 
 		// Method
 		this.loadLevel();
@@ -62,59 +61,17 @@ export default class {
 		// Load Map
 		this.initMap();
 
-		this.preferences = this.safe.getGamePreferences();
-
-		if(this.preferences.muteMusic){
-			this.muteMusic = true;
-		} else {
-			this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
-			this.muteMusic = false;
-		}
-
-		if(this.preferences.muteSound){
-			this.muteSound = true;
-		} else {
-			this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
-			this.muteSound = false;
-		}
-
-		
-
-		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {
-			this.game.camera.flash(0x000000, 8000, true);
-		} else {
-			this.game.camera.flash(0x000000, 2000);
-		}
+		// Start Sound and Music
+		this.initSoundandMusic();
 
 		// Load Entry Points
 		this.loadEntryPoints();
-
-		// Choose Start Points
-		if (this.gameData.targetID == undefined) {
-			this.startPoint.x = this.defaultStartPoint.x;
-			this.startPoint.y = this.defaultStartPoint.y;
-		} else {
-			for (var i = 0; i < this.customStartPoints.length; i++) {
-				if (this.customStartPoints[i].id == this.gameData.targetID) {
-					this.lastTargetID = this.gameData.targetID;
-					this.startPoint.x = this.customStartPoints[i].x;
-					this.startPoint.y = this.customStartPoints[i].y;
-				}
-			}
-		}
 
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
 		// Create Lucy
-		this.lucy = new Lucy(this.game, this.player.x + 10, this.player.y - 10, this);
-
-		// Customizations
-		if (this.currentMap == 'map3') {
-			this.door = this.game.add.sprite(865, 793, 'templeDoor');
-			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
-			this.door.animations.add('idle', [17], 1, true);
-		}
+		this.lucy = (config.lucy) ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
@@ -167,6 +124,20 @@ export default class {
 				this.customStartPoints.push(point);
 			}
 		}, this);
+
+		// Choose Start Points
+		if (this.gameData.targetID == undefined) {
+			this.startPoint.x = this.defaultStartPoint.x;
+			this.startPoint.y = this.defaultStartPoint.y;
+		} else {
+			for (var i = 0; i < this.customStartPoints.length; i++) {
+				if (this.customStartPoints[i].id == this.gameData.targetID) {
+					this.lastTargetID = this.gameData.targetID;
+					this.startPoint.x = this.customStartPoints[i].x;
+					this.startPoint.y = this.customStartPoints[i].y;
+				}
+			}
+		}
 	}
 
 	loadPeople() {
@@ -289,7 +260,7 @@ export default class {
 			
 		}
 		
-		this.game.world.bringToTop(this.lucy);
+		if(this.lucy) this.game.world.bringToTop(this.lucy);
 
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
@@ -351,6 +322,9 @@ export default class {
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
 						console.log('restart');
+						if(this.eventManager.areaSound){
+							this.eventManager.areaSound.fadeOut(2000);
+						}
 						if (this.inputClass.stick) {
 							this.inputClass.stick.alpha = 0;
 							this.inputClass.stick.enabled = false;
@@ -378,6 +352,9 @@ export default class {
 				this.game.time.events.add(
 					Phaser.Timer.SECOND * 1, () => {
 						console.log('restart');
+						if(this.eventManager.areaSound){
+							this.eventManager.areaSound.fadeOut(2000);
+						}
 						if (this.inputClass.stick) {
 							this.inputClass.stick.alpha = 0;
 							this.inputClass.stick.enabled = false;
@@ -407,6 +384,9 @@ export default class {
 							this.inputClass.stick.alpha = 0;
 							this.inputClass.stick.enabled = false;
 						}
+						if(this.eventManager.areaSound){
+							this.eventManager.areaSound.fadeOut(2000);
+						}
 						console.log('restart');
 						this.fallDownCounter = 0;
 						this.game.state.restart(true, false);
@@ -432,6 +412,9 @@ export default class {
 						if (this.inputClass.stick) {
 							this.inputClass.stick.alpha = 0;
 							this.inputClass.stick.enabled = false;
+						}
+						if(this.eventManager.areaSound){
+							this.eventManager.areaSound.fadeOut(2000);
 						}
 						console.log('restart');
 						this.fallDownCounter = 0;
@@ -488,5 +471,40 @@ export default class {
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
+
+		// Flashduration from Settings (if map1)
+		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {
+			this.game.camera.flash(0x000000, 8000, true);
+		} else {
+			this.game.camera.flash(0x000000, 2000);
+		}
+
+		// Customizations
+		if (this.currentMap == 'map3') {
+			this.door = this.game.add.sprite(865, 793, 'templeDoor');
+			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
+			this.door.animations.add('idle', [17], 1, true);
+		}
+	}
+
+	initSoundandMusic(){
+		// Get Settings
+		this.preferences = this.safe.getGamePreferences();
+
+		// Mute Music or fadeIn Music
+		if(this.preferences.muteMusic){
+			this.muteMusic = true;
+		} else {
+			this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
+			this.muteMusic = false;
+		}
+
+		// Mute Sound or fadeIn Sound
+		if(this.preferences.muteSound){
+			this.muteSound = true;
+		} else {
+			this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
+			this.muteSound = false;
+		}
 	}
 }
