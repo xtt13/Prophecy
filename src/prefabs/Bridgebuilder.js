@@ -9,7 +9,7 @@ export default class {
 		this.collisionLayer = collisionLayer;
 		this.region = region;
 
-		this.bridgeSound = this.game.add.audio('sfxBridge', 2);
+		this.bridgeSound = this.game.add.audio('sfxBridge', 1);
 		this.bridgeSound.allowMultiple = true;
 	}
 

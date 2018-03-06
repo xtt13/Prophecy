@@ -244,9 +244,9 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if(!this.pyfootsteps.isPlaying){
 				if(this.currentUnderground == 'grass'){
-					this.pyfootsteps.play('gravel1', 4);
+					this.pyfootsteps.play('gravel1', 1);
 				} else if (this.currentUnderground == 'stone'){
-					this.pyfootsteps.play('grass1', 4);
+					this.pyfootsteps.play('grass1', 1);
 				}
 
 				// if(!this.loop){
@@ -292,6 +292,8 @@ export default class {
 		this.dash = true;
 		this.player.addParticles();
 		this.playerSpeed = 250;
+		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
+		this.dashSound.play();
 
 		this.game.time.events.add(400, () => {
 			this.playerSpeed = 60;

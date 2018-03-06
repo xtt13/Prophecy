@@ -246,8 +246,8 @@ export default class {
 										this.pathfinderCharacter,
 										{ x: this.endDestinationX, y: this.endDestinationY },
 										this.level.groundLayer,
-										true,
-										500
+										false,
+										400
 									);
 								}
 							});
@@ -435,6 +435,7 @@ export default class {
 	}
 
 	soundAreaEnter(region) {
+		console.log('ISDFJISDFJ');
 		this.areaSound = game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(2000);
 	}

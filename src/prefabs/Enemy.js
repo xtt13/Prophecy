@@ -111,11 +111,8 @@ export default class extends Phaser.Sprite {
 			// console.log('flip left');
 		} else {
 			this.scale.set(1, 1);
-
 			// console.log('flip right');
 		}
-		if (angle == 2) {
-			this.game.world.bringToTop(this);
-		}
+
 	}
 }

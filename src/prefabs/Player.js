@@ -65,10 +65,10 @@ export default class extends Phaser.Sprite {
 
 		this.multiplySprite = game.make.sprite(0, 0, this.key);
 		this.multiplySprite.anchor.set(0.5);
+		// this.multiplySprite.tint = 0x4fd4b0;
 		this.multiplySprite.alpha = 0.1;
 
 		this.bmd = this.game.add.bitmapData(100, 100);
-		// this.bmd.rect(0, 0, 100, 100, '#FFFFFF');
 		this.baseImages.push(this.bmd.addToWorld(x, y, 0.5, 0.5));
 		this.bmd.smoothed = false;
 		this.bmd.draw(this.multiplySprite, 50, 50);
@@ -231,7 +231,7 @@ export default class extends Phaser.Sprite {
 			this.GUICLASS.createNotification('success', 'Questupdate');
 		}
 
-		this.itemPickUpSound = this.game.add.audio('sfxPickUp', 2);
+		this.itemPickUpSound = this.game.add.audio('sfxPickUp', 1);
 		this.itemPickUpSound.play();
 
 		item.destroy();
@@ -239,16 +239,16 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
+		this.game.world.bringToTop(this.customEmitter);
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 
 		if(this.level.inputClass.dash){
 
 			this.multiplySprite.frame = this.frame;
-			this.multiplySprite.alpha = 0.05;
+			this.multiplySprite.alpha = 0.03;
 			this.bmd.draw(this.multiplySprite, 50, 50);
 			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
-
 
 			if(this.baseImages[0] !== undefined){
 				this.game.time.events.add(
@@ -258,8 +258,6 @@ export default class extends Phaser.Sprite {
 					this.baseImages.shift();
 				});
 			}
-
-
 
 		} else {
 				this.game.time.events.add(

@@ -3,6 +3,7 @@ import 'p2';
 import Phaser from 'phaser';
 
 import BootState from './states/Boot';
+import DeltaStormState from './states/DeltaStorm';
 import MainMenuState from './states/MainMenu';
 import PreloadState from './states/Preload';
 import GameState from './states/Game';
@@ -28,6 +29,7 @@ class Game extends Phaser.Game {
 
 		this.state.add('Boot', BootState, false);
 		this.state.add('Preload', PreloadState, false);
+		this.state.add('DeltaStorm', DeltaStormState, false);
 		this.state.add('MainMenu', MainMenuState, false);
 		this.state.add('Game', GameState, false);
 

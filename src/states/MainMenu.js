@@ -18,7 +18,7 @@ export default class extends Phaser.State {
 		this.startSwitch = true;
 		this.playOnce = false;
 
-		this.game.camera.flash(0x000000, 5000);
+		this.game.camera.flash(0x000000, 3000);
 		this.game.soundManager.initSound('AtmoWindRain');
 
 		this.menuText = this.game.add.bitmapText(
@@ -89,7 +89,7 @@ export default class extends Phaser.State {
 			this.startSound = game.add.audio('startGame', 0.3);
 			this.startSound.play();
 			this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
-			this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
+			this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
 				this.state.start('Game', true, false);
 			});
 		}, this);
@@ -166,7 +166,7 @@ export default class extends Phaser.State {
 					this.startSound = game.add.audio('startGame', 0.3);
 					this.startSound.play();
 					this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
-					this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
+					this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
 						this.state.start('Game', true, false);
 					});
 				}

@@ -128,7 +128,7 @@ export default class extends Phaser.State {
 		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
 		this.load.audio('startGame', 'assets/sounds/startGame.mp3');
 		this.load.audio('AxWaterfall', 'assets/sounds/AxWaterfall.mp3');
-		this.load.audio('AxOpenPlain', 'assets/sounds/AxOpenPlain.mp3');
+		this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 		this.load.audio('achivement', 'assets/sounds/achivement.mp3');
 		this.load.audio('sfxBridge', 'assets/sounds/sfxBridge.mp3');
 		this.load.audio('sfxPickUp', 'assets/sounds/sfxPickUp.mp3');
@@ -194,7 +194,7 @@ export default class extends Phaser.State {
 		if (__DEV__) {
 			this.state.start('Game', true, false);
 		} else {
-			this.state.start('MainMenu', true, false);
+			this.state.start('DeltaStorm', true, false);
 		}
 	}
 

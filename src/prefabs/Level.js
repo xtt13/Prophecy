@@ -282,7 +282,7 @@ export default class {
 			// this.game.world.bringToTop(this.player.bmd);
 		} else {
 			
-			if(this.fallDownLayer < 13){
+			if(this.fallDownLayer < 20){
 				this.game.world.moveDown(this.player);
 				this.fallDownLayer++;
 			}
@@ -468,8 +468,6 @@ export default class {
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
-
-		// this.collisionLayer.debug = true;
 		
 
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
@@ -485,6 +483,8 @@ export default class {
 
 		// Get Properties for Nightmode
 		this.dayCycle = this.tilemapProperties.dayCycle;
+
+		// this.collisionLayer.debug = true;
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
