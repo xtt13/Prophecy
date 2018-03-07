@@ -253,8 +253,8 @@ export default class {
 			// this.game.world.bringToTop(this.player.bmd);
 		} else {
 			
-			if(this.fallDownLayer < 20){
-				this.game.world.moveDown(this.player);
+			if(this.fallDownLayer < 30){
+				this.game.world.setChildIndex(this.player, 1);
 				this.fallDownLayer++;
 			}
 			

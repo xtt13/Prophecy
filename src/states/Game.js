@@ -81,6 +81,7 @@ export default class extends Phaser.State {
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.body(this.level.lucy);
 			// this.game.debug.body(this.level.player);
+			// this.game.debug.text('Player z-depth: ' + this.level.player.z, 20, 60);
 			this.game.debug.text(this.level.player.health + ' HP', 90, 40);
 		}
 	}

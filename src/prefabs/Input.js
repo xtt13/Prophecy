@@ -216,13 +216,17 @@ export default class {
 		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
 		// this.button_SPACEBAR.onUp.add(this.endDash, this);
 
-		this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
-
-		// this.button_TAB.onDown.add(this.level.GUICLASS.questMap.toggleMap, this.level.GUICLASS.questMap);
-		this.button_TAB.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
+
+		if (typeof ipc !== 'undefined') {
+			this.button_ESC = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+			this.button_ESC.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
+		} else {
+			this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
+			this.button_TAB.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
+		}
 	}
 
 	onGamepadDown(button) {

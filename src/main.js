@@ -12,7 +12,6 @@ import config from './config';
 
 require('script-loader!../src/plugins/particle-storm.min.js');
 require('script-loader!../src/plugins/phaser-virtual-joystick.min.js');
-require('script-loader!../src/plugins/slick-ui.min.js');
 
 class Game extends Phaser.Game {
 	constructor() {

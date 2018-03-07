@@ -88,8 +88,6 @@ export default class extends Phaser.State {
 	}
 
 	preload() {
-		this.game.slickUI = this.game.plugins.add(Phaser.Plugin.SlickUI);
-		this.game.slickUI.load('assets/ui/kenney/kenney.json');
 
 		// this.stage.backgroundColor = "#000000";
 
