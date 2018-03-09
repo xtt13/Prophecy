@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import Player from './Player';
-import config from './../config';
+import Player from './../beings/Player';
+import config from './../../config';
 
 export default class {
 	constructor(game, level) {

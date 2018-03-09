@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import config from './../config';
-import Pathfinder from './Pathfinder';
+import config from './../../config';
+import Pathfinder from './../gamemechanics/Pathfinder';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, player, map, layer, properties) {

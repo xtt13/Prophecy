@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import config from './../config';
+import config from './../../config';
 import SecureLS from 'secure-ls';
 
 export default class {

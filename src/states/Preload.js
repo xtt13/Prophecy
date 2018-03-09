@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 import WebFont from 'webfontloader';
-import Input from '../prefabs/Input';
-import Musicplayer from '../prefabs/Musicplayer';
-import Soundmanager from '../prefabs/Soundmanager';
+import Input from '../prefabs/core/Input';
+import Musicplayer from '../prefabs/audio/Musicplayer';
+import Soundmanager from '../prefabs/audio/Soundmanager';
 
 export default class extends Phaser.State {
 	init() {

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Safe from '../prefabs/Safe';
+import Safe from '../core/Safe';
 
 export default class {
 	constructor(game) {

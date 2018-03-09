@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 import Questmap from './Questmap';
 import Gamemap from './Gamemap';
-import GameOptions from './GameOptions';
+import GameOptions from './../core/GameOptions';
 
 export default class {
 	constructor(game, level) {

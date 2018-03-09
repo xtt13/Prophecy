@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import config from './../config';
-import Safe from '../prefabs/Safe';
+import config from './../../config';
+import Safe from './Safe';
 
 export default class {
 	constructor(game, level) {

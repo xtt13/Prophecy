@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import Item from '../prefabs/Item';
-import LockGame from '../prefabs/LockGame';
-import config from './../config';
+import Item from './../gamemechanics/Item';
+import LockGame from './../minigame/LockGame';
+import config from './../../config';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, level) {

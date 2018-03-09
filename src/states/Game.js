@@ -1,6 +1,6 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
-import Level from '../prefabs/Level';
+import Level from '../prefabs/core/Level';
 
 export default class extends Phaser.State {
 	init(instruction) {

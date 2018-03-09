@@ -1,12 +1,12 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
 
-import Pathfinder from '../prefabs/Pathfinder';
-import Bridgebuilder from '../prefabs/Bridgebuilder';
-import Questmap from '../prefabs/Questmap';
-import Enemy from '../prefabs/Enemy';
+import Pathfinder from '../gamemechanics/Pathfinder';
+import Bridgebuilder from '../gamemechanics/Bridgebuilder';
+import Questmap from '../gui/Questmap';
+import Enemy from '../beings/Enemy';
 
-import dialogues from './../dialogues';
+import dialogues from './../../dialogues';
 
 export default class {
 	constructor(game, level) {
