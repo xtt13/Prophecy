@@ -93,8 +93,8 @@ export default class {
 		}, this);
 	}
 
-	fadeOut(){
-		if (this.sound && this.sound.isPlaying){
+	fadeOut() {
+		if (this.sound && this.sound.isPlaying) {
 			this.sound.fadeOut(3000);
 			this.game.time.events.add(Phaser.Timer.SECOND * (3000 / 1000), () => {
 				this.sound.destroy();

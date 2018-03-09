@@ -5,58 +5,53 @@ export default class {
 		this.game = game;
 		this.level = level;
 
-		if("getBattery" in navigator) {
-		    this.setup();
+		if ('getBattery' in navigator) {
+			this.setup();
 		} else {
 			console.log('Battery API not supported');
 		}
-		
 	}
 
 	setup() {
-		this.batteryPromise = navigator.getBattery().then(function(battery) {
-			updateLevelInfo();
-			updateChargeInfo();
-
-
-			battery.addEventListener('chargingchange', function() {
-				updateChargeInfo();
-			});
-
-			function updateChargeInfo() {
-				console.log('Battery charging? ' + (battery.charging ? 'Yes' : 'No'));
-				return battery
-			}
-
-			battery.addEventListener('levelchange', function() {
+		this.batteryPromise = navigator
+			.getBattery()
+			.then(function(battery) {
 				updateLevelInfo();
-			});
+				updateChargeInfo();
 
-			function updateLevelInfo() {
-				console.log('Battery level: ' + battery.level * 100 + '%');
-				return battery
+				battery.addEventListener('chargingchange', function() {
+					updateChargeInfo();
+				});
 
-			}
+				function updateChargeInfo() {
+					console.log('Battery charging? ' + (battery.charging ? 'Yes' : 'No'));
+					return battery;
+				}
 
-			return battery
+				battery.addEventListener('levelchange', function() {
+					updateLevelInfo();
+				});
 
-		}).then(battery => {
-			// console.log(battery);
+				function updateLevelInfo() {
+					console.log('Battery level: ' + battery.level * 100 + '%');
+					return battery;
+				}
 
-	    	if(battery.level * 100 < 25 && !battery.charging){
-	    		if (typeof ipc !== 'undefined') {
+				return battery;
+			})
+			.then(battery => {
+				// console.log(battery);
+
+				if (battery.level * 100 < 25 && !battery.charging) {
+					if (typeof ipc !== 'undefined') {
 						let myNotification = new Notification('Battery', {
 							body: '🔋 Your Battery Level is low!',
 							silent: true
 						});
-				} else {
-
+					} else {
 						this.level.GUICLASS.createNotification('Battery', '🔋 Your Battery Level is low!');
-						
+					}
 				}
-	    	}
-	    
-		});
-
+			});
 	}
 }

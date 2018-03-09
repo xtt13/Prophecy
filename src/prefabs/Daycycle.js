@@ -12,9 +12,7 @@ export default class {
 	}
 
 	createDayCycle() {
-
 		if (this.level.dayCycle) {
-
 			this.shadowTexture = this.game.add.bitmapData(this.game.width + 200, this.game.height + 200);
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
 
@@ -25,9 +23,8 @@ export default class {
 			} else {
 				this.timeValue = this.time.getHours();
 			}
-			
-			if (this.timeValue >= 0 && this.timeValue < 6) {
 
+			if (this.timeValue >= 0 && this.timeValue < 6) {
 				console.log('Night');
 
 				this.night = true;
@@ -43,9 +40,7 @@ export default class {
 				if (this.level.weather.clouds) {
 					this.level.weather.clouds.alpha = 0;
 				}
-
 			} else if (this.timeValue >= 6 && this.timeValue < 8) {
-
 				console.log('Dawn');
 
 				this.level.backgroundLayer.tint = 0x848484;
@@ -61,17 +56,13 @@ export default class {
 						cloud.tint = 0x383838;
 					});
 				}
-
 			} else if (this.timeValue >= 8 && this.timeValue < 18) {
-
 				console.log('Day');
 
 				// Normal Player Tint: 16777215
 
 				this.lightSprite.alpha = 0;
-
 			} else if (this.timeValue >= 18 && this.timeValue < 21) {
-
 				console.log('Dusk');
 
 				this.level.backgroundLayer.tint = 0x848484;
@@ -87,9 +78,7 @@ export default class {
 						cloud.tint = 0x383838;
 					});
 				}
-
 			} else if (this.timeValue >= 21 && this.timeValue < 24) {
-				
 				console.log('Night');
 				this.night = true;
 

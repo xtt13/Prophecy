@@ -156,7 +156,6 @@ export default class {
 		this.level.activatedBridges.push(bridgeID);
 	}
 
-
 	movePlayerToXY(region) {
 		const targetX = region.properties.targetX;
 		const targetY = region.properties.targetY;
@@ -397,7 +396,7 @@ export default class {
 	}
 
 	startMusic(region) {
-		if(this.level.muteMusic) return;
+		if (this.level.muteMusic) return;
 		this.game.musicPlayer.initMap(this.level.tilemapProperties, true, 10000);
 	}
 
@@ -411,9 +410,9 @@ export default class {
 	}
 
 	stairsEnter(region) {
-		if(this.level.fallDown) return;
+		if (this.level.fallDown) return;
 		this.level.inputClass.playerSpeed -= 30;
-		
+
 		this.level.player.animations._anims.run_up.speed += 10;
 		this.level.player.animations._anims.run_down.speed += 10;
 		this.level.inputClass.pyfootsteps.stop('gravel1');
@@ -422,7 +421,7 @@ export default class {
 	}
 
 	stairsLeave(region) {
-		if(this.level.fallDown) return;
+		if (this.level.fallDown) return;
 		this.level.inputClass.playerSpeed += 30;
 		// this.level.player.animations._anims.run_down.speed -= 20;
 		// this.level.player.animations._anims.run_up.speed -= 20;

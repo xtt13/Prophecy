@@ -36,16 +36,16 @@ module.exports = {
   watch: true,
   plugins: [
     definePlugin,
-    // new PrettierPlugin({
-    //   tabWidth: 2,
-    //   printWidth: 120,
-    //   useTabs: true,
-    //   singleQuote: true,
-    //   bracketSpacing: true,
-    //   semi: true,
-    //   encoding: 'utf-8',
-    //   extensions: [ ".js"]
-    // }),
+    new PrettierPlugin({
+      tabWidth: 2,
+      printWidth: 120,
+      useTabs: true,
+      singleQuote: true,
+      bracketSpacing: true,
+      semi: true,
+      encoding: 'utf-8',
+      extensions: [ ".js"]
+    }),
     new webpack.optimize.CommonsChunkPlugin({ 
       name: 'vendor', 
       filename: 'vendor.bundle.js'

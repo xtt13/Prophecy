@@ -30,7 +30,7 @@ export default class extends Phaser.Sprite {
 		this.animations.play('walk');
 
 		this.game.physics.enable(this);
-		
+
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
 		this.body.drag.set(200);
@@ -64,15 +64,8 @@ export default class extends Phaser.Sprite {
 
 		if (this.distanceBetweenEnemiePlayer < 120) {
 			if (this.distanceBetweenEnemiePlayer < 100) {
-				this.game.physics.arcade.moveToObject(this, this.player, 0);
-				this.animations.play('idle');
-
-				// Attack
-				if (this.distanceBetweenEnemiePlayer < 50) {
-					this.animations.play('walk');
-
-					this.game.physics.arcade.moveToObject(this, this.player, 150);
-				}
+				this.animations.play('walk');
+				this.game.physics.arcade.moveToObject(this, this.player, 150);
 			} else {
 				this.animations.play('walk');
 				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
@@ -113,6 +106,5 @@ export default class extends Phaser.Sprite {
 			this.scale.set(1, 1);
 			// console.log('flip right');
 		}
-
 	}
 }

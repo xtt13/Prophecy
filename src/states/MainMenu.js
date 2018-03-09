@@ -100,8 +100,6 @@ export default class extends Phaser.State {
 				this.subText.text = 'Press A-Button To Move On';
 			}
 		});
-
-
 	}
 
 	preload() {}

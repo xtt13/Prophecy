@@ -8,7 +8,6 @@ export default class {
 
 		this.globalVolume = 0;
 		this.fadeVolumeTo = 1;
-
 	}
 
 	initMap(properties, start, fadeDuration) {

@@ -18,7 +18,7 @@ export default class {
 		const bridgeLength = this.region.properties.length;
 		const bridgeDuration = this.region.properties.duration;
 
-		if(bridgeDuration < 100){
+		if (bridgeDuration < 100) {
 			this.bridgeSound.volume = 0;
 		}
 
@@ -39,7 +39,7 @@ export default class {
 				// if("vibrate" in window.navigator) {
 				// 	window.navigator.vibrate(100);
 				// }
-				
+
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
 

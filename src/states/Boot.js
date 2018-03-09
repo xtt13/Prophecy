@@ -29,7 +29,7 @@ export default class extends Phaser.State {
 		this.stage.smoothed = false;
 
 		// Don't pause on lost focus
-		this.stage.disableVisibilityChange = true;
+		// this.stage.disableVisibilityChange = true;
 
 		// this.game.forceSingleRender = true;
 		// this.game.time.desiredFps = 60;

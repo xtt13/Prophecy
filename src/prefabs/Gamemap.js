@@ -91,7 +91,6 @@ export default class {
 		this.playerDot.anchor.set(0.5);
 
 		this.playerDot.mask = this.mask;
-
 	}
 
 	calculateValues() {
@@ -110,7 +109,6 @@ export default class {
 
 	removeMap() {
 		if (this.map) {
-
 			this.gameMapbackground.destroy();
 			this.gameMapbackground = false;
 			this.map.destroy();

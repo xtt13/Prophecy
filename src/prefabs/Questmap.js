@@ -10,7 +10,7 @@ export default class {
 		this.activeClose = true;
 		this.show = false;
 
-		this.questmapBackground;	
+		this.questmapBackground;
 	}
 
 	toggleMap() {
@@ -60,7 +60,6 @@ export default class {
 				counter++;
 			}
 		}
-
 	}
 
 	closeMap() {

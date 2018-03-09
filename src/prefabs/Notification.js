@@ -10,8 +10,7 @@ export default class {
 	}
 
 	createNotification() {
-
-		if(this.type == 'success'){
+		if (this.type == 'success') {
 			this.archivementSound = this.game.add.audio('achivement', 2);
 			this.archivementSound.play();
 		}

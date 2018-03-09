@@ -38,13 +38,12 @@ export default class {
 		this.foreGroundShift = false;
 		this.fallDown = false;
 		this.fallDownSwitch = true;
-		this.fallDownCounter = 0;
 		this.fallDownLayer = 0;
 
 		// Arrays
 		this.characters = [];
-		this.items = [];	
-		this.activatedBridges = [];	
+		this.items = [];
+		this.activatedBridges = [];
 		this.enemies = [];
 		this.emitter = [];
 
@@ -71,7 +70,7 @@ export default class {
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
 		// Create Lucy
-		this.lucy = (config.lucy) ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
+		this.lucy = config.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
@@ -223,7 +222,9 @@ export default class {
 		return result;
 	}
 
-
+	enemyCollision(enemy, otherEnemy) {
+		// console.log('collide');
+	}
 
 	// Update Method
 	update() {
@@ -235,33 +236,28 @@ export default class {
 			this.pathfinder.followPath();
 		}
 
-		// console.log(Phaser.Rectangle.intersects(this.player.getBounds(), this.collisionLayer.getBounds()));
-
 		// Collisionhandler
-		this.game.physics.arcade.collide(this.enemies, this.enemies);
-		// this.game.physics.arcade.collide(this.enemies, this.player);
-		this.game.physics.arcade.collide(this.enemies, this.player, this.player.getDamage, null, this);
+		this.game.physics.arcade.collide(this.enemies, this.enemies, this.enemyCollision);
+		this.game.physics.arcade.collide(this.player, this.enemies, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
-		if(!this.fallDown){
+		// If the player is not falling down
+		if (!this.fallDown) {
 			this.game.world.bringToTop(this.player);
 			this.game.world.bringToTop(this.player.customEmitter);
-			// this.game.world.bringToTop(this.player.bmd);
 		} else {
-			
-			if(this.fallDownLayer < 30){
-				this.game.world.setChildIndex(this.player, 1);
-				this.fallDownLayer++;
-			}
-			
+			// Shift the player to the last layer
+			this.game.world.setChildIndex(this.player, 1);
 		}
-		
-		if(this.lucy) this.game.world.bringToTop(this.lucy);
 
+		// If lucy exists -> bringToTop
+		if (this.lucy) this.game.world.bringToTop(this.lucy);
+
+		// If there is no foreGroundShift
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
 		}
@@ -290,146 +286,82 @@ export default class {
 			this.lockGame.update();
 		}
 
+		// If Templeflies -> bringToTop
 		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
 
-
-
 		// Update GUIClass
 		this.GUICLASS.update();
-
-		// console.log(this.player.x, this.player.y);
 	}
 
-	fallDownFunction(player, tile){
+	fallDownCheck(player, tile) {
+		if (this.inputClass.dash) return;
 
-		if(this.inputClass.dash) return;
-		
-		if((player.body.x + player.body.width) < (tile.worldX + tile.width) && this.inputClass.direction == 'left'){
-			if(this.fallDownSwitch){
-				this.fallDown = true;
-				this.fallDownSound = this.game.add.audio('sfxfalldown');
-				this.fallDownSound.play();
-				this.inputClass.pyfootsteps.stop();	
-				this.player.animations.stop();
-				this.player.movable = false;
-				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(1, () => {
-					this.player.body.velocity.y = 300;
-					this.player.body.velocity.x = -50;
-				}, this);
-				this.game.time.events.add(
-					Phaser.Timer.SECOND * 1, () => {
-						console.log('restart');
-						if(this.eventManager.areaSound){
-							this.eventManager.areaSound.fadeOut(2000);
-						}
-						if (this.inputClass.stick) {
-							this.inputClass.stick.alpha = 0;
-							this.inputClass.stick.enabled = false;
-						}
-						this.fallDownCounter = 0;
-						this.game.state.restart(true, false);
-				});
-				this.fallDownSwitch = false;
-			}
+		// console.log(tile);
+		// console.log(tile.worldX);
+		// console.log((player.body.x + player.body.width) < (tile.worldX + tile.width), player.body.x + player.body.width, tile.worldX + tile.width);
+
+		if (player.body.x + player.body.width < tile.worldX + tile.width && this.inputClass.direction == 'left') {
+			this.fallDownProcess();
 		}
 
-		if((player.body.x) > (tile.worldX) && this.inputClass.direction == 'right'){
-			if(this.fallDownSwitch){
-				this.fallDown = true;
-				this.fallDownSound = this.game.add.audio('sfxfalldown');
-				this.fallDownSound.play();
-				this.inputClass.pyfootsteps.stop();	
-				this.player.animations.stop();
-				this.player.movable = false;
-				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(1, () => {
-					this.player.body.velocity.y = 300;
-					this.player.body.velocity.x = 50;
-				}, this);
-				this.game.time.events.add(
-					Phaser.Timer.SECOND * 1, () => {
-						console.log('restart');
-						if(this.eventManager.areaSound){
-							this.eventManager.areaSound.fadeOut(2000);
-						}
-						if (this.inputClass.stick) {
-							this.inputClass.stick.alpha = 0;
-							this.inputClass.stick.enabled = false;
-						}
-						this.fallDownCounter = 0;
-						this.game.state.restart(true, false);
-				});
-				this.fallDownSwitch = false;
-			}
+		if (player.body.x > tile.worldX && this.inputClass.direction == 'right') {
+			this.fallDownProcess();
 		}
 
-		if((player.body.y + player.body.height) < (tile.worldY + tile.height - 10)  && this.inputClass.direction == 'up'){
-			if(this.fallDownSwitch){
-				this.fallDown = true;
-				this.fallDownSound = this.game.add.audio('sfxfalldown');
-				this.fallDownSound.play();
-				this.inputClass.pyfootsteps.stop();	
-				this.player.animations.stop();
-				this.player.movable = false;
-				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(1, () => {
-					this.player.body.velocity.y = 300;
-				}, this);
-				this.game.time.events.add(
-					Phaser.Timer.SECOND * 1, () => {
-						if (this.inputClass.stick) {
-							this.inputClass.stick.alpha = 0;
-							this.inputClass.stick.enabled = false;
-						}
-						if(this.eventManager.areaSound){
-							this.eventManager.areaSound.fadeOut(2000);
-						}
-						console.log('restart');
-						this.fallDownCounter = 0;
-						this.game.state.restart(true, false);
-				});
-				this.fallDownSwitch = false;
-			}
+		if (player.body.y + player.body.height < tile.worldY + tile.height - 10 && this.inputClass.direction == 'up') {
+			this.fallDownProcess();
 		}
 
-		if((player.body.y) > (tile.worldY)  && this.inputClass.direction == 'down'){
-			if(this.fallDownSwitch){
-				this.fallDown = true;
-				this.fallDownSound = this.game.add.audio('sfxfalldown');
-				this.fallDownSound.play();
-				this.inputClass.pyfootsteps.stop();	
-				this.player.animations.stop();
-				this.player.movable = false;
-				this.game.camera.fade(0x000000, 1000, true);
-				this.game.time.events.loop(1, () => {
-					this.player.body.velocity.y = 300;
-				}, this);
-				this.game.time.events.add(
-					Phaser.Timer.SECOND * 1, () => {
-						if (this.inputClass.stick) {
-							this.inputClass.stick.alpha = 0;
-							this.inputClass.stick.enabled = false;
-						}
-						if(this.eventManager.areaSound){
-							this.eventManager.areaSound.fadeOut(2000);
-						}
-						console.log('restart');
-						this.fallDownCounter = 0;
-						this.game.state.restart(true, false);
-				});
-				this.fallDownSwitch = false;
-			}
+		if (player.body.y > tile.worldY && this.inputClass.direction == 'down') {
+			this.fallDownProcess();
 		}
+	}
 
+	fallDownProcess() {
+		if (this.fallDownSwitch) {
+			this.fallDown = true;
+
+			this.fallDownSound = this.game.add.audio('sfxfalldown');
+			this.fallDownSound.play();
+
+			this.inputClass.pyfootsteps.stop();
+			this.player.animations.stop();
+
+			this.player.movable = false;
+
+			this.game.camera.fade(0x000000, 1000, true);
+
+			this.game.time.events.loop(
+				1,
+				() => {
+					this.player.body.velocity.y = 300;
+				},
+				this
+			);
+
+			this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+				if (this.inputClass.stick) {
+					this.inputClass.stick.alpha = 0;
+					this.inputClass.stick.enabled = false;
+				}
+
+				if (this.eventManager.areaSound) {
+					this.eventManager.areaSound.fadeOut(2000);
+				}
+
+				console.log('Restart');
+
+				this.game.state.restart(true, false);
+			});
+
+			this.fallDownSwitch = false;
+		}
 	}
 
 	initMap() {
-		this.fallDown = false;
-
-		console.log('LoadMap: ' + this.gameData.currentMap);
+		// Add current map
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 
 		// Background Cloud Layer
@@ -443,7 +375,6 @@ export default class {
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
 		this.detailGroundLayer = this.map.createLayer('DetailBackgroundLayer');
-
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 
@@ -451,15 +382,18 @@ export default class {
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
-		
 
+		// Test
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
-		this.foregroundLayer.alpha = 0.9;
+
+		// Alpha of Foregroundlayer 0.9
+		this.foregroundLayer.alpha = 1;
 
 		// Set Collision Tiles
 		this.map.setCollision(4, true, 'CollisionLayer');
 
-		this.map.setTileIndexCallback(3, this.fallDownFunction, this, this.collisionLayer);
+		// Set tileCallback for abyss
+		this.map.setTileIndexCallback(3, this.fallDownCheck, this, this.collisionLayer);
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;
@@ -487,12 +421,12 @@ export default class {
 		}
 	}
 
-	initSoundandMusic(){
+	initSoundandMusic() {
 		// Get Settings
 		this.preferences = this.safe.getGamePreferences();
 
 		// Mute Music or fadeIn Music
-		if(this.preferences.muteMusic){
+		if (this.preferences.muteMusic) {
 			this.muteMusic = true;
 		} else {
 			this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
@@ -500,7 +434,7 @@ export default class {
 		}
 
 		// Mute Sound or fadeIn Sound
-		if(this.preferences.muteSound){
+		if (this.preferences.muteSound) {
 			this.muteSound = true;
 		} else {
 			this.game.soundManager.initSound(this.tilemapProperties.athmoSound);

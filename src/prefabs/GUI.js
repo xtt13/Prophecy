@@ -75,7 +75,7 @@ export default class {
 				this.game.world.bringToTop(this.ingameMenu.questMap.text);
 			}
 
-			if(this.ingameMenu.gameOptions.muteMusicButton){
+			if (this.ingameMenu.gameOptions.muteMusicButton) {
 				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteMusicButton);
 				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteSoundButton);
 			}

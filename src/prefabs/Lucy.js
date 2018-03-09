@@ -17,12 +17,10 @@ export default class extends Phaser.Sprite {
 		this.tweenSwitch = true;
 
 		let px = this.body.velocity.x;
-    	let py = this.body.velocity.y;
+		let py = this.body.velocity.y;
 
-	    px *= -1;
-	    py *= -1;
-
-  
+		px *= -1;
+		py *= -1;
 
 		this.customEmitter = this.game.add.emitter(this.x, this.y, 30);
 		this.customEmitter.width = 10;
@@ -37,7 +35,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.gravity = 0.5;
 
 		this.customEmitter.minParticleSpeed.set(px, py);
-    	this.customEmitter.maxParticleSpeed.set(px, py);
+		this.customEmitter.maxParticleSpeed.set(px, py);
 
 		this.customEmitter.makeParticles('blackParticle');
 		this.customEmitter.start(false, 1500, 50, 0);
@@ -51,59 +49,54 @@ export default class extends Phaser.Sprite {
 		// this.offsetY = this.offsetY + 2;
 		// console.log(this.offsetY);
 
-		
- 
 		// this.angle = 90;
 
-		
 		game.add.existing(this);
 	}
 
-	update(){
-
+	update() {
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 
 		this.distanceBetweenLucyPlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
-		if(this.distanceBetweenLucyPlayer > 40){
+		if (this.distanceBetweenLucyPlayer > 40) {
 			this.shadow.animations.stop();
 			this.shadow.x = this.x;
 			this.shadow.y = this.y + 30;
 
 			this.tweenSwitch = true;
-			if(this.tween){
+			if (this.tween) {
 				this.tween.stop();
 				// this.tween = false;
 			}
-			if(this.distanceBetweenLucyPlayer > 80){
+			if (this.distanceBetweenLucyPlayer > 80) {
 				this.game.physics.arcade.moveToObject(this, this.player, 80);
 				// console.log('50');
 			} else {
 				this.game.physics.arcade.moveToObject(this, this.player, 30);
 				// console.log('30');
 			}
-			
 		} else {
 			this.shadow.x = this.x;
 			this.shadow.y = this.y + 30;
-			if(this.tweenSwitch){
+			if (this.tweenSwitch) {
 				// this.tweenShadow = this.game.add.tween(this.shadow).to( { y: this.player.y + 10}, 1000, "Linear", true, 0, 0, true).loop();
 				this.shadow.animations.play('shadow');
-				this.tween = this.game.add.tween(this).to( { bottom: this.bottom + 10}, 1050, "Linear", true, 0, 0, true).loop();
+				this.tween = this.game.add
+					.tween(this)
+					.to({ bottom: this.bottom + 10 }, 1050, 'Linear', true, 0, 0, true)
+					.loop();
 				this.tweenSwitch = false;
 			}
-			
+
 			this.customEmitter.on = false;
 			this.body.velocity.set(0);
 		}
 		// console.log(this.distanceBetweenLucyPlayer);
 		// this.angle += 1;
-		
+
 		this.rotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
 	}
-
-
-
 }

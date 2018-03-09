@@ -9,16 +9,18 @@ export default class extends Phaser.Sprite {
 
 		this.game = game;
 		this.level = level;
+
+		this.anchor.setTo(0.5);
+
 		this.gameData = this.level.gameData;
 		this.health = this.gameData.playerHealth;
 		this.safe = this.level.safe;
+
 		this.movable = true;
-		this.anchor.setTo(0.5);
 		this.playerSpeed = 130;
 
 		this.baseImages = [];
 
-		this.zahl = 200;
 		// this.movementBlocked = false;
 
 		this.animations.add('idle', [0, 1, 2, 3], 5, true);
@@ -38,15 +40,16 @@ export default class extends Phaser.Sprite {
 		this.game.renderer.renderSession.roundPixels = true;
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
+		// Add Lerp after 1 Second
 		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
 			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 		});
 
+		// -1 Velocity
 		let px = this.body.velocity.x;
-    	let py = this.body.velocity.y;
-
-	    px *= -1;
-	    py *= -1;
+		let py = this.body.velocity.y;
+		px *= -1;
+		py *= -1;
 
 		this.customEmitter = this.game.add.emitter(this.x, this.y, 50);
 		this.customEmitter.width = 10;
@@ -56,16 +59,12 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.gravity = 0.5;
 		this.customEmitter.setAlpha(0.5, 1, 1000, null, true);
 		this.customEmitter.gravity = 0.5;
-
 		this.customEmitter.minParticleSpeed.set(px, py);
-    	this.customEmitter.maxParticleSpeed.set(px, py);
-
+		this.customEmitter.maxParticleSpeed.set(px, py);
 		this.customEmitter.makeParticles('cyanParticle');
-
 
 		this.multiplySprite = game.make.sprite(0, 0, this.key);
 		this.multiplySprite.anchor.set(0.5);
-		// this.multiplySprite.tint = 0x4fd4b0;
 		this.multiplySprite.alpha = 0.1;
 
 		this.bmd = this.game.add.bitmapData(100, 100);
@@ -73,94 +72,25 @@ export default class extends Phaser.Sprite {
 		this.bmd.smoothed = false;
 		this.bmd.draw(this.multiplySprite, 50, 50);
 
-
-
 		game.add.existing(this);
 	}
 
-	addParticles(){
-
-		// console.log('start');
+	addParticles() {
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 		this.customEmitter.start(false, 500, 1, 0);
-
 	}
 
-	removeParticles(){
-		// console.log('end');
+	removeParticles() {
 		this.customEmitter.on = false;
-	}
-
-	walk(direction, speed) {
-		if (this.movable) {
-			//console.log("Direction: " + direction + ", Speed: " + speed);
-
-			switch (direction) {
-				case 'up':
-					this.body.velocity.y = -this.playerSpeed;
-					break;
-
-				case 'down':
-					this.body.velocity.y = this.playerSpeed;
-					break;
-
-				case 'idle':
-					this.body.velocity.y = 0;
-					break;
-
-				default:
-					this.body.velocity.y = 0;
-			}
-
-			switch (direction) {
-				case 'left':
-					this.body.velocity.x = -this.playerSpeed;
-					break;
-
-				case 'right':
-					this.body.velocity.x = this.playerSpeed;
-					break;
-
-				case 'idle':
-					this.body.velocity.x = 0;
-					break;
-
-				default:
-					this.body.velocity.x = 0;
-			}
-
-			// if(direction == 'left'){
-			// 	this.body.velocity.x = -this.playerSpeed;
-			// } else if(direction == 'right'){
-			// 	this.body.velocity.x = this.playerSpeed;
-			// }
-
-			// if(direction == 'up'){
-			// 	this.body.velocity.y = -this.playerSpeed;
-			// } else if(direction == 'down'){
-			// 	this.body.velocity.y = this.playerSpeed;
-			// }
-		} else {
-			this.body.velocity.set(0);
-		}
-	}
-
-	idle(direction) {
-		if (direction == 'x') {
-			this.body.velocity.x = 0;
-		} else if (direction == 'y') {
-			this.body.velocity.y = 0;
-		} else {
-			this.body.velocity.x = 0;
-			this.body.velocity.y = 0;
-		}
 	}
 
 	fight() {}
 
-	getDamage(enemy, player) {
+	getDamage(player, enemy) {
+		enemy.destroy();
+		console.log('PLEASE');
 		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
 			console.log(enemy.dropItemID);
 			let properties = {};
@@ -192,8 +122,6 @@ export default class extends Phaser.Sprite {
 				restartType: 'revive'
 			});
 		}
-
-		enemy.destroy();
 
 		// enemy.body.velocity.x = player.body.velocity.x;
 		// enemy.body.velocity.y = player.body.velocity.y;
@@ -243,32 +171,28 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 
-		if(this.level.inputClass.dash){
-
+		if (this.level.inputClass.dash) {
 			this.multiplySprite.frame = this.frame;
 			this.multiplySprite.alpha = 0.03;
 			this.bmd.draw(this.multiplySprite, 50, 50);
 			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
 
-			if(this.baseImages[0] !== undefined){
-				this.game.time.events.add(
-					100, () => { 
+			if (this.baseImages[0] !== undefined) {
+				this.game.time.events.add(100, () => {
 					this.baseImages[0].alpha = 0;
 					this.baseImages[0].destroy(true, false);
 					this.baseImages.shift();
 				});
 			}
-
 		} else {
-				this.game.time.events.add(
-					100, () => { 
-					this.bmd.clear();
-				});
-
+			this.game.time.events.add(100, () => {
+				this.bmd.clear();
+			});
 		}
 
-
-
+		//
+		// Don't go if blocked
+		//
 		// if(this.body.blocked.down || this.body.blocked.up || this.body.blocked.left || this.body.blocked.right){
 		// 	this.animations.play('idle');
 		// 	this.movementBlocked = true;

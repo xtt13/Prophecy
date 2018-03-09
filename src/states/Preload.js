@@ -88,7 +88,6 @@ export default class extends Phaser.State {
 	}
 
 	preload() {
-
 		// this.stage.backgroundColor = "#000000";
 
 		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
@@ -131,7 +130,6 @@ export default class extends Phaser.State {
 		this.load.audio('sfxBridge', 'assets/sounds/sfxBridge.mp3');
 		this.load.audio('sfxPickUp', 'assets/sounds/sfxPickUp.mp3');
 		this.load.audio('sfxfalldown', 'assets/sounds/sfxfalldown.mp3');
-		
 
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
@@ -204,7 +202,7 @@ export default class extends Phaser.State {
 			if (typeof ipc == 'undefined') {
 				this.text.text = progress + '%';
 			}
-			
+
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
 		});
 	}

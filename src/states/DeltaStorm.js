@@ -7,7 +7,6 @@ export default class extends Phaser.State {
 	}
 
 	create() {
-
 		this.game.camera.flash(0x000000, 2000);
 
 		this.menuText = this.game.add.bitmapText(
@@ -46,14 +45,11 @@ export default class extends Phaser.State {
 				this.state.start('MainMenu', true, false);
 			});
 		});
-
 	}
 
 	preload() {}
 
-	update() {
-		
-	}
+	update() {}
 
 	toggleFullScreen() {
 		this.game.scale.startFullScreen(false, false);

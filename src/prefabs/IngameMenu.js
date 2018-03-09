@@ -163,7 +163,6 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-
 			this.gameMap.createMap();
 		} else if (button.key == 'questButton') {
 			// If Questmap is active --> return

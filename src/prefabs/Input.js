@@ -97,7 +97,6 @@ export default class {
 		this.buttonA.scale = 0.5;
 		this.buttonA.alignBottomRight(50);
 		this.buttonA.onDown.add(this.beginnDash, this);
-
 	}
 
 	isMobileDevice() {
@@ -216,7 +215,6 @@ export default class {
 		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
 		// this.button_SPACEBAR.onUp.add(this.endDash, this);
 
-
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
 
@@ -230,26 +228,18 @@ export default class {
 	}
 
 	onGamepadDown(button) {
-		if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_LEFT) {
-			this.player.walk('left', 200);
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_RIGHT) {
-			this.player.walk('right', 200);
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_UP) {
-			this.player.walk('up', 200);
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_DOWN) {
-			this.player.walk('down', 200);
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_A) {
+		if (button.buttonCode === Phaser.Gamepad.XBOX360_A) {
 			this.beginnDash();
 		}
 	}
 
 	addMovementSound() {
-		if(this.level.muteSound || !this.player.movable) return;
+		if (this.level.muteSound || !this.player.movable) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-			if(!this.pyfootsteps.isPlaying){
-				if(this.currentUnderground == 'grass'){
+			if (!this.pyfootsteps.isPlaying) {
+				if (this.currentUnderground == 'grass') {
 					this.pyfootsteps.play('gravel1', 1);
-				} else if (this.currentUnderground == 'stone'){
+				} else if (this.currentUnderground == 'stone') {
 					this.pyfootsteps.play('grass1', 1);
 				}
 
@@ -258,10 +248,7 @@ export default class {
 				// 		this.pyfootsteps.play('gravel2', 4);
 				// 	}, this);
 				// }
-
 			}
-
-			
 		} else {
 			// this.loop.destroy();
 			// this.loop = false;
@@ -274,10 +261,9 @@ export default class {
 	removeMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 		} else {
-
-			if(this.currentUnderground == 'grass'){
+			if (this.currentUnderground == 'grass') {
 				this.pyfootsteps.stop('gravel1');
-			} else if (this.currentUnderground == 'stone'){
+			} else if (this.currentUnderground == 'stone') {
 				this.pyfootsteps.stop('grass1');
 			}
 		}
@@ -292,7 +278,7 @@ export default class {
 		});
 	}
 
-	beginnDash(){
+	beginnDash() {
 		this.dash = true;
 		this.player.addParticles();
 		this.playerSpeed = 250;
@@ -306,17 +292,7 @@ export default class {
 		});
 	}
 
-	onGamepadUp(button) {
-		if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_LEFT) {
-			this.player.walk('idle');
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_RIGHT) {
-			this.player.walk('idle');
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_UP) {
-			this.player.walk('idle');
-		} else if (button.buttonCode === Phaser.Gamepad.XBOX360_DPAD_DOWN) {
-			this.player.walk('idle');
-		}
-	}
+	onGamepadUp(button) {}
 
 	update() {
 		// console.log("Y: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y));
@@ -324,72 +300,63 @@ export default class {
 
 		// Gamepad Controls
 		if (this.player) {
-			if (!this.player.movable){
+			// If the Player should not walk
+			if (!this.player.movable) {
 				this.player.animations.stop();
 				this.player.body.velocity.x = 0;
 				this.player.body.velocity.y = 0;
 				return;
-			} 
+			}
 
 			if (this.pad1 !== undefined && this.pad1.connected) {
-				// console.log(this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X));
-
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-					if(this.direction == 'left' || this.direction == 'right'){
+					if (this.direction == 'left' || this.direction == 'right') {
 						this.player.body.velocity.y = -this.playerSpeed;
 					} else {
 						this.player.animations.play('run_up');
 						this.player.body.velocity.y = -this.playerSpeed;
 					}
 					this.direction = 'up';
-	
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-					if(this.direction == 'left' || this.direction == 'right'){
+					if (this.direction == 'left' || this.direction == 'right') {
 						this.player.body.velocity.y = this.playerSpeed;
 					} else {
 						this.player.animations.play('run_down');
 						this.player.body.velocity.y = this.playerSpeed;
 					}
 					this.direction = 'down';
-
-				} else {	
+				} else {
 					this.direction = '';
 					this.player.body.velocity.y = 0;
 				}
 
-
 				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-
-					if(this.direction == 'up' || this.direction == 'down'){
+					if (this.direction == 'up' || this.direction == 'down') {
 						this.player.body.velocity.x = -this.playerSpeed;
 					} else {
 						this.player.animations.play('run_left');
 						this.player.body.velocity.x = -this.playerSpeed;
 					}
 					this.direction = 'left';
-					
-
 				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-
-					if(this.direction == 'up' || this.direction == 'down'){
+					if (this.direction == 'up' || this.direction == 'down') {
 						this.player.body.velocity.x = this.playerSpeed;
 					} else {
 						this.player.animations.play('run_right');
 						this.player.body.velocity.x = this.playerSpeed;
 					}
-					this.direction = 'right';		
-					
-
-				} else {			
-					this.direction = '';	
+					this.direction = 'right';
+				} else {
+					this.direction = '';
 					this.player.body.velocity.x = 0;
 				}
 
-				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) == 0 && this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0) {
+				if (
+					this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) == 0 &&
+					this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0
+				) {
 					this.player.animations.stop();
 				}
-
-
 			} else if (this.useMobileControl) {
 				if (this.stick.isDown) {
 					console.log(this.stick.rotation);
@@ -399,17 +366,20 @@ export default class {
 						this.player.body.velocity
 					);
 
-
 					// this.player.rotation = this.stick.rotation;
 					this.player.animations._anims.run_right.speed = 19;
 					this.player.animations._anims.run_left.speed = 19;
 					this.player.animations._anims.run_down.speed = 19;
 					this.player.animations._anims.run_up.speed = 19;
 					// console.log('HIER: ' + this.player.animations._anims.run_down.speed * this.stick.force);
-					this.player.animations._anims.run_down.speed = (this.player.animations._anims.run_down.speed * this.stick.force) + 0.1;
-					this.player.animations._anims.run_up.speed = (this.player.animations._anims.run_up.speed * this.stick.force) + 0.1;
-					this.player.animations._anims.run_right.speed = (this.player.animations._anims.run_right.speed * this.stick.force) + 0.1;
-					this.player.animations._anims.run_left.speed = (this.player.animations._anims.run_left.speed * this.stick.force) + 0.1;
+					this.player.animations._anims.run_down.speed =
+						this.player.animations._anims.run_down.speed * this.stick.force + 0.1;
+					this.player.animations._anims.run_up.speed =
+						this.player.animations._anims.run_up.speed * this.stick.force + 0.1;
+					this.player.animations._anims.run_right.speed =
+						this.player.animations._anims.run_right.speed * this.stick.force + 0.1;
+					this.player.animations._anims.run_left.speed =
+						this.player.animations._anims.run_left.speed * this.stick.force + 0.1;
 					// console.log(this.player.animations._anims.run_down.speed)
 					// console.log(this.stick.force);
 
@@ -418,9 +388,9 @@ export default class {
 					// 	this.player.body.velocity.x = 200;
 					// }
 
-					if(this.currentUnderground == 'grass'){
+					if (this.currentUnderground == 'grass') {
 						this.pyfootsteps.play('gravel1', 4);
-					} else if (this.currentUnderground == 'stone'){
+					} else if (this.currentUnderground == 'stone') {
 						this.pyfootsteps.play('grass1', 4);
 					}
 
@@ -444,64 +414,56 @@ export default class {
 						this.direction = 'left';
 					}
 				} else {
-					switch(this.direction) {
-					    case 'up':
-					        this.player.animations.play('idle');
-					        break;
-					    case 'down':
-					        this.player.animations.play('idle');
-					        break;
-					    case 'left':
-					     	this.player.animations.play('idle_left');
-					        break;
+					switch (this.direction) {
+						case 'up':
+							this.player.animations.play('idle');
+							break;
+						case 'down':
+							this.player.animations.play('idle');
+							break;
+						case 'left':
+							this.player.animations.play('idle_left');
+							break;
 						case 'right':
-					     	this.player.animations.play('idle_right');
-					        break;
-					    default:
-					       
+							this.player.animations.play('idle_right');
+							break;
+						default:
 					}
 					// this.player.animations._anims.run_down.speed = 19;
 					this.player.body.velocity.set(0);
 					this.pyfootsteps.stop();
 				}
 			} else {
-
 				// Keyboard Movement
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-
 					if (this.button_W.isDown) {
 						this.direction = 'up';
 						// this.player.animations._anims.run_down.speed = 15;
 						this.player.body.velocity.y = -this.playerSpeed;
 
-						if(!this.button_A.isDown && !this.button_D.isDown){
+						if (!this.button_A.isDown && !this.button_D.isDown) {
 							this.player.animations.play('run_up');
 						}
 						// console.log(this.player.animations._anims.run_up.speed);
-
 					} else if (this.button_S.isDown) {
 						this.direction = 'down';
 						// this.player.animations._anims.run_down.speed = 15;
-						
+
 						this.player.body.velocity.y = this.playerSpeed;
 
-						if(!this.button_A.isDown && !this.button_D.isDown){
+						if (!this.button_A.isDown && !this.button_D.isDown) {
 							this.player.animations.play('run_down');
 						}
-						
+
 						// console.log(this.player.animations._anims.run_down.speed);
 						// console.log('S DOWN');
-
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.y = 0;
 					}
 
-
 					if (this.button_A.isDown) {
 						// this.player.animations._anims.run_left.speed = 15;
-
-						
 
 						this.direction = 'left';
 
@@ -511,10 +473,8 @@ export default class {
 							this.player.animations.play('run_left');
 							this.player.body.velocity.x = -this.playerSpeed;
 						}
-
 					} else if (this.button_D.isDown) {
 						// this.player.animations._anims.run_right.speed = 15;
-						
 
 						this.direction = 'right';
 
@@ -524,12 +484,10 @@ export default class {
 							this.player.animations.play('run_right');
 							this.player.body.velocity.x = this.playerSpeed;
 						}
-
 					} else {
 						// this.player.animations.play('idle');
 						this.player.body.velocity.x = 0;
 					}
-
 				} else {
 					this.player.body.velocity.y = 0;
 					this.player.body.velocity.x = 0;
@@ -542,65 +500,58 @@ export default class {
 					// 	.tween(this.player.body.velocity)
 					// 	.to({ y: 0 }, 100, Phaser.Easing.Circular.Out, true);
 
-
 					// this.game.physics.arcade.computeVelocity(2, this.player.body, 20, 100, 20);
-					
 
 					// console.log(this.direction);
-					switch(this.direction) {
-					    case 'up':
-					        // this.player.animations.play('idle');
-					        this.player.animations.stop();
+					switch (this.direction) {
+						case 'up':
+							// this.player.animations.play('idle');
+							this.player.animations.stop();
 
-					   //      this.game.add
-								// .tween(this.player.animations._anims.run_up)
-								// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+							//      this.game.add
+							// .tween(this.player.animations._anims.run_up)
+							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
 
-					        break;
+							break;
 
-					    case 'down':
-					        // this.player.animations.play('idle');
-					        this.player.animations.stop();
+						case 'down':
+							// this.player.animations.play('idle');
+							this.player.animations.stop();
 
-					        // console.log(this.player.animations.frame);
-					        // if(this.player.animations.frame < 11){
-					        // 	this.player.animations.next();
-					        // } else {
-					        // 	this.player.animations.stop();
-					        // 	// this.player.animations.play('idle');
-					        // }
+							// console.log(this.player.animations.frame);
+							// if(this.player.animations.frame < 11){
+							// 	this.player.animations.next();
+							// } else {
+							// 	this.player.animations.stop();
+							// 	// this.player.animations.play('idle');
+							// }
 
+							// console.log(this.player.animations.frame);
 
+							//   this.game.add
+							// .tween(this.player.animations._anims.run_down)
+							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
 
-					        // console.log(this.player.animations.frame);
+							break;
+						case 'left':
+							this.player.animations.stop();
+							// this.player.animations.play('idle_left');
 
-						  //   this.game.add
-								// .tween(this.player.animations._anims.run_down)
-								// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
-
-					        break;
-					    case 'left':
-					    this.player.animations.stop();
-					     	// this.player.animations.play('idle_left');
-
-					  //   this.game.add
+							//   this.game.add
 							// .tween(this.player.animations._anims.run_left)
 							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
 
-
-					        break;
+							break;
 						case 'right':
-						this.player.animations.stop();
-					     	// this.player.animations.play('idle_right');
-					  //  	this.game.add
-							// .tween(this.player.animations._anims.run_right)
-							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
-					  //       break;
-					    default:
-					       
+							this.player.animations.stop();
+						// this.player.animations.play('idle_right');
+						//  	this.game.add
+						// .tween(this.player.animations._anims.run_right)
+						// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+						//       break;
+						default:
 					}
 				}
-
 			}
 		}
 	}
