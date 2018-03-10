@@ -41,9 +41,9 @@ export default class extends Phaser.Sprite {
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
 		// Add Lerp after 1 Second
-		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
-			this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
-		});
+		// this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+		// 	this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+		// });
 
 		// -1 Velocity
 		let px = this.body.velocity.x;

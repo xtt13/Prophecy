@@ -97,7 +97,7 @@ export default class {
 		this.dayCycleClass = new Daycycle(this.game, this);
 
 		// Saving Notification
-		this.GUICLASS.createNotification('saving', 'Saving ...');
+		// this.GUICLASS.createNotification('saving', 'Saving ...');
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);

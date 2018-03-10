@@ -17,7 +17,7 @@ export default {
 	scaleRate: 3,
 	forceMobile: false,
 	night: true,
-	enemies: true,
+	enemies: false,
 	startMap: 'map3',
 	lucy: false,
 	secureLS: false

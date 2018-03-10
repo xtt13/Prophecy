@@ -10,6 +10,8 @@ export default class {
 		this.game = game;
 		this.level = level;
 
+		this.notification = false;
+
 		this.createGUI();
 	}
 
@@ -37,7 +39,7 @@ export default class {
 			this.game.world.bringToTop(this.message.downBar);
 		}
 
-		if (this.notification.notificationBar) {
+		if (this.notification) {
 			this.game.world.bringToTop(this.notification.notificationBar);
 			this.game.world.bringToTop(this.notification.text);
 		}

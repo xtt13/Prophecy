@@ -143,6 +143,9 @@ export default class extends Phaser.State {
 		this.load.spritesheet('player_beta', 'assets/sprites/player_beta.png', 55, 55);
 		this.load.spritesheet('testman', 'assets/sprites/testman.png', 46, 46);
 		this.load.spritesheet('priest', 'assets/sprites/priest.png', 41, 41);
+		this.load.spritesheet('smith', 'assets/sprites/smith.png', 32, 41);
+		this.load.spritesheet('librarian', 'assets/sprites/librarian.png', 18, 41);
+		this.load.spritesheet('inhabitant1', 'assets/sprites/inhabitant1.png', 11, 30);
 		this.load.spritesheet('enemy', 'assets/sprites/enemy.png', 18, 18);
 		this.load.spritesheet('item', 'assets/sprites/testitem.png', 25, 27);
 		this.load.spritesheet('treeleaves', 'assets/sprites/treeleaves.png', 3, 3);

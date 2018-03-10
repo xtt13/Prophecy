@@ -31,7 +31,7 @@ export default class {
 			this.player.movable = true;
 
 			this.game.time.events.add(
-				Phaser.Timer.SECOND * this.game.rnd.integerInRange(3, 8),
+				Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 2),
 				function() {
 					this.followPath();
 				},

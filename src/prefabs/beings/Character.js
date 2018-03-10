@@ -3,8 +3,8 @@ import config from './../../config';
 
 export default class extends Phaser.Sprite {
 	constructor(game, element, player) {
-		super(game, element.x, element.y, element.properties.character);
-
+		super(game, element.x, element.y + (element.height / 2), element.properties.character);
+		console.log(element);
 		this.game = game;
 		this.id = element.properties.id;
 		this.player = player;
@@ -13,9 +13,26 @@ export default class extends Phaser.Sprite {
 		this.anchor.setTo(0.5);
 
 		this.game.physics.enable(this);
-		this.body.setSize(10, 15, 18, 20);
 		this.body.immovable = true;
 		this.body.drag.set(90);
+
+		// setSize(width, height, offsetX, offsetY)
+		switch (element.properties.character) {
+			case 'priest':
+				this.body.setSize(10, 15, 18, 20);
+				break;
+			case 'smith':
+				this.body.setSize(15, 15, 9, 22);
+				break;
+			case 'librarian':
+				this.body.setSize(10, 10, 5, 28);
+				break;
+			case 'inhabitant1':
+				this.body.setSize(10, 10, 0, 20);
+				break;
+			default:
+				this.body.setSize(10, 15, 0, 0);
+		}
 
 		this.movementX = this.x + 100;
 		this.movementY = this.y + 100;
