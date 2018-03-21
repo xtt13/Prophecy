@@ -31,7 +31,22 @@ export default class {
 		// Disable Storm, Disable Playermovement, No Camera Lerp
 		this.level.weather.enableStorm = false;
 		this.level.player.movable = false;
+		this.level.player.alpha = 0;
 		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+
+		this.blackBGbmd = this.game.add.bitmapData(window.innerWidth, window.innerHeight);
+		this.blackBGbmd.ctx.beginPath();
+		this.blackBGbmd.ctx.rect(0, 0, window.innerWidth, window.innerHeight);
+		this.blackBGbmd.ctx.fillStyle = '#000000';
+		this.blackBGbmd.ctx.globalAlpha = 1;
+		this.blackBGbmd.ctx.fill();
+
+		this.blackBG = this.game.add.sprite(
+			0,
+			0,
+			this.blackBGbmd
+		);
+		this.blackBG.fixedToCamera = true;
 
 		// Create BitmapData Background
 		this.bmd = this.game.add.bitmapData(400, 200);
@@ -114,9 +129,11 @@ export default class {
 			// Enable Storm, Enable Playermovement, Add Camera Lerp
 			this.level.weather.enableStorm = true;
 			this.level.player.movable = true;
+			this.level.player.alpha = 1;
 			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 
 			// Destroy menuBackground + all buttons
+			this.blackBG.destroy();
 			this.menuBackground.destroy();
 			this.mapButton.destroy();
 			this.questButton.destroy();

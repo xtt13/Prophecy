@@ -57,7 +57,8 @@ export default class extends Phaser.Sprite {
 		//   // console.log('flip right');
 		// }
 		if (angle == 2) {
-			this.game.world.bringToTop(this);
+			this.game.world.moveUp(this);
+			// this.game.world.setChildIndex(this.player, 1);
 		}
 	}
 }

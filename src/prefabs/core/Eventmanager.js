@@ -142,7 +142,7 @@ export default class {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
 		}
 
-		this.level.bridgebuilder = new Bridgebuilder(
+		this.bridgebuilderRemove = new Bridgebuilder(
 			this.game,
 			region,
 			this.level.player,
@@ -151,7 +151,18 @@ export default class {
 			this.level.collisionLayer
 		);
 
-		this.level.bridgebuilder.removeBridge();
+		// If Wait -> Wait
+		console.log(region.properties.wait);
+		if (region.properties.wait !== undefined) {
+			console.log('wait');
+			this.game.time.events.add(
+				region.properties.wait, () => {
+					console.log('go');
+					this.bridgebuilderRemove.removeBridge();
+				});
+		} else {
+			this.bridgebuilderRemove.removeBridge();
+		}
 
 		this.level.activatedBridges.push(bridgeID);
 	}
@@ -436,10 +447,10 @@ export default class {
 	soundAreaEnter(region) {
 		console.log('ISDFJISDFJ');
 		this.areaSound = game.add.audio(region.properties.soundkey);
-		this.areaSound.fadeIn(2000);
+		this.areaSound.fadeIn(4000);
 	}
 
 	soundAreaLeave(region) {
-		this.areaSound.fadeOut(2000);
+		this.areaSound.fadeOut(4000);
 	}
 }

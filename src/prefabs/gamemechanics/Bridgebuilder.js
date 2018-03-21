@@ -43,17 +43,23 @@ export default class {
 				this.map.removeTile(this.collX, this.collY, this.collisionLayer);
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
 
-				if (bridgeCounter + 1 == bridgeLength) {
-					this.map.putTile(37, this.bridgeX, this.bridgeY, this.groundLayer);
-					this.map.putTile(38, this.bridgeX - 1, this.bridgeY, this.groundLayer);
-					this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
-					this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
-				} else {
-					this.map.putTile(59, this.bridgeX, this.bridgeY, this.groundLayer);
-					this.map.putTile(58, this.bridgeX - 1, this.bridgeY, this.groundLayer);
-					this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
-					this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
-				}
+				// let currentTile = this.map.getTile(this.collX, this.collY, this.groundLayer);
+				// let currentTileIndex = currentTile.index;
+
+				// if(currentTileIndex !== 36){
+					if (bridgeCounter + 1 == bridgeLength) {
+						this.map.putTile(37, this.bridgeX, this.bridgeY, this.groundLayer);
+						this.map.putTile(38, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+						this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+						this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+					} else {
+						this.map.putTile(59, this.bridgeX, this.bridgeY, this.groundLayer);
+						this.map.putTile(58, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+						this.map.putTile(37, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+						this.map.putTile(38, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+					}
+				// }
+
 			} else if (bridgeDirection == 'down') {
 				this.bridgeY++;
 				this.collY++;
@@ -120,6 +126,8 @@ export default class {
 		const bridgeDirection = this.region.properties.direction;
 		const bridgeLength = this.region.properties.length;
 		const bridgeDuration = this.region.properties.duration;
+		const bridgeWidth = this.region.properties.width;
+		console.log(bridgeDuration);
 
 		const putBackgroundTile = this.region.properties.putBackgroundTile;
 
@@ -137,15 +145,26 @@ export default class {
 
 				this.bridgeSound.play();
 
-				this.map.putTile(3, this.bridgeX, this.bridgeY, this.collisionLayer);
-				this.map.putTile(3, this.bridgeX - 1, this.bridgeY, this.collisionLayer);
-				this.map.removeTile(this.collX, this.collY, this.groundLayer);
-				this.map.removeTile(this.collX - 1, this.collY, this.groundLayer);
+				console.log('REMOVE');
+				// this.map.putTile(3, this.bridgeX, this.bridgeY, this.collisionLayer);
+				// this.map.putTile(3, this.bridgeX - 1, this.bridgeY, this.collisionLayer);
+				// this.map.removeTile(this.collX, this.collY, this.groundLayer);
+				// this.map.removeTile(this.collX - 1, this.collY, this.groundLayer);
 
-				if (putBackgroundTile !== undefined) {
-					this.map.putTile(putBackgroundTile, this.bridgeX, this.bridgeY, this.groundLayer);
-					this.map.putTile(putBackgroundTile, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+
+				for (var i = 0; i < bridgeWidth; i++) {
+					console.log(i);
+					this.map.putTile(3, (this.bridgeX - bridgeWidth) + i, this.bridgeY, this.collisionLayer);
+					this.map.putTile(3, this.bridgeX + i, this.bridgeY, this.collisionLayer);
+					this.map.removeTile((this.collX - bridgeWidth) + i, this.collY, this.groundLayer);	
+					this.map.removeTile(this.collX + i, this.collY, this.groundLayer);
+							
 				}
+
+				// if (putBackgroundTile !== undefined) {
+				// 	this.map.putTile(putBackgroundTile, this.bridgeX, this.bridgeY, this.groundLayer);
+				// 	this.map.putTile(putBackgroundTile, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+				// }
 			} else if (bridgeDirection == 'down') {
 				console.log(bridgeCounter, bridgeLength);
 				this.bridgeY++;

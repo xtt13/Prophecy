@@ -19,8 +19,8 @@ export default class {
 			this.time = new Date();
 
 			if (__DEV__) {
-				// this.timeValue = 11;
-				this.timeValue = this.time.getHours();
+				this.timeValue = 11;
+				// this.timeValue = this.time.getHours();
 			} else {
 				this.timeValue = this.time.getHours();
 			}

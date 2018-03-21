@@ -285,6 +285,10 @@ export default class {
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
 
+		// this.dashTween = this.game.add
+		// 	.tween(this)
+		// 	.to({ playerSpeed: playerSpeed + 190 }, 200, Phaser.Easing.Exponential.In, true, 0, 0, true);
+
 		this.game.time.events.add(400, () => {
 			this.playerSpeed = 60;
 			this.dash = false;
