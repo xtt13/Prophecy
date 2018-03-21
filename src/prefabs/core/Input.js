@@ -535,7 +535,7 @@ export default class {
 							break;
 						case 'left':
 							this.player.animations.stop();
-							// this.player.animations.play('idle_left');
+							this.player.animations.play('idle_left');
 
 							//   this.game.add
 							// .tween(this.player.animations._anims.run_left)
@@ -544,7 +544,7 @@ export default class {
 							break;
 						case 'right':
 							this.player.animations.stop();
-						// this.player.animations.play('idle_right');
+						this.player.animations.play('idle_right');
 						//  	this.game.add
 						// .tween(this.player.animations._anims.run_right)
 						// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);

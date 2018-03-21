@@ -13,7 +13,7 @@ export default class extends Phaser.State {
 			this.game.camera.width / 2,
 			this.game.camera.height / 2,
 			'pxlfont',
-			'Delta Storm',
+			'Random Studio',
 			30
 		);
 		this.menuText.anchor.set(0.5);

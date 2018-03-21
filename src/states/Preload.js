@@ -4,6 +4,8 @@ import Input from '../prefabs/core/Input';
 import Musicplayer from '../prefabs/audio/Musicplayer';
 import Soundmanager from '../prefabs/audio/Soundmanager';
 
+import SlickUI from '../plugins/slick-ui.min';
+
 export default class extends Phaser.State {
 	init() {
 		this.AxThunderstrikeJSON = {
@@ -100,6 +102,9 @@ export default class extends Phaser.State {
 
 		//this.load.image('player', 'assets/sprites/player.png');
 		// this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3xblur.png');
+
+		// this.game.slickUI = this.game.plugins.add(Phaser.Plugin.SlickUI);
+  //       this.game.slickUI.load('assets/ui/kenney/kenney.json');
 
 		this.load.image('lucy', 'assets/sprites/lucy.png');
 		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');

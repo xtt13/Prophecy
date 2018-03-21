@@ -39,7 +39,7 @@ export default class {
 			this.game.world.bringToTop(this.message.downBar);
 		}
 
-		if (this.notification) {
+		if (this.notification.notificationBar) {
 			this.game.world.bringToTop(this.notification.notificationBar);
 			this.game.world.bringToTop(this.notification.text);
 		}

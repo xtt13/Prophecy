@@ -1,9 +1,9 @@
-// Game Configuration
+// Game Configuration w:580, h:280
 export default {
 	phaserConfig: {
-		// width: 800,
+		// width: 900,
 		width: 580,
-		// height: 500,
+		// height: 400,
 		height: 280,
 		renderer: Phaser.AUTO,
 		antialias: true,

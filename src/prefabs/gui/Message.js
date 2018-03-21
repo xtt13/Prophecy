@@ -86,6 +86,7 @@ export default class {
 		this.removeBars();
 		if (!this.movable) {
 			this.player.movable = true;
+			this.player.talking = false;
 			this.player.body.immovable = false;
 		}
 	}

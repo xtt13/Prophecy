@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+// import SlickUI from '../plugins/slick-ui.min';
+
 export default class extends Phaser.State {
 	init() {
 		// Boot Log
@@ -100,6 +102,33 @@ export default class extends Phaser.State {
 				this.subText.text = 'Press A-Button To Move On';
 			}
 		});
+		
+		// console.log(this.game.slickUI);
+		// console.log(SlickUI.Element.Panel);
+
+		// var panel = new SlickUI.Element.Panel(100, 100, 200, 100)
+		// console.log(panel);
+        
+
+  //       // panel.add(new SlickUI.Element.Text(10,10, "Text input")).centerHorizontally().text.alpha = 0.5;
+
+  //       var test = new SlickUI.Element.Text(this.game.camera.width / 2,this.game.camera.height / 2, "Your name");
+  //       console.log(test);
+  //       panel.add(test);
+
+  //       this.game.slickUI.add(test);
+
+        // var textField = panel.add(new SlickUI.Element.TextField(10,58, panel.width - 20, 40));
+
+        // textField.events.onOK.add(function () {
+        //     alert('Your name is: ' + textField.value);
+        // });
+        // textField.events.onToggle.add(function (open) {
+        //     console.log('You just ' + (open ? 'opened' : 'closed') + ' the virtual keyboard');
+        // });
+        // textField.events.onKeyPress.add(function(key) {
+        //     console.log('You pressed: ' + key);
+        // });
 	}
 
 	preload() {}

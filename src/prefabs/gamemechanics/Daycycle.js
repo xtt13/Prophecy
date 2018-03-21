@@ -19,7 +19,8 @@ export default class {
 			this.time = new Date();
 
 			if (__DEV__) {
-				this.timeValue = 11;
+				// this.timeValue = 11;
+				this.timeValue = this.time.getHours();
 			} else {
 				this.timeValue = this.time.getHours();
 			}
@@ -29,13 +30,14 @@ export default class {
 
 				this.night = true;
 
-				this.lightSprite.alpha = 0.9;
-				this.level.backgroundLayer.tint = 0x000000;
-				this.level.player.tint = 0x999999;
+				this.lightSprite.alpha = 0.85;
 
-				for (var i = 0; i < this.level.characters.length; i++) {
-					this.level.characters[i].tint = 0x999999;
-				}
+				// Tint Clouds
+				this.level.backgroundLayer.tint = 0x000000;
+
+				// for (var i = 0; i < this.level.characters.length; i++) {
+				// 	this.level.characters[i].tint = 0x999999;
+				// }
 
 				if (this.level.weather.clouds) {
 					this.level.weather.clouds.alpha = 0;
@@ -84,12 +86,11 @@ export default class {
 
 				this.level.backgroundLayer.tint = 0x000000;
 
-				this.lightSprite.alpha = 0.9;
-				this.level.player.tint = 0xdddddd;
+				this.lightSprite.alpha = 0.85;
 
-				for (var i = 0; i < this.level.characters.length; i++) {
-					this.level.characters[i].tint = 0x999999;
-				}
+				// for (var i = 0; i < this.level.characters.length; i++) {
+				// 	this.level.characters[i].tint = 0x999999;
+				// }
 
 				if (this.level.weather.clouds) {
 					this.level.weather.clouds.alpha = 0;

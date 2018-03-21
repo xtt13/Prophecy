@@ -18,6 +18,7 @@ export default class extends Phaser.Sprite {
 
 		this.movable = true;
 		this.playerSpeed = 130;
+		this.talking = false;
 
 		this.baseImages = [];
 
@@ -39,6 +40,8 @@ export default class extends Phaser.Sprite {
 		this.game.camera.roundPx = false;
 		this.game.renderer.renderSession.roundPixels = true;
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN, 0.07, 0.07);
+		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
 
 		// Add Lerp after 1 Second
 		// this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
@@ -87,6 +90,34 @@ export default class extends Phaser.Sprite {
 	}
 
 	fight() {}
+
+	talk(player, character){
+
+		// PLAYER
+		// up: 3
+		// down: 4
+		// left: 1
+		// right: 2
+
+		// console.log(player.body.facing);
+		console.log(character.body.facing);
+
+		let playerFacing = player.body.facing;
+		let characterFacing = 0;
+
+		if (
+			(playerFacing == 3 && characterFacing == 0) ||
+			(playerFacing == 1 && characterFacing == 2) ||
+			(playerFacing == 2 && characterFacing == 1) ||
+			(playerFacing == 4 && characterFacing == 3)
+		){
+			if(!this.player.talking){
+				this.player.talking = true;
+				this.GUICLASS.createMessage(['Testmessage'], false, true);
+			}
+		}
+
+	}
 
 	getDamage(player, enemy) {
 		enemy.destroy();
