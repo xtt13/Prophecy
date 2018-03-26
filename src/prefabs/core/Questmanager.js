@@ -1,29 +1,25 @@
 import Phaser from 'phaser';
 import config from './../../config';
+import quests from './../../quests';
 import Safe from './Safe';
 
 export default class {
 	constructor(game, level) {
 		this.game = game;
 		this.level = level;
+
+		console.log(quests.quests);
 	}
 
 	// Add quest with properties
-	addQuest(properties) {
+	addQuest(questID) {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
 
-		// Fill Template
-		let quest = {
-			id: properties.questID,
-			silent: properties.silent,
-			questMessage: properties.questMessage,
-			questKillEnemyType: properties.questKillEnemyType,
-			questDeadEnemies: 1,
-			questKillEnemyAmount: properties.questKillEnemyAmount
-		};
+		console.log(questID);
+		console.log(quests.quests[questID]);
 
-		this.quests[properties.questID] = quest;
+		this.quests[questID] = quests.quests[questID];
 
 		console.log(this.quests);
 
@@ -43,7 +39,7 @@ export default class {
 		delete this.quests[questID];
 
 		// Push the saved quest to masteredQuests
-		this.quests.masteredQuests[questID] = masteredQuest;
+		this.quests.masteredQuests.push(questID);
 
 		// Set and overwrite Quests
 		this.level.safe.setQuests(this.quests);

@@ -75,13 +75,13 @@ export default class {
 			if (i + 1 == message_id) {
 				if (this.level.playedDialogues.includes(message_id)) return;
 
-				if (region.properties.removeQuestID !== undefined) {
-					this.level.questManager.removeQuest(region.properties.removeQuestID);
-				}
+				// if (region.properties.removeQuestID !== undefined) {
+				// 	this.level.questManager.removeQuest(region.properties.removeQuestID);
+				// }
 
-				if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-				this.level.questManager.addQuest(region.properties);
-				this.level.GUICLASS.createNotification('quest', 'Questupdate');
+				// if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+				// this.level.questManager.addQuest(region.properties.questID);
+				// this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
 				const message = all_messages[i];
 
@@ -238,8 +238,8 @@ export default class {
 
 							this.game.time.events.add(Phaser.Timer.SECOND * 8, () => {
 								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-
-								this.level.questManager.addQuest(region.properties);
+								console.log('HIEER: ' + region.properties.questID);
+								this.level.questManager.addQuest(region.properties.questID);
 
 								this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
@@ -317,7 +317,7 @@ export default class {
 	addQuest(region) {
 		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
 
-		this.level.questManager.addQuest(region.properties);
+		this.level.questManager.addQuest(region.properties.questID);
 
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}
@@ -340,7 +340,7 @@ export default class {
 		this.spawnEnemiesRunning = true;
 
 		if (!this.level.questManager.checkIfQuestExists(region.properties.questID)) {
-			this.level.questManager.addQuest(region.properties);
+			this.level.questManager.addQuest(region.properties.questID);
 		}
 
 		for (var i = 0; i < region.properties.amount; i++) {

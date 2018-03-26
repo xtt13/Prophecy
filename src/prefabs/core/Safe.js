@@ -133,7 +133,7 @@ export default class {
 
 		if (quests == null) {
 			var quests = {
-				masteredQuests: {}
+				masteredQuests: []
 			};
 			return quests;
 		} else {

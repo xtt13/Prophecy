@@ -103,11 +103,7 @@
                      "messageID":4,
                      "messageWaitingDuration":3,
                      "pathfinderMessage":true,
-                     "questID":6,
-                     "questKillEnemyAmount":8,
-                     "questKillEnemyMap":"map2",
-                     "questKillEnemyType":"seed",
-                     "questMessage":"Kill all enemies!",
+                     "questID":3,
                      "readable":true
                     },
                  "propertytypes":
@@ -119,10 +115,6 @@
                      "messageWaitingDuration":"int",
                      "pathfinderMessage":"bool",
                      "questID":"int",
-                     "questKillEnemyAmount":"int",
-                     "questKillEnemyMap":"string",
-                     "questKillEnemyType":"string",
-                     "questMessage":"string",
                      "readable":"bool"
                     },
                  "rotation":0,
@@ -223,75 +215,6 @@
                  "width":0.944321007138863,
                  "x":0.339093566162807,
                  "y":972.83013688994
-                }, 
-                {
-                 "height":63.5584547151923,
-                 "id":115,
-                 "name":"Questmessage",
-                 "properties":
-                    {
-                     "addQuest":true,
-                     "questID":3,
-                     "questMessage":"Defend yourself!"
-                    },
-                 "propertytypes":
-                    {
-                     "addQuest":"bool",
-                     "questID":"int",
-                     "questMessage":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":140.896318780604,
-                 "x":504.391435623391,
-                 "y":1153.8775566068
-                }, 
-                {
-                 "height":63.5585,
-                 "id":116,
-                 "name":"Questmessage",
-                 "properties":
-                    {
-                     "addQuest":true,
-                     "questID":5,
-                     "questMessage":"Hello I'm a quest!"
-                    },
-                 "propertytypes":
-                    {
-                     "addQuest":"bool",
-                     "questID":"int",
-                     "questMessage":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":140.896,
-                 "x":288.38797111808,
-                 "y":1014.09632435636
-                }, 
-                {
-                 "height":63.5585,
-                 "id":117,
-                 "name":"Questmessage",
-                 "properties":
-                    {
-                     "addQuest":true,
-                     "questID":4,
-                     "questMessage":"Be a hero!"
-                    },
-                 "propertytypes":
-                    {
-                     "addQuest":"bool",
-                     "questID":"int",
-                     "questMessage":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":140.896,
-                 "x":1091.39285770549,
-                 "y":1029.4124938553
                 }, 
                 {
                  "height":192.736,
@@ -732,12 +655,14 @@
                  "properties":
                     {
                      "character":"priest",
-                     "id":1
+                     "id":1,
+                     "ifQuestID":2
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "ifQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",

@@ -176,15 +176,15 @@ export default class extends Phaser.Sprite {
 		if (item.questID !== undefined) {
 			if (this.questManager.checkIfQuestExists(item.questID)) return;
 
-			let quest = {
-				questID: item.questID,
-				questMessage: item.questMessage,
-				questKillEnemyType: undefined,
-				questDeadEnemies: undefined,
-				questKillEnemyAmount: undefined
-			};
+			// let quest = {
+			// 	questID: item.questID,
+			// 	questMessage: item.questMessage,
+			// 	questKillEnemyType: undefined,
+			// 	questDeadEnemies: undefined,
+			// 	questKillEnemyAmount: undefined
+			// };
 
-			this.questManager.addQuest(quest);
+			this.questManager.addQuest(item.questID);
 
 			console.log('Questupdate');
 			this.GUICLASS.createNotification('success', 'Questupdate');
