@@ -8,7 +8,7 @@ export default class {
 		this.game = game;
 		this.level = level;
 
-		console.log(quests.quests);
+		console.table(quests.quests);
 	}
 
 	// Add quest with properties
@@ -49,8 +49,8 @@ export default class {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
 
-		// Check if questID in quests || masteredQuests
-		if (questID in this.quests || questID in this.quests.masteredQuests) {
+		// Check if questID in quests
+		if (questID in this.quests) {
 			return true;
 		} else {
 			return false;
@@ -62,10 +62,30 @@ export default class {
 		this.quests = this.level.safe.getQuests();
 
 		// Check if masteredQuestID in masteredQuests
-		if (masteredQuestID in this.quests.masteredQuests) {
+		if (masteredQuestID) {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	checkQuestDialogue(character){
+		console.log('HIa');
+
+		// Get Quests
+		this.quests = this.level.safe.getQuests();
+
+		for(let property in this.quests){
+			if(this.quests[property].length == 0) continue;
+			if(this.quests[property].dialogues == undefined) {
+				return false;
+			}
+
+			if(this.quests[property].dialogues[character] !== undefined && Number.isInteger(this.quests[property].dialogues[character])){
+				return this.quests[property].dialogues[character];
+			} else {
+				return false;
+			}
 		}
 	}
 

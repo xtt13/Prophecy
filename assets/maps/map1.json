@@ -702,6 +702,7 @@
                      "duration":500,
                      "id":2,
                      "length":6,
+                     "questID":3,
                      "removeQuestID":2,
                      "requiredItemID":1
                     },
@@ -712,6 +713,7 @@
                      "duration":"int",
                      "id":"int",
                      "length":"int",
+                     "questID":"int",
                      "removeQuestID":"int",
                      "requiredItemID":"int"
                     },

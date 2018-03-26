@@ -112,6 +112,11 @@ export default class {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
 		}
 
+		if (region.properties.questID !== undefined) {
+			if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+			this.level.questManager.addQuest(region.properties.questID);
+		}
+
 		this.level.bridgebuilder = new Bridgebuilder(
 			this.game,
 			region,
@@ -185,6 +190,7 @@ export default class {
 	}
 
 	addPathfinderMessage(region) {
+
 		const message_id = region.properties.messageID;
 		const characterID = region.properties.characterID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
@@ -196,8 +202,13 @@ export default class {
 			return;
 
 		if (this.level.playedDialogues.includes(message_id)) return;
+		
 		this.level.playedDialogues.push(message_id);
 		this.level.safe.setPlayedDialogues(this.level.playedDialogues);
+
+		if (region.properties.removeQuestID !== undefined) {
+			this.level.questManager.removeQuest(region.properties.removeQuestID);
+		}
 
 		for (var i = 0; i < this.level.characters.length; i++) {
 			if (this.level.characters[i].id == characterID) {
@@ -238,7 +249,6 @@ export default class {
 
 							this.game.time.events.add(Phaser.Timer.SECOND * 8, () => {
 								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-								console.log('HIEER: ' + region.properties.questID);
 								this.level.questManager.addQuest(region.properties.questID);
 
 								this.level.GUICLASS.createNotification('quest', 'Questupdate');

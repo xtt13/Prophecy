@@ -145,7 +145,29 @@ export default class {
 
 		// Find specific people
 		elementsArr.forEach(function(element) {
+			// Da bei QuestID
+			if(element.properties.ifQuestID !== undefined){
+				let check = this.questManager.checkIfQuestExists(element.properties.ifQuestID);
+				if(!check) return;
+			}
+
+			// Weg bei QuestID
+			if(element.properties.ifNotQuestID !== undefined){
+				let valueElem = element.properties.ifNotQuestID;
+				let entries = valueElem.split(',');
+
+				for (var i = 0; i < entries.length; i++) {
+					let check = this.questManager.checkIfQuestExists(parseInt(entries[i]));
+					console.log(check);
+					if(check) return;
+				}
+
+
+			}
+
 			this.characters.push(new Character(this.game, element, this.player));
+			
+			
 		}, this);
 	}
 
@@ -195,7 +217,6 @@ export default class {
 		// Find specific enemy
 		elementsArr.forEach(function(element) {
 			const killQuestID = element.properties.killQuestID;
-
 			if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
 				if (element.properties.type == 'seed') {
 					this.enemies.push(

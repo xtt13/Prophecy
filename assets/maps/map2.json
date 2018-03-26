@@ -103,8 +103,9 @@
                      "messageID":4,
                      "messageWaitingDuration":3,
                      "pathfinderMessage":true,
-                     "questID":3,
-                     "readable":true
+                     "questID":4,
+                     "readable":true,
+                     "removeQuestID":3
                     },
                  "propertytypes":
                     {
@@ -115,7 +116,8 @@
                      "messageWaitingDuration":"int",
                      "pathfinderMessage":"bool",
                      "questID":"int",
-                     "readable":"bool"
+                     "readable":"bool",
+                     "removeQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -326,8 +328,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.14127130029,
-                 "x":749.279635184517,
-                 "y":1328.2771136574
+                 "x":747.476046042124,
+                 "y":1360.74171822048
                 }, 
                 {
                  "height":14.1413,
@@ -347,8 +349,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":730.821349061766,
-                 "y":803.348755900341
+                 "x":744.348267629716,
+                 "y":1241.62091750193
                 }, 
                 {
                  "height":14.1413,
@@ -432,9 +434,8 @@
                      "dropItemID":2,
                      "itemType":"key",
                      "jumpDown":false,
-                     "killQuestID":6,
-                     "questID":7,
-                     "questMessage":"Enter the temple!",
+                     "killQuestID":4,
+                     "questID":5,
                      "type":"seed"
                     },
                  "propertytypes":
@@ -444,7 +445,6 @@
                      "jumpDown":"bool",
                      "killQuestID":"int",
                      "questID":"int",
-                     "questMessage":"string",
                      "type":"string"
                     },
                  "rotation":0,
@@ -456,150 +456,12 @@
                 }, 
                 {
                  "height":22.0022,
-                 "id":141,
-                 "name":"Enemy Seed",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":928.969943546052,
-                 "y":551.422332453503
-                }, 
-                {
-                 "height":22.0022,
-                 "id":153,
-                 "name":"Enemy Seed",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":815.765923403505,
-                 "y":450.012659849465
-                }, 
-                {
-                 "height":22.0022,
-                 "id":154,
-                 "name":"Enemy Seed",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":633.477319381395,
-                 "y":451.188715359285
-                }, 
-                {
-                 "height":22.0022,
-                 "id":155,
-                 "name":"Enemy Seed",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":558.209766752911,
-                 "y":488.822491673527
-                }, 
-                {
-                 "height":22.0022,
-                 "id":156,
-                 "name":"Enemy Seed",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":579.378765929672,
-                 "y":561.737933282371
-                }, 
-                {
-                 "height":22.0022,
-                 "id":157,
-                 "name":"Enemy Seed",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "killQuestID":6,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":569.970321851111,
-                 "y":621.716764283194
-                }, 
-                {
-                 "height":22.0022,
                  "id":158,
                  "name":"Enemy Seed",
                  "properties":
                     {
                      "jumpDown":false,
-                     "killQuestID":6,
+                     "killQuestID":4,
                      "type":"seed"
                     },
                  "propertytypes":
@@ -622,7 +484,7 @@
                  "properties":
                     {
                      "jumpDown":false,
-                     "killQuestID":6,
+                     "killQuestID":4,
                      "type":"seed"
                     },
                  "propertytypes":
@@ -656,7 +518,7 @@
                     {
                      "character":"priest",
                      "id":1,
-                     "ifQuestID":2
+                     "ifQuestID":4
                     },
                  "propertytypes":
                     {
@@ -678,19 +540,21 @@
                  "properties":
                     {
                      "character":"smith",
-                     "id":2
+                     "id":2,
+                     "ifNotQuestID":"3,4"
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "ifNotQuestID":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":18.3897,
-                 "x":619.091252276636,
-                 "y":877.51454223793
+                 "x":751.655054242548,
+                 "y":898.255817375453
                 }, 
                 {
                  "height":35.6705547325103,
@@ -699,19 +563,21 @@
                  "properties":
                     {
                      "character":"librarian",
-                     "id":3
+                     "id":3,
+                     "ifNotQuestID":"3,4"
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "ifNotQuestID":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":35.3650086419752,
-                 "x":683.447571227658,
-                 "y":864.181141755226
+                 "x":850.279566899044,
+                 "y":892.136773462323
                 }, 
                 {
                  "height":11.4936,
@@ -720,19 +586,21 @@
                  "properties":
                     {
                      "character":"inhabitant1",
-                     "id":4
+                     "id":4,
+                     "ifNotQuestID":"3,4"
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "ifNotQuestID":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":18.3897,
-                 "x":655.347991597604,
-                 "y":877.099715117394
+                 "x":645.42825131444,
+                 "y":940.225335101161
                 }],
          "opacity":1,
          "type":"objectgroup",

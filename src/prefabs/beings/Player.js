@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import Item from './../gamemechanics/Item';
 import LockGame from './../minigame/LockGame';
 import config from './../../config';
+import dialogues from './../../dialogues';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, level) {
@@ -76,6 +77,8 @@ export default class extends Phaser.Sprite {
 		this.bmd.draw(this.multiplySprite, 50, 50);
 
 		game.add.existing(this);
+
+
 	}
 
 	addParticles() {
@@ -113,7 +116,24 @@ export default class extends Phaser.Sprite {
 		){
 			if(!this.player.talking){
 				this.player.talking = true;
-				this.GUICLASS.createMessage(['Testmessage'], false, true);
+
+				let result = this.questManager.checkQuestDialogue('priest');
+				
+				if (result !== false){
+
+					const all_messages = Object.values(dialogues.dialogues);
+
+					for (let i = 0; i < all_messages.length; i++) {
+						if (i + 1 == result) {
+							const message = all_messages[i];
+							this.GUICLASS.createMessage(message, false, true);
+							break;
+						}
+					}
+
+				} else {
+					this.GUICLASS.createMessage(['Testmessage'], false, true);
+				}
 			}
 		}
 
@@ -121,9 +141,8 @@ export default class extends Phaser.Sprite {
 
 	getDamage(player, enemy) {
 		enemy.destroy();
-		console.log('PLEASE');
+
 		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
-			console.log(enemy.dropItemID);
 			let properties = {};
 			properties.id = enemy.dropItemID;
 			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
