@@ -17,7 +17,7 @@ export default class {
 
 		var width = 50;
 		var height = 20;
-		this.bmd = game.add.bitmapData(width, height);
+		this.bmd = this.game.add.bitmapData(width, height);
 
 		this.bmd.ctx.beginPath();
 		this.bmd.ctx.rect(0, 0, width, height);
@@ -25,7 +25,7 @@ export default class {
 		this.bmd.ctx.globalAlpha = 0.8;
 		this.bmd.ctx.fill();
 
-		this.notificationBar = game.add.sprite(this.game.camera.width - this.bmd.width - 20, -20, this.bmd);
+		this.notificationBar = this.game.add.sprite(this.game.camera.width - this.bmd.width - 20, -20, this.bmd);
 		this.notificationBar.fixedToCamera = true;
 		this.notificationBar.alpha = 0;
 

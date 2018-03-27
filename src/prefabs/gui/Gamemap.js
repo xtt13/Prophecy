@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 
 export default class {
 	constructor(game, level, ingameMenu) {
@@ -66,7 +65,7 @@ export default class {
 
 		this.map.mask = this.mask;
 
-		this.bmdPlayer = game.add.bitmapData(6, 6);
+		this.bmdPlayer = this.game.add.bitmapData(6, 6);
 		this.bmdPlayer.ctx.beginPath();
 		this.bmdPlayer.ctx.rect(0, 0, 6, 6);
 		this.bmdPlayer.ctx.fillStyle = '#FF00FF';
@@ -86,7 +85,7 @@ export default class {
 		this.playerPX = this.piece.x + this.valueX * this.piece.width;
 		this.playerPY = this.piece.y + this.valueY * this.piece.height;
 
-		this.playerDot = game.add.sprite(this.map.x + this.playerPX, this.map.y + this.playerPY, this.bmdPlayer);
+		this.playerDot = this.game.add.sprite(this.map.x + this.playerPX, this.map.y + this.playerPY, this.bmdPlayer);
 
 		this.playerDot.anchor.set(0.5);
 

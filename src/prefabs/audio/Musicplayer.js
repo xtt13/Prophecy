@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import Safe from '../core/Safe';
 
 export default class {
 	constructor(game) {

@@ -58,7 +58,7 @@ export default class {
 	}
 
 	addSnow() {
-		let emitter = game.add.emitter(-500, 0, 400);
+		let emitter = this.game.add.emitter(-500, 0, 400);
 		emitter.fixedToCamera = true;
 		emitter.width = this.game.camera.width * 2;
 		emitter.angle = -10;

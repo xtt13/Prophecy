@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 
 export default class {
 	constructor(game, region, player, map, groundLayer, collisionLayer) {
@@ -129,7 +128,7 @@ export default class {
 		const bridgeWidth = this.region.properties.width;
 		console.log(bridgeDuration);
 
-		const putBackgroundTile = this.region.properties.putBackgroundTile;
+		// const putBackgroundTile = this.region.properties.putBackgroundTile;
 
 		this.bridgeX = this.groundLayer.getTileX(this.region.left) + 1;
 		this.bridgeY = this.groundLayer.getTileY(this.region.top);

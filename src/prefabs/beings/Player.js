@@ -1,7 +1,5 @@
 import Phaser from 'phaser';
 import Item from './../gamemechanics/Item';
-import LockGame from './../minigame/LockGame';
-import config from './../../config';
 import dialogues from './../../dialogues';
 
 export default class extends Phaser.Sprite {

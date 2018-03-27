@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import config from './../../config';
 
 export default class {
 	constructor(game, x, y, player) {
@@ -91,7 +90,7 @@ export default class {
 	placeBall() {
 		this.ball.x = 200;
 		do {
-			this.newAngle = game.rnd.angle();
+			this.newAngle = this.game.rnd.angle();
 		} while (this.angleDifferenceFunc(this.newAngle, this.ball.ballAngle) < 40);
 
 		this.ball.ballAngle = this.newAngle;

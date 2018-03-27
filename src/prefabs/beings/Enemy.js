@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import config from './../../config';
 import Pathfinder from './../gamemechanics/Pathfinder';
 
 export default class extends Phaser.Sprite {
@@ -99,7 +98,7 @@ export default class extends Phaser.Sprite {
 
 		// console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
-		if (angle == 1 || angle == 2 || angle == -0) {
+		if (angle == 1 || angle == 2 || angle == 0) {
 			this.scale.set(-1, 1);
 			// console.log('flip left');
 		} else {

@@ -96,18 +96,12 @@ export default class extends Phaser.State {
 		// this.text.scale.set(0.26);
 
 		// Load Sprites
-
-		//this.load.image('player', 'assets/sprites/player.png');
-		// this.load.image('tileSpriteClouds', 'assets/sprites/tilespriteClouds3xblur.png');
-
-		// this.game.slickUI = this.game.plugins.add(Phaser.Plugin.SlickUI);
-  //       this.game.slickUI.load('assets/ui/kenney/kenney.json');
-
 		this.load.image('lucy', 'assets/sprites/lucy.png');
 		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');
 		this.load.image('cyanParticle', 'assets/sprites/cyanParticle.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
+		// LockGame Sprites
 		this.load.image('LockGameRing', 'assets/sprites/LockGameRing.png');
 		this.load.image('LockGameBar', 'assets/sprites/LockGameBar.png');
 		this.load.image('LockGameBall', 'assets/sprites/LockGameBall.png');
@@ -133,7 +127,6 @@ export default class extends Phaser.State {
 		this.load.audio('sfxBridge', 'assets/sounds/sfxBridge.mp3');
 		this.load.audio('sfxPickUp', 'assets/sounds/sfxPickUp.mp3');
 		this.load.audio('sfxfalldown', 'assets/sounds/sfxfalldown.mp3');
-
 		// this.load.audio('AtmoWaterStill', 'assets/sounds/AtmoWaterStill.mp3');
 
 		// Load AudioSpriteSheets
@@ -152,19 +145,18 @@ export default class extends Phaser.State {
 		this.load.spritesheet('enemy', 'assets/sprites/enemy.png', 18, 18);
 		this.load.spritesheet('item', 'assets/sprites/testitem.png', 25, 27);
 		this.load.spritesheet('treeleaves', 'assets/sprites/treeleaves.png', 3, 3);
-
 		this.load.spritesheet('templeDoor', 'assets/sprites/templeDoor.png', 72, 108);
 
 		// Load Tilesets
 		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
 
-		// Load GameMaps
+		// Load UI-GameMaps
 		this.load.image('newGameMap', 'assets/sprites/newGameMap.png');
 
 		// Load Videos
 
-		// Load Mobile Controll
+		// Load Mobile Control
 		this.load.atlas('dpad', 'assets/input/dpad.png', 'assets/input/dpad.json');
 		this.load.atlas('generic', 'assets/input/generic-joystick.png', 'assets/input/generic-joystick.json');
 

@@ -22,7 +22,6 @@ export default class {
 
 		this.addBars();
 
-		var drawnObject;
 		var width = 300;
 		var height = 65;
 		var bmd = game.add.bitmapData(width, height);
@@ -92,10 +91,9 @@ export default class {
 	}
 
 	addBars() {
-		var drawnObject;
 		var width = this.game.camera.width;
 		var height = 20;
-		var bmd = game.add.bitmapData(width, height);
+		var bmd = this.game.add.bitmapData(width, height);
 
 		bmd.ctx.beginPath();
 		bmd.ctx.rect(0, 0, width, height);
@@ -103,10 +101,10 @@ export default class {
 		bmd.ctx.globalAlpha = 1;
 		bmd.ctx.fill();
 
-		this.upperBar = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height, bmd);
+		this.upperBar = this.game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height, bmd);
 		this.upperBar.fixedToCamera = true;
 
-		this.downBar = game.add.sprite(
+		this.downBar = this.game.add.sprite(
 			this.game.camera.width / 2 - bmd.width / 2,
 			this.game.camera.height - this.game.camera.height - 20,
 			bmd

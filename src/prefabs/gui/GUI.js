@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import Message from './Message';
 import Notification from './Notification';
 import IngameMenu from './IngameMenu';

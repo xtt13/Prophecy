@@ -18,6 +18,7 @@ export default class {
 
 			this.time = new Date();
 
+			/*eslint no-undef: */
 			if (__DEV__) {
 				this.timeValue = 11;
 				// this.timeValue = this.time.getHours();
@@ -70,7 +71,7 @@ export default class {
 				this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.7;
 				// this.level.player.tint = 0x454545;
-
+				
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x383838;
 				}
