@@ -1,5 +1,8 @@
+import config from './../../config';
+
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
+
 import Player from '../beings/Player';
 import Enemy from '../beings/Enemy';
 import Character from '../beings/Character';
@@ -13,7 +16,6 @@ import Questmanager from './Questmanager';
 import Daycycle from '../gamemechanics/Daycycle';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
-import config from './../../config';
 
 export default class {
 	constructor(game, instruction) {

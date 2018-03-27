@@ -14,6 +14,7 @@ export default class {
 
 		this.spawnEnemiesRunning = false;
 
+
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
 
