@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import Player from './../beings/Player';
 import config from './../../config';
 
 export default class {
@@ -260,6 +259,7 @@ export default class {
 
 	removeMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+			//Hi
 		} else {
 			if (this.currentUnderground == 'grass') {
 				this.pyfootsteps.stop('gravel1');
@@ -296,7 +296,7 @@ export default class {
 		});
 	}
 
-	onGamepadUp(button) {}
+	onGamepadUp() {}
 
 	update() {
 		// console.log("Y: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y));
@@ -552,7 +552,7 @@ export default class {
 						//  	this.game.add
 						// .tween(this.player.animations._anims.run_right)
 						// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
-						//       break;
+						break;
 						default:
 					}
 				}

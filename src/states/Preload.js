@@ -1,10 +1,7 @@
+
 import Phaser from 'phaser';
-import WebFont from 'webfontloader';
-import Input from '../prefabs/core/Input';
 import Musicplayer from '../prefabs/audio/Musicplayer';
 import Soundmanager from '../prefabs/audio/Soundmanager';
-
-import SlickUI from '../plugins/slick-ui.min';
 
 export default class extends Phaser.State {
 	init() {
@@ -196,6 +193,7 @@ export default class extends Phaser.State {
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 
+		/*eslint no-undef: */
 		if (__DEV__) {
 			this.state.start('Game', true, false);
 		} else {

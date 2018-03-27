@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+/*eslint-disable */
 import config from './../../config';
 import SecureLS from 'secure-ls';
 

@@ -1,7 +1,5 @@
-import Phaser from 'phaser';
-import config from './../../config';
+// import config from './../../config';
 import quests from './../../quests';
-import Safe from './Safe';
 
 export default class {
 	constructor(game, level) {
@@ -31,9 +29,6 @@ export default class {
 	removeQuest(questID) {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
-
-		// Get and save the removable questItem
-		let masteredQuest = this.quests[questID];
 
 		// Delete questItem
 		delete this.quests[questID];

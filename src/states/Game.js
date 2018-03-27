@@ -35,6 +35,7 @@ export default class extends Phaser.State {
 
 	paused() {
 		console.log('PAUSED');
+		
 	}
 
 	resumed() {}
@@ -45,7 +46,7 @@ export default class extends Phaser.State {
 			this.game.debug.currentAlpha = 0.2;
 
 			this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
-			this.game.debug.text(game.time.fps.toString() + ' FPS', 20, 40, '#00ff00', '10px Pixeled');
+			this.game.debug.text(this.game.time.fps.toString() + ' FPS', 20, 40, '#00ff00', '10px Pixeled');
 
 			// DEBUG SOUND
 			// this.game.debug.soundInfo(this.level.weather.weatherSound, 20, 50);

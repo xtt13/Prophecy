@@ -1,14 +1,10 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
-import PhaserEasystar from 'phaser-easystar-ts';
 import Player from '../beings/Player';
 import Enemy from '../beings/Enemy';
 import Character from '../beings/Character';
-import Pathfinder from '../gamemechanics/Pathfinder';
 import Weather from '../gamemechanics/Weather';
-import Bridgebuilder from '../gamemechanics/Bridgebuilder';
 import Input from './Input';
-import LockGame from '../minigame/LockGame';
 import Item from '../gamemechanics/Item';
 import Safe from './Safe';
 import Lucy from '../beings/Lucy';
@@ -244,7 +240,7 @@ export default class {
 		return result;
 	}
 
-	enemyCollision(enemy, otherEnemy) {
+	enemyCollision() {
 		// console.log('collide');
 	}
 

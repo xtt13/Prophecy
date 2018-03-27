@@ -3,7 +3,6 @@ import 'phaser-tilemap-plus';
 
 import Pathfinder from '../gamemechanics/Pathfinder';
 import Bridgebuilder from '../gamemechanics/Bridgebuilder';
-import Questmap from '../gui/Questmap';
 import Enemy from '../beings/Enemy';
 
 import dialogues from './../../dialogues';
@@ -132,7 +131,7 @@ export default class {
 
 	removeBridge(region) {
 		const bridgeID = region.properties.id;
-		const requiredItemID = region.properties.requiredItemID;
+		// const requiredItemID = region.properties.requiredItemID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 
 		if (
@@ -302,7 +301,7 @@ export default class {
 		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
 	}
 
-	fightArea(region) {
+	fightArea() {
 		this.game.add
 			.tween(this.level.groundLayer)
 			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
@@ -320,7 +319,7 @@ export default class {
 		}
 	}
 
-	showQuestmap(region) {
+	showQuestmap() {
 		this.level.GUICLASS.createQuestmap();
 	}
 
@@ -332,7 +331,7 @@ export default class {
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}
 
-	openDoor(region) {
+	openDoor() {
 		if (this.level.gameData.targetID == 3) {
 			this.level.door.animations.play('idle', 1, true);
 		} else {
@@ -401,7 +400,7 @@ export default class {
 			);
 	}
 
-	followPlayer(region) {
+	followPlayer() {
 		this.followTween = this.game.add
 			.tween(this.game.camera)
 			.to(
@@ -416,21 +415,21 @@ export default class {
 		}, this);
 	}
 
-	startMusic(region) {
+	startMusic() {
 		if (this.level.muteMusic) return;
 		this.game.musicPlayer.initMap(this.level.tilemapProperties, true, 10000);
 	}
 
-	foreGroundShift(region) {
+	foreGroundShift() {
 		console.log('SHIFT');
 		this.level.foreGroundShift = true;
 	}
 
-	foreGroundReset(region) {
+	foreGroundReset() {
 		this.level.foreGroundShift = false;
 	}
 
-	stairsEnter(region) {
+	stairsEnter() {
 		if (this.level.fallDown) return;
 		this.level.inputClass.playerSpeed -= 30;
 
@@ -441,7 +440,7 @@ export default class {
 		this.level.inputClass.currentUnderground = 'stone';
 	}
 
-	stairsLeave(region) {
+	stairsLeave() {
 		if (this.level.fallDown) return;
 		this.level.inputClass.playerSpeed += 30;
 		// this.level.player.animations._anims.run_down.speed -= 20;
@@ -456,11 +455,11 @@ export default class {
 
 	soundAreaEnter(region) {
 		console.log('ISDFJISDFJ');
-		this.areaSound = game.add.audio(region.properties.soundkey);
+		this.areaSound = this.game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(4000);
 	}
 
-	soundAreaLeave(region) {
+	soundAreaLeave() {
 		this.areaSound.fadeOut(4000);
 	}
 }

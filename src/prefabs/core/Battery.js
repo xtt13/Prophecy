@@ -1,5 +1,3 @@
-import Phaser from 'phaser';
-
 export default class {
 	constructor(game, level) {
 		this.game = game;
@@ -44,7 +42,8 @@ export default class {
 
 				if (battery.level * 100 < 25 && !battery.charging) {
 					if (typeof ipc !== 'undefined') {
-						let myNotification = new Notification('Battery', {
+						// let myNotification = 
+						new Notification('Battery', {
 							body: '🔋 Your Battery Level is low!',
 							silent: true
 						});

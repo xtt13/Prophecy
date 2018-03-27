@@ -49,7 +49,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+				'priest': 7
 			} 
 		},
 		5: {

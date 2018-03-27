@@ -10,8 +10,8 @@ import GameState from './states/Game';
 
 import config from './config';
 
-require('script-loader!../src/plugins/particle-storm.min.js');
-require('script-loader!../src/plugins/phaser-virtual-joystick.min.js');
+import "script-loader!../src/plugins/particle-storm.min.js";
+import "script-loader!../src/plugins/phaser-virtual-joystick.min.js";
 
 class Game extends Phaser.Game {
 	constructor() {
@@ -41,24 +41,24 @@ class Game extends Phaser.Game {
 
 window.game = new Game();
 
-if (window.cordova) {
-	var app = {
-		initialize: function() {
-			document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-		},
+// if (window.cordova) {
+// 	var app = {
+// 		initialize: function() {
+// 			document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+// 		},
 
-		// deviceready Event Handler
-		onDeviceReady: function() {
-			this.receivedEvent('deviceready');
+// 		// deviceready Event Handler
+// 		onDeviceReady: function() {
+// 			this.receivedEvent('deviceready');
 
-			// When the device is ready, start Phaser Boot state.
-			window.game.state.start('Boot');
-		},
+// 			// When the device is ready, start Phaser Boot state.
+// 			window.game.state.start('Boot');
+// 		},
 
-		receivedEvent: function(id) {
-			console.log('Received Event: ' + id);
-		}
-	};
+// 		receivedEvent: function(id) {
+// 			console.log('Received Event: ' + id);
+// 		}
+// 	};
 
-	app.initialize();
-}
+// 	app.initialize();
+// }

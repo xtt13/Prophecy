@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 
 export default class {
 	constructor(game, level, ingameMenu) {

@@ -81,7 +81,7 @@ export default class extends Phaser.State {
 			if (this.playOnce) return;
 			this.playOnce = true;
 			this.game.camera.fade(0x000000, 4000, true);
-			this.startSound = game.add.audio('startGame', 0.3);
+			this.startSound = this.game.add.audio('startGame', 0.3);
 			this.startSound.play();
 			this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 			this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
@@ -94,7 +94,8 @@ export default class extends Phaser.State {
 		this.pad1.addCallbacks(this, {
 			onConnect: () => {
 				if (typeof ipc !== 'undefined' && this.pad1.connected) {
-					let myNotification = new Notification('Input', {
+					// let myNotification = 
+					new Notification('Input', {
 						body: '🎮 New Controller Connected',
 						silent: true
 					});
@@ -150,7 +151,8 @@ export default class extends Phaser.State {
 
 			if (this.notificationSwitch) {
 				if (typeof ipc !== 'undefined' && this.pad1.connected) {
-					let myNotification = new Notification('Input', {
+					// let myNotification = 
+					new Notification('Input', {
 						body: '🎮 New Controller Connected',
 						silent: true
 					});
@@ -163,7 +165,7 @@ export default class extends Phaser.State {
 				if (this.startSwitch) {
 					this.startSwitch = false;
 					this.game.camera.fade(0x000000, 4000, true);
-					this.startSound = game.add.audio('startGame', 0.3);
+					this.startSound = this.game.add.audio('startGame', 0.3);
 					this.startSound.play();
 					this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 					this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {

@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "standard",
+  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
@@ -9,9 +9,7 @@
     "browser": true
   },
   "rules": {
-    "import/no-unresolved": [2],
-    "semi": [2, "always"]
-    //"indent": [1, "tab"]
+    "no-console": "off"
   },
   "globals": {
     "phaser": true
