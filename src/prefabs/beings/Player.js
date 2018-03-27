@@ -102,7 +102,6 @@ export default class extends Phaser.Sprite {
 		// left: 1
 		// right: 2
 
-		// console.log(player.body.facing);
 		console.log(character.body.facing);
 
 		let playerFacing = player.body.facing;
@@ -117,14 +116,18 @@ export default class extends Phaser.Sprite {
 			if(!this.player.talking){
 				this.player.talking = true;
 
-				let result = this.questManager.checkQuestDialogue('priest');
-				
-				if (result !== false){
+				// Check if name is in quest, if true -> get dialogueID
+				let dialogueID = this.questManager.checkQuestDialogue(character.name);
 
+				// If there's a number
+				if (dialogueID !== false){
+
+					// get all dialogues
 					const all_messages = Object.values(dialogues.dialogues);
 
+					// search for dialogue
 					for (let i = 0; i < all_messages.length; i++) {
-						if (i + 1 == result) {
+						if (i + 1 == dialogueID) {
 							const message = all_messages[i];
 							this.GUICLASS.createMessage(message, false, true);
 							break;

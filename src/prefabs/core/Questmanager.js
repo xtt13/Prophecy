@@ -62,7 +62,7 @@ export default class {
 		this.quests = this.level.safe.getQuests();
 
 		// Check if masteredQuestID in masteredQuests
-		if (masteredQuestID) {
+		if (this.quests.masteredQuests.includes(masteredQuestID)) {
 			return true;
 		} else {
 			return false;
@@ -70,7 +70,6 @@ export default class {
 	}
 
 	checkQuestDialogue(character){
-		console.log('HIa');
 
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
@@ -84,6 +83,7 @@ export default class {
 			if(this.quests[property].dialogues[character] !== undefined && Number.isInteger(this.quests[property].dialogues[character])){
 				return this.quests[property].dialogues[character];
 			} else {
+				// Progress: Return Default Character DialogueID
 				return false;
 			}
 		}
@@ -104,7 +104,6 @@ export default class {
 				this.removeQuest(questID);
 
 				// Create Notification
-				if (this.quests[questID].silent) return;
 				this.level.GUICLASS.createNotification('quest', 'Questupdate');
 			} else {
 				// Current Quest -> questDeadEnemies + 1

@@ -7,6 +7,7 @@ export default class extends Phaser.Sprite {
 		console.log(element);
 		this.game = game;
 		this.id = element.properties.id;
+		this.name = element.properties.character;
 		this.player = player;
 		this.health = 100;
 		this.randomMovement = true;

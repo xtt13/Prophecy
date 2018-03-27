@@ -219,6 +219,7 @@ export default class {
 			const killQuestID = element.properties.killQuestID;
 			if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
 				if (element.properties.type == 'seed') {
+					console.log('create');
 					this.enemies.push(
 						new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 					);
