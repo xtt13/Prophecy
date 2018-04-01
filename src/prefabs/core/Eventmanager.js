@@ -70,10 +70,12 @@ export default class {
 	addMessage(region) {
 		const message_id = region.properties.id;
 		const all_messages = Object.values(dialogues.dialogues);
+		const ifQuestID = region.properties.ifQuestID;
+
+		if(!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 
 		for (let i = 0; i < all_messages.length; i++) {
 			if (i + 1 == message_id) {
-				if (this.level.playedDialogues.includes(message_id)) return;
 
 				// if (region.properties.removeQuestID !== undefined) {
 				// 	this.level.questManager.removeQuest(region.properties.removeQuestID);
@@ -85,8 +87,6 @@ export default class {
 
 				const message = all_messages[i];
 
-				this.level.playedDialogues.push(message_id);
-				this.level.safe.setPlayedDialogues(this.level.playedDialogues);
 				this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 				break;
 			}
@@ -191,20 +191,18 @@ export default class {
 
 	addPathfinderMessage(region) {
 
-		const message_id = region.properties.messageID;
 		const characterID = region.properties.characterID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
+		const ifQuestID = region.properties.ifQuestID;
+
+		if(!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 
 		if (
 			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 			requiredMasteredQuestID !== undefined
 		)
 			return;
-
-		if (this.level.playedDialogues.includes(message_id)) return;
-		
-		this.level.playedDialogues.push(message_id);
-		this.level.safe.setPlayedDialogues(this.level.playedDialogues);
+			
 
 		if (region.properties.removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);

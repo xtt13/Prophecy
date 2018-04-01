@@ -91,6 +91,7 @@ export default class {
 		this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
 		this.templeFliesEmitter.makeParticles('fly');
 		this.templeFliesEmitter.start(false, 10000, 5, 0);
+		
 	}
 
 	addStorm() {

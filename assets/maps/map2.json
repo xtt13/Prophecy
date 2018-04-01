@@ -80,7 +80,26 @@
         {
          "draworder":"topdown",
          "name":"CustomEmitter",
-         "objects":[],
+         "objects":[
+                {
+                 "height":42.0856,
+                 "id":171,
+                 "name":"CustomEmitter",
+                 "properties":
+                    {
+                     "type":"water"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":305.71523096442,
+                 "x":484.852614976665,
+                 "y":373.526567840475
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -100,6 +119,7 @@
                      "characterID":1,
                      "endDestinationX":954,
                      "endDestinationY":870,
+                     "ifQuestID":3,
                      "messageID":4,
                      "messageWaitingDuration":3,
                      "pathfinderMessage":true,
@@ -112,6 +132,7 @@
                      "characterID":"int",
                      "endDestinationX":"int",
                      "endDestinationY":"int",
+                     "ifQuestID":"int",
                      "messageID":"int",
                      "messageWaitingDuration":"int",
                      "pathfinderMessage":"bool",
@@ -698,7 +719,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":170,
+ "nextobjectid":172,
  "orientation":"orthogonal",
  "properties":
     {

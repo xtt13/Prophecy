@@ -89,11 +89,15 @@ export default class extends Phaser.State {
 	preload() {
 		// this.stage.backgroundColor = "#000000";
 
-		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
-		this.text.anchor.set(0.5);
-		this.text.tint = 0xffffff;
-		this.text.text = '';
+		// this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
+		// this.text.anchor.set(0.5);
+		// this.text.tint = 0xffffff;
+		// this.text.text = '';
 		// this.text.scale.set(0.26);
+
+
+		var style = { font: "10px Pixeled", fill: "#00ff00", align: "center" };
+		this.text = this.game.add.text(this.game.camera.width / 2, this.game.camera.height / 2, "", style);
 
 		// Load Sprites
 		this.load.image('lucy', 'assets/sprites/lucy.png');
@@ -171,6 +175,7 @@ export default class extends Phaser.State {
 		this.load.image('rain', 'assets/sprites/rain.png');
 		this.load.image('snow', 'assets/sprites/snow.png');
 		this.load.image('fly', 'assets/sprites/fly.png');
+		this.load.image('waterdrop', 'assets/sprites/waterdrop.png');
 		this.load.image('glimmerParticle', 'assets/sprites/glimmerParticle.png');
 		this.load.image('leave', 'assets/sprites/leave.png');
 		this.load.image('cloud', 'assets/sprites/cloud.png');
@@ -199,7 +204,8 @@ export default class extends Phaser.State {
 		// Log Loadingprogress
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
 			if (typeof ipc == 'undefined') {
-				this.text.text = progress + '%';
+				this.text.text = progress;
+				
 			}
 
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');

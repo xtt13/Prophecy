@@ -91,30 +91,6 @@ export default class {
 		}
 	}
 
-	setPlayedDialogues(playedDialogues) {
-		if (this.secureLS) {
-			this.ls.set('playedDialogues', JSON.stringify(playedDialogues));
-		} else {
-			localStorage.setItem('playedDialogues', JSON.stringify(playedDialogues));
-		}
-	}
-
-	getPlayedDialogues() {
-		if (this.secureLS) {
-			var result = this.ls.get('playedDialogues');
-			var playedDialogues = result !== '' ? JSON.parse(result) : null;
-		} else {
-			var playedDialogues = JSON.parse(localStorage.getItem('playedDialogues'));
-		}
-
-		if (playedDialogues == null) {
-			var playedDialogues = [];
-			return playedDialogues;
-		} else {
-			return playedDialogues;
-		}
-	}
-
 	setQuests(quests) {
 		if (this.secureLS) {
 			this.ls.set('quests', JSON.stringify(quests));

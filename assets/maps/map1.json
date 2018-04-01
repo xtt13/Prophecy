@@ -494,7 +494,7 @@
                  "name":"CustomEmitter",
                  "properties":
                     {
-                     "type":"emitter"
+                     "type":"tree"
                     },
                  "propertytypes":
                     {
@@ -513,7 +513,7 @@
                  "name":"CustomEmitter",
                  "properties":
                     {
-                     "type":"emitter"
+                     "type":"tree"
                     },
                  "propertytypes":
                     {
@@ -532,7 +532,7 @@
                  "name":"CustomEmitter",
                  "properties":
                     {
-                     "type":"emitter"
+                     "type":"tree"
                     },
                  "propertytypes":
                     {
@@ -542,7 +542,7 @@
                  "type":"",
                  "visible":true,
                  "width":38.3446,
-                 "x":749.590851741875,
+                 "x":747.966156372257,
                  "y":834.229587187281
                 }, 
                 {
@@ -551,7 +551,7 @@
                  "name":"CustomEmitter",
                  "properties":
                     {
-                     "type":"emitter"
+                     "type":"tree"
                     },
                  "propertytypes":
                     {
@@ -570,7 +570,7 @@
                  "name":"Custom Emitter",
                  "properties":
                     {
-                     "type":"emitter"
+                     "type":"tree"
                     },
                  "propertytypes":
                     {
@@ -589,7 +589,7 @@
                  "name":"Custom Emitter",
                  "properties":
                     {
-                     "type":"emitter"
+                     "type":"tree"
                     },
                  "propertytypes":
                     {
@@ -619,6 +619,7 @@
                  "properties":
                     {
                      "id":2,
+                     "ifQuestID":2,
                      "message":true,
                      "movable":true,
                      "readable":true
@@ -626,6 +627,7 @@
                  "propertytypes":
                     {
                      "id":"int",
+                     "ifQuestID":"int",
                      "message":"bool",
                      "movable":"bool",
                      "readable":"bool"

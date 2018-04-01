@@ -1,3 +1,7 @@
+/*eslint no-case-declarations: "error"*/
+/*eslint-env es6*/
+/*eslint no-duplicate-imports: "error"*/
+
 import config from './../../config';
 
 import Phaser from 'phaser';
@@ -28,7 +32,6 @@ export default class {
 
 		this.gameData = this.safe.getGameConfig();
 		this.itemIDs = this.safe.getItemIDs();
-		this.playedDialogues = this.safe.getPlayedDialogues();
 		this.currentMap = this.gameData.currentMap;
 		this.restartType = instruction.restartType;
 
@@ -188,9 +191,13 @@ export default class {
 
 		//Find specific emitter
 		elementsArr.forEach(function(element) {
-			if (element.properties.type == 'emitter') {
+			console.log(element);
+
+			if (element.properties.type == 'tree'){
+
 				let x = element.x + element.width / 2;
 				let y = element.y + element.height / 2;
+
 
 				let customEmitter = this.game.add.emitter(x, y, 10);
 				customEmitter.width = element.width;
@@ -204,7 +211,35 @@ export default class {
 				customEmitter.gravity = 0.5;
 				customEmitter.makeParticles('treeleaves', [0, 1]);
 				customEmitter.start(false, 3000, 400, 0);
+
+			} else if(element.properties.type == 'water'){
+
+				let x = element.x + this.map.tileWidth;
+				let y = element.y + this.map.tileHeight;
+
+				console.log('WATER');
+
+				// console.log(element);
+				console.log(element.x, element.y);
+
+				this.waterEmitter = this.game.add.emitter(x, y, 50);
+				this.waterEmitter.width = element.width;
+				this.waterEmitter.height = element.height;
+				this.waterEmitter.minParticleScale = 0.1;
+				this.waterEmitter.maxParticleScale = 0.8;
+				// waterEmitter.maxParticleSpeed.setTo(2, 2);
+				this.waterEmitter.setYSpeed(0.5, -0.5);
+				this.waterEmitter.setXSpeed(0.5, -0.5);
+				this.waterEmitter.gravity = 0;
+				this.waterEmitter.setAlpha(0.3, 0.8, 1000, Phaser.Easing.Exponential.In, true);
+				this.waterEmitter.makeParticles('waterdrop');
+
+				//(explode, lifespan, frequency, quantity, forceQuantity)
+				this.waterEmitter.start(false, 3000, 20);
+
 			}
+
+
 		}, this);
 	}
 
@@ -235,6 +270,8 @@ export default class {
 			if (container.indexOf(targetType) || container.toString() == targetType) {
 				element.y -= tilemap.tileHeight / 2;
 				element.x += tilemap.tileHeight / 2;
+				// element.width += tilemap.tileHeight / 2;
+				// element.height -= tilemap.tileHeight / 2;
 				result.push(element);
 			}
 		}, this);
