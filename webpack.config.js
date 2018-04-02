@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var exec = require('script-loader');
-var PrettierPlugin = require("prettier-webpack-plugin");
+//var PrettierPlugin = require("prettier-webpack-plugin");
 
 // require('script-loader!../src/plugins/particle-storm.min.js');
 
