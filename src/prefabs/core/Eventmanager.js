@@ -157,12 +157,9 @@ export default class {
 		);
 
 		// If Wait -> Wait
-		console.log(region.properties.wait);
 		if (region.properties.wait !== undefined) {
-			console.log('wait');
 			this.game.time.events.add(
 				region.properties.wait, () => {
-					console.log('go');
 					this.bridgebuilderRemove.removeBridge();
 				});
 		} else {
@@ -453,7 +450,6 @@ export default class {
 	}
 
 	soundAreaEnter(region) {
-		console.log('ISDFJISDFJ');
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(4000);
 	}

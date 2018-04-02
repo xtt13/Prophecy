@@ -43,7 +43,7 @@ export default class extends Phaser.State {
 	render() {
 		// Debugging
 		if (__DEV__) {
-			this.game.debug.currentAlpha = 0.2;
+			// this.game.debug.currentAlpha = 0.2;
 
 			this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
 			this.game.debug.text(this.game.time.fps.toString() + ' FPS', 20, 40, '#00ff00', '10px Pixeled');
@@ -77,7 +77,7 @@ export default class extends Phaser.State {
 
 			// DEBUG Player
 			// this.game.debug.body(this.level.player);
-			// this.game.debug.spriteInfo(this.level.player., 32, 32);
+			// this.game.debug.spriteInfo(this.level.player, 32, 32);
 
 			// OTHER
 			// this.game.debug.quadTree(this.game.physics.arcade.quadTree);

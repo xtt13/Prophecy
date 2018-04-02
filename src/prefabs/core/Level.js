@@ -40,6 +40,7 @@ export default class {
 		this.fallDown = false;
 		this.fallDownSwitch = true;
 		this.fallDownLayer = 0;
+		this.lastDirection = null;
 
 		// Arrays
 		this.characters = [];
@@ -352,33 +353,99 @@ export default class {
 		this.GUICLASS.update();
 	}
 
+	slowDownTile(player){
+		// player.body.drag ?
+	}
+
 	fallDownCheck(player, tile) {
-		if (this.inputClass.dash) return;
-
-		// console.log(tile);
-		// console.log(tile.worldX);
-		// console.log((player.body.x + player.body.width) < (tile.worldX + tile.width), player.body.x + player.body.width, tile.worldX + tile.width);
-
-		if (player.body.x + player.body.width < tile.worldX + tile.width && this.inputClass.direction == 'left') {
-			this.fallDownProcess();
+		if (this.inputClass.dash){
+			this.lastDirection = null;
+			return;
 		}
 
-		if (player.body.x > tile.worldX && this.inputClass.direction == 'right') {
-			this.fallDownProcess();
+		if(this.lastDirection == null){
+			this.lastDirection = this.inputClass.direction;
 		}
 
-		if (player.body.y + player.body.height < tile.worldY + tile.height - 10 && this.inputClass.direction == 'up') {
-			this.fallDownProcess();
+		// console.log(this.lastDirection);
+		// console.log(player.body.x, tile.worldX + tile.width, this.inputClass.direction);
+
+		if(this.lastDirection == 'left'){
+
+			if (((player.body.x + player.body.width) < (tile.worldX + tile.width))) {
+				this.fallDownProcess();
+				return;
+			} else {
+
+				if(((parseInt(player.body.x)) == (tile.worldX + tile.width - 2)) && this.inputClass.direction == 'right'){
+						setTimeout(() => {
+							this.lastDirection = null;
+						}, 500);
+				}
+
+			}
+
+		} else if(this.lastDirection == 'right'){
+
+			if (player.body.x > tile.worldX) {
+				this.fallDownProcess();
+				return;
+			} else {
+				
+				if(((parseInt(player.body.x + player.body.width)) == (tile.worldX)) && this.inputClass.direction == 'left'){
+					setTimeout(() => {
+						this.lastDirection = null;
+					}, 500);
+				}
+
+			}
+
+		} else if(this.lastDirection == 'up'){
+
+
+			if (((player.body.y + player.body.height) < (tile.worldY + tile.height - 5))) {
+				this.fallDownProcess();
+				return;
+			} else {
+
+				if(((parseInt(player.body.y + player.body.height)) == (tile.worldY)) && this.inputClass.direction == 'down'){
+					setTimeout(() => {
+						console.log('ho');
+						this.lastDirection = null;
+					}, 500);
+				}
+
+			}
+			
+		} else if(this.lastDirection == 'down'){  
+
+
+			if (player.body.y > tile.worldY) {
+				this.fallDownProcess();
+				return;
+			} else {
+				if(this.inputClass.direction !== this.lastDirection){
+					setTimeout(() => {
+						this.lastDirection = null;
+					}, 1000);
+				}
+			}
+			
 		}
 
-		if (player.body.y > tile.worldY && this.inputClass.direction == 'down') {
-			this.fallDownProcess();
-		}
+
 	}
 
 	fallDownProcess() {
 		if (this.fallDownSwitch) {
-			this.fallDown = true;
+			if(this.inputClass.direction == 'down'){
+				setTimeout(() => {
+					this.fallDown = true;
+				}, 500);
+			} else {
+				this.fallDown = true;
+			}
+			
 
 			this.fallDownSound = this.game.add.audio('sfxfalldown');
 			this.fallDownSound.play();
