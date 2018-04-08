@@ -55,7 +55,6 @@ export default class {
 	checkIfQuestWasDone(masteredQuestID) {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
-
 		// Check if masteredQuestID in masteredQuests
 		if (this.quests.masteredQuests.includes(masteredQuestID)) {
 			return true;

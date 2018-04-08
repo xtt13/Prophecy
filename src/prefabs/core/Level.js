@@ -296,7 +296,7 @@ export default class {
 
 		// Collisionhandler
 		this.game.physics.arcade.collide(this.enemies, this.enemies, this.enemyCollision);
-		this.game.physics.arcade.collide(this.player, this.enemies, this.player.getDamage, null, this);
+		this.game.physics.arcade.collide(this.player, this.enemies, this.player.fight, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.player, this.characters, this.player.talk, null, this);
@@ -353,11 +353,24 @@ export default class {
 		this.GUICLASS.update();
 	}
 
-	slowDownTile(player){
-		// player.body.drag ?
+	slowDownTile(player, tile){
+		// console.log(player);
+		// console.log(tile);
+
+		// player.body.friction.set(200);
+
+
+		// if(player.body.velocity.x >= 40){
+		// 	player.body.velocity.x++;
+		// }
+
+		// if(player.body.velocity.x <= -40){
+		// 	player.body.velocity.x--;
+		// }
 	}
 
-	fallDownCheck(player, tile) {
+	fallDownCheck(sprite, tile) {
+	
 		if (this.inputClass.dash){
 			this.lastDirection = null;
 			return;
@@ -368,16 +381,16 @@ export default class {
 		}
 
 		// console.log(this.lastDirection);
-		// console.log(player.body.x, tile.worldX + tile.width, this.inputClass.direction);
+		// console.log(sprite.body.x, tile.worldX + tile.width, this.inputClass.direction);
 
 		if(this.lastDirection == 'left'){
 
-			if (((player.body.x + player.body.width) < (tile.worldX + tile.width))) {
-				this.fallDownProcess();
+			if (((sprite.body.x + sprite.body.width) < (tile.worldX + tile.width))) {
+				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
 
-				if(((parseInt(player.body.x)) == (tile.worldX + tile.width - 2)) && this.inputClass.direction == 'right'){
+				if(((parseInt(sprite.body.x)) == (tile.worldX + tile.width - 2)) && this.inputClass.direction == 'right'){
 						setTimeout(() => {
 							this.lastDirection = null;
 						}, 500);
@@ -387,12 +400,12 @@ export default class {
 
 		} else if(this.lastDirection == 'right'){
 
-			if (player.body.x > tile.worldX) {
-				this.fallDownProcess();
+			if (sprite.body.x > tile.worldX) {
+				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
 				
-				if(((parseInt(player.body.x + player.body.width)) == (tile.worldX)) && this.inputClass.direction == 'left'){
+				if(((parseInt(sprite.body.x + sprite.body.width)) == (tile.worldX)) && this.inputClass.direction == 'left'){
 					setTimeout(() => {
 						this.lastDirection = null;
 					}, 500);
@@ -403,12 +416,12 @@ export default class {
 		} else if(this.lastDirection == 'up'){
 
 
-			if (((player.body.y + player.body.height) < (tile.worldY + tile.height - 5))) {
-				this.fallDownProcess();
+			if (((sprite.body.y + sprite.body.height) < (tile.worldY + tile.height - 5))) {
+				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
 
-				if(((parseInt(player.body.y + player.body.height)) == (tile.worldY)) && this.inputClass.direction == 'down'){
+				if(((parseInt(sprite.body.y + sprite.body.height)) == (tile.worldY)) && this.inputClass.direction == 'down'){
 					setTimeout(() => {
 						console.log('ho');
 						this.lastDirection = null;
@@ -420,8 +433,8 @@ export default class {
 		} else if(this.lastDirection == 'down'){  
 
 
-			if (player.body.y > tile.worldY) {
-				this.fallDownProcess();
+			if (sprite.body.y > tile.worldY) {
+				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
 				if(this.inputClass.direction !== this.lastDirection){
@@ -436,8 +449,23 @@ export default class {
 
 	}
 
-	fallDownProcess() {
+	fallDownProcess(sprite, tile) {
 		if (this.fallDownSwitch) {
+
+
+
+			if(this.fallDownTween == undefined || !this.fallDownTween.isRunning){
+				console.log('eins');
+				sprite.body.enable = false;
+				var value = sprite.y + 400;
+				this.fallDownTween = this.game.add.tween(sprite).to( { y: value }, 8000, Phaser.Easing.Elastic.Out, true);
+			}
+
+			if(sprite.key == 'enemy'){
+				this.game.world.setChildIndex(sprite, 1);
+				return;
+			}
+
 			if(this.inputClass.direction == 'down'){
 				setTimeout(() => {
 					this.fallDown = true;
@@ -445,25 +473,19 @@ export default class {
 			} else {
 				this.fallDown = true;
 			}
-			
+
+			this.game.camera.unfollow();
 
 			this.fallDownSound = this.game.add.audio('sfxfalldown');
 			this.fallDownSound.play();
 
 			this.inputClass.pyfootsteps.stop();
-			this.player.animations.stop();
+			sprite.animations.stop();
 
-			this.player.movable = false;
-
+			sprite.movable = false;
 			this.game.camera.fade(0x000000, 1000, true);
 
-			this.game.time.events.loop(
-				1,
-				() => {
-					this.player.body.velocity.y = 300;
-				},
-				this
-			);
+			
 
 			this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
 				if (this.inputClass.stick) {
@@ -518,6 +540,9 @@ export default class {
 
 		// Set tileCallback for abyss
 		this.map.setTileIndexCallback(3, this.fallDownCheck, this, this.collisionLayer);
+
+		// Set SlowDownTile
+		this.map.setTileIndexCallback(4, this.slowDownTile, this, this.collisionLayer);
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;

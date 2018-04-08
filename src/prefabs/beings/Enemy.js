@@ -16,6 +16,9 @@ export default class extends Phaser.Sprite {
 		this.killQuestID = properties.killQuestID;
 
 		this.health = 100;
+		this.dead = false;
+		this.paralyze = false;
+		
 		this.finderCall = true;
 		this.closeSpeed = this.game.rnd.integerInRange(10, 70);
 		this.farSpeed = this.game.rnd.integerInRange(400, 600);
@@ -59,21 +62,27 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
+		if(this.dead) return;
+		if(this.paralyze) return;
+
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
 		if (this.distanceBetweenEnemiePlayer < 120) {
-			if (this.distanceBetweenEnemiePlayer < 100) {
-				this.animations.play('walk');
-				this.game.physics.arcade.moveToObject(this, this.player, 150);
-			} else {
-				this.animations.play('walk');
-				this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
-			}
+			// if (this.distanceBetweenEnemiePlayer < 100) {
+			// 	this.animations.play('walk');
+			// 	this.game.physics.arcade.moveToObject(this, this.player, 150);
+			// } else {
+			// 	this.animations.play('walk');
+			// 	this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+			// }
+
+			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+			this.animations.play('walk');
 
 			this.finderCall = true;
-			if (this.pathfinder) {
-				this.pathfinder.pathToFollow.length = 0;
-			}
+			// if (this.pathfinder) {
+			// 	this.pathfinder.pathToFollow.length = 0;
+			// }
 		}
 
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {

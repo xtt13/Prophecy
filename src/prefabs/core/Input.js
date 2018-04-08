@@ -210,8 +210,13 @@ export default class {
 		this.button_D.onDown.add(this.addMovementSound, this);
 		this.button_D.onUp.add(this.removeMovementSound, this);
 
+		this.button_F = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
+		this.button_F.onDown.add(this.attack, this);
+
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
+		this.button_SPACEBAR.onDown.add(this.attack, this);
+		// this.button_SPACEBAR.onDown.add(this.beginnDash, this);
+
 		// this.button_SPACEBAR.onUp.add(this.endDash, this);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
@@ -224,6 +229,57 @@ export default class {
 			this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 			this.button_TAB.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
 		}
+	}
+
+	attack(){
+		this.player.attack = true;
+		console.log(this.player.body);
+
+		// Von hier:
+		// this.player.body.setSize(8, 10, 21, 40);
+
+		// Hierher:
+		this.player.body.setSize(40, 40, 6, 20);
+
+		// let bodyWidth = this.player.body.sourceWidth;
+		// let bodyHeight = this.player.body.sourceHeight;
+		// let offsetX = this.player.body.offset.x;
+		// let offsetY = this.player.body.offset.y;
+
+		// let intendedWidth = 40;
+		// let intendedHeight = 40;
+		// let intendedOffsetX = 6;
+		// let intendedOffsetY = 20;
+
+		// while (bodyWidth < intendedWidth || bodyHeight < intendedHeight || offsetX > intendedOffsetX ||  offsetY > intendedOffsetY) {
+			
+		// 	if(bodyWidth < intendedWidth){
+		// 		bodyWidth++;
+		// 	} 
+
+		// 	if(bodyHeight < intendedHeight){
+		// 		bodyHeight++;
+		// 	} 
+
+		// 	if(offsetX > intendedOffsetX){
+		// 		offsetX--;
+		// 	}
+
+		// 	if(offsetY > intendedOffsetY){
+		// 		offsetY--;
+		// 	}
+
+		// 	this.player.body.setSize(bodyWidth, bodyHeight, offsetX, offsetY);
+		// 	console.log('run');
+
+		// }
+
+		console.log('Beginn');
+		this.game.time.events.add(400, () => {
+			this.player.attack = false;
+			this.player.body.setSize(8, 10, 21, 40);
+			console.log('End');
+		});
 	}
 
 	onGamepadDown(button) {

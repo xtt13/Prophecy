@@ -18,6 +18,7 @@ export default class extends Phaser.Sprite {
 		this.movable = true;
 		this.playerSpeed = 130;
 		this.talking = false;
+		this.attack = false;
 
 		this.baseImages = [];
 
@@ -90,9 +91,90 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.on = false;
 	}
 
-	fight() {}
+	fight(player, enemy) {
+		console.log('collide');
 
-	talk(player, character){
+		enemy.paralyze = true;
+
+		this.game.time.events.add(2000, () => {
+			enemy.paralyze = false;
+		});
+
+		enemy.body.drag.set(70);
+		enemy.body.maxVelocity.set(200);
+
+		enemy.body.velocity.x = player.body.velocity.x * 2.5;
+		enemy.body.velocity.y = player.body.velocity.y * 2.5;
+
+		
+
+		// if (player.attack) {
+
+		// 	console.log('punsh');
+
+		// 	enemy.paralyze = true;
+
+		// 	this.game.time.events.add(400, () => {
+		// 		enemy.paralyze = false;
+		// 	});
+
+		// 	enemy.body.velocity.x = player.body.velocity.x * 2;
+		// 	enemy.body.velocity.y = player.body.velocity.y * 2;
+
+		// 	enemy.health -= 10;
+
+		// 	console.log(enemy.health);
+
+		// 	if (enemy.health <= 0) {
+
+		// 		console.log('die');
+
+		// 		enemy.dead = true;
+		// 		enemy.body.moves = false;
+		// 		enemy.body.enable = false;
+
+		// 		enemy.animations.stop();
+
+		// 		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+		// 			let properties = {};
+		// 			properties.id = enemy.dropItemID;
+		// 			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
+		// 		}
+	
+		// 		if (enemy.killQuestID !== undefined) {
+		// 			this.questManager.checkKillCondition(enemy.killQuestID);
+		// 		}
+		// 	}
+		// } else {
+
+
+
+		// 	this.player.health -= 10;
+		// 	this.gameData.playerHealth = this.player.health;
+		// 	this.safe.setGameConfig(this.gameData);
+		// 	this.game.camera.flash(0xc10000, 200);
+
+		// 	if (this.player.health <= 0) {
+		// 		this.gameData.playerHealth = 100;
+		// 		this.safe.setGameConfig(this.gameData);
+
+		// 		if (this.inputClass.stick) {
+		// 			this.inputClass.stick.alpha = 0;
+		// 			this.inputClass.stick.enabled = false;
+		// 		}
+
+		// 		this.game.state.restart(true, false, {
+		// 			map: this.currentMap,
+		// 			targetID: this.lastTargetID,
+		// 			restartType: 'revive'
+		// 		});
+		// 	}
+
+
+		// }
+	}
+
+	talk(player, character) {
 
 		// PLAYER
 		// up: 3
@@ -110,15 +192,15 @@ export default class extends Phaser.Sprite {
 			(playerFacing == 1 && characterFacing == 2) ||
 			(playerFacing == 2 && characterFacing == 1) ||
 			(playerFacing == 4 && characterFacing == 3)
-		){
-			if(!this.player.talking){
+		) {
+			if (!this.player.talking) {
 				this.player.talking = true;
 
 				// Check if name is in quest, if true -> get dialogueID
 				let dialogueID = this.questManager.checkQuestDialogue(character.name);
 
 				// If there's a number
-				if (dialogueID !== false){
+				if (dialogueID !== false) {
 
 					// get all dialogues
 					const all_messages = Object.values(dialogues.dialogues);
