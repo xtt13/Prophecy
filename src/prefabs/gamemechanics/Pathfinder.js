@@ -48,13 +48,13 @@ export default class {
 
 		this.pathfinder.easystar.setIterationsPerCalculation(1);
 		this.pathfinder.setGrid(this.map.layers[0].data, this.walkables);
-		console.log(this.map.layers[0].data);
+		// console.log(this.map.layers[0].data);
 		this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
 	}
 
 	findPathTo(tilex, tiley) {
 		this.pathfinder.setCallbackFunction(path => {
-			console.log(path);
+			// console.log(path);
 			this.trail.destroy(true, true);
 			if (path === null) {
 				return;

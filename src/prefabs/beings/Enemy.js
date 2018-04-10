@@ -63,7 +63,10 @@ export default class extends Phaser.Sprite {
 
 	update() {
 		if(this.dead) return;
-		if(this.paralyze) return;
+		if(this.paralyze){
+			console.log('PAR'); 
+			return;
+		}
 
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 

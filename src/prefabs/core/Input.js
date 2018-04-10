@@ -215,9 +215,9 @@ export default class {
 
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.button_SPACEBAR.onDown.add(this.attack, this);
-		// this.button_SPACEBAR.onDown.add(this.beginnDash, this);
 
-		// this.button_SPACEBAR.onUp.add(this.endDash, this);
+		this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
+		this.button_SHIFT.onDown.add(this.beginnDash, this);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
@@ -232,14 +232,36 @@ export default class {
 	}
 
 	attack(){
-		this.player.attack = true;
-		console.log(this.player.body);
+
+		switch (this.direction) {
+			case 'up':
+				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
+				break;
+
+			case 'down':
+				this.player.weapon.fireAtXY(this.player.x, this.player.y + 10);
+				break;
+
+			case 'left':
+				this.player.weapon.fireAtXY(this.player.x - 10, this.player.y);
+				break;
+
+			case 'right':
+				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
+				break;
+		
+			default:
+				break;
+		}
+		
+		// this.player.attack = true;
+		// console.log(this.player.body);
 
 		// Von hier:
 		// this.player.body.setSize(8, 10, 21, 40);
 
 		// Hierher:
-		this.player.body.setSize(40, 40, 6, 20);
+		// this.player.body.setSize(40, 40, 6, 20);
 
 		// let bodyWidth = this.player.body.sourceWidth;
 		// let bodyHeight = this.player.body.sourceHeight;
@@ -274,12 +296,12 @@ export default class {
 
 		// }
 
-		console.log('Beginn');
-		this.game.time.events.add(400, () => {
-			this.player.attack = false;
-			this.player.body.setSize(8, 10, 21, 40);
-			console.log('End');
-		});
+		// console.log('Beginn');
+		// this.game.time.events.add(400, () => {
+		// 	this.player.attack = false;
+		// 	this.player.body.setSize(8, 10, 21, 40);
+		// 	console.log('End');
+		// });
 	}
 
 	onGamepadDown(button) {

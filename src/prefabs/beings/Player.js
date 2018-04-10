@@ -75,6 +75,13 @@ export default class extends Phaser.Sprite {
 		this.bmd.smoothed = false;
 		this.bmd.draw(this.multiplySprite, 50, 50);
 
+		this.weapon = game.add.weapon(10, 'invisibleAttack');
+		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
+		this.weapon.bulletLifespan = 200;
+		this.weapon.bulletSpeed = 200;
+		// this.weapon.fireRate = 200;
+		this.weapon.trackSprite(this, 0, 0, false);
+
 		game.add.existing(this);
 
 
@@ -91,20 +98,23 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.on = false;
 	}
 
-	fight(player, enemy) {
+	fight(enemy, bullet) {
 		console.log('collide');
 
+		// bullet.kill();
 		enemy.paralyze = true;
+		enemy.tint = 0xFF0000;
 
-		this.game.time.events.add(2000, () => {
+		this.game.time.events.add(3000, () => {
 			enemy.paralyze = false;
+			enemy.tint = 16777215;
 		});
 
-		enemy.body.drag.set(70);
-		enemy.body.maxVelocity.set(200);
+		// enemy.body.drag.set(70);
+		// enemy.body.maxVelocity.set(200);
 
-		enemy.body.velocity.x = player.body.velocity.x * 2.5;
-		enemy.body.velocity.y = player.body.velocity.y * 2.5;
+		// enemy.body.velocity.x = player.body.velocity.x * 2.5;
+		// enemy.body.velocity.y = player.body.velocity.y * 2.5;
 
 		
 
@@ -318,7 +328,7 @@ export default class extends Phaser.Sprite {
 				});
 			}
 		} else {
-			this.game.time.events.add(100, () => {
+			this.game.time.events.add(200, () => {
 				this.bmd.clear();
 			});
 		}

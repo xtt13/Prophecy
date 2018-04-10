@@ -296,7 +296,8 @@ export default class {
 
 		// Collisionhandler
 		this.game.physics.arcade.collide(this.enemies, this.enemies, this.enemyCollision);
-		this.game.physics.arcade.collide(this.player, this.enemies, this.player.fight, null, this);
+		this.game.physics.arcade.collide(this.player, this.enemies);
+		this.game.physics.arcade.collide(this.player.weapon.bullets, this.enemies, this.player.fight, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.player, this.characters, this.player.talk, null, this);
