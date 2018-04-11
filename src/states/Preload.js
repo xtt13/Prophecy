@@ -103,6 +103,7 @@ export default class extends Phaser.State {
 		this.load.image('lucy', 'assets/sprites/lucy.png');
 		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');
 		this.load.image('cyanParticle', 'assets/sprites/cyanParticle.png');
+		this.load.image('blood', 'assets/sprites/blood.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
 		// Invisible Attack Sprite invisibleAttack
@@ -153,6 +154,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('item', 'assets/sprites/testitem.png', 25, 27);
 		this.load.spritesheet('treeleaves', 'assets/sprites/treeleaves.png', 3, 3);
 		this.load.spritesheet('templeDoor', 'assets/sprites/templeDoor.png', 72, 108);
+		this.load.spritesheet('enemyPartsSpritesheet', 'assets/sprites/enemyPartsSpritesheet.png', 16, 16);
 
 		// Load Tilesets
 		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');

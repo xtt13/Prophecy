@@ -77,8 +77,8 @@ export default class extends Phaser.Sprite {
 
 		this.weapon = game.add.weapon(10, 'invisibleAttack');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
-		this.weapon.bulletLifespan = 200;
-		this.weapon.bulletSpeed = 200;
+		this.weapon.bulletLifespan = 100;
+		this.weapon.bulletSpeed = 400;
 		// this.weapon.fireRate = 200;
 		this.weapon.trackSprite(this, 0, 0, false);
 
@@ -109,6 +109,52 @@ export default class extends Phaser.Sprite {
 			enemy.paralyze = false;
 			enemy.tint = 16777215;
 		});
+
+		
+		let px = enemy.body.velocity.x;
+		let py = enemy.body.velocity.y;
+
+		px *= 2;
+		py *= 2;
+
+		this.killAnimation = this.game.add.emitter(enemy.x, enemy.y, 30);
+		this.killAnimation.angularDrag = 500;
+		this.killAnimation.particleDrag.set(1800);
+
+		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+			this.killAnimation.setXSpeed(px);
+			this.killAnimation.setYSpeed(300);
+		} else {
+			this.killAnimation.setXSpeed(400);
+			this.killAnimation.setYSpeed(py);
+		}
+
+
+		this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
+		this.killAnimation.start(true, 0, null, 10);
+
+		enemy.kill();
+
+		this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
+		this.bloodAnimation.angularDrag = 500;
+		this.bloodAnimation.particleDrag.set(1800);
+		// this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
+		// this.bloodAnimation.minParticleSpeed.set(px, 400);
+
+		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+			this.bloodAnimation.setXSpeed(px);
+			this.bloodAnimation.setYSpeed(300);
+		} else {
+			this.bloodAnimation.setXSpeed(400);
+			this.bloodAnimation.setYSpeed(py);
+		}
+
+		this.bloodAnimation.makeParticles('blood', 100);	
+		this.bloodAnimation.start(true, 0, null, 10);
+
+
+
+
 
 		// enemy.body.drag.set(70);
 		// enemy.body.maxVelocity.set(200);

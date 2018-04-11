@@ -370,8 +370,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":744.348267629716,
-                 "y":1241.62091750193
+                 "x":679.339043347892,
+                 "y":923.602820339495
                 }, 
                 {
                  "height":14.1413,
@@ -518,8 +518,8 @@
                  "type":"",
                  "visible":true,
                  "width":22.0022,
-                 "x":732.846932758131,
-                 "y":709.595066228478
+                 "x":740.75346003565,
+                 "y":1049.5757391618
                 }, 
                 {
                  "height":22.0022,
@@ -589,6 +589,259 @@
                  "width":22.0022,
                  "x":641.928393545184,
                  "y":458.214391559086
+                }, 
+                {
+                 "height":22.0022,
+                 "id":177,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":653.147191311605,
+                 "y":700.58635497672
+                }, 
+                {
+                 "height":22.0022,
+                 "id":178,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":694.436833760872,
+                 "y":698.829348915049
+                }, 
+                {
+                 "height":22.0022,
+                 "id":179,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":736.604979240973,
+                 "y":697.072342853378
+                }, 
+                {
+                 "height":22.0022,
+                 "id":180,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":780.530130782746,
+                 "y":696.193839822542
+                }, 
+                {
+                 "height":22.0022,
+                 "id":181,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":804.249712615304,
+                 "y":699.707851945884
+                }, 
+                {
+                 "height":22.0022,
+                 "id":182,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":755.932045919353,
+                 "y":715.520906500922
+                }, 
+                {
+                 "height":22.0022,
+                 "id":183,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":703.221864069226,
+                 "y":720.791924685935
+                }, 
+                {
+                 "height":22.0022,
+                 "id":184,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":668.081742835808,
+                 "y":721.670427716771
+                }, 
+                {
+                 "height":22.0022,
+                 "id":185,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":634.69862766406,
+                 "y":721.670427716771
+                }, 
+                {
+                 "height":22.0022,
+                 "id":186,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":578.474433690591,
+                 "y":715.520906500922
+                }, 
+                {
+                 "height":22.0022,
+                 "id":187,
+                 "name":"Enemy Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "killQuestID":4,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":580.231439752262,
+                 "y":676.866773144162
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -719,7 +972,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":177,
+ "nextobjectid":188,
  "orientation":"orthogonal",
  "properties":
     {

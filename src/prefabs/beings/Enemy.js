@@ -83,9 +83,10 @@ export default class extends Phaser.Sprite {
 			this.animations.play('walk');
 
 			this.finderCall = true;
-			// if (this.pathfinder) {
-			// 	this.pathfinder.pathToFollow.length = 0;
-			// }
+
+			if (this.pathfinder) {
+				this.pathfinder.pathToFollow.length = 0;
+			}
 		}
 
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
