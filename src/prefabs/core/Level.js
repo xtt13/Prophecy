@@ -226,11 +226,12 @@ export default class {
 				this.waterEmitter = this.game.add.emitter(x, y, 50);
 				this.waterEmitter.width = element.width;
 				this.waterEmitter.height = element.height;
-				this.waterEmitter.minParticleScale = 0.1;
-				this.waterEmitter.maxParticleScale = 0.8;
+				// this.waterEmitter.minParticleScale = 0.1;
+				// this.waterEmitter.maxParticleScale = 0.8;
 				// waterEmitter.maxParticleSpeed.setTo(2, 2);
-				this.waterEmitter.setYSpeed(0.5, -0.5);
-				this.waterEmitter.setXSpeed(0.5, -0.5);
+				this.waterEmitter.setYSpeed(0.1, -0.1);
+				this.waterEmitter.setXSpeed(0.1, -0.1);
+				this.waterEmitter.rotation = 0;
 				this.waterEmitter.gravity = 0;
 				this.waterEmitter.setAlpha(0.3, 0.8, 1000, Phaser.Easing.Exponential.In, true);
 				this.waterEmitter.makeParticles('waterdrop');
@@ -281,7 +282,7 @@ export default class {
 	}
 
 	enemyCollision() {
-		// console.log('collide');
+		console.log('collide');
 	}
 
 	// Update Method
@@ -301,7 +302,7 @@ export default class {
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.player, this.characters, this.player.talk, null, this);
-		this.game.physics.arcade.collide(this.player, this.collisionLayer);
+		this.game.physics.arcade.collide(this.player, this.collisionLayer, this.enemyCollision);
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		// If the player is not falling down
@@ -509,15 +510,18 @@ export default class {
 
 	initMap() {
 		// Add current map
-		this.map = this.game.add.tilemap(this.gameData.currentMap);
+		// this.map = this.game.add.tilemap(this.gameData.currentMap);
+		this.map = this.game.add.tilemap('map8');
 
-		// Background Cloud Layer
-		this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-		this.backgroundLayer = this.map.createLayer('Clouds');
-		this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+		if(this.map.plus.properties.dayCycle){
+			// Background Cloud Layer
+			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+			this.backgroundLayer = this.map.createLayer('Clouds');
+			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+		}
 
 		//  Connect with Tileset
-		this.map.addTilesetImage('Tileset', 'gameTileset2', 36, 36);
+		this.map.addTilesetImage('tileset', 'tileset', 32, 32);
 
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
@@ -537,13 +541,15 @@ export default class {
 		this.foregroundLayer.alpha = 1;
 
 		// Set Collision Tiles
-		this.map.setCollision(4, true, 'CollisionLayer');
+		this.map.setCollision(1602, true, 'CollisionLayer');
 
 		// Set tileCallback for abyss
-		this.map.setTileIndexCallback(3, this.fallDownCheck, this, this.collisionLayer);
+		this.map.setTileIndexCallback(1601, this.fallDownCheck, this, this.collisionLayer);
 
-		// Set SlowDownTile
-		this.map.setTileIndexCallback(4, this.slowDownTile, this, this.collisionLayer);
+		// // Set SlowDownTile
+		// this.map.setTileIndexCallback(4, this.slowDownTile, this, this.collisionLayer);
+
+		// this.collisionLayer.debug = true;
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;

@@ -363,6 +363,23 @@ export default class {
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
 
+
+		switch (this.direction) {
+			case 'up':
+				break;
+			case 'down':
+				break;
+			case 'left':
+				this.player.animations.play('dash_left');
+				console.log('HHHHHH');
+				break;
+			case 'right':
+				this.player.animations.play('dash_right');
+				break;
+			default:
+		}
+		
+
 		// this.dashTween = this.game.add
 		// 	.tween(this)
 		// 	.to({ playerSpeed: playerSpeed + 190 }, 200, Phaser.Easing.Exponential.In, true, 0, 0, true);
@@ -552,8 +569,9 @@ export default class {
 						if (this.button_W.isDown || this.button_S.isDown) {
 							this.player.body.velocity.x = -this.playerSpeed / 2;
 						} else {
-							this.player.animations.play('run_left');
 							this.player.body.velocity.x = -this.playerSpeed;
+							if(this.dash) return;
+							this.player.animations.play('run_left');
 						}
 					} else if (this.button_D.isDown) {
 						// this.player.animations._anims.run_right.speed = 15;
@@ -562,9 +580,10 @@ export default class {
 
 						if (this.button_W.isDown || this.button_S.isDown) {
 							this.player.body.velocity.x = this.playerSpeed / 2;
-						} else {
-							this.player.animations.play('run_right');
+						} else {			
 							this.player.body.velocity.x = this.playerSpeed;
+							if(this.dash) return;
+							this.player.animations.play('run_right');
 						}
 					} else {
 						// this.player.animations.play('idle');
@@ -585,6 +604,7 @@ export default class {
 					// this.game.physics.arcade.computeVelocity(2, this.player.body, 20, 100, 20);
 
 					// console.log(this.direction);
+					if(this.dash) return;
 					switch (this.direction) {
 						case 'up':
 							// this.player.animations.play('idle');

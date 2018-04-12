@@ -31,6 +31,8 @@ export default class extends Phaser.Sprite {
 		this.animations.add('run_down', [4, 5, 6, 7, 8, 9, 10, 11], 19, true);
 		this.animations.add('run_right', [12, 13, 14, 15, 16, 17, 18, 19], 19, true);
 		this.animations.add('run_left', [20, 21, 22, 23, 24, 25, 26, 27], 19, true);
+		this.animations.add('dash_right', [39], 1, true);
+		this.animations.add('dash_left', [38], 1, true);
 
 		this.animations.play('idle');
 
@@ -117,13 +119,13 @@ export default class extends Phaser.Sprite {
 		px *= 2;
 		py *= 2;
 
-		this.killAnimation = this.game.add.emitter(enemy.x, enemy.y, 30);
+		this.killAnimation = this.game.add.emitter(enemy.x, enemy.y, 4);
 		this.killAnimation.angularDrag = 500;
 		this.killAnimation.particleDrag.set(1800);
 
 		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
 			this.killAnimation.setXSpeed(px);
-			this.killAnimation.setYSpeed(300);
+			this.killAnimation.setYSpeed(400);
 		} else {
 			this.killAnimation.setXSpeed(400);
 			this.killAnimation.setYSpeed(py);
@@ -131,14 +133,16 @@ export default class extends Phaser.Sprite {
 
 
 		this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
+		this.killAnimation.setAlpha(1, 0, 5000, null, false);
 		this.killAnimation.start(true, 0, null, 10);
+		this.game.world.setChildIndex(this.killAnimation, 10);
 
 		enemy.kill();
 
 		this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
 		this.bloodAnimation.angularDrag = 500;
 		this.bloodAnimation.particleDrag.set(1800);
-		// this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
+		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
 		// this.bloodAnimation.minParticleSpeed.set(px, 400);
 
 		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){

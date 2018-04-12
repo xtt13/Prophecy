@@ -20,7 +20,7 @@ export default class extends Phaser.Sprite {
 		this.paralyze = false;
 		
 		this.finderCall = true;
-		this.closeSpeed = this.game.rnd.integerInRange(10, 70);
+		this.closeSpeed = this.game.rnd.integerInRange(50, 100);
 		this.farSpeed = this.game.rnd.integerInRange(400, 600);
 
 		this.startMoving = false;
@@ -71,6 +71,7 @@ export default class extends Phaser.Sprite {
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
 		if (this.distanceBetweenEnemiePlayer < 120) {
+
 			// if (this.distanceBetweenEnemiePlayer < 100) {
 			// 	this.animations.play('walk');
 			// 	this.game.physics.arcade.moveToObject(this, this.player, 150);
