@@ -15,7 +15,7 @@ export default class extends Phaser.Sprite {
 		// console.log(properties);
 		this.killQuestID = properties.killQuestID;
 
-		this.health = 100;
+		this.health = 3;
 		this.dead = false;
 		this.paralyze = false;
 		
@@ -35,7 +35,7 @@ export default class extends Phaser.Sprite {
 
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
-		this.body.drag.set(200);
+		this.body.drag.set(1800);
 		// this.body.enable = false;
 
 		if (this.jumpDown) {

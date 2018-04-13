@@ -20,6 +20,6 @@ export default {
 	night: true,
 	enemies: true,
 	startMap: 'map3',
-	lucy: false,
+	lucy: true,
 	secureLS: false
 };

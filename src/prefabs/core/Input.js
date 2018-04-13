@@ -363,6 +363,9 @@ export default class {
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
 
+		// this.player.alpha = 0.5;
+		this.game.add.tween(this.player).to( { alpha: 0.1 }, 250, Phaser.Easing.Elastic.Out, true);
+
 
 		switch (this.direction) {
 			case 'up':
@@ -385,10 +388,14 @@ export default class {
 		// 	.to({ playerSpeed: playerSpeed + 190 }, 200, Phaser.Easing.Exponential.In, true, 0, 0, true);
 
 		this.game.time.events.add(400, () => {
+			this.player.alpha = 1;
 			this.playerSpeed = 60;
 			this.dash = false;
 			this.player.removeParticles();
+			this.game.add.tween(this.player).to( { alpha: 1 }, 250, Phaser.Easing.Elastic.Out, true);
 		});
+
+		
 	}
 
 	onGamepadUp() {}

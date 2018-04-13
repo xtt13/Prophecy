@@ -96,8 +96,17 @@ export default class extends Phaser.State {
 		// this.text.scale.set(0.26);
 
 
-		var style = { font: "10px Pixeled", fill: "#00ff00", align: "center" };
+		var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center" };
 		this.text = this.game.add.text(this.game.camera.width / 2, this.game.camera.height / 2, "", style);
+
+		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
+
+		//  Our first arc will be a line only
+		this.graphics.lineStyle(8, 0x49ffc5);
+	
+		// graphics.arc(0, 0, 135, game.math.degToRad(0), game.math.degToRad(90), false);
+		// this.graphics.arc(0, 0, 130, -1.6, 1, false);
+		this.graphics.scale.setTo(0.5);
 
 		// Load Sprites
 		this.load.image('lucy', 'assets/sprites/lucy.png');
@@ -212,10 +221,19 @@ export default class extends Phaser.State {
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
 			if (typeof ipc == 'undefined') {
 				this.text.text = progress;
+
+				// this.graphics.clear();
+				// this.graphics = game.add.graphics(this.text.x + 3, this.text.y + 5);
+				// this.graphics.lineStyle(1, 0x49ffc5, 1);
+				// this.graphics.scale.setTo(9);
+
+				// var newValue = parseInt((progress/10)/2);
+
+				// this.graphics.arc(0, 0, 3, -1.6, newValue, false);
 				
 			}
 
-			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #bada55');
+			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #49ffc5');
 		});
 	}
 }

@@ -13,7 +13,7 @@ export default class extends Phaser.State {
 			this.game.camera.width / 2,
 			this.game.camera.height / 2,
 			'pxlfont',
-			'Random Studio',
+			'WingLab Studios',
 			30
 		);
 		this.menuText.anchor.set(0.5);

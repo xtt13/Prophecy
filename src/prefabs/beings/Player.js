@@ -53,20 +53,20 @@ export default class extends Phaser.Sprite {
 		// -1 Velocity
 		let px = this.body.velocity.x;
 		let py = this.body.velocity.y;
-		px *= -1;
-		py *= -1;
+		px *= -2;
+		py *= -2;
 
-		this.customEmitter = this.game.add.emitter(this.x, this.y, 50);
+		this.customEmitter = this.game.add.emitter(this.x, this.y, 500);
 		this.customEmitter.width = 10;
 		this.customEmitter.height = 30;
 		this.customEmitter.minParticleScale = 1;
-		this.customEmitter.maxParticleScale = 4;
+		this.customEmitter.maxParticleScale = 1;
 		this.customEmitter.gravity = 0.5;
-		this.customEmitter.setAlpha(0.5, 1, 1000, null, true);
-		this.customEmitter.gravity = 0.5;
+		this.customEmitter.setAlpha(0.5, 1, 500, null, true);
 		this.customEmitter.minParticleSpeed.set(px, py);
 		this.customEmitter.maxParticleSpeed.set(px, py);
-		this.customEmitter.makeParticles('cyanParticle');
+		this.customEmitter.gravity = -10;
+		this.customEmitter.makeParticles('cyanParticle', 500);
 
 		this.multiplySprite = game.make.sprite(0, 0, this.key);
 		this.multiplySprite.anchor.set(0.5);
@@ -74,7 +74,8 @@ export default class extends Phaser.Sprite {
 
 		this.bmd = this.game.add.bitmapData(100, 100);
 		this.baseImages.push(this.bmd.addToWorld(x, y, 0.5, 0.5));
-		this.bmd.smoothed = false;
+		this.bmd.smoothed = true;
+		this.bmd.shadow('#000000', 10, -1, -1);
 		this.bmd.draw(this.multiplySprite, 50, 50);
 
 		this.weapon = game.add.weapon(10, 'invisibleAttack');
@@ -93,7 +94,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
-		this.customEmitter.start(false, 500, 1, 0);
+		this.customEmitter.start(true, 2000, 0.1, 0);
 	}
 
 	removeParticles() {
@@ -107,64 +108,16 @@ export default class extends Phaser.Sprite {
 		enemy.paralyze = true;
 		enemy.tint = 0xFF0000;
 
-		this.game.time.events.add(3000, () => {
+		this.game.time.events.add(350, () => {
 			enemy.paralyze = false;
+		});
+
+		this.game.time.events.add(75, () => {
 			enemy.tint = 16777215;
 		});
 
 		
-		let px = enemy.body.velocity.x;
-		let py = enemy.body.velocity.y;
 
-		px *= 2;
-		py *= 2;
-
-		this.killAnimation = this.game.add.emitter(enemy.x, enemy.y, 4);
-		this.killAnimation.angularDrag = 500;
-		this.killAnimation.particleDrag.set(1800);
-
-		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
-			this.killAnimation.setXSpeed(px);
-			this.killAnimation.setYSpeed(400);
-		} else {
-			this.killAnimation.setXSpeed(400);
-			this.killAnimation.setYSpeed(py);
-		}
-
-
-		this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
-		this.killAnimation.setAlpha(1, 0, 5000, null, false);
-		this.killAnimation.start(true, 0, null, 10);
-		this.game.world.setChildIndex(this.killAnimation, 10);
-
-		enemy.kill();
-
-		this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
-		this.bloodAnimation.angularDrag = 500;
-		this.bloodAnimation.particleDrag.set(1800);
-		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
-		// this.bloodAnimation.minParticleSpeed.set(px, 400);
-
-		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
-			this.bloodAnimation.setXSpeed(px);
-			this.bloodAnimation.setYSpeed(300);
-		} else {
-			this.bloodAnimation.setXSpeed(400);
-			this.bloodAnimation.setYSpeed(py);
-		}
-
-		this.bloodAnimation.makeParticles('blood', 100);	
-		this.bloodAnimation.start(true, 0, null, 10);
-
-
-
-
-
-		// enemy.body.drag.set(70);
-		// enemy.body.maxVelocity.set(200);
-
-		// enemy.body.velocity.x = player.body.velocity.x * 2.5;
-		// enemy.body.velocity.y = player.body.velocity.y * 2.5;
 
 		
 
@@ -181,58 +134,107 @@ export default class extends Phaser.Sprite {
 		// 	enemy.body.velocity.x = player.body.velocity.x * 2;
 		// 	enemy.body.velocity.y = player.body.velocity.y * 2;
 
-		// 	enemy.health -= 10;
+			// enemy.health -= 1;
 
-		// 	console.log(enemy.health);
+			// console.log(enemy.health, enemy.health <= 0);
 
-		// 	if (enemy.health <= 0) {
+			// if (enemy.health <= 0) {
 
-		// 		console.log('die');
+			// 	console.log('die');
 
-		// 		enemy.dead = true;
-		// 		enemy.body.moves = false;
-		// 		enemy.body.enable = false;
+			// 	enemy.dead = true;
+			// 	enemy.body.moves = false;
+			// 	enemy.body.enable = false;
 
-		// 		enemy.animations.stop();
+			// 	enemy.animations.stop();
 
-		// 		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
-		// 			let properties = {};
-		// 			properties.id = enemy.dropItemID;
-		// 			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
-		// 		}
+			// 	if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+			// 		let properties = {};
+			// 		properties.id = enemy.dropItemID;
+			// 		this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
+			// 	}
 	
-		// 		if (enemy.killQuestID !== undefined) {
-		// 			this.questManager.checkKillCondition(enemy.killQuestID);
-		// 		}
-		// 	}
-		// } else {
+			// 	if (enemy.killQuestID !== undefined) {
+			// 		this.questManager.checkKillCondition(enemy.killQuestID);
+			// 	}
+				
+			// }
 
 
+		enemy.health -= 1;
 
-		// 	this.player.health -= 10;
-		// 	this.gameData.playerHealth = this.player.health;
-		// 	this.safe.setGameConfig(this.gameData);
-		// 	this.game.camera.flash(0xc10000, 200);
+		console.log(enemy.health, enemy.health <= 0);
 
-		// 	if (this.player.health <= 0) {
-		// 		this.gameData.playerHealth = 100;
-		// 		this.safe.setGameConfig(this.gameData);
+		if (enemy.health <= 0) {
 
-		// 		if (this.inputClass.stick) {
-		// 			this.inputClass.stick.alpha = 0;
-		// 			this.inputClass.stick.enabled = false;
-		// 		}
+			console.log('die');
 
-		// 		this.game.state.restart(true, false, {
-		// 			map: this.currentMap,
-		// 			targetID: this.lastTargetID,
-		// 			restartType: 'revive'
-		// 		});
-		// 	}
+			enemy.dead = true;
+			enemy.body.moves = false;
+			enemy.body.enable = false;
+
+			enemy.animations.stop();
+
+			if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+				let properties = {};
+				properties.id = enemy.dropItemID;
+				this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
+			}
+
+			if (enemy.killQuestID !== undefined) {
+				this.questManager.checkKillCondition(enemy.killQuestID);
+			}
+
+			let px = enemy.body.velocity.x;
+			let py = enemy.body.velocity.y;
+
+			px *= 2;
+			py *= 2;
+
+			this.killAnimation = this.game.add.emitter(enemy.x, enemy.y, 4);
+			this.killAnimation.angularDrag = 500;
+			this.killAnimation.particleDrag.set(1800);
+
+			if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+				this.killAnimation.setXSpeed(px);
+				this.killAnimation.setYSpeed(400);
+			} else {
+				this.killAnimation.setXSpeed(400);
+				this.killAnimation.setYSpeed(py);
+			}
 
 
-		// }
+			this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
+			this.killAnimation.setAlpha(1, 0, 5000, null, false);
+			this.killAnimation.start(true, 0, null, 10);
+			this.game.world.setChildIndex(this.killAnimation, 10);
+
+			enemy.kill();
+
+			this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
+			this.bloodAnimation.angularDrag = 500;
+			this.bloodAnimation.particleDrag.set(1800);
+			this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
+			// this.bloodAnimation.minParticleSpeed.set(px, 400);
+
+			if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+				this.bloodAnimation.setXSpeed(px);
+				this.bloodAnimation.setYSpeed(300);
+			} else {
+				this.bloodAnimation.setXSpeed(400);
+				this.bloodAnimation.setYSpeed(py);
+			}
+
+			this.bloodAnimation.makeParticles('blood', 100);	
+			this.bloodAnimation.start(true, 0, null, 10);
+			
+		}
+
+
+		
+
 	}
+
 
 	talk(player, character) {
 
@@ -366,7 +368,7 @@ export default class extends Phaser.Sprite {
 
 		if (this.level.inputClass.dash) {
 			this.multiplySprite.frame = this.frame;
-			this.multiplySprite.alpha = 0.03;
+			this.multiplySprite.alpha = 0.01;
 			this.bmd.draw(this.multiplySprite, 50, 50);
 			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
 
