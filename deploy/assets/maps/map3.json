@@ -100,12 +100,14 @@
                  "name":"Teleporter",
                  "properties":
                     {
+                     "direction":"down",
                      "port":true,
                      "targetID":2,
                      "targetMap":"map2"
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
                      "port":"bool",
                      "targetID":"int",
                      "targetMap":"string"
@@ -241,6 +243,7 @@
     {
      "athmoSound":"AxTemple",
      "dayCycle":false,
+     "lucy":true,
      "music":"MxTempleHappy",
      "startMusic":true,
      "weather":"NiceWeather"
@@ -249,6 +252,7 @@
     {
      "athmoSound":"string",
      "dayCycle":"bool",
+     "lucy":"bool",
      "music":"string",
      "startMusic":"bool",
      "weather":"string"

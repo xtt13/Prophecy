@@ -99,7 +99,7 @@ export default class {
 		}
 
 		// Create Lucy
-		this.lucy = config.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
+		this.lucy = this.tilemapProperties.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);

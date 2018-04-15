@@ -258,6 +258,7 @@
     {
      "athmoSound":"AxTemple",
      "dayCycle":false,
+     "lucy":false,
      "music":"MxTempleHappy",
      "startMusic":true,
      "weather":"NiceWeather"
@@ -266,6 +267,7 @@
     {
      "athmoSound":"string",
      "dayCycle":"bool",
+     "lucy":"bool",
      "music":"string",
      "startMusic":"bool",
      "weather":"string"

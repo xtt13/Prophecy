@@ -13,7 +13,7 @@ export default class {
 		this.level = level;
 
 		this.spawnEnemiesRunning = false;
-
+		this.templeDoorOpen = false;
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
@@ -333,8 +333,12 @@ export default class {
 		if (this.level.gameData.targetID == 2) {
 			this.level.door.animations.play('idle', 1, true);
 		} else {
+			if(this.templeDoorOpen) return;
 			this.level.door.animations.play('open', 8, false);
 			this.game.camera.shake(0.0015, 2500, true);
+			this.doorOpenSound = this.game.add.audio('sfxstonedoor');
+			this.doorOpenSound.play();
+			this.templeDoorOpen = true;
 		}
 		
 	}

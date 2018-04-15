@@ -31,7 +31,7 @@ export default class {
 		if (playerData == null) {
 			var playerData = {
 				playerHealth: 100,
-				currentMap: 'map1'
+				currentMap: config.startMap
 			};
 
 			return playerData;

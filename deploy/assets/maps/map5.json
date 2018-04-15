@@ -94,12 +94,14 @@
                  "name":"Teleporter",
                  "properties":
                     {
+                     "direction":"down",
                      "port":true,
                      "targetID":2,
                      "targetMap":"map4"
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
                      "port":"bool",
                      "targetID":"int",
                      "targetMap":"string"
@@ -177,8 +179,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":726.151961906528,
-                 "y":1336.4633088157
+                 "x":726.59173498362,
+                 "y":1352.51502612957
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -256,6 +258,7 @@
     {
      "athmoSound":"AxTemple",
      "dayCycle":false,
+     "lucy":false,
      "music":"MxTempleHappy",
      "startMusic":true,
      "weather":"NiceWeather"
@@ -264,6 +267,7 @@
     {
      "athmoSound":"string",
      "dayCycle":"bool",
+     "lucy":"bool",
      "music":"string",
      "startMusic":"bool",
      "weather":"string"

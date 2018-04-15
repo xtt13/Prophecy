@@ -75,12 +75,16 @@
                  "name":"Teleporter",
                  "properties":
                     {
+                     "direction":"up",
+                     "lucy":true,
                      "port":true,
                      "targetID":1,
                      "targetMap":"map2"
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
+                     "lucy":"bool",
                      "port":"bool",
                      "targetID":"int",
                      "targetMap":"string"
