@@ -98,6 +98,7 @@ export default class extends Phaser.State {
 
 		var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center" };
 		this.text = this.game.add.text(this.game.camera.width / 2, this.game.camera.height / 2, "", style);
+		this.text.anchor.set(0.5);
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
 

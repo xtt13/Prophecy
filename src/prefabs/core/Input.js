@@ -14,6 +14,7 @@ export default class {
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.dash = false;
+		this.loop = false;
 
 		this.playerSpeed = 60;
 		this.directon = 'down';
@@ -313,25 +314,12 @@ export default class {
 	addMovementSound() {
 		if (this.level.muteSound || !this.player.movable) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-			if (!this.pyfootsteps.isPlaying) {
-				if (this.currentUnderground == 'grass') {
-					this.pyfootsteps.play('gravel1', 1);
-				} else if (this.currentUnderground == 'stone') {
-					this.pyfootsteps.play('grass1', 1);
-				}
 
-				// if(!this.loop){
-				// 	this.loop = this.game.time.events.loop(500, () => {
-				// 		this.pyfootsteps.play('gravel2', 4);
-				// 	}, this);
-				// }
-			}
-		} else {
-			// this.loop.destroy();
-			// this.loop = false;
-			// this.loop = undefined;
-			// clearInterval(this.loop);
-			// this.pyfootsteps.stop('gravel1');
+				if(!this.loop){
+					this.loop = this.game.time.events.loop(260, () => {
+						this.pyfootsteps.play('gravel2', 1);
+					}, this);
+				}
 		}
 	}
 
@@ -339,11 +327,8 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			//Hi
 		} else {
-			if (this.currentUnderground == 'grass') {
-				this.pyfootsteps.stop('gravel1');
-			} else if (this.currentUnderground == 'stone') {
-				this.pyfootsteps.stop('grass1');
-			}
+			this.game.time.events.remove(this.loop);
+			this.loop = false;
 		}
 	}
 
