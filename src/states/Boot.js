@@ -5,7 +5,7 @@ export default class extends Phaser.State {
 	init() {
 		// Boot Log
 		console.log('%c Boot it up! ', 'background: #0061ff; color: #bada55');
-		localStorage.clear();
+		// localStorage.clear();
 	}
 
 	create() {

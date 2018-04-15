@@ -278,6 +278,7 @@ export default class {
 	addPort(region) {
 		let targetMap = region.properties.targetMap;
 		let targetID = region.properties.targetID;
+		let direction = region.properties.direction;
 
 		if (this.level.inputClass.stick) {
 			this.level.inputClass.stick.alpha = 0;
@@ -286,6 +287,7 @@ export default class {
 
 		this.level.gameData.currentMap = targetMap;
 		this.level.gameData.targetID = targetID;
+		this.level.gameData.direction = direction;
 		this.level.safe.setGameConfig(this.level.gameData);
 
 		console.log('TargetMap: ' + targetMap);
@@ -294,7 +296,7 @@ export default class {
 			this.level.inputClass.pyfootsteps.stop('gravel1');
 		}
 
-		this.game.state.restart(true, false, { map: targetMap, targetID: targetID });
+		this.game.state.restart(true, false, { map: targetMap, targetID: targetID, direction: direction });
 	}
 
 	fightArea() {
@@ -328,12 +330,13 @@ export default class {
 	}
 
 	openDoor() {
-		if (this.level.gameData.targetID == 3) {
+		if (this.level.gameData.targetID == 2) {
 			this.level.door.animations.play('idle', 1, true);
 		} else {
 			this.level.door.animations.play('open', 8, false);
+			this.game.camera.shake(0.0015, 2500, true);
 		}
-		// this.game.camera.shake(0.0015, 10000, true);
+		
 	}
 
 	spawnEnemies(region) {

@@ -71,6 +71,33 @@ export default class {
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
 
+		// console.log(this.groundLayer.getTiles(this.player.x, this.player.y, 5, 5));
+
+		// Set Player Direction
+		console.log(this.gameData.direction);
+
+		switch (this.gameData.direction) {
+			case 'up':
+				console.log('LKDSJFLKDJF');
+				this.player.animations.play('idle_up');
+				break;
+
+			case 'down':
+				this.player.animations.play('idle');
+				break;
+
+			case 'left':
+				this.player.animations.play('idle_left');
+				break;
+
+			case 'right':
+				this.player.animations.play('idle_right');
+				break;
+		
+			default:
+				break;
+		}
+
 		// Create Lucy
 		this.lucy = config.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
 
@@ -238,6 +265,44 @@ export default class {
 
 				//(explode, lifespan, frequency, quantity, forceQuantity)
 				this.waterEmitter.start(false, 3000, 20);
+
+			} else if(element.properties.type == 'fire'){
+
+				let x = element.x;
+				let y = element.y;
+
+				console.log('üüüüüü');
+				// this.waterEmitter = this.game.add.emitter(x, y, 50);
+				// this.waterEmitter.width = element.width;
+				// this.waterEmitter.height = element.height;
+				// // this.waterEmitter.minParticleScale = 0.1;
+				// // this.waterEmitter.maxParticleScale = 0.8;
+				// // waterEmitter.maxParticleSpeed.setTo(2, 2);
+				// this.waterEmitter.setYSpeed(0.1, -0.1);
+				// this.waterEmitter.setXSpeed(0.1, -0.1);
+				// this.waterEmitter.rotation = 0;
+				// this.waterEmitter.gravity = 0;
+				// this.waterEmitter.setAlpha(0.3, 0.8, 1000, Phaser.Easing.Exponential.In, true);
+				// this.waterEmitter.makeParticles('waterdrop');
+
+				// //(explode, lifespan, frequency, quantity, forceQuantity)
+				// this.waterEmitter.start(false, 3000, 20);
+
+
+
+				this.fireEmitter = this.game.add.emitter(x, y, 100);
+				this.fireEmitter.width = element.width;
+				this.fireEmitter.height = element.height;
+				// this.fireEmitter.maxParticleScale = 1;
+				this.fireEmitter.gravity = 0.5;
+				this.fireEmitter.setAlpha(0, 1, 300, null, true);
+				// this.fireEmitter.minParticleSpeed.set(100);
+				this.fireEmitter.setXSpeed(-1, 1);
+				this.fireEmitter.setYSpeed(0.8);
+				// this.fireEmitter.maxParticleSpeed.set(100);
+				this.fireEmitter.gravity = -20;
+				this.fireEmitter.makeParticles('fireSpritesheet', [0, 1, 2, 3], 100);
+				this.fireEmitter.start(false, 1000, 0.1, 0);
 
 			}
 
@@ -510,8 +575,8 @@ export default class {
 
 	initMap() {
 		// Add current map
-		// this.map = this.game.add.tilemap(this.gameData.currentMap);
-		this.map = this.game.add.tilemap('map8');
+		this.map = this.game.add.tilemap(this.gameData.currentMap);
+		// this.map = this.game.add.tilemap('map4');
 
 		if(this.map.plus.properties.dayCycle){
 			// Background Cloud Layer
@@ -566,12 +631,12 @@ export default class {
 		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {
 			this.game.camera.flash(0x000000, 8000, true);
 		} else {
-			this.game.camera.flash(0x000000, 2000);
+			this.game.camera.flash(0x000000, 1500);
 		}
 
 		// Customizations
-		if (this.currentMap == 'map3') {
-			this.door = this.game.add.sprite(865, 793, 'templeDoor');
+		if (this.currentMap == 'map4') {
+			this.door = this.game.add.sprite(253, -12, 'templeDoor');
 			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
 			this.door.animations.add('idle', [17], 1, true);
 		}

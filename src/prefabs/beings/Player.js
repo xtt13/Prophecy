@@ -24,7 +24,8 @@ export default class extends Phaser.Sprite {
 
 		// this.movementBlocked = false;
 
-		this.animations.add('idle', [0, 1, 2, 3], 5, true);
+		this.animations.add('idle_down', [0, 1, 2, 3], 5, true);
+		this.animations.add('idle_up', [30], 1, true);
 		this.animations.add('idle_right', [28], 1, true);
 		this.animations.add('idle_left', [29], 1, true);
 		this.animations.add('run_up', [30, 31, 32, 33, 34, 35, 36, 37], 19, true);
@@ -34,7 +35,7 @@ export default class extends Phaser.Sprite {
 		this.animations.add('dash_right', [39], 1, true);
 		this.animations.add('dash_left', [38], 1, true);
 
-		this.animations.play('idle');
+		// this.animations.play('idle');
 
 		this.game.physics.enable(this);
 		this.body.setSize(8, 10, 21, 40);
