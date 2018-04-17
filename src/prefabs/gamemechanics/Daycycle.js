@@ -17,10 +17,13 @@ export default class {
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
 
 			this.time = new Date();
+			// console.log('NACHT');
 
 			/*eslint no-undef: */
 			if (__DEV__) {
 				this.timeValue = 11;
+				console.log('NACHT');
+				
 				// this.timeValue = this.time.getHours();
 			} else {
 				this.timeValue = this.time.getHours();

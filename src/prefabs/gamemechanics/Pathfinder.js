@@ -13,10 +13,11 @@ export default class {
 
 		this.finderCallObject = finderCallObject;
 
+		// FOR DEBUGGING
 		this.showPaths = false;
 
 		this.pathToFollow = [];
-		this.walkables = [2, 9, 11, 35, 39, 40, 41, 93];
+		this.walkables = [1636, 1631, 1625, 1624, 1626, 1627, 1628, 1633];
 
 		this.blocked = false;
 		this.followingPath = false;
@@ -25,18 +26,22 @@ export default class {
 
 		this.marker;
 
+
 		this.movingTween = this.game.add.tween(this.player);
 		this.movingTween.onComplete.add(() => {
 			this.followingPath = false;
 			this.player.movable = true;
 
-			this.game.time.events.add(
-				Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 2),
-				function() {
-					this.followPath();
-				},
-				this
-			);
+			// this.game.time.events.add(
+			// 	Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 2),
+			// 	function() {
+			// 		this.followPath();
+			// 	},
+			// 	this
+			// );
+
+			this.followPath();
+			
 		});
 
 		this.pathfinder = new PhaserEasystar(this.game);
@@ -54,7 +59,7 @@ export default class {
 
 	findPathTo(tilex, tiley) {
 		this.pathfinder.setCallbackFunction(path => {
-			// console.log(path);
+			console.log(path);
 			this.trail.destroy(true, true);
 			if (path === null) {
 				return;
@@ -63,7 +68,7 @@ export default class {
 			if (this.showPaths) {
 				var ilen = path.length;
 				for (let i = 0; i < ilen; i++) {
-					this.marker = this.game.add.graphics(path[i].x * 36, path[i].y * 36);
+					this.marker = this.game.add.graphics(path[i].x * 32, path[i].y * 32);
 					this.marker.data.cellX = path[i].x;
 					this.marker.data.cellY = path[i].y;
 					this.trail.add(this.marker);
@@ -71,8 +76,8 @@ export default class {
 					this.marker.drawRect(8, 8, 16, 16);
 				}
 			}
-
 			this.pathToFollow = path;
+			this.followPath();
 		});
 
 		this.pathfinder.preparePathCalculation(
@@ -80,9 +85,16 @@ export default class {
 			[tilex, tiley]
 		);
 		this.pathfinder.calculatePath();
+		//TEST
+		// console.log(this.pathToFollow);
+		
+		
 	}
 
 	followPath() {
+		console.log('BUUM');
+		console.log(this.pathToFollow);
+
 		if (!this.pathToFollow.length || this.followingPath) {
 			return;
 		}
@@ -106,13 +118,15 @@ export default class {
 			});
 		}
 
-		var x = next.x * 36 + 18;
-		var y = next.y * 36 + 18;
+		var x = next.x * 32 + 18;
+		var y = next.y * 32 + 18;
 
 		this.followingPath = true;
 		this.movingTween.target = this.player;
 		this.movingTween.timeline = [];
 		this.movingTween.to({ x, y }, this.movingSpeed);
 		this.movingTween.start();
+
+		
 	}
 }

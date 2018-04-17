@@ -75,7 +75,7 @@
                  "name":"Teleporter",
                  "properties":
                     {
-                     "direction":"up",
+                     "ground":"gravel2",
                      "lucy":true,
                      "port":true,
                      "targetID":1,
@@ -83,7 +83,7 @@
                     },
                  "propertytypes":
                     {
-                     "direction":"string",
+                     "ground":"string",
                      "lucy":"bool",
                      "port":"bool",
                      "targetID":"int",
@@ -245,6 +245,8 @@
     {
      "athmoSound":"AxTemple",
      "dayCycle":false,
+     "ground":"gravel2",
+     "lucy":true,
      "music":"MxTempleHappy",
      "startMusic":true,
      "weather":"NiceWeather"
@@ -253,6 +255,8 @@
     {
      "athmoSound":"string",
      "dayCycle":"bool",
+     "ground":"string",
+     "lucy":"bool",
      "music":"string",
      "startMusic":"bool",
      "weather":"string"

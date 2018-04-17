@@ -19,6 +19,6 @@ export default {
 	forceMobile: false,
 	night: true,
 	enemies: true,
-	startMap: 'map5',
+	startMap: 'map1',
 	secureLS: false
 };

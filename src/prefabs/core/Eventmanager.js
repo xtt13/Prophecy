@@ -170,20 +170,24 @@ export default class {
 	}
 
 	movePlayerToXY(region) {
+		console.log('move');
 		const targetX = region.properties.targetX;
 		const targetY = region.properties.targetY;
 
-		if (this.level.pathfinder == undefined) {
-			this.level.pathfinder = new Pathfinder(
+		if (this.level.movePlayerPathfinder == undefined) {
+			this.level.movePlayerPathfinder = new Pathfinder(
 				this.game,
 				this.level.map,
 				this.level.player,
 				{ x: targetX, y: targetY },
 				this.level.groundLayer,
 				false,
-				200
+				400
 			);
+			
 		}
+		// this.level.player.animations.stop();
+		this.level.player.animations.play('run_up', 19, true);
 	}
 
 	addPathfinderMessage(region) {
@@ -199,6 +203,7 @@ export default class {
 			requiredMasteredQuestID !== undefined
 		)
 			return;
+
 			
 
 		if (region.properties.removeQuestID !== undefined) {
@@ -207,7 +212,8 @@ export default class {
 
 		for (var i = 0; i < this.level.characters.length; i++) {
 			if (this.level.characters[i].id == characterID) {
-				this.pathfinderCharacter = this.level.characters[i];
+				this.pathfinderCharacter = this.level.characters[i];				
+
 			} else {
 				console.warn('Character not found!');
 			}
@@ -232,9 +238,11 @@ export default class {
 				() => {
 					this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 					this.level.player.movable = true;
+					this.level.player.animations.play('idle_up');
 
 					const message_id = region.properties.messageID;
 					const all_messages = Object.values(dialogues.dialogues);
+
 
 					for (let i = 0; i < all_messages.length; i++) {
 						if (i + 1 == message_id) {
@@ -243,10 +251,6 @@ export default class {
 							this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 
 							this.game.time.events.add(Phaser.Timer.SECOND * 8, () => {
-								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-								this.level.questManager.addQuest(region.properties.questID);
-
-								this.level.GUICLASS.createNotification('quest', 'Questupdate');
 
 								if (
 									region.properties.endDestinationX !== 'currentPosition' &&
@@ -265,6 +269,12 @@ export default class {
 										400
 									);
 								}
+
+								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+								this.level.questManager.addQuest(region.properties.questID);
+
+								this.level.GUICLASS.createNotification('quest', 'Questupdate');
+
 							});
 							break;
 						}

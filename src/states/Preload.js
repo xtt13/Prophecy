@@ -40,7 +40,7 @@ export default class extends Phaser.State {
 				grass1: {
 					start: 0,
 					end: 0.2,
-					loop: true
+					loop: false
 				},
 				grass2: {
 					start: 0.625,
@@ -55,7 +55,7 @@ export default class extends Phaser.State {
 				hard1: {
 					start: 2,
 					end: 2.15,
-					loop: true
+					loop: false
 				},
 				hard2: {
 					start: 2.625,
@@ -70,7 +70,7 @@ export default class extends Phaser.State {
 				gravel1: {
 					start: 4,
 					end: 4.3,
-					loop: true
+					loop: false
 				},
 				gravel2: {
 					start: 4.625,
@@ -80,7 +80,7 @@ export default class extends Phaser.State {
 				gravel3: {
 					start: 5.25,
 					end: 5.67,
-					loop: true
+					loop: false
 				}
 			}
 		};

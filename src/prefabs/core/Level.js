@@ -78,7 +78,6 @@ export default class {
 
 		switch (this.gameData.direction) {
 			case 'up':
-				console.log('LKDSJFLKDJF');
 				this.player.animations.play('idle_up');
 				break;
 
@@ -271,6 +270,8 @@ export default class {
 				let x = element.x;
 				let y = element.y;
 
+				console.log(this.groundLayer.getTiles(x, y, 1, 1));
+
 				console.log('üüüüüü');
 				// this.waterEmitter = this.game.add.emitter(x, y, 50);
 				// this.waterEmitter.width = element.width;
@@ -385,6 +386,11 @@ export default class {
 		// If there is no foreGroundShift
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
+			
+			if(this.foregroundLayer2 !== undefined){
+				this.game.world.bringToTop(this.foregroundLayer2);
+			}
+			
 		}
 
 		// TilemapPlus Physics
@@ -594,10 +600,20 @@ export default class {
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 
+		if(this.map.layers[3].name == 'ForegroundLayer2'){
+			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
+		}
+		
+
 		//  Resize the world
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
+
+		if(this.map.layers[3].name == 'ForegroundLayer2'){
+			this.foregroundLayer2.resizeWorld();
+		}
+		
 
 		// Test
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;

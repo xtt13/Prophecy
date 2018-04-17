@@ -117,6 +117,31 @@ export default class extends Phaser.Sprite {
 			enemy.tint = 16777215;
 		});
 
+		let px = enemy.body.velocity.x;
+		let py = enemy.body.velocity.y;
+
+		px *= 2;
+		py *= 2;
+
+		this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
+		this.bloodAnimation.angularDrag = 500;
+		this.bloodAnimation.maxParticleScale = 3;
+		this.bloodAnimation.particleDrag.set(1800);
+		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
+
+		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+			this.bloodAnimation.setXSpeed(px);
+			this.bloodAnimation.setYSpeed(300);
+		} else {
+			this.bloodAnimation.setXSpeed(400);
+			this.bloodAnimation.setYSpeed(py);
+		}
+
+		this.bloodAnimation.makeParticles('blood', 100);
+		
+
+		this.bloodAnimation.start(true, 0, null, 10);
+
 		
 
 
@@ -364,6 +389,7 @@ export default class extends Phaser.Sprite {
 
 	update() {
 		this.game.world.bringToTop(this.customEmitter);
+		// this.game.world.setChildIndex(this.customEmitter, 5);
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 

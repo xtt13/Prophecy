@@ -314,10 +314,10 @@ export default class {
 	addMovementSound() {
 		if (this.level.muteSound || !this.player.movable) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-
+				
 				if(!this.loop){
 					this.loop = this.game.time.events.loop(260, () => {
-						this.pyfootsteps.play('gravel2', 1);
+						this.pyfootsteps.play(this.level.map.plus.properties.ground, 0.5);
 					}, this);
 				}
 		}
