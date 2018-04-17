@@ -17,7 +17,7 @@ export default class {
 		this.showPaths = false;
 
 		this.pathToFollow = [];
-		this.walkables = [1636, 1631, 1625, 1624, 1626, 1627, 1628, 1633];
+		this.walkables = [1636, 1631, 1621, 1625, 1624, 1626, 1627, 1628, 1633];
 
 		this.blocked = false;
 		this.followingPath = false;
@@ -92,8 +92,8 @@ export default class {
 	}
 
 	followPath() {
-		console.log('BUUM');
-		console.log(this.pathToFollow);
+		// console.log('BUUM');
+		// console.log(this.pathToFollow);
 
 		if (!this.pathToFollow.length || this.followingPath) {
 			return;

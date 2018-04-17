@@ -377,7 +377,24 @@ export default class {
 			this.playerSpeed = 60;
 			this.dash = false;
 			this.player.removeParticles();
+			
 			this.game.add.tween(this.player).to( { alpha: 1 }, 250, Phaser.Easing.Elastic.Out, true);
+
+			switch (this.direction) {
+				case 'up':
+					this.player.animations.play('run_up');
+					break;
+				case 'down':
+					this.player.animations.play('run_down');
+					break;
+				case 'left':
+					this.player.animations.play('run_left');
+					break;
+				case 'right':
+					this.player.animations.play('run_right');
+					break;
+				default:
+			}
 		});
 
 		

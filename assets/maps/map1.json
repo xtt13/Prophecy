@@ -123,6 +123,31 @@
                  "width":560.694130963893,
                  "x":746.270423456942,
                  "y":776.26753276901
+                }, 
+                {
+                 "height":221.742768572272,
+                 "id":186,
+                 "name":"Spawn Enemies",
+                 "properties":
+                    {
+                     "amount":8,
+                     "jumpDown":false,
+                     "spawnEnemies":true,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "amount":"int",
+                     "jumpDown":"bool",
+                     "spawnEnemies":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":217.123,
+                 "x":1024.96206587622,
+                 "y":320.103721489718
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -204,7 +229,26 @@
         {
          "draworder":"topdown",
          "name":"Enemies",
-         "objects":[],
+         "objects":[
+                {
+                 "height":22.0022,
+                 "id":189,
+                 "name":"Enemy Rock",
+                 "properties":
+                    {
+                     "type":"rock"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":819.993402599216,
+                 "y":321.947369107572
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -242,7 +286,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":186,
+ "nextobjectid":190,
  "orientation":"orthogonal",
  "properties":
     {
@@ -265,7 +309,7 @@
      "weather":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.4",
+ "tiledversion":"1.1.3",
  "tileheight":32,
  "tilesets":[
         {

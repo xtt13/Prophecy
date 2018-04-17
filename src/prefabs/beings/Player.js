@@ -387,6 +387,10 @@ export default class extends Phaser.Sprite {
 		this.items.splice(item, 1);
 	}
 
+	bulletHit(player, bullet){
+		bullet.kill();
+	}
+
 	update() {
 		this.game.world.bringToTop(this.customEmitter);
 		// this.game.world.setChildIndex(this.customEmitter, 5);

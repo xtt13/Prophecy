@@ -44,14 +44,15 @@ export default class extends Phaser.Sprite {
 				.from({ y: this.game.camera.height }, 1500, Phaser.Easing.Bounce.Out, true);
 
 			this.startTween.onStart.add(() => {
-				this.game.time.events.add(500, () => {
+				this.game.time.events.add(2000, () => {
 					// this.game.camera.shake(0.005, 500);
+					this.startMoving = true;
 				});
 			}, this);
 
 			this.startTween.onComplete.add(() => {
 				// this.body.enable = true;
-				this.startMoving = true;
+				// this.startMoving = true;
 			}, this);
 		} else {
 			// this.body.enable = true;

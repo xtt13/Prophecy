@@ -20,6 +20,7 @@ import Questmanager from './Questmanager';
 import Daycycle from '../gamemechanics/Daycycle';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
+import Rock from '../beings/Rock';
 
 export default class {
 	constructor(game, instruction) {
@@ -319,13 +320,23 @@ export default class {
 		elementsArr.forEach(function(element) {
 			const killQuestID = element.properties.killQuestID;
 			if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
+
 				if (element.properties.type == 'seed') {
-					console.log('create');
 					this.enemies.push(
 						new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 					);
 				}
+
+
 			}
+
+			if (element.properties.type == 'rock') {
+				console.log('ROCK');
+				this.enemies.push(
+					new Rock(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+				);
+			}
+			
 		}, this);
 	}
 
