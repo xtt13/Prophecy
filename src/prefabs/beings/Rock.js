@@ -47,13 +47,20 @@ export default class extends Phaser.Sprite {
 
 		if (this.distanceBetweenEnemiePlayer < 200) {
             if(angle !== 2){
-                this.weapon.fireAtSprite(this.player);
+                this.weapon.fireAtXY(this.player.body.x, this.player.body.y);
             }
             
         }
 
+        this.game.physics.arcade.collide(this.weapon.bullets, this.player.weapon.bullets, this.reverse, null, this);
         this.game.physics.arcade.collide(this.weapon.bullets, this.player, this.player.bulletHit, null, this);
         
+        
+    }
+
+    reverse(weaponBullet, playerBullet){
+        weaponBullet.body.velocity.x *= (-1.8);
+        weaponBullet.body.velocity.y *= (-1.8);
     }
 
 		

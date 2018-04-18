@@ -389,6 +389,11 @@ export default class extends Phaser.Sprite {
 
 	bulletHit(player, bullet){
 		bullet.kill();
+		player.tint = 0xFF0000;
+
+		this.game.time.events.add(200, () => {
+			player.tint = 16777215;
+		});
 	}
 
 	update() {
