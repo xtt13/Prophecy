@@ -65,7 +65,7 @@ export default class extends Phaser.Sprite {
 	update() {
 		if(this.dead) return;
 		if(this.paralyze){
-			console.log('PAR'); 
+			// console.log('PAR'); 
 			return;
 		}
 
@@ -92,7 +92,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
-			console.log('Calculate');
+			// console.log('Calculate');
 
 			this.pathfinder = new Pathfinder(
 				this.game,

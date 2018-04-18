@@ -291,7 +291,7 @@
  "properties":
     {
      "athmoSound":"AxTemple",
-     "dayCycle":true,
+     "dayCycle":false,
      "ground":"gravel2",
      "lucy":true,
      "music":"MxTempleHappy",

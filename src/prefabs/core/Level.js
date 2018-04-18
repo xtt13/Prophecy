@@ -336,7 +336,7 @@ export default class {
 					new Rock(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 				);
 			}
-			
+
 		}, this);
 	}
 
@@ -359,7 +359,6 @@ export default class {
 	}
 
 	enemyCollision() {
-		console.log('collide');
 	}
 
 	// Update Method

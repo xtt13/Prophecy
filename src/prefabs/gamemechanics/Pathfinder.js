@@ -59,7 +59,7 @@ export default class {
 
 	findPathTo(tilex, tiley) {
 		this.pathfinder.setCallbackFunction(path => {
-			console.log(path);
+			// console.log(path);
 			this.trail.destroy(true, true);
 			if (path === null) {
 				return;

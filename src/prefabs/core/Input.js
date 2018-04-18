@@ -13,6 +13,7 @@ export default class {
 		this.pad1;
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
+		this.walkSwitch = true;
 		this.dash = false;
 		this.loop = false;
 
@@ -544,6 +545,8 @@ export default class {
 			} else {
 				// Keyboard Movement
 				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+					this.walkSwitch = false;
+
 					if (this.button_W.isDown) {
 						this.direction = 'up';
 						// this.player.animations._anims.run_down.speed = 15;
@@ -614,52 +617,64 @@ export default class {
 
 					// console.log(this.direction);
 					if(this.dash) return;
+					if(this.walkSwitch) return;
+					this.walkSwitch = true;
+
 					switch (this.direction) {
 						case 'up':
-							// this.player.animations.play('idle');
-							this.player.animations.stop();
+							this.player.animations.play('run_up_idle');
 
-							//      this.game.add
-							// .tween(this.player.animations._anims.run_up)
-							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+							this.loop = this.game.time.events.loop(50, () => {
+								this.player.body.velocity.y = -this.playerSpeed;
+							}, this);
+
+							this.game.time.events.add(500, () => {
+								this.game.time.events.remove(this.loop);
+							});
+
 
 							break;
 
 						case 'down':
-							// this.player.animations.play('idle');
-							this.player.animations.stop();
+							this.player.animations.play('run_down_idle');
 
-							// console.log(this.player.animations.frame);
-							// if(this.player.animations.frame < 11){
-							// 	this.player.animations.next();
-							// } else {
-							// 	this.player.animations.stop();
-							// 	// this.player.animations.play('idle');
-							// }
+							this.loop = this.game.time.events.loop(50, () => {
+								this.player.body.velocity.y = this.playerSpeed;
+							}, this);
 
-							// console.log(this.player.animations.frame);
-
-							//   this.game.add
-							// .tween(this.player.animations._anims.run_down)
-							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+							this.game.time.events.add(500, () => {
+								this.game.time.events.remove(this.loop);
+							});
 
 							break;
+
 						case 'left':
-							this.player.animations.stop();
-							this.player.animations.play('idle_left');
 
-							//   this.game.add
-							// .tween(this.player.animations._anims.run_left)
-							// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
+							this.player.animations.play('run_left_idle');
+
+							this.loop = this.game.time.events.loop(50, () => {
+								this.player.body.velocity.x = -this.playerSpeed;
+							}, this);
+
+							this.game.time.events.add(500, () => {
+								this.game.time.events.remove(this.loop);
+							});
 
 							break;
+
 						case 'right':
-							this.player.animations.stop();
-						this.player.animations.play('idle_right');
-						//  	this.game.add
-						// .tween(this.player.animations._anims.run_right)
-						// .to({ speed: 0 }, 25, Phaser.Easing.Linear.None, true);
-						break;
+							this.player.animations.play('run_right_idle', 19, false);
+							
+							this.loop = this.game.time.events.loop(50, () => {
+								this.player.body.velocity.x = this.playerSpeed;
+							}, this);
+
+							this.game.time.events.add(500, () => {
+								this.game.time.events.remove(this.loop);
+							});
+							
+							break;
+
 						default:
 					}
 				}
