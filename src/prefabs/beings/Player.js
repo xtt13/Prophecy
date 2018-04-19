@@ -73,11 +73,11 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.height = 30;
 		this.customEmitter.minParticleScale = 1;
 		this.customEmitter.maxParticleScale = 1;
-		this.customEmitter.gravity = 0.5;
+		this.customEmitter.gravity = 0;
 		this.customEmitter.setAlpha(0.5, 1, 500, null, true);
 		this.customEmitter.minParticleSpeed.set(px, py);
 		this.customEmitter.maxParticleSpeed.set(px, py);
-		this.customEmitter.gravity = -10;
+		// this.customEmitter.gravity = -10;
 		this.customEmitter.makeParticles('cyanParticle', 500);
 
 		this.multiplySprite = game.make.sprite(0, 0, this.key);
@@ -106,10 +106,15 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
-		this.customEmitter.start(true, 2000, 0.1, 0);
+		
+		this.emitterLoop = this.game.time.events.loop(1, () => {
+			this.customEmitter.start(true);
+		}, this);
+
 	}
 
 	removeParticles() {
+		this.game.time.events.remove(this.emitterLoop);
 		this.customEmitter.on = false;
 	}
 
@@ -408,6 +413,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
+		console.log(this.animations.currentFrame.index);
 		this.game.world.bringToTop(this.customEmitter);
 		// this.game.world.setChildIndex(this.customEmitter, 5);
 		this.customEmitter.x = this.x;

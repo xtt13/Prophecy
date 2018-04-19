@@ -344,7 +344,7 @@ export default class {
 
 	beginnDash() {
 		this.dash = true;
-		this.player.addParticles();
+		// this.player.addParticles();
 		this.playerSpeed = 250;
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
@@ -360,7 +360,6 @@ export default class {
 				break;
 			case 'left':
 				this.player.animations.play('dash_left');
-				console.log('HHHHHH');
 				break;
 			case 'right':
 				this.player.animations.play('dash_right');
@@ -377,22 +376,23 @@ export default class {
 			this.player.alpha = 1;
 			this.playerSpeed = 60;
 			this.dash = false;
-			this.player.removeParticles();
+			// this.player.removeParticles();
 			
 			this.game.add.tween(this.player).to( { alpha: 1 }, 250, Phaser.Easing.Elastic.Out, true);
 
+			// Bugfix
 			switch (this.direction) {
 				case 'up':
-					this.player.animations.play('run_up');
+					this.player.animations.play('run_up', 19, false);
 					break;
 				case 'down':
-					this.player.animations.play('run_down');
+					this.player.animations.play('run_down', 19, false);
 					break;
 				case 'left':
-					this.player.animations.play('run_left');
+					this.player.animations.play('run_left', 19, false);
 					break;
 				case 'right':
-					this.player.animations.play('run_right');
+					this.player.animations.play('run_right', 19, false);
 					break;
 				default:
 			}
@@ -619,16 +619,22 @@ export default class {
 					if(this.dash) return;
 					if(this.walkSwitch) return;
 					this.walkSwitch = true;
+					if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) return;
 
 					switch (this.direction) {
 						case 'up':
+
+							while (this.player.animations.currentFrame.index < 24) {
+								this.player.animations.next();
+							}
+
 							this.player.animations.play('run_up_idle');
 
 							this.loop = this.game.time.events.loop(50, () => {
 								this.player.body.velocity.y = -this.playerSpeed;
 							}, this);
 
-							this.game.time.events.add(500, () => {
+							this.game.time.events.add(400, () => {
 								this.game.time.events.remove(this.loop);
 							});
 
@@ -636,13 +642,22 @@ export default class {
 							break;
 
 						case 'down':
+
+							console.log('=================');
+							
+							while (this.player.animations.currentFrame.index < 7) {
+								this.player.animations.next();
+							}
+
+							console.log('=================');
+
 							this.player.animations.play('run_down_idle');
 
 							this.loop = this.game.time.events.loop(50, () => {
 								this.player.body.velocity.y = this.playerSpeed;
 							}, this);
 
-							this.game.time.events.add(500, () => {
+							this.game.time.events.add(400, () => {
 								this.game.time.events.remove(this.loop);
 							});
 
@@ -656,7 +671,7 @@ export default class {
 								this.player.body.velocity.x = -this.playerSpeed;
 							}, this);
 
-							this.game.time.events.add(500, () => {
+							this.game.time.events.add(400, () => {
 								this.game.time.events.remove(this.loop);
 							});
 
@@ -669,7 +684,7 @@ export default class {
 								this.player.body.velocity.x = this.playerSpeed;
 							}, this);
 
-							this.game.time.events.add(500, () => {
+							this.game.time.events.add(400, () => {
 								this.game.time.events.remove(this.loop);
 							});
 							
