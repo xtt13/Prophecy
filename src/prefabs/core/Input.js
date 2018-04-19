@@ -19,6 +19,7 @@ export default class {
 
 		this.playerSpeed = 60;
 		this.directon = 'down';
+		this.standing = true;
 		this.currentUnderground = 'grass';
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
@@ -549,32 +550,51 @@ export default class {
 
 					if (this.button_W.isDown) {
 						this.direction = 'up';
-						// this.player.animations._anims.run_down.speed = 15;
-						this.player.body.velocity.y = -this.playerSpeed;
+
 
 						if (!this.button_A.isDown && !this.button_D.isDown) {
-							this.player.animations.play('run_up');
+							if(this.standing){
+								
+								this.player.animations.play('idle_run_up', 23);
+								this.player.body.velocity.y = (-this.playerSpeed) - 30;
+
+								this.player.animations.currentAnim.onComplete.add(function () {	
+									this.standing = false;
+								}, this);
+							} else {
+								this.player.animations.play('run_up');
+								this.player.body.velocity.y = -this.playerSpeed;
+							}
+						} else {
+							this.player.body.velocity.y = -this.playerSpeed;
 						}
-						// console.log(this.player.animations._anims.run_up.speed);
+
 					} else if (this.button_S.isDown) {
 						this.direction = 'down';
-						// this.player.animations._anims.run_down.speed = 15;
-
-						this.player.body.velocity.y = this.playerSpeed;
 
 						if (!this.button_A.isDown && !this.button_D.isDown) {
-							this.player.animations.play('run_down');
+							if(this.standing){
+								
+								this.player.animations.play('idle_run_down', 23);
+								this.player.body.velocity.y = (this.playerSpeed) - 30;
+
+								this.player.animations.currentAnim.onComplete.add(function () {	
+									this.standing = false;
+								}, this);
+							} else {
+								this.player.animations.play('run_down');
+								this.player.body.velocity.y = this.playerSpeed;
+							}
+							
+						} else {
+							this.player.body.velocity.y = this.playerSpeed;
 						}
 
-						// console.log(this.player.animations._anims.run_down.speed);
-						// console.log('S DOWN');
 					} else {
-						// this.player.animations.play('idle');
 						this.player.body.velocity.y = 0;
 					}
 
 					if (this.button_A.isDown) {
-						// this.player.animations._anims.run_left.speed = 15;
 
 						this.direction = 'left';
 
@@ -585,8 +605,9 @@ export default class {
 							if(this.dash) return;
 							this.player.animations.play('run_left');
 						}
+
+
 					} else if (this.button_D.isDown) {
-						// this.player.animations._anims.run_right.speed = 15;
 
 						this.direction = 'right';
 
@@ -597,10 +618,11 @@ export default class {
 							if(this.dash) return;
 							this.player.animations.play('run_right');
 						}
+
 					} else {
-						// this.player.animations.play('idle');
 						this.player.body.velocity.x = 0;
 					}
+
 				} else {
 					this.player.body.velocity.y = 0;
 					this.player.body.velocity.x = 0;
@@ -648,6 +670,7 @@ export default class {
 							while (this.player.animations.currentFrame.index < 7) {
 								this.player.animations.next();
 							}
+							this.standing = true;
 
 							console.log('=================');
 
@@ -665,6 +688,8 @@ export default class {
 
 						case 'left':
 
+							this.standing = true;
+
 							this.player.animations.play('run_left_idle');
 
 							this.loop = this.game.time.events.loop(50, () => {
@@ -678,6 +703,8 @@ export default class {
 							break;
 
 						case 'right':
+
+							this.standing = true;
 							this.player.animations.play('run_right_idle', 19, false);
 							
 							this.loop = this.game.time.events.loop(50, () => {

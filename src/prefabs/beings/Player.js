@@ -24,14 +24,6 @@ export default class extends Phaser.Sprite {
 
 		// this.movementBlocked = false;
 
-		// this.animations.add('idle_down', [0, 1, 2, 3], 5, true);
-		// this.animations.add('idle_up', [30], 1, true);
-		// this.animations.add('idle_right', [28], 1, true);
-		// this.animations.add('idle_left', [29], 1, true);
-		// this.animations.add('run_up', [30, 31, 32, 33, 34, 35, 36, 37], 19, true);
-		// this.animations.add('run_down', [4, 5, 6, 7, 8, 9, 10, 11], 19, true);
-		// this.animations.add('run_right', [12, 13, 14, 15, 16, 17, 18, 19], 19, true);
-		// this.animations.add('run_left', [20, 21, 22, 23, 24, 25, 26, 27], 19, true);
 
 		this.animations.add('dash_left', [71], 1, true);
 		this.animations.add('dash_right', [72], 1, true);
@@ -45,6 +37,11 @@ export default class extends Phaser.Sprite {
 		this.animations.add('run_down_idle', [8, 9, 10, 11, 12, 13, 14, 15, 16], 19, false);
 		this.animations.add('run_right_idle', [62, 63, 64, 65, 66, 67, 68, 69, 70], 19, false);
 		this.animations.add('run_left_idle', [45, 46, 47, 48, 49, 50, 51, 52, 53], 19, false);
+
+		this.animations.add('idle_run_up', [36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25], 19, false);
+		this.animations.add('idle_run_down', [16, 15, 14, 13, 12, 11, 10, 9, 8], 19, false);
+		this.animations.add('idle_run_right', [70, 69, 68, 67, 66, 65, 64, 63, 62], 19, false);
+		this.animations.add('idle_run_left', [53, 52, 51, 50, 49, 48, 47, 46, 45], 19, false);
 
 		// this.animations.play('idle');
 
@@ -413,7 +410,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
-		console.log(this.animations.currentFrame.index);
+		// console.log(this.animations.currentFrame.index);
 		this.game.world.bringToTop(this.customEmitter);
 		// this.game.world.setChildIndex(this.customEmitter, 5);
 		this.customEmitter.x = this.x;
