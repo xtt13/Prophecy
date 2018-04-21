@@ -27,7 +27,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.minParticleScale = 1;
 		this.customEmitter.maxParticleScale = 2;
 		this.customEmitter.gravity = 0.5;
-		this.customEmitter.setAlpha(0.5, 1, 1000, null, true);
+		this.customEmitter.setAlpha(1, 0, 700, null, true);
 		// this.customEmitter.setScale(-1, 1, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
 		// this.customEmitter.setYSpeed(100);
 		// this.customEmitter.setXSpeed(-100, 100);
@@ -37,7 +37,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.maxParticleSpeed.set(px, py);
 
 		this.customEmitter.makeParticles('blackParticle');
-		this.customEmitter.start(false, 1500, 50, 0);
+		this.customEmitter.start(false, 1000, 50, 0);
 
 		this.shadow = this.game.add.sprite(this.x, this.y + 30, 'lucyShadow');
 		this.shadow.anchor.set(0.5);

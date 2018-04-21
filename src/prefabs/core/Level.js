@@ -245,7 +245,6 @@ export default class {
 				let x = element.x + this.map.tileWidth;
 				let y = element.y + this.map.tileHeight;
 
-				console.log('WATER');
 
 				// console.log(element);
 				console.log(element.x, element.y);
@@ -272,24 +271,6 @@ export default class {
 				let y = element.y;
 
 				console.log(this.groundLayer.getTiles(x, y, 1, 1));
-
-				console.log('üüüüüü');
-				// this.waterEmitter = this.game.add.emitter(x, y, 50);
-				// this.waterEmitter.width = element.width;
-				// this.waterEmitter.height = element.height;
-				// // this.waterEmitter.minParticleScale = 0.1;
-				// // this.waterEmitter.maxParticleScale = 0.8;
-				// // waterEmitter.maxParticleSpeed.setTo(2, 2);
-				// this.waterEmitter.setYSpeed(0.1, -0.1);
-				// this.waterEmitter.setXSpeed(0.1, -0.1);
-				// this.waterEmitter.rotation = 0;
-				// this.waterEmitter.gravity = 0;
-				// this.waterEmitter.setAlpha(0.3, 0.8, 1000, Phaser.Easing.Exponential.In, true);
-				// this.waterEmitter.makeParticles('waterdrop');
-
-				// //(explode, lifespan, frequency, quantity, forceQuantity)
-				// this.waterEmitter.start(false, 3000, 20);
-
 
 
 				this.fireEmitter = this.game.add.emitter(x, y, 100);
@@ -331,7 +312,6 @@ export default class {
 			}
 
 			if (element.properties.type == 'rock') {
-				console.log('ROCK');
 				this.enemies.push(
 					new Rock(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 				);
@@ -406,6 +386,7 @@ export default class {
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
 		this.map.plus.events.regions.triggerWith(this.player);
+		// console.log(this.map.plus);
 
 		// If night == true
 		if (this.dayCycle) {
@@ -599,6 +580,7 @@ export default class {
 			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 			this.backgroundLayer = this.map.createLayer('Clouds');
 			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+			
 		}
 
 		//  Connect with Tileset
@@ -652,6 +634,7 @@ export default class {
 
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
+
 
 		// Flashduration from Settings (if map1)
 		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {

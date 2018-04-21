@@ -49,6 +49,10 @@ export default class {
 				// this.addSun();
 				break;
 
+			case 'Village':
+			this.addVillageGlimmer();
+			break;
+
 			case 'AutumnGlimmer':
 				this.addAutumnGlimmer();
 				break;
@@ -69,6 +73,21 @@ export default class {
 		emitter.minRotation = 0;
 		emitter.maxRotation = 0;
 		emitter.start(false, 4600, 5, 0);
+	}
+
+	addVillageGlimmer(){
+		this.addVillageGlimmer = this.game.add.emitter(0, 0, 600);
+		this.addVillageGlimmer.width = this.game.world.bounds.width;
+		this.addVillageGlimmer.height = this.game.world.bounds.height;
+		this.addVillageGlimmer.minParticleScale = 5;
+		this.addVillageGlimmer.gravity = 0;
+		this.addVillageGlimmer.setYSpeed(-4, 4);
+		this.addVillageGlimmer.setXSpeed(-4, 4);
+		this.addVillageGlimmer.maxRotation = 0;
+		this.addVillageGlimmer.minRotation = 0;
+		this.addVillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
+		this.addVillageGlimmer.makeParticles('particle');
+		this.addVillageGlimmer.start(false, 10000, 5, 0);
 	}
 
 	addTempleFlies() {

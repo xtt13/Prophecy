@@ -16,11 +16,15 @@ export default class {
 		this.walkSwitch = true;
 		this.dash = false;
 		this.loop = false;
+		this.movementloop = null;
+		this.collision = false;
 
 		this.playerSpeed = 60;
 		this.directon = 'down';
 		this.standing = true;
-		this.currentUnderground = 'grass';
+
+		this.movementloopSpeed = 260;
+		this.movementSound = this.level.map.plus.properties.ground;
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = false;
@@ -316,10 +320,9 @@ export default class {
 	addMovementSound() {
 		if (this.level.muteSound || !this.player.movable) return;
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-				
-				if(!this.loop){
-					this.loop = this.game.time.events.loop(260, () => {
-						this.pyfootsteps.play(this.level.map.plus.properties.ground, 0.5);
+				if(this.movementloop == null){
+					this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
+						this.pyfootsteps.play(this.movementSound, 0.5);
 					}, this);
 				}
 		}
@@ -327,10 +330,10 @@ export default class {
 
 	removeMovementSound() {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-			//Hi
+			return;
 		} else {
-			this.game.time.events.remove(this.loop);
-			this.loop = false;
+			this.game.time.events.remove(this.movementloop);
+			this.movementloop = null;
 		}
 	}
 
@@ -404,12 +407,301 @@ export default class {
 
 	onGamepadUp() {}
 
+	gamepadUpdate(){
+		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+			if (this.direction == 'left' || this.direction == 'right') {
+				this.player.body.velocity.y = -this.playerSpeed;
+			} else {
+				this.player.animations.play('run_up');
+				this.player.body.velocity.y = -this.playerSpeed;
+			}
+			this.direction = 'up';
+		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+			if (this.direction == 'left' || this.direction == 'right') {
+				this.player.body.velocity.y = this.playerSpeed;
+			} else {
+				this.player.animations.play('run_down');
+				this.player.body.velocity.y = this.playerSpeed;
+			}
+			this.direction = 'down';
+		} else {
+			this.direction = '';
+			this.player.body.velocity.y = 0;
+		}
+
+		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+			if (this.direction == 'up' || this.direction == 'down') {
+				this.player.body.velocity.x = -this.playerSpeed;
+			} else {
+				this.player.animations.play('run_left');
+				this.player.body.velocity.x = -this.playerSpeed;
+			}
+			this.direction = 'left';
+		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+			if (this.direction == 'up' || this.direction == 'down') {
+				this.player.body.velocity.x = this.playerSpeed;
+			} else {
+				this.player.animations.play('run_right');
+				this.player.body.velocity.x = this.playerSpeed;
+			}
+			this.direction = 'right';
+		} else {
+			this.direction = '';
+			this.player.body.velocity.x = 0;
+		}
+
+		if (
+			this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) == 0 &&
+			this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0
+		) {
+			this.player.animations.stop();
+		}
+	}
+
+	mobileUpdate(){
+		if (this.stick.isDown) {
+			console.log(this.stick.rotation);
+			this.game.physics.arcade.velocityFromRotation(
+				this.stick.rotation,
+				this.stick.force * this.playerSpeed,
+				this.player.body.velocity
+			);
+
+			// this.player.rotation = this.stick.rotation;
+			this.player.animations._anims.run_right.speed = 19;
+			this.player.animations._anims.run_left.speed = 19;
+			this.player.animations._anims.run_down.speed = 19;
+			this.player.animations._anims.run_up.speed = 19;
+			// console.log('HIER: ' + this.player.animations._anims.run_down.speed * this.stick.force);
+			this.player.animations._anims.run_down.speed =
+				this.player.animations._anims.run_down.speed * this.stick.force + 0.1;
+			this.player.animations._anims.run_up.speed =
+				this.player.animations._anims.run_up.speed * this.stick.force + 0.1;
+			this.player.animations._anims.run_right.speed =
+				this.player.animations._anims.run_right.speed * this.stick.force + 0.1;
+			this.player.animations._anims.run_left.speed =
+				this.player.animations._anims.run_left.speed * this.stick.force + 0.1;
+			// console.log(this.player.animations._anims.run_down.speed)
+			// console.log(this.stick.force);
+
+			// if(this.game.input.pointer1.active && this.game.input.pointer2.active){
+			// 	console.log('2Finger');
+			// 	this.player.body.velocity.x = 200;
+			// }
+
+
+
+			this.stickRotation = this.stick.rotation.toFixed(1);
+
+			if (this.stickRotation <= 2 && this.stickRotation >= 1) {
+				// console.log('Down');
+				this.player.animations.play('run_down');
+				this.direction = 'down';
+			} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
+				// console.log('Right');
+				this.player.animations.play('run_right');
+				this.direction = 'right';
+			} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
+				// console.log('Up');
+				this.player.animations.play('run_up');
+				this.direction = 'up';
+			} else {
+				// console.log('Left');
+				this.player.animations.play('run_left');
+				this.direction = 'left';
+			}
+		} else {
+			switch (this.direction) {
+				case 'up':
+					this.player.animations.play('idle');
+					break;
+				case 'down':
+					this.player.animations.play('idle');
+					break;
+				case 'left':
+					this.player.animations.play('idle_left');
+					break;
+				case 'right':
+					this.player.animations.play('idle_right');
+					break;
+				default:
+			}
+			// this.player.animations._anims.run_down.speed = 19;
+			this.player.body.velocity.set(0);
+			this.pyfootsteps.stop();
+		}
+	}
+
+	keyboardUpdate(){
+		// If any Movementkey isDown
+		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+
+			this.walkSwitch = false;
+
+			// If Up-Button isDown
+			if (this.button_W.isDown) {
+
+				this.direction = 'up';
+				this.player.body.velocity.y = -this.playerSpeed;
+
+				if (!this.button_A.isDown && !this.button_D.isDown) {
+					this.player.animations.play('run_up');
+				}
+			
+			// If Down-Button isDown
+			} else if (this.button_S.isDown) {
+
+				this.direction = 'down';
+				this.player.body.velocity.y = this.playerSpeed;
+
+				if (!this.button_A.isDown && !this.button_D.isDown) {
+					this.player.animations.play('run_down');
+				}
+
+			} else {
+				this.player.body.velocity.y = 0;
+			}
+
+
+			// If Left-Button isDown
+			if (this.button_A.isDown) {
+
+				this.direction = 'left';
+
+				if (this.button_W.isDown || this.button_S.isDown) {
+					this.player.body.velocity.x = -this.playerSpeed / 2;
+				} else {
+					this.player.body.velocity.x = -this.playerSpeed;
+					if(this.dash) return;
+					this.player.animations.play('run_left');
+				}
+
+			// If Right-Button isDown
+			} else if (this.button_D.isDown) {
+
+				this.direction = 'right';
+
+				if (this.button_W.isDown || this.button_S.isDown) {
+					this.player.body.velocity.x = this.playerSpeed / 2;
+				} else {			
+					this.player.body.velocity.x = this.playerSpeed;
+					if(this.dash) return;
+					this.player.animations.play('run_right');
+				}
+
+			} else {
+				this.player.body.velocity.x = 0;
+			}
+
+		} else {
+			// If no Movementkey isDown
+
+			this.player.body.velocity.y = 0;
+			this.player.body.velocity.x = 0;
+
+			if(this.dash) return;
+
+			if(this.walkSwitch) return;
+
+			this.walkSwitch = true;
+
+			if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) return;
+			
+			switch (this.direction) {
+				case 'up':
+
+					this.standing = true;
+					
+					while (this.player.animations.currentFrame.index < 24) {
+						this.player.animations.next();
+					}
+
+					this.player.animations.play('run_up_idle');
+
+					if (this.collision) return;
+
+					this.loop = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.y = -this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(400, () => {
+						this.game.time.events.remove(this.loop);
+					});
+
+
+					break;
+
+				case 'down':
+
+					this.standing = true;
+
+					while (this.player.animations.currentFrame.index < 7) {
+						this.player.animations.next();
+					}
+
+					this.player.animations.play('run_down_idle');
+
+					if (this.collision) return;
+
+					this.loop = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.y = this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(400, () => {
+						this.game.time.events.remove(this.loop);
+					});
+
+					break;
+
+				case 'left':
+
+					this.standing = true;
+
+					this.player.animations.play('run_left_idle');
+
+					if (this.collision) return;
+
+					this.loop = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.x = -this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(400, () => {
+						this.game.time.events.remove(this.loop);
+					});
+
+					break;
+
+				case 'right':
+
+					this.standing = true;
+
+					this.player.animations.play('run_right_idle', 19, false);
+					
+					if (this.collision) return;
+					
+					this.loop = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.x = this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(400, () => {
+						this.game.time.events.remove(this.loop);
+					});
+					
+					break;
+
+				default:
+			}
+		}
+	}
+
 	update() {
+
 		// console.log("Y: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y));
 		// console.log("X: " + this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X));
 
-		// Gamepad Controls
+		// If Player exists
 		if (this.player) {
+
 			// If the Player should not walk
 			if (!this.player.movable) {
 				this.player.animations.stop();
@@ -419,307 +711,20 @@ export default class {
 			}
 
 			if (this.pad1 !== undefined && this.pad1.connected) {
-				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-					if (this.direction == 'left' || this.direction == 'right') {
-						this.player.body.velocity.y = -this.playerSpeed;
-					} else {
-						this.player.animations.play('run_up');
-						this.player.body.velocity.y = -this.playerSpeed;
-					}
-					this.direction = 'up';
-				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-					if (this.direction == 'left' || this.direction == 'right') {
-						this.player.body.velocity.y = this.playerSpeed;
-					} else {
-						this.player.animations.play('run_down');
-						this.player.body.velocity.y = this.playerSpeed;
-					}
-					this.direction = 'down';
-				} else {
-					this.direction = '';
-					this.player.body.velocity.y = 0;
-				}
 
-				if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-					if (this.direction == 'up' || this.direction == 'down') {
-						this.player.body.velocity.x = -this.playerSpeed;
-					} else {
-						this.player.animations.play('run_left');
-						this.player.body.velocity.x = -this.playerSpeed;
-					}
-					this.direction = 'left';
-				} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-					if (this.direction == 'up' || this.direction == 'down') {
-						this.player.body.velocity.x = this.playerSpeed;
-					} else {
-						this.player.animations.play('run_right');
-						this.player.body.velocity.x = this.playerSpeed;
-					}
-					this.direction = 'right';
-				} else {
-					this.direction = '';
-					this.player.body.velocity.x = 0;
-				}
+				//Gamepad Movement
+				this.gamepadUpdate();
 
-				if (
-					this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) == 0 &&
-					this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0
-				) {
-					this.player.animations.stop();
-				}
 			} else if (this.useMobileControl) {
-				if (this.stick.isDown) {
-					console.log(this.stick.rotation);
-					this.game.physics.arcade.velocityFromRotation(
-						this.stick.rotation,
-						this.stick.force * this.playerSpeed,
-						this.player.body.velocity
-					);
 
-					// this.player.rotation = this.stick.rotation;
-					this.player.animations._anims.run_right.speed = 19;
-					this.player.animations._anims.run_left.speed = 19;
-					this.player.animations._anims.run_down.speed = 19;
-					this.player.animations._anims.run_up.speed = 19;
-					// console.log('HIER: ' + this.player.animations._anims.run_down.speed * this.stick.force);
-					this.player.animations._anims.run_down.speed =
-						this.player.animations._anims.run_down.speed * this.stick.force + 0.1;
-					this.player.animations._anims.run_up.speed =
-						this.player.animations._anims.run_up.speed * this.stick.force + 0.1;
-					this.player.animations._anims.run_right.speed =
-						this.player.animations._anims.run_right.speed * this.stick.force + 0.1;
-					this.player.animations._anims.run_left.speed =
-						this.player.animations._anims.run_left.speed * this.stick.force + 0.1;
-					// console.log(this.player.animations._anims.run_down.speed)
-					// console.log(this.stick.force);
+				// Mobile Movement
+				this.mobileUpdate();
 
-					// if(this.game.input.pointer1.active && this.game.input.pointer2.active){
-					// 	console.log('2Finger');
-					// 	this.player.body.velocity.x = 200;
-					// }
-
-					if (this.currentUnderground == 'grass') {
-						this.pyfootsteps.play('gravel1', 4);
-					} else if (this.currentUnderground == 'stone') {
-						this.pyfootsteps.play('grass1', 4);
-					}
-
-					this.stickRotation = this.stick.rotation.toFixed(1);
-
-					if (this.stickRotation <= 2 && this.stickRotation >= 1) {
-						// console.log('Down');
-						this.player.animations.play('run_down');
-						this.direction = 'down';
-					} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
-						// console.log('Right');
-						this.player.animations.play('run_right');
-						this.direction = 'right';
-					} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
-						// console.log('Up');
-						this.player.animations.play('run_up');
-						this.direction = 'up';
-					} else {
-						// console.log('Left');
-						this.player.animations.play('run_left');
-						this.direction = 'left';
-					}
-				} else {
-					switch (this.direction) {
-						case 'up':
-							this.player.animations.play('idle');
-							break;
-						case 'down':
-							this.player.animations.play('idle');
-							break;
-						case 'left':
-							this.player.animations.play('idle_left');
-							break;
-						case 'right':
-							this.player.animations.play('idle_right');
-							break;
-						default:
-					}
-					// this.player.animations._anims.run_down.speed = 19;
-					this.player.body.velocity.set(0);
-					this.pyfootsteps.stop();
-				}
 			} else {
+
 				// Keyboard Movement
-				if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
-					this.walkSwitch = false;
+				this.keyboardUpdate();
 
-					if (this.button_W.isDown) {
-						this.direction = 'up';
-
-
-						if (!this.button_A.isDown && !this.button_D.isDown) {
-							if(this.standing){
-								
-								this.player.animations.play('idle_run_up', 23);
-								this.player.body.velocity.y = (-this.playerSpeed) - 30;
-
-								this.player.animations.currentAnim.onComplete.add(function () {	
-									this.standing = false;
-								}, this);
-							} else {
-								this.player.animations.play('run_up');
-								this.player.body.velocity.y = -this.playerSpeed;
-							}
-						} else {
-							this.player.body.velocity.y = -this.playerSpeed;
-						}
-
-					} else if (this.button_S.isDown) {
-						this.direction = 'down';
-
-						if (!this.button_A.isDown && !this.button_D.isDown) {
-							if(this.standing){
-								
-								this.player.animations.play('idle_run_down', 23);
-								this.player.body.velocity.y = (this.playerSpeed) - 30;
-
-								this.player.animations.currentAnim.onComplete.add(function () {	
-									this.standing = false;
-								}, this);
-							} else {
-								this.player.animations.play('run_down');
-								this.player.body.velocity.y = this.playerSpeed;
-							}
-							
-						} else {
-							this.player.body.velocity.y = this.playerSpeed;
-						}
-
-					} else {
-						this.player.body.velocity.y = 0;
-					}
-
-					if (this.button_A.isDown) {
-
-						this.direction = 'left';
-
-						if (this.button_W.isDown || this.button_S.isDown) {
-							this.player.body.velocity.x = -this.playerSpeed / 2;
-						} else {
-							this.player.body.velocity.x = -this.playerSpeed;
-							if(this.dash) return;
-							this.player.animations.play('run_left');
-						}
-
-
-					} else if (this.button_D.isDown) {
-
-						this.direction = 'right';
-
-						if (this.button_W.isDown || this.button_S.isDown) {
-							this.player.body.velocity.x = this.playerSpeed / 2;
-						} else {			
-							this.player.body.velocity.x = this.playerSpeed;
-							if(this.dash) return;
-							this.player.animations.play('run_right');
-						}
-
-					} else {
-						this.player.body.velocity.x = 0;
-					}
-
-				} else {
-					this.player.body.velocity.y = 0;
-					this.player.body.velocity.x = 0;
-
-					// this.game.add
-					// 	.tween(this.player.body.velocity)
-					// 	.to({ x: 0 }, 100, Phaser.Easing.Circular.Out, true);
-
-					// this.game.add
-					// 	.tween(this.player.body.velocity)
-					// 	.to({ y: 0 }, 100, Phaser.Easing.Circular.Out, true);
-
-					// this.game.physics.arcade.computeVelocity(2, this.player.body, 20, 100, 20);
-
-					// console.log(this.direction);
-					if(this.dash) return;
-					if(this.walkSwitch) return;
-					this.walkSwitch = true;
-					if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) return;
-
-					switch (this.direction) {
-						case 'up':
-
-							while (this.player.animations.currentFrame.index < 24) {
-								this.player.animations.next();
-							}
-
-							this.player.animations.play('run_up_idle');
-
-							this.loop = this.game.time.events.loop(50, () => {
-								this.player.body.velocity.y = -this.playerSpeed;
-							}, this);
-
-							this.game.time.events.add(400, () => {
-								this.game.time.events.remove(this.loop);
-							});
-
-
-							break;
-
-						case 'down':
-
-							console.log('=================');
-							
-							while (this.player.animations.currentFrame.index < 7) {
-								this.player.animations.next();
-							}
-							this.standing = true;
-
-							console.log('=================');
-
-							this.player.animations.play('run_down_idle');
-
-							this.loop = this.game.time.events.loop(50, () => {
-								this.player.body.velocity.y = this.playerSpeed;
-							}, this);
-
-							this.game.time.events.add(400, () => {
-								this.game.time.events.remove(this.loop);
-							});
-
-							break;
-
-						case 'left':
-
-							this.standing = true;
-
-							this.player.animations.play('run_left_idle');
-
-							this.loop = this.game.time.events.loop(50, () => {
-								this.player.body.velocity.x = -this.playerSpeed;
-							}, this);
-
-							this.game.time.events.add(400, () => {
-								this.game.time.events.remove(this.loop);
-							});
-
-							break;
-
-						case 'right':
-
-							this.standing = true;
-							this.player.animations.play('run_right_idle', 19, false);
-							
-							this.loop = this.game.time.events.loop(50, () => {
-								this.player.body.velocity.x = this.playerSpeed;
-							}, this);
-
-							this.game.time.events.add(400, () => {
-								this.game.time.events.remove(this.loop);
-							});
-							
-							break;
-
-						default:
-					}
-				}
 			}
 		}
 	}

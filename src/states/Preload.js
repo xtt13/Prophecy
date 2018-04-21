@@ -195,6 +195,7 @@ export default class extends Phaser.State {
 		this.load.image('fly', 'assets/sprites/fly.png');
 		this.load.image('waterdrop', 'assets/sprites/waterdrop.png');
 		this.load.image('glimmerParticle', 'assets/sprites/glimmerParticle.png');
+		this.load.image('particle', 'assets/sprites/particle.png');
 		this.load.image('leave', 'assets/sprites/leave.png');
 		this.load.image('cloud', 'assets/sprites/cloud.png');
 

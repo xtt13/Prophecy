@@ -18,6 +18,14 @@ export default class {
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
 
+		this.level.map.plus.events.collisions.add(this.level.player, (shape, oldVelocity, newVelocity, contactNormal) => {
+			this.level.inputClass.collision = true;
+			
+			this.game.time.events.add(500, () => {
+				this.level.inputClass.collision = false;
+			});
+        });
+
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 			if (region.properties.message) {
 				this.addMessage(region);
@@ -414,17 +422,20 @@ export default class {
 	}
 
 	followPlayer() {
+
+		console.log(this.game.camera)
 		this.followTween = this.game.add
 			.tween(this.game.camera)
 			.to(
-				{ x: this.level.player.x - this.game.camera.width / 2, y: this.level.player.y - this.game.camera.height / 2 },
-				400,
+				{ x: this.level.player.x - (this.game.camera.width / 2) - 20, y: this.level.player.y - (this.game.camera.height / 2) },
+				600,
 				Phaser.Easing.Quadratic.InOut,
 				true
 			);
 
 		this.followTween.onComplete.add(() => {
-			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN, 0.1, 0.1);
+			
 		}, this);
 	}
 
@@ -444,26 +455,31 @@ export default class {
 
 	stairsEnter() {
 		if (this.level.fallDown) return;
+		// this.game.time.events.remove(this.level.inputClass.movementloop);
+		// this.level.inputClass.movementloop = null;
+		this.level.inputClass.movementSound = 'grass1';
+		this.level.inputClass.movementloopSpeed = 200;
+
 		this.level.inputClass.playerSpeed -= 30;
 
-		this.level.player.animations._anims.run_up.speed += 10;
-		this.level.player.animations._anims.run_down.speed += 10;
-		this.level.inputClass.pyfootsteps.stop('gravel1');
-		this.level.inputClass.pyfootsteps.play('grass1', 4);
-		this.level.inputClass.currentUnderground = 'stone';
+		this.level.player.animations._anims.run_up.speed += 13;
+		this.level.player.animations._anims.run_down.speed += 13;
+		
+
+		
 	}
 
 	stairsLeave() {
 		if (this.level.fallDown) return;
+		this.level.inputClass.movementSound = this.level.map.plus.properties.ground;
+		this.level.inputClass.movementloopSpeed = 260;
+		
 		this.level.inputClass.playerSpeed += 30;
 		// this.level.player.animations._anims.run_down.speed -= 20;
 		// this.level.player.animations._anims.run_up.speed -= 20;
-		this.level.player.animations._anims.run_down.speed = 15;
-		this.level.player.animations._anims.run_up.speed = 15;
+		this.level.player.animations._anims.run_down.speed = 19;
+		this.level.player.animations._anims.run_up.speed = 19;
 
-		this.level.inputClass.pyfootsteps.stop('grass1');
-		this.level.inputClass.pyfootsteps.play('gravel1', 4);
-		this.level.inputClass.currentUnderground = 'grass';
 	}
 
 	soundAreaEnter(region) {
