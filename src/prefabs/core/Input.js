@@ -15,7 +15,7 @@ export default class {
 		this.useMobileControl = false;
 		this.walkSwitch = true;
 		this.dash = false;
-		this.loop = false;
+		// this.loop = false;
 		this.movementloop = null;
 		this.collision = false;
 
