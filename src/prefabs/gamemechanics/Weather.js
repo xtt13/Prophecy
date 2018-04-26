@@ -76,7 +76,7 @@ export default class {
 	}
 
 	addVillageGlimmer(){
-		this.addVillageGlimmer = this.game.add.emitter(0, 0, 600);
+		this.addVillageGlimmer = this.game.add.emitter(700, 640, 600);
 		this.addVillageGlimmer.width = this.game.world.bounds.width;
 		this.addVillageGlimmer.height = this.game.world.bounds.height;
 		this.addVillageGlimmer.minParticleScale = 5;
@@ -330,6 +330,11 @@ export default class {
 	updateWeather() {
 		if (this.lightning) {
 			this.game.world.bringToTop(this.lightning);
+		}
+
+		if(this.currentWeather == "Village"){
+			this.game.world.bringToTop(this.addVillageGlimmer);
+			
 		}
 	}
 }

@@ -620,12 +620,12 @@ export default class {
 
 					if (this.collision) return;
 
-					this.loop = this.game.time.events.loop(50, () => {
+					var loop_up = this.game.time.events.loop(50, () => {
 						this.player.body.velocity.y = -this.playerSpeed;
 					}, this);
 
 					this.game.time.events.add(400, () => {
-						this.game.time.events.remove(this.loop);
+						this.game.time.events.remove(loop_up);
 					});
 
 
@@ -643,12 +643,12 @@ export default class {
 
 					if (this.collision) return;
 
-					this.loop = this.game.time.events.loop(50, () => {
+					var loop_down = this.game.time.events.loop(50, () => {
 						this.player.body.velocity.y = this.playerSpeed;
 					}, this);
 
 					this.game.time.events.add(400, () => {
-						this.game.time.events.remove(this.loop);
+						this.game.time.events.remove(loop_down);
 					});
 
 					break;
@@ -661,12 +661,12 @@ export default class {
 
 					if (this.collision) return;
 
-					this.loop = this.game.time.events.loop(50, () => {
+					var loop_left = this.game.time.events.loop(50, () => {
 						this.player.body.velocity.x = -this.playerSpeed;
 					}, this);
 
 					this.game.time.events.add(400, () => {
-						this.game.time.events.remove(this.loop);
+						this.game.time.events.remove(loop_left);
 					});
 
 					break;
@@ -679,12 +679,12 @@ export default class {
 					
 					if (this.collision) return;
 					
-					this.loop = this.game.time.events.loop(50, () => {
+					var loop_right = this.game.time.events.loop(50, () => {
 						this.player.body.velocity.x = this.playerSpeed;
 					}, this);
 
 					this.game.time.events.add(400, () => {
-						this.game.time.events.remove(this.loop);
+						this.game.time.events.remove(loop_right);
 					});
 					
 					break;
