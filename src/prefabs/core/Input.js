@@ -260,60 +260,15 @@ export default class {
 			default:
 				break;
 		}
-		
-		// this.player.attack = true;
-		// console.log(this.player.body);
-
-		// Von hier:
-		// this.player.body.setSize(8, 10, 21, 40);
-
-		// Hierher:
-		// this.player.body.setSize(40, 40, 6, 20);
-
-		// let bodyWidth = this.player.body.sourceWidth;
-		// let bodyHeight = this.player.body.sourceHeight;
-		// let offsetX = this.player.body.offset.x;
-		// let offsetY = this.player.body.offset.y;
-
-		// let intendedWidth = 40;
-		// let intendedHeight = 40;
-		// let intendedOffsetX = 6;
-		// let intendedOffsetY = 20;
-
-		// while (bodyWidth < intendedWidth || bodyHeight < intendedHeight || offsetX > intendedOffsetX ||  offsetY > intendedOffsetY) {
-			
-		// 	if(bodyWidth < intendedWidth){
-		// 		bodyWidth++;
-		// 	} 
-
-		// 	if(bodyHeight < intendedHeight){
-		// 		bodyHeight++;
-		// 	} 
-
-		// 	if(offsetX > intendedOffsetX){
-		// 		offsetX--;
-		// 	}
-
-		// 	if(offsetY > intendedOffsetY){
-		// 		offsetY--;
-		// 	}
-
-		// 	this.player.body.setSize(bodyWidth, bodyHeight, offsetX, offsetY);
-		// 	console.log('run');
-
-		// }
-
-		// console.log('Beginn');
-		// this.game.time.events.add(400, () => {
-		// 	this.player.attack = false;
-		// 	this.player.body.setSize(8, 10, 21, 40);
-		// 	console.log('End');
-		// });
+	
 	}
 
 	onGamepadDown(button) {
 		if (button.buttonCode === Phaser.Gamepad.XBOX360_A) {
 			this.beginnDash();
+		}
+		if (button.buttonCode === Phaser.Gamepad.XBOX360_X) {
+			this.attack();
 		}
 	}
 
@@ -425,7 +380,7 @@ export default class {
 			}
 			this.direction = 'down';
 		} else {
-			this.direction = '';
+			// this.direction = '';
 			this.player.body.velocity.y = 0;
 		}
 
@@ -433,20 +388,22 @@ export default class {
 			if (this.direction == 'up' || this.direction == 'down') {
 				this.player.body.velocity.x = -this.playerSpeed;
 			} else {
-				this.player.animations.play('run_left');
 				this.player.body.velocity.x = -this.playerSpeed;
+				if(this.dash) return;
+				this.player.animations.play('run_left');
 			}
 			this.direction = 'left';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
 			if (this.direction == 'up' || this.direction == 'down') {
 				this.player.body.velocity.x = this.playerSpeed;
 			} else {
-				this.player.animations.play('run_right');
 				this.player.body.velocity.x = this.playerSpeed;
+				if(this.dash) return;
+				this.player.animations.play('run_right');
 			}
 			this.direction = 'right';
 		} else {
-			this.direction = '';
+			// this.direction = '';
 			this.player.body.velocity.x = 0;
 		}
 
@@ -454,7 +411,104 @@ export default class {
 			this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) == 0 &&
 			this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0
 		) {
-			this.player.animations.stop();
+			if(this.dash) return;
+			switch (this.direction) {
+				case 'up':
+
+					this.standing = true;
+					
+					while (this.player.animations.currentFrame.index < 24) {
+						this.player.animations.next();
+					}
+
+					this.player.animations.play('run_up_idle');
+
+					if (this.collision) return;
+
+					var loop_up = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.y = -this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(200, () => {
+						this.game.time.events.remove(loop_up);
+						this.player.body.velocity.y = 0;
+						this.player.body.velocity.x = 0;
+						this.direction = '';
+					});
+
+
+					break;
+
+				case 'down':
+
+					this.standing = true;
+
+					while (this.player.animations.currentFrame.index < 7) {
+						this.player.animations.next();
+					}
+
+					this.player.animations.play('run_down_idle');
+
+					if (this.collision) return;
+
+					var loop_down = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.y = this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(200, () => {
+						this.game.time.events.remove(loop_down);
+						this.player.body.velocity.y = 0;
+						this.player.body.velocity.x = 0;
+						this.direction = '';
+					});
+
+					break;
+
+				case 'left':
+
+					this.standing = true;
+
+					this.player.animations.play('run_left_idle');
+
+					if (this.collision) return;
+
+					var loop_left = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.x = -this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(200, () => {
+						this.game.time.events.remove(loop_left);
+						this.player.body.velocity.y = 0;
+						this.player.body.velocity.x = 0;
+						this.direction = '';
+					});
+
+					break;
+
+				case 'right':
+
+					this.standing = true;
+
+					this.player.animations.play('run_right_idle', 19, false);
+					
+					if (this.collision) return;
+					
+					var loop_right = this.game.time.events.loop(50, () => {
+						this.player.body.velocity.x = this.playerSpeed;
+					}, this);
+
+					this.game.time.events.add(200, () => {
+						this.game.time.events.remove(loop_right);
+						this.player.body.velocity.y = 0;
+						this.player.body.velocity.x = 0;
+						this.direction = '';
+					});
+					
+					break;
+
+				default:
+			}
+
 		}
 	}
 
@@ -624,7 +678,7 @@ export default class {
 						this.player.body.velocity.y = -this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(400, () => {
+					this.game.time.events.add(200, () => {
 						this.game.time.events.remove(loop_up);
 					});
 
@@ -647,7 +701,7 @@ export default class {
 						this.player.body.velocity.y = this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(400, () => {
+					this.game.time.events.add(200, () => {
 						this.game.time.events.remove(loop_down);
 					});
 
@@ -665,7 +719,7 @@ export default class {
 						this.player.body.velocity.x = -this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(400, () => {
+					this.game.time.events.add(200, () => {
 						this.game.time.events.remove(loop_left);
 					});
 
@@ -683,7 +737,7 @@ export default class {
 						this.player.body.velocity.x = this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(400, () => {
+					this.game.time.events.add(200, () => {
 						this.game.time.events.remove(loop_right);
 					});
 					
