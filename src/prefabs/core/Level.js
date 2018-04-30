@@ -18,6 +18,7 @@ import Lucy from '../beings/Lucy';
 import Eventmanager from './Eventmanager';
 import Questmanager from './Questmanager';
 import Daycycle from '../gamemechanics/Daycycle';
+import LockGame from '../minigame/LockGame';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
@@ -79,19 +80,19 @@ export default class {
 
 		switch (this.gameData.direction) {
 			case 'up':
-				this.player.animations.play('idle_up');
+				this.player.animations.play('static_idle_up');
 				break;
 
 			case 'down':
-				this.player.animations.play('idle');
+				this.player.animations.play('static_idle_down');
 				break;
 
 			case 'left':
-				this.player.animations.play('idle_left');
+				this.player.animations.play('static_idle_left');
 				break;
 
 			case 'right':
-				this.player.animations.play('idle_right');
+				this.player.animations.play('static_idle_right');
 				break;
 		
 			default:
@@ -100,6 +101,8 @@ export default class {
 
 		// Create Lucy
 		this.lucy = this.tilemapProperties.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
+
+		
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
@@ -130,6 +133,7 @@ export default class {
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);
+
 	}
 
 	loadEntryPoints() {
