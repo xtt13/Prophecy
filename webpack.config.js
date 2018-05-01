@@ -70,6 +70,7 @@ module.exports = {
     new BrowserSyncPlugin({
       host: process.env.IP || 'localhost',
       port: process.env.PORT || 3000,
+      files: ['./assets/maps/*.json'],
       server: {
         baseDir: ['./', './build']
       }

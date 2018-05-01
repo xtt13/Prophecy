@@ -19,11 +19,11 @@ export default class {
 		this.movementloop = null;
 		this.collision = false;
 
-		this.playerSpeed = 60;
+		this.playerSpeed = 40;
 		this.directon = 'down';
 		this.standing = true;
 
-		this.movementloopSpeed = 260;
+		this.movementloopSpeed = 340;
 		this.movementSound = this.level.map.plus.properties.ground;
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
@@ -277,7 +277,7 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 				if(this.movementloop == null){
 					this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
-						this.pyfootsteps.play(this.movementSound, 0.5);
+						this.pyfootsteps.play(this.movementSound, 0.15);
 					}, this);
 				}
 		}
@@ -623,7 +623,7 @@ export default class {
 				this.direction = 'left';
 
 				if (this.button_W.isDown || this.button_S.isDown) {
-					this.player.body.velocity.x = -this.playerSpeed / 2;
+					this.player.body.velocity.x = -this.playerSpeed / 1.25;
 				} else {
 					this.player.body.velocity.x = -this.playerSpeed;
 					if(this.dash) return;
@@ -636,7 +636,7 @@ export default class {
 				this.direction = 'right';
 
 				if (this.button_W.isDown || this.button_S.isDown) {
-					this.player.body.velocity.x = this.playerSpeed / 2;
+					this.player.body.velocity.x = this.playerSpeed / 1.25;
 				} else {			
 					this.player.body.velocity.x = this.playerSpeed;
 					if(this.dash) return;

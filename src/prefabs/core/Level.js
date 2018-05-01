@@ -381,11 +381,12 @@ export default class {
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
 			
-			if(this.foregroundLayer2 !== undefined){
-				this.game.world.bringToTop(this.foregroundLayer2);
-			}
-			
+			// if(this.foregroundLayer2 !== undefined){
+			// 	this.game.world.bringToTop(this.foregroundLayer2);
+			// }			
 		}
+
+		this.game.world.bringToTop(this.foregroundLayer2);
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
