@@ -19,7 +19,7 @@ export default class {
 		this.movementloop = null;
 		this.collision = false;
 
-		this.playerSpeed = 40;
+		this.playerSpeed = 80;
 		this.directon = 'down';
 		this.standing = true;
 

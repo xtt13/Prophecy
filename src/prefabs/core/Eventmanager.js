@@ -428,14 +428,28 @@ export default class {
 			.tween(this.game.camera)
 			.to(
 				{ x: this.level.player.x - (this.game.camera.width / 2) - 20, y: this.level.player.y - (this.game.camera.height / 2) },
-				600,
+				1000,
 				Phaser.Easing.Quadratic.InOut,
 				true
 			);
 
 		this.followTween.onComplete.add(() => {
-			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN, 0.1, 0.1);
-			
+
+				switch (this.level.tilemapProperties.cameraMode) {
+					case 'follow':
+						this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+						break;
+		
+					case 'topdown':
+						this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+						break;
+				
+					default:
+						console.warn('Default Camera Mode!');
+						this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+						break;
+				}
+						
 		}, this);
 	}
 

@@ -151,7 +151,7 @@ export default class {
 			if (element.properties.startPointType == 'custom') {
 				let point = [];
 				point['id'] = element.properties.id;
-				point['x'] = element.x;
+				point['x'] = element.x - 5;
 				point['y'] = element.y;
 				this.customStartPoints.push(point);
 			}
@@ -291,6 +291,26 @@ export default class {
 				this.fireEmitter.makeParticles('fireSpritesheet', [0, 1, 2, 3], 100);
 				this.fireEmitter.start(false, 1000, 0.1, 0);
 
+			} else if(element.properties.type == 'fountainSparkling'){
+				console.log(element);
+				let x = element.x + (element.width/2);
+				let y = element.y + (element.height/2);
+
+				this.fountainSparkling = this.game.add.emitter(x, y, 100);
+				this.fountainSparkling.width = element.width;
+				this.fountainSparkling.height = element.height;
+				this.fountainSparkling.rotation = 0;
+				// this.fountainSparkling.maxParticleScale = 1;
+				this.fountainSparkling.gravity = 0;
+				
+				this.fountainSparkling.setAlpha(0, 1, 300, null, true);
+				// this.fountainSparkling.minParticleSpeed.set(100);
+				this.fountainSparkling.setXSpeed(0, 0);
+				this.fountainSparkling.setYSpeed(0);
+				this.fountainSparkling.maxParticleSpeed.set(1);
+				this.fountainSparkling.makeParticles('sparklingSpritesheet', [0, 1, 2, 3], 100);
+				this.fountainSparkling.start(false, 1000, 0.1, 0);
+				
 			}
 
 
@@ -387,6 +407,11 @@ export default class {
 		}
 
 		this.game.world.bringToTop(this.foregroundLayer2);
+
+		if (this.currentMap == 'map2') {
+			this.game.world.bringToTop(this.fountainSparkling);
+		}
+		
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);

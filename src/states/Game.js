@@ -45,8 +45,8 @@ export default class extends Phaser.State {
 		if (__DEV__) {
 			// this.game.debug.currentAlpha = 0.2;
 
-			this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
-			this.game.debug.text(this.game.time.fps.toString() + ' FPS', 20, 40, '#00ff00', '10px Pixeled');
+			// this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
+			this.game.debug.text(this.game.time.fps.toString() + ' FPS', 510, 30, '#00ff00', '10px Pixeled');
 
 			// DEBUG SOUND
 			// this.game.debug.soundInfo(this.level.weather.weatherSound, 20, 50);
@@ -83,7 +83,7 @@ export default class extends Phaser.State {
 			// this.game.debug.quadTree(this.game.physics.arcade.quadTree);
 			// this.level.inputClass.stick.debug();
 			// this.game.debug.text('Player z-depth: ' + this.level.player.z, 20, 60);
-			this.game.debug.text(this.level.player.health + ' HP', 90, 40, '#00ff00', '10px Pixeled');
+			// this.game.debug.text(this.level.player.health + ' HP', 90, 40, '#00ff00', '10px Pixeled');
 
 		}
 	}

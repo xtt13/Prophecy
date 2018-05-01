@@ -24,7 +24,7 @@ export default class extends Phaser.Sprite {
 
 		// this.movementBlocked = false;
 
-		this.frameRate = 12;
+		this.frameRate = 19;
 
 
 		this.animations.add('dash_left', [71], 1, true);
@@ -55,16 +55,105 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(8, 10, 21, 40);
 
+
+		var width = 53;
+		var height = 13;
+		var bmd = this.game.add.bitmapData(width, height);
+
+		bmd.ctx.beginPath();
+		bmd.ctx.rect(0, 0, width, height);
+		bmd.ctx.fillStyle = '#000000';
+		bmd.ctx.globalAlpha = 1;
+		bmd.ctx.fill();
+		bmd.ctx.beginPath();
+		bmd.line(0, 0, 53, 0, '#49ffc5', 2);
+		bmd.ctx.fill();
+
+		var healthBar = this.game.add.sprite(17, 17, bmd);
+		healthBar.fixedToCamera = true;
+		healthBar.alpha = 0.8;
+
+		var hearts = [];
+		let counter = 23;
+		for (let index = 0; index < 4; index++) {
+			var heart = this.game.add.sprite(counter, 24, 'heart');
+			heart.scale.set(1);
+			heart.anchor.set(0.5);
+			heart.fixedToCamera = true;	
+			counter += 10;
+			heart.alpha = 1;
+			hearts.push(heart);
+			// this.game.add.tween(heart).to({ alpha: 1 }, 10000, 'Linear', true);
+			this.game.add.tween(heart.scale).to( { x: 1.1, y: 1.1 }, 1000, Phaser.Easing.Bounce.Out, true, 0, 0, false).loop();
+		}
+		
+
+		let counterShaddow = 23;
+		for (let index = 0; index < 5; index++) {
+			var heartShaddow = this.game.add.sprite(counterShaddow, 24, 'heart');
+			heartShaddow.scale.set(1);
+			heartShaddow.anchor.set(0.5);
+			heartShaddow.fixedToCamera = true;
+			heartShaddow.alpha = 0.2;	
+			counterShaddow += 10;
+		}
+	
+		var removeHeart = this.game.add.tween(hearts[3].scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
+		removeHeart.onComplete.add(() => {
+			hearts[3].alpha = 0;
+			hearts[3].scale.set(0);
+		}, this);
+
+		this.game.time.events.add(2000, () => {
+			this.game.camera.shake(0.005, 500);
+			var heartExplosion = this.game.add.emitter(hearts[3].x, hearts[3].y, 100);
+			heartExplosion.fixedToCamera = true;
+			// heartExplosion.angularDrag = 500;
+			// heartExplosion.maxParticleScale = 3;
+			// heartExplosion.particleDrag.set(1800);
+			heartExplosion.setAlpha(1, 0, 1000, null, false);
+			heartExplosion.setXSpeed(100);	
+			heartExplosion.setYSpeed(-100);
+			heartExplosion.makeParticles('blood', 100);
+			heartExplosion.start(true, 0, null, 10);
+
+			this.game.time.events.add(2000, () => {
+				this.game.add.tween(hearts[3]).to({ alpha: 1 }, 500, Phaser.Easing.Bounce.Out, true);
+				this.game.add.tween(hearts[3].scale).to( { x: 1, y: 1 }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
+			});
+		});
+
+		// No Glitch on Camera
 		this.game.camera.roundPx = false;
-		this.game.renderer.renderSession.roundPixels = true;
+
+		this.game.renderer.renderSession.roundPixels = false;
+
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN, 0.07, 0.07);
 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
 
+
+
 		// Add Lerp after 1 Second
-		// this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
-		// 	this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
-		// });
+		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+			if(this.gameData.currentMap == 'map1') return;
+
+			switch (this.level.tilemapProperties.cameraMode) {
+				case 'follow':
+					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					break;
+	
+				case 'topdown':
+					// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+					this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.1, 0.1);
+					break;
+			
+				default:
+					console.warn('Default Camera Mode!');
+					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					break;
+			}
+		});
 
 		// -1 Velocity
 		let px = this.body.velocity.x;

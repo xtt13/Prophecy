@@ -283,6 +283,7 @@
  "properties":
     {
      "athmoSound":"AxTemple",
+     "cameraMode":"topdown",
      "dayCycle":false,
      "ground":"hard3",
      "lucy":false,
@@ -293,6 +294,7 @@
  "propertytypes":
     {
      "athmoSound":"string",
+     "cameraMode":"string",
      "dayCycle":"bool",
      "ground":"string",
      "lucy":"bool",
