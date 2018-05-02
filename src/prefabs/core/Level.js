@@ -407,6 +407,7 @@ export default class {
 		}
 
 		this.game.world.bringToTop(this.foregroundLayer2);
+		this.game.world.bringToTop(this.godrays);
 
 		if (this.currentMap == 'map2') {
 			this.game.world.bringToTop(this.fountainSparkling);
@@ -418,7 +419,7 @@ export default class {
 		this.map.plus.events.regions.triggerWith(this.player);
 		// console.log(this.map.plus);
 
-		// If night == true
+		// If night == true && Daycycle is enabled
 		if (this.dayCycle) {
 			this.game.world.bringToTop(this.dayCycleClass.lightSprite);
 			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
@@ -610,6 +611,9 @@ export default class {
 			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 			this.backgroundLayer = this.map.createLayer('Clouds');
 			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+
+			
+			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 			
 		}
 
@@ -635,6 +639,11 @@ export default class {
 		if(this.map.layers[3].name == 'ForegroundLayer2'){
 			this.foregroundLayer2.resizeWorld();
 		}
+
+			this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
+			this.godrays = this.map.createLayer('Godrays');
+			this.godrays.smoothed = false;
+		
 		
 
 		// Test

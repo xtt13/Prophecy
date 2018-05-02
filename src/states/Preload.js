@@ -176,6 +176,7 @@ export default class extends Phaser.State {
 		this.load.image('tileset', 'assets/tilesets/tileset.png');
 		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
+		this.load.image('Godrays', 'assets/tilesets/godrays.png');
 
 		// Load UI-GameMaps
 		this.load.image('newGameMap', 'assets/sprites/newGameMap.png');
@@ -206,6 +207,7 @@ export default class extends Phaser.State {
 		// Load GUI
 		this.load.image('heart', 'assets/sprites/heart.png');
 		this.load.image('dashBar', 'assets/sprites/dashBar.png');
+		this.load.image('cursor', 'assets/sprites/cursor.png');
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');

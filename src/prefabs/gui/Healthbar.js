@@ -128,7 +128,7 @@ export default class {
 			this.game.add.tween(heart.scale).to( { x: 1.1, y: 1.1 }, 1000, Phaser.Easing.Bounce.Out, true, 0, 0, false).loop();
 		}
 		
-
+        this.heartsShaddow = this.game.add.group();
 		let counterShaddow = 41;
 		for (let index = 0; index < 5; index++) {
 			var heartShaddow = this.game.add.sprite(counterShaddow, 24, 'heart');
@@ -136,7 +136,8 @@ export default class {
 			heartShaddow.anchor.set(0.5);
 			heartShaddow.fixedToCamera = true;
 			heartShaddow.alpha = 0.2;	
-			counterShaddow += 10;
+            counterShaddow += 10;
+            this.heartsShaddow.add(heartShaddow);
 		}
 	
         // this.removeHeart(3);
@@ -169,17 +170,29 @@ export default class {
         if(this.dashRatio.value <= 0.1) return;
 
         if(this.reloadRatioTween.isRunning){
-            this.reloadRatioTween.stop();
-            this.reloadRatio.stop();
+            console.log('STOP');
+            this.reloadRatioTween.stop(true);
+            this.reloadRatio.stop(true);
+
+            this.dashRatio.value -= 0.2;
+
+            this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 600, Phaser.Easing.Cubic.Out, true, 0, 0, false);
+
+            this.game.time.events.add(4000, () => {
+                this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 3000, 'Linear', true, 0, 0, false);
+                this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 3000, 'Linear', true, 0, 0, false);
+            });
+
+        } else {
+            this.dashRatio.value -= 0.2;
+            this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 600, Phaser.Easing.Cubic.Out, true, 0, 0, false);
+    
+            this.game.time.events.add(4000, () => {
+                this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 3000, 'Linear', true, 0, 0, false);
+                this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 3000, 'Linear', true, 0, 0, false);
+            });
         }
 
-        this.dashRatio.value -= 0.2;
-        this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 300, 'Linear', true, 0, 0, false);
-
-        this.game.time.events.add(4000, () => {
-            this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 3000, 'Linear', true, 0, 0, false);
-            this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 3000, 'Linear', true, 0, 0, false);
-        });
     }
 
     addHeart(index){
@@ -194,7 +207,7 @@ export default class {
                 this.reloadRatio.stop();
             }
         }
-        console.log(this.dashRatio.value);
+        // console.log(this.dashRatio.value);
     }
 
 	

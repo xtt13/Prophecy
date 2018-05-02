@@ -19,6 +19,11 @@ export default class {
 		this.questMap = new Questmap(this.game, this);
 		this.gameMap = new Gamemap(this.game, this, this.level);
 		this.ingameMenu = new IngameMenu(this.game, this.level);
+
+		// this.game.canvas.style.cursor = "none";
+		// this.cursor = this.game.add.sprite(this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY, 'cursor');
+		// this.cursor.scale.set(1.5);
+		// this.cursor.smoothed = false;
 	}
 
 	updateGUI(option, value) {
@@ -86,11 +91,18 @@ export default class {
 		this.healthBar.update();
 
 		this.game.world.bringToTop(this.healthBar.healthBarIcon);
-		this.game.world.bringToTop(this.healthBar.healthBar);
+		this.game.world.bringToTop(this.healthBar.healthBar); 
+		this.game.world.bringToTop(this.healthBar.heartsShaddow);
 		this.game.world.bringToTop(this.healthBar.hearts);
 		this.game.world.bringToTop(this.healthBar.dashBarFrame);
 		this.game.world.bringToTop(this.healthBar.dashBar);
 		this.game.world.bringToTop(this.healthBar.heartExplosion);
+
+		// this.game.world.bringToTop(this.cursor);
+		// this.cursor.x = this.game.input.mousePointer.worldX;
+		// this.cursor.y = this.game.input.mousePointer.worldY;
+
+		// this.game.world.bringToTop(this.cursor);
 		
 
 		// let onePSx = this.game.world.width / 100;

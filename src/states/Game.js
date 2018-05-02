@@ -54,7 +54,7 @@ export default class extends Phaser.State {
 			// this.game.debug.soundInfo(this.game.soundManager.sound, 20, 50);
 
 			// DEBUG SPRITE
-			// this.game.debug.spriteInfo(this.level.player., 32, 32);
+			// this.game.debug.spriteInfo(this.level.GUICLASS.cursor, 32, 50);
 
 			// DEBUG CAMERA
 			// this.game.debug.cameraInfo(this.game.camera, 32, 32);
