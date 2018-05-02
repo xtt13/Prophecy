@@ -3,6 +3,7 @@ import Notification from './Notification';
 import IngameMenu from './IngameMenu';
 import Questmap from './Questmap';
 import Gamemap from './Gamemap';
+import Healthbar from './Healthbar';
 
 export default class {
 	constructor(game, level) {
@@ -10,7 +11,7 @@ export default class {
 		this.level = level;
 
 		this.notification = false;
-
+		this.healthBar = new Healthbar(this.game, this.level);
 		this.createGUI();
 	}
 
@@ -81,6 +82,16 @@ export default class {
 				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteSoundButton);
 			}
 		}
+
+		this.healthBar.update();
+
+		this.game.world.bringToTop(this.healthBar.healthBarIcon);
+		this.game.world.bringToTop(this.healthBar.healthBar);
+		this.game.world.bringToTop(this.healthBar.hearts);
+		this.game.world.bringToTop(this.healthBar.dashBarFrame);
+		this.game.world.bringToTop(this.healthBar.dashBar);
+		this.game.world.bringToTop(this.healthBar.heartExplosion);
+		
 
 		// let onePSx = this.game.world.width / 100;
 		// onePSx = onePSx.toFixed(1);

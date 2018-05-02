@@ -205,6 +205,7 @@ export default class extends Phaser.State {
 
 		// Load GUI
 		this.load.image('heart', 'assets/sprites/heart.png');
+		this.load.image('dashBar', 'assets/sprites/dashBar.png');
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');

@@ -308,6 +308,8 @@ export default class {
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
 
+		this.level.GUICLASS.healthBar.dash();
+
 		// this.player.alpha = 0.5;
 		this.game.add.tween(this.player).to( { alpha: 0.1 }, 250, Phaser.Easing.Elastic.Out, true);
 
