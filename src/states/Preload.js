@@ -114,6 +114,7 @@ export default class extends Phaser.State {
 		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');
 		this.load.image('cyanParticle', 'assets/sprites/cyanParticle.png');
 		this.load.image('blood', 'assets/sprites/blood.png');
+		this.load.image('bloodHeart', 'assets/sprites/bloodHeart.png');
 		this.load.image('rock', 'assets/sprites/rock.png');
 		this.load.image('bullet', 'assets/sprites/bullet.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);

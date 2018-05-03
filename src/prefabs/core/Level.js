@@ -303,7 +303,7 @@ export default class {
 				// this.fountainSparkling.maxParticleScale = 1;
 				this.fountainSparkling.gravity = 0;
 				
-				this.fountainSparkling.setAlpha(0, 1, 300, null, true);
+				// this.fountainSparkling.setAlpha(0.5, 1, 300, null, true);
 				// this.fountainSparkling.minParticleSpeed.set(100);
 				this.fountainSparkling.setXSpeed(0, 0);
 				this.fountainSparkling.setYSpeed(0);
@@ -311,6 +311,28 @@ export default class {
 				this.fountainSparkling.makeParticles('sparklingSpritesheet', [0, 1, 2, 3], 100);
 				this.fountainSparkling.start(false, 1000, 0.1, 0);
 				
+			} else if(element.properties.type == 'flies'){
+				let x = element.x + (element.width/2);
+				let y = element.y + (element.height/2);
+
+				this.templeFliesEmitter = this.game.add.emitter(x, y, 30);
+				// emitter.fixedToCamera = true;
+				this.templeFliesEmitter.width = element.width;
+				this.templeFliesEmitter.height = element.height;
+				// this.templeFliesEmitter.angle = -10;
+				this.templeFliesEmitter.minParticleScale = 0.1;
+				this.templeFliesEmitter.maxParticleScale = 0.5;
+				// emitter.maxParticleSpeed.setTo(2, 2);
+
+				this.templeFliesEmitter.setYSpeed(-5, 5);
+				this.templeFliesEmitter.setXSpeed(5, -5);
+
+				this.templeFliesEmitter.gravity = 0.5;
+				this.templeFliesEmitter.minRotation = 0;
+				this.templeFliesEmitter.maxRotation = 0;
+				this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
+				this.templeFliesEmitter.makeParticles('fly');
+				this.templeFliesEmitter.start(false, 10000, 5, 0);
 			}
 
 
@@ -643,6 +665,8 @@ export default class {
 			this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
 			this.godrays = this.map.createLayer('Godrays');
 			this.godrays.smoothed = false;
+			this.godrays.tint = 0x8cfff7;
+			// this.game.add.tween(this.godrays).to( { alpha: 0.3 }, 5000, 'Linear', true, 0, 0, true).loop();
 		
 		
 

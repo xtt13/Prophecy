@@ -7,11 +7,13 @@ export default class {
         this.player = this.level.player;
         
         this.dashRatio = { value: 1};
+        this.waitTimer = this.game.time.events.add(100, () => {});
 
         this.buildHealthBar();
 
         this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 1, 'Linear', true, 0, 0, false);
         this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 1, 'Linear', true, 0, 0, false);
+        this.reduceTween = this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 1, Phaser.Easing.Cubic.Out, true, 0, 0, false);
         
         this.counter = 4;
         this.testLoop = this.game.time.events.loop(500, () => {
@@ -156,10 +158,10 @@ export default class {
 			this.game.camera.shake(0.005, 500);
 			this.heartExplosion = this.game.add.emitter(this.hearts.getChildAt(index).x, this.hearts.getChildAt(index).y, 100);
 			this.heartExplosion.fixedToCamera = true;
-			this.heartExplosion.setAlpha(1, 0, 1000, null, false);
+			this.heartExplosion.setAlpha(1, 0, 2000, null, false);
 			this.heartExplosion.setXSpeed(100);	
 			this.heartExplosion.setYSpeed(-100);
-			this.heartExplosion.makeParticles('blood', 100);
+			this.heartExplosion.makeParticles('bloodHeart', 100);
 			this.heartExplosion.start(true, 0, null, 10);
 
 
@@ -167,29 +169,45 @@ export default class {
     }
 
     dash(){
-        if(this.dashRatio.value <= 0.1) return;
+        if(this.dashRatio.value <= 0.1){
+            this.reloadRatioTween.stop(true);
+            this.reloadRatio.stop(true);
+            return;
+        }
+
+        this.game.time.events.remove(this.waitTimer);
 
         if(this.reloadRatioTween.isRunning){
-            console.log('STOP');
+
             this.reloadRatioTween.stop(true);
             this.reloadRatio.stop(true);
 
             this.dashRatio.value -= 0.2;
+            if(this.dashRatio.value <= 0.1){
+                this.dashRatio.value = 0;
+            }
+            this.reduceTween = this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 600, Phaser.Easing.Cubic.Out, true, 0, 0, false);
 
-            this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 600, Phaser.Easing.Cubic.Out, true, 0, 0, false);
-
-            this.game.time.events.add(4000, () => {
-                this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 3000, 'Linear', true, 0, 0, false);
-                this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 3000, 'Linear', true, 0, 0, false);
+            this.waitTimer = this.game.time.events.add(4000, () => {
+                if(this.level.inputClass.dash) return;
+                this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 5000, 'Linear', true, 0, 0, false);
+                this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 5000, 'Linear', true, 0, 0, false);
             });
 
         } else {
+
+            this.reloadRatioTween.stop();
+            this.reloadRatio.stop();
+
             this.dashRatio.value -= 0.2;
+            if(this.dashRatio.value <= 0.1){
+                this.dashRatio.value = 0;
+            }
             this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 600, Phaser.Easing.Cubic.Out, true, 0, 0, false);
-    
-            this.game.time.events.add(4000, () => {
-                this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 3000, 'Linear', true, 0, 0, false);
-                this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 3000, 'Linear', true, 0, 0, false);
+            
+            this.waitTimer = this.game.time.events.add(4000, () => {
+                this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to( { x: 1, y: 1 }, 5000, 'Linear', true, 0, 0, false);
+                this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 5000, 'Linear', true, 0, 0, false);
             });
         }
 
@@ -202,10 +220,14 @@ export default class {
 
     update(){
         if(this.level.inputClass.dash){
-            if(this.reloadRatioTween.isRunning){
+            if(this.dashRatio.value <= 0.1){
                 this.reloadRatioTween.stop();
                 this.reloadRatio.stop();
             }
+            // if(this.reloadRatioTween.isRunning){
+            //     this.reloadRatioTween.stop();
+            //     this.reloadRatio.stop();
+            // }
         }
         // console.log(this.dashRatio.value);
     }

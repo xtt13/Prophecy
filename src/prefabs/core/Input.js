@@ -302,6 +302,8 @@ export default class {
 	}
 
 	beginnDash() {
+		if(this.level.GUICLASS.healthBar.dashRatio.value <= 0.1) return;
+
 		this.dash = true;
 		// this.player.addParticles();
 		this.playerSpeed = 250;
