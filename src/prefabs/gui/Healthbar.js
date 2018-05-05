@@ -15,28 +15,28 @@ export default class {
         this.reloadRatio = this.game.add.tween(this.dashRatio).to( {value: 1 }, 1, 'Linear', true, 0, 0, false);
         this.reduceTween = this.game.add.tween(this.dashBar.scale).to( { x: this.dashRatio.value, y: 1 }, 1, Phaser.Easing.Cubic.Out, true, 0, 0, false);
         
-        this.counter = 4;
-        this.testLoop = this.game.time.events.loop(500, () => {
-            this.removeHeart(this.counter);
-            this.counter--;
-            if(this.counter == 0){
-                this.game.time.events.remove(this.testLoop);
+        // this.counter = 4;
+        // this.testLoop = this.game.time.events.loop(500, () => {
+        //     this.removeHeart(this.counter);
+        //     this.counter--;
+        //     if(this.counter == 0){
+        //         this.game.time.events.remove(this.testLoop);
                 
-            }
-        }, this);
+        //     }
+        // }, this);
 
 
 
 
-        this.game.time.events.add(5000, () => {
-            this.buildLoop = this.game.time.events.loop(500, () => {
-                this.addHeart(this.counter);
-                this.counter++;
-                if(this.counter == 5){
-                    this.game.time.events.remove(this.buildLoop);
-                }
-            }, this);
-        });
+        // this.game.time.events.add(5000, () => {
+        //     this.buildLoop = this.game.time.events.loop(500, () => {
+        //         this.addHeart(this.counter);
+        //         this.counter++;
+        //         if(this.counter == 5){
+        //             this.game.time.events.remove(this.buildLoop);
+        //         }
+        //     }, this);
+        // });
 	}
 
 	buildHealthBar() {

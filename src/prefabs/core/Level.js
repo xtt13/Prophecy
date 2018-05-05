@@ -422,13 +422,14 @@ export default class {
 		// If there is no foreGroundShift
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
+			this.game.world.bringToTop(this.foregroundLayer2);
 			
 			// if(this.foregroundLayer2 !== undefined){
 			// 	this.game.world.bringToTop(this.foregroundLayer2);
 			// }			
 		}
 
-		this.game.world.bringToTop(this.foregroundLayer2);
+		// this.game.world.bringToTop(this.foregroundLayer2);
 		this.game.world.bringToTop(this.godrays);
 
 		if (this.currentMap == 'map2') {
@@ -665,16 +666,20 @@ export default class {
 			this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
 			this.godrays = this.map.createLayer('Godrays');
 			this.godrays.smoothed = false;
-			this.godrays.tint = 0x8cfff7;
+			// this.godrays.tint = 0x8cfff7;
 			// this.game.add.tween(this.godrays).to( { alpha: 0.3 }, 5000, 'Linear', true, 0, 0, true).loop();
 		
 		
 
 		// Test
+		// this.groundLayer.blendMode = Phaser.blendModes.MULTIPLY;
+		// this.detailGroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
 		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
+		// this.foregroundLayer2.blendMode = Phaser.blendModes.MULTIPLY;
 
 		// Alpha of Foregroundlayer 0.9
 		this.foregroundLayer.alpha = 1;
+		this.foregroundLayer2.alpha = 1;
 
 		// Set Collision Tiles
 		this.map.setCollision(1602, true, 'CollisionLayer');

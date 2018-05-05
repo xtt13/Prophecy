@@ -285,8 +285,17 @@
          "tilewidth":32
         }, 
         {
+         "columns":45,
          "firstgid":5601,
-         "source":"..\/tilesets\/Godrays.tsx"
+         "image":"..\/tilesets\/godrays.png",
+         "imageheight":5856,
+         "imagewidth":1440,
+         "margin":0,
+         "name":"Godrays",
+         "spacing":0,
+         "tilecount":8235,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",

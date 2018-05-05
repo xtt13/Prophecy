@@ -59,6 +59,8 @@ export default class {
 				this.stairsEnter(region);
 			} else if (region.properties.soundArea) {
 				this.soundAreaEnter(region);
+			} else if(region.properties.quickSave){
+				this.quickSave(region);
 			}
 		});
 
@@ -291,6 +293,18 @@ export default class {
 				this
 			);
 		}
+	}
+
+	quickSave(region){
+		let targetID = region.properties.targetID;
+		let direction = region.properties.direction;
+
+		this.level.gameData.targetID = targetID;
+		this.level.gameData.direction = direction;
+		this.level.safe.setGameConfig(this.level.gameData);
+
+		this.level.GUICLASS.createNotification('quest', 'Save...');
+
 	}
 
 	addPort(region) {

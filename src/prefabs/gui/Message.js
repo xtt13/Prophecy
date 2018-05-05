@@ -18,7 +18,7 @@ export default class {
 
 		this.followTween = this.game.add;
 
-		this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
+		// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
 
 		this.addBars();
 
@@ -35,18 +35,45 @@ export default class {
 		this.background = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - 90, bmd);
 		this.background.fixedToCamera = true;
 
-		if (this.readable) {
-			this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 80, 'pxlfont', '', 51);
-		} else {
-			this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 60, 'pxlfont', '', 32);
-		}
+		this.background.x = Math.floor(this.background.x);
+		this.background.y = Math.floor(this.background.y);
 
-		this.text.scale.set(0.26);
+		this.game.renderer.renderSession.roundPixels = true;
+		this.text = this.game.add.bitmapText(
+			this.background.x + 20,
+			this.game.camera.height - 80,
+			'pxlfont',
+			'',
+			10
+		);
+		this.text.smoothed = false;
+		// this.text.anchor.set(0.5);
+
+		// if (this.readable) {
+		// 	this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 80, 'pxlfont', '', 12);
+		// } else {
+		// 	this.text = this.game.add.bitmapText(this.background.x + 20, this.game.camera.height - 60, 'pxlfont', '', 32);
+		// }
+
+		// var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center", wordWrapWidth: 50 };
+		// this.text = this.game.add.text(this.background.x + 20, this.game.camera.height - 80, "", style);
+		this.text.x = Math.floor(this.text.x);
+		this.text.y = Math.floor(this.text.y);
+
+		this.text.smoothed = false;
+
+		// this.text.scale.set(0.35);
 		this.text.maxWidth = 1000;
 		this.text.textHeight = 1500;
 		this.game.cache.getBitmapFont('pxlfont').font.lineHeight = 100;
+
 		this.text.fixedToCamera = true;
-		this.text.smoothed = false;
+
+		// this.text.x = parseInt(this.text.x);
+		// this.text.y = parseInt(this.text.y);
+
+		console.log(this.text);
+		
 
 		if (!this.movable) {
 			this.player.movable = false;
@@ -67,6 +94,9 @@ export default class {
 		this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
 		this.text.text = '';
 		this.lineIndex++;
+
+		this.text.x = Math.floor(this.text.x);
+		this.text.y = Math.floor(this.text.y);
 	}
 
 	nextWord() {
@@ -77,16 +107,24 @@ export default class {
 			this.text.text = this.text.text.concat('\n');
 			this.game.time.events.add(this.lineDelay, this.nextLine, this);
 		}
+
+		this.text.x = Math.floor(this.text.x);
+		this.text.y = Math.floor(this.text.y);
 	}
 
 	removeMessage() {
+		this.game.renderer.renderSession.roundPixels = false;
 		this.text.destroy();
 		this.background.destroy();
 		this.removeBars();
 		if (!this.movable) {
 			this.player.movable = true;
-			this.player.talking = false;
+			
 			this.player.body.immovable = false;
+
+			this.game.time.events.add(3000, () => {
+				this.player.talking = false;
+			});
 		}
 	}
 
@@ -131,7 +169,25 @@ export default class {
 			this.upperBar.destroy();
 			this.downBar.destroy();
 			this.upperBar = false;
+			
 			this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+			
+			// switch (this.level.tilemapProperties.cameraMode) {
+			// 	case 'follow':
+			// 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+			// 		break;
+	
+			// 	case 'topdown':
+			// 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+			// 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.1, 0.1);
+			// 		break;
+			
+			// 	default:
+			// 		console.warn('Default Camera Mode!');
+			// 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+			// 		break;
+			// }
+
 		}, this);
 	}
 }

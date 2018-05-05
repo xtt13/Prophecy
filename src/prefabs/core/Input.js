@@ -548,44 +548,130 @@ export default class {
 			// }
 
 
-
+			if(this.dash) return;
 			this.stickRotation = this.stick.rotation.toFixed(1);
 
 			if (this.stickRotation <= 2 && this.stickRotation >= 1) {
-				// console.log('Down');
+				console.log('Down');
 				this.player.animations.play('run_down');
 				this.direction = 'down';
 			} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
-				// console.log('Right');
+				console.log('Right');
 				this.player.animations.play('run_right');
 				this.direction = 'right';
 			} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
-				// console.log('Up');
+				console.log('Up');
 				this.player.animations.play('run_up');
 				this.direction = 'up';
 			} else {
-				// console.log('Left');
+				console.log('Left');
 				this.player.animations.play('run_left');
 				this.direction = 'left';
 			}
 		} else {
-			switch (this.direction) {
-				case 'up':
-					this.player.animations.play('idle');
-					break;
-				case 'down':
-					this.player.animations.play('idle');
-					break;
-				case 'left':
-					this.player.animations.play('idle_left');
-					break;
-				case 'right':
-					this.player.animations.play('idle_right');
-					break;
-				default:
-			}
-			// this.player.animations._anims.run_down.speed = 19;
+
+			this.player.animations._anims.run_right.speed = 19;
+			this.player.animations._anims.run_left.speed = 19;
+			this.player.animations._anims.run_down.speed = 19;
+			this.player.animations._anims.run_up.speed = 19;
+
+			this.player.animations.stop();
 			this.player.body.velocity.set(0);
+
+			// if(this.dash) return;
+
+			// if(this.walkSwitch) return;
+
+			// this.walkSwitch = true;
+
+			// this.player.body.velocity.set(0);
+
+			// switch (this.direction) {
+			// 	case 'up':
+
+			// 		this.standing = true;
+					
+			// 		while (this.player.animations.currentFrame.index < 24) {
+			// 			this.player.animations.next();
+			// 		}
+
+			// 		this.player.animations.play('run_up_idle');
+
+			// 		if (this.collision) return;
+
+			// 		var loop_up = this.game.time.events.loop(50, () => {
+			// 			this.player.body.velocity.y = -this.playerSpeed;
+			// 		}, this);
+
+			// 		this.game.time.events.add(200, () => {
+			// 			this.game.time.events.remove(loop_up);
+			// 		});
+
+
+			// 		break;
+
+			// 	case 'down':
+
+			// 		this.standing = true;
+
+			// 		while (this.player.animations.currentFrame.index < 7) {
+			// 			this.player.animations.next();
+			// 		}
+
+			// 		this.player.animations.play('run_down_idle');
+
+			// 		if (this.collision) return;
+
+			// 		var loop_down = this.game.time.events.loop(50, () => {
+			// 			this.player.body.velocity.y = this.playerSpeed;
+			// 		}, this);
+
+			// 		this.game.time.events.add(200, () => {
+			// 			this.game.time.events.remove(loop_down);
+			// 		});
+
+			// 		break;
+
+			// 	case 'left':
+
+			// 		this.standing = true;
+
+			// 		this.player.animations.play('run_left_idle');
+
+			// 		if (this.collision) return;
+
+			// 		var loop_left = this.game.time.events.loop(50, () => {
+			// 			this.player.body.velocity.x = -this.playerSpeed;
+			// 		}, this);
+
+			// 		this.game.time.events.add(200, () => {
+			// 			this.game.time.events.remove(loop_left);
+			// 		});
+
+			// 		break;
+
+			// 	case 'right':
+
+			// 		this.standing = true;
+
+			// 		this.player.animations.play('run_right_idle', 19, false);
+					
+			// 		if (this.collision) return;
+					
+			// 		var loop_right = this.game.time.events.loop(50, () => {
+			// 			this.player.body.velocity.x = this.playerSpeed;
+			// 		}, this);
+
+			// 		this.game.time.events.add(200, () => {
+			// 			this.game.time.events.remove(loop_right);
+			// 		});
+					
+			// 		break;
+
+			// 	default:
+			// }
+
+			// this.player.body.velocity.set(0);
 			this.pyfootsteps.stop();
 		}
 	}

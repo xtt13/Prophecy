@@ -29,6 +29,11 @@ export default class extends Phaser.State {
 		// Enable Pixel Rendering
 		this.stage.smoothed = false;
 
+		// if(typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1) {
+		// 	PIXI.scaleModes.DEFAULT = PIXI.scaleModes.NEAREST;
+		// 	// Phaser.Canvas.setSmoothingEnabled(this.game.context, false);
+		// }
+
 		// Don't pause on lost focus
 		// this.stage.disableVisibilityChange = true;
 
