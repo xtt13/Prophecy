@@ -502,9 +502,10 @@ export default class {
 		this.level.inputClass.movementSound = this.level.map.plus.properties.ground;
 		this.level.inputClass.movementloopSpeed = 260;
 		
-		this.level.inputClass.playerSpeed += 30;
-		// this.level.player.animations._anims.run_down.speed -= 20;
-		// this.level.player.animations._anims.run_up.speed -= 20;
+		this.level.inputClass.playerSpeed = 80;
+
+		this.level.player.animations._anims.run_down.speed = 19;
+		this.level.player.animations._anims.run_up.speed = 19;
 		this.level.player.animations._anims.run_down.speed = 19;
 		this.level.player.animations._anims.run_up.speed = 19;
 

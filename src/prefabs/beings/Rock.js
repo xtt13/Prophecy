@@ -25,7 +25,7 @@ export default class extends Phaser.Sprite {
 
         this.body.setSize(13, 10, 5, 7);
         
-        this.weapon = game.add.weapon(10, 'bullet');
+        this.weapon = game.add.weapon(10, 'bulletRock');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
 		this.weapon.bulletLifespan = 2000;
 		this.weapon.bulletSpeed = 200;

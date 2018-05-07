@@ -346,16 +346,16 @@ export default class {
 			// Bugfix
 			switch (this.direction) {
 				case 'up':
-					this.player.animations.play('run_up', 19, false);
+					this.player.animations.play('run_up', 19, true);
 					break;
 				case 'down':
-					this.player.animations.play('run_down', 19, false);
+					this.player.animations.play('run_down', 19, true);
 					break;
 				case 'left':
-					this.player.animations.play('run_left', 19, false);
+					this.player.animations.play('run_left', 19, true);
 					break;
 				case 'right':
-					this.player.animations.play('run_right', 19, false);
+					this.player.animations.play('run_right', 19, true);
 					break;
 				default:
 			}
@@ -677,8 +677,43 @@ export default class {
 	}
 
 	keyboardUpdate(){
+
+		if (this.game.input.activePointer.isDown){
+			let value = this.game.physics.arcade.angleToPointer(this.player);
+			console.log(value);
+
+			this.player.playerArm.visible = true;
+
+
+			if( (value > -2.5 && value < -0.5) ){
+				this.player.animations.play('static_idle_up');
+				this.direction = 'up';
+				this.player.playerArm.x = this.player.x + 2;
+				this.player.playerArm.y = this.player.y + 6;
+			} else if(value > 1 && value < 2.5){
+				this.player.animations.play('static_idle_down');
+				this.direction = 'down';
+				this.player.playerArm.x = this.player.x - 7;
+				this.player.playerArm.y = this.player.y + 6;
+			} else if(value > -0.5 && value < 1){
+				this.player.animations.play('static_idle_right');
+				this.direction = 'right';
+				this.player.playerArm.x = this.player.x - 3;
+				this.player.playerArm.y = this.player.y + 6;
+			} else if(value > 2.5 || value < -2.5){
+				this.player.animations.play('static_idle_left');
+				this.direction = 'left';
+				this.player.playerArm.x = this.player.x - 5;
+				this.player.playerArm.y = this.player.y + 4;
+			}
+
+        	this.player.weaponGun.fireAtPointer();
+			}
+			
 		// If any Movementkey isDown
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+
+			this.player.playerArm.visible = false;
 
 			this.walkSwitch = false;
 

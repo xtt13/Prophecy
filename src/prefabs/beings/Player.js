@@ -40,10 +40,10 @@ export default class extends Phaser.Sprite {
 		this.animations.add('run_right', [54, 55, 56, 57, 58, 59, 60, 61], this.frameRate, true);
 		this.animations.add('run_left', [37, 38, 39, 40, 41, 42, 43, 44], this.frameRate, true);
 
-		this.animations.add('run_up_idle', [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36], this.frameRate, false);
-		this.animations.add('run_down_idle', [8, 9, 10, 11, 12, 13, 14, 15, 16], this.frameRate, false);
-		this.animations.add('run_right_idle', [62, 63, 64, 65, 66, 67, 68, 69, 70], this.frameRate, false);
-		this.animations.add('run_left_idle', [45, 46, 47, 48, 49, 50, 51, 52, 53], this.frameRate, false);
+		this.animations.add('run_up_idle', [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], this.frameRate, false);
+		this.animations.add('run_down_idle', [8, 9, 10, 11, 12, 13, 14, 15], this.frameRate, false);
+		this.animations.add('run_right_idle', [62, 63, 64, 65, 66, 67, 68, 69], this.frameRate, false);
+		this.animations.add('run_left_idle', [45, 46, 47, 48, 49, 50, 51, 52], this.frameRate, false);
 
 		this.animations.add('idle_run_up', [36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25], this.frameRate, false);
 		this.animations.add('idle_run_down', [16, 15, 14, 13, 12, 11, 10, 9, 8], this.frameRate, false);
@@ -115,12 +115,26 @@ export default class extends Phaser.Sprite {
 		this.bmd.shadow('#000000', 10, -1, -1);
 		this.bmd.draw(this.multiplySprite, 50, 50);
 
-		this.weapon = game.add.weapon(10, 'invisibleAttack');
+		this.weapon = this.game.add.weapon(10, 'invisibleAttack');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
 		this.weapon.bulletLifespan = 100;
 		this.weapon.bulletSpeed = 400;
 		// this.weapon.fireRate = 200;
 		this.weapon.trackSprite(this, 0, 0, false);
+
+		this.playerArm = this.game.add.sprite(this.x, this.y, 'playerArm');
+		this.playerArm.anchor.set(0.5, 0);
+		this.playerArm.visible = false;
+
+		this.weaponGun = this.game.add.weapon(3, 'bulletPlayer');
+		this.weaponGun.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
+		this.weaponGun.bulletLifespan = 500;
+		this.weaponGun.bulletSpeed = 400;
+		this.weaponGun.fireRate = 50;
+		this.weaponGun.trackSprite(this.playerArm, 0, 10, true);
+		
+
+		
 
 		game.add.existing(this);
 
@@ -444,6 +458,15 @@ export default class extends Phaser.Sprite {
 	update() {
 		// console.log(this.animations.currentFrame.index);
 		this.game.world.bringToTop(this.customEmitter);
+
+		if(this.level.inputClass.direction == 'right' || this.level.inputClass.direction == 'down'){
+			this.game.world.bringToTop(this.playerArm);
+		}
+		this.playerArm.rotation = this.game.physics.arcade.angleToPointer(this.playerArm) - 360;
+
+
+
+
 		// this.game.world.setChildIndex(this.customEmitter, 5);
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;

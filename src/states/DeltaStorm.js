@@ -22,7 +22,7 @@ export default class extends Phaser.State {
 			this.game.camera.width / 2,
 			this.game.camera.height / 2 + 40,
 			'pxlfont',
-			'presents',
+			'present',
 			10
 		);
 		this.subText.smoothed = false;

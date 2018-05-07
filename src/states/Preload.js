@@ -89,16 +89,21 @@ export default class extends Phaser.State {
 	preload() {
 		// this.stage.backgroundColor = "#000000";
 
-		// this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
-		// this.text.anchor.set(0.5);
-		// this.text.tint = 0xffffff;
-		// this.text.text = '';
+		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
+		this.text.anchor.set(0.5);
+		this.text.tint = 0xffffff;
+		this.text.text = '';
 		// this.text.scale.set(0.26);
 
 
-		var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center" };
-		this.text = this.game.add.text(this.game.camera.width / 2, this.game.camera.height / 2, "", style);
-		this.text.anchor.set(0.5);
+		// var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center", wordWrap: "break-word"};
+		// this.text = this.game.add.text(this.game.camera.width / 2, this.game.camera.height / 2, "", style);
+		// this.text.anchor.set(0.5);
+		// this.text.padding.set(10, 16);
+		// // this.text.lineSpacing = 20;
+		// // this.text.padding.set(40, 40);
+		// console.log(this.text);
+
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
 
@@ -116,7 +121,9 @@ export default class extends Phaser.State {
 		this.load.image('blood', 'assets/sprites/blood.png');
 		this.load.image('bloodHeart', 'assets/sprites/bloodHeart.png');
 		this.load.image('rock', 'assets/sprites/rock.png');
-		this.load.image('bullet', 'assets/sprites/bullet.png');
+		this.load.image('bulletRock', 'assets/sprites/bulletRock.png');
+		this.load.image('bulletPlayer', 'assets/sprites/bulletPlayer.png');
+		this.load.image('playerArm', 'assets/sprites/playerArm.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
 		// Invisible Attack Sprite invisibleAttack
@@ -175,7 +182,6 @@ export default class extends Phaser.State {
 
 		// Load Tilesets
 		this.load.image('tileset', 'assets/tilesets/tileset.png');
-		this.load.image('gameTileset2', 'assets/tilesets/testtileset.png');
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
 		this.load.image('Godrays', 'assets/tilesets/godrays.png');
 
