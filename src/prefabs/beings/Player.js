@@ -126,12 +126,18 @@ export default class extends Phaser.Sprite {
 		this.playerArm.anchor.set(0.5, 0);
 		this.playerArm.visible = false;
 
-		this.weaponGun = this.game.add.weapon(3, 'bulletPlayer');
+		this.weaponGun = this.game.add.weapon(5, 'bulletPlayer');
 		this.weaponGun.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
 		this.weaponGun.bulletLifespan = 500;
 		this.weaponGun.bulletSpeed = 400;
-		this.weaponGun.fireRate = 50;
+		this.weaponGun.fireRate = 500;
+		this.weaponGun.bulletAngleVariance = 10;
 		this.weaponGun.trackSprite(this.playerArm, 0, 10, true);
+
+		this.weaponGun.onFire.add(() => {
+			console.log('BOOOM');
+			// this.game.camera.shake(0.003, 100);
+		}, this);
 		
 
 		

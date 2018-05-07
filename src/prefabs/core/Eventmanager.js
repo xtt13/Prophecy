@@ -24,7 +24,28 @@ export default class {
 			this.game.time.events.add(500, () => {
 				this.level.inputClass.collision = false;
 			});
-        });
+		});
+		
+		for (var i = 0; i < this.level.player.weaponGun.bullets.children.length; i++) {
+			let bullet = this.level.player.weaponGun.bullets.children[i];
+			this.level.map.plus.events.collisions.add(bullet, (shape, oldVelocity, newVelocity, contactNormal) => {
+				
+				this.game.camera.shake(0.003, 100);
+
+				let explosion = this.game.add.emitter(bullet.x, bullet.y, 100);
+				explosion.fixedToCamera = true;
+				explosion.setAlpha(1, 0, 2000, null, false);
+				explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));	
+				explosion.gravity = 150;
+				explosion.setYSpeed(-100);
+				explosion.makeParticles('bulletParticle', 100);
+				explosion.start(true, 0, null, 10);
+
+				bullet.kill();
+			});
+		}
+
+		
 
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 			if (region.properties.message) {

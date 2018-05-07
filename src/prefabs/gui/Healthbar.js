@@ -218,6 +218,24 @@ export default class {
 		this.game.add.tween(this.hearts.getChildAt(index).scale).to( { x: 1, y: 1 }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
     }
 
+    fadeOut(){
+        this.game.add.tween(this.healthBar).to({ alpha: 0 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.healthBarIcon).to({ alpha: 0 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.heartsShaddow).to({ alpha: 0 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.hearts).to({ alpha: 0 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.dashBarFrame).to({ alpha: 0 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.dashBar).to({ alpha: 0 }, 1000, Phaser.Easing.Cubic.Out, true);
+    }
+
+    fadeIn(){
+        this.game.add.tween(this.healthBar).to({ alpha: 1 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.healthBarIcon).to({ alpha: 1 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.heartsShaddow).to({ alpha: 1 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.hearts).to({ alpha: 1 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.dashBarFrame).to({ alpha: 1 }, 1000, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.dashBar).to({ alpha: 1 }, 1000, Phaser.Easing.Cubic.Out, true);
+    }
+
     update(){
         if(this.level.inputClass.dash){
             if(this.dashRatio.value <= 0.1){

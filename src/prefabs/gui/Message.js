@@ -80,6 +80,8 @@ export default class {
 			this.player.body.immovable = true;
 		}
 
+		this.level.GUICLASS.healthBar.fadeOut();
+
 		this.nextLine();
 	}
 
@@ -117,6 +119,7 @@ export default class {
 		this.text.destroy();
 		this.background.destroy();
 		this.removeBars();
+		this.level.GUICLASS.healthBar.fadeIn();
 		if (!this.movable) {
 			this.player.movable = true;
 			
@@ -169,7 +172,7 @@ export default class {
 			this.upperBar.destroy();
 			this.downBar.destroy();
 			this.upperBar = false;
-			
+
 			this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 			
 			// switch (this.level.tilemapProperties.cameraMode) {

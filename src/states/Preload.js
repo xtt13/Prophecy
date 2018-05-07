@@ -124,7 +124,9 @@ export default class extends Phaser.State {
 		this.load.image('bulletRock', 'assets/sprites/bulletRock.png');
 		this.load.image('bulletPlayer', 'assets/sprites/bulletPlayer.png');
 		this.load.image('playerArm', 'assets/sprites/playerArm.png');
+		this.load.image('bulletParticle', 'assets/sprites/bulletParticle.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
+
 
 		// Invisible Attack Sprite invisibleAttack
 		this.load.image('invisibleAttack', 'assets/sprites/invisibleAttack.png');

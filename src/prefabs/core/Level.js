@@ -387,6 +387,21 @@ export default class {
 	enemyCollision() {
 	}
 
+	weaponGunWallCollision(bullet){
+		this.game.camera.shake(0.003, 100);
+
+		let explosion = this.game.add.emitter(bullet.x, bullet.y, 100);
+		explosion.fixedToCamera = true;
+		explosion.setAlpha(1, 0, 2000, null, false);
+		explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));	
+		explosion.gravity = 150;
+		explosion.setYSpeed(-100);
+		explosion.makeParticles('bulletParticle', 100);
+		explosion.start(true, 0, null, 10);
+
+		bullet.kill();
+	}
+
 	// Update Method
 	update() {
 		// Update InputClass
@@ -401,6 +416,7 @@ export default class {
 		this.game.physics.arcade.collide(this.enemies, this.enemies, this.enemyCollision);
 		this.game.physics.arcade.collide(this.player, this.enemies);
 		this.game.physics.arcade.collide(this.player.weapon.bullets, this.enemies, this.player.fight, null, this);
+		this.game.physics.arcade.collide(this.player.weaponGun.bullets, this.collisionLayer, this.weaponGunWallCollision, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
 		this.game.physics.arcade.collide(this.player, this.characters, this.player.talk, null, this);
@@ -439,6 +455,11 @@ export default class {
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
+
+		for (var i = 0, len = this.player.weaponGun.bullets.children.length; i < len; i++) {
+			this.map.plus.physics.collideWith(this.player.weaponGun.bullets.children[i]);
+		}
+
 		this.map.plus.events.regions.triggerWith(this.player);
 		// console.log(this.map.plus);
 

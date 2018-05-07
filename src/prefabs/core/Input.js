@@ -680,9 +680,11 @@ export default class {
 
 		if (this.game.input.activePointer.isDown){
 			let value = this.game.physics.arcade.angleToPointer(this.player);
-			console.log(value);
+			// console.log(value);
 
 			this.player.playerArm.visible = true;
+
+			
 
 
 			if( (value > -2.5 && value < -0.5) ){
@@ -707,7 +709,12 @@ export default class {
 				this.player.playerArm.y = this.player.y + 4;
 			}
 
-        	this.player.weaponGun.fireAtPointer();
+			this.player.weaponGun.fireAtPointer();
+
+			this.player.body.velocity.y = 0;
+			this.player.body.velocity.x = 0;
+
+			return;
 			}
 			
 		// If any Movementkey isDown
