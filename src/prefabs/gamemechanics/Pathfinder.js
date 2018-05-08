@@ -41,7 +41,7 @@ export default class {
 			// );
 
 			this.followPath();
-			
+
 		});
 
 		this.pathfinder = new PhaserEasystar(this.game);
@@ -81,14 +81,13 @@ export default class {
 		});
 
 		this.pathfinder.preparePathCalculation(
-			[this.layer.getTileX(this.player.x), this.layer.getTileY(this.player.y)],
-			[tilex, tiley]
+			[this.layer.getTileX(this.player.x), this.layer.getTileY(this.player.y)], [tilex, tiley]
 		);
 		this.pathfinder.calculatePath();
 		//TEST
 		// console.log(this.pathToFollow);
-		
-		
+
+
 	}
 
 	followPath() {
@@ -124,9 +123,12 @@ export default class {
 		this.followingPath = true;
 		this.movingTween.target = this.player;
 		this.movingTween.timeline = [];
-		this.movingTween.to({ x, y }, this.movingSpeed);
+		this.movingTween.to({
+			x,
+			y
+		}, this.movingSpeed);
 		this.movingTween.start();
 
-		
+
 	}
 }

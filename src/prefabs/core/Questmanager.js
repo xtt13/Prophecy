@@ -63,18 +63,18 @@ export default class {
 		}
 	}
 
-	checkQuestDialogue(character){
+	checkQuestDialogue(character) {
 
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
 
-		for(let property in this.quests){
-			if(this.quests[property].length == 0) continue;
-			if(this.quests[property].dialogues == undefined) {
+		for (let property in this.quests) {
+			if (this.quests[property].length == 0) continue;
+			if (this.quests[property].dialogues == undefined) {
 				return false;
 			}
 
-			if(this.quests[property].dialogues[character] !== undefined && Number.isInteger(this.quests[property].dialogues[character])){
+			if (this.quests[property].dialogues[character] !== undefined && Number.isInteger(this.quests[property].dialogues[character])) {
 				return this.quests[property].dialogues[character];
 			} else {
 				// Progress: Return Default Character DialogueID

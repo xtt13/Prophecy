@@ -20,22 +20,22 @@ export default class {
 
 		this.level.map.plus.events.collisions.add(this.level.player, (shape, oldVelocity, newVelocity, contactNormal) => {
 			this.level.inputClass.collision = true;
-			
+
 			this.game.time.events.add(500, () => {
 				this.level.inputClass.collision = false;
 			});
 		});
-		
+
 		for (var i = 0; i < this.level.player.weaponGun.bullets.children.length; i++) {
 			let bullet = this.level.player.weaponGun.bullets.children[i];
 			this.level.map.plus.events.collisions.add(bullet, (shape, oldVelocity, newVelocity, contactNormal) => {
-				
+
 				this.game.camera.shake(0.003, 100);
 
 				let explosion = this.game.add.emitter(bullet.x, bullet.y, 100);
 				explosion.fixedToCamera = true;
 				explosion.setAlpha(1, 0, 2000, null, false);
-				explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));	
+				explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));
 				explosion.gravity = 150;
 				explosion.setYSpeed(-100);
 				explosion.makeParticles('bulletParticle', 100);
@@ -45,7 +45,7 @@ export default class {
 			});
 		}
 
-		
+
 
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 			if (region.properties.message) {
@@ -80,7 +80,7 @@ export default class {
 				this.stairsEnter(region);
 			} else if (region.properties.soundArea) {
 				this.soundAreaEnter(region);
-			} else if(region.properties.quickSave){
+			} else if (region.properties.quickSave) {
 				this.quickSave(region);
 			}
 		});
@@ -103,7 +103,7 @@ export default class {
 		const all_messages = Object.values(dialogues.dialogues);
 		const ifQuestID = region.properties.ifQuestID;
 
-		if(!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
+		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 
 		for (let i = 0; i < all_messages.length; i++) {
 			if (i + 1 == message_id) {
@@ -129,8 +129,7 @@ export default class {
 		const requiredItemID = region.properties.requiredItemID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 
-		if (
-			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 			requiredMasteredQuestID !== undefined
 		)
 			return;
@@ -166,8 +165,7 @@ export default class {
 		// const requiredItemID = region.properties.requiredItemID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 
-		if (
-			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 			requiredMasteredQuestID !== undefined
 		)
 			return;
@@ -209,13 +207,15 @@ export default class {
 			this.level.movePlayerPathfinder = new Pathfinder(
 				this.game,
 				this.level.map,
-				this.level.player,
-				{ x: targetX, y: targetY },
+				this.level.player, {
+					x: targetX,
+					y: targetY
+				},
 				this.level.groundLayer,
 				false,
 				400
 			);
-			
+
 		}
 		// this.level.player.animations.stop();
 		this.level.player.animations.play('run_up', 19, true);
@@ -227,15 +227,14 @@ export default class {
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 		const ifQuestID = region.properties.ifQuestID;
 
-		if(!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
+		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 
-		if (
-			!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 			requiredMasteredQuestID !== undefined
 		)
 			return;
 
-			
+
 
 		if (region.properties.removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
@@ -243,7 +242,7 @@ export default class {
 
 		for (var i = 0; i < this.level.characters.length; i++) {
 			if (this.level.characters[i].id == characterID) {
-				this.pathfinderCharacter = this.level.characters[i];				
+				this.pathfinderCharacter = this.level.characters[i];
 
 			} else {
 				console.warn('Character not found!');
@@ -254,8 +253,10 @@ export default class {
 			this.level.pathfinder = new Pathfinder(
 				this.game,
 				this.level.map,
-				this.pathfinderCharacter,
-				{ x: this.level.player.x, y: this.level.player.y - 50 },
+				this.pathfinderCharacter, {
+					x: this.level.player.x,
+					y: this.level.player.y - 50
+				},
 				this.level.groundLayer,
 				true,
 				400
@@ -293,8 +294,10 @@ export default class {
 									this.level.pathfinder = new Pathfinder(
 										this.game,
 										this.level.map,
-										this.pathfinderCharacter,
-										{ x: this.endDestinationX, y: this.endDestinationY },
+										this.pathfinderCharacter, {
+											x: this.endDestinationX,
+											y: this.endDestinationY
+										},
 										this.level.groundLayer,
 										false,
 										400
@@ -316,7 +319,7 @@ export default class {
 		}
 	}
 
-	quickSave(region){
+	quickSave(region) {
 		let targetID = region.properties.targetID;
 		let direction = region.properties.direction;
 
@@ -349,24 +352,36 @@ export default class {
 			this.level.inputClass.pyfootsteps.stop('gravel1');
 		}
 
-		this.game.state.restart(true, false, { map: targetMap, targetID: targetID, direction: direction });
+		this.game.state.restart(true, false, {
+			map: targetMap,
+			targetID: targetID,
+			direction: direction
+		});
 	}
 
 	fightArea() {
 		this.game.add
 			.tween(this.level.groundLayer)
-			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+			.to({
+				tint: 0x000000
+			}, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
 		this.game.add
 			.tween(this.level.backgroundLayer)
-			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+			.to({
+				tint: 0x000000
+			}, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
 		this.game.add
 			.tween(this.level.player)
-			.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+			.to({
+				tint: 0x000000
+			}, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
 
 		for (var i = 0; i < this.level.enemies.length; i++) {
 			this.game.add
 				.tween(this.level.enemies[i])
-				.to({ tint: 0x000000 }, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
+				.to({
+					tint: 0x000000
+				}, 10000, Phaser.Easing.Exponential.In, true, 0, true, true);
 		}
 	}
 
@@ -386,14 +401,14 @@ export default class {
 		if (this.level.gameData.targetID == 2) {
 			this.level.door.animations.play('idle', 1, true);
 		} else {
-			if(this.templeDoorOpen) return;
+			if (this.templeDoorOpen) return;
 			this.level.door.animations.play('open', 8, false);
 			this.game.camera.shake(0.0015, 2500, true);
 			this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 			this.doorOpenSound.play();
 			this.templeDoorOpen = true;
 		}
-		
+
 	}
 
 	spawnEnemies(region) {
@@ -448,8 +463,10 @@ export default class {
 
 		this.game.add
 			.tween(this.game.camera)
-			.to(
-				{ x: cameraX - this.game.camera.width / 2, y: cameraY - this.game.camera.height / 2 },
+			.to({
+					x: cameraX - this.game.camera.width / 2,
+					y: cameraY - this.game.camera.height / 2
+				},
 				750,
 				Phaser.Easing.Quadratic.InOut,
 				true
@@ -461,8 +478,10 @@ export default class {
 		console.log(this.game.camera)
 		this.followTween = this.game.add
 			.tween(this.game.camera)
-			.to(
-				{ x: this.level.player.x - (this.game.camera.width / 2) - 20, y: this.level.player.y - (this.game.camera.height / 2) },
+			.to({
+					x: this.level.player.x - (this.game.camera.width / 2) - 20,
+					y: this.level.player.y - (this.game.camera.height / 2)
+				},
 				1000,
 				Phaser.Easing.Quadratic.InOut,
 				true
@@ -470,21 +489,21 @@ export default class {
 
 		this.followTween.onComplete.add(() => {
 
-				switch (this.level.tilemapProperties.cameraMode) {
-					case 'follow':
-						this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
-						break;
-		
-					case 'topdown':
-						this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
-						break;
-				
-					default:
-						console.warn('Default Camera Mode!');
-						this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
-						break;
-				}
-						
+			switch (this.level.tilemapProperties.cameraMode) {
+				case 'follow':
+					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					break;
+
+				case 'topdown':
+					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+					break;
+
+				default:
+					console.warn('Default Camera Mode!');
+					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					break;
+			}
+
 		}, this);
 	}
 
@@ -513,16 +532,16 @@ export default class {
 
 		this.level.player.animations._anims.run_up.speed += 13;
 		this.level.player.animations._anims.run_down.speed += 13;
-		
 
-		
+
+
 	}
 
 	stairsLeave() {
 		if (this.level.fallDown) return;
 		this.level.inputClass.movementSound = this.level.map.plus.properties.ground;
 		this.level.inputClass.movementloopSpeed = 260;
-		
+
 		this.level.inputClass.playerSpeed = 80;
 
 		this.level.player.animations._anims.run_down.speed = 19;

@@ -32,7 +32,6 @@ class Game extends Phaser.Game {
 		this.state.add('MainMenu', MainMenuState, false);
 		this.state.add('Game', GameState, false);
 
-
 		if (!window.cordova) {
 			this.state.start('Boot');
 		}

@@ -1,4 +1,3 @@
-
 import Phaser from 'phaser';
 import Musicplayer from '../prefabs/audio/Musicplayer';
 import Soundmanager from '../prefabs/audio/Soundmanager';
@@ -104,12 +103,17 @@ export default class extends Phaser.State {
 		// // this.text.padding.set(40, 40);
 		// console.log(this.text);
 
+		let canvas = document.querySelector('canvas');
+		canvas.oncontextmenu = function (e) {
+			e.preventDefault();
+		};
+
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
 
 		//  Our first arc will be a line only
 		this.graphics.lineStyle(8, 0x49ffc5);
-	
+
 		// graphics.arc(0, 0, 135, game.math.degToRad(0), game.math.degToRad(90), false);
 		// this.graphics.arc(0, 0, 130, -1.6, 1, false);
 		this.graphics.scale.setTo(0.5);
@@ -252,7 +256,7 @@ export default class extends Phaser.State {
 				// var newValue = parseInt((progress/10)/2);
 
 				// this.graphics.arc(0, 0, 3, -1.6, newValue, false);
-				
+
 			}
 
 			console.log('%c Loadingprogress: ' + progress + ' % ', 'background: #222; color: #49ffc5');

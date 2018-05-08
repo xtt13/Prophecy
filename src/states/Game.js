@@ -35,7 +35,7 @@ export default class extends Phaser.State {
 
 	paused() {
 		console.log('PAUSED');
-		
+
 	}
 
 	resumed() {}

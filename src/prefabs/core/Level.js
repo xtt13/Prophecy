@@ -94,7 +94,7 @@ export default class {
 			case 'right':
 				this.player.animations.play('static_idle_right');
 				break;
-		
+
 			default:
 				break;
 		}
@@ -102,7 +102,7 @@ export default class {
 		// Create Lucy
 		this.lucy = this.tilemapProperties.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
 
-		
+
 
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
@@ -141,10 +141,13 @@ export default class {
 		let elementsArr = this.findObjectsByType('startPointType', this.map, 'EntryPoints');
 
 		// Find and map startpoints
-		elementsArr.forEach(function(element) {
+		elementsArr.forEach(function (element) {
 			// Find Default Startpoint
 			if (element.properties.startPointType == 'default') {
-				this.defaultStartPoint = { x: element.x, y: element.y };
+				this.defaultStartPoint = {
+					x: element.x,
+					y: element.y
+				};
 			}
 
 			// Find Custom Startpoints
@@ -177,30 +180,30 @@ export default class {
 		let elementsArr = this.findObjectsByType('id', this.map, 'People');
 
 		// Find specific people
-		elementsArr.forEach(function(element) {
+		elementsArr.forEach(function (element) {
 			// Da bei QuestID
-			if(element.properties.ifQuestID !== undefined){
+			if (element.properties.ifQuestID !== undefined) {
 				let check = this.questManager.checkIfQuestExists(element.properties.ifQuestID);
-				if(!check) return;
+				if (!check) return;
 			}
 
 			// Weg bei QuestID
-			if(element.properties.ifNotQuestID !== undefined){
+			if (element.properties.ifNotQuestID !== undefined) {
 				let valueElem = element.properties.ifNotQuestID;
 				let entries = valueElem.split(',');
 
 				for (var i = 0; i < entries.length; i++) {
 					let check = this.questManager.checkIfQuestExists(parseInt(entries[i]));
 					console.log(check);
-					if(check) return;
+					if (check) return;
 				}
 
 
 			}
 
 			this.characters.push(new Character(this.game, element, this.player));
-			
-			
+
+
 		}, this);
 	}
 
@@ -209,7 +212,7 @@ export default class {
 		let elementsArr = this.findObjectsByType('type', this.map, 'Items');
 
 		// Find specific items
-		elementsArr.forEach(function(element) {
+		elementsArr.forEach(function (element) {
 			if (this.itemIDs.includes(element.properties.id)) return;
 			if (element.properties.type == 'key') {
 				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties));
@@ -222,10 +225,10 @@ export default class {
 		let elementsArr = this.findObjectsByType('type', this.map, 'CustomEmitter');
 
 		//Find specific emitter
-		elementsArr.forEach(function(element) {
+		elementsArr.forEach(function (element) {
 			console.log(element);
 
-			if (element.properties.type == 'tree'){
+			if (element.properties.type == 'tree') {
 
 				let x = element.x + element.width / 2;
 				let y = element.y + element.height / 2;
@@ -244,7 +247,7 @@ export default class {
 				customEmitter.makeParticles('treeleaves', [0, 1]);
 				customEmitter.start(false, 3000, 400, 0);
 
-			} else if(element.properties.type == 'water'){
+			} else if (element.properties.type == 'water') {
 
 				let x = element.x + this.map.tileWidth;
 				let y = element.y + this.map.tileHeight;
@@ -269,7 +272,7 @@ export default class {
 				//(explode, lifespan, frequency, quantity, forceQuantity)
 				this.waterEmitter.start(false, 3000, 20);
 
-			} else if(element.properties.type == 'fire'){
+			} else if (element.properties.type == 'fire') {
 
 				let x = element.x;
 				let y = element.y;
@@ -291,10 +294,10 @@ export default class {
 				this.fireEmitter.makeParticles('fireSpritesheet', [0, 1, 2, 3], 100);
 				this.fireEmitter.start(false, 1000, 0.1, 0);
 
-			} else if(element.properties.type == 'fountainSparkling'){
+			} else if (element.properties.type == 'fountainSparkling') {
 				console.log(element);
-				let x = element.x + (element.width/2);
-				let y = element.y + (element.height/2);
+				let x = element.x + (element.width / 2);
+				let y = element.y + (element.height / 2);
 
 				this.fountainSparkling = this.game.add.emitter(x, y, 100);
 				this.fountainSparkling.width = element.width;
@@ -302,7 +305,7 @@ export default class {
 				this.fountainSparkling.rotation = 0;
 				// this.fountainSparkling.maxParticleScale = 1;
 				this.fountainSparkling.gravity = 0;
-				
+
 				// this.fountainSparkling.setAlpha(0.5, 1, 300, null, true);
 				// this.fountainSparkling.minParticleSpeed.set(100);
 				this.fountainSparkling.setXSpeed(0, 0);
@@ -310,10 +313,10 @@ export default class {
 				this.fountainSparkling.maxParticleSpeed.set(1);
 				this.fountainSparkling.makeParticles('sparklingSpritesheet', [0, 1, 2, 3], 100);
 				this.fountainSparkling.start(false, 1000, 0.1, 0);
-				
-			} else if(element.properties.type == 'flies'){
-				let x = element.x + (element.width/2);
-				let y = element.y + (element.height/2);
+
+			} else if (element.properties.type == 'flies') {
+				let x = element.x + (element.width / 2);
+				let y = element.y + (element.height / 2);
 
 				this.templeFliesEmitter = this.game.add.emitter(x, y, 30);
 				// emitter.fixedToCamera = true;
@@ -344,7 +347,7 @@ export default class {
 		let elementsArr = this.findObjectsByType('type', this.map, 'Enemies');
 
 		// Find specific enemy
-		elementsArr.forEach(function(element) {
+		elementsArr.forEach(function (element) {
 			const killQuestID = element.properties.killQuestID;
 			if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
 
@@ -370,7 +373,7 @@ export default class {
 	findObjectsByType(targetType, tilemap, layer) {
 		let result = [];
 
-		tilemap.objects[layer].forEach(function(element) {
+		tilemap.objects[layer].forEach(function (element) {
 			let container = Object.keys(element.properties);
 			if (container.indexOf(targetType) || container.toString() == targetType) {
 				element.y -= tilemap.tileHeight / 2;
@@ -384,16 +387,15 @@ export default class {
 		return result;
 	}
 
-	enemyCollision() {
-	}
+	enemyCollision() {}
 
-	weaponGunWallCollision(bullet){
+	weaponGunWallCollision(bullet) {
 		this.game.camera.shake(0.003, 100);
 
 		let explosion = this.game.add.emitter(bullet.x, bullet.y, 100);
 		explosion.fixedToCamera = true;
 		explosion.setAlpha(1, 0, 2000, null, false);
-		explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));	
+		explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));
 		explosion.gravity = 150;
 		explosion.setYSpeed(-100);
 		explosion.makeParticles('bulletParticle', 100);
@@ -439,7 +441,7 @@ export default class {
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
 			this.game.world.bringToTop(this.foregroundLayer2);
-			
+
 			// if(this.foregroundLayer2 !== undefined){
 			// 	this.game.world.bringToTop(this.foregroundLayer2);
 			// }			
@@ -451,7 +453,7 @@ export default class {
 		if (this.currentMap == 'map2') {
 			this.game.world.bringToTop(this.fountainSparkling);
 		}
-		
+
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
@@ -492,7 +494,7 @@ export default class {
 		this.GUICLASS.update();
 	}
 
-	slowDownTile(player, tile){
+	slowDownTile(player, tile) {
 		// console.log(player);
 		// console.log(tile);
 
@@ -509,42 +511,27 @@ export default class {
 	}
 
 	fallDownCheck(sprite, tile) {
-	
-		if (this.inputClass.dash){
+
+		if (this.inputClass.dash) {
 			this.lastDirection = null;
 			return;
 		}
 
-		if(this.lastDirection == null){
+		if (this.lastDirection == null) {
 			this.lastDirection = this.inputClass.direction;
 		}
 
 		// console.log(this.lastDirection);
 		// console.log(sprite.body.x, tile.worldX + tile.width, this.inputClass.direction);
 
-		if(this.lastDirection == 'left'){
+		if (this.lastDirection == 'left') {
 
 			if (((sprite.body.x + sprite.body.width) < (tile.worldX + tile.width))) {
 				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
 
-				if(((parseInt(sprite.body.x)) == (tile.worldX + tile.width - 2)) && this.inputClass.direction == 'right'){
-						setTimeout(() => {
-							this.lastDirection = null;
-						}, 500);
-				}
-
-			}
-
-		} else if(this.lastDirection == 'right'){
-
-			if (sprite.body.x > tile.worldX) {
-				this.fallDownProcess(sprite, tile);
-				return;
-			} else {
-				
-				if(((parseInt(sprite.body.x + sprite.body.width)) == (tile.worldX)) && this.inputClass.direction == 'left'){
+				if (((parseInt(sprite.body.x)) == (tile.worldX + tile.width - 2)) && this.inputClass.direction == 'right') {
 					setTimeout(() => {
 						this.lastDirection = null;
 					}, 500);
@@ -552,7 +539,22 @@ export default class {
 
 			}
 
-		} else if(this.lastDirection == 'up'){
+		} else if (this.lastDirection == 'right') {
+
+			if (sprite.body.x > tile.worldX) {
+				this.fallDownProcess(sprite, tile);
+				return;
+			} else {
+
+				if (((parseInt(sprite.body.x + sprite.body.width)) == (tile.worldX)) && this.inputClass.direction == 'left') {
+					setTimeout(() => {
+						this.lastDirection = null;
+					}, 500);
+				}
+
+			}
+
+		} else if (this.lastDirection == 'up') {
 
 
 			if (((sprite.body.y + sprite.body.height) < (tile.worldY + tile.height - 5))) {
@@ -560,7 +562,7 @@ export default class {
 				return;
 			} else {
 
-				if(((parseInt(sprite.body.y + sprite.body.height)) == (tile.worldY)) && this.inputClass.direction == 'down'){
+				if (((parseInt(sprite.body.y + sprite.body.height)) == (tile.worldY)) && this.inputClass.direction == 'down') {
 					setTimeout(() => {
 						console.log('ho');
 						this.lastDirection = null;
@@ -568,21 +570,21 @@ export default class {
 				}
 
 			}
-			
-		} else if(this.lastDirection == 'down'){  
+
+		} else if (this.lastDirection == 'down') {
 
 
 			if (sprite.body.y > tile.worldY) {
 				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
-				if(this.inputClass.direction !== this.lastDirection){
+				if (this.inputClass.direction !== this.lastDirection) {
 					setTimeout(() => {
 						this.lastDirection = null;
 					}, 1000);
 				}
 			}
-			
+
 		}
 
 
@@ -593,19 +595,21 @@ export default class {
 
 
 
-			if(this.fallDownTween == undefined || !this.fallDownTween.isRunning){
+			if (this.fallDownTween == undefined || !this.fallDownTween.isRunning) {
 				console.log('eins');
 				sprite.body.enable = false;
 				var value = sprite.y + 400;
-				this.fallDownTween = this.game.add.tween(sprite).to( { y: value }, 8000, Phaser.Easing.Elastic.Out, true);
+				this.fallDownTween = this.game.add.tween(sprite).to({
+					y: value
+				}, 8000, Phaser.Easing.Elastic.Out, true);
 			}
 
-			if(sprite.key == 'enemy'){
+			if (sprite.key == 'enemy') {
 				this.game.world.setChildIndex(sprite, 1);
 				return;
 			}
 
-			if(this.inputClass.direction == 'down'){
+			if (this.inputClass.direction == 'down') {
 				setTimeout(() => {
 					this.fallDown = true;
 				}, 500);
@@ -624,7 +628,7 @@ export default class {
 			sprite.movable = false;
 			this.game.camera.fade(0x000000, 1000, true);
 
-			
+
 
 			this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
 				if (this.inputClass.stick) {
@@ -650,15 +654,15 @@ export default class {
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 		// this.map = this.game.add.tilemap('map4');
 
-		if(this.map.plus.properties.dayCycle){
+		if (this.map.plus.properties.dayCycle) {
 			// Background Cloud Layer
 			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 			this.backgroundLayer = this.map.createLayer('Clouds');
 			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
-			
+
 			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-			
+
 		}
 
 		//  Connect with Tileset
@@ -670,27 +674,27 @@ export default class {
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 
-		if(this.map.layers[3].name == 'ForegroundLayer2'){
+		if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
 		}
-		
+
 
 		//  Resize the world
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
 
-		if(this.map.layers[3].name == 'ForegroundLayer2'){
+		if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2.resizeWorld();
 		}
 
-			this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
-			this.godrays = this.map.createLayer('Godrays');
-			this.godrays.smoothed = false;
-			// this.godrays.tint = 0x8cfff7;
-			// this.game.add.tween(this.godrays).to( { alpha: 0.3 }, 5000, 'Linear', true, 0, 0, true).loop();
-		
-		
+		this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
+		this.godrays = this.map.createLayer('Godrays');
+		this.godrays.smoothed = false;
+		// this.godrays.tint = 0x8cfff7;
+		// this.game.add.tween(this.godrays).to( { alpha: 0.3 }, 5000, 'Linear', true, 0, 0, true).loop();
+
+
 
 		// Test
 		// this.groundLayer.blendMode = Phaser.blendModes.MULTIPLY;
