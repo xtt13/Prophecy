@@ -103,8 +103,7 @@ export default class extends Phaser.State {
 		// // this.text.padding.set(40, 40);
 		// console.log(this.text);
 
-		let canvas = document.querySelector('canvas');
-		canvas.oncontextmenu = function (e) {
+		this.game.canvas.oncontextmenu = function (e) {
 			e.preventDefault();
 		};
 
@@ -125,10 +124,12 @@ export default class extends Phaser.State {
 		this.load.image('blood', 'assets/sprites/blood.png');
 		this.load.image('bloodHeart', 'assets/sprites/bloodHeart.png');
 		this.load.image('rock', 'assets/sprites/rock.png');
+		this.load.image('sprout', 'assets/sprites/sprout.png');
 		this.load.image('bulletRock', 'assets/sprites/bulletRock.png');
 		this.load.image('bulletPlayer', 'assets/sprites/bulletPlayer.png');
 		this.load.image('playerArm', 'assets/sprites/playerArm.png');
 		this.load.image('bulletParticle', 'assets/sprites/bulletParticle.png');
+		this.load.image('bulletBeam', 'assets/sprites/bulletBeam.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
 
@@ -149,6 +150,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map6', 'assets/maps/map6.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map7', 'assets/maps/map7.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map8', 'assets/maps/map8.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('map9', 'assets/maps/map9.json', null, Phaser.Tilemap.TILED_JSON);
 
 
 		// Load Music

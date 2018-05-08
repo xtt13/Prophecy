@@ -22,6 +22,7 @@ import LockGame from '../minigame/LockGame';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
+import Sprout from '../beings/Sprout';
 
 export default class {
 	constructor(game, instruction) {
@@ -360,9 +361,9 @@ export default class {
 
 			}
 
-			if (element.properties.type == 'rock') {
+			if (element.properties.type == 'sprout') {
 				this.enemies.push(
-					new Rock(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+					new Sprout(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties)
 				);
 			}
 
@@ -400,6 +401,10 @@ export default class {
 		explosion.setYSpeed(-100);
 		explosion.makeParticles('bulletParticle', 100);
 		explosion.start(true, 0, null, 10);
+
+		this.game.time.events.add(2000, () => {
+			explosion.destroy();
+		}, this);
 
 		bullet.kill();
 	}

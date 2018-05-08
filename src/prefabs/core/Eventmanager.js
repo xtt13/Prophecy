@@ -41,6 +41,10 @@ export default class {
 				explosion.makeParticles('bulletParticle', 100);
 				explosion.start(true, 0, null, 10);
 
+				this.game.time.events.add(2000, () => {
+					explosion.destroy();
+				}, this);
+
 				bullet.kill();
 			});
 		}
