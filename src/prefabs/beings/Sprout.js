@@ -37,8 +37,8 @@ export default class extends Phaser.Sprite {
         
         this.weapon = game.add.weapon(400, 'bulletBeam');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
-		this.weapon.bulletLifespan = 4500;
-		this.weapon.bulletSpeed = 400;
+		this.weapon.bulletLifespan = 3000;
+		this.weapon.bulletSpeed = 700;
 		this.weapon.fireRate = 1;
 		// this.weapon.bulletAngleVariance = 10;
 		this.weapon.bulletRotateToVelocity = true;
@@ -48,6 +48,8 @@ export default class extends Phaser.Sprite {
 
 		for (var i = 0; i < this.weapon.bullets.children.length; i++) {
 			this.weapon.bullets.children[i].body.bounce.set(0.5);
+			this.weapon.bullets.children[i].scale.setTo(2);
+			this.weapon.bullets.children[i].smoothed = false;
 		}
 		
 

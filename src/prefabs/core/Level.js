@@ -45,6 +45,8 @@ export default class {
 		this.fallDownLayer = 0;
 		this.lastDirection = null;
 
+		this.game.forceSingleUpdate = true; 
+
 		// Arrays
 		this.characters = [];
 		this.items = [];

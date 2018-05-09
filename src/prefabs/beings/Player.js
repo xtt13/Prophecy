@@ -134,6 +134,12 @@ export default class extends Phaser.Sprite {
 		// this.weaponGun.bulletAngleVariance = 10;
 		this.weaponGun.trackSprite(this.playerArm, 0, 10, true);
 
+		for (var i = 0; i < this.weaponGun.bullets.children.length; i++) {
+			// this.weaponGun.bullets.children[i].scale.setTo(2);
+			this.weaponGun.bullets.children[i].smoothed = false;
+			
+		}
+
 		this.weaponGun.onFire.add(() => {
 			console.log('BOOOM');
 			// this.game.camera.shake(0.003, 100);
