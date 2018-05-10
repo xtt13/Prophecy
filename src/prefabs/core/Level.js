@@ -23,6 +23,7 @@ import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
 import Sprout from '../beings/Sprout';
+import Gamescaler from '../gamemechanics/Gamescaler';
 
 export default class {
 	constructor(game, instruction) {
@@ -46,6 +47,7 @@ export default class {
 		this.lastDirection = null;
 
 		this.game.forceSingleUpdate = true; 
+
 
 		// Arrays
 		this.characters = [];
@@ -670,6 +672,12 @@ export default class {
 
 			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
+		}
+
+		if (this.map.plus.properties.customSize) {
+			this.gameScaler = new Gamescaler(this.game, this, this.map.plus.properties.customWidth, this.map.plus.properties.customHeight);
+		} else {
+			this.gameScaler = new Gamescaler(this.game, this, config.phaserConfig.width, config.phaserConfig.height);
 		}
 
 		//  Connect with Tileset
