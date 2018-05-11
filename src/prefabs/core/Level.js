@@ -341,6 +341,22 @@ export default class {
 				this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
 				this.templeFliesEmitter.makeParticles('fly');
 				this.templeFliesEmitter.start(false, 10000, 5, 0);
+			} else if(element.properties.type == 'startGlimmer'){
+				let x = element.x + (element.width / 2);
+				let y = element.y + (element.height / 2);
+
+				this.addVillageGlimmer = this.game.add.emitter(x, y, 30);
+				this.addVillageGlimmer.width = element.width;
+				this.addVillageGlimmer.height = element.height;
+				this.addVillageGlimmer.minParticleScale = 2;
+				this.addVillageGlimmer.gravity = 0;
+				this.addVillageGlimmer.setYSpeed(-0.5, 0.5);
+				this.addVillageGlimmer.setXSpeed(-0.5, 0.5);
+				this.addVillageGlimmer.maxRotation = 0;
+				this.addVillageGlimmer.minRotation = 0;
+				// this.addVillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
+				this.addVillageGlimmer.makeParticles('particleStart');
+				this.addVillageGlimmer.start(false, 0, 5, 0);
 			}
 
 
@@ -450,6 +466,7 @@ export default class {
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
 			this.game.world.bringToTop(this.foregroundLayer2);
+			this.game.world.bringToTop(this.treeDetails);
 
 			// if(this.foregroundLayer2 !== undefined){
 			// 	this.game.world.bringToTop(this.foregroundLayer2);
@@ -688,6 +705,7 @@ export default class {
 		this.detailGroundLayer = this.map.createLayer('DetailBackgroundLayer');
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
+		this.treeDetails = this.map.createLayer('TreeDetails');
 
 		if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
@@ -695,6 +713,7 @@ export default class {
 
 
 		//  Resize the world
+		this.backgroundLayer.resizeWorld();
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
@@ -756,6 +775,16 @@ export default class {
 			this.door = this.game.add.sprite(253, -12, 'templeDoor');
 			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
 			this.door.animations.add('idle', [17], 1, true);
+		}
+
+		if (this.currentMap == 'map1') {
+			this.island = this.game.add.sprite(878, 227, 'island');
+			this.island.anchor.set(0.5);
+			// this.islandTween = this.game.add
+			// 		.tween(this.island)
+			// 		.to({ y: this.island.y + 2 }, 2000, 'Linear', true, 0, 0, true)
+			// 		.loop();
+			
 		}
 	}
 

@@ -130,6 +130,7 @@ export default class extends Phaser.State {
 		this.load.image('playerArm', 'assets/sprites/playerArm.png');
 		this.load.image('bulletParticle', 'assets/sprites/bulletParticle.png');
 		this.load.image('bulletBeam', 'assets/sprites/bulletBeam.png');
+		this.load.image('island', 'assets/sprites/island.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
 
@@ -216,6 +217,7 @@ export default class extends Phaser.State {
 		this.load.image('waterdrop', 'assets/sprites/waterdrop.png');
 		this.load.image('glimmerParticle', 'assets/sprites/glimmerParticle.png');
 		this.load.image('particle', 'assets/sprites/particle.png');
+		this.load.image('particleStart', 'assets/sprites/particleStart.png');
 		this.load.image('leave', 'assets/sprites/leave.png');
 		this.load.image('cloud', 'assets/sprites/cloud.png');
 

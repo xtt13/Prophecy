@@ -87,6 +87,10 @@ export default class extends Phaser.Sprite {
 					.tween(this)
 					.to({ bottom: this.bottom + 10 }, 1050, 'Linear', true, 0, 0, true)
 					.loop();
+				this.shadowTween = this.game.add
+					.tween(this.shadow)
+					.to({ y: this.shadow.y - 2 }, 1050, 'Linear', true, 0, 0, true)
+					.loop();
 				this.tweenSwitch = false;
 			}
 
