@@ -466,6 +466,7 @@ export default class {
 		if (!this.foreGroundShift) {
 			this.game.world.bringToTop(this.foregroundLayer);
 			this.game.world.bringToTop(this.foregroundLayer2);
+			this.game.world.bringToTop(this.trees);
 			this.game.world.bringToTop(this.treeDetails);
 
 			// if(this.foregroundLayer2 !== undefined){
@@ -537,6 +538,8 @@ export default class {
 	}
 
 	fallDownCheck(sprite, tile) {
+
+		if(sprite.key !== 'player') return;
 
 		if (this.inputClass.dash) {
 			this.lastDirection = null;
@@ -706,6 +709,7 @@ export default class {
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 		this.treeDetails = this.map.createLayer('TreeDetails');
+		this.trees = this.map.createLayer('Trees');
 
 		if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
@@ -780,9 +784,14 @@ export default class {
 		if (this.currentMap == 'map1') {
 			this.island = this.game.add.sprite(878, 227, 'island');
 			this.island.anchor.set(0.5);
+			this.island.scale.setTo(0.8);
 			// this.islandTween = this.game.add
 			// 		.tween(this.island)
-			// 		.to({ y: this.island.y + 2 }, 2000, 'Linear', true, 0, 0, true)
+			// 		.to({ y: this.island.y + 2.5 }, 2000, 'Linear', true, 0, 0, true)
+			// 		.loop();
+			// this.game.add
+			// 		.tween(this.island)
+			// 		.to({ x: this.island.x + 2.5 }, 2000, 'Linear', true, 0, 0, true)
 			// 		.loop();
 			
 		}

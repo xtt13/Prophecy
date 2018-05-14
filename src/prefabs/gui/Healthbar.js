@@ -198,7 +198,7 @@ export default class {
             this.reloadRatioTween.stop(true);
             this.reloadRatio.stop(true);
 
-            this.dashRatio.value -= 0.2;
+            this.dashRatio.value -= 0.1;
             if (this.dashRatio.value <= 0.1) {
                 this.dashRatio.value = 0;
             }
@@ -223,7 +223,7 @@ export default class {
             this.reloadRatioTween.stop();
             this.reloadRatio.stop();
 
-            this.dashRatio.value -= 0.2;
+            this.dashRatio.value -= 0.1;
             if (this.dashRatio.value <= 0.1) {
                 this.dashRatio.value = 0;
             }

@@ -532,10 +532,12 @@ export default class {
 		this.level.inputClass.movementSound = 'grass1';
 		this.level.inputClass.movementloopSpeed = 200;
 
-		this.level.inputClass.playerSpeed -= 30;
+		this.level.inputClass.playerSpeed -= 20;
 
 		this.level.player.animations._anims.run_up.speed += 13;
 		this.level.player.animations._anims.run_down.speed += 13;
+		this.level.player.animations._anims.run_left.speed += 8;
+		this.level.player.animations._anims.run_right.speed += 8;
 
 
 
@@ -550,8 +552,8 @@ export default class {
 
 		this.level.player.animations._anims.run_down.speed = 19;
 		this.level.player.animations._anims.run_up.speed = 19;
-		this.level.player.animations._anims.run_down.speed = 19;
-		this.level.player.animations._anims.run_up.speed = 19;
+		this.level.player.animations._anims.run_left.speed = 19;
+		this.level.player.animations._anims.run_right.speed = 19;
 
 	}
 

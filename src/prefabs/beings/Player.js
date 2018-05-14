@@ -72,7 +72,7 @@ export default class extends Phaser.Sprite {
 
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
-					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
 					break;
 	
 				case 'topdown':
@@ -488,6 +488,7 @@ export default class extends Phaser.Sprite {
 			this.multiplySprite.alpha = 0.01;
 			this.bmd.draw(this.multiplySprite, 50, 50);
 			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
+			// this.game.world.setChildIndex(this.bmd, 1);
 
 			if (this.baseImages[0] !== undefined) {
 				this.game.time.events.add(100, () => {
