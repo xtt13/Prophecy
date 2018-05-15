@@ -9,42 +9,48 @@ export default class {
         
         this[currentMap]();
 
-        this.bringBranchToTop = false;
+        // this.bringBranchToTop = false;
         
 
 	}
 
 	map1() {
-        if (this.level.questManager.checkIfQuestWasDone(1)){
-            this.branch = this.game.add.sprite(1130, 600, 'branch');
+        if (!this.level.questManager.checkIfQuestWasDone(1)){
+            this.branch = this.game.add.sprite(1123, 460, 'branch');
+            this.branch.anchor.set(0.5);
+            this.bringBranchToTop = true;            
+            console.log('WTF');
+        } else {
+            
+            this.branch = this.game.add.sprite(1120, 608, 'branch');
             this.branch.anchor.set(0.5);
             this.bringBranchToTop = false;
-
-            if (!this.level.questManager.checkIfQuestExists(2)){
-                this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
-                    this.level.GUICLASS.createMessage([' TEST TEST TEST'], false, true);
-                });
-            }
-            
-
-        } else {
-            this.branch = this.game.add.sprite(1130, 430, 'branch');
-            this.branch.anchor.set(0.5);
-            this.bringBranchToTop = true;
         }
 
-        if (this.level.questManager.checkIfQuestWasDone(1)){
+        if (this.level.questManager.checkIfQuestExists(2)){
+            this.level.player.movable = false;
+        }
+
+        console.log(this.level.questManager.checkIfQuestWasDone(1), this.level.questManager.checkIfQuestExists(2));
+        if (this.level.questManager.checkIfQuestWasDone(1) && this.level.questManager.checkIfQuestExists(2)){
+            this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
+                this.level.GUICLASS.createMessage([' I am Lucy ...', ' Dash now!'], false, true);
+                this.level.questManager.addQuest(3);
+            });
+        }
+
+        if (this.level.questManager.checkIfQuestExists(2)){
             this.level.lucy = new Lucy(this.game, this.level.player.x - 500, this.level.player.y, this.level)
-        }
-
-        if (this.level.questManager.checkIfQuestWasDone(2)){
+        } else if(this.level.questManager.checkIfQuestWasDone(2)){
             this.level.lucy = new Lucy(this.game, this.level.player.x, this.level.player.y - 20, this.level)
+        } else {
+
         }
 
 
         
 
-        if (this.level.currentMap == 'map1' && this.level.gameData.playerHealth == 100) {
+        if (!this.level.questManager.checkIfQuestWasDone(1)) {
 			this.game.camera.flash(0x000000, 8000, true);
         }
         
@@ -132,6 +138,22 @@ export default class {
     }
 
     map9update(){
+        
+    }
+
+    map10(){
+
+    }
+
+    map10update(){
+        
+    }
+
+    map11(){
+
+    }
+
+    map11update(){
         
     }
     

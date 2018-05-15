@@ -479,7 +479,7 @@ export default class {
 			this.game.world.bringToTop(this.foregroundLayer);
 			this.game.world.bringToTop(this.foregroundLayer2);
 			this.game.world.bringToTop(this.trees);
-			this.game.world.bringToTop(this.treeDetails);
+			
 
 			// if(this.foregroundLayer2 !== undefined){
 			// 	this.game.world.bringToTop(this.foregroundLayer2);
@@ -525,6 +525,8 @@ export default class {
 		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
+
+		this.game.world.bringToTop(this.treeDetails);
 
 		this.levelBuilder.update();
 

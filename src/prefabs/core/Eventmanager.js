@@ -108,8 +108,16 @@ export default class {
 		const message_id = region.properties.id;
 		const all_messages = Object.values(dialogues.dialogues);
 		const ifQuestID = region.properties.ifQuestID;
+		const removeQuestID = region.properties.removeQuestID;
+
+		
 
 		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
+		if (this.level.questManager.checkIfQuestWasDone(ifQuestID)) return;
+
+		if(removeQuestID !== undefined){
+			this.level.questManager.removeQuest(removeQuestID);
+		}
 
 		for (let i = 0; i < all_messages.length; i++) {
 			if (i + 1 == message_id) {
@@ -398,6 +406,8 @@ export default class {
 	addQuest(region) {
 		if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
 
+		if (this.level.questManager.checkIfQuestWasDone(region.properties.questID)) return;
+
 		this.level.questManager.addQuest(region.properties.questID);
 
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
@@ -461,7 +471,13 @@ export default class {
 		const cameraX = region.left + diff1 / 2;
 		const cameraY = region.bottom - diff2 / 2;
 
-		console.log(cameraX, cameraY);
+		console.log(this.level.questManager.checkIfQuestExists(1));
+
+		if(!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)){
+			this.transitionTime = 1;
+		} else {
+			this.transitionTime = 750;
+		}
 
 		this.game.camera.unfollow();
 		// this.game.camera.lerp = 0.1;
@@ -473,7 +489,7 @@ export default class {
 					x: cameraX - this.game.camera.width / 2,
 					y: cameraY - this.game.camera.height / 2
 				},
-				750,
+				this.transitionTime,
 				Phaser.Easing.Quadratic.InOut,
 				true
 			);
@@ -571,6 +587,7 @@ export default class {
 	branch(region){
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
 		this.level.questManager.removeQuest(1);
+		this.level.questManager.addQuest(2);
 		this.level.GUICLASS.healthBar.removeHeart(5, false);
 		this.level.player.health = 1;
 		this.level.gameData.playerHealth = 1;

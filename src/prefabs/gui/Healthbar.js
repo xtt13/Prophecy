@@ -15,7 +15,7 @@ export default class {
 
         if(this.level.player.health <= 1){
             this.flashingLoop = this.game.time.events.loop(850, () => {
-                this.game.camera.flash(0xc10000, 100, true);
+                // this.game.camera.flash(0xc10000, 100, true);
             }, this);
             
             if(this.sfxheartbeat == undefined){

@@ -41,9 +41,11 @@ export default class extends Phaser.Sprite {
 
 		this.shadow = this.game.add.sprite(this.x, this.y + 30, 'lucyShadow');
 		this.shadow.anchor.set(0.5);
+		this.game.physics.enable(this.shadow);
 
 		this.shadow.animations.add('shadow', [6, 5, 4, 3, 2, 1, 0], 3, true);
 		this.shadow.animations.play('shadow');
+		
 
 		// this.offsetY = this.offsetY + 2;
 		// console.log(this.offsetY);
@@ -62,7 +64,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
 
-		this.game.physics.arcade.overlap(this, this.level.groundLayer, this.addShadow, null, this);
+		this.game.physics.arcade.overlap(this.shadow, this.level.groundLayer, this.addShadow, null, this);
 
 		this.distanceBetweenLucyPlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 

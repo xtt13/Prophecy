@@ -42,7 +42,7 @@ export default class {
 				break;
 
 			case 'Leaves':
-				this.addLeaves();
+				this.addWindLeaves();
 				break;
 
 			case 'NiceWeather':
@@ -147,7 +147,7 @@ export default class {
 	}
 
 	addWindLeaves() {
-		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
+		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 50);
 		this.autumnGlimmerEmitter.fixedToCamera = true;
 		console.log(this.game.world.bounds.height);
 		this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
@@ -159,8 +159,8 @@ export default class {
 
 		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
 
-		this.autumnGlimmerEmitter.setYSpeed(300);
-		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
+		this.autumnGlimmerEmitter.setYSpeed(200);
+		this.autumnGlimmerEmitter.setXSpeed(-200, 200);
 		this.autumnGlimmerEmitter.minParticleScale = 0.25;
 		this.autumnGlimmerEmitter.maxParticleScale = 1;
 

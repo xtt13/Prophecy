@@ -15,7 +15,7 @@ export default {
 		},
 		2: {
 			silent: false,
-			questMessage: 'Find the invisible bridge!',
+			questMessage: ' Try to dash!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -28,7 +28,7 @@ export default {
 		},
 		3: {
 			silent: false,
-			questMessage: 'Find the village!',
+			questMessage: ' Great! Try that again!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,

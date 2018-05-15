@@ -64,8 +64,6 @@ export default class extends Phaser.Sprite {
 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN, 0.07, 0.07);
 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
 
-
-
 		// Add Lerp after 1 Second
 		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
 			if(this.gameData.currentMap == 'map1') return;
@@ -78,6 +76,7 @@ export default class extends Phaser.Sprite {
 				case 'topdown':
 					// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
 					this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.1, 0.1);
+					
 					break;
 			
 				default:
@@ -431,6 +430,9 @@ export default class extends Phaser.Sprite {
 
 		if(item.type == 'item'){
 			this.GUICLASS.healthBar.addHeart(5);
+			this.player.health = 5;
+			this.gameData.playerHealth = 5;
+			this.safe.setGameConfig(this.gameData);
 		}
 
 		if (item.removeQuestID !== undefined) {
