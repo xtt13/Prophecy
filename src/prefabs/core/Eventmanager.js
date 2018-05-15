@@ -53,15 +53,15 @@ export default class {
 
 		this.level.map.plus.events.regions.onEnterAdd(this.level.player, region => {
 			if (region.properties.message) {
-				this.addMessage(region);
+				this.message(region);
 			} else if (region.properties.addBridge) {
 				this.addBridge(region);
 			} else if (region.properties.removeBridge) {
 				this.removeBridge(region);
 			} else if (region.properties.pathfinderMessage) {
-				this.addPathfinderMessage(region);
+				this.pathfinderMessage(region);
 			} else if (region.properties.port) {
-				this.addPort(region);
+				this.port(region);
 			} else if (region.properties.fightArea) {
 				this.fightArea(region);
 			} else if (region.properties.showQuestmap) {
@@ -81,11 +81,13 @@ export default class {
 			} else if (region.properties.foreGroundShift) {
 				this.foreGroundShift(region);
 			} else if (region.properties.stairs) {
-				this.stairsEnter(region);
+				this.stairs(region);
 			} else if (region.properties.soundArea) {
-				this.soundAreaEnter(region);
+				this.soundArea(region);
 			} else if (region.properties.quickSave) {
 				this.quickSave(region);
+			} else if (region.properties.branch) {
+				this.branch(region);
 			}
 		});
 
@@ -102,7 +104,7 @@ export default class {
 		});
 	}
 
-	addMessage(region) {
+	message(region) {
 		const message_id = region.properties.id;
 		const all_messages = Object.values(dialogues.dialogues);
 		const ifQuestID = region.properties.ifQuestID;
@@ -225,7 +227,7 @@ export default class {
 		this.level.player.animations.play('run_up', 19, true);
 	}
 
-	addPathfinderMessage(region) {
+	pathfinderMessage(region) {
 
 		const characterID = region.properties.characterID;
 		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
@@ -331,11 +333,11 @@ export default class {
 		this.level.gameData.direction = direction;
 		this.level.safe.setGameConfig(this.level.gameData);
 
-		this.level.GUICLASS.createNotification('quest', 'Save...');
+		// this.level.GUICLASS.createNotification('quest', 'Save...');
 
 	}
 
-	addPort(region) {
+	port(region) {
 		let targetMap = region.properties.targetMap;
 		let targetID = region.properties.targetID;
 		let direction = region.properties.direction;
@@ -525,7 +527,7 @@ export default class {
 		this.level.foreGroundShift = false;
 	}
 
-	stairsEnter() {
+	stairs() {
 		if (this.level.fallDown) return;
 		// this.game.time.events.remove(this.level.inputClass.movementloop);
 		// this.level.inputClass.movementloop = null;
@@ -557,12 +559,65 @@ export default class {
 
 	}
 
-	soundAreaEnter(region) {
+	soundArea(region) {
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(4000);
 	}
 
 	soundAreaLeave() {
 		this.areaSound.fadeOut(4000);
+	}
+
+	branch(region){
+		if (this.level.questManager.checkIfQuestWasDone(1)) return;
+		this.level.questManager.removeQuest(1);
+		this.level.GUICLASS.healthBar.removeHeart(5, false);
+		this.level.player.health = 1;
+		this.level.gameData.playerHealth = 1;
+		this.level.safe.setGameConfig(this.level.gameData);
+		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.01, 0.01);
+		// this.level.GUICLASS.createMessage([' WTF?'], false, true);
+		this.level.player.movable = false;
+
+		this.branchTween = this.game.add
+		.tween(this.level.levelBuilder.branch)
+		.to({
+			y: this.level.player.y - 20,
+			angle: this.level.levelBuilder.branch.angle + 10
+		}, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
+
+
+		this.game.time.events.add(
+			250,
+			() => {
+				this.game.camera.flash(0xc10000, 400, true);
+			}, this);
+
+		this.game.time.events.add(
+			2000,
+			() => {
+				this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+				this.sfxheartbeat.play();
+                this.sfxheartbeat.fadeOut(5000);
+				let duration = 3000;
+				let easing = Phaser.Easing.Circular.InOut;
+				this.game.add.tween(this.level.levelBuilder.branch).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.backgroundLayer).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.groundLayer).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.detailGroundLayer).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.collisionLayer).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.foregroundLayer).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.treeDetails).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.trees).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.foregroundLayer2).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.godrays).to( { alpha: 0 }, duration, easing, true);
+			}, this);
+
+			this.game.time.events.add(
+				7000,
+				() => {
+					this.game.state.restart(true, false);
+			}, this);
+
 	}
 }

@@ -19,4 +19,8 @@ export default class extends Phaser.Sprite {
 
 		this.game.add.existing(this);
 	}
+
+	update(){
+		this.game.world.setChildIndex(this, 14);
+	}
 }

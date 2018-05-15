@@ -19,9 +19,11 @@ export default class {
 
 	toggleMenu() {
 		if (!this.show) {
+			this.game.renderer.renderSession.roundPixels = true;
 			this.showMenu();
 			this.show = true;
 		} else {
+			this.game.renderer.renderSession.roundPixels = false;
 			this.closeMenu();
 			this.show = false;
 		}

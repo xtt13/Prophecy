@@ -14,6 +14,7 @@ import Weather from '../gamemechanics/Weather';
 import Input from './Input';
 import Item from '../gamemechanics/Item';
 import Safe from './Safe';
+import LevelBuilder from './LevelBuilder';
 import Lucy from '../beings/Lucy';
 import Eventmanager from './Eventmanager';
 import Questmanager from './Questmanager';
@@ -29,7 +30,7 @@ export default class {
 	constructor(game, instruction) {
 		this.game = game;
 
-		this.GUICLASS = new GUI(this.game, this);
+		
 		this.battery = new Battery(this.game, this);
 		this.safe = new Safe(this.game);
 		this.questManager = new Questmanager(this.game, this);
@@ -77,6 +78,8 @@ export default class {
 
 		// Create Player
 		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
+
+		this.GUICLASS = new GUI(this.game, this);
 
 		// console.log(this.groundLayer.getTiles(this.player.x, this.player.y, 5, 5));
 
@@ -138,6 +141,8 @@ export default class {
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);
+
+		this.levelBuilder = new LevelBuilder(this.game, this, this.currentMap);
 
 	}
 
@@ -220,7 +225,14 @@ export default class {
 		elementsArr.forEach(function (element) {
 			if (this.itemIDs.includes(element.properties.id)) return;
 			if (element.properties.type == 'key') {
-				this.items.push(new Item(this.game, element.x, element.y, 'item', element.properties));
+				let x = element.x - 10 ;
+				let y = element.y + 10;
+				this.items.push(new Item(this.game, x, y, 'item', element.properties));
+			}
+			if (element.properties.type == 'heartsup') {
+				let x = element.x - 10 ;
+				let y = element.y + 10;
+				this.items.push(new Item(this.game, x, y, 'item', element.properties));
 			}
 		}, this);
 	}
@@ -477,9 +489,6 @@ export default class {
 		// this.game.world.bringToTop(this.foregroundLayer2);
 		this.game.world.bringToTop(this.godrays);
 
-		if (this.currentMap == 'map2') {
-			this.game.world.bringToTop(this.fountainSparkling);
-		}
 
 
 		// TilemapPlus Physics
@@ -516,6 +525,8 @@ export default class {
 		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
+
+		this.levelBuilder.update();
 
 		// Update GUIClass
 		this.GUICLASS.update();
@@ -620,9 +631,11 @@ export default class {
 	}
 
 	fallDownProcess(sprite, tile) {
+		this.game.camera.unfollow();
+
 		if (this.fallDownSwitch) {
 
-
+			
 
 			if (this.fallDownTween == undefined || !this.fallDownTween.isRunning) {
 				console.log('eins');
@@ -646,7 +659,7 @@ export default class {
 				this.fallDown = true;
 			}
 
-			this.game.camera.unfollow();
+			
 
 			this.fallDownSound = this.game.add.audio('sfxfalldown');
 			this.fallDownSound.play();
@@ -669,6 +682,10 @@ export default class {
 					this.eventManager.areaSound.fadeOut(2000);
 				}
 
+				if(this.player.health <= 1){
+					this.GUICLASS.healthBar.sfxheartbeat.stop();
+				}
+
 				console.log('Restart');
 
 				this.game.state.restart(true, false);
@@ -688,7 +705,7 @@ export default class {
 			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 			this.backgroundLayer = this.map.createLayer('Clouds');
 			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-
+			this.backgroundLayer.resizeWorld();
 
 			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
@@ -717,7 +734,7 @@ export default class {
 
 
 		//  Resize the world
-		this.backgroundLayer.resizeWorld();
+		
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
@@ -732,13 +749,6 @@ export default class {
 		// this.godrays.tint = 0x8cfff7;
 		// this.game.add.tween(this.godrays).to( { alpha: 0.3 }, 5000, 'Linear', true, 0, 0, true).loop();
 
-
-
-		// Test
-		// this.groundLayer.blendMode = Phaser.blendModes.MULTIPLY;
-		// this.detailGroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
-		// this.foregroundLayer.blendMode = Phaser.blendModes.MULTIPLY;
-		// this.foregroundLayer2.blendMode = Phaser.blendModes.MULTIPLY;
 
 		// Alpha of Foregroundlayer 0.9
 		this.foregroundLayer.alpha = 1;
@@ -766,35 +776,10 @@ export default class {
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
 
+		this.game.camera.flash(0x000000, 1500);
 
-		// Flashduration from Settings (if map1)
-		if (this.gameData.currentMap == 'map1' && this.gameData.playerHealth == 100) {
-			this.game.camera.flash(0x000000, 8000, true);
-		} else {
-			this.game.camera.flash(0x000000, 1500);
-		}
 
-		// Customizations
-		if (this.currentMap == 'map4') {
-			this.door = this.game.add.sprite(253, -12, 'templeDoor');
-			this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
-			this.door.animations.add('idle', [17], 1, true);
-		}
 
-		if (this.currentMap == 'map1') {
-			this.island = this.game.add.sprite(878, 227, 'island');
-			this.island.anchor.set(0.5);
-			this.island.scale.setTo(0.8);
-			// this.islandTween = this.game.add
-			// 		.tween(this.island)
-			// 		.to({ y: this.island.y + 2.5 }, 2000, 'Linear', true, 0, 0, true)
-			// 		.loop();
-			// this.game.add
-			// 		.tween(this.island)
-			// 		.to({ x: this.island.x + 2.5 }, 2000, 'Linear', true, 0, 0, true)
-			// 		.loop();
-			
-		}
 	}
 
 	initSoundandMusic() {

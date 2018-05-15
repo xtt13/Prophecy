@@ -130,7 +130,7 @@ export default class extends Phaser.Sprite {
 		this.weaponGun.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
 		this.weaponGun.bulletLifespan = 200;
 		this.weaponGun.bulletSpeed = 400;
-		this.weaponGun.fireRate = 1;
+		this.weaponGun.fireRate = 500;
 		// this.weaponGun.bulletAngleVariance = 10;
 		this.weaponGun.trackSprite(this.playerArm, 0, 10, true);
 
@@ -429,6 +429,10 @@ export default class extends Phaser.Sprite {
 			this.safe.setItemIDs(this.itemIDs);
 		}
 
+		if(item.type == 'item'){
+			this.GUICLASS.healthBar.addHeart(5);
+		}
+
 		if (item.removeQuestID !== undefined) {
 			console.log('Remove');
 			this.questManager.removeQuest(item.removeQuestID);
@@ -484,19 +488,19 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.y = this.y;
 
 		if (this.level.inputClass.dash) {
-			this.multiplySprite.frame = this.frame;
-			this.multiplySprite.alpha = 0.01;
-			this.bmd.draw(this.multiplySprite, 50, 50);
-			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
-			// this.game.world.setChildIndex(this.bmd, 1);
+			// this.multiplySprite.frame = this.frame;
+			// this.multiplySprite.alpha = 0.01;
+			// this.bmd.draw(this.multiplySprite, 50, 50);
+			// this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
+			// // this.game.world.setChildIndex(this.bmd, 1);
 
-			if (this.baseImages[0] !== undefined) {
-				this.game.time.events.add(100, () => {
-					this.baseImages[0].alpha = 0;
-					this.baseImages[0].destroy(true, false);
-					this.baseImages.shift();
-				});
-			}
+			// if (this.baseImages[0] !== undefined) {
+			// 	this.game.time.events.add(100, () => {
+			// 		this.baseImages[0].alpha = 0;
+			// 		this.baseImages[0].destroy(true, false);
+			// 		this.baseImages.shift();
+			// 	});
+			// }
 		} else {
 			this.game.time.events.add(200, () => {
 				this.bmd.clear();

@@ -299,9 +299,9 @@ export default class {
 		this.level.GUICLASS.createNotification('saving', 'Reset Account!');
 		localStorage.clear();
 		this.game.musicPlayer.fadeOut();
-		this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
+		// this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
 			this.game.state.start('MainMenu', true, false);
-		});
+		// });
 	}
 
 	beginnDash() {

@@ -38,7 +38,9 @@ export default class {
 		this.background.x = Math.floor(this.background.x);
 		this.background.y = Math.floor(this.background.y);
 
+		//FIX?
 		this.game.renderer.renderSession.roundPixels = true;
+
 		this.text = this.game.add.bitmapText(
 			this.background.x + 20,
 			this.game.camera.height - 80,
@@ -115,7 +117,10 @@ export default class {
 	}
 
 	removeMessage() {
+
+		//FIX END
 		this.game.renderer.renderSession.roundPixels = false;
+		
 		this.text.destroy();
 		this.background.destroy();
 		this.removeBars();

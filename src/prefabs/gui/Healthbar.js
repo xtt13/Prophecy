@@ -11,7 +11,22 @@ export default class {
         };
         this.waitTimer = this.game.time.events.add(100, () => {});
 
-        this.buildHealthBar();
+        console.log(this.level.player.health);
+
+        if(this.level.player.health <= 1){
+            this.flashingLoop = this.game.time.events.loop(850, () => {
+                this.game.camera.flash(0xc10000, 100, true);
+            }, this);
+            
+            if(this.sfxheartbeat == undefined){
+                this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+                this.sfxheartbeat.loop = true;
+                this.sfxheartbeat.play();
+            }
+            
+        }
+
+        this.buildHealthBar(this.level.player.health);
 
         this.reloadRatioTween = this.game.add.tween(this.dashBar.scale).to({
             x: 1,
@@ -35,7 +50,7 @@ export default class {
         //     }
         // }, this);
 
-
+        // this.removeHeart(3);
 
 
         // this.game.time.events.add(5000, () => {
@@ -49,7 +64,7 @@ export default class {
         // });
     }
 
-    buildHealthBar() {
+    buildHealthBar(value) {
 
         this.heartExplosion = this.game.add.emitter(0, 0, 100);
 
@@ -128,6 +143,7 @@ export default class {
 
         this.hearts = this.game.add.group();
         let counter = 41;
+       
         for (let index = 0; index < 5; index++) {
             var heart = this.game.add.sprite(counter, 24, 'heart');
             heart.scale.set(1);
@@ -135,12 +151,17 @@ export default class {
             heart.fixedToCamera = true;
             counter += 10;
             heart.alpha = 1;
-            this.hearts.add(heart);
+            
             // this.game.add.tween(heart).to({ alpha: 1 }, 10000, 'Linear', true);
             this.game.add.tween(heart.scale).to({
                 x: 1.1,
                 y: 1.1
-            }, 1000, Phaser.Easing.Bounce.Out, true, 0, 0, false).loop();
+            }, 850, Phaser.Easing.Bounce.Out, true, 0, 0, false).loop();
+            if(index >= value){
+                heart.scale.set(0);
+                heart.alpha = 0;          
+            }
+            this.hearts.add(heart);
         }
 
         this.heartsShaddow = this.game.add.group();
@@ -160,28 +181,75 @@ export default class {
 
     }
 
-    removeHeart(index) {
-        var removeHeart = this.game.add.tween(this.hearts.getChildAt(index).scale).to({
-            x: 0,
-            y: 0
-        }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
-        removeHeart.onComplete.add(() => {
-            this.hearts.getChildAt(index).alpha = 0;
-            this.hearts.getChildAt(index).scale.set(0);
-        }, this);
+    removeHeart(index, shake) {
 
-        this.game.time.events.add(2000, () => {
-            this.game.camera.shake(0.005, 500);
-            this.heartExplosion = this.game.add.emitter(this.hearts.getChildAt(index).x, this.hearts.getChildAt(index).y, 100);
+        if(this.level.player.health <= 1){
+            this.flashingLoop = this.game.time.events.loop(850, () => {
+                this.game.camera.flash(0xc10000, 100, true);
+            }, this);
+            
+            if(this.sfxheartbeat == undefined){
+                this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+                this.sfxheartbeat.loop = true;
+                this.sfxheartbeat.play();
+            }
+            
+        }
+
+        console.log(this.hearts);
+
+        this.counter = index;
+        this.heartIndex = this.hearts.children.length - 1;
+        this.buildLoop = this.game.time.events.loop(500, () => {
+
+            console.log(this.hearts.children.length, this.heartIndex);
+
+            var removeHeart = this.game.add.tween(this.hearts.children[this.heartIndex].scale).to({
+                x: 0,
+                y: 0
+            }, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
+
+            // removeHeart.onComplete.add((a, b) => {
+            //     console.log(a);
+            //     console.log(b);
+            //     // this.hearts.children[this.heartIndex].alpha = 0;
+            //     this.hearts.children[this.heartIndex].scale.set(0);
+            // }, this);
+
+
+            // this.game.time.events.add(400, () => {
+            //     this.hearts.children[this.heartIndex].alpha = 0;
+            //     this.hearts.children[this.heartIndex].scale.set(0);
+            // });
+
+            this.hearts.children[this.heartIndex].alpha = 0;
+            this.hearts.children[this.heartIndex].scale.set(0);
+    
+            if(shake){
+                this.game.camera.shake(0.005, 500);
+            }
+            
+            this.heartExplosion = this.game.add.emitter(this.hearts.children[this.heartIndex].x, this.hearts.children[this.heartIndex].y, 100);
             this.heartExplosion.fixedToCamera = true;
             this.heartExplosion.setAlpha(1, 0, 2000, null, false);
             this.heartExplosion.setXSpeed(100);
             this.heartExplosion.setYSpeed(-100);
             this.heartExplosion.makeParticles('bloodHeart', 100);
             this.heartExplosion.start(true, 0, null, 10);
+    
+    
+
+            console.log(this.counter);
+
+            this.heartIndex--;
+            this.counter--;
+
+            if(this.counter == 0){
+                this.game.time.events.remove(this.buildLoop);
+            }
+        }, this);
 
 
-        });
     }
 
     dash() {
@@ -246,13 +314,28 @@ export default class {
     }
 
     addHeart(index) {
-        this.game.add.tween(this.hearts.getChildAt(index)).to({
-            alpha: 1
-        }, 500, Phaser.Easing.Bounce.Out, true);
-        this.game.add.tween(this.hearts.getChildAt(index).scale).to({
-            x: 1,
-            y: 1
-        }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
+        if(this.level.player.health <= 1){
+            this.sfxheartbeat.stop();
+            this.game.time.events.remove(this.flashingLoop);
+        }
+        this.counter = 1;
+        this.buildLoop = this.game.time.events.loop(500, () => {
+
+            this.game.add.tween(this.hearts.getChildAt(this.counter)).to({
+                alpha: 1
+            }, 500, Phaser.Easing.Bounce.Out, true);
+            this.game.add.tween(this.hearts.getChildAt(this.counter).scale).to({
+                x: 1,
+                y: 1
+            }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
+
+            this.counter++;
+            if(this.counter == index){
+                this.game.time.events.remove(this.buildLoop);
+            }
+        }, this);
+
+        
     }
 
     fadeOut() {

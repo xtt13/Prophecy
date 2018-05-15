@@ -53,10 +53,16 @@ export default class extends Phaser.Sprite {
 		game.add.existing(this);
 	}
 
+	addShadow(){
+		console.log('ping');
+	}
+
 	update() {
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
+
+		this.game.physics.arcade.overlap(this, this.level.groundLayer, this.addShadow, null, this);
 
 		this.distanceBetweenLucyPlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 

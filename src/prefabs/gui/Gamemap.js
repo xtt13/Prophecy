@@ -52,6 +52,7 @@ export default class {
 
 	createMap() {
 		this.calculateValues();
+		this.game.renderer.renderSession.roundPixels = true;
 
 		this.map = this.game.add.sprite(this.game.camera.width / 2 - 100, this.game.camera.height / 2 - 90, 'newGameMap');
 		this.map.fixedToCamera = true;
@@ -107,6 +108,7 @@ export default class {
 	}
 
 	removeMap() {
+		this.game.renderer.renderSession.roundPixels = false;
 		if (this.map) {
 			this.gameMapbackground.destroy();
 			this.gameMapbackground = false;

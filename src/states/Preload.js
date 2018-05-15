@@ -103,9 +103,9 @@ export default class extends Phaser.State {
 		// // this.text.padding.set(40, 40);
 		// console.log(this.text);
 
-		this.game.canvas.oncontextmenu = function (e) {
-			e.preventDefault();
-		};
+		// this.game.canvas.oncontextmenu = function (e) {
+		// 	e.preventDefault();
+		// };
 
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
@@ -131,6 +131,7 @@ export default class extends Phaser.State {
 		this.load.image('bulletParticle', 'assets/sprites/bulletParticle.png');
 		this.load.image('bulletBeam', 'assets/sprites/bulletBeam.png');
 		this.load.image('island', 'assets/sprites/island.png');
+		this.load.image('branch', 'assets/sprites/branch.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
 
@@ -168,6 +169,7 @@ export default class extends Phaser.State {
 		this.load.audio('sfxfalldown', 'assets/sounds/sfxfalldown.mp3');
 		this.load.audio('sfxfalldown', 'assets/sounds/sfxfalldown.mp3');
 		this.load.audio('sfxstonedoor', 'assets/sounds/sfxstonedoor.mp3');
+		this.load.audio('sfxheartbeat', 'assets/sounds/sfxheartbeat.mp3');
 
 		// Load AudioSpriteSheets
 		this.load.audiosprite('AxThunderstrike', 'assets/sounds/AxThunderstrike.mp3', null, this.AxThunderstrikeJSON);
