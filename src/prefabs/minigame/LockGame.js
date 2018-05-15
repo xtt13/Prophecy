@@ -1,11 +1,12 @@
 import Phaser from 'phaser';
 
 export default class {
-	constructor(game, x, y, player) {
+	constructor(game, x, y, player, chest) {
 		this.game = game;
 		this.x = x;
 		this.y = y;
 		this.player = player;
+		this.chest = chest;
 
 		// this.bgColors = [0x62bd18, 0xff5300, 0xd21034, 0xff475c, 0x8f16b2, 0x588c7e, 0x8c4646];
 		// this.tintColor = game.rnd.pick(this.bgColors);
@@ -139,6 +140,7 @@ export default class {
 
 					this.player.body.immovable = false;
 					this.player.movable = true;
+					this.chest.animations.play('open');
 
 					break;
 

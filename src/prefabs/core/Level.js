@@ -13,6 +13,7 @@ import Character from '../beings/Character';
 import Weather from '../gamemechanics/Weather';
 import Input from './Input';
 import Item from '../gamemechanics/Item';
+import Chest from '../gamemechanics/Chest';
 import Safe from './Safe';
 import LevelBuilder from './LevelBuilder';
 import Lucy from '../beings/Lucy';
@@ -53,6 +54,7 @@ export default class {
 		// Arrays
 		this.characters = [];
 		this.items = [];
+		this.chests = [];
 		this.activatedBridges = [];
 		this.enemies = [];
 		this.emitter = [];
@@ -117,6 +119,9 @@ export default class {
 
 		// Load Items
 		this.loadItems();
+
+		// Load Chests
+		this.loadChests();
 
 		// Load Enemies
 		if (config.enemies) this.loadEnemies();
@@ -234,6 +239,21 @@ export default class {
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'item', element.properties));
 			}
+		}, this);
+	}
+
+	loadChests() {
+		// Get array of items from JSON-Map
+		let elementsArr = this.findObjectsByType('id', this.map, 'Chests');
+
+		// Find specific items
+		elementsArr.forEach(function (element) {
+			// if (this.itemIDs.includes(element.properties.id)) return;
+				let x = element.x - 10 ;
+				let y = element.y + 10;
+				this.chests.push(new Chest(this.game, x, y, element.properties));
+
+			
 		}, this);
 	}
 
@@ -516,10 +536,6 @@ export default class {
 			this.game.world.bringToTop(this.weather.clouds);
 		}
 
-		// If Lockpicker == true -> update()
-		if (this.lockGame) {
-			this.lockGame.update();
-		}
 
 		// If Templeflies -> bringToTop
 		if (this.weather.templeFliesEmitter) {
@@ -528,10 +544,22 @@ export default class {
 
 		this.game.world.bringToTop(this.treeDetails);
 
+
 		this.levelBuilder.update();
 
 		// Update GUIClass
 		this.GUICLASS.update();
+
+		// If Lockpicker == true -> update()
+		if (this.lockGame) {
+			this.lockGame.update();
+			this.game.world.bringToTop(this.lockGame.ring);
+			this.game.world.bringToTop(this.lockGame.ball);
+			this.game.world.bringToTop(this.lockGame.bar);
+			this.game.world.bringToTop(this.lockGame.firstTry);
+			this.game.world.bringToTop(this.lockGame.secondTry);
+			this.game.world.bringToTop(this.lockGame.thirdTry);
+		}
 	}
 
 	slowDownTile(player, tile) {

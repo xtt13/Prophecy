@@ -56,7 +56,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	addShadow(){
-		console.log('ping');
+		// console.log('ping');
 	}
 
 	update() {

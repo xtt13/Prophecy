@@ -4,6 +4,7 @@ import 'phaser-tilemap-plus';
 import Pathfinder from '../gamemechanics/Pathfinder';
 import Bridgebuilder from '../gamemechanics/Bridgebuilder';
 import Enemy from '../beings/Enemy';
+import LockGame from '../minigame/LockGame';
 
 import dialogues from './../../dialogues';
 
@@ -88,6 +89,8 @@ export default class {
 				this.quickSave(region);
 			} else if (region.properties.branch) {
 				this.branch(region);
+			} else if (region.properties.openChest) {
+				this.openChest(region);
 			}
 		});
 
@@ -100,6 +103,8 @@ export default class {
 				this.stairsLeave(region);
 			} else if (region.properties.soundArea) {
 				this.soundAreaLeave(region);
+			} else if (region.properties.openChest) {
+				this.closeChest(region);
 			}
 		});
 	}
@@ -636,5 +641,40 @@ export default class {
 					this.game.state.restart(true, false);
 			}, this);
 
+	}
+
+	openChest(region){
+		let chestID = region.properties.chestID;
+		let searchedChest = null;
+
+		for (let i = 0; i < this.level.chests.length; i++) {
+			const chest = this.level.chests[i];
+			if(chest.id == chestID){
+				searchedChest = chest;
+				break;
+			}	
+		}
+
+		// this.level.lockGame = new LockGame(this.game, this.level.player.x, this.level.player.y, this.level.player);
+		let x = this.game.camera.x + this.game.camera.width / 2;
+		let y = this.game.camera.y + this.game.camera.height / 2;
+		this.level.lockGame = new LockGame(this.game, x, y, this.level.player, searchedChest);
+
+		
+	}
+
+	closeChest(region){
+		let chestID = region.properties.chestID;
+		let searchedChest = null;
+
+		for (let i = 0; i < this.level.chests.length; i++) {
+			const chest = this.level.chests[i];
+			if(chest.id == chestID){
+				searchedChest = chest;
+				break;
+			}	
+		}
+
+		searchedChest.animations.play('close');
 	}
 }
