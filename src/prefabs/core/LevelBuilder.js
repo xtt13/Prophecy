@@ -72,8 +72,13 @@ export default class {
     map1update(){
         if(this.bringBranchToTop){
             this.game.world.bringToTop(this.branch);
+        
+        }     
+        if(this.level.items[0] !== undefined){
+            this.game.world.bringToTop(this.level.items[0]);
         }
         
+        this.game.world.bringToTop(this.level.templeFliesEmitter);
     }
     
     map2() {
@@ -143,14 +148,32 @@ export default class {
 
     map10(){
 
+
+        this.bossDoor = this.game.add.sprite(321, 960, 'bossDoor');
+        this.game.physics.enable(this.bossDoor);
+        this.bossDoor.body.immovable = true;
+        this.bossDoor.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32], 8, true);
+        this.bossDoor.animations.add('close', [32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0], 8, true);
+        this.bossDoor.animations.add('idle', [32], 1, true);
+
+        // if(this.level.gameData.targetID == 3){
+        //     this.bossDoor.animations.play('open', 100, false);
+        // }
+
     }
 
     map10update(){
+        if(this.level.eventManager.bossDoorOpen){
+            this.game.world.setChildIndex(this.bossDoor, 20);
+        } else {
+            this.game.physics.arcade.collide(this.level.player, this.bossDoor);
+            this.game.world.setChildIndex(this.bossDoor, 10);
+        }
         
     }
 
     map11(){
-
+        
     }
 
     map11update(){

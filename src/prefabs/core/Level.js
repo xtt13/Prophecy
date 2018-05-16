@@ -228,16 +228,19 @@ export default class {
 
 		// Find specific items
 		elementsArr.forEach(function (element) {
+
 			if (this.itemIDs.includes(element.properties.id)) return;
+
 			if (element.properties.type == 'key') {
 				let x = element.x - 10 ;
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'item', element.properties));
 			}
-			if (element.properties.type == 'heartsup') {
+
+			if (element.properties.type == 'potion') {
 				let x = element.x - 10 ;
 				let y = element.y + 10;
-				this.items.push(new Item(this.game, x, y, 'item', element.properties));
+				this.items.push(new Item(this.game, x, y, 'potion', element.properties));
 			}
 		}, this);
 	}

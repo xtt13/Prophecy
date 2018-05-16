@@ -428,7 +428,7 @@ export default class extends Phaser.Sprite {
 			this.safe.setItemIDs(this.itemIDs);
 		}
 
-		if(item.type == 'item'){
+		if(item.type == 'potion'){
 			this.GUICLASS.healthBar.addHeart(5);
 			this.player.health = 5;
 			this.gameData.playerHealth = 5;
@@ -478,7 +478,8 @@ export default class extends Phaser.Sprite {
 		this.game.world.bringToTop(this.customEmitter);
 
 		if(this.level.inputClass.direction == 'right' || this.level.inputClass.direction == 'down'){
-			this.game.world.bringToTop(this.playerArm);
+			// this.game.world.bringToTop(this.playerArm);
+			this.game.world.setChildIndex(this.playerArm, 19);
 		}
 		this.playerArm.rotation = this.game.physics.arcade.angleToPointer(this.playerArm) - 360;
 

@@ -15,6 +15,7 @@ export default class {
 
 		this.spawnEnemiesRunning = false;
 		this.templeDoorOpen = false;
+		this.bossDoorOpen = false;
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
@@ -91,6 +92,8 @@ export default class {
 				this.branch(region);
 			} else if (region.properties.openChest) {
 				this.openChest(region);
+			} else if (region.properties.openBossDoor) {
+				this.openBossDoor(region);
 			}
 		});
 
@@ -105,6 +108,8 @@ export default class {
 				this.soundAreaLeave(region);
 			} else if (region.properties.openChest) {
 				this.closeChest(region);
+			} else if (region.properties.openBossDoor) {
+				this.closeBossDoor(region);
 			}
 		});
 	}
@@ -115,12 +120,12 @@ export default class {
 		const ifQuestID = region.properties.ifQuestID;
 		const removeQuestID = region.properties.removeQuestID;
 
-		
+
 
 		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 		if (this.level.questManager.checkIfQuestWasDone(ifQuestID)) return;
 
-		if(removeQuestID !== undefined){
+		if (removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(removeQuestID);
 		}
 
@@ -478,7 +483,7 @@ export default class {
 
 		console.log(this.level.questManager.checkIfQuestExists(1));
 
-		if(!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)){
+		if (!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)) {
 			this.transitionTime = 1;
 		} else {
 			this.transitionTime = 750;
@@ -589,7 +594,7 @@ export default class {
 		this.areaSound.fadeOut(4000);
 	}
 
-	branch(region){
+	branch(region) {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
 		this.level.questManager.removeQuest(1);
 		this.level.questManager.addQuest(2);
@@ -602,11 +607,11 @@ export default class {
 		this.level.player.movable = false;
 
 		this.branchTween = this.game.add
-		.tween(this.level.levelBuilder.branch)
-		.to({
-			y: this.level.player.y - 20,
-			angle: this.level.levelBuilder.branch.angle + 10
-		}, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
+			.tween(this.level.levelBuilder.branch)
+			.to({
+				y: this.level.player.y - 20,
+				angle: this.level.levelBuilder.branch.angle + 10
+			}, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
 
 
 		this.game.time.events.add(
@@ -620,39 +625,59 @@ export default class {
 			() => {
 				this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
 				this.sfxheartbeat.play();
-                this.sfxheartbeat.fadeOut(5000);
+				this.sfxheartbeat.fadeOut(5000);
 				let duration = 3000;
 				let easing = Phaser.Easing.Circular.InOut;
-				this.game.add.tween(this.level.levelBuilder.branch).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.backgroundLayer).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.groundLayer).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.detailGroundLayer).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.collisionLayer).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.foregroundLayer).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.treeDetails).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.trees).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.foregroundLayer2).to( { alpha: 0 }, duration, easing, true);
-				this.game.add.tween(this.level.godrays).to( { alpha: 0 }, duration, easing, true);
+				this.game.add.tween(this.level.levelBuilder.branch).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.backgroundLayer).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.groundLayer).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.detailGroundLayer).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.collisionLayer).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.foregroundLayer).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.treeDetails).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.trees).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.foregroundLayer2).to({
+					alpha: 0
+				}, duration, easing, true);
+				this.game.add.tween(this.level.godrays).to({
+					alpha: 0
+				}, duration, easing, true);
 			}, this);
 
-			this.game.time.events.add(
-				7000,
-				() => {
-					this.game.state.restart(true, false);
+		this.game.time.events.add(
+			7000,
+			() => {
+				this.game.state.restart(true, false);
 			}, this);
 
 	}
 
-	openChest(region){
+	openChest(region) {
 		let chestID = region.properties.chestID;
 		let searchedChest = null;
 
 		for (let i = 0; i < this.level.chests.length; i++) {
 			const chest = this.level.chests[i];
-			if(chest.id == chestID){
+			if (chest.id == chestID) {
 				searchedChest = chest;
 				break;
-			}	
+			}
 		}
 
 		// this.level.lockGame = new LockGame(this.game, this.level.player.x, this.level.player.y, this.level.player);
@@ -660,21 +685,78 @@ export default class {
 		let y = this.game.camera.y + this.game.camera.height / 2;
 		this.level.lockGame = new LockGame(this.game, x, y, this.level.player, searchedChest);
 
-		
+
 	}
 
-	closeChest(region){
+	closeChest(region) {
 		let chestID = region.properties.chestID;
 		let searchedChest = null;
 
 		for (let i = 0; i < this.level.chests.length; i++) {
 			const chest = this.level.chests[i];
-			if(chest.id == chestID){
+			if (chest.id == chestID) {
 				searchedChest = chest;
 				break;
-			}	
+			}
 		}
 
 		searchedChest.animations.play('close');
+	}
+
+	openBossDoor() {
+		// if(!this.level.questManager.checkIfQuestExists(20)) return;
+
+		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
+
+		if (this.level.levelBuilder.bossDoor.animations._anims.close.isPlaying) {
+			// this.level.levelBuilder.bossDoor.animations._anims.close.onComplete.add(() => {
+				// this.game.time.events.add(
+				// 	2500,
+				// 	() => {
+				// 		this.doorOpenSound.play();
+				// 		this.game.camera.shake(0.0015, 2500, true);
+				// 		this.level.levelBuilder.bossDoor.play('open', 15, false);
+				// 	}, this);
+			// }, this);
+		} else {
+			this.doorOpenSound.play();
+			this.game.camera.shake(0.0015, 2500, true);
+			this.level.levelBuilder.bossDoor.play('open', 15, false);
+		}
+
+		this.level.levelBuilder.bossDoor.animations._anims.open.onComplete.add(() => {
+			this.bossDoorOpen = true;
+		}, this);
+
+	}
+
+	closeBossDoor() {
+		// if(!this.level.questManager.checkIfQuestExists(20)) return;
+
+		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
+
+		if (this.level.levelBuilder.bossDoor.animations._anims.open.isPlaying) {
+			this.level.levelBuilder.bossDoor.animations._anims.open.onComplete.add(() => {
+				this.bossDoorOpen = true;
+				this.game.time.events.add(
+					2000,
+					() => {
+						this.bossDoorOpen = false;
+						this.doorOpenSound.play();
+						this.game.camera.shake(0.0015, 2500, true);
+						this.level.levelBuilder.bossDoor.play('close', 15, false);
+					}, this);
+
+			}, this);
+		} else {
+			this.game.time.events.add(
+				2000,
+				() => {
+					this.bossDoorOpen = false;
+					this.doorOpenSound.play();
+					this.game.camera.shake(0.0015, 2500, true);
+					this.level.levelBuilder.bossDoor.play('close', 15, false);
+				}, this);
+		}
 	}
 }

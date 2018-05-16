@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, properties) {
-		super(game, x, y, 'chest');
+		super(game, parseInt(x), parseInt(y), 'chest');
 
 		this.game = game;
 		this.id = properties.id;
@@ -19,6 +19,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	update(){
-		// this.game.world.setChildIndex(this, 10);
+        this.game.physics.arcade.collide(this, this.player);
+		this.game.world.setChildIndex(this, 15);
 	}
 }

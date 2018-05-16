@@ -190,9 +190,11 @@ export default class extends Phaser.State {
 		this.load.spritesheet('item', 'assets/sprites/testitem.png', 25, 27);
 		this.load.spritesheet('treeleaves', 'assets/sprites/treeleaves.png', 3, 3);
 		this.load.spritesheet('templeDoor', 'assets/sprites/templeDoor.png', 72, 108);
+		this.load.spritesheet('bossDoor', 'assets/sprites/bossDoor.png', 96, 128);
 		this.load.spritesheet('enemyPartsSpritesheet', 'assets/sprites/enemyPartsSpritesheet.png', 16, 16);
 		this.load.spritesheet('fireSpritesheet', 'assets/sprites/fireSpritesheet.png', 1, 1);
 		this.load.spritesheet('sparklingSpritesheet', 'assets/sprites/sparklingSpritesheet.png', 1, 1);
+		this.load.spritesheet('potion', 'assets/sprites/potion.png', 32, 32);
 
 		// Load Tilesets
 		this.load.image('tileset', 'assets/tilesets/tileset.png');

@@ -65,20 +65,20 @@ export default class extends Phaser.Sprite {
 	update() {
 
 		// MODE 1
-		this.rotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
+		// this.rotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
 
 		//MODE 2
-		// if(this.angle >= 160){
-		// 	this.angleSwitch = false;
-		// } else if(!this.angleSwitch && this.angle <= 30){
-		// 	this.angleSwitch = true;
-		// }
+		if(this.angle >= 160){
+			this.angleSwitch = false;
+		} else if(!this.angleSwitch && this.angle <= 30){
+			this.angleSwitch = true;
+		}
 
-		// if(this.angleSwitch){
-		// 	this.angle += 1;
-		// } else {
-		// 	this.angle -= 1;
-		// }
+		if(this.angleSwitch){
+			this.angle += 1;
+		} else {
+			this.angle -= 1;
+		}
 		
 
 		// for (var i = 0; i < this.weapon.bullets.children.length; i++) {

@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, type, properties) {
-		super(game, x, y, type);
+		super(game, x, y, 'potion');
 
 		this.game = game;
 		this.type = type;
@@ -12,8 +12,15 @@ export default class extends Phaser.Sprite {
 		this.removeQuestID = properties.removeQuestID;
 		this.anchor.setTo(0.5);
 
-		this.animations.add('play', [0, 1, 2, 3], 5, true);
+		if(this.type == 'potion'){
+			this.animations.add('play', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 12, true);
+		} else {
+			this.animations.add('play', [0, 1, 2, 3], 12, true);
+		}
+
 		this.animations.play('play');
+
+		
 
 		this.game.physics.enable(this);
 
@@ -21,6 +28,6 @@ export default class extends Phaser.Sprite {
 	}
 
 	update(){
-		this.game.world.setChildIndex(this, 14);
+		// this.game.world.setChildIndex(this, 14);
 	}
 }
