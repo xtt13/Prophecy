@@ -18,6 +18,12 @@ export default class extends Phaser.Sprite {
 		
 
 		this.grown = false;
+
+		this.mirrorBeamRunning = false;
+		this.shootAtPlayerRunning = false;
+		this.rotationShootRunning = false;
+		this.shootAtPlayerCounter = 0;
+
 		this.health = 3;
 		this.dead = false;
 		this.paralyze = false;
@@ -60,6 +66,7 @@ export default class extends Phaser.Sprite {
 			this.weapon.bullets.children[i].body.bounce.set(0.5);
 			this.weapon.bullets.children[i].scale.setTo(2);
 			this.weapon.bullets.children[i].smoothed = false;
+			this.game.add.tween(this.weapon.bullets.children[i]).to( { tint: 0x000000 }, 9000, Phaser.Easing.Exponential.In, true, 0, 0, true).loop();
 		}
 		
 
@@ -83,18 +90,108 @@ export default class extends Phaser.Sprite {
 		}
 
 		this.growTween.onComplete.add(() => {
-            this.grown = true;
+			this.grown = true;
+
+			// FIRST ATTACK
+			this.mirrorBeam();
+			// this.shootAtPlayer(3);
+			// this.rotationShoot(10000);
+
+
         }, this);
+	}
+
+	mirrorBeam(){
+		this.mirrorBeamRunning = true;
+		let targetRotation = this.game.physics.arcade.angleToXY(this, this.shootX, this.shootY);
+		this.rotationTween = this.game.add.tween(this).to(
+			{rotation: targetRotation}
+		, 2000, 'Linear', true, 0, 0, false);
+		this.rotationTween.onComplete.add(() => {
+			var shootLoop = this.game.time.events.loop(1, () => {
+				this.weapon.fireAtXY(this.shootX, this.shootY);
+			}, this);
+			this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
+				this.mirrorBeamRunning = false;
+				this.game.time.events.remove(shootLoop);
+
+				// SECOND ATTACK
+				this.shootAtPlayer(3);
+			});
+		}, this);	
+	}
+
+	shootAtPlayer(times){
+		this.shootAtPlayerRunning = true;
+		let playerX = this.player.x;
+		let playerY = this.player.y;
+		let targetRotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
+		this.rotationTween = this.game.add.tween(this).to(
+			{rotation: targetRotation}
+		, 500, 'Linear', true, 0, 0, false);
+		this.rotationTween.onComplete.add(() => {
+			var shootLoop = this.game.time.events.loop(1, () => {
+				this.weapon.fireAtXY(playerX, playerY);
+			}, this);
+			this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+				this.shootAtPlayerCounter++;
+				this.game.time.events.remove(shootLoop);
+				console.log(this.shootAtPlayerCounter, times);
+				if(this.shootAtPlayerCounter == times){
+					this.shootAtPlayerRunning = false;
+					this.shootAtPlayerCounter = 0;
+					// THIRD ATTACK
+					this.rotationShoot(5000);
+				} else {
+					this.shootAtPlayer(times);
+				}
+				
+			});
+		}, this);	
+	}
+
+	rotationShoot(duration){
+		this.rotationShootRunning = true;
+
+		let targetRotation = this.game.physics.arcade.angleToXY(this, 0, 500);
+		this.rotationTween = this.game.add.tween(this).to(
+			{rotation: targetRotation}
+		, 1000, 'Linear', true, 0, 0, false);
+		this.rotationTween.onComplete.add(() => {
+
+			var shootLoop = this.game.time.events.loop(1, () => {
+				if(this.angle >= 160){
+					this.angleSwitch = false;
+				} else if(!this.angleSwitch && this.angle <= 30){
+					this.angleSwitch = true;
+				}
+	
+				if(this.angleSwitch){
+					this.angle += 1;
+				} else {
+					this.angle -= 1;
+				}
+	
+				this.weapon.fire();
+			}, this);
+			this.game.time.events.add(duration, () => {
+	
+				this.game.time.events.remove(shootLoop);
+				this.rotationShootRunning = false;
+				this.mirrorBeam();
+			});
+			
+		}, this);	
 	}
 
 	update() {
 		this.game.world.bringToTop(this);
 
-		if(!this.grown) return;
+		// if(!this.grown) return;
 
 		// MODE 1
 		// this.rotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
-		this.rotation = this.game.physics.arcade.angleToXY(this, this.shootX, this.shootY);
+		// this.rotation = this.game.physics.arcade.angleToXY(this, this.shootX, this.shootY);
 
 		//MODE 2
 		// if(this.angle >= 160){
@@ -123,10 +220,9 @@ export default class extends Phaser.Sprite {
 
 		// this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
-		// if (this.distanceBetweenEnemiePlayer < 200) {
-				this.weapon.fireAtXY(this.shootX, this.shootY);
 
-				// this.weapon.fire();
+		// this.weapon.fireAtXY(this.shootX, this.shootY);
+		// this.weapon.fire();
 				
 				// let explosion = this.game.add.emitter(this.weapon.x, this.weapon.y + 7, 1);
 				// explosion.fixedToCamera = true;

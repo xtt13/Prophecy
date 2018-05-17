@@ -356,7 +356,7 @@
      "dayCycle":false,
      "ground":"hard3",
      "lucy":false,
-     "music":"MxTempleHappy",
+     "music":"MxBossfight",
      "startMusic":true,
      "weather":"NiceWeather"
     },
