@@ -9,27 +9,30 @@ export default class extends Phaser.Sprite {
 		this.player = player;
 		this.map = map;
 		this.layer = layer;
+		this.type = 'sprout';
+		this.mirror = properties.mirror;
 
 		this.shootX = properties.shootX;
 		this.shootY = properties.shootY;
 
 		
 
-
+		this.grown = false;
 		this.health = 3;
 		this.dead = false;
 		this.paralyze = false;
 
 		this.angleSwitch = true;
 		
-		this.anchor.setTo(0.5);
+		this.anchor.setTo(0, 0.5);
 
 		if(properties.mirror){
-			this.scale.setTo(0.5, 0.5);
-			// this.angle += 45;
+			// this.scale.setTo(1, 1);
+			this.scale.setTo(0);
+			this.angle += 60;
 		} else {
-			this.scale.setTo(0.5, -0.5);
-			// this.angle += 45;
+			this.scale.setTo(0);
+			this.angle += 120;
 		}
 		
 
@@ -45,10 +48,11 @@ export default class extends Phaser.Sprite {
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
 		this.weapon.bulletLifespan = 3000;
 		this.weapon.bulletSpeed = 700;
+		this.weapon.bulletCollideWorldBounds = true;
 		this.weapon.fireRate = 1;
 		// this.weapon.bulletAngleVariance = 10;
 		this.weapon.bulletRotateToVelocity = true;
-		this.weapon.trackSprite(this, 0, 0, true);
+		this.weapon.trackSprite(this, 20, 0, true);
 
 		console.log(this.weapon.bullets);
 
@@ -62,23 +66,48 @@ export default class extends Phaser.Sprite {
 		game.add.existing(this);
 	}
 
+	grow(){
+		if(this.mirror){
+			
+
+			this.growTween = this.game.add.tween(this.scale).to(
+				{x: 1, y: 1}
+			, 3000, 'Linear', true, 0, 0, false);
+
+		} else {
+			
+
+			this.growTween = this.game.add.tween(this.scale).to(
+				{x: 1, y: -1}
+			, 3000, 'Linear', true, 0, 0, false);
+		}
+
+		this.growTween.onComplete.add(() => {
+            this.grown = true;
+        }, this);
+	}
+
 	update() {
+		this.game.world.bringToTop(this);
+
+		if(!this.grown) return;
 
 		// MODE 1
 		// this.rotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
+		this.rotation = this.game.physics.arcade.angleToXY(this, this.shootX, this.shootY);
 
 		//MODE 2
-		if(this.angle >= 160){
-			this.angleSwitch = false;
-		} else if(!this.angleSwitch && this.angle <= 30){
-			this.angleSwitch = true;
-		}
+		// if(this.angle >= 160){
+		// 	this.angleSwitch = false;
+		// } else if(!this.angleSwitch && this.angle <= 30){
+		// 	this.angleSwitch = true;
+		// }
 
-		if(this.angleSwitch){
-			this.angle += 1;
-		} else {
-			this.angle -= 1;
-		}
+		// if(this.angleSwitch){
+		// 	this.angle += 1;
+		// } else {
+		// 	this.angle -= 1;
+		// }
 		
 
 		// for (var i = 0; i < this.weapon.bullets.children.length; i++) {
@@ -92,12 +121,12 @@ export default class extends Phaser.Sprite {
         
         this.game.world.setChildIndex(this.weapon.bullets, 10);
 
-		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
+		// this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
 		// if (this.distanceBetweenEnemiePlayer < 200) {
-				// this.weapon.fireAtXY(this.shootX, this.shootY);
+				this.weapon.fireAtXY(this.shootX, this.shootY);
 
-				this.weapon.fire();
+				// this.weapon.fire();
 				
 				// let explosion = this.game.add.emitter(this.weapon.x, this.weapon.y + 7, 1);
 				// explosion.fixedToCamera = true;
@@ -146,7 +175,7 @@ export default class extends Phaser.Sprite {
 			explosion.destroy();
 		}, this);
 
-		bullet.kill();
+		// bullet.kill();
 	}
 
 		

@@ -101,6 +101,16 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"Chests",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"CustomEmitter",
          "objects":[],
          "opacity":1,
@@ -121,8 +131,8 @@
                     {
                      "direction":"down",
                      "port":true,
-                     "targetID":2,
-                     "targetMap":"map2"
+                     "targetID":3,
+                     "targetMap":"map10"
                     },
                  "propertytypes":
                     {

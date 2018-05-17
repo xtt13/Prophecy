@@ -139,7 +139,24 @@ export default class {
     }
 
     map9(){
+        this.endBoss = this.game.add.sprite(472, -200, 'endBoss');
+        this.endBoss.anchor.set(0.5);
+        this.bossMovement = this.game.add.tween(this.endBoss).to(
+            {y: this.endBoss.y + 470}
+        , 12000, 'Linear', true, 0, 0, false);
+        this.game.camera.shake(0.0015, 12000, true);
 
+        this.bossMovement.onComplete.add(() => {
+            for (let i = 0; i < this.level.enemies.length; i++) {
+                const sprout = null;
+                if(this.level.enemies[i].type == 'sprout'){
+                   this.level.enemies[i].grow();
+                }
+
+
+                
+            }
+        }, this);
     }
 
     map9update(){
@@ -156,6 +173,9 @@ export default class {
         this.bossDoor.animations.add('close', [32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0], 8, true);
         this.bossDoor.animations.add('idle', [32], 1, true);
 
+        // this.game.renderer.renderSession.roundPixels = true;
+        // console.log(this.game.renderer.renderSession);
+
         // if(this.level.gameData.targetID == 3){
         //     this.bossDoor.animations.play('open', 100, false);
         // }
@@ -169,6 +189,8 @@ export default class {
             this.game.physics.arcade.collide(this.level.player, this.bossDoor);
             this.game.world.setChildIndex(this.bossDoor, 10);
         }
+
+        this.game.world.bringToTop(this.level.templeFliesEmitter);
         
     }
 
