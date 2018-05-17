@@ -1,6 +1,7 @@
 /*eslint-disable */
 import config from './../../config';
 import Lucy from '../beings/Lucy';
+import EndbossHead from '../beings/EndbossHead';
 
 export default class {
 	constructor(game, level, currentMap) {
@@ -139,8 +140,13 @@ export default class {
     }
 
     map9(){
+        this.deadSprouts = 0;
         this.endBoss = this.game.add.sprite(472, -200, 'endBoss');
         this.endBoss.anchor.set(0.5);
+
+        this.endBossHead = new EndbossHead(this.game, 472, -90, this.level.player);
+
+
         this.bossMovement = this.game.add.tween(this.endBoss).to(
             {y: this.endBoss.y + 470}
         , 12000, 'Linear', true, 0, 0, false);
@@ -150,13 +156,15 @@ export default class {
             for (let i = 0; i < this.level.enemies.length; i++) {
                 const sprout = null;
                 if(this.level.enemies[i].type == 'sprout'){
-                   this.level.enemies[i].grow();
-                }
-
-
-                
+                    this.level.enemies[i].addLevelBuilder(this);
+                    this.level.enemies[i].grow();
+                }        
             }
         }, this);
+
+        this.bossHeadMovement = this.game.add.tween(this.endBossHead).to(
+            {y: this.endBossHead.y + 470}
+        , 12000, 'Linear', true, 0, 0, false);
     }
 
     map9update(){

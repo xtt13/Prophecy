@@ -127,9 +127,9 @@ export default class extends Phaser.Sprite {
 
 		this.weaponGun = this.game.add.weapon(30, 'bulletBeam');
 		this.weaponGun.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
-		this.weaponGun.bulletLifespan = 200;
+		this.weaponGun.bulletLifespan = 2000;
 		this.weaponGun.bulletSpeed = 400;
-		this.weaponGun.fireRate = 500;
+		this.weaponGun.fireRate = 1000;
 		// this.weaponGun.bulletAngleVariance = 10;
 		this.weaponGun.trackSprite(this.playerArm, 0, 10, true);
 
