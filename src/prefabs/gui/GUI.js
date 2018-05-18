@@ -90,13 +90,7 @@ export default class {
 
 		this.healthBar.update();
 
-		this.game.world.bringToTop(this.healthBar.healthBarIcon);
-		this.game.world.bringToTop(this.healthBar.healthBar); 
-		this.game.world.bringToTop(this.healthBar.heartsShaddow);
-		this.game.world.bringToTop(this.healthBar.hearts);
-		this.game.world.bringToTop(this.healthBar.dashBarFrame);
-		this.game.world.bringToTop(this.healthBar.dashBar);
-		this.game.world.bringToTop(this.healthBar.heartExplosion);
+		this.game.world.bringToTop(this.healthBar.healthBarGroup);
 
 		// this.game.world.bringToTop(this.cursor);
 		// this.cursor.x = this.game.input.mousePointer.worldX;

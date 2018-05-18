@@ -127,6 +127,10 @@ export default class extends Phaser.State {
 		this.load.image('sprout', 'assets/sprites/sprout.png');
 		this.load.image('endBoss', 'assets/sprites/endBoss.png');
 		this.load.image('endBossHead', 'assets/sprites/endBossHead.png');
+		this.load.image('endBossHeadShadow', 'assets/sprites/endBossHeadShadow.png');
+		this.load.image('endBossNeck', 'assets/sprites/endBossNeck.png');
+		this.load.image('endBossClaw1', 'assets/sprites/endBossClaw1.png');
+		this.load.image('endBossClaw2', 'assets/sprites/endBossClaw2.png');
 		this.load.image('bulletRock', 'assets/sprites/bulletRock.png');
 		this.load.image('bulletPlayer', 'assets/sprites/bulletPlayer.png');
 		this.load.image('playerArm', 'assets/sprites/playerArm.png');

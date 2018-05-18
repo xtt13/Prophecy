@@ -60,11 +60,11 @@ export default class {
         this.island.scale.setTo(0.8);
         // this.islandTween = this.game.add
         // 		.tween(this.island)
-        // 		.to({ y: this.island.y + 2.5 }, 2000, 'Linear', true, 0, 0, true)
+        // 		.to({ y: this.island.y + 2.5 }, 2000, Phaser.Easing.Back.Out, true, 0, 0, true)
         // 		.loop();
         // this.game.add
         // 		.tween(this.island)
-        // 		.to({ x: this.island.x + 2.5 }, 2000, 'Linear', true, 0, 0, true)
+        // 		.to({ x: this.island.x + 2.5 }, 2000, Phaser.Easing.Back.Out, true, 0, 0, true)
         // 		.loop();
 
         
@@ -140,15 +140,59 @@ export default class {
     }
 
     map9(){
+
+        this.level.GUICLASS.healthBar.healthBarGroup.scale.setTo(1.5);
+        this.level.GUICLASS.healthBar.healthBarGroup.x = 0;
+        this.level.GUICLASS.healthBar.healthBarGroup.y = -140;
+
+        console.log(this.game.camera);
+
+
         this.deadSprouts = 0;
-        this.endBoss = this.game.add.sprite(472, -200, 'endBoss');
+        this.endBoss = this.game.add.sprite(497, 0, 'endBoss');
+        this.endBoss.scale.setTo(1.1, 1);
         this.endBoss.anchor.set(0.5);
 
-        this.endBossHead = new EndbossHead(this.game, 472, -90, this.level.player);
+        this.endBossNeck = this.game.add.sprite(472, -130, 'endBossNeck');
+        this.endBossNeck.anchor.set(0.5, 0);
+        // this.endBossNeck.tint = 0xFF0000;
+
+        this.endBossHeadShadow = this.game.add.sprite(472, 0, 'endBossHeadShadow');
+        this.endBossHeadShadow.anchor.set(0.5);
+
+        this.endBossClaw1 = this.game.add.sprite(428, -145, 'endBossClaw1');
+        this.endBossClaw1.anchor.set(1, 0);
+
+        this.endBossClaw2 = this.game.add.sprite(518, -145, 'endBossClaw2');
+        this.endBossClaw2.anchor.set(0, 0);
+
+        
+
+        this.endBossHead = new EndbossHead(this.game, 472, -90, this.level.player, this);
 
 
         this.bossMovement = this.game.add.tween(this.endBoss).to(
             {y: this.endBoss.y + 470}
+        , 12000, 'Linear', true, 0, 0, false);
+        this.game.camera.shake(0.0015, 12000, true);
+
+        this.bossNeckMovement = this.game.add.tween(this.endBossNeck).to(
+            {y: this.endBossNeck.y + 470}
+        , 12000, 'Linear', true, 0, 0, false);
+        this.game.camera.shake(0.0015, 12000, true);
+
+        this.bossClaw1Movement = this.game.add.tween(this.endBossClaw1).to(
+            {y: this.endBossClaw1.y + 470}
+        , 12000, 'Linear', true, 0, 0, false);
+        this.game.camera.shake(0.0015, 12000, true);
+
+        this.bossClaw2Movement = this.game.add.tween(this.endBossClaw2).to(
+            {y: this.endBossClaw2.y + 470}
+        , 12000, 'Linear', true, 0, 0, false);
+        this.game.camera.shake(0.0015, 12000, true);
+
+        this.endBossHeadShadowMovement = this.game.add.tween(this.endBossHeadShadow).to(
+            {y: this.endBossHeadShadow.y + 470}
         , 12000, 'Linear', true, 0, 0, false);
         this.game.camera.shake(0.0015, 12000, true);
 
@@ -158,7 +202,11 @@ export default class {
                 if(this.level.enemies[i].type == 'sprout'){
                     this.level.enemies[i].addLevelBuilder(this);
                     this.level.enemies[i].grow();
-                }        
+                }   
+                
+                this.game.add.tween(this.endBoss.scale).to(
+                    {x: 1.05, y: 1}
+                , 5000, 'Linear', true, 0, 0, true).loop();
             }
         }, this);
 
@@ -168,6 +216,9 @@ export default class {
     }
 
     map9update(){
+        this.endBossHeadShadow.rotation = this.endBossHead.rotation;
+        this.game.world.bringToTop(this.endBossHead);
+
         
     }
 
@@ -192,7 +243,7 @@ export default class {
 
     map10update(){
         if(this.level.eventManager.bossDoorOpen){
-            this.game.world.setChildIndex(this.bossDoor, 20);
+            this.game.world.setChildIndex(this.bossDoor, 14);
         } else {
             this.game.physics.arcade.collide(this.level.player, this.bossDoor);
             this.game.world.setChildIndex(this.bossDoor, 10);

@@ -115,14 +115,14 @@ export default class extends Phaser.Sprite {
 
 			this.growTween = this.game.add.tween(this.scale).to(
 				{x: 1, y: 1}
-			, 3000, 'Linear', true, 0, 0, false);
+			, 3000, Phaser.Easing.Back.Out, true, 0, 0, false);
 
 		} else {
 			
 
 			this.growTween = this.game.add.tween(this.scale).to(
 				{x: 1, y: -1}
-			, 3000, 'Linear', true, 0, 0, false);
+			, 3000, Phaser.Easing.Back.Out, true, 0, 0, false);
 		}
 
 		this.growTween.onComplete.add(() => {
@@ -140,11 +140,13 @@ export default class extends Phaser.Sprite {
 	}
 
 	mirrorBeam(){
+		if(this.dead) return;
+		
 		this.mirrorBeamRunning = true;
 		let targetRotation = this.game.physics.arcade.angleToXY(this, this.shootX, this.shootY);
 		this.rotationTween = this.game.add.tween(this).to(
 			{rotation: targetRotation}
-		, 2000, 'Linear', true, 0, 0, false);
+		, 2000, Phaser.Easing.Back.Out, true, 0, 0, false);
 		this.rotationTween.onComplete.add(() => {
 			var shootLoop = this.game.time.events.loop(1, () => {
 				this.weapon.fireAtXY(this.shootX, this.shootY);
@@ -160,13 +162,15 @@ export default class extends Phaser.Sprite {
 	}
 
 	shootAtPlayer(times){
+		if(this.dead) return;
+
 		this.shootAtPlayerRunning = true;
 		let playerX = this.player.body.x;
 		let playerY = this.player.body.y;
 		let targetRotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
 		this.rotationTween = this.game.add.tween(this).to(
 			{rotation: targetRotation}
-		, 500, 'Linear', true, 0, 0, false);
+		, 500, Phaser.Easing.Back.Out, true, 0, 0, false);
 		this.rotationTween.onComplete.add(() => {
 			var shootLoop = this.game.time.events.loop(1, () => {
 				this.weapon.fireAtXY(playerX, playerY);
@@ -189,12 +193,14 @@ export default class extends Phaser.Sprite {
 	}
 
 	rotationShoot(duration){
+		if(this.dead) return;
+
 		this.rotationShootRunning = true;
 
 		let targetRotation = this.game.physics.arcade.angleToXY(this, 0, 500);
 		this.rotationTween = this.game.add.tween(this).to(
 			{rotation: targetRotation}
-		, 1000, 'Linear', true, 0, 0, false);
+		, 1000, Phaser.Easing.Back.Out, true, 0, 0, false);
 		this.rotationTween.onComplete.add(() => {
 
 			var shootLoop = this.game.time.events.loop(1, () => {
@@ -223,13 +229,30 @@ export default class extends Phaser.Sprite {
 	}
 
 	jailAttack(){
+		if(this.dead) return;
+
 		this.shootAtPlayerRunning = true;
 
 		let targetRotation = this.game.physics.arcade.angleToXY(this, this.x, 760);
 		this.rotationTween = this.game.add.tween(this).to(
 			{rotation: targetRotation}
-		, 1000, 'Linear', true, 0, 0, false);
+		, 1000, Phaser.Easing.Back.Out, true, 0, 0, false);
 		this.rotationTween.onComplete.add(() => {
+
+			let explosion = this.game.add.emitter(this.x, this.y + 30, 200);
+			// explosion.fixedToCamera = true;
+			explosion.setAlpha(1, 0, 2000, null, false);
+			// explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));
+			explosion.gravity = 10;
+			explosion.setYSpeed(100);
+			explosion.setXSpeed(-30, 30);
+			explosion.minParticleScale = 2;
+			explosion.makeParticles('bulletParticle');
+			explosion.start(false, 2000, 1);
+
+			this.game.time.events.add(4000, () => {
+				explosion.on = false;
+			}, this);
 
 			this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
 				if(this.id == 1 || this.id == 4){
@@ -259,6 +282,7 @@ export default class extends Phaser.Sprite {
 				}
 		
 				this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
+					explosion.destroy();
 					this.game.time.events.remove(shootLoop);	
 					this.shootAtPlayerRunning = false;
 					this.mirrorBeam();
@@ -270,79 +294,18 @@ export default class extends Phaser.Sprite {
 		}, this);
 
 		
-
-		// if(this.id == 1 || this.id == 4){
-
-		// 	if(this.id == 1){
-		// 		var playerX = this.player.body.x - 100;
-		// 		var playerY = this.player.body.y;
-		// 		var targetRotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
-		// 	}
-		// 	if(this.id == 4){
-		// 		var playerX = this.player.body.x + 100;
-		// 		var playerY = this.player.body.y;
-		// 		var targetRotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
-		// 	} 
-
-			
-		// 	this.rotationTween = this.game.add.tween(this).to(
-		// 		{rotation: targetRotation}
-		// 	, 500, 'Linear', true, 0, 0, false);
-		// 	this.rotationTween.onComplete.add(() => {
-	
-		// 		var shootLoop = this.game.time.events.loop(1, () => {
-
-		// 			this.weapon.fireAtXY(playerX, playerY);
-		// 		}, this);
-
-		// 		this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
-		// 			if(this.id == 1){
-		// 				var targetRotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
-		// 				this.game.add.tween(this).to(
-		// 					{rotation: targetRotation}
-		// 				, 500, 'Linear', true, 0, 0, false);
-		// 				this.game.time.events.remove(shootLoop);
-		// 				var shootLoop = this.game.time.events.loop(1, () => {
-		// 					this.weapon.fireAtXY(this.player.x, this.player.y);
-		// 				}, this);
-						
-		// 			}
-		// 			if(this.id == 4){
-		// 				var targetRotation = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
-		// 				this.game.add.tween(this).to(
-		// 					{rotation: targetRotation}
-		// 				, 500, 'Linear', true, 0, 0, false);
-		// 				this.game.time.events.remove(shootLoop);
-		// 				var shootLoop = this.game.time.events.loop(1, () => {
-
-		// 					this.weapon.fireAtXY(this.player.x, this.player.y);
-		// 				}, this);
-		// 			}
-
-		// 		});
-	
-		// 		this.game.time.events.add(Phaser.Timer.SECOND * 10, () => {
-		// 			this.game.time.events.remove(shootLoop);	
-		// 		});
-		// 	}, this);	
-
-		// }
-		
-
-
 	}
 
 	update() {
 		
-		
-
 		if(this.dead) return;
 		if(this.paralyze) return;
 
 		this.game.physics.arcade.collide(this, this.player.weaponGun.bullets, this.hit, null, this);
 		
+		// this.game.world.bringToTop(this.weapon.bullets); 
 		this.game.world.bringToTop(this); 
-        // this.game.world.setChildIndex(this.weapon.bullets, 10);
+        this.game.world.setChildIndex(this.weapon.bullets, 13);
 
 
 		this.game.physics.arcade.collide(this.weapon.bullets, this.layer, this.collisionHandler, null, this);
@@ -366,20 +329,20 @@ export default class extends Phaser.Sprite {
 			bullet.kill();
 		}
 
-		// let explosion = this.game.add.emitter(bullet.x, bullet.y, 2);
-		// explosion.fixedToCamera = true;
-		// explosion.setAlpha(1, 0, 2000, null, false);
-		// explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));
-		// explosion.gravity = 150;
-		// explosion.minParticleScale = 0.1;
-		// explosion.maxParticleScale = 0.5;
-		// explosion.setYSpeed(-100);
-		// explosion.makeParticles('bulletBeam', 100);
-		// explosion.start(true, 0, null, 10);
+		let explosion = this.game.add.emitter(bullet.x, bullet.y, 2);
+		explosion.fixedToCamera = true;
+		explosion.setAlpha(1, 0, 2000, null, false);
+		explosion.setXSpeed(this.game.rnd.integerInRange(-100, 100));
+		explosion.gravity = 150;
+		explosion.minParticleScale = 0.1;
+		explosion.maxParticleScale = 0.5;
+		explosion.setYSpeed(-100);
+		explosion.makeParticles('bulletBeam', 100);
+		explosion.start(true, 0, null, 10);
 
-		// this.game.time.events.add(2000, () => {
-		// 	explosion.destroy();
-		// }, this);
+		this.game.time.events.add(2000, () => {
+			explosion.destroy();
+		}, this);
 
 		// bullet.kill();
 	}

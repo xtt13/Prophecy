@@ -66,6 +66,8 @@ export default class {
 
     buildHealthBar(value) {
 
+        this.healthBarGroup = this.game.add.group();
+
         this.heartExplosion = this.game.add.emitter(0, 0, 100);
 
         var width = 13;
@@ -177,6 +179,14 @@ export default class {
         }
 
         // this.removeHeart(3);
+
+        this.healthBarGroup.add(this.healthBarIcon);
+        this.healthBarGroup.add(this.healthBar);
+        this.healthBarGroup.add(this.heartsShaddow);
+        this.healthBarGroup.add(this.hearts);
+        this.healthBarGroup.add(this.dashBarFrame);
+        this.healthBarGroup.add(this.dashBar);
+        this.healthBarGroup.add(this.heartExplosion);
 
 
     }

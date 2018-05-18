@@ -705,7 +705,7 @@ export default class {
 
 	openBossDoor() {
 		// if(!this.level.questManager.checkIfQuestExists(20)) return;
-
+		if(this.bossDoorOpen) return;
 		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 
 		if (this.level.levelBuilder.bossDoor.animations._anims.close.isPlaying) {
@@ -733,30 +733,30 @@ export default class {
 	closeBossDoor() {
 		// if(!this.level.questManager.checkIfQuestExists(20)) return;
 
-		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
+	// 	this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 
-		if (this.level.levelBuilder.bossDoor.animations._anims.open.isPlaying) {
-			this.level.levelBuilder.bossDoor.animations._anims.open.onComplete.add(() => {
-				this.bossDoorOpen = true;
-				this.game.time.events.add(
-					2000,
-					() => {
-						this.bossDoorOpen = false;
-						this.doorOpenSound.play();
-						this.game.camera.shake(0.0015, 2500, true);
-						this.level.levelBuilder.bossDoor.play('close', 15, false);
-					}, this);
+	// 	if (this.level.levelBuilder.bossDoor.animations._anims.open.isPlaying) {
+	// 		this.level.levelBuilder.bossDoor.animations._anims.open.onComplete.add(() => {
+	// 			this.bossDoorOpen = true;
+	// 			this.game.time.events.add(
+	// 				2000,
+	// 				() => {
+	// 					this.bossDoorOpen = false;
+	// 					this.doorOpenSound.play();
+	// 					this.game.camera.shake(0.0015, 2500, true);
+	// 					this.level.levelBuilder.bossDoor.play('close', 15, false);
+	// 				}, this);
 
-			}, this);
-		} else {
-			this.game.time.events.add(
-				2000,
-				() => {
-					this.bossDoorOpen = false;
-					this.doorOpenSound.play();
-					this.game.camera.shake(0.0015, 2500, true);
-					this.level.levelBuilder.bossDoor.play('close', 15, false);
-				}, this);
-		}
+	// 		}, this);
+	// 	} else {
+	// 		this.game.time.events.add(
+	// 			2000,
+	// 			() => {
+	// 				this.bossDoorOpen = false;
+	// 				this.doorOpenSound.play();
+	// 				this.game.camera.shake(0.0015, 2500, true);
+	// 				this.level.levelBuilder.bossDoor.play('close', 15, false);
+	// 			}, this);
+	// 	}
 	}
 }
