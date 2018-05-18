@@ -16,6 +16,7 @@ export default class {
 		this.spawnEnemiesRunning = false;
 		this.templeDoorOpen = false;
 		this.bossDoorOpen = false;
+		this.spotViewerPlayed = false;
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
@@ -94,6 +95,8 @@ export default class {
 				this.openChest(region);
 			} else if (region.properties.openBossDoor) {
 				this.openBossDoor(region);
+			} else if (region.properties.spotViewer) {
+				this.spotViewer(region);
 			}
 		});
 
@@ -110,6 +113,8 @@ export default class {
 				this.closeChest(region);
 			} else if (region.properties.openBossDoor) {
 				this.closeBossDoor(region);
+			} else if (region.properties.spotViewer) {
+				this.followPlayer(region);
 			}
 		});
 	}
@@ -759,4 +764,41 @@ export default class {
 	// 			}, this);
 	// 	}
 	}
+
+	spotViewer(region){
+
+		// if (!this.level.questManager.checkIfQuestExists(region.properties.ifQuestID) && ifQuestID !== undefined) return;
+		if(this.spotViewerPlayed) return;
+		this.spotViewerPlayed = true;
+
+		let focusX = region.properties.focusX;
+		let focusY = region.properties.focusY;
+
+		let transitionTime = 750;
+
+		this.game.camera.unfollow();
+
+		this.level.player.movable = false;
+
+
+		this.game.add
+			.tween(this.game.camera)
+			.to({
+					x: focusX - this.game.camera.width / 2,
+					y: focusY - this.game.camera.height / 2
+				},
+				transitionTime,
+				Phaser.Easing.Quadratic.InOut,
+				true
+			);
+
+		this.game.time.events.add(
+			3000,
+			() => {
+				this.level.player.movable = true;
+				this.followPlayer();
+			}, this);
+
+	}
+
 }
