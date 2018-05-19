@@ -405,16 +405,17 @@ export default class {
 		// Find specific enemy
 		elementsArr.forEach(function (element) {
 			const killQuestID = element.properties.killQuestID;
-			if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
+			// if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
 
 				if (element.properties.type == 'seed') {
+					console.log('SEEED');
 					this.enemies.push(
 						new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 					);
 				}
 
 
-			}
+			// }
 
 			if (element.properties.type == 'sprout') {
 				this.enemies.push(

@@ -786,7 +786,39 @@ export default class {
 		this.level.player.movable = false;
 
 
+
+		// BARS
+		var width = this.game.camera.width;
+		var height = 20;
+		var bmd = this.game.add.bitmapData(width, height);
+
+		bmd.ctx.beginPath();
+		bmd.ctx.rect(0, 0, width, height);
+		bmd.ctx.fillStyle = '#000000';
+		bmd.ctx.globalAlpha = 1;
+		bmd.ctx.fill();
+
+		this.level.GUICLASS.healthBar.fadeOut();
+
+		this.upperBar = this.game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height, bmd);
+		this.upperBar.fixedToCamera = true;
+
+		this.downBar = this.game.add.sprite(
+			this.game.camera.width / 2 - bmd.width / 2,
+			this.game.camera.height - this.game.camera.height - 20,
+			bmd
+		);
+		this.downBar.fixedToCamera = true;
+
 		this.game.add
+			.tween(this.upperBar.cameraOffset)
+			.to({ y: this.upperBar.y - 20 }, 1000, Phaser.Easing.Linear.None, true);
+		this.downBarTween = this.game.add
+			.tween(this.downBar.cameraOffset)
+			.to({ y: this.downBar.y + 20 }, 1000, Phaser.Easing.Linear.None, true);
+
+		this.downBarTween.onComplete.add(() => {
+			this.game.add
 			.tween(this.game.camera)
 			.to({
 					x: focusX - this.game.camera.width / 2,
@@ -797,11 +829,33 @@ export default class {
 				true
 			);
 
+		}, this);
+
 		this.game.time.events.add(
-			3000,
+			4000,
 			() => {
 				this.level.player.movable = true;
+
+				this.upperBarTween = this.game.add
+				.tween(this.upperBar.cameraOffset)
+				.to({ y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
+				this.downBarTween = this.game.add
+				.tween(this.downBar.cameraOffset)
+				.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
+	
+			this.upperBarTween.onComplete.add(function() {
+				this.upperBar.destroy();
+				this.downBar.destroy();
+				this.upperBar = false;
+	
 				this.followPlayer();
+				this.level.GUICLASS.healthBar.fadeIn();
+	
+			}, this);
+
+
+
+				
 			}, this);
 
 	}
