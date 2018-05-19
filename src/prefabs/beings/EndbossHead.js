@@ -78,11 +78,11 @@ export default class extends Phaser.Sprite {
         , 400, Phaser.Easing.Back.Out, true, 0, 0, true);
 
         this.rotateClaw1Tween = this.game.add.tween(this.levelBuilder.endBossClaw1).to(
-            {rotation: this.levelBuilder.endBossClaw1.rotation - 0.5}
+            {rotation: this.levelBuilder.endBossClaw1.rotation - 0.3}
         , 400, Phaser.Easing.Back.Out, true, 0, 0, true);
 
         this.rotateClaw2Tween = this.game.add.tween(this.levelBuilder.endBossClaw2).to(
-            {rotation: this.levelBuilder.endBossClaw2.rotation + 0.5}
+            {rotation: this.levelBuilder.endBossClaw2.rotation + 0.3}
         , 400, Phaser.Easing.Back.Out, true, 0, 0, true);
 
         this.snapTween = this.game.add.tween(this.levelBuilder.endBossNeck.scale).to(
@@ -112,9 +112,9 @@ export default class extends Phaser.Sprite {
         if (this.distanceBetweenEnemiePlayer < 200) {
             this.snap();       
         } else {
-            this.rotation = (this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y) - 1.5)/3;
-            this.levelBuilder.endBossClaw1.rotation = this.rotation;
-            this.levelBuilder.endBossClaw2.rotation = this.rotation;
+            // this.rotation = (this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y) - 1.5)/3;
+            // this.levelBuilder.endBossClaw1.rotation = this.rotation;
+            // this.levelBuilder.endBossClaw2.rotation = this.rotation;
         }
     }
     

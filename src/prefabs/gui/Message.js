@@ -18,6 +18,9 @@ export default class {
 
 		this.followTween = this.game.add;
 
+		this.wordSound = this.game.add.audio('sfxletters');
+		
+
 		// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
 
 		this.addBars();
@@ -65,8 +68,8 @@ export default class {
 		this.text.smoothed = false;
 
 		// this.text.scale.set(0.35);
-		this.text.maxWidth = 1000;
-		this.text.textHeight = 1500;
+		this.text.maxWidth = 200;
+		// this.text.textHeight = 1500;
 		this.game.cache.getBitmapFont('pxlfont').font.lineHeight = 100;
 
 		this.text.fixedToCamera = true;
@@ -107,10 +110,14 @@ export default class {
 		this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
 		this.wordIndex++;
 
+		this.wordSound.play();
+
 		if (this.wordIndex === this.line.length) {
 			this.text.text = this.text.text.concat('\n');
 			this.game.time.events.add(this.lineDelay, this.nextLine, this);
 		}
+
+		// this.text.cleanText(text);
 
 		this.text.x = Math.floor(this.text.x);
 		this.text.y = Math.floor(this.text.y);

@@ -637,6 +637,29 @@
                  "width":71.2281,
                  "x":843.440041386265,
                  "y":1113.51860486767
+                }, 
+                {
+                 "height":296.417156663179,
+                 "id":229,
+                 "name":"sfxBossReverb",
+                 "properties":
+                    {
+                     "once":true,
+                     "soundArea":true,
+                     "soundkey":"sfxBossReverb"
+                    },
+                 "propertytypes":
+                    {
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":385.8697501189,
+                 "x":720.695867830305,
+                 "y":905.249045562637
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -798,7 +821,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":229,
+ "nextobjectid":230,
  "orientation":"orthogonal",
  "properties":
     {

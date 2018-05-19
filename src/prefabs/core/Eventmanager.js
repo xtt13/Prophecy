@@ -17,6 +17,7 @@ export default class {
 		this.templeDoorOpen = false;
 		this.bossDoorOpen = false;
 		this.spotViewerPlayed = false;
+		this.areaSoundOnce = false;
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
@@ -591,6 +592,10 @@ export default class {
 	}
 
 	soundArea(region) {
+		if(region.properties.once){
+			if(this.areaSoundOnce) return;
+		}
+		this.areaSoundOnce = true;
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(4000);
 	}

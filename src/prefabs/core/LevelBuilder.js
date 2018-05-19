@@ -2,6 +2,7 @@
 import config from './../../config';
 import Lucy from '../beings/Lucy';
 import EndbossHead from '../beings/EndbossHead';
+import dialogues from './../../dialogues';
 
 export default class {
 	constructor(game, level, currentMap) {
@@ -35,7 +36,17 @@ export default class {
         console.log(this.level.questManager.checkIfQuestWasDone(1), this.level.questManager.checkIfQuestExists(2));
         if (this.level.questManager.checkIfQuestWasDone(1) && this.level.questManager.checkIfQuestExists(2)){
             this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
-                this.level.GUICLASS.createMessage([' I am Lucy ...', ' Dash now!'], false, true);
+                let messageID = 1;
+                const all_messages = Object.values(dialogues.dialogues);
+                for (let i = 0; i < all_messages.length; i++) {
+                    if (i + 1 == messageID) {
+        
+                        const message = all_messages[i];
+        
+                        this.level.GUICLASS.createMessage(message, false, true);
+                        break;
+                    }
+                }
                 this.level.questManager.addQuest(3);
             });
         }
@@ -149,6 +160,9 @@ export default class {
 
 
         this.deadSprouts = 0;
+
+        this.headGroup = this.game.add.group();
+
         this.endBoss = this.game.add.sprite(497, 0, 'endBoss');
         this.endBoss.scale.setTo(1.1, 1);
         this.endBoss.anchor.set(0.5);
@@ -160,15 +174,29 @@ export default class {
         this.endBossHeadShadow = this.game.add.sprite(472, 0, 'endBossHeadShadow');
         this.endBossHeadShadow.anchor.set(0.5);
 
-        this.endBossClaw1 = this.game.add.sprite(428, -145, 'endBossClaw1');
-        this.endBossClaw1.anchor.set(1, 0);
+        this.endBossClaw1 = this.game.add.sprite(370, -145, 'endBossClaw1');
+        // this.endBossClaw1.anchor.set(1, 0);
+        this.headGroup.add(this.endBossClaw1);
+        // this.endBossClaw1.anchor.set(3, 0);
+        // this.endBossClaw1.x += 100;
 
         this.endBossClaw2 = this.game.add.sprite(518, -145, 'endBossClaw2');
-        this.endBossClaw2.anchor.set(0, 0);
+        // this.endBossClaw2.anchor.set(0, 0);
+        this.headGroup.add(this.endBossClaw2);
 
         
 
         this.endBossHead = new EndbossHead(this.game, 472, -90, this.level.player, this);
+        this.headGroup.add(this.endBossHead);
+
+        this.headGroup.x = 420;
+        this.headGroup.y = 400;
+
+        this.headGroup.pivot.x = 420;
+        this.headGroup.pivot.y = 420;
+        // this.headGroup.pivot.set(20);
+
+        console.log(this.headGroup);
 
 
         this.bossMovement = this.game.add.tween(this.endBoss).to(
@@ -216,8 +244,15 @@ export default class {
     }
 
     map9update(){
-        this.endBossHeadShadow.rotation = this.endBossHead.rotation;
-        this.game.world.bringToTop(this.endBossHead);
+        this.headGroup.rotation = (this.game.physics.arcade.angleToXY(this.headGroup, this.level.player.x, this.level.player.y) - 1.5)/3;
+        // this.headGroup.rotation = (this.game.physics.arcade.angleToXY(this.endBossHead, this.level.player.x, this.level.player.y));
+        // this.headGroup.angle += 1;
+        this.endBossHeadShadow.rotation = (this.game.physics.arcade.angleToXY(this.headGroup, this.level.player.x, this.level.player.y) - 1.5)/3;
+        this.game.world.bringToTop(this.headGroup);
+
+        // this.headGroup.children.forEach((sprite) => {
+        //     this.game.debug.body(sprite);
+        // });
 
         
     }
