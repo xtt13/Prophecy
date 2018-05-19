@@ -479,7 +479,7 @@ export default class extends Phaser.Sprite {
 
 		if(this.level.inputClass.direction == 'right' || this.level.inputClass.direction == 'down'){
 			// this.game.world.bringToTop(this.playerArm);
-			this.game.world.setChildIndex(this.playerArm, 19);
+			this.game.world.setChildIndex(this.playerArm, 14);
 		}
 		this.playerArm.rotation = this.game.physics.arcade.angleToPointer(this.playerArm) - 360;
 

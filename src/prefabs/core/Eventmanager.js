@@ -779,7 +779,7 @@ export default class {
 		let focusX = region.properties.focusX;
 		let focusY = region.properties.focusY;
 
-		let transitionTime = 750;
+		let transitionTime = 2000;
 
 		this.game.camera.unfollow();
 
