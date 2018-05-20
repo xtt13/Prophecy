@@ -393,6 +393,16 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"Chests",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"Events",
          "objects":[
                 {
@@ -433,7 +443,7 @@
                      "direction":"down",
                      "port":true,
                      "targetID":2,
-                     "targetMap":"map1"
+                     "targetMap":"map11"
                     },
                  "propertytypes":
                     {
@@ -1076,7 +1086,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":246,
+ "nextobjectid":247,
  "orientation":"orthogonal",
  "properties":
     {
