@@ -1,19 +1,5 @@
 # Prophecy
 
-A Pixelart Game made with Phaser.io
+A Pixelart Game made with love and Phaser.io
 
-
-## Installation
-
-1. Install Dependencies
-
-	`npm install`
-
-2. Run Development Server
-
-	 `npm run dev`
-
-> **Note:**
->
-> For Deployment run `npm run deploy`.
-> Deploy Dependencies: *slack-scli*, *now*
+![alt text](https://preview.ibb.co/g98fgT/preview.gif)

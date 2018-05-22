@@ -1034,8 +1034,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1071.02968297772,
-                 "y":587.755805344282
+                 "x":487.788107488279,
+                 "y":570.982066783697
                 }, 
                 {
                  "gid":1663,
@@ -1058,6 +1058,162 @@
                  "width":32,
                  "x":719.887596503138,
                  "y":1203.8536878201
+                }, 
+                {
+                 "gid":1661,
+                 "height":32,
+                 "id":248,
+                 "name":"Woman1",
+                 "properties":
+                    {
+                     "character":"woman1",
+                     "id":4,
+                     "ifNotQuestID":"20"
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifNotQuestID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":804.884265939616,
+                 "y":263.186943964004
+                }, 
+                {
+                 "gid":1665,
+                 "height":32,
+                 "id":251,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "character":"botanist",
+                     "id":7
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":443.614714179364,
+                 "y":937.237383045159
+                }, 
+                {
+                 "gid":1666,
+                 "height":32,
+                 "id":252,
+                 "name":"Girl1",
+                 "properties":
+                    {
+                     "character":"girl1",
+                     "id":8
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":623.444394559318,
+                 "y":338.157647023703
+                }, 
+                {
+                 "gid":1667,
+                 "height":32,
+                 "id":254,
+                 "name":"Veteran",
+                 "properties":
+                    {
+                     "character":"veteran",
+                     "id":9
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":256.469271948511,
+                 "y":747.888055942228
+                }, 
+                {
+                 "gid":1668,
+                 "height":32,
+                 "id":255,
+                 "name":"Girl2",
+                 "properties":
+                    {
+                     "character":"girl2",
+                     "id":10
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":677.345075132025,
+                 "y":853.647186099685
+                }, 
+                {
+                 "gid":1669,
+                 "height":32,
+                 "id":256,
+                 "name":"Girl3",
+                 "properties":
+                    {
+                     "character":"girl3",
+                     "id":11
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":749.297397591202,
+                 "y":527.121548234574
+                }, 
+                {
+                 "gid":1670,
+                 "height":32,
+                 "id":257,
+                 "name":"Woman2",
+                 "properties":
+                    {
+                     "character":"woman2",
+                     "id":12
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":940.87952578647,
+                 "y":640.491234380457
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1086,17 +1242,17 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":247,
+ "nextobjectid":258,
  "orientation":"orthogonal",
  "properties":
     {
-     "athmoSound":"AxTemple",
-     "cameraMode":"topdown",
+     "athmoSound":"AxOpenPlain",
+     "cameraMode":"follow",
      "customSize":false,
      "dayCycle":true,
      "ground":"gravel2",
      "lucy":true,
-     "music":"MxTempleHappy",
+     "music":"MxAncius",
      "startMusic":true,
      "weather":"Village"
     },

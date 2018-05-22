@@ -236,7 +236,29 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":1664,
+                 "height":32,
+                 "id":199,
+                 "name":"Librarian",
+                 "properties":
+                    {
+                     "character":"librarian",
+                     "id":6
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":381.561394470204,
+                 "y":336.052206766272
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -264,7 +286,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":199,
+ "nextobjectid":200,
  "orientation":"orthogonal",
  "properties":
     {
