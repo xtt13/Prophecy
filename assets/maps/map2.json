@@ -1034,8 +1034,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1152.04507590238,
-                 "y":608.159682080862
+                 "x":526.61670030265,
+                 "y":595.308414089087
                 }, 
                 {
                  "gid":1663,
@@ -1063,10 +1063,10 @@
                  "gid":1661,
                  "height":32,
                  "id":248,
-                 "name":"Woman",
+                 "name":"Woman1",
                  "properties":
                     {
-                     "character":"inhabitant1",
+                     "character":"woman1",
                      "id":4,
                      "ifNotQuestID":"20"
                     },
@@ -1080,30 +1080,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1215.7340294656,
-                 "y":607.518468509017
-                }, 
-                {
-                 "gid":1664,
-                 "height":32,
-                 "id":249,
-                 "name":"Librarian",
-                 "properties":
-                    {
-                     "character":"librarian",
-                     "id":6
-                    },
-                 "propertytypes":
-                    {
-                     "character":"string",
-                     "id":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":1192.02952560987,
-                 "y":652.720976985627
+                 "x":793.123710841415,
+                 "y":330.222108023748
                 }, 
                 {
                  "gid":1665,
@@ -1124,8 +1102,118 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1255.64161190626,
-                 "y":653.921205028956
+                 "x":542.403377004249,
+                 "y":852.561386338114
+                }, 
+                {
+                 "gid":1666,
+                 "height":32,
+                 "id":252,
+                 "name":"Girl1",
+                 "properties":
+                    {
+                     "character":"girl1",
+                     "id":8
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":343.543183222143,
+                 "y":361.678757220104
+                }, 
+                {
+                 "gid":1667,
+                 "height":32,
+                 "id":254,
+                 "name":"Veteran",
+                 "properties":
+                    {
+                     "character":"veteran",
+                     "id":9
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":271.757993576172,
+                 "y":832.564052649273
+                }, 
+                {
+                 "gid":1668,
+                 "height":32,
+                 "id":255,
+                 "name":"Girl2",
+                 "properties":
+                    {
+                     "character":"girl2",
+                     "id":10
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":617.366244131202,
+                 "y":731.337413078399
+                }, 
+                {
+                 "gid":1669,
+                 "height":32,
+                 "id":256,
+                 "name":"Girl3",
+                 "properties":
+                    {
+                     "character":"girl3",
+                     "id":11
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":809.827295324412,
+                 "y":677.863559400189
+                }, 
+                {
+                 "gid":1670,
+                 "height":32,
+                 "id":257,
+                 "name":"Woman2",
+                 "properties":
+                    {
+                     "character":"woman2",
+                     "id":12
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":882.076750295467,
+                 "y":878.482324790694
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1154,12 +1242,12 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":252,
+ "nextobjectid":258,
  "orientation":"orthogonal",
  "properties":
     {
      "athmoSound":"AxTemple",
-     "cameraMode":"topdown",
+     "cameraMode":"follow",
      "customSize":false,
      "dayCycle":true,
      "ground":"gravel2",
