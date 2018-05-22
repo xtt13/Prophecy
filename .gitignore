@@ -3,6 +3,7 @@ www/
 platforms/
 plugins/
 dist/
+deploy/
 .vscode/
 *.log
 package-lock.json

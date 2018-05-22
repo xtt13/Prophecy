@@ -1034,8 +1034,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1071.02968297772,
-                 "y":587.755805344282
+                 "x":1152.04507590238,
+                 "y":608.159682080862
                 }, 
                 {
                  "gid":1663,
@@ -1058,6 +1058,74 @@
                  "width":32,
                  "x":719.887596503138,
                  "y":1203.8536878201
+                }, 
+                {
+                 "gid":1661,
+                 "height":32,
+                 "id":248,
+                 "name":"Woman",
+                 "properties":
+                    {
+                     "character":"inhabitant1",
+                     "id":4,
+                     "ifNotQuestID":"20"
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifNotQuestID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1215.7340294656,
+                 "y":607.518468509017
+                }, 
+                {
+                 "gid":1664,
+                 "height":32,
+                 "id":249,
+                 "name":"Librarian",
+                 "properties":
+                    {
+                     "character":"librarian",
+                     "id":6
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1192.02952560987,
+                 "y":652.720976985627
+                }, 
+                {
+                 "gid":1665,
+                 "height":32,
+                 "id":251,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "character":"botanist",
+                     "id":7
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1255.64161190626,
+                 "y":653.921205028956
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1086,7 +1154,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":247,
+ "nextobjectid":252,
  "orientation":"orthogonal",
  "properties":
     {

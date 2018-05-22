@@ -86,7 +86,6 @@ export default class extends Phaser.State {
 	}
 
 	preload() {
-		// this.stage.backgroundColor = "#000000";
 
 		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
 		this.text.anchor.set(0.5);
@@ -109,46 +108,28 @@ export default class extends Phaser.State {
 
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
-
-		//  Our first arc will be a line only
 		this.graphics.lineStyle(8, 0x49ffc5);
-
-		// graphics.arc(0, 0, 135, game.math.degToRad(0), game.math.degToRad(90), false);
-		// this.graphics.arc(0, 0, 130, -1.6, 1, false);
 		this.graphics.scale.setTo(0.5);
 
-		// Load Sprites
-		this.load.image('lucy', 'assets/sprites/lucy.png');
-		this.load.image('blackParticle', 'assets/sprites/blackParticle.png');
-		this.load.image('cyanParticle', 'assets/sprites/cyanParticle.png');
-		this.load.image('blood', 'assets/sprites/blood.png');
-		this.load.image('bloodHeart', 'assets/sprites/bloodHeart.png');
-		this.load.image('rock', 'assets/sprites/rock.png');
-		this.load.image('sprout', 'assets/sprites/sprout.png');
-		this.load.image('endBoss', 'assets/sprites/endBoss.png');
-		this.load.image('endBossHead', 'assets/sprites/endBossHead.png');
-		this.load.image('endBossHeadShadow', 'assets/sprites/endBossHeadShadow.png');
-		this.load.image('endBossNeck', 'assets/sprites/endBossNeck.png');
-		this.load.image('endBossClaw1', 'assets/sprites/endBossClaw1.png');
-		this.load.image('endBossClaw2', 'assets/sprites/endBossClaw2.png');
-		this.load.image('bulletRock', 'assets/sprites/bulletRock.png');
-		this.load.image('bulletPlayer', 'assets/sprites/bulletPlayer.png');
-		this.load.image('playerArm', 'assets/sprites/playerArm.png');
-		this.load.image('bulletParticle', 'assets/sprites/bulletParticle.png');
-		this.load.image('bulletBeam', 'assets/sprites/bulletBeam.png');
-		this.load.image('island', 'assets/sprites/island.png');
-		this.load.image('branch', 'assets/sprites/branch.png');
-		this.load.spritesheet('chest', 'assets/sprites/chest.png', 17, 15);
-		this.load.spritesheet('lucyShadow', 'assets/sprites/lucyShadow.png', 20, 9);
 
+		// Lucy
+		this.load.image('lucy', 'assets/sprites/lucy/lucy.png');
+		this.load.spritesheet('lucyShadow', 'assets/sprites/lucy/lucyShadow.png', 20, 9);
+		
 
-		// Invisible Attack Sprite invisibleAttack
-		this.load.image('invisibleAttack', 'assets/sprites/invisibleAttack.png');
+		// Endboss
+		this.load.image('endBoss', 'assets/sprites/endboss/endBoss.png');
+		this.load.image('endBossHead', 'assets/sprites/endboss/endBossHead.png');
+		this.load.image('endBossHeadShadow', 'assets/sprites/endboss/endBossHeadShadow.png');
+		this.load.image('endBossNeck', 'assets/sprites/endboss/endBossNeck.png');
+		this.load.image('endBossClaw1', 'assets/sprites/endboss/endBossClaw1.png');
+		this.load.image('endBossClaw2', 'assets/sprites/endboss/endBossClaw2.png');
+			
 
 		// LockGame Sprites
-		this.load.image('LockGameRing', 'assets/sprites/LockGameRing.png');
-		this.load.image('LockGameBar', 'assets/sprites/LockGameBar.png');
-		this.load.image('LockGameBall', 'assets/sprites/LockGameBall.png');
+		this.load.image('LockGameRing', 'assets/sprites/lockgame/LockGameRing.png');
+		this.load.image('LockGameBar', 'assets/sprites/lockgame/LockGameBar.png');
+		this.load.image('LockGameBall', 'assets/sprites/lockgame/LockGameBall.png');
 
 		// Load Maps
 		this.load.tilemap('map1', 'assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
@@ -167,6 +148,7 @@ export default class extends Phaser.State {
 		// Load Music
 		this.load.audio('MainTitle', 'assets/music/MainTitle.mp3');
 
+
 		// Load Sounds
 		this.load.audio('AtmoWindRain', 'assets/sounds/AtmoWindRain.mp3');
 		this.load.audio('startGame', 'assets/sounds/startGame.mp3');
@@ -182,41 +164,78 @@ export default class extends Phaser.State {
 		this.load.audio('sfxletters', 'assets/sounds/sfxletters.mp3');
 		this.load.audio('sfxBossReverb', 'assets/sounds/sfxBossReverb.mp3');
 
+
 		// Load AudioSpriteSheets
 		this.load.audiosprite('AxThunderstrike', 'assets/sounds/AxThunderstrike.mp3', null, this.AxThunderstrikeJSON);
 		this.load.audiosprite('PxFootsteps', 'assets/sounds/PxFootsteps.mp3', null, this.pxFootstepsJSON);
 
-		// Load Spritesheets
-		this.load.spritesheet('player_beta', 'assets/sprites/player_beta.png', 55, 55);
-		this.load.spritesheet('player', 'assets/sprites/player.png', 55, 55);
-		this.load.spritesheet('testman', 'assets/sprites/testman.png', 46, 46);
-		this.load.spritesheet('priest', 'assets/sprites/priest.png', 41, 41);
-		this.load.spritesheet('smith', 'assets/sprites/smith.png', 32, 41);
-		this.load.spritesheet('librarian', 'assets/sprites/librarian.png', 18, 41);
-		this.load.spritesheet('inhabitant1', 'assets/sprites/inhabitant1.png', 11, 30);
-		this.load.spritesheet('enemy', 'assets/sprites/enemy.png', 18, 18);
-		this.load.spritesheet('item', 'assets/sprites/testitem.png', 25, 27);
-		this.load.spritesheet('treeleaves', 'assets/sprites/treeleaves.png', 3, 3);
-		this.load.spritesheet('templeDoor', 'assets/sprites/templeDoor.png', 72, 108);
-		this.load.spritesheet('bossDoor', 'assets/sprites/bossDoor.png', 96, 128);
-		this.load.spritesheet('enemyPartsSpritesheet', 'assets/sprites/enemyPartsSpritesheet.png', 16, 16);
-		this.load.spritesheet('fireSpritesheet', 'assets/sprites/fireSpritesheet.png', 1, 1);
-		this.load.spritesheet('sparklingSpritesheet', 'assets/sprites/sparklingSpritesheet.png', 1, 1);
-		this.load.spritesheet('potion', 'assets/sprites/potion.png', 32, 32);
+
+		// Particles
+		this.load.image('rain', 'assets/sprites/particles/rain.png');
+		this.load.image('snow', 'assets/sprites/particles/snow.png');
+		this.load.image('fly', 'assets/sprites/particles/fly.png');
+		this.load.image('waterdrop', 'assets/sprites/particles/waterdrop.png');
+		this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
+		this.load.image('particle', 'assets/sprites/particles/particle.png');
+		this.load.image('particleStart', 'assets/sprites/particles/particleStart.png');
+		this.load.image('leave', 'assets/sprites/particles/leave.png');
+		this.load.image('blackParticle', 'assets/sprites/particles/blackParticle.png');
+		this.load.image('cyanParticle', 'assets/sprites/particles/cyanParticle.png');
+		this.load.image('blood', 'assets/sprites/particles/blood.png');
+		this.load.image('bloodHeart', 'assets/sprites/particles/bloodHeart.png');
+		this.load.image('bulletParticle', 'assets/sprites/particles/bulletParticle.png');
+		this.load.image('bulletBeam', 'assets/sprites/particles/bulletBeam.png');
+		this.load.spritesheet('treeleaves', 'assets/sprites/particles/treeleaves.png', 3, 3);
+		this.load.spritesheet('fireSpritesheet', 'assets/sprites/particles/fireSpritesheet.png', 1, 1);
+		this.load.spritesheet('sparklingSpritesheet', 'assets/sprites/particles/sparklingSpritesheet.png', 1, 1);
+		
+
+		// Player
+		this.load.spritesheet('player', 'assets/sprites/player/player.png', 55, 55);
+		this.load.image('playerArm', 'assets/sprites/player/playerArm.png');
+		this.load.image('invisibleAttack', 'assets/sprites/player/invisibleAttack.png');
+		this.load.image('bulletPlayer', 'assets/sprites/player/bulletPlayer.png');
+
+
+		// Villager		
+		this.load.spritesheet('priest', 'assets/sprites/villager/priest.png', 41, 41);
+		this.load.spritesheet('smith', 'assets/sprites/villager/smith.png', 31, 41);
+		this.load.spritesheet('botanist', 'assets/sprites/villager/botanist.png', 25, 45);
+		this.load.spritesheet('librarian', 'assets/sprites/villager/librarian.png', 16, 48);
+		this.load.spritesheet('inhabitant1', 'assets/sprites/villager/inhabitant1.png', 11, 30);
+
+
+		// Enemies
+		this.load.spritesheet('enemy', 'assets/sprites/enemies/enemy.png', 18, 18);
+		this.load.spritesheet('enemyPartsSpritesheet', 'assets/sprites/enemies/enemyPartsSpritesheet.png', 16, 16);
+		this.load.image('rock', 'assets/sprites/enemies/rock.png');
+		this.load.image('bulletRock', 'assets/sprites/enemies/bulletRock.png');
+		this.load.image('sprout', 'assets/sprites/enemies/sprout.png');
+			
+
+		// Doors
+		this.load.spritesheet('templeDoor', 'assets/sprites/doors/templeDoor.png', 72, 108);
+		this.load.spritesheet('bossDoor', 'assets/sprites/doors/bossDoor.png', 96, 128);
+
+
+		// Items
+		this.load.spritesheet('item', 'assets/sprites/items/testitem.png', 25, 27);
+		this.load.spritesheet('potion', 'assets/sprites/items/potion.png', 32, 32);
+
 
 		// Load Tilesets
 		this.load.image('tileset', 'assets/tilesets/tileset.png');
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
 		this.load.image('Godrays', 'assets/tilesets/godrays.png');
 
-		// Load UI-GameMaps
-		this.load.image('newGameMap', 'assets/sprites/newGameMap.png');
 
 		// Load Videos
+
 
 		// Load Mobile Control
 		this.load.atlas('dpad', 'assets/input/dpad.png', 'assets/input/dpad.json');
 		this.load.atlas('generic', 'assets/input/generic-joystick.png', 'assets/input/generic-joystick.json');
+
 
 		// GameButtons
 		this.load.spritesheet('mapButton', 'assets/input/mapButton.png', 60, 20);
@@ -225,21 +244,23 @@ export default class extends Phaser.State {
 		this.load.spritesheet('muteMusicButton', 'assets/input/muteMusicButton.png', 90, 20);
 		this.load.spritesheet('muteSoundButton', 'assets/input/muteSoundButton.png', 90, 20);
 
+
 		// Load Weather Sprites
-		this.load.image('rain', 'assets/sprites/rain.png');
-		this.load.image('snow', 'assets/sprites/snow.png');
-		this.load.image('fly', 'assets/sprites/fly.png');
-		this.load.image('waterdrop', 'assets/sprites/waterdrop.png');
-		this.load.image('glimmerParticle', 'assets/sprites/glimmerParticle.png');
-		this.load.image('particle', 'assets/sprites/particle.png');
-		this.load.image('particleStart', 'assets/sprites/particleStart.png');
-		this.load.image('leave', 'assets/sprites/leave.png');
 		this.load.image('cloud', 'assets/sprites/cloud.png');
 
+
 		// Load GUI
-		this.load.image('heart', 'assets/sprites/heart.png');
-		this.load.image('dashBar', 'assets/sprites/dashBar.png');
-		this.load.image('cursor', 'assets/sprites/cursor.png');
+		this.load.image('heart', 'assets/sprites/gui/heart.png');
+		this.load.image('dashBar', 'assets/sprites/gui/dashBar.png');
+		this.load.image('newGameMap', 'assets/sprites/gui/newGameMap.png');
+		// this.load.image('cursor', 'assets/sprites/gui/cursor.png');
+
+
+		// Other
+		this.load.image('island', 'assets/sprites/island.png');
+		this.load.image('branch', 'assets/sprites/branch.png');
+		this.load.spritesheet('chest', 'assets/sprites/chest.png', 17, 15);
+
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');

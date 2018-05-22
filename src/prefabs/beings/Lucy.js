@@ -88,19 +88,19 @@ export default class extends Phaser.Sprite {
 		} else {
 			this.shadow.x = this.x;
 			this.shadow.y = this.y + 30;
-			if (this.tweenSwitch) {
-				// this.tweenShadow = this.game.add.tween(this.shadow).to( { y: this.player.y + 10}, 1000, "Linear", true, 0, 0, true).loop();
-				this.shadow.animations.play('shadow');
-				this.tween = this.game.add
-					.tween(this)
-					.to({ bottom: this.bottom + 10 }, 1050, 'Linear', true, 0, 0, true)
-					.loop();
-				this.shadowTween = this.game.add
-					.tween(this.shadow)
-					.to({ y: this.shadow.y - 2 }, 1050, 'Linear', true, 0, 0, true)
-					.loop();
-				this.tweenSwitch = false;
-			}
+			// if (this.tweenSwitch) {
+			// 	// this.tweenShadow = this.game.add.tween(this.shadow).to( { y: this.player.y + 10}, 1000, "Linear", true, 0, 0, true).loop();
+			// 	this.shadow.animations.play('shadow');
+			// 	this.tween = this.game.add
+			// 		.tween(this)
+			// 		.to({ bottom: this.bottom + 10 }, 1050, 'Linear', true, 0, 0, true)
+			// 		.loop();
+			// 	this.shadowTween = this.game.add
+			// 		.tween(this.shadow)
+			// 		.to({ y: this.shadow.y - 2 }, 1050, 'Linear', true, 0, 0, true)
+			// 		.loop();
+			// 	this.tweenSwitch = false;
+			// }
 
 			this.customEmitter.on = false;
 			this.body.velocity.set(0);

@@ -2,7 +2,10 @@ export default {
 
 	dialogues: {
 
-		//
+		// ==================
+		// Standard Dialogues Villager
+		// ==================
+		
 		1: [
 
 			'Hello~ Do you need plant seeds?',
@@ -58,8 +61,17 @@ export default {
 		9: [
 
 			'You better buy my fish.',
-			'Ugh.... A woman needs to make a living in this town and you�re just ruining my business if you\'re only staring. Buy something or leave.'
-		]
+			'Ugh.... A woman needs to make a living in this town and you\'re just ruining my business if you\'re only staring. Buy something or leave.'
+		],
+
+		// ==================
+		// Specific Dialogues Villager
+		// ==================
+
+		10: [],
+		11: [],
+		12: [],
+		13: []
 
 
 
