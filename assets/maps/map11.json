@@ -786,12 +786,12 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "athmoSound":"AxTemple",
+     "athmoSound":"AxOpenPlain",
      "cameraMode":"topdown",
      "dayCycle":true,
      "ground":"gravel2",
      "lucy":true,
-     "music":"MxTempleHappy",
+     "music":"MxBeginn",
      "startMusic":true,
      "weather":"Leaves"
     },
