@@ -179,11 +179,11 @@
                  "name":"OpenDoor",
                  "properties":
                     {
-                     "openDoor":true
+                     "openTempleDoor":true
                     },
                  "propertytypes":
                     {
-                     "openDoor":"bool"
+                     "openTempleDoor":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -319,26 +319,28 @@
                 {
                  "gid":1661,
                  "height":32,
-                 "id":197,
-                 "name":"Woman",
+                 "id":198,
+                 "name":"Woman1",
                  "properties":
                     {
-                     "character":"inhabitant1",
+                     "character":"woman1",
                      "id":4,
-                     "ifNotQuestID":"20"
+                     "ifNotQuestID":"20",
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
-                     "ifNotQuestID":"string"
+                     "ifNotQuestID":"string",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":273.576241921957,
-                 "y":310.081594395935
+                 "x":330.036672989596,
+                 "y":330.036672989596
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -367,7 +369,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":198,
+ "nextobjectid":199,
  "orientation":"orthogonal",
  "properties":
     {

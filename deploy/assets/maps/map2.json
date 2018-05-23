@@ -348,25 +348,6 @@
          "name":"CustomEmitter",
          "objects":[
                 {
-                 "height":17.9126306579977,
-                 "id":205,
-                 "name":"CustomEmitter",
-                 "properties":
-                    {
-                     "type":"fountainSparkling"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":86.940240515897,
-                 "x":676.280712014098,
-                 "y":658.537037666063
-                }, 
-                {
                  "height":116.16102549962,
                  "id":213,
                  "name":"CustomEmitter",
@@ -384,6 +365,25 @@
                  "width":192.835765092057,
                  "x":604.834885774469,
                  "y":587.310027031369
+                }, 
+                {
+                 "height":19.2939744675951,
+                 "id":258,
+                 "name":"CustomEmitter",
+                 "properties":
+                    {
+                     "type":"fountainSparkling"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":75.8892042592379,
+                 "x":679.679433786117,
+                 "y":658.477796926442
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -416,7 +416,7 @@
                      "lucy":true,
                      "port":true,
                      "targetID":1,
-                     "targetMap":"map9"
+                     "targetMap":"map3"
                     },
                  "propertytypes":
                     {
@@ -1022,13 +1022,15 @@
                     {
                      "character":"smith",
                      "id":5,
-                     "ifNotQuestID":"10"
+                     "ifNotQuestID":"10",
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
-                     "ifNotQuestID":"string"
+                     "ifNotQuestID":"string",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1068,13 +1070,15 @@
                     {
                      "character":"woman1",
                      "id":4,
-                     "ifNotQuestID":"20"
+                     "ifNotQuestID":"20",
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
-                     "ifNotQuestID":"string"
+                     "ifNotQuestID":"string",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1091,12 +1095,14 @@
                  "properties":
                     {
                      "character":"botanist",
-                     "id":7
+                     "id":7,
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1113,12 +1119,14 @@
                  "properties":
                     {
                      "character":"girl1",
-                     "id":8
+                     "id":8,
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1135,12 +1143,14 @@
                  "properties":
                     {
                      "character":"veteran",
-                     "id":9
+                     "id":9,
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1157,12 +1167,14 @@
                  "properties":
                     {
                      "character":"girl2",
-                     "id":10
+                     "id":10,
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1179,12 +1191,14 @@
                  "properties":
                     {
                      "character":"girl3",
-                     "id":11
+                     "id":11,
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1201,12 +1215,14 @@
                  "properties":
                     {
                      "character":"woman2",
-                     "id":12
+                     "id":12,
+                     "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -1242,7 +1258,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":258,
+ "nextobjectid":259,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1251,7 +1267,7 @@
      "customSize":false,
      "dayCycle":true,
      "ground":"gravel2",
-     "lucy":true,
+     "lucy":false,
      "music":"MxAncius",
      "startMusic":true,
      "weather":"Village"

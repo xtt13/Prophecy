@@ -21,7 +21,7 @@ export default class {
 
 			/*eslint no-undef: */
 			if (__DEV__) {
-				this.timeValue = 11;
+				this.timeValue = 22;
 				console.log('NACHT');
 				
 				// this.timeValue = this.time.getHours();
@@ -51,6 +51,8 @@ export default class {
 
 				this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.7;
+
+				this.night = false;
 				// this.level.player.tint = 0x383838;
 
 				for (var i = 0; i < this.level.characters.length; i++) {
@@ -65,11 +67,15 @@ export default class {
 			} else if (this.timeValue >= 8 && this.timeValue < 18) {
 				console.log('Day');
 
+				this.night = false;
+
 				// Normal Player Tint: 16777215
 
 				this.lightSprite.alpha = 0;
 			} else if (this.timeValue >= 18 && this.timeValue < 21) {
 				console.log('Dusk');
+
+				this.night = false;
 
 				this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.7;

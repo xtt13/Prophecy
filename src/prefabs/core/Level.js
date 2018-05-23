@@ -31,7 +31,7 @@ export default class {
 	constructor(game, instruction) {
 		this.game = game;
 
-		
+
 		this.battery = new Battery(this.game, this);
 		this.safe = new Safe(this.game);
 		this.questManager = new Questmanager(this.game, this);
@@ -48,7 +48,7 @@ export default class {
 		this.fallDownLayer = 0;
 		this.lastDirection = null;
 
-		this.game.forceSingleUpdate = true; 
+		this.game.forceSingleUpdate = true;
 
 
 		// Arrays
@@ -201,9 +201,48 @@ export default class {
 		elementsArr.forEach(function (element) {
 
 			// Nicht bei Nacht und nightVersion == false
-			console.log(this.dayCycleClass.night, element.properties.nightVersion);
-			if(this.dayCycleClass.night && !element.properties.nightVersion) return;
-			if(!this.dayCycleClass.night && element.properties.nightVersion) return;
+			
+
+			var time = new Date();
+			var night;
+
+			/*eslint no-undef: */
+			if (__DEV__) {
+				var timeValue = 11;
+				night = false;
+			} else {
+				var timeValue = time.getHours();
+
+
+				if (timeValue >= 0 && timeValue < 6) {
+
+					night = true;
+
+
+				} else if (timeValue >= 6 && timeValue < 8) {
+
+					night = false;
+
+				} else if (timeValue >= 8 && timeValue < 18) {
+
+					night = false;
+
+
+				} else if (timeValue >= 18 && timeValue < 21) {
+
+					night = false;
+
+				} else if (timeValue >= 21 && timeValue < 24) {
+
+					night = true;
+
+				}
+			}
+
+			console.log(night, element.properties.nightVersion, timeValue);
+
+			if (night && !element.properties.nightVersion) return;
+			if (!night && element.properties.nightVersion) return;
 
 			// Da bei QuestID
 			if (element.properties.ifQuestID !== undefined) {
@@ -241,13 +280,13 @@ export default class {
 			if (this.itemIDs.includes(element.properties.id)) return;
 
 			if (element.properties.type == 'key') {
-				let x = element.x - 10 ;
+				let x = element.x - 10;
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'item', element.properties));
 			}
 
 			if (element.properties.type == 'potion') {
-				let x = element.x - 10 ;
+				let x = element.x - 10;
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties));
 			}
@@ -261,11 +300,11 @@ export default class {
 		// Find specific items
 		elementsArr.forEach(function (element) {
 			// if (this.itemIDs.includes(element.properties.id)) return;
-				let x = element.x - 10 ;
-				let y = element.y + 10;
-				this.chests.push(new Chest(this.game, x, y, element.properties));
+			let x = element.x - 10;
+			let y = element.y + 10;
+			this.chests.push(new Chest(this.game, x, y, element.properties));
 
-			
+
 		}, this);
 	}
 
@@ -385,7 +424,7 @@ export default class {
 				this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
 				this.templeFliesEmitter.makeParticles('fly');
 				this.templeFliesEmitter.start(false, 10000, 5, 0);
-			} else if(element.properties.type == 'startGlimmer'){
+			} else if (element.properties.type == 'startGlimmer') {
 				let x = element.x + (element.width / 2);
 				let y = element.y + (element.height / 2);
 
@@ -416,12 +455,12 @@ export default class {
 			const killQuestID = element.properties.killQuestID;
 			// if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
 
-				if (element.properties.type == 'seed') {
-					console.log('SEEED');
-					this.enemies.push(
-						new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
-					);
-				}
+			if (element.properties.type == 'seed') {
+				console.log('SEEED');
+				this.enemies.push(
+					new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+				);
+			}
 
 
 			// }
@@ -512,7 +551,7 @@ export default class {
 			this.game.world.bringToTop(this.foregroundLayer);
 			this.game.world.bringToTop(this.foregroundLayer2);
 			this.game.world.bringToTop(this.trees);
-			
+
 
 			// if(this.foregroundLayer2 !== undefined){
 			// 	this.game.world.bringToTop(this.foregroundLayer2);
@@ -555,6 +594,7 @@ export default class {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
 
+		// Here cause of NightTexture
 		this.game.world.bringToTop(this.treeDetails);
 
 
@@ -593,7 +633,7 @@ export default class {
 
 	fallDownCheck(sprite, tile) {
 
-		if(sprite.key !== 'player') return;
+		if (sprite.key !== 'player') return;
 
 		if (this.inputClass.dash) {
 			this.lastDirection = null;
@@ -678,7 +718,7 @@ export default class {
 
 		if (this.fallDownSwitch) {
 
-			
+
 
 			if (this.fallDownTween == undefined || !this.fallDownTween.isRunning) {
 				console.log('eins');
@@ -702,7 +742,7 @@ export default class {
 				this.fallDown = true;
 			}
 
-			
+
 
 			this.fallDownSound = this.game.add.audio('sfxfalldown');
 			this.fallDownSound.play();
@@ -725,7 +765,7 @@ export default class {
 					this.eventManager.areaSound.fadeOut(2000);
 				}
 
-				if(this.player.health <= 1){
+				if (this.player.health <= 1) {
 					this.GUICLASS.healthBar.sfxheartbeat.stop();
 				}
 
@@ -777,7 +817,7 @@ export default class {
 
 
 		//  Resize the world
-		
+
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();

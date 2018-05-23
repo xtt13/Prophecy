@@ -74,8 +74,8 @@ export default class {
 				this.startMusic(region);
 			} else if (region.properties.addQuest) {
 				this.addQuest(region);
-			} else if (region.properties.openDoor) {
-				this.openDoor(region);
+			} else if (region.properties.openTempleDoor) {
+				this.openTempleDoor(region);
 			} else if (region.properties.movePlayerToXY) {
 				this.movePlayerToXY(region);
 			} else if (region.properties.spawnEnemies) {
@@ -429,17 +429,29 @@ export default class {
 		this.level.GUICLASS.createNotification('quest', 'Questupdate');
 	}
 
-	openDoor() {
+	openTempleDoor() {
 		if (this.level.gameData.targetID == 2) {
-			this.level.door.animations.play('idle', 1, true);
+			this.level.levelBuilder.templeDoor.animations.play('idle', 1, true);
 		} else {
-			if (this.templeDoorOpen) return;
-			this.level.door.animations.play('open', 8, false);
-			this.game.camera.shake(0.0015, 2500, true);
+
+			// if(!this.level.questManager.checkIfQuestExists(20)) return;
+			if(this.templeDoorOpen) return;
+
 			this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 			this.doorOpenSound.play();
-			this.templeDoorOpen = true;
+
+			this.level.levelBuilder.templeDoor.animations.play('open', 8, false);
+			this.game.camera.shake(0.0015, 2500, true);
+			
+			
+
+			// this.level.levelBuilder.templeDoor.animations._anims.open.onComplete.add(() => {
+			// 	this.templeDoorOpen = true;
+			// }, this);
+
 		}
+
+
 
 	}
 

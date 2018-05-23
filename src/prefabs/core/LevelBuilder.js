@@ -109,13 +109,13 @@ export default class {
     }
 
     map4(){
-
+        this.templeDoor = this.game.add.sprite(253, -12, 'templeDoor');
+        this.templeDoor.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
+        this.templeDoor.animations.add('idle', [17], 1, true);
     }
 
     map4update(){
-        this.door = this.game.add.sprite(253, -12, 'templeDoor');
-        this.door.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 8, true);
-        this.door.animations.add('idle', [17], 1, true);
+        
     }
 
     map5(){

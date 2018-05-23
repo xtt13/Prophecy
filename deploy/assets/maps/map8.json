@@ -293,7 +293,31 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":1667,
+                 "height":32,
+                 "id":203,
+                 "name":"Veteran",
+                 "properties":
+                    {
+                     "character":"veteran",
+                     "id":9,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":271.068738477746,
+                 "y":397.923272759196
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -321,12 +345,12 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":203,
+ "nextobjectid":204,
  "orientation":"orthogonal",
  "properties":
     {
      "athmoSound":"AxTemple",
-     "cameraMode":"topdown",
+     "cameraMode":"follow",
      "dayCycle":false,
      "ground":"hard3",
      "lucy":false,
