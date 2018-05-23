@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import Item from './../gamemechanics/Item';
-import dialogues from './../../dialogues';
-import dialoguesVillager from './../../dialoguesVillager';
+
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, level) {
@@ -328,110 +327,22 @@ export default class extends Phaser.Sprite {
 
 	}
 
+	turnPlayer(focusObject){
+		let value = this.game.physics.arcade.angleToXY(this, focusObject.x, focusObject.y);
 
-	talk(player, character) {
+		if ((value > -2.5 && value < -0.5)) {
+			this.animations.play('static_idle_up');
 
-		// PLAYER
-		// up: 3
-		// down: 4
-		// left: 1
-		// right: 2
+		} else if (value > 1 && value < 2.5) {
+			this.animations.play('static_idle_down');
 
-		
+		} else if (value > -0.5 && value < 1) {
+			this.animations.play('static_idle_right');
 
-		let playerFacing = this.inputClass.direction;
-		let characterFacing = 0;
+		} else if (value > 2.5 || value < -2.5) {
+			this.animations.play('static_idle_left');
 
-		console.log(playerFacing);
-
-		if (
-			(playerFacing == 'up' && characterFacing == 0) ||
-			(playerFacing == 1 && characterFacing == 2) ||
-			(playerFacing == 2 && characterFacing == 1) ||
-			(playerFacing == 4 && characterFacing == 3)
-		) {
-			if (!this.player.talking) {
-				this.player.talking = true;
-
-				
-
-				// Check if name is in quest, if true -> get dialogueID
-				let dialogueID = this.questManager.checkQuestDialogue(character.name);
-				console.log('HUUUU', dialogueID);
-				// If there's a number
-				if (dialogueID !== undefined && dialogueID !== false) {
-
-					// get all dialogues
-					const all_messages = Object.values(dialogues.dialogues);
-
-					// search for dialogue
-					for (let i = 0; i < all_messages.length; i++) {
-						if (i + 1 == dialogueID) {
-							const message = all_messages[i];
-							this.GUICLASS.createMessage(message, false, true);
-							break;
-						}
-					}
-
-				} else {
-					let id;
-
-					switch (character.name) {
-						case 'priest':
-							id = 8;
-							break;
-						case 'smith':
-							id = 4;
-							break;
-						case 'botanist':
-							id = 1;
-							break;
-						case 'veteran':
-							id = 2;
-							break;
-						case 'librarian':
-							id = 3;
-							break;
-						case 'woman1':
-							id = 6;
-							break;
-						case 'woman2':
-							id = 9;
-							break;
-						case 'girl1':
-							id = 8;
-							break;
-						case 'girl2':
-							id = 7;
-							break;
-						case 'girl3':
-							id = 5;
-							break;
-						default:
-					}
-
-					// get all dialogues
-					const all_messages = Object.values(dialoguesVillager.dialogues);
-
-					// search for dialogue
-					for (let i = 0; i < all_messages.length; i++) {
-						if (i + 1 == id) {
-							const message = all_messages[i];
-							character.animations.play('down');
-							this.game.time.events.remove(character.idleLoop);
-							this.GUICLASS.createMessage(message, false, true);
-							break;
-						}
-					}
-
-					this.game.time.events.add(10000, () => {
-						character.runIdleLoop();
-					});
-
-				}
-			}
 		}
-
 	}
 
 	getDamage(player, enemy) {

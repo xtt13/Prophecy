@@ -217,7 +217,105 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":1662,
+                 "height":32,
+                 "id":199,
+                 "name":"Smith",
+                 "properties":
+                    {
+                     "character":"smith",
+                     "id":5,
+                     "ifNotQuestID":"10",
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifNotQuestID":"string",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":305.866897147796,
+                 "y":366.022471910112
+                }, 
+                {
+                 "gid":1669,
+                 "height":32,
+                 "id":200,
+                 "name":"Girl3",
+                 "properties":
+                    {
+                     "character":"girl3",
+                     "id":11,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":370.862575626621,
+                 "y":333.870354364736
+                }, 
+                {
+                 "gid":1666,
+                 "height":32,
+                 "id":201,
+                 "name":"Girl1",
+                 "properties":
+                    {
+                     "character":"girl1",
+                     "id":8,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":451.415730337079,
+                 "y":321.078651685393
+                }, 
+                {
+                 "gid":1668,
+                 "height":32,
+                 "id":202,
+                 "name":"Girl2",
+                 "properties":
+                    {
+                     "character":"girl2",
+                     "id":10,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":510.283969650252,
+                 "y":339.188779057465
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -245,11 +343,12 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":199,
+ "nextobjectid":203,
  "orientation":"orthogonal",
  "properties":
     {
      "athmoSound":"AxTemple",
+     "cameraMode":"follow",
      "dayCycle":false,
      "ground":"hard3",
      "lucy":false,
@@ -260,6 +359,7 @@
  "propertytypes":
     {
      "athmoSound":"string",
+     "cameraMode":"string",
      "dayCycle":"bool",
      "ground":"string",
      "lucy":"bool",

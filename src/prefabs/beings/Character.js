@@ -1,16 +1,21 @@
 import Phaser from 'phaser';
+import dialogues from './../../dialogues';
+import dialoguesVillager from './../../dialoguesVillager';
 
 export default class extends Phaser.Sprite {
-	constructor(game, element, player) {
+	constructor(game, element, player, level) {
 		super(game, element.x, element.y + (element.height / 2), element.properties.character);
 		console.log(element);
 		this.game = game;
 		this.id = element.properties.id;
 		this.name = element.properties.character;
 		this.player = player;
+		this.level = level;
 		this.health = 100;
 		this.randomMovement = true;
 		this.anchor.setTo(0.5);
+
+		this.talkSwitch = false;
 
 		this.game.physics.enable(this);
 		this.body.immovable = true;
@@ -18,8 +23,8 @@ export default class extends Phaser.Sprite {
 
 		this.animations.add('down', [0], 1, false);
 		this.animations.add('up', [1], 1, false);
-		this.animations.add('left', [2], 1, false);
-		this.animations.add('right', [3], 1, false);
+		this.animations.add('left', [3], 1, false);
+		this.animations.add('right', [2], 1, false);
 
 		// setSize(width, height, offsetX, offsetY)
 		switch (element.properties.character) {
@@ -71,6 +76,120 @@ export default class extends Phaser.Sprite {
 		}, this);
 	}
 
+	stopIdleLoop(){
+		this.game.time.events.remove(this.idleLoop);
+	}
+
+	talk(){
+
+		if(this.talkSwitch) return;
+		this.talkSwitch = true;
+
+		this.stopIdleLoop();
+		this.player.turnPlayer(this);
+
+		let value = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
+
+		if ((value > -2.5 && value < -0.5)) {
+			console.log('up');
+			this.animations.play('up');
+
+		} else if (value > 1 && value < 2.5) {
+			console.log('down');
+			this.animations.play('down');
+
+		} else if (value > -0.5 && value < 1) {
+			console.log('right');
+			this.animations.play('right');
+
+		} else if (value > 2.5 || value < -2.5) {
+			console.log('left');
+			this.animations.play('left');
+
+		}
+
+		this.player.talking = true;
+
+		// Check if name is in quest, if true -> get dialogueID
+		let dialogueID = this.level.questManager.checkQuestDialogue(this.name);
+
+		// console.log('HUUUU', dialogueID);
+
+		// If there's a number
+		if (dialogueID !== undefined && dialogueID !== false) {
+
+			// get all dialogues
+			const all_messages = Object.values(dialogues.dialogues);
+
+			// search for dialogue
+			for (let i = 0; i < all_messages.length; i++) {
+				if (i + 1 == dialogueID) {
+					const message = all_messages[i];
+					this.level.GUICLASS.createMessage(message, false, true);
+					break;
+				}
+			}
+
+		} else {
+			let id;
+
+			switch (this.name) {
+				case 'priest':
+					id = 8;
+					break;
+				case 'smith':
+					id = 4;
+					break;
+				case 'botanist':
+					id = 1;
+					break;
+				case 'veteran':
+					id = 2;
+					break;
+				case 'librarian':
+					id = 3;
+					break;
+				case 'woman1':
+					id = 6;
+					break;
+				case 'woman2':
+					id = 9;
+					break;
+				case 'girl1':
+					id = 8;
+					break;
+				case 'girl2':
+					id = 7;
+					break;
+				case 'girl3':
+					id = 5;
+					break;
+				default:
+			}
+
+			// get all dialogues
+			const all_messages = Object.values(dialoguesVillager.dialogues);
+
+			// search for dialogue
+			for (let i = 0; i < all_messages.length; i++) {
+				if (i + 1 == id) {
+					const message = all_messages[i];
+					// this.animations.play('down');
+					// this.game.time.events.remove(character.idleLoop);
+					this.level.GUICLASS.createMessage(message, false, true);
+					break;
+				}
+			}
+
+			this.game.time.events.add(15000, () => {
+				this.talkSwitch = false;
+				this.runIdleLoop();
+			});
+
+		}
+
+	}
+
 	randomDirection(){
 		
 		let rndNumber = this.game.rnd.integerInRange(0, 3);
@@ -99,25 +218,18 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
-		// console.log(this.game.physics.arcade.distanceBetween(this, this.player));
-		// if(this.game.physics.arcade.distanceBetween(this, this.player) < 100 && this.game.physics.arcade.distanceBetween(this, this.player) > 40){
-		//   this.game.physics.arcade.moveToObject(this, this.player, 30);
-		// }
 
-		// console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
+		if(this.game.physics.arcade.distanceBetween(this, this.player) < 30){
+			this.talk();
+		}
+
+		
+
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
-		// if(angle == 1 || angle == 2 || angle == -0){
-		//   this.scale.set(-1, 1);
-		//   // console.log('flip left');
-		// } else {
-		//   this.scale.set(1, 1);
 
-		//   // console.log('flip right');
-		// }
 		if (angle == 2) {
 			this.game.world.moveUp(this);
 			// this.game.world.setChildIndex(this.player, 1);
 		}
-		// this.game.world.moveUp(this);
 	}
 }

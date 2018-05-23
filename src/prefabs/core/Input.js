@@ -16,6 +16,7 @@ export default class {
 		this.walkSwitch = true;
 		this.dash = false;
 		this.aiming = false;
+		this.movableSwitch = true;
 		// this.loop = false;
 		this.movementloop = null;
 		this.collision = false;
@@ -852,7 +853,39 @@ export default class {
 
 			// If the Player should not walk
 			if (!this.player.movable) {
-				this.player.animations.stop();
+				
+				if(this.movableSwitch){
+					
+					this.movableSwitch = false;
+					switch (this.direction) {
+						case 'up':
+							this.player.animations.play('run_up_idle');
+							break;
+			
+						case 'down':
+							this.player.animations.play('run_down_idle');
+							break;
+			
+						case 'left':
+							this.player.animations.play('run_left_idle');
+							break;
+			
+						case 'right':
+							this.player.animations.play('run_right_idle');
+							break;
+			
+						default:
+							break;
+					}
+
+					this.game.time.events.add(Phaser.Timer.SECOND * 10, () => {
+						this.movableSwitch = true;
+					});
+				} else {
+					// this.movableSwitch = true;
+				}
+
+
 				this.player.body.velocity.x = 0;
 				this.player.body.velocity.y = 0;
 				return;

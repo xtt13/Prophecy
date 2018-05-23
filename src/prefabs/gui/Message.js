@@ -185,7 +185,7 @@ export default class {
 			this.downBar.destroy();
 			this.upperBar = false;
 
-			this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+			// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 			
 			// switch (this.level.tilemapProperties.cameraMode) {
 			// 	case 'follow':

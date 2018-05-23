@@ -323,7 +323,7 @@ export default class extends Phaser.Sprite {
 	collisionHandler(bullet, layer){
 		
 
-		this.game.camera.shake(0.001, 100);
+		this.game.camera.shake(0.003, 100);
 
 		if(this.jailAttackRunning){
 			bullet.kill();

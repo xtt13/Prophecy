@@ -189,14 +189,16 @@ export default class {
         this.endBossHead = new EndbossHead(this.game, 472, -90, this.level.player, this);
         this.headGroup.add(this.endBossHead);
 
-        this.headGroup.x = 420;
+        this.headGroup.x = 410;
         this.headGroup.y = 400;
 
         this.headGroup.pivot.x = 420;
         this.headGroup.pivot.y = 420;
         // this.headGroup.pivot.set(20);
 
-        console.log(this.headGroup);
+        this.headGroupIdle = this.game.add.tween(this.headGroup).to(
+            {y: this.headGroup.y + 20}
+        , 5000, 'Linear', true, 0, 0, true).loop();
 
 
         this.bossMovement = this.game.add.tween(this.endBoss).to(
@@ -247,7 +249,11 @@ export default class {
         this.headGroup.rotation = (this.game.physics.arcade.angleToXY(this.headGroup, this.level.player.x, this.level.player.y) - 1.5)/3;
         // this.headGroup.rotation = (this.game.physics.arcade.angleToXY(this.endBossHead, this.level.player.x, this.level.player.y));
         // this.headGroup.angle += 1;
-        this.endBossHeadShadow.rotation = (this.game.physics.arcade.angleToXY(this.headGroup, this.level.player.x, this.level.player.y) - 1.5)/3;
+        
+        // this.endBossHeadShadow.x = this.headGroup.x;
+        // this.endBossHeadShadow.y = this.headGroup.y;
+
+        this.endBossHeadShadow.rotation = this.headGroup.rotation;
         this.game.world.bringToTop(this.headGroup);
 
         // this.headGroup.children.forEach((sprite) => {

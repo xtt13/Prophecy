@@ -1,4 +1,4 @@
-# Prophecy
+# Prophecy of the Fallen
 
 A Pixelart Game made with love and Phaser.io
 

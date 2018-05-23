@@ -348,25 +348,6 @@
          "name":"CustomEmitter",
          "objects":[
                 {
-                 "height":17.9126306579977,
-                 "id":205,
-                 "name":"CustomEmitter",
-                 "properties":
-                    {
-                     "type":"fountainSparkling"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":86.940240515897,
-                 "x":676.280712014098,
-                 "y":658.537037666063
-                }, 
-                {
                  "height":116.16102549962,
                  "id":213,
                  "name":"CustomEmitter",
@@ -384,6 +365,25 @@
                  "width":192.835765092057,
                  "x":604.834885774469,
                  "y":587.310027031369
+                }, 
+                {
+                 "height":19.2939744675951,
+                 "id":258,
+                 "name":"CustomEmitter",
+                 "properties":
+                    {
+                     "type":"fountainSparkling"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":75.8892042592379,
+                 "x":679.679433786117,
+                 "y":658.477796926442
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1258,7 +1258,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":258,
+ "nextobjectid":259,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1267,7 +1267,7 @@
      "customSize":false,
      "dayCycle":true,
      "ground":"gravel2",
-     "lucy":true,
+     "lucy":false,
      "music":"MxAncius",
      "startMusic":true,
      "weather":"Village"

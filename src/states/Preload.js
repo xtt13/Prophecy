@@ -146,7 +146,7 @@ export default class extends Phaser.State {
 
 
 		// Load Music
-		this.load.audio('MainTitle', 'assets/music/MainTitle.mp3');
+		this.load.audio('MainTitle', 'assets/music/MxBeginn.mp3');
 
 
 		// Load Sounds

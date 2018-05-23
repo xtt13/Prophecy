@@ -126,8 +126,8 @@ export default class {
 		// Load Enemies
 		if (config.enemies) this.loadEnemies();
 
-		// Load GamePeople
-		this.loadPeople();
+		// // Load GamePeople
+		// this.loadPeople();
 
 		// Load Custom Emitter
 		this.loadEmitter();
@@ -140,6 +140,9 @@ export default class {
 
 		// Daycycle Class
 		this.dayCycleClass = new Daycycle(this.game, this);
+
+		// Load GamePeople
+		this.loadPeople();
 
 		// Saving Notification
 		// this.GUICLASS.createNotification('saving', 'Saving ...');
@@ -196,13 +199,19 @@ export default class {
 
 		// Find specific people
 		elementsArr.forEach(function (element) {
+
+			// Nicht bei Nacht und nightVersion == false
+			console.log(this.dayCycleClass.night, element.properties.nightVersion);
+			if(this.dayCycleClass.night && !element.properties.nightVersion) return;
+			if(!this.dayCycleClass.night && element.properties.nightVersion) return;
+
 			// Da bei QuestID
 			if (element.properties.ifQuestID !== undefined) {
 				let check = this.questManager.checkIfQuestExists(element.properties.ifQuestID);
 				if (!check) return;
 			}
 
-			// Weg bei QuestID
+			// Nicht bei QuestID
 			if (element.properties.ifNotQuestID !== undefined) {
 				let valueElem = element.properties.ifNotQuestID;
 				let entries = valueElem.split(',');
@@ -216,7 +225,7 @@ export default class {
 
 			}
 
-			this.characters.push(new Character(this.game, element, this.player));
+			this.characters.push(new Character(this.game, element, this.player, this));
 
 
 		}, this);
@@ -482,7 +491,7 @@ export default class {
 		this.game.physics.arcade.collide(this.player.weaponGun.bullets, this.collisionLayer, this.weaponGunWallCollision, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
 
-		this.game.physics.arcade.collide(this.player, this.characters, this.player.talk, null, this);
+		this.game.physics.arcade.collide(this.player, this.characters);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer, this.enemyCollision);
 		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
