@@ -2,8 +2,178 @@ import Phaser from 'phaser';
 import Musicplayer from '../prefabs/audio/Musicplayer';
 import Soundmanager from '../prefabs/audio/Soundmanager';
 
+
 export default class extends Phaser.State {
 	init() {
+		
+
+		this.sfxswordmulti = {
+			spritemap: {
+				vx1: {
+					start: 0,
+					end: 1,
+					loop: false
+				},
+				vx2: {
+					start: 1,
+					end: 2,
+					loop: false
+				},
+				vx3: {
+					start: 2,
+					end: 3,
+					loop: false
+				},
+				vx4: {
+					start: 3,
+					end: 4,
+					loop: false
+				},
+				vx5: {
+					start: 4,
+					end: 5,
+					loop: false
+				},
+				vx6: {
+					start: 5,
+					end: 6,
+					loop: false
+				},
+				vx7: {
+					start: 6,
+					end: 7,
+					loop: false
+				},
+				vx8: {
+					start: 7,
+					end: 8,
+					loop: false
+				},
+				vx9: {
+					start: 8,
+					end: 9,
+					loop: false
+				},
+				vx10: {
+					start: 9,
+					end: 10,
+					loop: false
+				},
+				death1: {
+					start: 10,
+					end: 12,
+					loop: false
+				},
+				death2: {
+					start: 12,
+					end: 14,
+					loop: false
+				},
+				death3: {
+					start: 14,
+					end: 16,
+					loop: false
+				},
+				death4: {
+					start: 16,
+					end: 18,
+					loop: false
+				}
+			}
+		};
+
+
+
+		this.VxBotanic = {
+			spritemap: {
+				vx1: {
+					start: 0,
+					end: 2,
+					loop: false
+				},
+				vx2: {
+					start: 2,
+					end: 4,
+					loop: false
+				},
+				vx3: {
+					start: 4,
+					end: 6,
+					loop: false
+				},
+				vx4: {
+					start: 6,
+					end: 8,
+					loop: false
+				},
+				vx5: {
+					start: 8,
+					end: 10,
+					loop: false
+				}
+			}
+		};
+
+		this.VxSeeds = {
+			spritemap: {
+				vx1: {
+					start: 0,
+					end: 2,
+					loop: false
+				},
+				vx2: {
+					start: 2,
+					end: 4,
+					loop: false
+				},
+				vx3: {
+					start: 4,
+					end: 6,
+					loop: false
+				},
+				vx4: {
+					start: 6,
+					end: 8,
+					loop: false
+				},
+				vx5: {
+					start: 8,
+					end: 10,
+					loop: false
+				}
+			}
+		};
+
+		this.VxSmith = {
+			spritemap: {
+				vx1: {
+					start: 0,
+					end: 1,
+					loop: false
+				},
+				vx2: {
+					start: 1,
+					end: 2,
+					loop: false
+				},
+				vx3: {
+					start: 2,
+					end: 3,
+					loop: false
+				},
+				vx4: {
+					start: 3,
+					end: 4,
+					loop: false
+				},
+				vx5: {
+					start: 4,
+					end: 5,
+					loop: false
+				}
+			}
+		};
+
 		this.AxThunderstrikeJSON = {
 			spritemap: {
 				hit1: {
@@ -163,11 +333,17 @@ export default class extends Phaser.State {
 		this.load.audio('sfxheartbeat', 'assets/sounds/sfxheartbeat.mp3');
 		this.load.audio('sfxletters', 'assets/sounds/sfxletters.mp3');
 		this.load.audio('sfxBossReverb', 'assets/sounds/sfxBossReverb.mp3');
+		this.load.audio('AxBotanic', 'assets/sounds/AxBotanic.mp3');
+		this.load.audio('sfxSword', 'assets/sounds/sfxSword.mp3');
 
 
 		// Load AudioSpriteSheets
 		this.load.audiosprite('AxThunderstrike', 'assets/sounds/AxThunderstrike.mp3', null, this.AxThunderstrikeJSON);
 		this.load.audiosprite('PxFootsteps', 'assets/sounds/PxFootsteps.mp3', null, this.pxFootstepsJSON);
+		this.load.audiosprite('VxSmith', 'assets/sounds/VxSmith.mp3', null, this.VxSmith);
+		this.load.audiosprite('VxSeeds', 'assets/sounds/vxSeeds.mp3', null, this.VxSeeds);
+		this.load.audiosprite('VxBotanic', 'assets/sounds/VxBotanic.mp3', null, this.VxBotanic);
+		this.load.audiosprite('sfxswordmulti', 'assets/sounds/sfxswordmulti.mp3', null, this.sfxswordmulti);
 
 
 		// Particles
@@ -182,12 +358,14 @@ export default class extends Phaser.State {
 		this.load.image('blackParticle', 'assets/sprites/particles/blackParticle.png');
 		this.load.image('cyanParticle', 'assets/sprites/particles/cyanParticle.png');
 		this.load.image('blood', 'assets/sprites/particles/blood.png');
+		this.load.image('bloodEnemy', 'assets/sprites/particles/bloodEnemy.png');
 		this.load.image('bloodHeart', 'assets/sprites/particles/bloodHeart.png');
 		this.load.image('bulletParticle', 'assets/sprites/particles/bulletParticle.png');
 		this.load.image('bulletBeam', 'assets/sprites/particles/bulletBeam.png');
 		this.load.spritesheet('treeleaves', 'assets/sprites/particles/treeleaves.png', 3, 3);
 		this.load.spritesheet('fireSpritesheet', 'assets/sprites/particles/fireSpritesheet.png', 1, 1);
 		this.load.spritesheet('sparklingSpritesheet', 'assets/sprites/particles/sparklingSpritesheet.png', 1, 1);
+		
 		
 
 		// Player

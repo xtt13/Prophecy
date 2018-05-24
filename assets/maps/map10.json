@@ -660,6 +660,46 @@
                  "width":385.8697501189,
                  "x":720.695867830305,
                  "y":905.249045562637
+                }, 
+                {
+                 "height":0,
+                 "id":230,
+                 "name":"",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-285.389748606517,
+                         "y":176.337
+                        }, 
+                        {
+                         "x":-286.316619005076,
+                         "y":258.248
+                        }, 
+                        {
+                         "x":-208.019690047029,
+                         "y":256.542
+                        }, 
+                        {
+                         "x":1.38988207182133,
+                         "y":125.142
+                        }],
+                 "properties":
+                    {
+                     "stairs":true
+                    },
+                 "propertytypes":
+                    {
+                     "stairs":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2078.6963114141,
+                 "y":849.991766836819
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -821,7 +861,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":230,
+ "nextobjectid":231,
  "orientation":"orthogonal",
  "properties":
     {

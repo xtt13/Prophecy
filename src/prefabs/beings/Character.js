@@ -5,7 +5,7 @@ import dialoguesVillager from './../../dialoguesVillager';
 export default class extends Phaser.Sprite {
 	constructor(game, element, player, level) {
 		super(game, element.x, element.y + (element.height / 2), element.properties.character);
-		console.log(element);
+		// console.log(element);
 		this.game = game;
 		this.id = element.properties.id;
 		this.name = element.properties.character;
@@ -113,7 +113,70 @@ export default class extends Phaser.Sprite {
 		// Check if name is in quest, if true -> get dialogueID
 		let dialogueID = this.level.questManager.checkQuestDialogue(this.name);
 
-		// console.log('HUUUU', dialogueID);
+
+		/////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////
+
+		
+
+		
+		// this.voice.allowMultiple = true;
+		
+
+
+		switch (this.name) {
+			case 'priest':
+				
+				break;
+
+			case 'smith':
+				this.voice = this.game.add.audioSprite('VxSmith');
+				this.voice.play('vx1', 1);
+				
+				break;
+
+			case 'botanist':
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
+				this.voice = this.game.add.audioSprite('VxBotanic');
+				this.voice.play(this.rndVoice, 0.4);
+				break;
+
+			case 'veteran':
+				
+				break;
+
+			case 'librarian':
+				
+				break;
+
+			case 'woman1':
+				
+				break;
+
+			case 'woman2':
+				
+				break;
+
+			case 'girl1':
+				
+				break;
+
+			case 'girl2':
+				
+				break;
+
+			case 'girl3':
+				
+				break;
+
+			default:
+		}
+
+
+		/////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////
 
 		// If there's a number
 		if (dialogueID !== undefined && dialogueID !== false) {
@@ -135,7 +198,7 @@ export default class extends Phaser.Sprite {
 
 			switch (this.name) {
 				case 'priest':
-					id = 8;
+					id = 10;
 					break;
 				case 'smith':
 					id = 4;
@@ -182,6 +245,7 @@ export default class extends Phaser.Sprite {
 			}
 
 			this.game.time.events.add(15000, () => {
+				this.game.time.events.remove(this.vxLoop);
 				this.talkSwitch = false;
 				this.runIdleLoop();
 			});
@@ -220,6 +284,7 @@ export default class extends Phaser.Sprite {
 	update() {
 
 		if(this.game.physics.arcade.distanceBetween(this, this.player) < 30){
+			// On click?
 			this.talk();
 		}
 

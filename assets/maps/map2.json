@@ -858,6 +858,52 @@
                  "width":143.018487584302,
                  "x":1327.64849162983,
                  "y":1333.64154131731
+                }, 
+                {
+                 "height":142.603453507736,
+                 "id":259,
+                 "name":"AxBotanic",
+                 "properties":
+                    {
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"AxBotanic"
+                    },
+                 "propertytypes":
+                    {
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":202.38376146789,
+                 "x":355.707020165319,
+                 "y":845.221118191177
+                }, 
+                {
+                 "height":158.950045332553,
+                 "id":260,
+                 "name":"AtmoWaterStill",
+                 "properties":
+                    {
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"AtmoWaterStill"
+                    },
+                 "propertytypes":
+                    {
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":249.717235739033,
+                 "x":604.91087329432,
+                 "y":595.489827504974
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1258,7 +1304,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":259,
+ "nextobjectid":261,
  "orientation":"orthogonal",
  "properties":
     {

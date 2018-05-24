@@ -31,6 +31,9 @@ export default class {
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = false;
 
+		// this.game.input.gamepad.start();
+		// this.pad1 = this.game.input.gamepad.pad1;
+
 		this.checkController();
 	}
 
@@ -48,6 +51,7 @@ export default class {
 			this.gamepadSupport = true;
 			this.pad1 = this.game.input.gamepad.pad1;
 
+			console.log(this.pad1);
 			// If pad1 is connected
 			if (this.pad1.connected) {
 				this.showMessage('Controller 1 connected 🎮');
@@ -224,6 +228,9 @@ export default class {
 		this.button_F = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
 		this.button_F.onDown.add(this.attack, this);
 
+		this.button_E = this.game.input.keyboard.addKey(Phaser.Keyboard.E);
+		// this.button_E.onDown.add(this.attack, this);
+
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.button_SPACEBAR.onDown.add(this.attack, this);
 
@@ -243,6 +250,9 @@ export default class {
 	}
 
 	attack() {
+
+		this.attacksound = this.game.add.audio('sfxSword', 0.2);
+		// this.attacksound.play();
 
 		switch (this.direction) {
 			case 'up':
@@ -281,7 +291,7 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if (this.movementloop == null) {
 				this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
-					this.pyfootsteps.play(this.movementSound, 0.15);
+					this.pyfootsteps.play(this.movementSound, 0.3);
 				}, this);
 			}
 		}
@@ -306,7 +316,7 @@ export default class {
 	}
 
 	beginnDash() {
-		if (this.level.GUICLASS.healthBar.dashRatio.value <= 0.1) return;
+		// if (this.level.GUICLASS.healthBar.dashRatio.value <= 0.1) return;
 
 		this.dash = true;
 		// this.player.addParticles();
@@ -745,8 +755,8 @@ export default class {
 		} else {
 			// If no Movementkey isDown
 
-			this.player.body.velocity.y = 0;
-			this.player.body.velocity.x = 0;
+			// this.player.body.velocity.y = 0;
+			// this.player.body.velocity.x = 0;
 
 			if (this.dash) return;
 

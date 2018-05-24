@@ -55,6 +55,9 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(8, 10, 21, 40);
 
+		this.body.bounce.set(1);
+		this.body.drag.set(1000);
+
 		// No Glitch on Camera
 		this.game.camera.roundPx = false;
 
@@ -171,6 +174,11 @@ export default class extends Phaser.Sprite {
 	fight(enemy, bullet) {
 		// console.log('collide');
 
+		
+
+
+
+
 		// bullet.kill();
 		enemy.paralyze = true;
 		enemy.tint = 0xFF0000;
@@ -191,7 +199,8 @@ export default class extends Phaser.Sprite {
 
 		this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
 		this.bloodAnimation.angularDrag = 500;
-		this.bloodAnimation.maxParticleScale = 3;
+		this.bloodAnimation.maxParticleScale = 1;
+		this.bloodAnimation.maxRotation = 0;
 		this.bloodAnimation.particleDrag.set(1800);
 		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
 
@@ -203,7 +212,7 @@ export default class extends Phaser.Sprite {
 			this.bloodAnimation.setYSpeed(py);
 		}
 
-		this.bloodAnimation.makeParticles('blood', 100);
+		this.bloodAnimation.makeParticles('bloodEnemy', 100);
 		
 
 		this.bloodAnimation.start(true, 0, null, 10);
@@ -319,7 +328,18 @@ export default class extends Phaser.Sprite {
 
 			this.bloodAnimation.makeParticles('blood', 100);	
 			this.bloodAnimation.start(true, 0, null, 10);
+
+			this.rndVoice = this.game.rnd.pick(['death1', 'death2', 'death3', 'death4']);
+			this.voice = this.game.add.audioSprite('sfxswordmulti');
+			this.voice.play(this.rndVoice, 0.5);
 			
+		} else {
+			this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10']);
+			this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
+			this.voiceSword.play(this.rndVoiceSword, 0.5);
+			this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
+			this.voice = this.game.add.audioSprite('VxSeeds');
+			this.voice.play(this.rndVoice, 0.5);
 		}
 
 

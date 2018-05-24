@@ -30,6 +30,7 @@ import Gamescaler from '../gamemechanics/Gamescaler';
 export default class {
 	constructor(game, instruction) {
 		this.game = game;
+		this.game.time.slowMotion = 1.0;
 
 
 		this.battery = new Battery(this.game, this);
@@ -390,7 +391,8 @@ export default class {
 				this.fountainSparkling = this.game.add.emitter(x, y, 100);
 				this.fountainSparkling.width = element.width;
 				this.fountainSparkling.height = element.height;
-				this.fountainSparkling.rotation = 0;
+				this.fountainSparkling.maxParticleScale = 1;
+				this.fountainSparkling.maxRotation = 0;
 				// this.fountainSparkling.maxParticleScale = 1;
 				this.fountainSparkling.gravity = 0;
 
@@ -863,6 +865,46 @@ export default class {
 
 
 
+	}
+
+	gameOver(time){
+		this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+		this.sfxheartbeat.play();
+		this.sfxheartbeat.fadeOut(2000);
+
+		let duration = time;
+		let easing = Phaser.Easing.Circular.InOut;
+
+		if(this.backgroundLayer !== undefined){
+			this.game.add.tween(this.backgroundLayer).to({
+				alpha: 0
+			}, duration, easing, true);
+		}
+		
+		this.game.add.tween(this.groundLayer).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.detailGroundLayer).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.collisionLayer).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.foregroundLayer).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.treeDetails).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.trees).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.foregroundLayer2).to({
+			alpha: 0
+		}, duration, easing, true);
+		this.game.add.tween(this.godrays).to({
+			alpha: 0
+		}, duration, easing, true);
 	}
 
 	initSoundandMusic() {

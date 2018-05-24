@@ -21,7 +21,7 @@ export default class {
 
 			/*eslint no-undef: */
 			if (__DEV__) {
-				this.timeValue = 22;
+				this.timeValue = 23;
 				console.log('NACHT');
 				
 				// this.timeValue = this.time.getHours();

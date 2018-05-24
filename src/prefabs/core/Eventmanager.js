@@ -608,11 +608,20 @@ export default class {
 			if(this.areaSoundOnce) return;
 		}
 		this.areaSoundOnce = true;
+
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
 		this.areaSound.fadeIn(4000);
 	}
 
 	soundAreaLeave() {
+		this.areaSound.fadeOut(500);
+	}
+
+	soundAreaVillager(region){
+
+	}
+
+	soundAreaVillagerLeave(region) {
 		this.areaSound.fadeOut(4000);
 	}
 
@@ -645,41 +654,11 @@ export default class {
 		this.game.time.events.add(
 			2000,
 			() => {
-				this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
-				this.sfxheartbeat.play();
-				this.sfxheartbeat.fadeOut(5000);
-				let duration = 3000;
-				let easing = Phaser.Easing.Circular.InOut;
-				this.game.add.tween(this.level.levelBuilder.branch).to({
+				this.game.add.tween(this.levelBuilder.branch).to({
 					alpha: 0
 				}, duration, easing, true);
-				this.game.add.tween(this.level.backgroundLayer).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.groundLayer).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.detailGroundLayer).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.collisionLayer).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.foregroundLayer).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.treeDetails).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.trees).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.foregroundLayer2).to({
-					alpha: 0
-				}, duration, easing, true);
-				this.game.add.tween(this.level.godrays).to({
-					alpha: 0
-				}, duration, easing, true);
+				
+				this.level.gameOver();
 			}, this);
 
 		this.game.time.events.add(
