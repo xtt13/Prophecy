@@ -20,6 +20,7 @@ export default class {
 		// this.loop = false;
 		this.movementloop = null;
 		this.collision = false;
+		this.muteAttack = false;
 
 		this.playerSpeed = 80;
 		this.directon = 'down';
@@ -251,9 +252,6 @@ export default class {
 
 	attack() {
 
-		this.attacksound = this.game.add.audio('sfxSword', 0.2);
-		// this.attacksound.play();
-
 		switch (this.direction) {
 			case 'up':
 				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
@@ -274,6 +272,13 @@ export default class {
 			default:
 				break;
 		}
+
+		if(this.muteAttack) return;
+
+
+		this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
+		this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
+		this.voiceSword.play(this.rndVoiceSword, 0.5);
 
 	}
 
