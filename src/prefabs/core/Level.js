@@ -32,6 +32,42 @@ export default class {
 		this.game = game;
 		this.game.time.slowMotion = 1.0;
 
+		var time = new Date();
+			
+
+		/*eslint no-undef: */
+		if (!__DEV__) {
+			var timeValue = 11;
+			this.night = false;
+		} else {
+			var timeValue = time.getHours();
+
+
+			if (timeValue >= 0 && timeValue < 6) {
+
+				this.night = true;
+
+
+			} else if (timeValue >= 6 && timeValue < 8) {
+
+				this.night = false;
+
+			} else if (timeValue >= 8 && timeValue < 18) {
+
+				this.night = false;
+
+
+			} else if (timeValue >= 18 && timeValue < 21) {
+
+				this.night = false;
+
+			} else if (timeValue >= 21 && timeValue < 24) {
+
+				this.night = true;
+
+			}
+		}
+
 
 		this.battery = new Battery(this.game, this);
 		this.safe = new Safe(this.game);
@@ -48,6 +84,7 @@ export default class {
 		this.fallDownSwitch = true;
 		this.fallDownLayer = 0;
 		this.lastDirection = null;
+		
 
 		this.game.forceSingleUpdate = true;
 
@@ -204,46 +241,11 @@ export default class {
 			// Nicht bei Nacht und nightVersion == false
 			
 
-			var time = new Date();
-			var night;
 
-			/*eslint no-undef: */
-			if (__DEV__) {
-				var timeValue = 11;
-				night = false;
-			} else {
-				var timeValue = time.getHours();
+			// console.log(this.night, element.properties.nightVersion, timeValue);
 
-
-				if (timeValue >= 0 && timeValue < 6) {
-
-					night = true;
-
-
-				} else if (timeValue >= 6 && timeValue < 8) {
-
-					night = false;
-
-				} else if (timeValue >= 8 && timeValue < 18) {
-
-					night = false;
-
-
-				} else if (timeValue >= 18 && timeValue < 21) {
-
-					night = false;
-
-				} else if (timeValue >= 21 && timeValue < 24) {
-
-					night = true;
-
-				}
-			}
-
-			console.log(night, element.properties.nightVersion, timeValue);
-
-			if (night && !element.properties.nightVersion) return;
-			if (!night && element.properties.nightVersion) return;
+			if (this.night && !element.properties.nightVersion) return;
+			if (!this.night && element.properties.nightVersion) return;
 
 			// Da bei QuestID
 			if (element.properties.ifQuestID !== undefined) {
@@ -912,7 +914,8 @@ export default class {
 		this.preferences = this.safe.getGamePreferences();
 
 		// Mute Music or fadeIn Music
-		if (this.preferences.muteMusic) {
+		console.log(this.night, 'LSDKFJLKSDJFLKSDJF');
+		if (this.preferences.muteMusic || this.night) {
 			this.muteMusic = true;
 		} else {
 			this.game.musicPlayer.initMap(this.tilemapProperties, this.tilemapProperties.startMusic, 5000);
@@ -923,7 +926,12 @@ export default class {
 		if (this.preferences.muteSound) {
 			this.muteSound = true;
 		} else {
-			this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
+			if(this.night){
+				this.game.soundManager.initSound(this.tilemapProperties.athmoSoundNight);
+			} else {
+				this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
+			}
+			
 			this.muteSound = false;
 		}
 	}

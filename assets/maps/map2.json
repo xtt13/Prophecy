@@ -1309,6 +1309,7 @@
  "properties":
     {
      "athmoSound":"AxOpenPlain",
+     "athmoSoundNight":"AxCrickets",
      "cameraMode":"follow",
      "customSize":false,
      "dayCycle":true,
@@ -1321,6 +1322,7 @@
  "propertytypes":
     {
      "athmoSound":"string",
+     "athmoSoundNight":"string",
      "cameraMode":"string",
      "customSize":"bool",
      "dayCycle":"bool",

@@ -358,6 +358,7 @@
  "properties":
     {
      "athmoSound":"AxTemple",
+     "athmoSoundNight":"",
      "customHeight":500,
      "customSize":true,
      "customWidth":1000,
@@ -371,6 +372,7 @@
  "propertytypes":
     {
      "athmoSound":"string",
+     "athmoSoundNight":"string",
      "customHeight":"int",
      "customSize":"bool",
      "customWidth":"int",

@@ -262,10 +262,12 @@ export default class {
 				break;
 
 			case 'left':
+			this.player.animations.play('fight_left');
 				this.player.weapon.fireAtXY(this.player.x - 10, this.player.y);
 				break;
 
 			case 'right':
+				this.player.animations.play('fight_right');
 				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
 				break;
 

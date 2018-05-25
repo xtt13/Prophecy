@@ -8,6 +8,8 @@ export default class {
 		this.globalVolume = 0;
 		this.fadeVolumeTo = 1;
 		this.fadeDuration = 2000;
+
+		this.secureSwitch = false;
 	}
 
 	initSound(key) {
@@ -85,10 +87,18 @@ export default class {
 		this.game.load.onLoadComplete.add(() => {
 			this.sound = this.game.add.audio(key, this.globalVolume, true);
 			this.sound.onDecoded.add(() => {
+				if (this.secureSwitch) return;
+				this.secureSwitch = true;
+
 				this.sound.play();
 				this.game.add
 					.tween(this.sound)
 					.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
+				this.game.time.events.add(
+					300,
+					() => {
+						this.secureSwitch = false;
+				}, this);
 			}, this);
 		}, this);
 	}

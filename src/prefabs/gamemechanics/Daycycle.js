@@ -21,7 +21,7 @@ export default class {
 
 			/*eslint no-undef: */
 			if (__DEV__) {
-				this.timeValue = 23;
+				this.timeValue = 11;
 				console.log('NACHT');
 				
 				// this.timeValue = this.time.getHours();
@@ -106,6 +106,11 @@ export default class {
 					this.level.weather.clouds.alpha = 0;
 				}
 			}
+
+			// if(this.night){
+			// 	this.crickets = this.game.add.audio('AxCrickets');
+			// 	this.crickets.play();
+			// }
 
 			this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
 

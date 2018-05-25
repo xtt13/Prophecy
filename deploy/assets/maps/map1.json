@@ -935,6 +935,7 @@
  "properties":
     {
      "athmoSound":"AxOpenPlain",
+     "athmoSoundNight":"",
      "cameraMode":"topdown",
      "dayCycle":true,
      "ground":"gravel2",
@@ -946,6 +947,7 @@
  "propertytypes":
     {
      "athmoSound":"string",
+     "athmoSoundNight":"string",
      "cameraMode":"string",
      "dayCycle":"bool",
      "ground":"string",

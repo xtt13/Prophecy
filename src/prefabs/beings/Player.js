@@ -50,6 +50,9 @@ export default class extends Phaser.Sprite {
 		this.animations.add('idle_run_right', [70, 69, 68, 67, 66, 65, 64, 63, 62], this.frameRate, false);
 		this.animations.add('idle_run_left', [53, 52, 51, 50, 49, 48, 47, 46, 45], this.frameRate, false);
 
+		this.animations.add('fight_right', [73, 74, 75, 76], this.frameRate, false);
+		this.animations.add('fight_left', [77, 78, 79, 80], this.frameRate, false);
+
 		// this.animations.play('idle');
 
 		this.game.physics.enable(this);

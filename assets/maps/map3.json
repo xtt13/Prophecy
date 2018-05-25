@@ -296,6 +296,7 @@
  "properties":
     {
      "athmoSound":"AxTemple",
+     "athmoSoundNight":"",
      "dayCycle":true,
      "ground":"gravel2",
      "lucy":true,
@@ -306,6 +307,7 @@
  "propertytypes":
     {
      "athmoSound":"string",
+     "athmoSoundNight":"string",
      "dayCycle":"bool",
      "ground":"string",
      "lucy":"bool",
