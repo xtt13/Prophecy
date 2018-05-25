@@ -25,6 +25,7 @@ export default class {
 		this.playerSpeed = 80;
 		this.directon = 'down';
 		this.standing = true;
+		this.currentAttack = false;
 
 		this.movementloopSpeed = 340;
 		this.movementSound = this.level.map.plus.properties.ground;
@@ -126,6 +127,9 @@ export default class {
 		this.pad1.addCallbacks(this, {
 			onConnect: this.addGamepadButtons()
 		});
+		this.game.input.gamepad.setDeadZones(0.5);
+		this.game.input.gamepad.pad1.deadZone = 0.5;
+		this.gamePadHelper = this.game.add.sprite(this.player.x, this.player.y, 'gamePadHelper');
 	}
 
 	addGamepadButtons() {
@@ -169,6 +173,9 @@ export default class {
 			// LT and RT Buttons
 			this.gamepad_buttonLeftTrigger = this.pad1.getButton(Phaser.Gamepad.XBOX360_LEFT_TRIGGER);
 			this.gamepad_buttonRightTrigger = this.pad1.getButton(Phaser.Gamepad.XBOX360_RIGHT_TRIGGER);
+
+			this.gamepad_buttonLeftTrigger.onDown.add(this.onGamepadDown, this);
+			this.gamepad_buttonRightTrigger.onDown.add(this.onGamepadDown, this);
 
 			this.gamepad_buttonLeftTrigger.onDown.add(this.onGamepadDown, this);
 			this.gamepad_buttonRightTrigger.onDown.add(this.onGamepadDown, this);
@@ -252,6 +259,8 @@ export default class {
 
 	attack() {
 
+		this.currentAttack = true;
+
 		switch (this.direction) {
 			case 'up':
 				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
@@ -274,6 +283,9 @@ export default class {
 			default:
 				break;
 		}
+		this.game.time.events.add(300, () => {
+			this.currentAttack = false;
+		}, this);
 
 		if(this.muteAttack) return;
 
@@ -291,6 +303,11 @@ export default class {
 		if (button.buttonCode === Phaser.Gamepad.XBOX360_X) {
 			this.attack();
 		}
+		if (button.buttonCode === 6) {
+			this.aiming = true;
+		}
+
+		console.log(button);
 	}
 
 	addMovementSound() {
@@ -392,7 +409,30 @@ export default class {
 	onGamepadUp() {}
 
 	gamepadUpdate() {
+
+		console.log(this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X), this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y));
+
+		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X) < -0.1) {
+			this.gamePadHelper.x = this.player.x - 20;
+		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X) > 0.1) {
+			this.gamePadHelper.x = this.player.x + 20;
+		} else {
+
+		}
+
+		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y) < -0.1) {
+			this.gamePadHelper.y = this.player.y - 20;
+		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y) > 0.1) {
+			this.gamePadHelper.y = this.player.y + 20;
+		} else {
+
+		}
+
+
+		
+
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+			if(this.currentAttack) return;
 			if (this.direction == 'left' || this.direction == 'right') {
 				this.player.body.velocity.y = -this.playerSpeed;
 			} else {
@@ -401,6 +441,7 @@ export default class {
 			}
 			this.direction = 'up';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+			if(this.currentAttack) return;
 			if (this.direction == 'left' || this.direction == 'right') {
 				this.player.body.velocity.y = this.playerSpeed;
 			} else {
@@ -414,6 +455,7 @@ export default class {
 		}
 
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+			if(this.currentAttack) return;
 			if (this.direction == 'up' || this.direction == 'down') {
 				this.player.body.velocity.x = -this.playerSpeed;
 			} else {
@@ -423,6 +465,7 @@ export default class {
 			}
 			this.direction = 'left';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+			if(this.currentAttack) return;
 			if (this.direction == 'up' || this.direction == 'down') {
 				this.player.body.velocity.x = this.playerSpeed;
 			} else {
@@ -441,6 +484,7 @@ export default class {
 			this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0
 		) {
 			if (this.dash) return;
+			if(this.currentAttack) return;
 			switch (this.direction) {
 				case 'up':
 
@@ -692,6 +736,8 @@ export default class {
 
 		// If any Movementkey isDown
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
+
+			if(this.currentAttack) return;
 
 			this.player.playerArm.visible = false;
 			this.aiming = false;

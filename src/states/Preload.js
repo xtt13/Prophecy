@@ -438,6 +438,7 @@ export default class extends Phaser.State {
 		this.load.image('heart', 'assets/sprites/gui/heart.png');
 		this.load.image('dashBar', 'assets/sprites/gui/dashBar.png');
 		this.load.image('newGameMap', 'assets/sprites/gui/newGameMap.png');
+		this.load.image('gamePadHelper', 'assets/sprites/gui/gamePadHelper.png');
 		// this.load.image('cursor', 'assets/sprites/gui/cursor.png');
 
 
@@ -454,6 +455,7 @@ export default class extends Phaser.State {
 	}
 
 	create() {
+		
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 

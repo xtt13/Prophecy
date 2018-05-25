@@ -36,9 +36,9 @@ export default class {
 			
 
 		/*eslint no-undef: */
-		if (!__DEV__) {
-			var timeValue = 11;
-			this.night = false;
+		if (__DEV__) {
+			var timeValue = 23;
+			this.night = true;
 		} else {
 			var timeValue = time.getHours();
 
@@ -189,6 +189,8 @@ export default class {
 		this.inputClass = new Input(this.game, this);
 
 		this.levelBuilder = new LevelBuilder(this.game, this, this.currentMap);
+
+		console.log(this.game.world);
 
 	}
 

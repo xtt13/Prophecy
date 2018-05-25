@@ -210,7 +210,7 @@ export default class extends Phaser.Sprite {
 		this.bloodAnimation.particleDrag.set(1800);
 		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
 		
-		console.log(this.bloodAnimation);
+		// console.log(this.bloodAnimation);
 
 		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
 			this.bloodAnimation.setXSpeed(px);

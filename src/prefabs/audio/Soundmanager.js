@@ -82,8 +82,8 @@ export default class {
 
 	loadSound(key) {
 		this.game.load.audio(key, 'assets/sounds/' + key + '.mp3');
-		this.game.load.start();
-		this.game.load.onLoadStart.add(function() {}, this);
+		// this.game.load.start();
+		// this.game.load.onLoadStart.add(function() {}, this);
 		this.game.load.onLoadComplete.add(() => {
 			this.sound = this.game.add.audio(key, this.globalVolume, true);
 			this.sound.onDecoded.add(() => {

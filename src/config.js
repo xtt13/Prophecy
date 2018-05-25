@@ -1,5 +1,5 @@
 /*eslint no-undef: */
-// Game Configuration w:580, h:280
+// Game Configuration Default w:580, h:280
 export default {
 	phaserConfig: {
 		// width: 900,

@@ -8,7 +8,7 @@ export default class {
 		this.globalVolume = 0;
 		this.fadeVolumeTo = 0.5;
 
-		this.secureSwitch = false;
+		// this.secureSwitch = false;
 	}
 
 	initMap(properties, start, fadeDuration){
@@ -109,16 +109,13 @@ export default class {
 	loadMusic(key) {
 		console.log('Load Music');
 		this.game.load.audio(key, 'assets/music/' + key + '.mp3');
-		this.game.load.start();
+		// this.game.load.start();
 		// this.game.load.onLoadStart.add(function() {}, this);
 		this.game.load.onLoadComplete.add(() => {
 			this.music = this.game.add.audio(key, this.globalVolume, true);
 			this.music.allowMultiple = false;
 			this.music.onDecoded.add(() => {
 				// this.music.fadeIn(this.fadeDuration, true);
-				console.log(this.secureSwitch);
-				if (this.secureSwitch) return;
-				this.secureSwitch = true;
 
 				this.music.play();
 				this.music.volume = 0;
@@ -126,11 +123,7 @@ export default class {
 				this.volumeTween = this.game.add
 					.tween(this.music)
 					.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
-					this.game.time.events.add(
-						300,
-						() => {
-							this.secureSwitch = false;
-						}, this);
+
 			}, this);
 		}, this);
 	}

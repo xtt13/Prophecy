@@ -28,15 +28,20 @@ export default class extends Phaser.Sprite {
 
 		this.anchor.setTo(0.5);
 
-		this.animations.add('walk', [0, 1, 2, 3, 4], 15, true);
-		this.animations.add('idle', [0], 1, true);
-		this.animations.play('walk');
+		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 15, true);
+		this.animations.add('idle', [10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 10, true);
+		
+
+		this.game.time.events.add(Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 5), () => {
+			this.animations.play('idle');
+		}, this);
+
 
 		this.game.physics.enable(this);
 
 		this.body.setSize(13, 10, 5, 7);
 		this.body.bounce.set(1);
-		this.body.drag.set(1800);
+		this.body.drag.set(1500);
 		// this.body.enable = false;
 
 		if (this.jumpDown) {
@@ -82,6 +87,16 @@ export default class extends Phaser.Sprite {
 			// 	this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			// }
 
+
+			let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
+			if (angle == 1 || angle == 2 || angle == 0) {
+				this.scale.set(-1, 1);
+				// console.log('flip left');
+			} else {
+				this.scale.set(1, 1);
+				// console.log('flip right');
+			}
+
 			if(this.attackSoundSwitch){
 				this.attackSoundSwitch = false;
 				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
@@ -104,6 +119,16 @@ export default class extends Phaser.Sprite {
 
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
 			// console.log('Calculate');
+			
+			let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
+			if (angle == 1 || angle == 2 || angle == 0) {
+				this.scale.set(-1, 1);
+				// console.log('flip left');
+			} else {
+				this.scale.set(1, 1);
+				// console.log('flip right');
+			}
+			
 
 			this.pathfinder = new Pathfinder(
 				this.game,
@@ -122,14 +147,6 @@ export default class extends Phaser.Sprite {
 			this.pathfinder.followPath();
 		}
 
-		// console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
-		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
-		if (angle == 1 || angle == 2 || angle == 0) {
-			this.scale.set(-1, 1);
-			// console.log('flip left');
-		} else {
-			this.scale.set(1, 1);
-			// console.log('flip right');
-		}
+
 	}
 }
