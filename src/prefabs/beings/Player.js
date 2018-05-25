@@ -122,7 +122,7 @@ export default class extends Phaser.Sprite {
 
 		this.weapon = this.game.add.weapon(10, 'invisibleAttack');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
-		this.weapon.bulletLifespan = 100;
+		this.weapon.bulletLifespan = 60;
 		this.weapon.bulletSpeed = 400;
 		// this.weapon.fireRate = 200;
 		this.weapon.trackSprite(this, 0, 0, false);
@@ -202,15 +202,19 @@ export default class extends Phaser.Sprite {
 		py *= 2;
 
 		this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
-		this.bloodAnimation.angularDrag = 500;
+		// this.bloodAnimation.angularDrag = 500;
+		this.bloodAnimation.minParticleScale = 1;
 		this.bloodAnimation.maxParticleScale = 1;
+		this.bloodAnimation.minRotation = 0;
 		this.bloodAnimation.maxRotation = 0;
 		this.bloodAnimation.particleDrag.set(1800);
 		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
+		
+		console.log(this.bloodAnimation);
 
 		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
 			this.bloodAnimation.setXSpeed(px);
-			this.bloodAnimation.setYSpeed(300);
+			this.bloodAnimation.setYSpeed(-400);
 		} else {
 			this.bloodAnimation.setXSpeed(400);
 			this.bloodAnimation.setYSpeed(py);
@@ -219,7 +223,7 @@ export default class extends Phaser.Sprite {
 		this.bloodAnimation.makeParticles('bloodEnemy', 100);
 		
 
-		this.bloodAnimation.start(true, 0, null, 10);
+		this.bloodAnimation.start(true, 3000, null, 10);
 
 		
 

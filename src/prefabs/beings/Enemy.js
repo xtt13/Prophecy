@@ -18,9 +18,10 @@ export default class extends Phaser.Sprite {
 		this.health = 3;
 		this.dead = false;
 		this.paralyze = false;
+		this.attackSoundSwitch = true;
 		
 		this.finderCall = true;
-		this.closeSpeed = this.game.rnd.integerInRange(50, 100);
+		this.closeSpeed = this.game.rnd.integerInRange(100, 150);
 		this.farSpeed = this.game.rnd.integerInRange(400, 600);
 
 		this.startMoving = false;
@@ -80,6 +81,16 @@ export default class extends Phaser.Sprite {
 			// 	this.animations.play('walk');
 			// 	this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			// }
+
+			if(this.attackSoundSwitch){
+				this.attackSoundSwitch = false;
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
+				this.voice = this.game.add.audioSprite('VxSeeds');
+				this.voice.play(this.rndVoice, 0.5);
+				this.game.time.events.add(Phaser.Timer.SECOND * 2, () => {
+					this.attackSoundSwitch = true;
+				}, this);
+			}
 
 			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
 			this.animations.play('walk');
