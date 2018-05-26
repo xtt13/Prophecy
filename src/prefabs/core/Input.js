@@ -240,7 +240,7 @@ export default class {
 		// this.button_E.onDown.add(this.attack, this);
 
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		this.button_SPACEBAR.onDown.add(this.attack, this);
+		// this.button_SPACEBAR.onDown.add(this.attack, this);
 
 		this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
 		this.button_SHIFT.onDown.add(this.beginnDash, this);

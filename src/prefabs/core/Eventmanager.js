@@ -17,6 +17,7 @@ export default class {
 		this.templeDoorOpen = false;
 		this.bossDoorOpen = false;
 		this.spotViewerPlayed = false;
+		this.spotViewerPlayedSwitch = false;
 		this.areaSoundOnce = false;
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
@@ -604,6 +605,7 @@ export default class {
 	}
 
 	soundArea(region) {
+		if(region.properties.nightMode && this.level.night) return;
 		if(region.properties.once){
 			if(this.areaSoundOnce) return;
 		}
@@ -764,8 +766,9 @@ export default class {
 	spotViewer(region){
 
 		// if (!this.level.questManager.checkIfQuestExists(region.properties.ifQuestID) && ifQuestID !== undefined) return;
-		if(this.spotViewerPlayed) return;
+		if(this.spotViewerPlayedSwitch) return;
 		this.spotViewerPlayed = true;
+		this.spotViewerPlayedSwitch = true;
 
 		let focusX = region.properties.focusX;
 		let focusY = region.properties.focusY;
@@ -838,7 +841,7 @@ export default class {
 				this.upperBar.destroy();
 				this.downBar.destroy();
 				this.upperBar = false;
-	
+				this.spotViewerPlayed = false;
 				this.followPlayer();
 				this.level.GUICLASS.healthBar.fadeIn();
 	

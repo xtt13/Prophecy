@@ -644,12 +644,14 @@
                  "name":"sfxBossReverb",
                  "properties":
                     {
+                     "nightMode":false,
                      "once":true,
                      "soundArea":true,
                      "soundkey":"sfxBossReverb"
                     },
                  "propertytypes":
                     {
+                     "nightMode":"bool",
                      "once":"bool",
                      "soundArea":"bool",
                      "soundkey":"string"

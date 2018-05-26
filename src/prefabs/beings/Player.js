@@ -58,7 +58,7 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(8, 10, 21, 40);
 
-		this.body.bounce.set(1);
+		this.body.bounce.set(2);
 		this.body.drag.set(1000);
 
 		// No Glitch on Camera
@@ -358,43 +358,53 @@ export default class extends Phaser.Sprite {
 	}
 
 	turnPlayer(focusObject){
+		console.log('turn');
 		let value = this.game.physics.arcade.angleToXY(this, focusObject.x, focusObject.y);
 
 		if ((value > -2.5 && value < -0.5)) {
+			this.level.GUICLASS.direction = 'up';
 			this.animations.play('static_idle_up');
 
 		} else if (value > 1 && value < 2.5) {
+			this.level.GUICLASS.direction = 'down';
 			this.animations.play('static_idle_down');
 
 		} else if (value > -0.5 && value < 1) {
+			this.level.GUICLASS.direction = 'right';
 			this.animations.play('static_idle_right');
 
 		} else if (value > 2.5 || value < -2.5) {
+			this.level.GUICLASS.direction = 'left';
 			this.animations.play('static_idle_left');
 
 		}
 	}
 
 	getDamage(player, enemy) {
-		enemy.destroy();
+		return true;
+		// enemy.destroy();
 
-		if (enemy.itemType !== undefined && enemy.itemType == 'key') {
-			let properties = {};
-			properties.id = enemy.dropItemID;
-			this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
-		}
+		// if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+		// 	let properties = {};
+		// 	properties.id = enemy.dropItemID;
+		// 	this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
+		// }
 
-		if (enemy.killQuestID !== undefined) {
-			this.questManager.checkKillCondition(enemy.killQuestID);
-		}
+		// if (enemy.killQuestID !== undefined) {
+		// 	this.questManager.checkKillCondition(enemy.killQuestID);
+		// }
 
-		this.player.health -= 10;
+		console.log(this.player.health);
+		this.player.health -= 1;
+		
 		this.gameData.playerHealth = this.player.health;
 		this.safe.setGameConfig(this.gameData);
+		
+		this.GUICLASS.healthBar.removeHeart(1, true);
 		this.game.camera.flash(0xc10000, 200);
 
 		if (this.player.health <= 0) {
-			this.gameData.playerHealth = 100;
+			this.gameData.playerHealth = 5;
 			this.safe.setGameConfig(this.gameData);
 
 			if (this.inputClass.stick) {

@@ -865,12 +865,14 @@
                  "name":"AxBotanic",
                  "properties":
                     {
+                     "nightMode":true,
                      "once":false,
                      "soundArea":true,
                      "soundkey":"AxBotanic"
                     },
                  "propertytypes":
                     {
+                     "nightMode":"bool",
                      "once":"bool",
                      "soundArea":"bool",
                      "soundkey":"string"
@@ -888,12 +890,14 @@
                  "name":"AtmoWaterStill",
                  "properties":
                     {
+                     "nightMode":false,
                      "once":false,
                      "soundArea":true,
                      "soundkey":"AtmoWaterStill"
                     },
                  "propertytypes":
                     {
+                     "nightMode":"bool",
                      "once":"bool",
                      "soundArea":"bool",
                      "soundkey":"string"

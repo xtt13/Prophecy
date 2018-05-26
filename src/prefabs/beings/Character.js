@@ -17,9 +17,19 @@ export default class extends Phaser.Sprite {
 
 		this.talkSwitch = false;
 
+		
+
 		this.game.physics.enable(this);
 		this.body.immovable = true;
 		this.body.drag.set(90);
+
+		console.log(this);
+
+		this.talkSymbol = this.game.add.sprite(this.body.x + 10, this.body.y - 20, 'characterTalk');
+		this.talkSymbol.smoothed = false;
+		this.talkSymbol.alpha = 0;
+		this.talkSymbol.animations.add('play');
+		this.talkSymbol.animations.play('play', 1, true);
 
 		this.animations.add('down', [0], 1, false);
 		this.animations.add('up', [1], 1, false);
@@ -86,29 +96,48 @@ export default class extends Phaser.Sprite {
 		this.talkSwitch = true;
 
 		this.stopIdleLoop();
+		this.player.talking = true;
 		this.player.turnPlayer(this);
 
 		let value = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
 
 		if ((value > -2.5 && value < -0.5)) {
-			console.log('up');
 			this.animations.play('up');
 
 		} else if (value > 1 && value < 2.5) {
-			console.log('down');
 			this.animations.play('down');
 
 		} else if (value > -0.5 && value < 1) {
-			console.log('right');
 			this.animations.play('right');
 
 		} else if (value > 2.5 || value < -2.5) {
-			console.log('left');
 			this.animations.play('left');
-
 		}
 
-		this.player.talking = true;
+		// let playerValue = this.game.physics.arcade.angleToXY(this.player, this.x, this.y);
+
+		// if ((playerValue > -2.5 && playerValue < -0.5)) {
+		// 	console.log('up');
+		// 	this.level.GUICLASS.direction = 'up';
+		// 	this.player.animations.play('up');
+
+		// } else if (playerValue > 1 && playerValue < 2.5) {
+		// 	console.log('down');
+		// 	this.level.GUICLASS.direction = 'down';
+		// 	this.player.animations.play('down');
+
+		// } else if (playerValue > -0.5 && playerValue < 1) {
+		// 	console.log('right');
+		// 	this.level.GUICLASS.direction = 'right';
+		// 	this.player.animations.play('right');
+
+		// } else if (playerValue > 2.5 || playerValue < -2.5) {
+		// 	console.log('left');
+		// 	this.level.GUICLASS.direction = 'left';
+		// 	this.player.animations.play('left');
+		// }
+
+		
 
 		// Check if name is in quest, if true -> get dialogueID
 		let dialogueID = this.level.questManager.checkQuestDialogue(this.name);
@@ -284,8 +313,14 @@ export default class extends Phaser.Sprite {
 	update() {
 
 		if(this.game.physics.arcade.distanceBetween(this, this.player) < 30){
-			// On click?
-			this.talk();
+			this.game.world.bringToTop(this.talkSymbol);
+			this.talkSymbol.alpha = 1;
+			// On E-click
+			if(this.level.inputClass.button_E.isDown){
+				this.talk();
+			}	
+		} else {
+			this.talkSymbol.alpha = 0;
 		}
 
 		

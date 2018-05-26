@@ -140,6 +140,56 @@ export default class extends Phaser.State {
 					start: 8,
 					end: 10,
 					loop: false
+				},
+				vx6: {
+					start: 10,
+					end: 12,
+					loop: false
+				},
+				vx7: {
+					start: 12,
+					end: 14,
+					loop: false
+				},
+				vx8: {
+					start: 14,
+					end: 16,
+					loop: false
+				},
+				vx9: {
+					start: 16,
+					end: 18,
+					loop: false
+				},
+				vx10: {
+					start: 18,
+					end: 20,
+					loop: false
+				},
+				vx11: {
+					start: 20,
+					end: 22,
+					loop: false
+				},
+				vx12: {
+					start: 22,
+					end: 24,
+					loop: false
+				},
+				vx13: {
+					start: 24,
+					end: 26,
+					loop: false
+				},
+				vx14: {
+					start: 26,
+					end: 28,
+					loop: false
+				},
+				vx15: {
+					start: 28,
+					end: 29,
+					loop: false
 				}
 			}
 		};
@@ -439,6 +489,7 @@ export default class extends Phaser.State {
 		this.load.image('dashBar', 'assets/sprites/gui/dashBar.png');
 		this.load.image('newGameMap', 'assets/sprites/gui/newGameMap.png');
 		this.load.image('gamePadHelper', 'assets/sprites/gui/gamePadHelper.png');
+		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 7, 12);
 		// this.load.image('cursor', 'assets/sprites/gui/cursor.png');
 
 

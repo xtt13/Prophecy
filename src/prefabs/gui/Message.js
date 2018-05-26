@@ -62,6 +62,7 @@ export default class {
 
 		// var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center", wordWrapWidth: 50 };
 		// this.text = this.game.add.text(this.background.x + 20, this.game.camera.height - 80, "", style);
+
 		this.text.x = Math.floor(this.text.x);
 		this.text.y = Math.floor(this.text.y);
 
@@ -87,6 +88,17 @@ export default class {
 
 		this.level.GUICLASS.healthBar.fadeOut();
 
+		this.level.inputClass.button_SPACEBAR.onDown.add(() => {
+			console.log('faster');
+			// this.nextWord();
+			// this.wordDelay = 1;
+			// this.lineDelay = 1000;
+			// this.game.time.events.add(1000, () => {
+			// 	this.wordDelay = 100;
+			// 	this.lineDelay = 2000;
+			// }, this);
+		}, this);
+
 		this.nextLine();
 	}
 
@@ -96,9 +108,12 @@ export default class {
 			return;
 		}
 
+		// Split Line from Message Array
 		this.line = this.message[this.lineIndex].split(' ');
 		this.wordIndex = 0;
+
 		this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
+
 		this.text.text = '';
 		this.lineIndex++;
 
@@ -112,6 +127,7 @@ export default class {
 
 		this.wordSound.play();
 
+		// If Character Count === Line Count --> Next Line
 		if (this.wordIndex === this.line.length) {
 			this.text.text = this.text.text.concat('\n');
 			this.game.time.events.add(this.lineDelay, this.nextLine, this);
@@ -141,6 +157,10 @@ export default class {
 				this.player.talking = false;
 			});
 		}
+	}
+
+	update(){
+
 	}
 
 	addBars() {

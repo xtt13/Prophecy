@@ -206,13 +206,13 @@ export default class {
             
         }
 
-        console.log(this.hearts);
+        // console.log(this.hearts);
 
         this.counter = index;
         this.heartIndex = this.hearts.children.length - 1;
         this.buildLoop = this.game.time.events.loop(500, () => {
 
-            console.log(this.hearts.children.length, this.heartIndex);
+            // console.log(this.hearts.children.length, this.heartIndex);
 
             var removeHeart = this.game.add.tween(this.hearts.children[this.heartIndex].scale).to({
                 x: 0,
@@ -249,7 +249,7 @@ export default class {
     
     
 
-            console.log(this.counter);
+            // console.log(this.counter);
 
             this.heartIndex--;
             this.counter--;

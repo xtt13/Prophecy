@@ -531,7 +531,7 @@ export default class {
 
 		// Collisionhandler
 		this.game.physics.arcade.collide(this.enemies, this.enemies, this.enemyCollision);
-		this.game.physics.arcade.collide(this.player, this.enemies);
+		this.game.physics.arcade.collide(this.player, this.enemies, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.player.weapon.bullets, this.enemies, this.player.fight, null, this);
 		this.game.physics.arcade.collide(this.player.weaponGun.bullets, this.collisionLayer, this.weaponGunWallCollision, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
@@ -599,9 +599,14 @@ export default class {
 		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
+		// console.log(this.game.world.children);
 
 		// Here cause of NightTexture
-		this.game.world.bringToTop(this.treeDetails);
+		if(!this.eventManager.spotViewerPlayed){
+			this.game.world.bringToTop(this.treeDetails);
+		}
+		
+		
 
 
 		this.levelBuilder.update();

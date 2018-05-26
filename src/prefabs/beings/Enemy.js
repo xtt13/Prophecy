@@ -22,7 +22,7 @@ export default class extends Phaser.Sprite {
 		
 		this.finderCall = true;
 		this.closeSpeed = this.game.rnd.integerInRange(100, 150);
-		this.farSpeed = this.game.rnd.integerInRange(400, 600);
+		this.farSpeed = this.game.rnd.integerInRange(200, 400);
 
 		this.startMoving = false;
 
@@ -31,8 +31,11 @@ export default class extends Phaser.Sprite {
 		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 15, true);
 		this.animations.add('idle', [10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 10, true);
 		
-
-		this.game.time.events.add(Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 5), () => {
+		this.scale.set(1, 1);
+		this.game.time.events.add(Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 8), () => {
+			// if(this.game.rnd.integerInRange(0, 1)){
+			// 	this.scale.set(1, 1);
+			// }
 			this.animations.play('idle');
 		}, this);
 
@@ -99,7 +102,7 @@ export default class extends Phaser.Sprite {
 
 			if(this.attackSoundSwitch){
 				this.attackSoundSwitch = false;
-				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10', 'vx11', 'vx12', 'vx13', 'vx14', 'vx15']);
 				this.voice = this.game.add.audioSprite('VxSeeds');
 				this.voice.play(this.rndVoice, 0.5);
 				this.game.time.events.add(Phaser.Timer.SECOND * 2, () => {
@@ -107,18 +110,49 @@ export default class extends Phaser.Sprite {
 				}, this);
 			}
 
-			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
-			this.animations.play('walk');
+			
 
 			this.finderCall = true;
 
 			if (this.pathfinder) {
 				this.pathfinder.pathToFollow.length = 0;
 			}
+
+			if(this.distanceBetweenEnemiePlayer < 3) return;
+			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+
+			// console.log(this.animations.currentAnim.currentFrame.index);
+
+			if(this.animations.currentAnim.name == "idle"){
+				this.animations._anims.idle.stop();
+			}
+
+			this.animations.play('walk');
+			
+
+			
+
+
 		}
 
-		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 300 && this.finderCall) {
+		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 200 && this.finderCall) {
 			// console.log('Calculate');
+
+			if(this.animations.currentAnim.name == "idle"){
+				this.animations._anims.idle.stop();
+			}
+			console.log('HHHHHHHEEE');
+			this.animations.play('walk');
+
+			if(this.attackSoundSwitch){
+				this.attackSoundSwitch = false;
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10', 'vx11', 'vx12', 'vx13', 'vx14', 'vx15']);
+				this.voice = this.game.add.audioSprite('VxSeeds');
+				this.voice.play(this.rndVoice, 0.5);
+				this.game.time.events.add(Phaser.Timer.SECOND * 2, () => {
+					this.attackSoundSwitch = true;
+				}, this);
+			}
 			
 			let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
 			if (angle == 1 || angle == 2 || angle == 0) {

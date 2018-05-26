@@ -38,10 +38,12 @@ export default class {
 
 	update() {
 		if (this.message) {
+			this.message.update();
 			this.game.world.bringToTop(this.message.background);
 			this.game.world.bringToTop(this.message.text);
 			this.game.world.bringToTop(this.message.upperBar);
 			this.game.world.bringToTop(this.message.downBar);
+			
 		}
 
 		if (this.notification.notificationBar) {
