@@ -20,5 +20,6 @@ export default {
 	night: true,
 	enemies: true,
 	startMap: 'map1',
-	secureLS: false
+	secureLS: false,
+	devHour: 11
 };

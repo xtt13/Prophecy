@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import config from './../../config';
 
 // From Dusk Till Dawn
 export default class {
@@ -21,8 +22,7 @@ export default class {
 
 			/*eslint no-undef: */
 			if (__DEV__) {
-				this.timeValue = 11;
-				console.log('NACHT');
+				this.timeValue = config.devHour;
 				
 				// this.timeValue = this.time.getHours();
 			} else {

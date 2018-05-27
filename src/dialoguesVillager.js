@@ -49,7 +49,7 @@ export default {
 		// Girl2
 		7: [
 			' My Dad made this hammer! He\'s the best!',
-			' I could easily fight these monsters but Dad doesn\'t let me.'
+			' I could easily fight these monsters but dad doesn\'t let me.'
 		],
 
 		// Girl1
@@ -67,9 +67,9 @@ export default {
 
 		// Priest
 		10: [
-			'Praise the Oracle!',
-            'The Oracle and it\'s followers are a very wise and incredible religion, following generations of worshipping each and every hero that gets chosen by our Oracle.',
-            'We still got our hopes up, praying for the next hero to save us from the plant monsters hiding in the woods...'
+			' Praise the Oracle!',
+            ' The Oracle and it\'s followers are a very wise and incredible religion, following generations of worshipping each and every hero that gets chosen by our Oracle.',
+            ' We still got our hopes up, praying for the next hero to save us from the plant monsters hiding in the woods...'
 		],
 
 		// ==================

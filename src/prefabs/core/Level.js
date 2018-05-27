@@ -37,35 +37,35 @@ export default class {
 
 		/*eslint no-undef: */
 		if (__DEV__) {
-			var timeValue = 23;
-			this.night = true;
+			var timeValue = config.devHour;
+			
 		} else {
 			var timeValue = time.getHours();
+		}
 
 
-			if (timeValue >= 0 && timeValue < 6) {
+		if (timeValue >= 0 && timeValue < 6) {
 
-				this.night = true;
-
-
-			} else if (timeValue >= 6 && timeValue < 8) {
-
-				this.night = false;
-
-			} else if (timeValue >= 8 && timeValue < 18) {
-
-				this.night = false;
+			this.night = true;
 
 
-			} else if (timeValue >= 18 && timeValue < 21) {
+		} else if (timeValue >= 6 && timeValue < 8) {
 
-				this.night = false;
+			this.night = false;
 
-			} else if (timeValue >= 21 && timeValue < 24) {
+		} else if (timeValue >= 8 && timeValue < 18) {
 
-				this.night = true;
+			this.night = false;
 
-			}
+
+		} else if (timeValue >= 18 && timeValue < 21) {
+
+			this.night = false;
+
+		} else if (timeValue >= 21 && timeValue < 24) {
+
+			this.night = true;
+
 		}
 
 
@@ -624,6 +624,8 @@ export default class {
 			this.game.world.bringToTop(this.lockGame.secondTry);
 			this.game.world.bringToTop(this.lockGame.thirdTry);
 		}
+
+		// console.log(this.game.world.children);
 	}
 
 	slowDownTile(player, tile) {

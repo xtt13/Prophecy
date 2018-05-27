@@ -615,7 +615,8 @@ export default class {
 		this.areaSound.fadeIn(4000);
 	}
 
-	soundAreaLeave() {
+	soundAreaLeave(region) {
+		if(region.properties.nightMode && this.level.night) return;
 		this.areaSound.fadeOut(500);
 	}
 

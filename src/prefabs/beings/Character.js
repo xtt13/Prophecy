@@ -23,7 +23,7 @@ export default class extends Phaser.Sprite {
 		this.body.immovable = true;
 		this.body.drag.set(90);
 
-		console.log(this);
+		// console.log(this);
 
 		this.talkSymbol = this.game.add.sprite(this.body.x + 10, this.body.y - 20, 'characterTalk');
 		this.talkSymbol.smoothed = false;
@@ -273,7 +273,7 @@ export default class extends Phaser.Sprite {
 				}
 			}
 
-			this.game.time.events.add(15000, () => {
+			this.game.time.events.add(10000, () => {
 				this.game.time.events.remove(this.vxLoop);
 				this.talkSwitch = false;
 				this.runIdleLoop();

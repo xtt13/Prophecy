@@ -109,7 +109,7 @@ export default class {
 	loadMusic(key) {
 		console.log('Load Music');
 		this.game.load.audio(key, 'assets/music/' + key + '.mp3');
-		// this.game.load.start();
+		this.game.load.start();
 		// this.game.load.onLoadStart.add(function() {}, this);
 		this.game.load.onLoadComplete.add(() => {
 			this.music = this.game.add.audio(key, this.globalVolume, true);
