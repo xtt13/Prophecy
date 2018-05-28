@@ -1031,7 +1031,7 @@
                 {
                  "height":22.0022,
                  "id":246,
-                 "name":"Bird",
+                 "name":"Seed",
                  "properties":
                     {
                      "jumpDown":false,
@@ -1048,6 +1048,48 @@
                  "width":22.0022,
                  "x":775.528324927277,
                  "y":1067.53996063996
+                }, 
+                {
+                 "height":22.0022,
+                 "id":248,
+                 "name":"Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":650.220649832177,
+                 "y":1088.23810340121
+                }, 
+                {
+                 "height":22.0022,
+                 "id":249,
+                 "name":"Seed",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":1052.99531978071,
+                 "y":985.306798858805
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1086,7 +1128,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":247,
+ "nextobjectid":250,
  "orientation":"orthogonal",
  "properties":
     {

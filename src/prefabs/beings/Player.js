@@ -60,11 +60,11 @@ export default class extends Phaser.Sprite {
 		this.game.physics.enable(this);
 		this.body.setSize(8, 10, 21, 40);
 
-		this.body.bounce.set(2);
+		// this.body.bounce.set(2);
 		this.body.drag.set(500);
 
 		// No Glitch on Camera
-		this.game.camera.roundPx = false;
+		this.game.camera.roundPx = true;
 
 		this.game.renderer.renderSession.roundPixels = false;
 

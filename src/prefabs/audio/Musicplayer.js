@@ -46,7 +46,6 @@ export default class {
 				}
 		}
 
-		console.log('gaggiii');
 		// If Music isPlaying -> Fade Out -> FadeIn
 		this.fadeOutFadeIn(this.key);
 
@@ -76,8 +75,11 @@ export default class {
 
 		this.music.onFadeComplete.add(() => {
 			console.log('Fade Out Complete Fade In!');
-			this.music.destroy();
-			this.music = null;	
+			if(this.music){
+				this.music.destroy();
+				this.music = null;	
+			}
+			
 
 			this.playMusic(key);
 			// Cannot set property 'allowMultiple' of undefined
