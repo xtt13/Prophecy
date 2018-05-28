@@ -24,6 +24,7 @@ import LockGame from '../minigame/LockGame';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
+import Bird from '../beings/Bird';
 import Sprout from '../beings/Sprout';
 import Gamescaler from '../gamemechanics/Gamescaler';
 
@@ -95,6 +96,7 @@ export default class {
 		this.chests = [];
 		this.activatedBridges = [];
 		this.enemies = [];
+		this.birds = [];
 		this.emitter = [];
 
 		// Accesspoints
@@ -462,7 +464,6 @@ export default class {
 			// if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
 
 			if (element.properties.type == 'seed') {
-				console.log('SEEED');
 				this.enemies.push(
 					new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 				);
@@ -470,6 +471,12 @@ export default class {
 
 
 			// }
+
+			if (element.properties.type == 'bird') {
+				this.birds.push(
+					new Bird(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+				);
+			}
 
 			if (element.properties.type == 'sprout') {
 				this.enemies.push(

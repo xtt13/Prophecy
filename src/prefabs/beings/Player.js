@@ -20,6 +20,8 @@ export default class extends Phaser.Sprite {
 		this.talking = false;
 		this.attack = false;
 
+		this.damageSwitch = false;
+
 		this.baseImages = [];
 
 		// this.movementBlocked = false;
@@ -59,7 +61,7 @@ export default class extends Phaser.Sprite {
 		this.body.setSize(8, 10, 21, 40);
 
 		this.body.bounce.set(2);
-		this.body.drag.set(1000);
+		this.body.drag.set(500);
 
 		// No Glitch on Camera
 		this.game.camera.roundPx = false;
@@ -122,7 +124,7 @@ export default class extends Phaser.Sprite {
 
 		this.weapon = this.game.add.weapon(10, 'invisibleAttack');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
-		this.weapon.bulletLifespan = 60;
+		this.weapon.bulletLifespan = 40;
 		this.weapon.bulletSpeed = 400;
 		// this.weapon.fireRate = 200;
 		this.weapon.trackSprite(this, 0, 0, false);
@@ -381,7 +383,23 @@ export default class extends Phaser.Sprite {
 	}
 
 	getDamage(player, enemy) {
-		return true;
+		console.log('collide');
+		if(this.damageSwitch) return;
+		this.damageSwitch = true;
+		enemy.paralyze = true;
+
+
+		this.game.time.events.add(1000, () => {
+			this.damageSwitch = false;
+			enemy.paralyze = false;
+		}, this);
+
+		this.game.camera.flash(0xc10000, 200);
+		this.GUICLASS.healthBar.removeHeart(1, true);
+		return;
+
+		// 5-1 = 4
+
 		// enemy.destroy();
 
 		// if (enemy.itemType !== undefined && enemy.itemType == 'key') {
@@ -400,8 +418,8 @@ export default class extends Phaser.Sprite {
 		this.gameData.playerHealth = this.player.health;
 		this.safe.setGameConfig(this.gameData);
 		
-		this.GUICLASS.healthBar.removeHeart(1, true);
-		this.game.camera.flash(0xc10000, 200);
+		// this.GUICLASS.healthBar.removeHeart(1, true);
+		// this.game.camera.flash(0xc10000, 200);
 
 		if (this.player.health <= 0) {
 			this.gameData.playerHealth = 5;

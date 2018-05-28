@@ -442,6 +442,7 @@ export default class extends Phaser.State {
 
 		// Enemies
 		this.load.spritesheet('enemy', 'assets/sprites/enemies/enemy.png', 18, 18);
+		this.load.spritesheet('bird', 'assets/sprites/enemies/bird.png', 16, 15);
 		this.load.spritesheet('enemyPartsSpritesheet', 'assets/sprites/enemies/enemyPartsSpritesheet.png', 16, 16);
 		this.load.image('rock', 'assets/sprites/enemies/rock.png');
 		this.load.image('bulletRock', 'assets/sprites/enemies/bulletRock.png');

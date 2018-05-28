@@ -193,6 +193,11 @@ export default class {
 
     removeHeart(index, shake) {
 
+        if(shake){
+            this.game.camera.shake(0.005, 500);
+        }
+
+        // If Health == 1 --> Flash
         if(this.level.player.health <= 1){
             this.flashingLoop = this.game.time.events.loop(850, () => {
                 this.game.camera.flash(0xc10000, 100, true);
@@ -235,9 +240,7 @@ export default class {
             this.hearts.children[this.heartIndex].alpha = 0;
             this.hearts.children[this.heartIndex].scale.set(0);
     
-            if(shake){
-                this.game.camera.shake(0.005, 500);
-            }
+            
             
             this.heartExplosion = this.game.add.emitter(this.hearts.children[this.heartIndex].x, this.hearts.children[this.heartIndex].y, 100);
             this.heartExplosion.fixedToCamera = true;

@@ -29,6 +29,7 @@ export default class extends Phaser.Sprite {
 		this.anchor.setTo(0.5);
 
 		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 15, true);
+		this.animations.add('wait', [0], 15, true);
 		this.animations.add('idle', [10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 10, true);
 		
 		this.scale.set(1, 1);
@@ -74,7 +75,7 @@ export default class extends Phaser.Sprite {
 	update() {
 		if(this.dead) return;
 		if(this.paralyze){
-			// console.log('PAR'); 
+			this.animations.play('wait');
 			return;
 		}
 
@@ -118,8 +119,7 @@ export default class extends Phaser.Sprite {
 				this.pathfinder.pathToFollow.length = 0;
 			}
 
-			if(this.distanceBetweenEnemiePlayer < 3) return;
-			this.game.physics.arcade.moveToObject(this, this.player, this.closeSpeed);
+			this.game.physics.arcade.moveToObject(this, this.player.body, this.closeSpeed);
 
 			// console.log(this.animations.currentAnim.currentFrame.index);
 
