@@ -16,18 +16,23 @@ export default class extends Phaser.State {
 		this.game.camera.flash(0x000000, 3000);
 		this.game.soundManager.initSound('AtmoWindRain');
 
-		this.menuText = this.game.add.bitmapText(
-			this.game.camera.width / 2,
-			this.game.camera.height / 2,
-			'pxlfont',
-			'PROPHECY',
-			51
-		);
-		this.menuText.anchor.set(0.5);
+		// this.menuText = this.game.add.bitmapText(
+		// 	this.game.camera.width / 2,
+		// 	this.game.camera.height / 2,
+		// 	'pxlfont',
+		// 	'PROPHECY',
+		// 	51
+		// );
+		// this.menuText.anchor.set(0.5);
+
+		this.logo = this.game.add.sprite(this.game.camera.width / 2, this.game.camera.height / 2 - 10, 'logo');
+		this.logo.anchor.set(0.5);
+		// this.logo.scale.setTo(0.2);
+		this.logo.smoothed = false;
 
 		this.subText = this.game.add.bitmapText(
 			this.game.camera.width / 2,
-			this.game.camera.height / 2 + 80,
+			this.game.camera.height / 2 + 107,
 			'pxlfont',
 			'Click To Move On',
 			10

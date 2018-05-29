@@ -633,8 +633,8 @@ export default class {
 		this.level.questManager.removeQuest(1);
 		this.level.questManager.addQuest(2);
 		this.level.GUICLASS.healthBar.removeHeart(5, false);
-		this.level.player.health = 1;
-		this.level.gameData.playerHealth = 1;
+		this.level.player.health = 2;
+		this.level.gameData.playerHealth = 2;
 		this.level.safe.setGameConfig(this.level.gameData);
 		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.01, 0.01);
 		// this.level.GUICLASS.createMessage([' WTF?'], false, true);

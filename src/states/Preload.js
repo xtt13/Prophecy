@@ -486,6 +486,7 @@ export default class extends Phaser.State {
 
 
 		// Load GUI
+		this.load.image('logo', 'assets/sprites/gui/logo.png');
 		this.load.image('heart', 'assets/sprites/gui/heart.png');
 		this.load.image('dashBar', 'assets/sprites/gui/dashBar.png');
 		this.load.image('newGameMap', 'assets/sprites/gui/newGameMap.png');
@@ -513,7 +514,7 @@ export default class extends Phaser.State {
 
 		/*eslint no-undef: */
 		if (__DEV__) {
-			this.state.start('Game', true, false);
+			this.state.start('MainMenu', true, false);
 		} else {
 			this.state.start('DeltaStorm', true, false);
 		}

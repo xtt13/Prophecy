@@ -49,6 +49,7 @@
         "phaser-easystar-ts": "^0.1.4",
         "phaser-tilemap-plus": "^0.10.1",
         "secure-ls": "^1.1.0",
+        "slick-ui": "^0.1.1",
         "webfontloader": "^1.6.28"
     },
     "cordova": {

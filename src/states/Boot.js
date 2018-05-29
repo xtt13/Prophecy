@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
 
+
 export default class extends Phaser.State {
 	init() {
 		// Boot Log

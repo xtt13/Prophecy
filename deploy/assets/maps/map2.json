@@ -325,10 +325,31 @@
                  "width":16.847025968704,
                  "x":1423.04248182494,
                  "y":1280.22219861278
+                }, 
+                {
+                 "height":22.0022,
+                 "id":261,
+                 "name":"Bird",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"bird"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":649.974047030924,
+                 "y":1007.78091479795
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -376,7 +397,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -386,7 +407,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -881,7 +902,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1022,7 +1043,70 @@
         {
          "draworder":"topdown",
          "name":"Enemies",
-         "objects":[],
+         "objects":[
+                {
+                 "height":22.0022,
+                 "id":262,
+                 "name":"Bird",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"bird"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":655.286132024284,
+                 "y":1013.85186907608
+                }, 
+                {
+                 "height":22.0022,
+                 "id":263,
+                 "name":"Bird",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"bird"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":637.45270383229,
+                 "y":1018.02565014229
+                }, 
+                {
+                 "height":22.0022,
+                 "id":264,
+                 "name":"Bird",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"bird"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":649.974047030924,
+                 "y":1022.95830049327
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -1278,7 +1362,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":261,
+ "nextobjectid":265,
  "orientation":"orthogonal",
  "properties":
     {

@@ -258,6 +258,30 @@
                  "width":32,
                  "x":381.561394470204,
                  "y":336.052206766272
+                }, 
+                {
+                 "gid":1664,
+                 "height":32,
+                 "id":200,
+                 "name":"Librarian",
+                 "properties":
+                    {
+                     "character":"librarian",
+                     "id":6,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":381.654855977568,
+                 "y":336.135756163286
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -286,7 +310,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":200,
+ "nextobjectid":201,
  "orientation":"orthogonal",
  "properties":
     {
