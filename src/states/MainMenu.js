@@ -40,24 +40,32 @@ export default class extends Phaser.State {
 		this.subText.smoothed = false;
 		this.subText.anchor.set(0.5);
 
-		this.variation3();
-		// var chosenValue = Math.random() < 0.5 ? 0 : 1;
+		// this.variation4();
 
-		// switch (chosenValue) {
-		// 	case 1:
-		// 		this.variation1();
-		// 		break;
+		var chosenValue = this.game.rnd.integerInRange(0, 3);
 
-		// 	case 0:
-		// 	this.variation2();
-		// 		break;
+		switch (chosenValue) {
+			case 0:
+				this.variation1();
+				break;
+
+			case 1:
+			this.variation2();
+				break;
+
+			case 2:
+			this.variation3();
+				break;
+
+			case 3:
+			this.variation4();
+				break;
 		
-		// 	default:
-		// 		break;
-		// }
+			default:
+				break;
+		}
 
 		
-		// this.variation2();
 
 
 		let isSafari =
@@ -158,7 +166,7 @@ export default class extends Phaser.State {
 
 	variation3(){
 		this.game.soundManager.initSound({athmoSound: 'AxBotanic'}, true, 2000);
-		this.sfxheartbeat = this.game.add.audio('sfxheartbeat', 0.3);
+		this.sfxheartbeat = this.game.add.audio('sfxheartbeat', 0.05);
 		this.sfxheartbeat.loop = true;
 		this.sfxheartbeat.play();
 
@@ -210,6 +218,28 @@ export default class extends Phaser.State {
 
 	}
 
+	variation4(){
+		this.game.soundManager.initSound({athmoSound: 'AtmoWaterStill'}, true, 2000);
+		this.templeFliesEmitter = this.game.add.emitter(this.logo.x - 40, this.logo.y + 40, 100);
+		// emitter.fixedToCamera = true;
+		this.templeFliesEmitter.width = 100;
+		this.templeFliesEmitter.height = 200;
+		this.templeFliesEmitter.angle = -10;
+		this.templeFliesEmitter.minParticleScale = 0.1;
+		this.templeFliesEmitter.maxParticleScale = 0.5;
+		// emitter.maxParticleSpeed.setTo(2, 2);
+
+		this.templeFliesEmitter.setYSpeed(2, 6);
+		this.templeFliesEmitter.setXSpeed(10, -10);
+
+		this.templeFliesEmitter.gravity = 0.5;
+		this.templeFliesEmitter.minRotation = 0;
+		this.templeFliesEmitter.maxRotation = 0;
+		this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
+		this.templeFliesEmitter.makeParticles('fly');
+		this.templeFliesEmitter.start(false, 5000, 5, 0);
+	}
+
 	tweenTint(obj, startColor, endColor, time) {    
 		// create an object to tween with our step value at 0    
 		var colorBlend = {step: 0};    
@@ -242,6 +272,10 @@ export default class extends Phaser.State {
 
 		if(this.addVillageGlimmer){
 			this.game.world.bringToTop(this.addVillageGlimmer);
+		}
+
+		if(this.templeFliesEmitter){
+			this.game.world.bringToTop(this.templeFliesEmitter);
 		}
 
 		if(this.manager){
