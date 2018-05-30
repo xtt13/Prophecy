@@ -5,11 +5,11 @@ export default {
 		// width: 900,
 		// height: 400,
 
-		width: 790,
-		height: 380,
+		// width: 790,
+		// height: 380,
 
-		// width: 580,
-		// height: 280,
+		width: 580,
+		height: 280,
 
 		renderer: Phaser.AUTO,
 		antialias: true,
@@ -26,5 +26,6 @@ export default {
 	enemies: true,
 	startMap: 'map1',
 	secureLS: false,
-	devHour: 23
+	devHour: 12,
+	devStartState: 'MainMenu'
 };

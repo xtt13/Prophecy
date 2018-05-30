@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Musicplayer from '../prefabs/audio/Musicplayer';
 import Soundmanager from '../prefabs/audio/Soundmanager';
+import config from '../config.js';
 
 
 export default class extends Phaser.State {
@@ -514,7 +515,7 @@ export default class extends Phaser.State {
 
 		/*eslint no-undef: */
 		if (__DEV__) {
-			this.state.start('MainMenu', true, false);
+			this.state.start(config.devStartState, true, false);
 		} else {
 			this.state.start('DeltaStorm', true, false);
 		}

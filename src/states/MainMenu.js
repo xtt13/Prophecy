@@ -14,7 +14,7 @@ export default class extends Phaser.State {
 		this.playOnce = false;
 
 		this.game.camera.flash(0x000000, 3000);
-		this.game.soundManager.initSound('AtmoWindRain');
+		
 
 		// this.menuText = this.game.add.bitmapText(
 		// 	this.game.camera.width / 2,
@@ -40,36 +40,25 @@ export default class extends Phaser.State {
 		this.subText.smoothed = false;
 		this.subText.anchor.set(0.5);
 
-		let emitter = this.game.add.emitter(-500, 0, 400);
-		emitter.fixedToCamera = true;
-		emitter.width = this.game.camera.width * 2;
-		emitter.angle = -30;
-		emitter.makeParticles('rain');
-		emitter.minParticleScale = 0.1;
-		emitter.maxParticleScale = 0.5;
-		emitter.setYSpeed(200, 310);
-		emitter.setXSpeed(-5, 5);
-		emitter.minRotation = 180;
-		emitter.maxRotation = 0;
-		emitter.gravity = 200;
-		emitter.start(false, 2500, 1, 0);
+		this.variation3();
+		// var chosenValue = Math.random() < 0.5 ? 0 : 1;
 
-		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
-		this.autumnGlimmerEmitter.fixedToCamera = true;
-		this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
-		this.autumnGlimmerEmitter.height = this.game.world.bounds.height;
-		this.autumnGlimmerEmitter.minParticleScale = 0.1;
-		this.autumnGlimmerEmitter.maxParticleScale = 0.5;
-		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
-		this.autumnGlimmerEmitter.setYSpeed(300);
-		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
-		this.autumnGlimmerEmitter.minParticleScale = 0.25;
-		this.autumnGlimmerEmitter.maxParticleScale = 1;
-		this.autumnGlimmerEmitter.gravity = 0.5;
-		this.autumnGlimmerEmitter.minRotation = 25;
-		this.autumnGlimmerEmitter.setAlpha(0.5, 1);
-		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
-		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
+		// switch (chosenValue) {
+		// 	case 1:
+		// 		this.variation1();
+		// 		break;
+
+		// 	case 0:
+		// 	this.variation2();
+		// 		break;
+		
+		// 	default:
+		// 		break;
+		// }
+
+		
+		// this.variation2();
+
 
 		let isSafari =
 			navigator.vendor &&
@@ -109,32 +98,132 @@ export default class extends Phaser.State {
 			}
 		});
 		
-		// console.log(this.game.slickUI);
-		// console.log(SlickUI.Element.Panel);
+	}
 
-		// var panel = new SlickUI.Element.Panel(100, 100, 200, 100)
-		// console.log(panel);
-        
 
-  //       // panel.add(new SlickUI.Element.Text(10,10, "Text input")).centerHorizontally().text.alpha = 0.5;
+	variation1() {
 
-  //       var test = new SlickUI.Element.Text(this.game.camera.width / 2,this.game.camera.height / 2, "Your name");
-  //       console.log(test);
-  //       panel.add(test);
+		this.game.soundManager.initSound({athmoSound: 'AtmoWindRain'}, true, 2000);
 
-  //       this.game.slickUI.add(test);
+		let emitter = this.game.add.emitter(-500, 0, 400);
+		emitter.fixedToCamera = true;
+		emitter.width = this.game.camera.width * 2;
+		emitter.angle = -30;
+		emitter.makeParticles('rain');
+		emitter.minParticleScale = 0.1;
+		emitter.maxParticleScale = 0.5;
+		emitter.setYSpeed(200, 310);
+		emitter.setXSpeed(-5, 5);
+		emitter.minRotation = 180;
+		emitter.maxRotation = 0;
+		emitter.gravity = 200;
+		emitter.start(false, 2500, 1, 0);
 
-        // var textField = panel.add(new SlickUI.Element.TextField(10,58, panel.width - 20, 40));
+		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
+		this.autumnGlimmerEmitter.fixedToCamera = true;
+		this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
+		this.autumnGlimmerEmitter.height = this.game.world.bounds.height;
+		this.autumnGlimmerEmitter.minParticleScale = 0.1;
+		this.autumnGlimmerEmitter.maxParticleScale = 0.5;
+		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
+		this.autumnGlimmerEmitter.setYSpeed(300);
+		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
+		this.autumnGlimmerEmitter.minParticleScale = 0.25;
+		this.autumnGlimmerEmitter.maxParticleScale = 1;
+		this.autumnGlimmerEmitter.gravity = 0.5;
+		this.autumnGlimmerEmitter.minRotation = 25;
+		this.autumnGlimmerEmitter.setAlpha(0.5, 1);
+		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
+		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
 
-        // textField.events.onOK.add(function () {
-        //     alert('Your name is: ' + textField.value);
-        // });
-        // textField.events.onToggle.add(function (open) {
-        //     console.log('You just ' + (open ? 'opened' : 'closed') + ' the virtual keyboard');
-        // });
-        // textField.events.onKeyPress.add(function(key) {
-        //     console.log('You pressed: ' + key);
-        // });
+	}
+
+	variation2(){
+
+		this.game.soundManager.initSound({athmoSound: 'AxTemple'}, true, 2000);
+		
+		this.addVillageGlimmer = this.game.add.emitter(this.game.camera.width/2, this.game.camera.height/2, 600);
+		this.addVillageGlimmer.width = this.game.camera.width * 2;
+		this.addVillageGlimmer.height = this.game.camera.height * 2;
+		this.addVillageGlimmer.minParticleScale = 5;
+		this.addVillageGlimmer.gravity = 0;
+		this.addVillageGlimmer.setYSpeed(-4, 4);
+		this.addVillageGlimmer.setXSpeed(-4, 4);
+		this.addVillageGlimmer.maxRotation = 0;
+		this.addVillageGlimmer.minRotation = 0;
+		this.addVillageGlimmer.setAlpha(0, 1, 4000, Phaser.Easing.Exponential.In, true);
+		this.addVillageGlimmer.makeParticles('particle');
+		this.addVillageGlimmer.start(false, 10000, 5, 0);
+	}
+
+	variation3(){
+		this.game.soundManager.initSound({athmoSound: 'AxBotanic'}, true, 2000);
+		this.sfxheartbeat = this.game.add.audio('sfxheartbeat', 0.3);
+		this.sfxheartbeat.loop = true;
+		this.sfxheartbeat.play();
+
+
+		this.tweenTint(this.subText, 0xFFFFFF, 0x49ffc5, 850);
+
+		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+		
+		var data = {
+			lifespan: 3000,
+			// red: { min: 200, max: 255 },
+			// green: 50,
+			// blue: { min: 200, max: 255 },
+
+			red: 73,
+			green: 255,
+			blue: 197,
+
+			// alpha: { initial: 0, value: 1, control: [ { x: 0, y: 0 }, { x: 0.5, y: 1 }, { x: 1, y: 0 } ] }
+
+			alpha: {min: 0.5, max: 1},
+
+			
+			// vx: { min: 1, max: 0 },
+			// vy: { min: 1, max: 1 }
+		};
+
+		this.manager.addData('basic', data);
+
+		var line = this.manager.createLineZone(0, -30, this.game.camera.width, -30);
+
+		//  This creates a Pixel Renderer.
+		//  It works by rendering just pixels (it can't render images or textures)
+		//  The red, green and blue properties of the particle data control the
+		//  color of the pixel particles.
+	
+		this.emitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL, new Phaser.Point(0, 0.03));
+	
+		//  The autoClear property tells the Pixel emitter to not clear ifself before
+		//  rendering. You can then clear it yourself via renderer.clear() (see the update method)
+		this.emitter.renderer.autoClear = false;
+	
+		this.emitter.renderer.pixelSize = 1;
+	
+		this.emitter.addToWorld();
+	
+		this.emitter.emit('basic', 0, 0, { zone: line, total: 1, repeat: -1, frequency: 1000 });
+	
+
+	}
+
+	tweenTint(obj, startColor, endColor, time) {    
+		// create an object to tween with our step value at 0    
+		var colorBlend = {step: 0};    
+		// create the tween on this object and tween its step property to 100    
+		var colorTween = game.add.tween(colorBlend).to({step: 100}, time, Phaser.Easing.Bounce.Out, true, 0, 0, true).loop();        
+		// run the interpolateColor function every time the tween updates, feeding it the    
+		// updated value of our tween each time, and set the result as our tint    
+		colorTween.onUpdateCallback(function() {      
+			obj.tint = Phaser.Color.interpolateColor(startColor, endColor, 100, colorBlend.step);       
+		});        
+		// set the object to the start color straight away    
+		obj.tint = startColor;            
+		// start the tween    
+		colorTween.start();
 	}
 
 	preload() {}
@@ -149,6 +238,22 @@ export default class extends Phaser.State {
 			// 	// this.game.scale.startFullScreen(false, false);
 			// 	console.log('hello');
 			// });
+		}
+
+		if(this.addVillageGlimmer){
+			this.game.world.bringToTop(this.addVillageGlimmer);
+		}
+
+		if(this.manager){
+			// this.game.world.bringToTop(this.logo);
+			
+			this.emitter.renderer.clear(0.01);
+			// this.logo.reset(this.game.camera.width / 2, this.game.camera.height / 2);
+			// this.logo.resetFrame();
+			// this.subText.resetFrame();
+			this.game.world.bringToTop(this.logo);
+			this.game.world.bringToTop(this.subText);
+			
 		}
 
 		if (this.game.input.gamepad.supported) {

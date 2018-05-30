@@ -78,7 +78,7 @@ export default class extends Phaser.Sprite {
 
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
-					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
+					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.05, 0.05);
 					break;
 	
 				case 'topdown':

@@ -35,6 +35,11 @@ export default class {
 		bmd.ctx.globalAlpha = 0.8;
 		bmd.ctx.fill();
 
+		bmd.ctx.fill();
+        bmd.ctx.beginPath();
+        bmd.line(0, 0, 300, 0, '#49ffc5', 4);
+        bmd.ctx.fill();
+
 		this.background = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - 90, bmd);
 		this.background.fixedToCamera = true;
 

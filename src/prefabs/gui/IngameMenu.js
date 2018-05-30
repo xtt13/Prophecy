@@ -30,11 +30,12 @@ export default class {
 	}
 
 	showMenu() {
+		this.level.GUICLASS.healthBar.fadeOut();
 		// Disable Storm, Disable Playermovement, No Camera Lerp
 		this.level.weather.enableStorm = false;
 		this.level.player.movable = false;
 		this.level.player.alpha = 0;
-		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+		// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
 		this.blackBGbmd = this.game.add.bitmapData(window.innerWidth, window.innerHeight);
 		this.blackBGbmd.ctx.beginPath();
@@ -49,27 +50,31 @@ export default class {
 			this.blackBGbmd
 		);
 		this.blackBG.fixedToCamera = true;
+		this.blackBG.alpha = 0;
+		this.game.add
+				.tween(this.blackBG)
+				.to({ alpha: 0.6 }, 350, Phaser.Easing.Cubic.Out, true);
 
 		// Create BitmapData Background
 		this.bmd = this.game.add.bitmapData(400, 200);
 
 		this.bmd.ctx.beginPath();
-		this.bmd.ctx.rect(0, 0, 400, 200);
+		this.bmd.ctx.rect(0, 20, 400, 200);
 		this.bmd.ctx.fillStyle = '#000000';
 		this.bmd.ctx.globalAlpha = 1;
 		this.bmd.ctx.fill();
 
-		this.bmd.ctx.beginPath();
-		this.bmd.ctx.rect(0, 0, 400, 20);
-		this.bmd.ctx.fillStyle = '#404040';
-		this.bmd.ctx.globalAlpha = 1;
-		this.bmd.ctx.fill();
+		// this.bmd.ctx.beginPath();
+		// this.bmd.ctx.rect(0, 0, 400, 20);
+		// this.bmd.ctx.fillStyle = '#404040';
+		// this.bmd.ctx.globalAlpha = 1;
+		// this.bmd.ctx.fill();
 
-		this.bmd.ctx.beginPath();
-		this.bmd.ctx.rect(0, 18, 400, 2);
-		this.bmd.ctx.fillStyle = '#FFFFFF';
-		this.bmd.ctx.globalAlpha = 1;
-		this.bmd.ctx.fill();
+		// this.bmd.ctx.beginPath();
+		// this.bmd.ctx.rect(0, 18, 400, 2);
+		// this.bmd.ctx.fillStyle = '#FFFFFF';
+		// this.bmd.ctx.globalAlpha = 1;
+		// this.bmd.ctx.fill();
 
 		this.menuBackground = this.game.add.sprite(
 			this.game.camera.width / 2 - this.bmd.width / 2,
@@ -77,6 +82,7 @@ export default class {
 			this.bmd
 		);
 		this.menuBackground.fixedToCamera = true;
+		
 
 		// Create Mapbutton
 		this.mapButton = this.game.add.button(
@@ -127,15 +133,19 @@ export default class {
 	}
 
 	closeMenu() {
+		this.level.GUICLASS.healthBar.fadeIn();
 		if (this.menuBackground) {
 			// Enable Storm, Enable Playermovement, Add Camera Lerp
 			this.level.weather.enableStorm = true;
 			this.level.player.movable = true;
 			this.level.player.alpha = 1;
-			this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
+			// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 
 			// Destroy menuBackground + all buttons
-			this.blackBG.destroy();
+			this.game.add
+			.tween(this.blackBG)
+			.to({ alpha: 0 }, 350, Phaser.Easing.Cubic.Out, true);
+
 			this.menuBackground.destroy();
 			this.mapButton.destroy();
 			this.questButton.destroy();

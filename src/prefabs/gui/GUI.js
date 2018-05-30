@@ -66,7 +66,7 @@ export default class {
 
 		if (this.ingameMenu.menuBackground) {
 			// this.gameMap.update();
-
+			this.game.world.bringToTop(this.ingameMenu.blackBG);
 			this.game.world.bringToTop(this.ingameMenu.menuBackground);
 			this.game.world.bringToTop(this.ingameMenu.mapButton);
 			this.game.world.bringToTop(this.ingameMenu.questButton);

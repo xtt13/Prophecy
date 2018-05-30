@@ -38,8 +38,8 @@ export default class extends Phaser.State {
 		// Don't pause on lost focus
 		// this.stage.disableVisibilityChange = true;
 
-		// this.game.forceSingleRender = true;
-		// this.game.time.desiredFps = 60;
+		// this.game.time.desiredFps = 100;
+		// this.game.forceSingleUpdate = true;
 
 		// Start the Preload State
 		this.state.start('Preload');

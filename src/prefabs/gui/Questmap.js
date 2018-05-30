@@ -29,21 +29,23 @@ export default class {
 			this.game.camera.height / 2 - 60,
 			'pxlfont',
 			'',
-			20
+			10
 		);
-		this.text.text = '';
+		this.text.text = ' ';
 		this.text.fixedToCamera = true;
 
 		for (let prop in this.quests) {
 			if (!isNaN(prop)) {
 				if (this.quests[prop].questKillEnemyAmount !== undefined) {
 					this.text.text +=
-						this.quests[prop].questMessage +
-						': ' +
-						this.quests[prop].questDeadEnemies +
-						'/' +
-						this.quests[prop].questKillEnemyAmount +
-						'\n';
+						this.quests[prop].questMessage ;
+						// +
+						// ': '
+						//  +
+						// this.quests[prop].questDeadEnemies +
+						// '/' +
+						// this.quests[prop].questKillEnemyAmount +
+						// '\n';
 				} else {
 					this.text.text += this.quests[prop].questMessage + '\n';
 				}

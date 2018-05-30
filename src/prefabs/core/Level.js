@@ -831,9 +831,9 @@ export default class {
 		this.treeDetails = this.map.createLayer('TreeDetails');
 		this.trees = this.map.createLayer('Trees');
 
-		if (this.map.layers[3].name == 'ForegroundLayer2') {
+		// if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
-		}
+		// }
 
 
 		//  Resize the world
