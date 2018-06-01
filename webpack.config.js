@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var exec = require('script-loader');
 //var PrettierPlugin = require("prettier-webpack-plugin");
 
@@ -67,6 +68,18 @@ module.exports = {
       },
       hash: false
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'src/ept.webmanifest'),
+        to: path.resolve(__dirname, 'dist')
+      }
+    ]),
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, 'src/sw.js'),
+    //     to: path.resolve(__dirname, '/')
+    //   }
+    // ]),
     new BrowserSyncPlugin({
       host: process.env.IP || 'localhost',
       port: process.env.PORT || 3000,

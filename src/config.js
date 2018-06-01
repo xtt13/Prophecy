@@ -2,8 +2,8 @@
 // Game Configuration Default w:580, h:280
 export default {
 	phaserConfig: {
-		width: 1400,
-		height: 800,
+		// width: 1400,
+		// height: 800,
 
 		// width: 900,
 		// height: 400,
@@ -11,8 +11,8 @@ export default {
 		// width: 790,
 		// height: 380,
 
-		// width: 580,
-		// height: 280,
+		width: 580,
+		height: 280,
 
 		renderer: Phaser.AUTO,
 		antialias: true,
@@ -30,5 +30,5 @@ export default {
 	startMap: 'map1',
 	secureLS: false,
 	devHour: 12,
-	devStartState: 'Name'
+	devStartState: 'MainMenu'
 };

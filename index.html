@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Prophecy</title>
+    <link rel="manifest" href="ept.webmanifest">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -60,6 +61,7 @@
             image-rendering: pixelated;                 /* Awesome future-browsers       */
             -ms-interpolation-mode: nearest-neighbor;
             font-family: Pixeled;
+
             /* cursor: copy; */
             /* cursor: url(http://www.rw-designer.com/cursor-extern.php?id=109903);; */
             /* cursor: url('assets/sprites/cursor.png'); */
@@ -67,40 +69,16 @@
             /* cursor:  url(assets/sprites/cursor.png) 2 2, default; */
             /* cursor: none; */
         }
-        #firebaseui-auth-container {
-            margin: auto;
-            position: absolute;
-            top: 0; left: 0; right: 0;
-        }
+
     </style>
-<!--     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" /> -->
+
 
 </head>
 
 <body>
 
-    <div id="firebaseui-auth-container"></div>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div>
-
     <div id="content"></div>
-    <!-- <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script> -->
-    <script>
-      // Initialize Firebase
-      // var config = {
-      //   apiKey: "AIzaSyCHYc6XlsGbGWUG4cq00xOtNmQLdzv9ROU",
-      //   authDomain: "prophecy-aa61c.firebaseapp.com",
-      //   databaseURL: "https://prophecy-aa61c.firebaseio.com",
-      //   projectId: "prophecy-aa61c",
-      //   storageBucket: "prophecy-aa61c.appspot.com",
-      //   messagingSenderId: "1088796181593"
-      // };
-      // firebase.initializeApp(config);
-    </script>
-    <!-- Firebase Support -->
-    <!-- <script src="dist/firebase.js"></script> -->
+
     
     <!-- uncomment the line bellow for cordova feature -->
     <!-- <script type="text/javascript" src="cordova.js"></script> -->

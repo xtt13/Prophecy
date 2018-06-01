@@ -46,6 +46,18 @@ module.exports = {
         to: path.resolve(__dirname, 'deploy')
       }
     ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'src/ept.webmanifest'),
+        to: path.resolve(__dirname, 'deploy')
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'src/sw.js'),
+        to: path.resolve(__dirname, 'deploy')
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */}),
     new HtmlWebpackPlugin({
       filename: '../index.html',
@@ -63,13 +75,7 @@ module.exports = {
         removeEmptyAttributes: true
       },
       hash: true
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, 'src/firebase.js'),
-        to: path.resolve(__dirname, 'deploy/dist')
-      }
-    ])
+    })
   ],
   module: {
     rules: [
