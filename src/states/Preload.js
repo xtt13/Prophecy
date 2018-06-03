@@ -506,6 +506,7 @@ export default class extends Phaser.State {
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
 		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
 		this.load.bitmapFont('minecraftia', 'assets/fonts/minecraftia-black.png', 'assets/fonts/minecraftia.xml');
+		this.load.image('carinaFont', 'assets/fonts/carinaFont.png');
 	}
 
 	create() {
@@ -517,7 +518,7 @@ export default class extends Phaser.State {
 		if (__DEV__) {
 			this.state.start(config.devStartState, true, false);
 		} else {
-			this.state.start('DeltaStorm', true, false);
+			this.state.start('Game', true, false);
 		}
 	}
 

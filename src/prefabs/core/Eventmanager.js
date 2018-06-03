@@ -657,9 +657,9 @@ export default class {
 		this.game.time.events.add(
 			2000,
 			() => {
-				this.game.add.tween(this.levelBuilder.branch).to({
+				this.game.add.tween(this.level.levelBuilder.branch).to({
 					alpha: 0
-				}, duration, easing, true);
+				}, 250, Phaser.Easing.Bounce.Out, true);
 				
 				this.level.gameOver();
 			}, this);

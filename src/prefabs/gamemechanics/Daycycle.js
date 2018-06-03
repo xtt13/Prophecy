@@ -26,7 +26,8 @@ export default class {
 				
 				// this.timeValue = this.time.getHours();
 			} else {
-				this.timeValue = this.time.getHours();
+				this.timeValue = 11;
+				// this.timeValue = this.time.getHours();
 			}
 
 			if (this.timeValue >= 0 && this.timeValue < 6) {

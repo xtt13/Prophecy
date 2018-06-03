@@ -43,6 +43,9 @@ export default class {
 			this.game.world.bringToTop(this.message.text);
 			this.game.world.bringToTop(this.message.upperBar);
 			this.game.world.bringToTop(this.message.downBar);
+
+			this.game.world.bringToTop(this.message.fontImage);
+			
 			
 		}
 

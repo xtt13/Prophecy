@@ -41,7 +41,8 @@ export default class {
 			var timeValue = config.devHour;
 			
 		} else {
-			var timeValue = time.getHours();
+			var timeValue = 11;
+			// var timeValue = time.getHours();
 		}
 
 
