@@ -502,11 +502,13 @@ export default class {
 
 		console.log(this.level.questManager.checkIfQuestExists(1));
 
-		if (!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)) {
-			this.transitionTime = 1;
-		} else {
-			this.transitionTime = 750;
-		}
+		// if (!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)) {
+		// 	this.transitionTime = 1;
+		// } else {
+		// 	this.transitionTime = 750;
+		// }
+
+		this.transitionTime = 750;
 
 		this.game.camera.unfollow();
 		// this.game.camera.lerp = 0.1;

@@ -248,6 +248,25 @@ export default class {
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
 
+		this.button_1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+		this.button_1.onDown.add(this.numberKey, this);
+		this.button_2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+		this.button_2.onDown.add(this.numberKey, this);
+		this.button_3 = this.game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+		this.button_3.onDown.add(this.numberKey, this);
+		this.button_4 = this.game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
+		this.button_4.onDown.add(this.numberKey, this);
+		this.button_5 = this.game.input.keyboard.addKey(Phaser.Keyboard.FIVE);
+		this.button_5.onDown.add(this.numberKey, this);
+		this.button_6 = this.game.input.keyboard.addKey(Phaser.Keyboard.SIX);
+		this.button_6.onDown.add(this.numberKey, this);
+		this.button_7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
+		this.button_7.onDown.add(this.numberKey, this);
+		this.button_8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
+		this.button_8.onDown.add(this.numberKey, this);
+		this.button_9 = this.game.input.keyboard.addKey(Phaser.Keyboard.NINE);
+		this.button_9.onDown.add(this.numberKey, this);
+
 		if (typeof ipc !== 'undefined') {
 			this.button_ESC = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 			this.button_ESC.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
@@ -327,6 +346,103 @@ export default class {
 		} else {
 			this.game.time.events.remove(this.movementloop);
 			this.movementloop = null;
+		}
+	}
+
+	numberKey(key){
+		if (this.level == undefined) return;
+		if(!config.allowFastTravel) return;
+		switch (key.event.key) {
+			case "1":
+				// Start
+				this.level.gameData.currentMap = 'map1';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'down';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				
+				break;
+			case "2":
+				// Forest1
+				this.level.gameData.currentMap = 'map10';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'left';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+			
+			case "3":
+				// Forest2
+				this.level.gameData.currentMap = 'map11';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'up';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+
+				break;
+			case "4":
+				// Village
+				this.level.gameData.currentMap = 'map2';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'up';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+			
+
+			case "5":
+				// Village2
+				this.level.gameData.currentMap = 'map2';
+				this.level.gameData.targetID = '3';
+				this.level.gameData.direction = 'down';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+			
+			case "6":
+		
+				// Village
+				this.level.gameData.currentMap = 'map2';
+				this.level.gameData.targetID = '2';
+				this.level.gameData.direction = 'up';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+
+			case "7":
+		
+				// Boss
+				this.level.gameData.currentMap = 'map9';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'up';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+
+			case "8":
+
+				// Temple Entrance
+				this.level.gameData.currentMap = 'map4';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'up';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+
+			case "9":
+
+				// Temple Entrance
+				this.level.gameData.currentMap = 'map5';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'up';
+				this.level.safe.setGameConfig(this.level.gameData);
+				this.game.state.restart(true, false);
+				break;
+		
+
+		
+			default:
+				break;
 		}
 	}
 

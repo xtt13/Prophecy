@@ -518,7 +518,7 @@ export default class extends Phaser.State {
 		if (__DEV__) {
 			this.state.start(config.devStartState, true, false);
 		} else {
-			this.state.start('Game', true, false);
+			this.state.start('MainMenu', true, false);
 		}
 	}
 

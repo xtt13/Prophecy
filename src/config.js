@@ -31,5 +31,6 @@ export default {
 	secureLS: false,
 	devHour: 12,
 	devStartState: 'Game',
-	serviceWorker: false
+	serviceWorker: false,
+	allowFastTravel: true
 };
