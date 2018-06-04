@@ -92,11 +92,13 @@ export default class extends Phaser.Sprite {
 
 	talk(){
 
+
 		if(this.talkSwitch) return;
 		this.talkSwitch = true;
 
 		this.stopIdleLoop();
 		this.player.talking = true;
+		
 		this.player.turnPlayer(this);
 
 		let value = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
@@ -113,6 +115,7 @@ export default class extends Phaser.Sprite {
 		} else if (value > 2.5 || value < -2.5) {
 			this.animations.play('left');
 		}
+
 
 		// let playerValue = this.game.physics.arcade.angleToXY(this.player, this.x, this.y);
 
@@ -281,6 +284,7 @@ export default class extends Phaser.Sprite {
 
 		}
 
+
 	}
 
 	randomDirection(){
@@ -312,7 +316,11 @@ export default class extends Phaser.Sprite {
 
 	update() {
 
-		if(this.game.physics.arcade.distanceBetween(this, this.player) < 30){
+		if(this.game.physics.arcade.distanceBetween(this, this.player) < 60){
+			if(this.player.talking){
+				this.talkSymbol.alpha = 0;
+				return;
+			}
 			this.game.world.bringToTop(this.talkSymbol);
 			this.talkSymbol.alpha = 1;
 			// On E-click

@@ -474,6 +474,7 @@ export default class {
 			// }
 
 			if (element.properties.type == 'bird') {
+				if(this.night) return;
 				this.birds.push(
 					new Bird(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
 				);
@@ -573,6 +574,7 @@ export default class {
 		}
 
 		// this.game.world.bringToTop(this.foregroundLayer2);
+
 		this.game.world.bringToTop(this.godrays);
 
 

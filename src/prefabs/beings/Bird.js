@@ -32,8 +32,9 @@ export default class extends Phaser.Sprite {
 
 	update() {
 
-
+        // console.log(this.game.world.children);
         this.game.world.bringToTop(this);
+        // this.game.world.setChildIndex(this, 34);
         this.body.checkCollision.none = true;
 
         if(this.startFlying){

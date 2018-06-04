@@ -32,7 +32,7 @@ export default class {
 		bmd.ctx.beginPath();
 		bmd.ctx.rect(0, 0, width, height);
 		bmd.ctx.fillStyle = '#000000';
-		bmd.ctx.globalAlpha = 0.8;
+		bmd.ctx.globalAlpha = 0.5;
 		bmd.ctx.fill();
 
 		bmd.ctx.fill();
@@ -70,10 +70,8 @@ export default class {
 
 	
 
-		
-
-		// this.level.inputClass.button_SPACEBAR.onDown.add(() => {
-		// 	console.log('faster');
+		// this.level.inputClass.button_E.onDown.add(() => {
+		// 	// console.log('faster');
 		// 	// this.nextWord();
 		// 	// this.wordDelay = 1;
 		// 	// this.lineDelay = 1000;
@@ -153,6 +151,10 @@ export default class {
 
 	update(){
 
+		if(this.level.inputClass.button_E.isDown ){
+			// this.wordDelay = 1;
+			// this.lineDelay = 1000;
+		}
 	}
 
 	addBars() {

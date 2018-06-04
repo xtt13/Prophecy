@@ -1030,6 +1030,12 @@ export default class {
 		// If Player exists
 		if (this.player) {
 
+			// Bugfix Talking Move
+			if(!this.player.movable){
+				this.player.animations.stop();
+				return;
+			}
+
 			// If the Player should not walk
 			if (!this.player.movable) {
 				

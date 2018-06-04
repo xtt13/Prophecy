@@ -4,21 +4,26 @@ export default {
 
 		//
 		1: [
-			' Hello? Are you okay?',
-			' My name is Lucy! Pleased to meet you! Uh...',
-			' Levi! Alright.',
-			' This? It\'s the Forest of Eritel! You seem to be lost. There is a village nearby, just follow the path! Though! It must be scary around here for someone who isn\'t familiar with these woods! ', 'How about that: I\'ll stay with you for now, Levi!'
+			'Hello? Are you okay?',
+			'My name is Lucy! Pleased to meet you! Uh...',
+			'Levi! Alright.',
+			'This? It\'s the Forest of Eritel! You seem to \nbe lost. There is a village nearby, just \nfollow the path!',
+			'Though! It must be scary around here for someone \nwho isn\'t familiar with these woods! ',
+			'How about that: \nI\'ll stay with you for now, Levi!'
 		],
 
 		//
 		2: [
-			'Oh, seems like the path is falling apart! There are platforms you can reach by using the [BUTTON]. You should give it a try!',
-			'Great! You did it! Make sure you don\'t forget it, it can save your life.'
+			'Oh, seems like the path is falling apart! There \nare platforms you can reach by using the [BUTTON].',
+			'You should give it a try!',
+			'Great! You did it! Make sure you don\'t forget \nit, it can save your life.'
 		],
 
 		//
 		3: [
-			'The monsters around here are quite destructive! I\'m surprised none took advantage of you when you passed out! Seems like today is your lucky day. The Forest of Eritel wasn\'t always like this, it was home of a great civilization once! Hence why sometimes you can find treasures, chests and other secrets when you look around closely. Always pay attention to your surroundings.',
+			'The monsters around here are quite destructive!\nI\'m surprised none took advantage of you when \nyou passed out! Seems like today is your lucky \nday.',
+			'The Forest of Eritel wasn\'t always like this, \nit was home of a great civilization once! Hence \nwhy sometimes you can find treasures, chests and other \nsecrets when you look around closely.',
+			'Always pay attention to your surroundings.'
 		],
 
 		//
