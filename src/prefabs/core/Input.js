@@ -240,10 +240,10 @@ export default class {
 		// this.button_E.onDown.add(this.attack, this);
 
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		// this.button_SPACEBAR.onDown.add(this.attack, this);
+		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
 
-		this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-		this.button_SHIFT.onDown.add(this.beginnDash, this);
+		// this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
+		// this.button_SHIFT.onDown.add(this.beginnDash, this);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
@@ -344,7 +344,8 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			return;
 		} else {
-			this.game.time.events.remove(this.movementloop);
+			
+			
 			this.movementloop = null;
 		}
 	}

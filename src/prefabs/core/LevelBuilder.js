@@ -21,7 +21,6 @@ export default class {
             this.branch = this.game.add.sprite(1123, 460, 'branch');
             this.branch.anchor.set(0.5);
             this.bringBranchToTop = true;            
-            console.log('WTF');
         } else {
             
             this.branch = this.game.add.sprite(1120, 608, 'branch');
@@ -33,9 +32,14 @@ export default class {
             this.level.player.movable = false;
         }
 
-        console.log(this.level.questManager.checkIfQuestWasDone(1), this.level.questManager.checkIfQuestExists(2));
         if (this.level.questManager.checkIfQuestWasDone(1) && this.level.questManager.checkIfQuestExists(2)){
+            this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
+                this.level.inputClass.direction = 'left';
+                this.level.player.animations.play('static_idle_left');
+            }, this);
+
             this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
+
                 let messageID = 1;
                 const all_messages = Object.values(dialogues.dialogues);
                 for (let i = 0; i < all_messages.length; i++) {
@@ -48,7 +52,7 @@ export default class {
                     }
                 }
                 this.level.questManager.addQuest(3);
-            });
+            }, this);
         }
 
         if (this.level.questManager.checkIfQuestExists(2)){

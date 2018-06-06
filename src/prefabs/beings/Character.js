@@ -25,11 +25,11 @@ export default class extends Phaser.Sprite {
 
 		// console.log(this);
 
-		this.talkSymbol = this.game.add.sprite(this.body.x + 10, this.body.y - 20, 'characterTalk');
+		this.talkSymbol = this.game.add.sprite(this.body.x + 5, this.body.y - 30, 'characterTalk');
 		this.talkSymbol.smoothed = false;
 		this.talkSymbol.alpha = 0;
 		this.talkSymbol.animations.add('play');
-		this.talkSymbol.animations.play('play', 1, true);
+		this.talkSymbol.animations.play('play', 2, true);
 
 		this.animations.add('down', [0], 1, false);
 		this.animations.add('up', [1], 1, false);

@@ -493,22 +493,21 @@ export default class {
 	}
 
 	lockCamera(region) {
-		console.log(region);
+		
 
 		const diff1 = region.right - region.left;
 		const diff2 = region.bottom - region.top;
 		const cameraX = region.left + diff1 / 2;
 		const cameraY = region.bottom - diff2 / 2;
 
-		console.log(this.level.questManager.checkIfQuestExists(1));
+		if(this.level.questManager.checkIfQuestWasDone(1) && !this.level.questManager.checkIfQuestWasDone(2)) return;
 
-		// if (!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)) {
-		// 	this.transitionTime = 1;
-		// } else {
-		// 	this.transitionTime = 750;
-		// }
+		if (!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)) {
+			this.transitionTime = 1;
+		} else {
+			this.transitionTime = 750;
+		}
 
-		this.transitionTime = 750;
 
 		this.game.camera.unfollow();
 		// this.game.camera.lerp = 0.1;
@@ -526,7 +525,9 @@ export default class {
 			);
 	}
 
-	followPlayer() {
+	followPlayer(event, duration) {
+		this.followDuration = duration  || 1000;
+		console.log(this.followDuration);
 
 		console.log(this.game.camera)
 		this.followTween = this.game.add
@@ -535,7 +536,7 @@ export default class {
 					x: this.level.player.x - (this.game.camera.width / 2) - 20,
 					y: this.level.player.y - (this.game.camera.height / 2)
 				},
-				1000,
+				this.followDuration,
 				Phaser.Easing.Quadratic.InOut,
 				true
 			);
@@ -632,13 +633,16 @@ export default class {
 
 	branch(region) {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
+		
+		this.level.questManager.addQuest(1);
 		this.level.questManager.removeQuest(1);
 		this.level.questManager.addQuest(2);
+
 		this.level.GUICLASS.healthBar.removeHeart(5, false);
 		this.level.player.health = 2;
 		this.level.gameData.playerHealth = 2;
 		this.level.safe.setGameConfig(this.level.gameData);
-		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.01, 0.01);
+		// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.01, 0.01);
 		// this.level.GUICLASS.createMessage([' WTF?'], false, true);
 		this.level.player.movable = false;
 
@@ -659,15 +663,23 @@ export default class {
 		this.game.time.events.add(
 			2000,
 			() => {
+				this.followPlayer(null, 4000);
+				
 				this.game.add.tween(this.level.levelBuilder.branch).to({
 					alpha: 0
 				}, 250, Phaser.Easing.Bounce.Out, true);
 				
 				this.level.gameOver();
-			}, this);
+
+				this.game.time.events.add(
+					5000,
+					() => {
+						this.game.camera.fade(0x000000, 5000, true);
+					}, this);
+				}, this);
 
 		this.game.time.events.add(
-			7000,
+			13000,
 			() => {
 				this.game.state.restart(true, false);
 			}, this);

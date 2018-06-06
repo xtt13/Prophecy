@@ -492,7 +492,7 @@ export default class extends Phaser.State {
 		this.load.image('dashBar', 'assets/sprites/gui/dashBar.png');
 		this.load.image('newGameMap', 'assets/sprites/gui/newGameMap.png');
 		this.load.image('gamePadHelper', 'assets/sprites/gui/gamePadHelper.png');
-		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 7, 12);
+		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 15, 12);
 		// this.load.image('cursor', 'assets/sprites/gui/cursor.png');
 
 

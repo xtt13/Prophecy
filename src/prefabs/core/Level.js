@@ -635,6 +635,8 @@ export default class {
 			this.game.world.bringToTop(this.lockGame.thirdTry);
 		}
 
+		// console.log(this.game.camera);
+
 		// console.log(this.game.world.children);
 	}
 

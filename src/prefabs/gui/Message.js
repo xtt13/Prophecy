@@ -13,6 +13,8 @@ export default class {
 		this.wordIndex = 0;
 		this.lineIndex = 0;
 
+		this.playFast = false;
+
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
@@ -47,19 +49,7 @@ export default class {
 		this.background.y = Math.floor(this.background.y);
 
 		//FIX?
-		this.game.renderer.renderSession.roundPixels = true;
-
-		// this.text = this.game.add.bitmapText(
-		// 	this.background.x + 20,
-		// 	this.game.camera.height - 80,
-		// 	'pxlfont',
-		// 	'',
-		// 	10
-		// );
-		// this.text.smoothed = false;
-		// this.text.fixedToCamera = true;
-		// this.text.maxWidth = 200;
-		// this.game.cache.getBitmapFont('pxlfont').font.lineHeight = 100;
+		// this.game.renderer.renderSession.roundPixels = true;
 
 		this.text = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
 		let content = "";
@@ -101,16 +91,31 @@ export default class {
 		this.line = this.message[this.lineIndex].split(' ');
 		this.wordIndex = 0;
 
-		this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
 
 		this.text.text = '';
 		this.lineIndex++;
 
-		this.text.x = Math.floor(this.text.x);
-		this.text.y = Math.floor(this.text.y);
+		// if(this.playFast){
+		// 	this.game.time.events.remove(this.wordRepeat);
+		// 	for (let i = 0; i < this.line.length; i++) {
+		// 		this.nextWord.call(this);
+		// 	}
+		// 	this.playFast = false;
+		// } else {
+		// 	// repeat(delay, repeatCount, callback, callbackContext, arguments)
+		// 	this.wordRepeat = this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
+		// }
+
+		// repeat(delay, repeatCount, callback, callbackContext, arguments)
+		this.wordRepeat = this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
+
+		this.playFast = false;
+
 	}
 
 	nextWord() {
+
+
 		this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
 		this.wordIndex++;
 
@@ -131,7 +136,7 @@ export default class {
 	removeMessage() {
 
 		//FIX END
-		this.game.renderer.renderSession.roundPixels = false;
+		// this.game.renderer.renderSession.roundPixels = false;
 
 		this.fontImage.destroy();
 		this.text.destroy();
@@ -151,10 +156,20 @@ export default class {
 
 	update(){
 
-		if(this.level.inputClass.button_E.isDown ){
-			// this.wordDelay = 1;
-			// this.lineDelay = 1000;
-		}
+		// if(this.level.inputClass.button_SPACEBAR.isDown ){
+		// 	console.log(this);
+				
+		// 	if(this.playFast) return;
+		// 	this.playFast = true;
+
+		// 	this.line = this.message[this.lineIndex].split(' ');
+		// 	this.wordIndex = 0;
+	
+	
+		// 	this.text.text = '';
+		// 	this.lineIndex++;
+		// 	this.nextLine();		
+		// }
 	}
 
 	addBars() {

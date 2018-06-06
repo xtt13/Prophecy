@@ -483,10 +483,12 @@
                  "name":"Lock Camera",
                  "properties":
                     {
+                     "ifQuestID":2,
                      "lockCamera":true
                     },
                  "propertytypes":
                     {
+                     "ifQuestID":"int",
                      "lockCamera":"bool"
                     },
                  "rotation":0,
@@ -678,27 +680,6 @@
                  "width":60.6126991578178,
                  "x":1056.47504917613,
                  "y":1056.49233980227
-                }, 
-                {
-                 "height":159.287513254786,
-                 "id":222,
-                 "name":"Add Quest",
-                 "properties":
-                    {
-                     "addQuest":true,
-                     "questID":1
-                    },
-                 "propertytypes":
-                    {
-                     "addQuest":"bool",
-                     "questID":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32.3498638371935,
-                 "x":959.524626255188,
-                 "y":320.342854699424
                 }, 
                 {
                  "height":30.7153374468946,
@@ -1028,7 +1009,7 @@
  "properties":
     {
      "athmoSound":"AxOpenPlain",
-     "athmoSoundNight":"",
+     "athmoSoundNight":"AxForest",
      "cameraMode":"topdown",
      "dayCycle":true,
      "ground":"gravel2",
