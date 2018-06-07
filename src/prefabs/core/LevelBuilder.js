@@ -51,7 +51,10 @@ export default class {
                         break;
                     }
                 }
+
+                this.level.questManager.removeQuest(2);
                 this.level.questManager.addQuest(3);
+                
             }, this);
         }
 

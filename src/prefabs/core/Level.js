@@ -310,7 +310,7 @@ export default class {
 			// if (this.itemIDs.includes(element.properties.id)) return;
 			let x = element.x - 10;
 			let y = element.y + 10;
-			this.chests.push(new Chest(this.game, x, y, element.properties));
+			this.chests.push(new Chest(this.game, x, y, element.properties, this));
 
 
 		}, this);

@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 
 export default class {
-	constructor(game, x, y, player, chest) {
+	constructor(game, x, y, player, chest, level) {
 		this.game = game;
 		this.x = x;
 		this.y = y;
 		this.player = player;
 		this.chest = chest;
+		this.level = level;
 
 		// this.bgColors = [0x62bd18, 0xff5300, 0xd21034, 0xff475c, 0x8f16b2, 0x588c7e, 0x8c4646];
 		// this.tintColor = game.rnd.pick(this.bgColors);
@@ -18,6 +19,7 @@ export default class {
 		this.run = true;
 		this.firstSetup = true;
 		this.currentTry = 1;
+		this.moving = false;
 
 		this.setupGame();
 	}
@@ -85,7 +87,7 @@ export default class {
 			this.firstSetup = false;
 		}
 
-		this.game.input.onDown.add(this.startMoving, this);
+		// this.game.input.onDown.add(this.startMoving, this);
 	}
 
 	placeBall() {
@@ -101,8 +103,9 @@ export default class {
 
 	startMoving() {
 		this.dead = false;
-		this.game.input.onDown.remove(this.startMoving, this);
-		this.game.input.onDown.add(this.changeDirection, this);
+		this.moving = true;
+		// this.game.input.onDown.remove(this.startMoving, this);
+		// this.game.input.onDown.add(this.changeDirection, this);
 		this.bar.rotationDirection = 1;
 	}
 
@@ -154,6 +157,15 @@ export default class {
 	}
 
 	update() {
+		if(this.level.inputClass.button_E.isDown){
+			if(this.moving && !this.dead){
+				this.changeDirection();
+			} else {
+				this.startMoving();
+			}
+			
+		}
+
 		if (this.run) {
 			this.bar.angle += this.rotationSpeed * this.bar.rotationDirection;
 			this.angleDifference = Math.abs(this.ball.ballAngle - this.bar.angle);
