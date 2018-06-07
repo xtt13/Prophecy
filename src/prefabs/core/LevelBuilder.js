@@ -34,8 +34,8 @@ export default class {
 
         if (this.level.questManager.checkIfQuestWasDone(1) && this.level.questManager.checkIfQuestExists(2)){
             this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
-                this.level.inputClass.direction = 'left';
-                this.level.player.animations.play('static_idle_left');
+                this.level.inputClass.direction = 'up';
+                this.level.player.animations.play('static_idle_up');
             }, this);
 
             this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
@@ -59,7 +59,8 @@ export default class {
         }
 
         if (this.level.questManager.checkIfQuestExists(2)){
-            this.level.lucy = new Lucy(this.game, this.level.player.x - 500, this.level.player.y, this.level)
+            this.game.camera.flash(0x000000, 8000, true);
+            this.level.lucy = new Lucy(this.game, this.level.player.x, this.level.player.y - 500, this.level)
         } else if(this.level.questManager.checkIfQuestWasDone(2)){
             this.level.lucy = new Lucy(this.game, this.level.player.x, this.level.player.y - 20, this.level)
         } else {
@@ -69,9 +70,9 @@ export default class {
 
         
 
-        if (!this.level.questManager.checkIfQuestWasDone(1)) {
-			this.game.camera.flash(0x000000, 8000, true);
-        }
+        // if (!this.level.questManager.checkIfQuestWasDone(1)) {
+		// 	this.game.camera.flash(0x000000, 8000, true);
+        // }
         
         this.island = this.game.add.sprite(878, 227, 'island');
         this.island.anchor.set(0.5);

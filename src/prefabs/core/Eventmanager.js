@@ -628,6 +628,8 @@ export default class {
 
 	branch(region) {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
+
+		this.game.canvas.classList.add('greyscale');
 		
 		this.level.questManager.addQuest(1);
 		this.level.questManager.removeQuest(1);
@@ -676,6 +678,7 @@ export default class {
 		this.game.time.events.add(
 			13000,
 			() => {
+				this.game.canvas.classList.remove('greyscale');
 				this.game.state.restart(true, false);
 			}, this);
 
