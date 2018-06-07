@@ -630,6 +630,7 @@ export default class {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
 
 		this.game.canvas.classList.add('greyscale');
+		this.followPlayer(null, 4000);
 		
 		this.level.questManager.addQuest(1);
 		this.level.questManager.removeQuest(1);
@@ -660,7 +661,7 @@ export default class {
 		this.game.time.events.add(
 			2000,
 			() => {
-				this.followPlayer(null, 4000);
+				
 				
 				this.game.add.tween(this.level.levelBuilder.branch).to({
 					alpha: 0

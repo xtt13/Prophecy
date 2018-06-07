@@ -59,7 +59,7 @@ export default class {
         }
 
         if (this.level.questManager.checkIfQuestExists(2)){
-            this.game.camera.flash(0x000000, 8000, true);
+            this.game.camera.flash(0x000000, 10000, true);
             this.level.lucy = new Lucy(this.game, this.level.player.x, this.level.player.y - 500, this.level)
         } else if(this.level.questManager.checkIfQuestWasDone(2)){
             this.level.lucy = new Lucy(this.game, this.level.player.x, this.level.player.y - 20, this.level)

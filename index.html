@@ -70,8 +70,32 @@
             /* cursor: none; */
         }
 
+        @-webkit-keyframes greyAnimation {
+        0%   { filter: grayscale(0%); }
+        100% { filter: grayscale(100%); }
+        }
+        @-moz-keyframes greyAnimation {
+        0%   { filter: grayscale(0%); }
+        100% { filter: grayscale(100%); }
+        }
+        @-o-keyframes greyAnimation {
+        0%   { filter: grayscale(0%); }
+        100% { filter: grayscale(100%); }
+        }
+        @keyframes greyAnimation {
+        0%   { filter: grayscale(0%); }
+        100% { filter: grayscale(100%); }
+        }
+
         .greyscale {
-            filter: grayscale(100%);
+
+            -webkit-animation: greyAnimation 1s normal forwards; /* Safari 4+ */
+            -moz-animation:    greyAnimation 1s normal forwards; /* Fx 5+ */
+            -o-animation:      greyAnimation 1s normal forwards; /* Opera 12+ */
+            animation:         greyAnimation 1s normal forwards; /* IE 10+, Fx 29+ */
+
+            animation-timing-function: ease-in;
+            animation-iteration-count: 1;
         }
 
     </style>
