@@ -27,6 +27,15 @@ export default class extends Phaser.State {
 		}
 
 		this.level = new Level(this.game, this.instruction);
+
+		// window.onbeforeunload = function(e) {
+		// 	console.log('LKDSJFLSDKFJ');
+		// 	// var dialogText = 'Dialog text here';
+		// 	// e.returnValue = dialogText;
+		// 	// return dialogText;
+		// };
+
+
 	}
 
 	update() {

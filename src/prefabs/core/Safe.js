@@ -133,4 +133,13 @@ export default class {
 	resetLocalStorage() {
 		localStorage.clear();
 	}
+
+	setDEVCoordinates(player){
+		localStorage.setItem('devXY', JSON.stringify({x: parseInt(player.x), y: parseInt(player.y)}));
+	}
+
+	getDEVCoordinates(){
+		var XY = JSON.parse(localStorage.getItem('devXY'));
+		return XY;
+	}
 }

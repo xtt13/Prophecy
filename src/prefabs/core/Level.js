@@ -119,10 +119,28 @@ export default class {
 		// Load Entry Points
 		this.loadEntryPoints();
 
-		// Create Player
-		this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
+		if(__DEV__ && config.buildMode){
+			let XY = this.safe.getDEVCoordinates();
+			if (XY == undefined) return;
+
+			// Create Player
+			this.player = new Player(this.game, XY.x, XY.y, this);
+		} else {
+			// Create Player
+			this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
+		}
+
+		
 
 		this.GUICLASS = new GUI(this.game, this);
+
+		if(__DEV__ && config.buildMode){
+			window.addEventListener('beforeunload', (event) => {
+				this.safe.setDEVCoordinates(this.player);
+				this.gameData.direction = this.inputClass.direction;
+				this.safe.setGameConfig(this.gameData);
+			});
+		}
 
 		// console.log(this.groundLayer.getTiles(this.player.x, this.player.y, 5, 5));
 
@@ -293,7 +311,7 @@ export default class {
 				this.items.push(new Item(this.game, x, y, 'item', element.properties, this));
 			}
 
-			if (element.properties.type == 'potion') {
+			if (element.properties.type == 'potion') {sssssssss
 				let x = element.x - 10;
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties, this));

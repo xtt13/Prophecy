@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
+import config from './../../config';
 
 import Pathfinder from '../gamemechanics/Pathfinder';
 import Bridgebuilder from '../gamemechanics/Bridgebuilder';
@@ -361,6 +362,9 @@ export default class {
 		let targetMap = region.properties.targetMap;
 		let targetID = region.properties.targetID;
 		let direction = region.properties.direction;
+
+		config.buildMode = false;
+
 
 		if (this.level.inputClass.stick) {
 			this.level.inputClass.stick.alpha = 0;
