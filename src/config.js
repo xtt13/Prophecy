@@ -8,8 +8,8 @@ export default {
 		// width: 900,
 		// height: 400,
 
-		// width: 790,
-		// height: 380,
+		 //width: 790,
+		 //height: 380,
 
 		width: 580,
 		height: 280,
@@ -33,5 +33,5 @@ export default {
 	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: true,
-	buildMode: true
+	buildMode: false
 };
