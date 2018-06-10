@@ -311,7 +311,7 @@ export default class {
 				this.items.push(new Item(this.game, x, y, 'item', element.properties, this));
 			}
 
-			if (element.properties.type == 'potion') {sssssssss
+			if (element.properties.type == 'potion') {
 				let x = element.x - 10;
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties, this));
