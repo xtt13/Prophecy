@@ -33,5 +33,5 @@ export default {
 	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: true,
-	buildMode: false
+	buildMode: true
 };
