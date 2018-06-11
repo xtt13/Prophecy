@@ -575,30 +575,46 @@ export default class {
 	}
 
 	stairs() {
+		// Return on Fall Down
 		if (this.level.fallDown) return;
-		// this.game.time.events.remove(this.level.inputClass.movementloop);
-		// this.level.inputClass.movementloop = null;
-		this.level.inputClass.movementSound = 'grass1';
-		this.level.inputClass.movementloopSpeed = 200;
 
+		// Clear and set new Loop-Speed
+		this.game.time.events.remove(this.level.inputClass.movementloop);
+		this.level.inputClass.movementloop = null;
+		this.level.inputClass.movementloopSpeed = 190;
+		this.level.inputClass.addMovementSound();
+
+		// Set new Sound-Type
+		this.level.inputClass.movementSound = 'grass1';
+
+		// Set Player-Speed
 		this.level.inputClass.playerSpeed -= 20;
 
+		// Set Animation Speed
 		this.level.player.animations._anims.run_up.speed += 13;
 		this.level.player.animations._anims.run_down.speed += 13;
 		this.level.player.animations._anims.run_left.speed += 8;
 		this.level.player.animations._anims.run_right.speed += 8;
 
-
-
 	}
 
 	stairsLeave() {
+		// Return on Fall Down
 		if (this.level.fallDown) return;
+
+		// Clear and set new Loop-Speed
+		this.game.time.events.remove(this.level.inputClass.movementloop);
+		this.level.inputClass.movementloop = null;
+		this.level.inputClass.movementloopSpeed = this.level.inputClass.movementloopSpeedDefault;
+		this.level.inputClass.addMovementSound();
+
+		// Set new Sound-Type
 		this.level.inputClass.movementSound = this.level.map.plus.properties.ground;
-		this.level.inputClass.movementloopSpeed = 260;
 
-		this.level.inputClass.playerSpeed = 80;
+		// Set Player-Speed
+		this.level.inputClass.playerSpeed = this.level.inputClass.playerSpeedDefault;
 
+		// Set Animation Speed
 		this.level.player.animations._anims.run_down.speed = 19;
 		this.level.player.animations._anims.run_up.speed = 19;
 		this.level.player.animations._anims.run_left.speed = 19;

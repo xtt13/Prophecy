@@ -23,11 +23,16 @@ export default class {
 		this.muteAttack = false;
 
 		this.playerSpeed = 80;
+		this.playerSpeedDefault = 80;
+
 		this.directon = 'down';
 		this.standing = true;
 		this.currentAttack = false;
 
-		this.movementloopSpeed = 340;
+		this.movementloopSpeedDefault = 290;
+		this.movementloopSpeed = 290;
+
+
 		this.movementSound = this.level.map.plus.properties.ground;
 
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
@@ -345,7 +350,7 @@ export default class {
 			return;
 		} else {
 			
-			
+			this.game.time.events.remove(this.movementloop);
 			this.movementloop = null;
 		}
 	}
