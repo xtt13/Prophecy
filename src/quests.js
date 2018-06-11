@@ -90,7 +90,46 @@ export default {
 			dialogues: {
 				
 			}
-		}
+		},
+		8: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
+		9: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
+		10: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
 		
 	}
 };

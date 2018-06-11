@@ -480,8 +480,11 @@ export default class {
 
 		switch (this.direction) {
 			case 'up':
+				this.player.animations.play('dash_up');
 				break;
 			case 'down':
+				this.player.animations.play('dash_down');
+				console.log('dash down');
 				break;
 			case 'left':
 				this.player.animations.play('dash_left');
@@ -879,6 +882,7 @@ export default class {
 				this.player.body.velocity.y = -this.playerSpeed;
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
+					if (this.dash) return;
 					this.player.animations.play('run_up');
 				}
 
@@ -889,6 +893,7 @@ export default class {
 				this.player.body.velocity.y = this.playerSpeed;
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
+					if (this.dash) return;
 					this.player.animations.play('run_down');
 				}
 

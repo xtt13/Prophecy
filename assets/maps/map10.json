@@ -560,21 +560,21 @@
                  "properties":
                     {
                      "addBridge":true,
+                     "addQuestID":9,
                      "direction":"up",
                      "duration":500,
                      "id":1,
                      "length":4,
-                     "questID":9,
                      "requiredMasteredQuestID":8
                     },
                  "propertytypes":
                     {
                      "addBridge":"bool",
+                     "addQuestID":"int",
                      "direction":"string",
                      "duration":"int",
                      "id":"int",
                      "length":"int",
-                     "questID":"int",
                      "requiredMasteredQuestID":"int"
                     },
                  "rotation":0,

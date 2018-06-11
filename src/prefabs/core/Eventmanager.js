@@ -168,6 +168,8 @@ export default class {
 			return;
 		}
 
+		
+
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
 		if (requiredItemID !== undefined && !this.level.itemIDs.includes(requiredItemID)) return;
@@ -176,9 +178,11 @@ export default class {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
 		}
 
+
 		if (region.properties.addQuestID !== undefined) {
-			if (this.level.questManager.checkIfQuestExists(region.properties.addQuestID)) return;
-			this.level.questManager.addQuest(region.properties.addQuestID);
+			if (this.level.questManager.checkIfQuestExists(region.properties.addQuestID) && this.level.questManager.checkIfQuestWasDone(region.properties.addQuestID)){
+				this.level.questManager.addQuest(region.properties.addQuestID);
+			}	
 		}
 
 		this.level.bridgebuilder = new Bridgebuilder(
