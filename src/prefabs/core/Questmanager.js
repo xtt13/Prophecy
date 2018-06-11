@@ -6,7 +6,6 @@ export default class {
 		this.game = game;
 		this.level = level;
 
-		console.table(quests.quests);
 	}
 
 	// Add quest with properties
@@ -14,13 +13,10 @@ export default class {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
 
-		console.log(questID);
-		console.log(quests.quests[questID]);
 
 		this.quests[questID] = quests.quests[questID];
 
-		console.log(this.quests);
-
+		console.table(this.quests);
 		// Set and overwrite Quests
 		this.level.safe.setQuests(this.quests);
 	}
@@ -90,7 +86,6 @@ export default class {
 
 		// Get searched quest
 		if (questID in this.quests) {
-			console.log(this.quests[questID].questDeadEnemies, this.quests[questID].questKillEnemyAmount);
 
 			// if questDeadEnemies == questKillEnemyAmount (current dead enemies == needed deaths)
 			if (this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount) {

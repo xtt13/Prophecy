@@ -148,7 +148,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		this.weaponGun.onFire.add(() => {
-			console.log('BOOOM');
+			// console.log('BOOOM');
 			// this.game.camera.shake(0.003, 100);
 		}, this);
 		
@@ -360,7 +360,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	turnPlayer(focusObject){
-		console.log('turn');
+		// console.log('turn');
 		let value = this.game.physics.arcade.angleToXY(this, focusObject.x, focusObject.y);
 
 		if ((value > -2.5 && value < -0.5)) {
@@ -383,7 +383,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	getDamage(player, enemy) {
-		console.log('collide');
+		// console.log('collide');
 		if(this.damageSwitch) return;
 		this.damageSwitch = true;
 		enemy.paralyze = true;
@@ -412,7 +412,7 @@ export default class extends Phaser.Sprite {
 		// 	this.questManager.checkKillCondition(enemy.killQuestID);
 		// }
 
-		console.log(this.player.health);
+		// console.log(this.player.health);
 		this.player.health -= 1;
 		
 		this.gameData.playerHealth = this.player.health;
@@ -444,7 +444,7 @@ export default class extends Phaser.Sprite {
 	collideWithItem(player, item) {
 		// this.lockGame = new LockGame(this.game, this.player.x, this.player.y, this.player);
 
-		console.log(item);
+		// console.log(item);
 
 		if (!this.itemIDs.includes(item.id)) {
 			this.itemIDs.push(item.id);
@@ -459,7 +459,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (item.removeQuestID !== undefined) {
-			console.log('Remove');
+			// console.log('Remove');
 			this.questManager.removeQuest(item.removeQuestID);
 		}
 

@@ -24,7 +24,6 @@ export default class {
 		if (this.start !== undefined && !this.start) return;
 		if (this.key == undefined) return;
 		if(this.music == undefined){
-			console.log('PUUUaaUM');
 			this.playMusic(this.key);
 			return;
 		}

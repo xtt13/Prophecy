@@ -31,7 +31,7 @@ export default class extends Phaser.Sprite {
 
 	update(){
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
-		console.log(angle);
+		// console.log(angle);
 		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){
 			if (angle > 0) {			
 				this.game.world.bringToTop(this);

@@ -22,7 +22,7 @@ export default class {
 				});
 
 				function updateChargeInfo() {
-					console.log('Battery charging? ' + (battery.charging ? 'Yes' : 'No'));
+					// console.log('Battery charging? ' + (battery.charging ? 'Yes' : 'No'));
 					return battery;
 				}
 

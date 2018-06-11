@@ -64,6 +64,32 @@ export default {
 			dialogues: {
 				
 			}
+		},
+		6: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
+		7: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
 		}
 		
 	}

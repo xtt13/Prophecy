@@ -122,11 +122,17 @@ export default class {
 		const all_messages = Object.values(dialogues.dialogues);
 		const ifQuestID = region.properties.ifQuestID;
 		const removeQuestID = region.properties.removeQuestID;
-
+		const addQuestID = region.properties.addQuestID;
 
 
 		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 		if (this.level.questManager.checkIfQuestWasDone(ifQuestID)) return;
+
+		console.log('New QuestID: ' + addQuestID);
+		if(addQuestID !== undefined){		
+			this.level.questManager.addQuest(addQuestID);
+		}
+
 
 		if (removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(removeQuestID);
@@ -158,8 +164,9 @@ export default class {
 
 		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 			requiredMasteredQuestID !== undefined
-		)
+		){
 			return;
+		}
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
@@ -226,7 +233,6 @@ export default class {
 	}
 
 	movePlayerToXY(region) {
-		console.log('move');
 		const targetX = region.properties.targetX;
 		const targetY = region.properties.targetY;
 
@@ -526,9 +532,7 @@ export default class {
 
 	followPlayer(event, duration) {
 		this.followDuration = duration  || 1000;
-		console.log(this.followDuration);
 
-		console.log(this.game.camera)
 		this.followTween = this.game.add
 			.tween(this.game.camera)
 			.to({
@@ -566,7 +570,6 @@ export default class {
 	}
 
 	foreGroundShift() {
-		console.log('SHIFT');
 		this.level.foreGroundShift = true;
 	}
 

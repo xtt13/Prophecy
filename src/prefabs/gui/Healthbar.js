@@ -11,7 +11,6 @@ export default class {
         };
         this.waitTimer = this.game.time.events.add(100, () => {});
 
-        console.log(this.level.player.health);
 
         if(this.level.player.health <= 1){
             this.flashingLoop = this.game.time.events.loop(850, () => {
@@ -211,31 +210,16 @@ export default class {
             
         }
 
-        // console.log(this.hearts);
 
         this.counter = index;
         this.heartIndex = this.hearts.children.length - 1;
         this.buildLoop = this.game.time.events.loop(500, () => {
 
-            // console.log(this.hearts.children.length, this.heartIndex);
 
             var removeHeart = this.game.add.tween(this.hearts.children[this.heartIndex].scale).to({
                 x: 0,
                 y: 0
             }, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
-
-            // removeHeart.onComplete.add((a, b) => {
-            //     console.log(a);
-            //     console.log(b);
-            //     // this.hearts.children[this.heartIndex].alpha = 0;
-            //     this.hearts.children[this.heartIndex].scale.set(0);
-            // }, this);
-
-
-            // this.game.time.events.add(400, () => {
-            //     this.hearts.children[this.heartIndex].alpha = 0;
-            //     this.hearts.children[this.heartIndex].scale.set(0);
-            // });
 
             this.hearts.children[this.heartIndex].alpha = 0;
             this.hearts.children[this.heartIndex].scale.set(0);
@@ -252,7 +236,6 @@ export default class {
     
     
 
-            // console.log(this.counter);
 
             this.heartIndex--;
             this.counter--;
@@ -404,7 +387,6 @@ export default class {
             //     this.reloadRatio.stop();
             // }
         }
-        // console.log(this.dashRatio.value);
     }
 
 

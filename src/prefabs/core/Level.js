@@ -142,10 +142,8 @@ export default class {
 			});
 		}
 
-		// console.log(this.groundLayer.getTiles(this.player.x, this.player.y, 5, 5));
 
 		// Set Player Direction
-		console.log(this.gameData.direction);
 
 		switch (this.gameData.direction) {
 			case 'up':
@@ -211,7 +209,6 @@ export default class {
 
 		this.levelBuilder = new LevelBuilder(this.game, this, this.currentMap);
 
-		console.log(this.game.world);
 
 	}
 
@@ -265,7 +262,6 @@ export default class {
 			
 
 
-			// console.log(this.night, element.properties.nightVersion, timeValue);
 
 			if (this.night && !element.properties.nightVersion) return;
 			if (!this.night && element.properties.nightVersion) return;
@@ -283,7 +279,6 @@ export default class {
 
 				for (var i = 0; i < entries.length; i++) {
 					let check = this.questManager.checkIfQuestExists(parseInt(entries[i]));
-					console.log(check);
 					if (check) return;
 				}
 
@@ -340,7 +335,6 @@ export default class {
 
 		//Find specific emitter
 		elementsArr.forEach(function (element) {
-			console.log(element);
 
 			if (element.properties.type == 'tree') {
 
@@ -367,9 +361,6 @@ export default class {
 				let y = element.y + this.map.tileHeight;
 
 
-				// console.log(element);
-				console.log(element.x, element.y);
-
 				this.waterEmitter = this.game.add.emitter(x, y, 50);
 				this.waterEmitter.width = element.width;
 				this.waterEmitter.height = element.height;
@@ -391,7 +382,6 @@ export default class {
 				let x = element.x;
 				let y = element.y;
 
-				console.log(this.groundLayer.getTiles(x, y, 1, 1));
 
 
 				this.fireEmitter = this.game.add.emitter(x, y, 100);
@@ -409,7 +399,6 @@ export default class {
 				this.fireEmitter.start(false, 1000, 0.1, 0);
 
 			} else if (element.properties.type == 'fountainSparkling') {
-				console.log(element);
 				let x = element.x + (element.width / 2);
 				let y = element.y + (element.height / 2);
 
@@ -605,7 +594,6 @@ export default class {
 		}
 
 		this.map.plus.events.regions.triggerWith(this.player);
-		// console.log(this.map.plus);
 
 		// If night == true && Daycycle is enabled
 		if (this.dayCycle) {
@@ -627,7 +615,6 @@ export default class {
 		if (this.weather.templeFliesEmitter) {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
-		// console.log(this.game.world.children);
 
 		// Here cause of NightTexture
 		if(!this.eventManager.spotViewerPlayed){
@@ -653,14 +640,10 @@ export default class {
 			this.game.world.bringToTop(this.lockGame.thirdTry);
 		}
 
-		// console.log(this.game.camera);
 
-		// console.log(this.game.world.children);
 	}
 
 	slowDownTile(player, tile) {
-		// console.log(player);
-		// console.log(tile);
 
 		// player.body.friction.set(200);
 
@@ -687,8 +670,6 @@ export default class {
 			this.lastDirection = this.inputClass.direction;
 		}
 
-		// console.log(this.lastDirection);
-		// console.log(sprite.body.x, tile.worldX + tile.width, this.inputClass.direction);
 
 		if (this.lastDirection == 'left') {
 
@@ -730,7 +711,6 @@ export default class {
 
 				if (((parseInt(sprite.body.y + sprite.body.height)) == (tile.worldY)) && this.inputClass.direction == 'down') {
 					setTimeout(() => {
-						console.log('ho');
 						this.lastDirection = null;
 					}, 500);
 				}
@@ -764,7 +744,6 @@ export default class {
 
 
 			if (this.fallDownTween == undefined || !this.fallDownTween.isRunning) {
-				console.log('eins');
 				sprite.body.enable = false;
 				var value = sprite.y + 400;
 				this.fallDownTween = this.game.add.tween(sprite).to({
@@ -953,7 +932,6 @@ export default class {
 		this.preferences = this.safe.getGamePreferences();
 
 		// Mute Music or fadeIn Music
-		console.log(this.night, 'LSDKFJLKSDJFLKSDJF');
 		if (this.preferences.muteMusic || this.night) {
 			this.muteMusic = true;
 		} else {

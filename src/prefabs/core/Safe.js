@@ -7,10 +7,7 @@ export default class {
 		this.game = game;
 
 		this.secureLS = config.secureLS;
-		console.log(this.secureLS);
 		this.ls = new SecureLS({ encodingType: 'aes' });
-		// this.ls.set('meineVar', 'aöslkdfjaölsdfjkbblaaaaaa');
-		// this.ls.get('meineVar'));
 	}
 
 	setGameConfig(playerData) {
