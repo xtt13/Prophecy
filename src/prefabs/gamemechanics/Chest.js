@@ -12,6 +12,8 @@ export default class extends Phaser.Sprite {
 		this.action = false;
 		this.openSwitch = false;
 
+		this.properties = properties;
+
         // this.anchor.setTo(0.5);
 		// this.scale.setTo(1.25);
 		
@@ -46,7 +48,7 @@ export default class extends Phaser.Sprite {
 
 		let x = this.game.camera.x + this.game.camera.width / 2;
 		let y = this.game.camera.y + this.game.camera.height / 2;
-		this.level.lockGame = new LockGame(this.game, x, y, this.level.player, searchedChest, this.level);
+		this.level.lockGame = new LockGame(this.game, x, y, this.level.player, searchedChest, this.level, this.properties);
 
 
 	}

@@ -298,11 +298,15 @@
                  "name":"Chest",
                  "properties":
                     {
-                     "id":1
+                     "id":1,
+                     "removeQuestID":8,
+                     "successQuestID":9
                     },
                  "propertytypes":
                     {
-                     "id":"int"
+                     "id":"int",
+                     "removeQuestID":"int",
+                     "successQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -805,6 +809,37 @@
                  "width":63.3599067750307,
                  "x":768.415661965579,
                  "y":672.038032031143
+                }, 
+                {
+                 "height":152.602969249758,
+                 "id":242,
+                 "name":"Message",
+                 "properties":
+                    {
+                     "addQuestID":8,
+                     "id":6,
+                     "ifQuestID":7,
+                     "message":true,
+                     "movable":true,
+                     "readable":true,
+                     "removeQuestID":7
+                    },
+                 "propertytypes":
+                    {
+                     "addQuestID":"int",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool",
+                     "removeQuestID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":95.9168747057349,
+                 "x":1823.70983927409,
+                 "y":1215.78108844943
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -966,7 +1001,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":242,
+ "nextobjectid":243,
  "orientation":"orthogonal",
  "properties":
     {

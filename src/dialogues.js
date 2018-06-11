@@ -44,7 +44,7 @@ export default {
 		],
 
 		//
-		6: [
+		7: [
 			'Oh no! Do you see this? These are the monsters I\'ve been talking about! Seems like there is no way around. We have to get down there and fight.',
 			'... You don\'t have a weapon? No worries! I will lend you my powers! I can not use them myself because my form is too weak right now, but you can! All you have to do is press [BUTTON]. The best way to learn how to fight is to fight! You got this!',
 			'Quick, we should leave this place, or else we might be surrounded by monsters again in no time.',
@@ -52,7 +52,7 @@ export default {
 		],
 
 		//
-		7: [
+		8: [
 			'One last thing before we enter the village! You will encounter many different people! Maybe they can help you figure out why you ended up here. But to do so, you will have to talk to the them. Use the [BUTTON] to interact with the towns folks.',
 			'... Another thing! Especially the high priest and the priestess don\'t like monsters. Since I, too, look like one, it will probably be for the best if I stayed invisible and silent during our stay in the village. You can still use my powers, but I will not be able to interact with you, Levi. Be careful, young hero.'
 		],
