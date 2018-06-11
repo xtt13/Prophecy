@@ -316,10 +316,10 @@ export default class {
 
 	loadChests() {
 		// Get array of items from JSON-Map
-		let elementsArr = this.findObjectsByType('id', this.map, 'Chests');
-
+		let elementsArr = this.findObjectsByType(true, this.map, 'Chests');
 		// Find specific items
 		elementsArr.forEach(function (element) {
+			
 			// if (this.itemIDs.includes(element.properties.id)) return;
 			let x = element.x - 10;
 			let y = element.y + 10;

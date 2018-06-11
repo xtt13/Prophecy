@@ -97,6 +97,8 @@ export default class extends Phaser.Sprite {
 			this.closeChest();
 		}
 
+		
+
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
 		if (angle < 0) {
 			// this.game.world.moveUp(this);
@@ -104,6 +106,7 @@ export default class extends Phaser.Sprite {
 		} else {
 			this.game.world.bringToTop(this);
 		}
+
 
 
 	}

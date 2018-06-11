@@ -12,6 +12,7 @@ export default class {
 
 		this.successQuestID = this.properties.successQuestID;
 		this.removeQuestID = this.properties.removeQuestID;
+		this.ifQuestID = this.properties.ifQuestID;
 
 		// this.bgColors = [0x62bd18, 0xff5300, 0xd21034, 0xff475c, 0x8f16b2, 0x588c7e, 0x8c4646];
 		// this.tintColor = game.rnd.pick(this.bgColors);
@@ -24,6 +25,8 @@ export default class {
 		this.firstSetup = true;
 		this.currentTry = 1;
 		this.moving = false;
+
+		// if(this.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(this.ifQuestID)) return;
 
 		this.setupGame();
 	}
@@ -149,6 +152,14 @@ export default class {
 					this.player.movable = true;
 					this.chest.animations.play('open');
 
+					if(this.successQuestID !== undefined){
+						this.level.questManager.addQuest(this.successQuestID);
+					}
+
+					if(this.removeQuestID !== undefined){
+						this.level.questManager.removeQuest(this.removeQuestID);
+					}
+
 					break;
 
 				default:
@@ -162,6 +173,8 @@ export default class {
 
 	update() {
 		if(this.level.inputClass.button_E.isDown){
+			// if(this.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(this.ifQuestID)) return;
+
 			if(this.moving && !this.dead){
 				this.changeDirection();
 			} else {

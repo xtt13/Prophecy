@@ -176,9 +176,9 @@ export default class {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
 		}
 
-		if (region.properties.questID !== undefined) {
-			if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
-			this.level.questManager.addQuest(region.properties.questID);
+		if (region.properties.addQuestID !== undefined) {
+			if (this.level.questManager.checkIfQuestExists(region.properties.addQuestID)) return;
+			this.level.questManager.addQuest(region.properties.addQuestID);
 		}
 
 		this.level.bridgebuilder = new Bridgebuilder(
