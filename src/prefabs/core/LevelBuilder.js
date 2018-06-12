@@ -113,7 +113,7 @@ export default class {
     }
 
     map3update(){
-
+        this.game.world.bringToTop(this.level.fountainSparkling);
     }
 
     map4(){

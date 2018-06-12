@@ -456,6 +456,23 @@ export default class {
 				// this.addVillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
 				this.addVillageGlimmer.makeParticles('particleStart');
 				this.addVillageGlimmer.start(false, 0, 5, 0);
+
+			} else if (element.properties.type == 'villageGlimmer') {
+				let x = element.x + (element.width / 2);
+				let y = element.y + (element.height / 2);
+
+				this.VillageGlimmer = this.game.add.emitter(x, y, 100);
+				this.VillageGlimmer.width = element.width;
+				this.VillageGlimmer.height = element.height;
+				this.VillageGlimmer.minParticleScale = 5;
+				this.VillageGlimmer.gravity = 0;
+				this.VillageGlimmer.setYSpeed(-4, 4);
+				this.VillageGlimmer.setXSpeed(-4, 4);
+				this.VillageGlimmer.maxRotation = 0;
+				this.VillageGlimmer.minRotation = 0;
+				this.VillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
+				this.VillageGlimmer.makeParticles('particle');
+				this.VillageGlimmer.start(false, 10000, 5, 0);
 			}
 
 
@@ -943,12 +960,8 @@ export default class {
 		if (this.preferences.muteSound) {
 			this.muteSound = true;
 		} else {
-			if(this.night){
-				this.game.soundManager.initSound(this.tilemapProperties.athmoSoundNight);
-			} else {
-				this.game.soundManager.initSound(this.tilemapProperties.athmoSound);
-			}
-			
+				
+			this.game.soundManager.initSound(this.tilemapProperties, true, 2000, this.night);		
 			this.muteSound = false;
 		}
 	}

@@ -29,7 +29,7 @@ export default {
 	enemies: true,
 	startMap: 'map1',
 	secureLS: false,
-	devHour: 14,
+	devHour: 23,
 	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: true,

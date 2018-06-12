@@ -127,13 +127,13 @@ export default class {
 		// this.secureSwitch = false;
 	}
 
-	initSound(properties, start, fadeDuration){
+	initSound(properties, start, fadeDuration, night){
 
 		
 
 		// Set Values
 		this.fadeDuration = fadeDuration;
-		this.key = properties.athmoSound;
+		this.key = (night ? properties.athmoSoundNight : properties.athmoSound);
 		this.start = true;
 
 

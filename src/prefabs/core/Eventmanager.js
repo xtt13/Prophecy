@@ -511,10 +511,13 @@ export default class {
 
 		if(this.level.questManager.checkIfQuestWasDone(1) && !this.level.questManager.checkIfQuestWasDone(2)) return;
 
-		if (!this.level.questManager.checkIfQuestExists(1) && !this.level.questManager.checkIfQuestWasDone(1)) {
+		if (this.level.gameData.currentMap == 'map1' && this.level.gameData.targetID == 1) {
+			this.transitionTime = 1;
+		} else if(this.level.gameData.currentMap == 'map3' && this.level.gameData.targetID == 2 && region.properties.id == 2){
 			this.transitionTime = 1;
 		} else {
-			this.transitionTime = 750;
+			// this.transitionTime = 750;
+			this.transitionTime = 2000;
 		}
 
 
@@ -535,7 +538,8 @@ export default class {
 	}
 
 	followPlayer(event, duration) {
-		this.followDuration = duration  || 1000;
+		// this.followDuration = duration  || 1000;
+		this.followDuration = duration  || 2000;
 
 		this.followTween = this.game.add
 			.tween(this.game.camera)
