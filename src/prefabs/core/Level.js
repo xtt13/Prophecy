@@ -307,8 +307,8 @@ export default class {
 			}
 
 			if (element.properties.type == 'potion') {
-				let x = element.x - 10;
-				let y = element.y + 10;
+				let x = element.x;
+				let y = element.y;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties, this));
 			}
 		}, this);
@@ -485,8 +485,12 @@ export default class {
 
 		// Find specific enemy
 		elementsArr.forEach(function (element) {
+			
 			const killQuestID = element.properties.killQuestID;
+			const ifQuestID = element.properties.ifQuestID;
+
 			// if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
+			if (ifQuestID !== undefined && !this.questManager.checkIfQuestExists(ifQuestID)) return;
 
 			if (element.properties.type == 'seed') {
 				this.enemies.push(

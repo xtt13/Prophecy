@@ -971,9 +971,10 @@
          "name":"Items",
          "objects":[
                 {
-                 "height":11.5131933167008,
-                 "id":218,
-                 "name":"Item",
+                 "gid":1683,
+                 "height":32,
+                 "id":238,
+                 "name":"",
                  "properties":
                     {
                      "id":1,
@@ -987,9 +988,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":12.1158586451953,
-                 "x":892.147678187511,
-                 "y":1092.65091096899
+                 "width":32,
+                 "x":879.548129783335,
+                 "y":1117.55610649995
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1008,7 +1009,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":238,
+ "nextobjectid":239,
  "orientation":"orthogonal",
  "properties":
     {

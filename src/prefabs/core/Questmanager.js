@@ -87,19 +87,23 @@ export default class {
 		// Get searched quest
 		if (questID in this.quests) {
 
+			console.log(this.quests[questID].questDeadEnemies, this.quests[questID].questKillEnemyAmount);
+			console.log(this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount);
+
+			// Current Quest -> questDeadEnemies + 1
+			this.quests[questID].questDeadEnemies += 1;
+
+			// Save the change
+			this.level.safe.setQuests(this.quests);
+
 			// if questDeadEnemies == questKillEnemyAmount (current dead enemies == needed deaths)
 			if (this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount) {
+
 				// Remove current Quest
 				this.removeQuest(questID);
 
 				// Create Notification
 				this.level.GUICLASS.createNotification('quest', 'Questupdate');
-			} else {
-				// Current Quest -> questDeadEnemies + 1
-				this.quests[questID].questDeadEnemies += 1;
-
-				// Save the change
-				this.level.safe.setQuests(this.quests);
 			}
 		}
 	}

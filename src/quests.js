@@ -119,6 +119,19 @@ export default {
 		},
 		10: {
 			silent: false,
+			questMessage: 'Kill all enemies!',
+
+			questKillEnemyType: 'seed',
+			questKillEnemyAmount: 3,
+			questKillEnemyMap: 'map11',
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
+		11: {
+			silent: false,
 			questMessage: 'Defaulttext',
 
 			questKillEnemyType: false,
@@ -130,6 +143,45 @@ export default {
 				
 			}
 		},
+		12: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
+		13: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		},
+		14: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				
+			}
+		}
 		
 	}
 };

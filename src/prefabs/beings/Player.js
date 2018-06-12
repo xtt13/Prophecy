@@ -209,8 +209,8 @@ export default class extends Phaser.Sprite {
 		// this.bloodAnimation.angularDrag = 500;
 		this.bloodAnimation.minParticleScale = 1;
 		this.bloodAnimation.maxParticleScale = 1;
-		this.bloodAnimation.minRotation = 0;
 		this.bloodAnimation.maxRotation = 0;
+		this.bloodAnimation.minRotation = 0;
 		this.bloodAnimation.particleDrag.set(1800);
 		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
 		

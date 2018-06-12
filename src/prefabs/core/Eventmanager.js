@@ -776,7 +776,7 @@ export default class {
 
 	spotViewer(region){
 
-		// if (!this.level.questManager.checkIfQuestExists(region.properties.ifQuestID) && ifQuestID !== undefined) return;
+		if (region.properties.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(region.properties.ifQuestID)) return;
 		if(this.spotViewerPlayedSwitch) return;
 		this.spotViewerPlayed = true;
 		this.spotViewerPlayedSwitch = true;
@@ -785,6 +785,30 @@ export default class {
 		let focusY = region.properties.focusY;
 
 		let transitionTime = 2000;
+
+		const addQuestID = region.properties.addQuestID;
+		const removeQuestID = region.properties.removeQuestID;
+
+		if(addQuestID !== undefined){		
+			this.level.questManager.addQuest(addQuestID);
+		}
+
+		if (removeQuestID !== undefined) {
+			this.level.questManager.removeQuest(removeQuestID);
+		}
+
+		if(region.properties.messageID !== undefined){
+			const all_messages = Object.values(dialogues.dialogues);
+			for (let i = 0; i < all_messages.length; i++) {
+				if (i + 1 == region.properties.messageID) {
+
+					const message = all_messages[i];
+	
+					this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
+					break;
+				}
+			}
+		}
 
 		this.game.camera.unfollow();
 
