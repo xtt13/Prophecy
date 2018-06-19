@@ -30,7 +30,7 @@ export default {
 	startMap: 'map1',
 	secureLS: false,
 	devHour: 14,
-	devStartState: 'Game',
+	devStartState: 'MainMenu',
 	serviceWorker: false,
 	allowFastTravel: true,
 	buildMode: false
