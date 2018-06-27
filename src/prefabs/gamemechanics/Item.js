@@ -13,6 +13,10 @@ export default class extends Phaser.Sprite {
 		this.removeQuestID = properties.removeQuestID;
 		this.anchor.setTo(0.5);
 
+		this.actionSymbol = this.game.add.sprite(this.x + 15, this.y - 10, 'actionSymbol');
+		this.actionSymbol.smoothed = false;
+		this.actionSymbol.alpha = 0;
+
 
 		if(this.type == 'potion'){
 			this.animations.add('play', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 12, true);
@@ -30,6 +34,28 @@ export default class extends Phaser.Sprite {
 	}
 
 	update(){
+
+		this.game.physics.arcade.collide(this, this.level.player);
+		
+
+		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 30){
+			if(this.action){
+				this.actionSymbol.alpha = 0;
+				return;
+			}
+			this.game.world.bringToTop(this.actionSymbol);
+			this.actionSymbol.alpha = 1;
+			// On E-click
+			if(this.level.inputClass.button_E.isDown){
+				// if(this.openSwitch) return;
+				// this.openSwitch = true;
+				// this.action = true;
+
+			}	
+		} else {
+			this.actionSymbol.alpha = 0;
+		}
+
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
 		// console.log(angle);
 		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){

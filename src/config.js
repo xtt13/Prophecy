@@ -29,8 +29,8 @@ export default {
 	enemies: true,
 	startMap: 'map1',
 	secureLS: false,
-	devHour: 14,
-	devStartState: 'MainMenu',
+	devHour: 11,
+	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: true,
 	buildMode: false

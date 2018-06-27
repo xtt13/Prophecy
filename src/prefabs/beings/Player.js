@@ -20,6 +20,9 @@ export default class extends Phaser.Sprite {
 		this.talking = false;
 		this.attack = false;
 
+		// this.blendMode = PIXI.blendModes.OVERLAY;
+		// this.tint = 0x00000FF;
+
 		this.damageSwitch = false;
 
 		this.baseImages = [];

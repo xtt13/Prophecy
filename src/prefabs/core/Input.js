@@ -336,14 +336,14 @@ export default class {
 
 	addMovementSound() {
 		if (this.level.muteSound || !this.player.movable) return;
-		if(this.pad1.connected){
-			if (this.movementloop == null) {
-				this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
-					this.pyfootsteps.play(this.movementSound, 0.3);
-				}, this);
-			}
-			return;
-		}
+		// if(this.pad1.connected){
+		// 	if (this.movementloop == null) {
+		// 		this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
+		// 			this.pyfootsteps.play(this.movementSound, 0.3);
+		// 		}, this);
+		// 	}
+		// 	return;
+		// }
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if (this.movementloop == null) {
 				this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
