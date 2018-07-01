@@ -501,6 +501,8 @@ export default class extends Phaser.State {
 		this.load.image('island', 'assets/sprites/island.png');
 		this.load.image('branch', 'assets/sprites/branch.png');
 		this.load.spritesheet('chest', 'assets/sprites/chest.png', 19, 17);
+		this.load.image('flower', 'assets/sprites/flower.png');
+		this.load.spritesheet('flowerPieces', 'assets/sprites/flowerPieces.png', 8, 8);
 
 
 		// Load Fonts
