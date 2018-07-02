@@ -25,6 +25,7 @@ import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
 import Bird from '../beings/Bird';
+import Flower from '../gamemechanics/Flower';
 import Sprout from '../beings/Sprout';
 import Gamescaler from '../gamemechanics/Gamescaler';
 
@@ -311,6 +312,12 @@ export default class {
 				let y = element.y;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties, this));
 			}
+
+			if (element.properties.type == 'flower'){
+				let x = element.x;
+				let y = element.y;
+				new Flower(this.game, x, y, 'flower', element.properties, this);
+			}
 		}, this);
 	}
 
@@ -575,7 +582,7 @@ export default class {
 
 		this.game.physics.arcade.collide(this.player, this.characters);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer, this.enemyCollision);
-		this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
+		// this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
 
 		// If the player is not falling down
 		if (!this.fallDown) {
@@ -585,9 +592,6 @@ export default class {
 			// Shift the player to the last layer
 			this.game.world.setChildIndex(this.player, 1);
 		}
-
-		// If lucy exists -> bringToTop
-		if (this.lucy) this.game.world.bringToTop(this.lucy);
 
 		// If there is no foreGroundShift
 		if (!this.foreGroundShift) {
@@ -600,6 +604,7 @@ export default class {
 			// 	this.game.world.bringToTop(this.foregroundLayer2);
 			// }			
 		}
+
 
 		// this.game.world.bringToTop(this.foregroundLayer2);
 
@@ -646,6 +651,9 @@ export default class {
 
 
 		this.levelBuilder.update();
+
+		// If lucy exists -> bringToTop
+		if (this.lucy) this.game.world.bringToTop(this.lucy);
 
 		// Update GUIClass
 		this.GUICLASS.update();

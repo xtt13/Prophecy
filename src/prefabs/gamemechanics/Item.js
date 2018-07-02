@@ -50,6 +50,7 @@ export default class extends Phaser.Sprite {
 				// if(this.openSwitch) return;
 				// this.openSwitch = true;
 				// this.action = true;
+				this.level.player.collideWithItem(this.level.player, this);
 
 			}	
 		} else {

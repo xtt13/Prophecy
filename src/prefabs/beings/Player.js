@@ -162,7 +162,43 @@ export default class extends Phaser.Sprite {
 
 		game.add.existing(this);
 
+		// this.teleport();
 
+	}
+
+	teleport(){
+		this.alpha = 0;
+		this.game.forceSingleUpdate = true;
+		
+		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+
+		var data = {
+			lifespan: 0
+		};
+	
+		this.manager.addData('burst', data);
+	
+		this.teleportEmitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL);
+	
+		this.teleportEmitter.renderer.pixelSize = 8;
+	
+		this.teleportEmitter.addToWorld();
+	
+		this.image = this.manager.createImageZone('player');
+
+		this.teleportEmitter.emit('burst', this.x, this.y, { zone: this.image, full: true, spacing: 8, setColor: true });
+
+		this.teleportEmitter.forEachNew(this.setVelocity, this, this.x, this.y);
+
+		console.log('hi');
+		console.log(this.teleportEmitter);
+    	
+	}
+
+	setVelocity(particle, x ,y ){
+		console.log(x,y);
+		particle.setLife(3000);
+		particle.radiateFrom(x, y, 3);
 	}
 
 	addParticles() {
@@ -451,25 +487,25 @@ export default class extends Phaser.Sprite {
 
 		// console.log(item);
 
-		if (!this.itemIDs.includes(item.id)) {
-			this.itemIDs.push(item.id);
-			this.safe.setItemIDs(this.itemIDs);
+		if (!this.level.itemIDs.includes(item.id)) {
+			this.level.itemIDs.push(item.id);
+			this.level.safe.setItemIDs(this.level.itemIDs);
 		}
 
 		if(item.type == 'potion'){
-			this.GUICLASS.healthBar.addHeart(5);
-			this.player.health = 5;
-			this.gameData.playerHealth = 5;
-			this.safe.setGameConfig(this.gameData);
+			this.level.GUICLASS.healthBar.addHeart(5);
+			this.level.player.health = 5;
+			this.level.gameData.playerHealth = 5;
+			this.level.safe.setGameConfig(this.level.gameData);
 		}
 
 		if (item.removeQuestID !== undefined) {
 			// console.log('Remove');
-			this.questManager.removeQuest(item.removeQuestID);
+			this.level.questManager.removeQuest(item.removeQuestID);
 		}
 
 		if (item.questID !== undefined) {
-			if (this.questManager.checkIfQuestExists(item.questID)) return;
+			if (this.level.questManager.checkIfQuestExists(item.questID)) return;
 
 			// let quest = {
 			// 	questID: item.questID,
@@ -479,17 +515,17 @@ export default class extends Phaser.Sprite {
 			// 	questKillEnemyAmount: undefined
 			// };
 
-			this.questManager.addQuest(item.questID);
+			this.level.questManager.addQuest(item.questID);
 
 			console.log('Questupdate');
-			this.GUICLASS.createNotification('success', 'Questupdate');
+			this.level.GUICLASS.createNotification('success', 'Questupdate');
 		}
 
-		this.itemPickUpSound = this.game.add.audio('sfxPickUp', 1);
-		this.itemPickUpSound.play();
+		this.level.itemPickUpSound = this.game.add.audio('sfxPickUp', 1);
+		this.level.itemPickUpSound.play();
 
 		item.destroy();
-		this.items.splice(item, 1);
+		this.level.items.splice(item, 1);
 	}
 
 	bulletHit(player, bullet){
