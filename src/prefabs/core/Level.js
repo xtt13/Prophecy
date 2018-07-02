@@ -312,7 +312,6 @@ export default class {
 				let y = element.y;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties, this));
 			}
-
 			if (element.properties.type == 'flower'){
 				let x = element.x;
 				let y = element.y;

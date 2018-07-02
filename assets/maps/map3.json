@@ -776,7 +776,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -786,7 +786,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -834,7 +834,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1329,7 +1329,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1402,7 +1402,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1412,7 +1412,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1451,6 +1451,66 @@
                  "width":32,
                  "x":559.803118542175,
                  "y":926.905504414804
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":273,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"flower"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":558.512276537349,
+                 "y":2048.01602255026
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":274,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"flower"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":643.755376710772,
+                 "y":2083.30432410312
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":275,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"flower"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":634.661574137225,
+                 "y":1991.45691811031
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1469,7 +1529,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":272,
+ "nextobjectid":276,
  "orientation":"orthogonal",
  "properties":
     {
