@@ -347,7 +347,7 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if (this.movementloop == null) {
 				this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
-					this.pyfootsteps.play(this.movementSound, 0.3);
+					this.pyfootsteps.play(this.movementSound, 0.3);					
 				}, this);
 			}
 		}
@@ -939,6 +939,8 @@ export default class {
 			} else {
 				this.player.body.velocity.x = 0;
 			}
+
+			this.standing = false;
 
 		} else {
 			// If no Movementkey isDown

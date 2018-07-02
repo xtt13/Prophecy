@@ -62,6 +62,33 @@ export default class extends Phaser.Sprite {
 
 		// this.animations.play('idle');
 
+		this.dustAnimation = this.game.add.sprite(this.x, this.y, 'dustAnimation');
+		this.dustAnimation.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, false);
+		this.dustAnimation.alpha = 0;
+
+		this.dustAnimationLoop = this.game.time.events.loop(Phaser.Timer.SECOND * 2, () => {
+			if(this.level.inputClass.standing) return;
+			this.dustAnimation.alpha = 1;
+
+			if(this.level.inputClass.direction == 'left'){
+				this.dustAnimation.x = this.x;
+				this.dustAnimation.y = this.y + 8;
+			} else if(this.level.inputClass.direction == 'right'){
+				this.dustAnimation.x = this.x - 18;
+				this.dustAnimation.y = this.y + 7;
+			} else if(this.level.inputClass.direction == 'up'){
+				this.dustAnimation.x = this.x - 12;
+				this.dustAnimation.y = this.y + 10;
+			} else if(this.level.inputClass.direction == 'down'){
+				this.dustAnimation.x = this.x - 12;
+				this.dustAnimation.y = this.y - 8;
+			}
+
+			this.dustAnimation.play('run');
+		}, this);
+
+
+
 		this.game.physics.enable(this);
 		this.body.setSize(10, 6, 21, 47);
 

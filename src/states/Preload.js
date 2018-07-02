@@ -423,6 +423,7 @@ export default class extends Phaser.State {
 
 		// Player
 		this.load.spritesheet('player', 'assets/sprites/player/player.png', 55, 55);
+		this.load.spritesheet('dustAnimation', 'assets/sprites/player/dustAnimation.png', 20, 15);
 		this.load.image('playerArm', 'assets/sprites/player/playerArm.png');
 		this.load.image('invisibleAttack', 'assets/sprites/player/invisibleAttack.png');
 		this.load.image('bulletPlayer', 'assets/sprites/player/bulletPlayer.png');
