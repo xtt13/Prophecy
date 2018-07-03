@@ -54,7 +54,7 @@ export default class extends Phaser.Sprite {
 				this.body.setSize(10, 10, 5, 28);
 				break;
 			case 'woman1':
-				this.body.setSize(10, 10, 0, 20);
+				this.body.setSize(80, 20, -30, 20);
 				break;
 			case 'woman2':
 				this.body.setSize(10, 10, 4, 27);

@@ -29,7 +29,7 @@ export default {
 		// Smith
 		4: [
 			'If you need any armour or want to practice \nyour fighting skills, let me know.',
-			'I love my daughters. They are such precious \nsweethearts'
+			'I love my daughters. They are such precious\nsweethearts'
 		],
 
 		// Girl3

@@ -1189,32 +1189,6 @@
                  "y":1203.8536878201
                 }, 
                 {
-                 "gid":1661,
-                 "height":32,
-                 "id":248,
-                 "name":"Woman1",
-                 "properties":
-                    {
-                     "character":"woman1",
-                     "id":4,
-                     "ifNotQuestID":"20",
-                     "nightVersion":false
-                    },
-                 "propertytypes":
-                    {
-                     "character":"string",
-                     "id":"int",
-                     "ifNotQuestID":"string",
-                     "nightVersion":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":804.884265939616,
-                 "y":263.186943964004
-                }, 
-                {
                  "gid":1665,
                  "height":32,
                  "id":251,

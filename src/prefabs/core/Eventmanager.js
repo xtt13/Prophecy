@@ -509,7 +509,7 @@ export default class {
 		const cameraX = region.left + diff1 / 2;
 		const cameraY = region.bottom - diff2 / 2;
 
-		if(this.level.questManager.checkIfQuestWasDone(1) && !this.level.questManager.checkIfQuestWasDone(2)) return;
+		// if(this.level.questManager.checkIfQuestWasDone(1) && !this.level.questManager.checkIfQuestWasDone(2)) return;
 
 		if (this.level.gameData.currentMap == 'map1' && this.level.gameData.targetID == 1) {
 			this.transitionTime = 1;
