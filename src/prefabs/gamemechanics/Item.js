@@ -9,11 +9,12 @@ export default class extends Phaser.Sprite {
 		this.level = level;
 		this.id = properties.id;
 		this.questID = properties.questID;
+		this.used = false;
 		this.questMessage = properties.questMessage;
 		this.removeQuestID = properties.removeQuestID;
 		this.anchor.setTo(0.5);
 
-		this.actionSymbol = this.game.add.sprite(this.x + 15, this.y - 10, 'actionSymbol');
+		this.actionSymbol = this.game.add.sprite(this.x + 5, this.y - 15, 'actionSymbol');
 		this.actionSymbol.smoothed = false;
 		this.actionSymbol.alpha = 0;
 
@@ -29,13 +30,27 @@ export default class extends Phaser.Sprite {
 		
 
 		this.game.physics.enable(this);
-
+		// setSize(width, height, offsetX, offsetY)
+		this.body.setSize(10, 18, 10, 18);
+		this.body.immovable = true;
 		this.game.add.existing(this);
 	}
 
 	update(){
+		if(this.used) return;
 
 		this.game.physics.arcade.collide(this, this.level.player);
+
+		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
+		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){
+			if (angle > 0) {			
+				this.game.world.bringToTop(this);
+			} else {
+				this.game.world.setChildIndex(this, 15);		
+			}
+		} else {
+			this.game.world.bringToTop(this);
+		}
 		
 
 		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 30){
@@ -50,24 +65,16 @@ export default class extends Phaser.Sprite {
 				// if(this.openSwitch) return;
 				// this.openSwitch = true;
 				// this.action = true;
-				this.level.player.collideWithItem(this.level.player, this);
+				this.actionSymbol.alpha = 0;
+				this.level.player.collideWithItem(this.level.player, this);		
+				return;
 
 			}	
 		} else {
 			this.actionSymbol.alpha = 0;
 		}
 
-		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
-		// console.log(angle);
-		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){
-			if (angle > 0) {			
-				this.game.world.bringToTop(this);
-			} else {
-				this.game.world.setChildIndex(this, 15);		
-			}
-		} else {
-			this.game.world.bringToTop(this);
-		}
+
 
 
 	}

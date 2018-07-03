@@ -551,6 +551,7 @@ export default class extends Phaser.Sprite {
 		this.level.itemPickUpSound = this.game.add.audio('sfxPickUp', 1);
 		this.level.itemPickUpSound.play();
 
+		item.used = true;
 		item.destroy();
 		this.level.items.splice(item, 1);
 	}
