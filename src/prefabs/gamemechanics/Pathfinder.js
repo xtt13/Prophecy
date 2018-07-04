@@ -17,7 +17,7 @@ export default class {
 		this.showPaths = false;
 
 		this.pathToFollow = [];
-		this.walkables = [1636, 1631, 1621, 1625, 1624, 1626, 1627, 1628, 1633];
+		this.walkables = [1641, 1636, 1631, 1621, 1625, 1624, 1626, 1627, 1628, 1633];
 
 		this.blocked = false;
 		this.followingPath = false;
@@ -52,8 +52,9 @@ export default class {
 		}
 
 		this.pathfinder.easystar.setIterationsPerCalculation(1);
-		this.pathfinder.setGrid(this.map.layers[0].data, this.walkables);
+		this.pathfinder.setGrid(this.map.layers[8].data, this.walkables);
 		// console.log(this.map.layers[0].data);
+		console.log(this.layer);
 		this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
 	}
 

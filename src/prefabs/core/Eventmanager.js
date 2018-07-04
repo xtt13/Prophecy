@@ -7,6 +7,7 @@ import Bridgebuilder from '../gamemechanics/Bridgebuilder';
 import Enemy from '../beings/Enemy';
 
 import dialogues from './../../dialogues';
+import dialoguesVillager from './../../dialoguesVillager';
 
 export default class {
 	constructor(game, level) {
@@ -261,17 +262,16 @@ export default class {
 	pathfinderMessage(region) {
 
 		const characterID = region.properties.characterID;
-		const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
+		// const requiredMasteredQuestID = region.properties.requiredMasteredQuestID;
 		const ifQuestID = region.properties.ifQuestID;
 
 		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 
-		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
-			requiredMasteredQuestID !== undefined
-		)
-			return;
-
-
+		// if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
+		// 	requiredMasteredQuestID !== undefined
+		// ){
+		// 	return;
+		// }
 
 		if (region.properties.removeQuestID !== undefined) {
 			this.level.questManager.removeQuest(region.properties.removeQuestID);
@@ -294,14 +294,14 @@ export default class {
 					x: this.level.player.x,
 					y: this.level.player.y - 50
 				},
-				this.level.groundLayer,
+				this.level.EnemyMovingTiles,
 				true,
 				400
 			);
 
 			this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
 			this.level.player.movable = false;
-
+			//1641
 			this.game.time.events.add(
 				Phaser.Timer.SECOND * region.properties.messageWaitingDuration,
 				() => {
@@ -309,12 +309,34 @@ export default class {
 					this.level.player.movable = true;
 					this.level.player.animations.play('idle_up');
 
-					const message_id = region.properties.messageID;
-					const all_messages = Object.values(dialogues.dialogues);
+					const characterName = region.properties.characterName;
+					let resultdialogue = this.level.questManager.checkQuestDialogue(characterName);
+					let resultdialogueID = resultdialogue[0];
+					
+
+					// const message_id = region.properties.messageID;
+					const all_messages = Object.values(dialoguesVillager.dialogues);
+
+					/////////////////
+					
+					// // get all dialogues
+					// const all_messages = Object.values(dialoguesVillager.dialogues);
+
+					// // search for dialogue
+					// for (let i = 0; i < all_messages.length; i++) {
+					// 	if (i + 1 == dialogueID) {
+					// 		const message = all_messages[i];
+					// 		this.level.GUICLASS.createMessage(message, false, true);
+					// 		break;
+					// 	}
+					// }
+
+					// /////////////////
 
 
 					for (let i = 0; i < all_messages.length; i++) {
-						if (i + 1 == message_id) {
+						if (i + 1 == resultdialogueID) {
+
 							const message = all_messages[i];
 
 							this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
@@ -327,7 +349,7 @@ export default class {
 								) {
 									this.endDestinationX = region.properties.endDestinationX;
 									this.endDestinationY = region.properties.endDestinationY;
-
+									
 									this.level.pathfinder = new Pathfinder(
 										this.game,
 										this.level.map,
@@ -335,7 +357,7 @@ export default class {
 											x: this.endDestinationX,
 											y: this.endDestinationY
 										},
-										this.level.groundLayer,
+										this.level.EnemyMovingTiles,
 										false,
 										400
 									);

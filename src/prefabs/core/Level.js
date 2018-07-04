@@ -501,6 +501,7 @@ export default class {
 			// Nicht bei QuestID
 			if (ifQuestID !== undefined) {
 				let valueElem = element.properties.ifQuestID;
+				console.log(valueElem);
 				let questEntries = valueElem.split(',');
 				// console.log(questEntries);
 
@@ -523,7 +524,7 @@ export default class {
 
 			if (element.properties.type == 'seed') {
 				this.enemies.push(
-					new Enemy(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+					new Enemy(this.game, element.x, element.y, this.player, this.map, this.EnemyMovingTiles, element.properties)
 				);
 			}
 
@@ -883,6 +884,9 @@ export default class {
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 		this.treeDetails = this.map.createLayer('TreeDetails');
 		this.trees = this.map.createLayer('Trees');
+
+		this.EnemyMovingTiles = this.map.createLayer('EnemyMovingTiles');
+		this.EnemyMovingTiles.alpha = 0;
 
 		// if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
