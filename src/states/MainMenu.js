@@ -30,17 +30,22 @@ export default class extends Phaser.State {
 		// this.logo.scale.setTo(0.2);
 		this.logo.smoothed = false;
 
-		this.subText = this.game.add.bitmapText(
-			this.game.camera.width / 2,
-			this.game.camera.height / 2 + 107,
-			'pxlfont',
-			'Click To Move On',
-			10
-		);
-		this.subText.smoothed = false;
-		this.subText.anchor.set(0.5);
+		// this.subText = this.game.add.bitmapText(
+		// 	this.game.camera.width / 2,
+		// 	this.game.camera.height / 2 + 107,
+		// 	'pxlfont',
+		// 	'Click To Move On',
+		// 	10
+		// );
+		// this.subText.smoothed = false;
+		// this.subText.anchor.set(0.5);
 
-		// this.variation4();
+		this.subText = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+		// this.subText.text = 'Click To Move On';
+		this.subText.setText('Click!', true, -1, 5, 'left', true)
+		this.fontImage = this.game.add.image(this.game.camera.width / 2 - 15, this.game.camera.height / 2 + 107, this.subText);
+
+		// this.variation2();
 
 		var chosenValue = this.game.rnd.integerInRange(0, 3);
 
@@ -85,7 +90,7 @@ export default class extends Phaser.State {
 			this.game.camera.fade(0x000000, 4000, true);
 			this.startSound = this.game.add.audio('startGame', 0.3);
 			this.startSound.play();
-			this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
+			this.game.add.tween(this.fontImage).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 			this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
 				this.state.start('Game', true, false);
 			});
@@ -260,7 +265,7 @@ export default class extends Phaser.State {
 
 	update() {
 		if (!this.pad1.connected) {
-			this.subText.text = 'Click To Move On';
+			this.subText.text = 'Click!';
 		} else {
 			// this.gamepadbuttonA = this.pad1.getButton(Phaser.Gamepad.XBOX360_A);
 			// console.log(this.gamepadbuttonA);
@@ -311,7 +316,7 @@ export default class extends Phaser.State {
 					this.game.camera.fade(0x000000, 4000, true);
 					this.startSound = this.game.add.audio('startGame', 0.3);
 					this.startSound.play();
-					this.game.add.tween(this.subText).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
+					this.game.add.tween(this.fontImage).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 					this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
 						this.state.start('Game', true, false);
 					});

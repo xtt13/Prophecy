@@ -915,6 +915,17 @@
                  "width":0,
                  "x":52.8145345599109,
                  "y":1363.38320305748
+                }, 
+                {
+                 "height":7.79749124194836,
+                 "id":335,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":19.6632387840434,
+                 "x":488.755791614872,
+                 "y":2039.32647756809
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1325,7 +1336,7 @@
                  "y":1934.41150276576
                 }, 
                 {
-                 "height":41.8473,
+                 "height":56.1566628124913,
                  "id":249,
                  "name":"FS",
                  "properties":
@@ -1339,8 +1350,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":73.6981,
-                 "x":489.344120471943,
+                 "width":33.2951932353188,
+                 "x":540.97005689348,
                  "y":1935.40997177994
                 }, 
                 {
@@ -1658,6 +1669,25 @@
                  "width":93.5144363943934,
                  "x":8.58352612373127,
                  "y":1452.73512235379
+                }, 
+                {
+                 "height":41.8473,
+                 "id":336,
+                 "name":"FS",
+                 "properties":
+                    {
+                     "foreGroundShift":true
+                    },
+                 "propertytypes":
+                    {
+                     "foreGroundShift":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":73.6981,
+                 "x":463.343479842126,
+                 "y":2042.22613821717
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1686,7 +1716,7 @@
                  "visible":true,
                  "width":14.1413,
                  "x":468.886234765887,
-                 "y":2116.59794861402
+                 "y":2137.39117156358
                 }, 
                 {
                  "gid":1684,
@@ -2478,28 +2508,6 @@
                  "width":32,
                  "x":23.5026664648719,
                  "y":1390.75021509177
-                }, 
-                {
-                 "gid":1683,
-                 "height":32,
-                 "id":334,
-                 "name":"Item Potion",
-                 "properties":
-                    {
-                     "id":4,
-                     "type":"potion"
-                    },
-                 "propertytypes":
-                    {
-                     "id":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":446.326188444355,
-                 "y":2093.83384368255
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2518,7 +2526,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":335,
+ "nextobjectid":337,
  "orientation":"orthogonal",
  "properties":
     {

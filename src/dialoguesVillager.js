@@ -72,9 +72,9 @@ export default {
 			'We still got our hopes up, praying for the next \nhero to save us from the plant monsters hiding \nin the woods...'
 		],
 
-		// ==================
+		// ============================
 		// Specific Dialogues Villager
-		// ==================
+		// ============================
 
 		// Priest Quest 
 		11: ['Please, save us from this plague! The whole town\n needs you, young hero!'],

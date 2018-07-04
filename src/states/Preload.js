@@ -308,24 +308,30 @@ export default class extends Phaser.State {
 
 	preload() {
 
-		this.text = this.game.add.bitmapText(this.game.camera.width / 2, this.game.camera.height / 2, 'font', '', 20);
-		this.text.anchor.set(0.5);
-		this.text.tint = 0xffffff;
-		this.text.text = '';
-		// this.text.scale.set(0.26);
+		this.text = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+        // this.text.setText(content, true, -1, 5, 'left', true)
+        // this.text.fixedWidth = 200;
+		this.fontImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2, this.text);
+		// this.fontImage.fixedToCamera = true;
+		this.fontImage.scale.set(2);
 
-
-		// var style = { font: "10px Pixeled", fill: "#49ffc5", align: "center", wordWrap: "break-word"};
-		// this.text = this.game.add.text(this.game.camera.width / 2, this.game.camera.height / 2, "", style);
-		// this.text.anchor.set(0.5);
-		// this.text.padding.set(10, 16);
-		// // this.text.lineSpacing = 20;
-		// // this.text.padding.set(40, 40);
-		// console.log(this.text);
 
 		// this.game.canvas.oncontextmenu = function (e) {
 		// 	e.preventDefault();
 		// };
+
+		this.addVillageGlimmer = this.game.add.emitter(this.game.camera.width/2, this.game.camera.height/2, 2000);
+		this.addVillageGlimmer.width = this.game.camera.width;
+		this.addVillageGlimmer.height = this.game.camera.height;
+		this.addVillageGlimmer.minParticleScale = 5;
+		this.addVillageGlimmer.gravity = 0;
+		this.addVillageGlimmer.setYSpeed(-4, 4);
+		this.addVillageGlimmer.setXSpeed(-4, 4);
+		this.addVillageGlimmer.maxRotation = 0;
+		this.addVillageGlimmer.minRotation = 0;
+		this.addVillageGlimmer.setAlpha(0, 1, 1000, Phaser.Easing.Exponential.In, true);
+		this.addVillageGlimmer.makeParticles('particle');
+		this.addVillageGlimmer.start(false, 10000, 1, 0);
 
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
@@ -405,7 +411,6 @@ export default class extends Phaser.State {
 		this.load.image('fly', 'assets/sprites/particles/fly.png');
 		this.load.image('waterdrop', 'assets/sprites/particles/waterdrop.png');
 		this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
-		this.load.image('particle', 'assets/sprites/particles/particle.png');
 		this.load.image('particleStart', 'assets/sprites/particles/particleStart.png');
 		this.load.image('leave', 'assets/sprites/particles/leave.png');
 		this.load.image('blackParticle', 'assets/sprites/particles/blackParticle.png');
@@ -509,8 +514,8 @@ export default class extends Phaser.State {
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
 		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
-		this.load.bitmapFont('minecraftia', 'assets/fonts/minecraftia-black.png', 'assets/fonts/minecraftia.xml');
-		this.load.image('carinaFont', 'assets/fonts/carinaFont.png');
+		// this.load.bitmapFont('minecraftia', 'assets/fonts/minecraftia-black.png', 'assets/fonts/minecraftia.xml');
+		// this.load.image('carinaFont', 'assets/fonts/carinaFont.png');
 	}
 
 	create() {
@@ -532,7 +537,8 @@ export default class extends Phaser.State {
 		// Log Loadingprogress
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
 			if (typeof ipc == 'undefined') {
-				this.text.text = progress;
+				var content = '' + progress;
+				this.text.setText(content, true, -1, 5, 'left', true)
 
 				// this.graphics.clear();
 				// this.graphics = game.add.graphics(this.text.x + 3, this.text.y + 5);
