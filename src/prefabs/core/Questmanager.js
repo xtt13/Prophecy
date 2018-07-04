@@ -99,7 +99,10 @@ export default class {
 			// if questDeadEnemies == questKillEnemyAmount (current dead enemies == needed deaths)
 			if (this.quests[questID].questDeadEnemies == this.quests[questID].questKillEnemyAmount) {
 
-				// Remove current Quest
+				// Add new Quest
+				this.addQuest(this.quests[questID].fightFinishAddQuestID);
+
+				//Remove current Quest
 				this.removeQuest(questID);
 
 				// Create Notification

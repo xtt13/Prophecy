@@ -297,6 +297,17 @@
                  "width":34.9529069612315,
                  "x":1398.11627844926,
                  "y":1061.66119693695
+                }, 
+                {
+                 "height":11.7573073032019,
+                 "id":257,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":57.4194077598227,
+                 "x":1312.44360593881,
+                 "y":549.585759986875
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -399,12 +410,12 @@
                  "name":"SpotViewer",
                  "properties":
                     {
-                     "addQuestID":10,
+                     "addQuestID":11,
                      "focusX":830,
                      "focusY":1070,
-                     "ifQuestID":9,
+                     "ifQuestID":10,
                      "messageID":9,
-                     "removeQuestID":9,
+                     "removeQuestID":10,
                      "spotViewer":true
                     },
                  "propertytypes":
@@ -833,6 +844,87 @@
                  "width":59.2852629285733,
                  "x":1389.9523417207,
                  "y":1062.26219062675
+                }, 
+                {
+                 "height":63.3981588056763,
+                 "id":256,
+                 "name":"FS",
+                 "properties":
+                    {
+                     "foreGroundShift":true
+                    },
+                 "propertytypes":
+                    {
+                     "foreGroundShift":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":83.073340357641,
+                 "x":1298.38622375933,
+                 "y":527.866720504197
+                }, 
+                {
+                 "height":91.6637179891472,
+                 "id":260,
+                 "name":"Message",
+                 "properties":
+                    {
+                     "addQuestID":10,
+                     "id":8,
+                     "ifQuestID":9,
+                     "message":true,
+                     "movable":true,
+                     "readable":true,
+                     "removeQuestID":9
+                    },
+                 "propertytypes":
+                    {
+                     "addQuestID":"int",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool",
+                     "removeQuestID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":60.7395,
+                 "x":1094.65004980293,
+                 "y":1078.46516803822
+                }, 
+                {
+                 "height":30.7153,
+                 "id":261,
+                 "name":"Message",
+                 "properties":
+                    {
+                     "addQuestID":13,
+                     "id":10,
+                     "ifQuestID":12,
+                     "message":true,
+                     "movable":false,
+                     "readable":true,
+                     "removeQuestID":12
+                    },
+                 "propertytypes":
+                    {
+                     "addQuestID":"int",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool",
+                     "removeQuestID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":66.8451,
+                 "x":721.427932255242,
+                 "y":45.343202791122
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1089,9 +1181,9 @@
                  "name":"Seed",
                  "properties":
                     {
-                     "ifQuestID":9,
+                     "ifQuestID":10,
                      "jumpDown":false,
-                     "killQuestID":10,
+                     "killQuestID":11,
                      "type":"seed"
                     },
                  "propertytypes":
@@ -1114,9 +1206,9 @@
                  "name":"Seed",
                  "properties":
                     {
-                     "ifQuestID":9,
+                     "ifQuestID":10,
                      "jumpDown":false,
-                     "killQuestID":10,
+                     "killQuestID":11,
                      "type":"seed"
                     },
                  "propertytypes":
@@ -1139,9 +1231,9 @@
                  "name":"Seed",
                  "properties":
                     {
-                     "ifQuestID":9,
+                     "ifQuestID":10,
                      "jumpDown":false,
-                     "killQuestID":10,
+                     "killQuestID":11,
                      "type":"seed"
                     },
                  "propertytypes":
@@ -1195,7 +1287,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":256,
+ "nextobjectid":262,
  "orientation":"orthogonal",
  "properties":
     {

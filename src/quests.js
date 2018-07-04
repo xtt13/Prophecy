@@ -135,24 +135,11 @@ export default {
 				
 			}
 		},
-		
-		// Tutorial Kill All Seeds
+
+		// Find the village!
 		10: {
 			silent: false,
-			questMessage: 'Kill all enemies!',
-
-			questKillEnemyType: 'seed',
-			questKillEnemyAmount: 3,
-			questKillEnemyMap: 'map11',
-			questDeadEnemies: 0,
-
-			dialogues: {
-				
-			}
-		},
-		11: {
-			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Find the village!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -163,9 +150,26 @@ export default {
 				
 			}
 		},
+
+		// Tutorial Kill All Seeds
+		11: {
+			silent: false,
+			questMessage: 'Kill all enemies!',
+
+			questKillEnemyType: 'seed',
+			questKillEnemyAmount: 3,
+			questKillEnemyMap: 'map11',
+			questDeadEnemies: 0,
+
+			fightFinishAddQuestID: 12,
+
+			dialogues: {
+				
+			}
+		},
 		12: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Find the village!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -178,6 +182,19 @@ export default {
 		},
 		13: {
 			silent: false,
+			questMessage: 'Enter the village!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				'priest': 11
+			}
+		},
+		14: {
+			silent: false,
 			questMessage: 'Defaulttext',
 
 			questKillEnemyType: false,
@@ -189,7 +206,7 @@ export default {
 				
 			}
 		},
-		14: {
+		15: {
 			silent: false,
 			questMessage: 'Defaulttext',
 

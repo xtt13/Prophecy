@@ -312,6 +312,7 @@ export default class extends Phaser.State {
         // this.text.setText(content, true, -1, 5, 'left', true)
         // this.text.fixedWidth = 200;
 		this.fontImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2, this.text);
+		this.fontImage.anchor.setTo(0.5);
 		// this.fontImage.fixedToCamera = true;
 		this.fontImage.scale.set(2);
 

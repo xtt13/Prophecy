@@ -598,7 +598,7 @@
                  "y":707.189446731407
                 }, 
                 {
-                 "height":17.7053,
+                 "height":27.4188960910134,
                  "id":221,
                  "name":"Bridge",
                  "properties":
@@ -625,8 +625,8 @@
                  "type":"",
                  "visible":true,
                  "width":54.407217517654,
-                 "x":773.591545276525,
-                 "y":646.213982365681
+                 "x":773.00284248313,
+                 "y":642.97611700201
                 }, 
                 {
                  "height":17.7053,
@@ -891,19 +891,23 @@
                  "name":"Message",
                  "properties":
                     {
+                     "addQuestID":10,
                      "id":8,
                      "ifQuestID":9,
                      "message":true,
                      "movable":true,
-                     "readable":true
+                     "readable":true,
+                     "removeQuestID":9
                     },
                  "propertytypes":
                     {
+                     "addQuestID":"int",
                      "id":"int",
                      "ifQuestID":"int",
                      "message":"bool",
                      "movable":"bool",
-                     "readable":"bool"
+                     "readable":"bool",
+                     "removeQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -1175,7 +1179,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":253,
+ "nextobjectid":254,
  "orientation":"orthogonal",
  "properties":
     {

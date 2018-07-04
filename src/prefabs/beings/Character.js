@@ -214,7 +214,7 @@ export default class extends Phaser.Sprite {
 		if (dialogueID !== undefined && dialogueID !== false) {
 
 			// get all dialogues
-			const all_messages = Object.values(dialogues.dialogues);
+			const all_messages = Object.values(dialoguesVillager.dialogues);
 
 			// search for dialogue
 			for (let i = 0; i < all_messages.length; i++) {
