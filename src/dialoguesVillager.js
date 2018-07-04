@@ -80,15 +80,15 @@ export default {
 		11: ['Please, save us from this plague! The whole \ntown needs you, young hero!'],
 		12: [
 			'Thank you for saving us! May you be blessed by \nthe Oracle!',
-			'What? You don’t know how you ended up here?\n Interesting.',
+			'What? You don’t know how you ended up here? \nInteresting.',
 			'Maybe if you stay for a while your memory will \nreturn. ',
 			'Feel free to stay as long as you need to.'
 		],
 
 		// Molly
 		13: [
-			'I can not believe this! Some filthy thief got her\n or his hands on my fishing rods! \nI can’t catch fish without it. Tsk!', 
-			'Hey! You! Have you seen my fishing rod? I will \ngive you a great reward if you find the thief and return my rod. \nIt would mean the world to me.'
+			'I can not believe this! Some filthy thief got \nher or his hands on my fishing rods! \nI can’t catch fish without it. Tsk!', 
+			'Hey! You! Have you seen my fishing rod? I will \ngive you a great reward if you find the thief \nand return my rod. It would mean the world to me.'
 		],
 		14: [
 			'There it is! I hope this thief got what he deserved.', 
@@ -114,7 +114,7 @@ export default {
 		20: ['There you go. Thank you for getting the materials needed. Pleasure doing business with you.'],
 
 		// Viden
-		21: ['Would you mind helping me out a little? I need you to cut at least ten flowers and collect the petals for me.', 'It will help my research a lot.'],
+		21: ['Would you mind helping me out a little? \nI need you to cut at least ten flowers \nand collect the petals for me.', 'It will help my research a lot.'],
 		22: ['Thank you so much, young man. I appreciate your help.'],
 
 		// Bromium
@@ -125,8 +125,8 @@ export default {
 
 		// Ally
 		24: [
-			'Dad said I’m not allowed to leave the town but my dollis gone!',
-			'I want my doll back. It must be somewhere… Maybe on the way to the temple? Or in the woods? I can not remember...',
+			'Dad said I’m not allowed to leave the town but \nmy dollis gone!',
+			'I want my doll back. It must be somewhere. \nMaybe on the way to the temple? Or in the woods? \nI can not remember...',
 			'Can you help me, Sir? Please. Pleaaseee!'
 		],
 		25: ['Thank you so much!! I will tell Dad and everyone else how awesome you are!'],

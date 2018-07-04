@@ -130,7 +130,7 @@ export default class {
 		if (this.level.questManager.checkIfQuestWasDone(ifQuestID)) return;
 
 		console.log('New QuestID: ' + addQuestID);
-		if(addQuestID !== undefined){		
+		if (addQuestID !== undefined) {
 			this.level.questManager.addQuest(addQuestID);
 		}
 
@@ -165,11 +165,11 @@ export default class {
 
 		if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 			requiredMasteredQuestID !== undefined
-		){
+		) {
 			return;
 		}
 
-		
+
 
 		if (this.level.activatedBridges.includes(bridgeID)) return;
 
@@ -181,9 +181,9 @@ export default class {
 
 
 		if (region.properties.addQuestID !== undefined) {
-			if (this.level.questManager.checkIfQuestExists(region.properties.addQuestID) && this.level.questManager.checkIfQuestWasDone(region.properties.addQuestID)){
+			if (this.level.questManager.checkIfQuestExists(region.properties.addQuestID) && this.level.questManager.checkIfQuestWasDone(region.properties.addQuestID)) {
 				this.level.questManager.addQuest(region.properties.addQuestID);
-			}	
+			}
 		}
 
 		this.level.bridgebuilder = new Bridgebuilder(
@@ -267,15 +267,12 @@ export default class {
 
 		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 
+
 		// if (!this.level.questManager.checkIfQuestWasDone(region.properties.requiredMasteredQuestID) &&
 		// 	requiredMasteredQuestID !== undefined
 		// ){
 		// 	return;
 		// }
-
-		if (region.properties.removeQuestID !== undefined) {
-			this.level.questManager.removeQuest(region.properties.removeQuestID);
-		}
 
 		for (var i = 0; i < this.level.characters.length; i++) {
 			if (this.level.characters[i].id == characterID) {
@@ -302,7 +299,9 @@ export default class {
 				400
 			);
 
-			this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+			// this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+			this.followTarget(this.level.characters[0]);
+
 			this.level.player.movable = false;
 			//1641
 			this.game.time.events.add(
@@ -315,13 +314,13 @@ export default class {
 					const characterName = region.properties.characterName;
 					let resultdialogue = this.level.questManager.checkQuestDialogue(characterName);
 					let resultdialogueID = resultdialogue[0];
-					
+
 
 					// const message_id = region.properties.messageID;
 					const all_messages = Object.values(dialoguesVillager.dialogues);
 
 					/////////////////
-					
+
 					// // get all dialogues
 					// const all_messages = Object.values(dialoguesVillager.dialogues);
 
@@ -368,7 +367,13 @@ export default class {
 									);
 								}
 
+								console.log(region.properties.removeQuestID);
+								if (region.properties.removeQuestID !== undefined) {
+									this.level.questManager.removeQuest(region.properties.removeQuestID);
+								}
+
 								if (this.level.questManager.checkIfQuestExists(region.properties.questID)) return;
+
 								this.level.questManager.addQuest(region.properties.questID);
 
 								this.level.GUICLASS.createNotification('quest', 'Questupdate');
@@ -472,15 +477,15 @@ export default class {
 		} else {
 
 			// if(!this.level.questManager.checkIfQuestExists(20)) return;
-			if(this.templeDoorOpen) return;
+			if (this.templeDoorOpen) return;
 
 			this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 			this.doorOpenSound.play();
 
 			this.level.levelBuilder.templeDoor.animations.play('open', 8, false);
 			this.game.camera.shake(0.0015, 2500, true);
-			
-			
+
+
 
 			// this.level.levelBuilder.templeDoor.animations._anims.open.onComplete.add(() => {
 			// 	this.templeDoorOpen = true;
@@ -529,7 +534,7 @@ export default class {
 	}
 
 	lockCamera(region) {
-		
+
 
 		const diff1 = region.right - region.left;
 		const diff2 = region.bottom - region.top;
@@ -540,7 +545,7 @@ export default class {
 
 		if (this.level.gameData.currentMap == 'map1' && this.level.gameData.targetID == 1) {
 			this.transitionTime = 1;
-		} else if(this.level.gameData.currentMap == 'map3' && this.level.gameData.targetID == 2 && region.properties.id == 2){
+		} else if (this.level.gameData.currentMap == 'map3' && this.level.gameData.targetID == 2 && region.properties.id == 2) {
 			this.transitionTime = 1;
 		} else {
 			// this.transitionTime = 750;
@@ -564,9 +569,29 @@ export default class {
 			);
 	}
 
+	followTarget(target, duration){
+		this.followDuration = duration || 2000;
+
+		this.followTween = this.game.add
+			.tween(this.game.camera)
+			.to({
+					x: target.x - (this.game.camera.width / 2) - 20,
+					y: target.y - (this.game.camera.height / 2)
+				},
+				this.followDuration,
+				Phaser.Easing.Quadratic.InOut,
+				true
+			);
+
+		this.followTween.onComplete.add(() => {
+			this.game.camera.follow(target, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+
+		}, this);
+	}
+
 	followPlayer(event, duration) {
 		// this.followDuration = duration  || 1000;
-		this.followDuration = duration  || 2000;
+		this.followDuration = duration || 2000;
 
 		this.followTween = this.game.add
 			.tween(this.game.camera)
@@ -661,9 +686,9 @@ export default class {
 	}
 
 	soundArea(region) {
-		if(region.properties.nightMode && this.level.night) return;
-		if(region.properties.once){
-			if(this.areaSoundOnce) return;
+		if (region.properties.nightMode && this.level.night) return;
+		if (region.properties.once) {
+			if (this.areaSoundOnce) return;
 		}
 		this.areaSoundOnce = true;
 
@@ -672,11 +697,11 @@ export default class {
 	}
 
 	soundAreaLeave(region) {
-		if(region.properties.nightMode && this.level.night) return;
+		if (region.properties.nightMode && this.level.night) return;
 		this.areaSound.fadeOut(500);
 	}
 
-	soundAreaVillager(region){
+	soundAreaVillager(region) {
 
 	}
 
@@ -689,7 +714,7 @@ export default class {
 
 		this.game.canvas.classList.add('greyscale');
 		this.followPlayer(null, 4000);
-		
+
 		this.level.questManager.addQuest(1);
 		this.level.questManager.removeQuest(1);
 		this.level.questManager.addQuest(2);
@@ -719,12 +744,12 @@ export default class {
 		this.game.time.events.add(
 			2000,
 			() => {
-				
-				
+
+
 				this.game.add.tween(this.level.levelBuilder.branch).to({
 					alpha: 0
 				}, 250, Phaser.Easing.Bounce.Out, true);
-				
+
 				this.level.gameOver();
 
 				this.game.time.events.add(
@@ -732,7 +757,7 @@ export default class {
 					() => {
 						this.game.camera.fade(0x000000, 5000, true);
 					}, this);
-				}, this);
+			}, this);
 
 		this.game.time.events.add(
 			13000,
@@ -746,18 +771,18 @@ export default class {
 
 	openBossDoor() {
 		// if(!this.level.questManager.checkIfQuestExists(20)) return;
-		if(this.bossDoorOpen) return;
+		if (this.bossDoorOpen) return;
 		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 
 		if (this.level.levelBuilder.bossDoor.animations._anims.close.isPlaying) {
 			// this.level.levelBuilder.bossDoor.animations._anims.close.onComplete.add(() => {
-				// this.game.time.events.add(
-				// 	2500,
-				// 	() => {
-				// 		this.doorOpenSound.play();
-				// 		this.game.camera.shake(0.0015, 2500, true);
-				// 		this.level.levelBuilder.bossDoor.play('open', 15, false);
-				// 	}, this);
+			// this.game.time.events.add(
+			// 	2500,
+			// 	() => {
+			// 		this.doorOpenSound.play();
+			// 		this.game.camera.shake(0.0015, 2500, true);
+			// 		this.level.levelBuilder.bossDoor.play('open', 15, false);
+			// 	}, this);
 			// }, this);
 		} else {
 			this.doorOpenSound.play();
@@ -774,37 +799,37 @@ export default class {
 	closeBossDoor() {
 		// if(!this.level.questManager.checkIfQuestExists(20)) return;
 
-	// 	this.doorOpenSound = this.game.add.audio('sfxstonedoor');
+		// 	this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 
-	// 	if (this.level.levelBuilder.bossDoor.animations._anims.open.isPlaying) {
-	// 		this.level.levelBuilder.bossDoor.animations._anims.open.onComplete.add(() => {
-	// 			this.bossDoorOpen = true;
-	// 			this.game.time.events.add(
-	// 				2000,
-	// 				() => {
-	// 					this.bossDoorOpen = false;
-	// 					this.doorOpenSound.play();
-	// 					this.game.camera.shake(0.0015, 2500, true);
-	// 					this.level.levelBuilder.bossDoor.play('close', 15, false);
-	// 				}, this);
+		// 	if (this.level.levelBuilder.bossDoor.animations._anims.open.isPlaying) {
+		// 		this.level.levelBuilder.bossDoor.animations._anims.open.onComplete.add(() => {
+		// 			this.bossDoorOpen = true;
+		// 			this.game.time.events.add(
+		// 				2000,
+		// 				() => {
+		// 					this.bossDoorOpen = false;
+		// 					this.doorOpenSound.play();
+		// 					this.game.camera.shake(0.0015, 2500, true);
+		// 					this.level.levelBuilder.bossDoor.play('close', 15, false);
+		// 				}, this);
 
-	// 		}, this);
-	// 	} else {
-	// 		this.game.time.events.add(
-	// 			2000,
-	// 			() => {
-	// 				this.bossDoorOpen = false;
-	// 				this.doorOpenSound.play();
-	// 				this.game.camera.shake(0.0015, 2500, true);
-	// 				this.level.levelBuilder.bossDoor.play('close', 15, false);
-	// 			}, this);
-	// 	}
+		// 		}, this);
+		// 	} else {
+		// 		this.game.time.events.add(
+		// 			2000,
+		// 			() => {
+		// 				this.bossDoorOpen = false;
+		// 				this.doorOpenSound.play();
+		// 				this.game.camera.shake(0.0015, 2500, true);
+		// 				this.level.levelBuilder.bossDoor.play('close', 15, false);
+		// 			}, this);
+		// 	}
 	}
 
-	spotViewer(region){
+	spotViewer(region) {
 
 		if (region.properties.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(region.properties.ifQuestID)) return;
-		if(this.spotViewerPlayedSwitch) return;
+		if (this.spotViewerPlayedSwitch) return;
 		this.spotViewerPlayed = true;
 		this.spotViewerPlayedSwitch = true;
 
@@ -816,7 +841,7 @@ export default class {
 		const addQuestID = region.properties.addQuestID;
 		const removeQuestID = region.properties.removeQuestID;
 
-		if(addQuestID !== undefined){		
+		if (addQuestID !== undefined) {
 			this.level.questManager.addQuest(addQuestID);
 		}
 
@@ -824,13 +849,13 @@ export default class {
 			this.level.questManager.removeQuest(removeQuestID);
 		}
 
-		if(region.properties.messageID !== undefined){
+		if (region.properties.messageID !== undefined) {
 			const all_messages = Object.values(dialogues.dialogues);
 			for (let i = 0; i < all_messages.length; i++) {
 				if (i + 1 == region.properties.messageID) {
 
 					const message = all_messages[i];
-	
+
 					this.level.GUICLASS.createMessage(message, region.properties.movable, region.properties.readable);
 					break;
 				}
@@ -868,22 +893,26 @@ export default class {
 
 		this.game.add
 			.tween(this.upperBar.cameraOffset)
-			.to({ y: this.upperBar.y - 20 }, 1000, Phaser.Easing.Linear.None, true);
+			.to({
+				y: this.upperBar.y - 20
+			}, 1000, Phaser.Easing.Linear.None, true);
 		this.downBarTween = this.game.add
 			.tween(this.downBar.cameraOffset)
-			.to({ y: this.downBar.y + 20 }, 1000, Phaser.Easing.Linear.None, true);
+			.to({
+				y: this.downBar.y + 20
+			}, 1000, Phaser.Easing.Linear.None, true);
 
 		this.downBarTween.onComplete.add(() => {
 			this.game.add
-			.tween(this.game.camera)
-			.to({
-					x: focusX - this.game.camera.width / 2,
-					y: focusY - this.game.camera.height / 2
-				},
-				transitionTime,
-				Phaser.Easing.Quadratic.InOut,
-				true
-			);
+				.tween(this.game.camera)
+				.to({
+						x: focusX - this.game.camera.width / 2,
+						y: focusY - this.game.camera.height / 2
+					},
+					transitionTime,
+					Phaser.Easing.Quadratic.InOut,
+					true
+				);
 
 		}, this);
 
@@ -893,25 +922,29 @@ export default class {
 				this.level.player.movable = true;
 
 				this.upperBarTween = this.game.add
-				.tween(this.upperBar.cameraOffset)
-				.to({ y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
+					.tween(this.upperBar.cameraOffset)
+					.to({
+						y: this.game.camera.height
+					}, 1000, Phaser.Easing.Linear.None, true);
 				this.downBarTween = this.game.add
-				.tween(this.downBar.cameraOffset)
-				.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
-	
-			this.upperBarTween.onComplete.add(function() {
-				this.upperBar.destroy();
-				this.downBar.destroy();
-				this.upperBar = false;
-				this.spotViewerPlayed = false;
-				this.followPlayer();
-				this.level.GUICLASS.healthBar.fadeIn();
-	
-			}, this);
+					.tween(this.downBar.cameraOffset)
+					.to({
+						y: this.game.camera.height - this.game.camera.height - 20
+					}, 1000, Phaser.Easing.Linear.None, true);
+
+				this.upperBarTween.onComplete.add(function () {
+					this.upperBar.destroy();
+					this.downBar.destroy();
+					this.upperBar = false;
+					this.spotViewerPlayed = false;
+					this.followPlayer();
+					this.level.GUICLASS.healthBar.fadeIn();
+
+				}, this);
 
 
 
-				
+
 			}, this);
 
 	}

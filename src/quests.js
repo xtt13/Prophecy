@@ -232,7 +232,9 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-
+				'woman2': [13, 17, false],
+				'botanist': [21, 18, false],
+				'girl3': [24, 19, false]
 			}
 		},
 		17: {
@@ -271,7 +273,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		}
 		

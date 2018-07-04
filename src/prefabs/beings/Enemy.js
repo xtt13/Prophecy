@@ -135,7 +135,7 @@ export default class extends Phaser.Sprite {
 
 		}
 
-		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 200 && this.finderCall) {
+		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 400 && this.finderCall) {
 			// console.log('Calculate');
 
 			if(this.animations.currentAnim.name == "idle"){
