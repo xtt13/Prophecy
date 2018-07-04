@@ -62,8 +62,8 @@ export default {
 
 		//
 		10: [
-			'One last thing before we enter the village! You will encounter many different people! Maybe they can help you figure out why you ended up here. But to do so, you will have to talk to the them. Use the [BUTTON] to interact with the towns folks.',
-			'... Another thing! Especially the high priest and the priestess don\'t like monsters. Since I, too, look like one, it will probably be for the best if I stayed invisible and silent during our stay in the village. You can still use my powers, but I will not be able to interact with you, Levi. Be careful, young hero.'
+			'One last thing before we enter the village! \nYou will encounter many different people! \nMaybe they can help you figure out \nwhy you ended up here.', 'But to do so, you will have to talk to the them. \nUse the [BUTTON] to interact with the towns folks.',
+			'Another thing! Especially the high priest and \nthe priestess don\'t like monsters. ', 'Since I, too, look like one, it will \nprobably be for the best if I stayed invisible \nand silent during our stay in the village.','You can still use my powers, but I will not \nbe able to interact with you, Levi. \nBe careful, young hero.'
 		],
 
 		11: [

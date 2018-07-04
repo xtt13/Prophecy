@@ -479,6 +479,7 @@ export default class {
 		this.dashSound.play();
 
 		this.level.GUICLASS.healthBar.dash();
+		this.player.playDustAnimation();
 
 		// this.player.alpha = 0.5;
 		this.game.add.tween(this.player).to({

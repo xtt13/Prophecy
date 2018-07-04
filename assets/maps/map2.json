@@ -95,7 +95,7 @@
          "name":"EnemyMovingTiles",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":46,
          "x":0,
          "y":0
@@ -933,7 +933,7 @@
                      "endDestinationX":176,
                      "endDestinationY":723,
                      "ifQuestID":13,
-                     "messageWaitingDuration":3,
+                     "messageWaitingDuration":5,
                      "pathfinderMessage":true,
                      "readable":true
                     },
@@ -1161,27 +1161,6 @@
                  "width":22.0022,
                  "x":779.148328473024,
                  "y":655.372322756104
-                }, 
-                {
-                 "height":22.0022,
-                 "id":266,
-                 "name":"Bird",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "type":"bird"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":22.0022,
-                 "x":654.468714129965,
-                 "y":1251.21843796648
                 }, 
                 {
                  "height":22.0022,
@@ -1495,8 +1474,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":717.701485594445,
-                 "y":988.886115131912
+                 "x":1021.93302633377,
+                 "y":896.231611358868
                 }, 
                 {
                  "gid":1665,
@@ -1653,6 +1632,30 @@
                  "width":32,
                  "x":940.87952578647,
                  "y":640.491234380457
+                }, 
+                {
+                 "gid":1663,
+                 "height":32,
+                 "id":297,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"priest",
+                     "id":1,
+                     "ifNotQuestID":"13"
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifNotQuestID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":720.100794487851,
+                 "y":306.85013115128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1681,7 +1684,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":297,
+ "nextobjectid":298,
  "orientation":"orthogonal",
  "properties":
     {

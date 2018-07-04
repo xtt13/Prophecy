@@ -280,13 +280,16 @@ export default class {
 		for (var i = 0; i < this.level.characters.length; i++) {
 			if (this.level.characters[i].id == characterID) {
 				this.pathfinderCharacter = this.level.characters[i];
-
+				this.pathfinderCharacter.stopIdleLoop();
 			} else {
 				console.warn('Character not found!');
 			}
 		}
 
 		if (this.level.pathfinder == undefined) {
+
+			this.pathfinderCharacter.animations.play('down');
+
 			this.level.pathfinder = new Pathfinder(
 				this.game,
 				this.level.map,
@@ -349,7 +352,9 @@ export default class {
 								) {
 									this.endDestinationX = region.properties.endDestinationX;
 									this.endDestinationY = region.properties.endDestinationY;
-									
+
+									this.pathfinderCharacter.animations.play('up');
+
 									this.level.pathfinder = new Pathfinder(
 										this.game,
 										this.level.map,
@@ -358,7 +363,7 @@ export default class {
 											y: this.endDestinationY
 										},
 										this.level.EnemyMovingTiles,
-										false,
+										true,
 										400
 									);
 								}

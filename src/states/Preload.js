@@ -316,6 +316,11 @@ export default class extends Phaser.State {
 		// this.fontImage.fixedToCamera = true;
 		this.fontImage.scale.set(2);
 
+		this.recommendedText = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+		this.recommendedText.setText('For performance reasons, the use of Google Chrome is recommended', true, -1, 5, 'left', true)
+		this.recommendedImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2 + 100, this.recommendedText);
+		this.recommendedImage.anchor.setTo(0.5);
+		// this.recommendedImage.scale.set(2);
 
 		// this.game.canvas.oncontextmenu = function (e) {
 		// 	e.preventDefault();

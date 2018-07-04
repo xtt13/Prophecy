@@ -77,11 +77,12 @@ export default {
 		// ============================
 
 		// Priest Quest 
-		11: ['Please, save us from this plague! The whole town\n needs you, young hero!'],
+		11: ['Please, save us from this plague! The whole \ntown needs you, young hero!'],
 		12: [
 			'Thank you for saving us! May you be blessed by \nthe Oracle!',
 			'What? You don’t know how you ended up here?\n Interesting.',
-			'Maybe if you stay for a while your memory will \nreturn. Feel free to stay as long as you need to.'
+			'Maybe if you stay for a while your memory will \nreturn. ',
+			'Feel free to stay as long as you need to.'
 		],
 
 		// Molly
