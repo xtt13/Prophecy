@@ -143,8 +143,20 @@ export default class extends Phaser.Sprite {
 		
 
 		// Check if name is in quest, if true -> get dialogueID
-		let dialogueID = this.level.questManager.checkQuestDialogue(this.name);
+		let resultdialogueID = this.level.questManager.checkQuestDialogue(this.name);
+		let dialogueID = resultdialogueID[0];
+		let newQuestID = resultdialogueID[1];
+		let removeQuestID = resultdialogueID[2];
 
+		console.log(resultdialogueID, dialogueID, newQuestID);
+
+		if(newQuestID !== undefined && newQuestID !== false){
+			this.level.questManager.addQuest(newQuestID);
+		}
+
+		if(removeQuestID !== undefined && removeQuestID !== false){
+			this.level.questManager.removeQuest(removeQuestID);
+		}
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////////////////

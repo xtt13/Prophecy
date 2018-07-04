@@ -463,7 +463,7 @@
                  "y":1.08148506764974
                 }, 
                 {
-                 "height":35.0850203525879,
+                 "height":56.3116989359864,
                  "id":199,
                  "name":"FS",
                  "properties":
@@ -1181,14 +1181,14 @@
                  "name":"Seed",
                  "properties":
                     {
-                     "ifQuestID":10,
+                     "ifQuestID":"10",
                      "jumpDown":false,
                      "killQuestID":11,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
-                     "ifQuestID":"int",
+                     "ifQuestID":"string",
                      "jumpDown":"bool",
                      "killQuestID":"int",
                      "type":"string"
@@ -1206,14 +1206,14 @@
                  "name":"Seed",
                  "properties":
                     {
-                     "ifQuestID":10,
+                     "ifQuestID":"10",
                      "jumpDown":false,
                      "killQuestID":11,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
-                     "ifQuestID":"int",
+                     "ifQuestID":"string",
                      "jumpDown":"bool",
                      "killQuestID":"int",
                      "type":"string"
@@ -1231,14 +1231,14 @@
                  "name":"Seed",
                  "properties":
                     {
-                     "ifQuestID":10,
+                     "ifQuestID":"10",
                      "jumpDown":false,
                      "killQuestID":11,
                      "type":"seed"
                     },
                  "propertytypes":
                     {
-                     "ifQuestID":"int",
+                     "ifQuestID":"string",
                      "jumpDown":"bool",
                      "killQuestID":"int",
                      "type":"string"

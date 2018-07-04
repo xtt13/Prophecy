@@ -190,10 +190,52 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				'priest': 11
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'priest': [11, 14, 13]
 			}
 		},
 		14: {
+			silent: false,
+			questMessage: 'Kill all enemies!',
+
+			questKillEnemyType: 'seed',
+			questKillEnemyAmount: 9,
+			questKillEnemyMap: 'map2',
+			questDeadEnemies: 0,
+
+			fightFinishAddQuestID: 15,
+
+			dialogues: {
+				
+			}
+		},
+		15: {
+			silent: false,
+			questMessage: 'Talk to the priest!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				'priest': [12, 16, 15]
+			}
+		},
+		16: {
+			silent: false,
+			questMessage: 'Talk to the villager!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+
+			}
+		},
+		17: {
 			silent: false,
 			questMessage: 'Defaulttext',
 
@@ -203,10 +245,23 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+			
 			}
 		},
-		15: {
+		18: {
+			silent: false,
+			questMessage: 'Defaulttext',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+
+			}
+		},
+		19: {
 			silent: false,
 			questMessage: 'Defaulttext',
 
@@ -219,6 +274,7 @@ export default {
 				
 			}
 		}
+		
 		
 	}
 };

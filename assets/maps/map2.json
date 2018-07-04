@@ -1159,10 +1159,244 @@
                  "width":22.0022,
                  "x":802.120267849767,
                  "y":1019.20878425148
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":285,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":450.590062328075,
+                 "y":694.296598070963
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":286,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":465.910930046311,
+                 "y":655.680768828998
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":287,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":497.945471638985,
+                 "y":635.485079564052
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":288,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":636.552204176334,
+                 "y":270.397911832947
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":289,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":703.982598607889,
+                 "y":251.546403712297
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":290,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":767.787703016241,
+                 "y":258.07192575406
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":291,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":867.120649651972,
+                 "y":574.922273781903
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":292,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":858.419953596288,
+                 "y":648.15313225058
+                }, 
+                {
+                 "gid":1687,
+                 "height":32,
+                 "id":293,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"13,14",
+                     "jumpDown":false,
+                     "killQuestID":14,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":880.896751740139,
+                 "y":688.031322505801
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1179,7 +1413,7 @@
                     {
                      "character":"smith",
                      "id":5,
-                     "ifNotQuestID":"10",
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
@@ -1204,12 +1438,14 @@
                  "properties":
                     {
                      "character":"priest",
-                     "id":1
+                     "id":1,
+                     "ifQuestID":13
                     },
                  "propertytypes":
                     {
                      "character":"string",
-                     "id":"int"
+                     "id":"int",
+                     "ifQuestID":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -1227,12 +1463,14 @@
                     {
                      "character":"botanist",
                      "id":7,
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
+                     "ifNotQuestID":"string",
                      "nightVersion":"bool"
                     },
                  "rotation":0,
@@ -1251,12 +1489,14 @@
                     {
                      "character":"girl1",
                      "id":8,
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
+                     "ifNotQuestID":"string",
                      "nightVersion":"bool"
                     },
                  "rotation":0,
@@ -1275,12 +1515,14 @@
                     {
                      "character":"veteran",
                      "id":9,
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
+                     "ifNotQuestID":"string",
                      "nightVersion":"bool"
                     },
                  "rotation":0,
@@ -1299,12 +1541,14 @@
                     {
                      "character":"girl2",
                      "id":10,
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
+                     "ifNotQuestID":"string",
                      "nightVersion":"bool"
                     },
                  "rotation":0,
@@ -1323,12 +1567,14 @@
                     {
                      "character":"girl3",
                      "id":11,
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
+                     "ifNotQuestID":"string",
                      "nightVersion":"bool"
                     },
                  "rotation":0,
@@ -1347,12 +1593,14 @@
                     {
                      "character":"woman2",
                      "id":12,
+                     "ifNotQuestID":"13,14",
                      "nightVersion":false
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
+                     "ifNotQuestID":"string",
                      "nightVersion":"bool"
                     },
                  "rotation":0,
@@ -1389,7 +1637,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":273,
+ "nextobjectid":294,
  "orientation":"orthogonal",
  "properties":
     {

@@ -70,7 +70,10 @@ export default class {
 				return false;
 			}
 
-			if (this.quests[property].dialogues[character] !== undefined && Number.isInteger(this.quests[property].dialogues[character])) {
+			
+			// && Number.isInteger(this.quests[property].dialogues[character])
+			if (this.quests[property].dialogues[character] !== undefined) {
+				console.log(this.quests[property].dialogues[character]);
 				return this.quests[property].dialogues[character];
 			} else {
 				// Progress: Return Default Character DialogueID

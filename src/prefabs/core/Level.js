@@ -496,7 +496,30 @@ export default class {
 			const ifQuestID = element.properties.ifQuestID;
 
 			// if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
-			if (ifQuestID !== undefined && !this.questManager.checkIfQuestExists(ifQuestID)) return;
+			// if (ifQuestID !== undefined && !this.questManager.checkIfQuestExists(ifQuestID)) return;
+
+			// Nicht bei QuestID
+			if (ifQuestID !== undefined) {
+				let valueElem = element.properties.ifQuestID;
+				let questEntries = valueElem.split(',');
+				// console.log(questEntries);
+
+				// for (var e = 0; e < questEntries.length; e++) {
+				// 	console.log(e);
+				// 	console.log(questEntries[e]);
+				// 	let check = this.questManager.checkIfQuestExists(parseInt(questEntries[e]));
+				// 	console.log(check);
+				// 	if (!check) return;
+				// }
+
+				console.log(questEntries[0], questEntries[1]);
+
+				let check1 = this.questManager.checkIfQuestExists(parseInt(questEntries[0]))
+				let check2 = this.questManager.checkIfQuestExists(parseInt(questEntries[1]))
+
+				if(!check1 && !check2) return;
+
+			}
 
 			if (element.properties.type == 'seed') {
 				this.enemies.push(
