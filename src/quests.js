@@ -265,7 +265,7 @@ export default {
 		},
 		19: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Find the doll!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -274,6 +274,19 @@ export default {
 
 			dialogues: {
 
+			}
+		},
+		20: {
+			silent: false,
+			questMessage: 'Return the doll!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				'girl3': [25, false, 20]
 			}
 		}
 		

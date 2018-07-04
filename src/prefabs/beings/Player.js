@@ -535,18 +535,12 @@ export default class extends Phaser.Sprite {
 			this.level.questManager.removeQuest(item.removeQuestID);
 		}
 
-		if (item.questID !== undefined) {
-			if (this.level.questManager.checkIfQuestExists(item.questID)) return;
-
-			// let quest = {
-			// 	questID: item.questID,
-			// 	questMessage: item.questMessage,
-			// 	questKillEnemyType: undefined,
-			// 	questDeadEnemies: undefined,
-			// 	questKillEnemyAmount: undefined
-			// };
-
-			this.level.questManager.addQuest(item.questID);
+		if (item.ifQuestID !== undefined) {
+			if (this.level.questManager.checkIfQuestExists(item.ifQuestID)){
+				this.level.questManager.removeQuest(item.ifQuestID);
+				console.log('NewQuestID: ' + item.newQuestID);
+				this.level.questManager.addQuest(item.newQuestID);
+			}
 
 			console.log('Questupdate');
 			this.level.GUICLASS.createNotification('success', 'Questupdate');

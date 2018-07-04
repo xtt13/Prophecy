@@ -470,6 +470,7 @@ export default class extends Phaser.State {
 		// Items
 		this.load.spritesheet('item', 'assets/sprites/items/testitem.png', 25, 27);
 		this.load.spritesheet('potion', 'assets/sprites/items/potion.png', 32, 32);
+		this.load.image('doll', 'assets/sprites/items/doll.png');
 
 
 		// Load Tilesets

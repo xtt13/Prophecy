@@ -299,12 +299,22 @@ export default class {
 		// Find specific items
 		elementsArr.forEach(function (element) {
 
+			if(element.properties.ifQuestID !== undefined){
+				if (!this.questManager.checkIfQuestExists(element.properties.ifQuestID)) return;
+			}
+
 			if (this.itemIDs.includes(element.properties.id)) return;
 
 			if (element.properties.type == 'key') {
 				let x = element.x - 10;
 				let y = element.y + 10;
 				this.items.push(new Item(this.game, x, y, 'item', element.properties, this));
+			}
+
+			if (element.properties.type == 'doll') {
+				let x = element.x - 10;
+				let y = element.y + 10;
+				this.items.push(new Item(this.game, x, y, 'doll', element.properties, this));
 			}
 
 			if (element.properties.type == 'potion') {

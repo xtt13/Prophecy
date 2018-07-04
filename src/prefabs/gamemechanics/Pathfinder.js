@@ -54,7 +54,7 @@ export default class {
 		this.pathfinder.easystar.setIterationsPerCalculation(1);
 		this.pathfinder.setGrid(this.map.layers[8].data, this.walkables);
 		// console.log(this.map.layers[0].data);
-		console.log(this.layer);
+		// console.log(this.layer);
 		this.findPathTo(this.layer.getTileX(this.target.x), this.layer.getTileY(this.target.y));
 	}
 

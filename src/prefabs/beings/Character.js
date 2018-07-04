@@ -151,7 +151,9 @@ export default class extends Phaser.Sprite {
 		console.log(resultdialogueID, dialogueID, newQuestID);
 
 		if(newQuestID !== undefined && newQuestID !== false){
-			this.level.questManager.addQuest(newQuestID);
+			if(!this.level.questManager.checkIfQuestWasDone(newQuestID)){
+				this.level.questManager.addQuest(newQuestID);
+			}
 		}
 
 		if(removeQuestID !== undefined && removeQuestID !== false){

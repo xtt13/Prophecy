@@ -141,7 +141,7 @@ export default class extends Phaser.Sprite {
 			if(this.animations.currentAnim.name == "idle"){
 				this.animations._anims.idle.stop();
 			}
-			console.log('HHHHHHHEEE');
+			
 			this.animations.play('walk');
 
 			if(this.attackSoundSwitch){

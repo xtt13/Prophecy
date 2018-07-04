@@ -2,16 +2,21 @@ import Phaser from 'phaser';
 
 export default class extends Phaser.Sprite {
 	constructor(game, x, y, type, properties, level) {
-		super(game, x, y, 'potion');
+		super(game, x, y, type);
 
 		this.game = game;
 		this.type = type;
 		this.level = level;
 		this.id = properties.id;
-		this.questID = properties.questID;
+
+		this.ifQuestID = properties.ifQuestID;
+		this.newQuestID = properties.newQuestID;
+
 		this.used = false;
+
 		this.questMessage = properties.questMessage;
 		this.removeQuestID = properties.removeQuestID;
+
 		this.anchor.setTo(0.5);
 
 		this.actionSymbol = this.game.add.sprite(this.x + 5, this.y - 15, 'actionSymbol');
