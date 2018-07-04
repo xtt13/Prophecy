@@ -745,23 +745,19 @@
                  "name":"Message",
                  "properties":
                     {
-                     "addQuestID":6,
                      "id":4,
-                     "ifQuestID":5,
+                     "ifQuestID":6,
                      "message":true,
                      "movable":true,
-                     "readable":true,
-                     "removeQuestID":5
+                     "readable":true
                     },
                  "propertytypes":
                     {
-                     "addQuestID":"int",
                      "id":"int",
                      "ifQuestID":"int",
                      "message":"bool",
                      "movable":"bool",
-                     "readable":"bool",
-                     "removeQuestID":"int"
+                     "readable":"bool"
                     },
                  "rotation":0,
                  "type":"",

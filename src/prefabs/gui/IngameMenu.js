@@ -129,7 +129,7 @@ export default class {
 		this.optionsButton.setFrames(0, 1, 2);
 
 		// Open Maptab by default
-		this.gameMap.createMap();
+		// this.gameMap.createMap();
 	}
 
 	closeMenu() {
@@ -174,25 +174,25 @@ export default class {
 
 	actionOnClick(button) {
 		if (button.key == 'mapButton') {
-			// If Map is active --> return
-			if (this.gameMap.map) return;
+			// // If Map is active --> return
+			// if (this.gameMap.map) return;
 
-			this.mapButton.setFrames(2, 2, 2);
-			this.questButton.setFrames(0, 1, 2);
-			this.optionsButton.setFrames(0, 1, 2);
+			// this.mapButton.setFrames(2, 2, 2);
+			// this.questButton.setFrames(0, 1, 2);
+			// this.optionsButton.setFrames(0, 1, 2);
 
-			if (this.questMap.text) {
-				this.questMap.text.destroy();
-				this.questMap.text = false;
-			}
+			// if (this.questMap.text) {
+			// 	this.questMap.text.destroy();
+			// 	this.questMap.text = false;
+			// }
 
-			if (this.gameOptions.muteMusicButton) {
-				this.gameOptions.muteMusicButton.destroy();
-				this.gameOptions.muteSoundButton.destroy();
-				this.gameOptions.muteMusicButton = false;
-			}
+			// if (this.gameOptions.muteMusicButton) {
+			// 	this.gameOptions.muteMusicButton.destroy();
+			// 	this.gameOptions.muteSoundButton.destroy();
+			// 	this.gameOptions.muteMusicButton = false;
+			// }
 
-			this.gameMap.createMap();
+			// this.gameMap.createMap();
 		} else if (button.key == 'questButton') {
 			// If Questmap is active --> return
 			if (this.questMap.text) return;
@@ -261,7 +261,7 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			this.gameMap.createMap();
+			// this.gameMap.createMap();
 		} else if (this.currentTab == 2) {
 			if (this.questMap.text) return;
 			this.questButton.setFrames(2, 2, 2);
@@ -328,7 +328,7 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			this.gameMap.createMap();
+			// this.gameMap.createMap();
 		} else if (this.currentTab == 2) {
 			if (this.questMap.text) return;
 			this.questButton.setFrames(2, 2, 2);

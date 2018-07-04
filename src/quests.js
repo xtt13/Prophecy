@@ -1,8 +1,10 @@
 export default {
 	quests: {
+
+		// Not Set
 		1: {
 			silent: false,
-			questMessage: 'Find a way away from here!',
+			questMessage: '',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -13,9 +15,11 @@ export default {
 
 			} 
 		},
+
+		// Branch falls down
 		2: {
-			silent: false,
-			questMessage: ' Try to dash!',
+			silent: true,
+			questMessage: '',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -26,9 +30,11 @@ export default {
 				
 			} 
 		},
+
+		// First Lucy Dialogue
 		3: {
 			silent: false,
-			questMessage: ' Great! Try that again!',
+			questMessage: 'Talk to Lucy!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -39,22 +45,26 @@ export default {
 				
 			} 
 		},
+
+		// Dash Tutorial
 		4: {
 			silent: false,
-			questMessage: 'Kill all enemies!',
+			questMessage: 'Try to dash!',
 
-			questKillEnemyType: 'seed',
-			questKillEnemyAmount: 8,
-			questKillEnemyMap: 'map2',
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
 			questDeadEnemies: 0,
 
 			dialogues: {
-				'priest': 7
+
 			} 
 		},
+
+		// Dash Try it again!
 		5: {
 			silent: false,
-			questMessage: 'Enter the temple!',
+			questMessage: 'Great! Try it again!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -65,9 +75,11 @@ export default {
 				
 			}
 		},
+
+		// Lucy Intro Forest
 		6: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Find the village!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -78,9 +90,11 @@ export default {
 				
 			}
 		},
+
+		// Find the Box
 		7: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Search for a helpful item',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -91,9 +105,11 @@ export default {
 				
 			}
 		},
+
+		// Open the box
 		8: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Try to open the box',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -104,9 +120,11 @@ export default {
 				
 			}
 		},
+
+		// Go back to the bridge
 		9: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Go back to the bridge!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -117,6 +135,8 @@ export default {
 				
 			}
 		},
+		
+		// Tutorial Kill All Seeds
 		10: {
 			silent: false,
 			questMessage: 'Kill all enemies!',

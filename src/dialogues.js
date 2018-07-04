@@ -43,7 +43,7 @@ export default {
 		7: [
 			'There we go! Seems like they locked up the \nitem that could help us reactivate the bridge \nin this treasure chest!',
 			'... What are you waiting for? \nYou think you can just open it? \nThis isn\'t a video game, Levi.',
-			'You have to pick the lock! Oh, one more thing! \nIf you fail three times, the chests will close \ntheir locks for a short period of time.',
+			'You have to pick the lock by pressing the E-Button! Oh, one more thing! \nIf you fail three times, the chests will close \ntheir locks for a short period of time.',
 			'So if you mess up, you have to wait for a bit \nuntil you can try again.'
 		],
 
@@ -65,6 +65,10 @@ export default {
 			'One last thing before we enter the village! You will encounter many different people! Maybe they can help you figure out why you ended up here. But to do so, you will have to talk to the them. Use the [BUTTON] to interact with the towns folks.',
 			'... Another thing! Especially the high priest and the priestess don\'t like monsters. Since I, too, look like one, it will probably be for the best if I stayed invisible and silent during our stay in the village. You can still use my powers, but I will not be able to interact with you, Levi. Be careful, young hero.'
 		],
+
+		11: [
+			"Press the E-Button to collect items!"
+		]
 
 	}
 
