@@ -85,6 +85,10 @@ export default class {
 
 			if (this.ingameMenu.questMap.text) {
 				this.game.world.bringToTop(this.ingameMenu.questMap.text);
+				this.game.world.bringToTop(this.ingameMenu.questMap.fontImage);
+				this.game.world.bringToTop(this.ingameMenu.questMap.fontImageMastered);
+				this.game.world.bringToTop(this.ingameMenu.questMap.heading1Sprite);
+				this.game.world.bringToTop(this.ingameMenu.questMap.heading2Sprite);
 			}
 
 			if (this.ingameMenu.gameOptions.muteMusicButton) {

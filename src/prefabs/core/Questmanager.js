@@ -36,6 +36,11 @@ export default class {
 		this.level.safe.setQuests(this.quests);
 	}
 
+	getQuestByID(questID){
+		let quest = quests.quests[questID];
+		return quest;
+	}
+
 	checkIfQuestExists(questID) {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
@@ -80,39 +85,6 @@ export default class {
 
 		return false;
 
-		// console.log(keys);
-		// keys.sort((a, b) => b - a);
-		// console.log(keys);
-
-		// for (var i = 0; i < keys.length; i++) {
-		// 	// process obj[keys[i]]
-		// }
-
-
-		// for (let property in this.quests) {
-		// 	if (this.quests[property].length == 0) continue;
-		// 	if (this.quests[property].dialogues == undefined) {
-		// 		continue;
-		// 	}
-
-		// 	// console.log('HIHIHIHIFF');
-		// 	// console.log(this.quests[property].dialogues[character]);
-			
-		// 	// && Number.isInteger(this.quests[property].dialogues[character])
-		// 	if (this.quests[property].dialogues[character] !== undefined) {
-
-		// 		// console.log(this.quests[property].dialogues[character]);
-
-		// 		let response = this.quests[property].dialogues[character];
-		// 		// delete this.quests[property].dialogues[character];
-		// 		// this.level.safe.setQuests(this.quests);
-
-		// 		return response;
-		// 	} else {
-		// 		// Progress: Return Default Character DialogueID
-		// 		return false;
-		// 	}
-		// }
 	}
 
 	// Check Fight Quest-Condition

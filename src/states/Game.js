@@ -23,7 +23,7 @@ export default class extends Phaser.State {
 
 		if (!isSafari) {
 			this.input.onDown.add(this.toggleFullScreen, this);
-			this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
+			// this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
 		}
 
 		this.level = new Level(this.game, this.instruction);

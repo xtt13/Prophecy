@@ -239,7 +239,7 @@ export default {
 		},
 		17: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Find the fishing rod!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -252,7 +252,7 @@ export default {
 		},
 		18: {
 			silent: false,
-			questMessage: 'Defaulttext',
+			questMessage: 'Get the flowers',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,

@@ -124,12 +124,13 @@ export default class {
 		this.optionsButton.fixedToCamera = true;
 
 		// Set Buttonframes
-		this.mapButton.setFrames(2, 2, 2);
-		this.questButton.setFrames(0, 1, 2);
+		this.mapButton.setFrames(0, 1, 2);
+		this.questButton.setFrames(2, 2, 2);
 		this.optionsButton.setFrames(0, 1, 2);
 
 		// Open Maptab by default
 		// this.gameMap.createMap();
+		this.questMap.showMap();
 	}
 
 	closeMenu() {
@@ -160,8 +161,16 @@ export default class {
 			}
 
 			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
 			}
 
 			if (this.gameOptions.muteMusicButton) {
