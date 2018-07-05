@@ -125,11 +125,11 @@ export default {
 
 		// Ally
 		24: [
-			'Dad said I’m not allowed to leave the town but \nmy dollis gone!',
+			'Dad said I’m not allowed to leave the town but \nmy doll is gone!',
 			'I want my doll back. It must be somewhere. \nMaybe on the way to the temple? Or in the woods? \nI can not remember...',
 			'Can you help me, Sir? Please. Pleaaseee!'
 		],
-		25: ['Thank you so much!! I will tell Dad and everyone else how awesome you are!'],
+		25: ['Thank you so much!! \nI will tell Dad and everyone else how \nawesome you are!'],
 
 		// Viden
 		26: [

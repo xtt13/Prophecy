@@ -64,22 +64,55 @@ export default class {
 		// Get Quests
 		this.quests = this.level.safe.getQuests();
 
-		for (let property in this.quests) {
-			if (this.quests[property].length == 0) continue;
-			if (this.quests[property].dialogues == undefined) {
-				return false;
-			}
+		// Object -> Array
+		var keys = Object.values(this.quests);
 
-			
-			// && Number.isInteger(this.quests[property].dialogues[character])
-			if (this.quests[property].dialogues[character] !== undefined) {
-				console.log(this.quests[property].dialogues[character]);
-				return this.quests[property].dialogues[character];
-			} else {
-				// Progress: Return Default Character DialogueID
-				return false;
+		// Reverse Array
+		var reversed = keys.reverse(); 
+
+		// Return Dialogue Array
+		for (let i = 0; i < reversed.length; i++) {
+			if (i == 0) continue;
+			if(reversed[i].dialogues[character]){
+				return reversed[i].dialogues[character];
 			}
 		}
+
+		return false;
+
+		// console.log(keys);
+		// keys.sort((a, b) => b - a);
+		// console.log(keys);
+
+		// for (var i = 0; i < keys.length; i++) {
+		// 	// process obj[keys[i]]
+		// }
+
+
+		// for (let property in this.quests) {
+		// 	if (this.quests[property].length == 0) continue;
+		// 	if (this.quests[property].dialogues == undefined) {
+		// 		continue;
+		// 	}
+
+		// 	// console.log('HIHIHIHIFF');
+		// 	// console.log(this.quests[property].dialogues[character]);
+			
+		// 	// && Number.isInteger(this.quests[property].dialogues[character])
+		// 	if (this.quests[property].dialogues[character] !== undefined) {
+
+		// 		// console.log(this.quests[property].dialogues[character]);
+
+		// 		let response = this.quests[property].dialogues[character];
+		// 		// delete this.quests[property].dialogues[character];
+		// 		// this.level.safe.setQuests(this.quests);
+
+		// 		return response;
+		// 	} else {
+		// 		// Progress: Return Default Character DialogueID
+		// 		return false;
+		// 	}
+		// }
 	}
 
 	// Check Fight Quest-Condition
