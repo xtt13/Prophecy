@@ -139,7 +139,7 @@ export default class extends Phaser.Sprite {
 
 		this.weapon = this.game.add.weapon(10, 'invisibleAttack');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
-		this.weapon.bulletLifespan = 40;
+		this.weapon.bulletLifespan = 80;
 		this.weapon.bulletSpeed = 400;
 		// this.weapon.fireRate = 200;
 		this.weapon.trackSprite(this, 0, 0, false);

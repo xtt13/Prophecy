@@ -1,7 +1,5 @@
 import Phaser from 'phaser';
 
-// import SlickUI from '../plugins/slick-ui.min';
-
 export default class extends Phaser.State {
 	init() {
 		// Boot Log

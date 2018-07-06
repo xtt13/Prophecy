@@ -4,6 +4,10 @@
     "description": "A Pixelartgame made with Phaser.io",
     "author": "Michael Dorn <work@michaeldorn.at>",
     "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/xtt13/Prophecy.git"
+    },
     "scripts": {
         "dev": "webpack",
         "deploy": "./deploy.sh",
@@ -26,6 +30,7 @@
         "browser-sync": "^2.18.13",
         "browser-sync-webpack-plugin": "^1.2.0",
         "clean-webpack-plugin": "^0.1.17",
+        "compression-webpack-plugin": "^1.1.11",
         "copy-webpack-plugin": "^4.2.0",
         "cordova": "^7.1.0",
         "eslint": "^4.3.0",
@@ -38,7 +43,9 @@
         "html-webpack-plugin": "^2.30.1",
         "prettier-webpack-plugin": "^0.2.2",
         "script-loader": "^0.7.2",
-        "webpack": "^3.11.0"
+        "uglifyjs-webpack-plugin": "^1.2.7",
+        "webpack": "^3.11.0",
+        "webpack-bundle-analyzer": "^2.13.1"
     },
     "dependencies": {
         "cordova-android": "^6.2.3",

@@ -39,7 +39,7 @@ export default class extends Phaser.Sprite {
 		if(this.dead) return;
         if(this.paralyze) return;
         
-        this.game.world.setChildIndex(this.weapon.bullets, 10);
+        this.game.world.setChildIndex(this.weapon.bullets, 20);
 
         // console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
@@ -59,8 +59,8 @@ export default class extends Phaser.Sprite {
     }
 
     reverse(weaponBullet, playerBullet){
-        weaponBullet.body.velocity.x *= (-1.8);
-        weaponBullet.body.velocity.y *= (-1.8);
+        weaponBullet.body.velocity.x *= (-2.8);
+        weaponBullet.body.velocity.y *= (-2.8);
     }
 
 		

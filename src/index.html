@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121871135-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-121871135-1');
+    </script>
     <meta charset="UTF-8">
     <title>Prophecy of the Fallen</title>
     <link rel="manifest" href="ept.webmanifest" />
@@ -24,17 +36,16 @@
     <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
-<!--     <link rel="manifest" href="/manifest.json">
+    <!--     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff"> -->
 
     <style>
-
         @font-face {
             font-family: Pixeled;
             src: url('assets/fonts/Pixeled.ttf');
@@ -52,13 +63,19 @@
             margin: 0 !important;
             /* cursor: pointer; */
         }
+
         div canvas {
-            image-rendering: optimizeSpeed;             /* Older versions of FF          */
-            image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
-            image-rendering: -webkit-optimize-contrast; /* Safari                        */
+            image-rendering: optimizeSpeed;
+            /* Older versions of FF          */
             image-rendering: -moz-crisp-edges;
-            image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
-            image-rendering: pixelated;                 /* Awesome future-browsers       */
+            /* FF 6.0+                       */
+            image-rendering: -webkit-optimize-contrast;
+            /* Safari                        */
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            /* OS X & Windows Opera (12.02+) */
+            image-rendering: pixelated;
+            /* Awesome future-browsers       */
             -ms-interpolation-mode: nearest-neighbor;
             font-family: Pixeled;
 
@@ -71,33 +88,54 @@
         }
 
         @-webkit-keyframes greyAnimation {
-        0%   { filter: grayscale(0%); }
-        100% { filter: grayscale(100%); }
+            0% {
+                filter: grayscale(0%);
+            }
+            100% {
+                filter: grayscale(100%);
+            }
         }
+
         @-moz-keyframes greyAnimation {
-        0%   { filter: grayscale(0%); }
-        100% { filter: grayscale(100%); }
+            0% {
+                filter: grayscale(0%);
+            }
+            100% {
+                filter: grayscale(100%);
+            }
         }
+
         @-o-keyframes greyAnimation {
-        0%   { filter: grayscale(0%); }
-        100% { filter: grayscale(100%); }
+            0% {
+                filter: grayscale(0%);
+            }
+            100% {
+                filter: grayscale(100%);
+            }
         }
+
         @keyframes greyAnimation {
-        0%   { filter: grayscale(0%); }
-        100% { filter: grayscale(100%); }
+            0% {
+                filter: grayscale(0%);
+            }
+            100% {
+                filter: grayscale(100%);
+            }
         }
 
         .greyscale {
 
-            -webkit-animation: greyAnimation 1s normal forwards; /* Safari 4+ */
-            -moz-animation:    greyAnimation 1s normal forwards; /* Fx 5+ */
-            -o-animation:      greyAnimation 1s normal forwards; /* Opera 12+ */
-            animation:         greyAnimation 1s normal forwards; /* IE 10+, Fx 29+ */
-
+            -webkit-animation: greyAnimation 1s normal forwards;
+            /* Safari 4+ */
+            -moz-animation: greyAnimation 1s normal forwards;
+            /* Fx 5+ */
+            -o-animation: greyAnimation 1s normal forwards;
+            /* Opera 12+ */
+            animation: greyAnimation 1s normal forwards;
+            /* IE 10+, Fx 29+ */
             animation-timing-function: ease-in;
             animation-iteration-count: 1;
         }
-
     </style>
 
 
@@ -107,7 +145,7 @@
 
     <div id="content"></div>
 
-    
+
     <!-- uncomment the line bellow for cordova feature -->
     <!-- <script type="text/javascript" src="cordova.js"></script> -->
 </body>

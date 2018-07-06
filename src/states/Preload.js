@@ -335,7 +335,7 @@ export default class extends Phaser.State {
 		this.addVillageGlimmer.setXSpeed(-4, 4);
 		this.addVillageGlimmer.maxRotation = 0;
 		this.addVillageGlimmer.minRotation = 0;
-		this.addVillageGlimmer.setAlpha(0, 1, 1000, Phaser.Easing.Exponential.In, true);
+		this.addVillageGlimmer.setAlpha(0, 1, 4000, Phaser.Easing.Exponential.In, true);
 		this.addVillageGlimmer.makeParticles('particle');
 		this.addVillageGlimmer.start(false, 10000, 1, 0);
 
@@ -376,6 +376,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map9', 'assets/maps/map9.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map10', 'assets/maps/map10.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map11', 'assets/maps/map11.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('map12', 'assets/maps/map12.json', null, Phaser.Tilemap.TILED_JSON);
 
 
 		// Load Music

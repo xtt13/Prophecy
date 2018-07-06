@@ -554,6 +554,12 @@ export default class {
 				);
 			}
 
+			if (element.properties.type == 'rock') {
+				this.enemies.push(
+					new Rock(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties)
+				);
+			}
+
 		}, this);
 	}
 
