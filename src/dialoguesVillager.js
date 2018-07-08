@@ -87,23 +87,23 @@ export default {
 
 		// Molly
 		13: [
-			'I can not believe this! Some filthy thief got \nher or his hands on my fishing rods! \nI can’t catch fish without it. Tsk!', 
+			'I can not believe this! Some filthy thief got \nher or his hands on my fishing rods! \nI can’t catch fish without it. Tsk!',
 			'Hey! You! Have you seen my fishing rod? I will \ngive you a great reward if you find the thief \nand return my rod. It would mean the world to me.'
 		],
 		14: [
-			'There it is! I hope this thief got what he deserved.', 
-			'... Just an old man? Huh. Well, at least I got my rod back. Thanks.', 
+			'There it is! I hope this thief got what he deserved.',
+			'... Just an old man? Huh. Well, at least I got my rod back. Thanks.',
 			'Here, have one of my quality fish, my promised reward. The freshest fish you can find around Aalis.'
 		],
 
 		// Fisher
 		15: [
-			'Ugh... The fish just won’t bite lately...', 
-			'...What do you mean, not my fishing rod?', 
+			'Ugh... The fish just won’t bite lately...',
+			'...What do you mean, not my fishing rod?',
 			'I may or may not have found it around the forest. \nBut if you want it, you need to get me a different tool \nto catch and kill fish. \nLike, a spear maybe. That could work...'
 		],
 		16: [
-			'Oh, this is excellent! Thank you so much, young man!', 
+			'Oh, this is excellent! Thank you so much, young man!',
 			'Now all I crave would be a tasty fish… Let’s hope I can get one soon.'
 		],
 		17: ['Oh my god, praise the Oracle, my deepest desires are fulfilled! You truly are a hero. Let me give you something in exchange for your efforts.'],
@@ -170,15 +170,53 @@ export default {
 			'You have to be one of the heroes, chosen by an ancient prophecy... And as such, I have a request. To properly start your journey... To become stronger and find your true purpose.',
 			'This request is...',
 			'Please, save my town. Monsters made of vines and leaves tried to attack and take over my town.',
-			'My precious believers need you, Hero [PLAYER NAME]… Defeat the leader of these monstrosities. They hide in the woods, deep in the darkness, hidden, unseen…',
+			'My precious believers need you, Hero [PLAYER NAME] Defeat the leader of these monstrosities. They hide in the woods, deep in the darkness, hidden, unseen…',
 			'It is your destiny to save us...'
 		],
 
-		// Lucy
+
+		// ##############################
+		// ## Village Attack Dialogues ##
+		// ##############################
+
+		// Viden
 		33: [
-			'You got to be careful… This monster is different than anything you have faced before. Be on your guard.',
-			'Hide if necessary. You’d rather be a coward than dead, right?',
-			'I think that’s it… Good luck, [PLAYER NAME]'
+			'I would love to properly research these monsters\n but... These are too many. Nobody would survive going outside right now. \nIt\'s way too dangerous.'
+		],
+
+		// Bromium
+		34: [
+			'Of course this has to happen when our village is without a hero! Let\'s pray to the Oracle that nobody gets seriously hurt and these monsters leave soon.'
+		],
+
+		// Librarian
+		35: [
+			'I already looked through all the books, but nothing! \nNot a single book holds the information to help me come up with a solution to this mess. Without someone strong enough to face these monsters, it seems we can not do much besides waiting, praying and hoping for the best.'
+		],
+
+		// Smith
+		36: [
+			'I would fight these monsters, but I can not risk it. \nIf I get hurt or worse, who would take care of my beautiful daughters?'
+		],
+
+		// Girl1
+		37: [
+			'I\'m so scared. I hope everyone is alright. \nThis is terrible... May the Oracle protect us all.'
+		],
+
+		// Girl2
+		38: [
+			'I would love to fight with my Dad, but he won\'t \nallow my sisters or me to leave the house. At all. Ugh.'
+		],
+
+		// Girl3
+		39: [
+			'Nobody won\'t tell me what\'s going on outside... \nAnd we\'re not allowed to leave either. \nI just want to play outside again.'
+		],
+
+		// Molly (Woman2)
+		40: [
+			'I really hope someone gets rid of these beasts soon. \nI was just about to go outside and get \nfresh fish and now this is happening. \nThese monsters ruin my business.'
 		]
 
 

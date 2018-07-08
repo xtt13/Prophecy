@@ -68,6 +68,12 @@ export default {
 
 		11: [
 			"Press the E-Button to collect items!"
+		],
+		
+		12: [
+			'You got to be careful… This monster is different than anything you have faced before. Be on your guard.',
+			'Hide if necessary. You’d rather be a coward than dead, right?',
+			'I think that’s it… Good luck, [PLAYER NAME]'
 		]
 
 	}

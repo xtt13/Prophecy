@@ -206,7 +206,14 @@ export default {
 			fightFinishAddQuestID: 15,
 
 			dialogues: {
-				
+				'librarian': [35, false, false],
+				'veteran': [34, false, false],
+				'smith': [36, false, false],
+				'girl1': [37, false, false],
+				'girl2': [38, false, false],
+				'girl3': [39, false, false],
+				'woman2': [40, false, false],
+				'botanist': [33, false, false]
 			}
 		},
 		15: {
