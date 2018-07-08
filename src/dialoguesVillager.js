@@ -218,7 +218,9 @@ export default {
 		// Molly (Woman2)
 		40: [
 			'I really hope someone gets rid of these beasts \nsoon. I was just about to go outside and get \nfresh fish and now this is happening. \nThese monsters ruin my business.'
-		]
+		],
+
+		41: ['Grmbl...']
 
 
 	}

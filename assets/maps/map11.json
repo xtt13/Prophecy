@@ -1115,7 +1115,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1270,10 +1270,34 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2551,
+                 "height":32,
+                 "id":262,
+                 "name":"Fisher",
+                 "properties":
+                    {
+                     "character":"fisher",
+                     "id":13,
+                     "nightVersion":false
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1034.94805205236,
+                 "y":423.21434841264
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1298,7 +1322,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":262,
+ "nextobjectid":264,
  "orientation":"orthogonal",
  "properties":
     {

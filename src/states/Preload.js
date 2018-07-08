@@ -426,6 +426,7 @@ export default class extends Phaser.State {
 		this.load.image('bloodEnemy', 'assets/sprites/particles/bloodEnemy.png');
 		this.load.image('bloodHeart', 'assets/sprites/particles/bloodHeart.png');
 		this.load.image('bulletParticle', 'assets/sprites/particles/bulletParticle.png');
+		this.load.image('fishingLineChain', 'assets/sprites/fishingLineChain.png');
 		this.load.image('bulletBeam', 'assets/sprites/particles/bulletBeam.png');
 		this.load.spritesheet('treeleaves', 'assets/sprites/particles/treeleaves.png', 3, 3);
 		this.load.spritesheet('fireSpritesheet', 'assets/sprites/particles/fireSpritesheet.png', 1, 1);
@@ -452,6 +453,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('veteran', 'assets/sprites/villager/veteran.png', 34, 46);
 		this.load.spritesheet('woman1', 'assets/sprites/villager/woman1.png', 13, 35);
 		this.load.spritesheet('woman2', 'assets/sprites/villager/woman2.png', 17, 40);
+		this.load.spritesheet('fisher', 'assets/sprites/villager/fisher.png', 43, 44);
 
 
 		// Enemies

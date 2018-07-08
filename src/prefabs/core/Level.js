@@ -931,10 +931,10 @@ export default class {
 		this.foregroundLayer2.alpha = 1;
 
 		// Set Collision Tiles
-		this.map.setCollision(1602, true, 'CollisionLayer');
+		this.map.setCollision(2482, true, 'CollisionLayer');
 
 		// Set tileCallback for abyss
-		this.map.setTileIndexCallback(1601, this.fallDownCheck, this, this.collisionLayer);
+		this.map.setTileIndexCallback(2481, this.fallDownCheck, this, this.collisionLayer);
 
 		// // Set SlowDownTile
 		// this.map.setTileIndexCallback(4, this.slowDownTile, this, this.collisionLayer);

@@ -31,42 +31,87 @@ export default class extends Phaser.Sprite {
 		this.talkSymbol.animations.add('play');
 		this.talkSymbol.animations.play('play', 2, true);
 
-		this.animations.add('down', [0], 1, false);
-		this.animations.add('up', [1], 1, false);
-		this.animations.add('left', [3], 1, false);
-		this.animations.add('right', [2], 1, false);
-
 		// setSize(width, height, offsetX, offsetY)
 		switch (element.properties.character) {
 			case 'priest':
 				this.body.setSize(10, 15, 5, 20);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'smith':
 				this.body.setSize(15, 15, 9, 26);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'botanist':
 				this.body.setSize(15, 15, 5, 30);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'veteran':
 				this.body.setSize(10, 20, 11, 22);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'librarian':
 				this.body.setSize(10, 10, 5, 28);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'woman1':
 				this.body.setSize(80, 20, -30, 20);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'woman2':
 				this.body.setSize(10, 10, 4, 27);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'girl1':
 				this.body.setSize(10, 10, 2, 20);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'girl2':
 				this.body.setSize(10, 10, 2, 20);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
 				break;
 			case 'girl3':
-			this.body.setSize(10, 10, 2, 18);
+				this.body.setSize(10, 10, 2, 18);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [1], 1, false);
+				this.animations.add('left', [3], 1, false);
+				this.animations.add('right', [2], 1, false);
+				break;
+			case 'fisher':
+				this.body.setSize(10, 10, 2, 18);
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [0], 1, false);
+				this.animations.add('left', [0], 1, false);
+				this.animations.add('right', [0], 1, false);
+
+				// Length, xAnchor, yAnchor
+				this.fishingLine(120, this.x - 22, this.y - 18);
 				break;
 			default:
 				this.body.setSize(10, 15, 0, 0);
@@ -88,6 +133,62 @@ export default class extends Phaser.Sprite {
 
 	stopIdleLoop(){
 		this.game.time.events.remove(this.idleLoop);
+	}
+
+	fishingLine(length, xAnchor, yAnchor){
+		this.game.physics.startSystem(Phaser.Physics.P2JS);
+		this.game.physics.p2.gravity.y = 600;
+
+		var lastRect;
+		var height = 4;        //  Height for the physics body - your image height is 8px
+		var width = 8;         //  This is the width for the physics body. If too small the rectangles will get scrambled together.
+		var maxForce = 20000;   //  The force that holds the rectangles together.
+		var newRect;
+	
+		for (var i = 0; i <= length; i++)
+		{
+			var x = xAnchor;                    //  All rects are on the same x position
+			var y = yAnchor + (i * height);     //  Every new rect is positioned below the last
+	
+			if (i % 2 === 0)
+			{
+				//  Add sprite (and switch frame every 2nd time)
+				newRect = this.game.add.sprite(x, y, 'fishingLineChain', 1);
+				newRect.smoothed = false;
+			}   
+			else
+			{
+				newRect = this.game.add.sprite(x, y, 'fishingLineChain', 0);
+				newRect.smoothed = false;
+				lastRect.bringToTop();
+			}
+	
+			//  Enable physicsbody
+			this.game.physics.p2.enable(newRect, false);
+	
+			//  Set custom rectangle
+			newRect.body.setRectangle(width, height);
+	
+			if (i === 0)
+			{
+				newRect.body.static = true;
+			}
+			else
+			{  
+				//  Anchor the first one created
+				newRect.body.velocity.x = 10;      //  Give it a push :) just for fun
+				newRect.body.mass = length / i;     //  Reduce mass for evey rope element
+			}
+	
+			//  After the first rectangle is created we can add the constraint
+			if (lastRect)
+			{
+				this.game.physics.p2.createRevoluteConstraint(newRect, [0, -1], lastRect, [0, 1], maxForce);
+			}
+	
+			lastRect = newRect;
+	
+		}
 	}
 
 	talk(){
@@ -275,6 +376,9 @@ export default class extends Phaser.Sprite {
 					break;
 				case 'girl3':
 					id = 5;
+					break;
+				case 'fisher':
+					id = 41;
 					break;
 				default:
 			}
