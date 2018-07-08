@@ -104,7 +104,7 @@ export default class extends Phaser.Sprite {
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'fisher':
-				this.body.setSize(10, 10, 2, 18);
+				this.body.setSize(10, 10, 25, 25);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [0], 1, false);
 				this.animations.add('left', [0], 1, false);
@@ -176,7 +176,7 @@ export default class extends Phaser.Sprite {
 			else
 			{  
 				//  Anchor the first one created
-				newRect.body.velocity.x = 10;      //  Give it a push :) just for fun
+				newRect.body.velocity.x = 50;      //  Give it a push :) just for fun
 				newRect.body.mass = length / i;     //  Reduce mass for evey rope element
 			}
 	

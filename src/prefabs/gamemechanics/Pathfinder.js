@@ -14,7 +14,7 @@ export default class {
 		this.finderCallObject = finderCallObject;
 
 		// FOR DEBUGGING
-		this.showPaths = true;
+		this.showPaths = false;
 
 		this.pathToFollow = [];
 		this.walkables = [2521];

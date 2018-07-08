@@ -254,7 +254,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-			
+				'fisher': [15, false, false]
 			}
 		},
 		18: {
