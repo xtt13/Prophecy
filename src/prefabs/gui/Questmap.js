@@ -39,6 +39,7 @@ export default class {
 
 		for (let prop in this.quests) {
 			if (!isNaN(prop)) {
+				if(this.quests[prop].silent) continue;
 				if (this.quests[prop].questKillEnemyAmount !== undefined && this.quests[prop].questKillEnemyAmount !== false) {
 					content += '* ' + 
 						this.quests[prop].questMessage

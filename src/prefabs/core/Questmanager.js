@@ -114,7 +114,7 @@ export default class {
 				this.removeQuest(questID);
 
 				// Create Notification
-				this.level.GUICLASS.createNotification('quest', 'Questupdate');
+				this.level.GUICLASS.createNotification('success', 'Questupdate');
 			}
 		}
 	}

@@ -206,6 +206,7 @@ export default {
 			fightFinishAddQuestID: 15,
 
 			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'librarian': [35, false, false],
 				'veteran': [34, false, false],
 				'smith': [36, false, false],
@@ -226,6 +227,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'priest': [12, 16, 15]
 			}
 		},
@@ -239,6 +241,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'woman2': [13, 17, false],
 				'botanist': [21, 18, false],
 				'girl3': [24, 19, false]
@@ -254,7 +257,9 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				'fisher': [15, false, false]
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'woman2': [13, false, false],
+				'fisher': [15, 21, 17]
 			}
 		},
 		18: {
@@ -267,7 +272,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
 			}
 		},
 		19: {
@@ -280,7 +285,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
 			}
 		},
 		20: {
@@ -293,8 +298,102 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'girl3': [25, false, 20]
 			}
+		},
+		21:{
+			silent: false,
+			questMessage: 'Talk with the smith!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'fisher': [15, false, false],
+				'smith': [19, 22, 21],
+				'woman2': [13, false, false]
+			}
+		},
+		22:{
+			silent: false,
+			questMessage: 'Get weed!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'fisher': [15, false, false],
+				// Nur zeitweise
+				'smith': [41, 23, 22],
+				'woman2': [13, false, false],
+				
+			}
+		},
+		23:{
+			silent: false,
+			questMessage: 'Return weed!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'fisher': [15, false, false],
+				'smith': [20, 24, 23],
+				'woman2': [13, false, false]
+			}			
+		},
+		24:{
+			silent: false,
+			questMessage: 'Return spear!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'fisher': [16, 25, 24],
+				'woman2': [13, false, false]
+			}				
+		},
+		25:{
+			silent: false,
+			questMessage: 'Return Fishing Rod!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'woman2': [14, 26, 25]
+			}				
+		},
+		26:{
+			silent: true,
+			questMessage: 'Return Fish!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'fisher': [17, false, 26]
+			}				
 		}
 		
 		

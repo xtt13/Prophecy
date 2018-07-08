@@ -100,18 +100,18 @@ export default {
 		15: [
 			'Ugh... The fish just won’t bite lately...',
 			'...What do you mean, not my fishing rod?',
-			'I may or may not have found it around the forest. \nBut if you want it, you need to get me a different tool \nto catch and kill fish. \nLike, a spear maybe. That could work...'
+			'I may or may not have found it around the forest. \nBut if you want it, you need to get me \na different tool to catch and kill fish. \nLike, a spear maybe. That could work...'
 		],
 		16: [
-			'Oh, this is excellent! Thank you so much, young man!',
-			'Now all I crave would be a tasty fish… Let’s hope I can get one soon.'
+			'Oh, this is excellent! Thank you so much, \nyoung man!',
+			'Now all I crave would be a tasty fish. \nLet’s hope I can get one soon.'
 		],
-		17: ['Oh my god, praise the Oracle, my deepest desires are fulfilled! You truly are a hero. Let me give you something in exchange for your efforts.'],
-		18: ['I found it a long time ago but I never found any lock it fitted. You will probably have a better use for it than me.'],
+		17: ['Oh my god, praise the Oracle, my deepest desires are fulfilled! You truly are a hero. Let me give you something in exchange for your efforts.', 'I found it a long time ago but I never found any lock it fitted. You will probably have a better use for it than me.'],
+		18: [],
 
 		// Schmied
-		19: [''],
-		20: ['There you go. Thank you for getting the materials needed. Pleasure doing business with you.'],
+		19: ['Blabla Get me some weed'],
+		20: ['There you go. Thank you for getting the \nmaterials needed. \nPleasure doing business with you.'],
 
 		// Viden
 		21: ['Would you mind helping me out a little? \nI need you to cut at least ten flowers \nand collect the petals for me.', 'It will help my research a lot.'],
