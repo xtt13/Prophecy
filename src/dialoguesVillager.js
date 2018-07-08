@@ -181,7 +181,7 @@ export default {
 
 		// Viden
 		33: [
-			'I would love to properly research these monsters\n but... These are too many. Nobody would survive going outside right now. \nIt\'s way too dangerous.'
+			'I would love to properly research these monsters \nbut... These are too many. Nobody would survive \ngoing outside right now. It\'s way too dangerous.'
 		],
 
 		// Bromium
@@ -191,22 +191,23 @@ export default {
 
 		// Librarian
 		35: [
-			'I already looked through all the books, but nothing! \nNot a single book holds the information to help me come up with a solution to this mess. Without someone strong enough to face these monsters, it seems we can not do much besides waiting, praying and hoping for the best.'
+			'I already looked through all the books, but \nnothing! Not a single book holds the information \nto help me come up with a solution to this mess. ', 
+			'Without someone strong enough to face these \nmonsters, it seems we can not do much besides \nawaiting, praying and hoping for the best.'
 		],
 
 		// Smith
 		36: [
-			'I would fight these monsters, but I can not risk it. \nIf I get hurt or worse, who would take care of my beautiful daughters?'
+			'I would fight these monsters, but I can not risk \nit. If I get hurt or worse, who would take care \nof my beautiful daughters?'
 		],
 
 		// Girl1
 		37: [
-			'I\'m so scared. I hope everyone is alright. \nThis is terrible... May the Oracle protect us all.'
+			'I\'m so scared. I hope everyone is alright. \nThis is terrible... \nMay the Oracle protect us all.'
 		],
 
 		// Girl2
 		38: [
-			'I would love to fight with my Dad, but he won\'t \nallow my sisters or me to leave the house. At all. Ugh.'
+			'I would love to fight with my Dad, but he won\'t \nallow my sisters or me to leave the house. \nAt all. Ugh.'
 		],
 
 		// Girl3
@@ -216,7 +217,7 @@ export default {
 
 		// Molly (Woman2)
 		40: [
-			'I really hope someone gets rid of these beasts soon. \nI was just about to go outside and get \nfresh fish and now this is happening. \nThese monsters ruin my business.'
+			'I really hope someone gets rid of these beasts \nsoon. I was just about to go outside and get \nfresh fish and now this is happening. \nThese monsters ruin my business.'
 		]
 
 
