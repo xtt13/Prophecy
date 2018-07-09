@@ -494,6 +494,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('mapButton', 'assets/input/mapButton.png', 60, 20);
 		this.load.spritesheet('questButton', 'assets/input/questButton.png', 60, 20);
 		this.load.spritesheet('optionsButton', 'assets/input/optionsButton.png', 60, 20);
+		this.load.spritesheet('inventoryButton', 'assets/input/inventoryButton.png', 60, 20);
 		this.load.spritesheet('muteMusicButton', 'assets/input/muteMusicButton.png', 90, 20);
 		this.load.spritesheet('muteSoundButton', 'assets/input/muteSoundButton.png', 90, 20);
 

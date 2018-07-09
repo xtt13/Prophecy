@@ -110,23 +110,23 @@ export default class {
 		);
 		this.questButton.fixedToCamera = true;
 
-		// Create OptionsButton
-		this.optionsButton = this.game.add.button(
+		// Create inventoryButton
+		this.inventoryButton = this.game.add.button(
 			this.menuBackground.x + 120,
 			this.menuBackground.y,
-			'optionsButton',
+			'inventoryButton',
 			this.actionOnClick,
 			this,
 			0,
 			1,
 			2
 		);
-		this.optionsButton.fixedToCamera = true;
+		this.inventoryButton.fixedToCamera = true;
 
 		// Set Buttonframes
 		this.mapButton.setFrames(0, 1, 2);
 		this.questButton.setFrames(2, 2, 2);
-		this.optionsButton.setFrames(0, 1, 2);
+		this.inventoryButton.setFrames(0, 1, 2);
 
 		// Open Maptab by default
 		// this.gameMap.createMap();
@@ -150,7 +150,7 @@ export default class {
 			this.menuBackground.destroy();
 			this.mapButton.destroy();
 			this.questButton.destroy();
-			this.optionsButton.destroy();
+			this.inventoryButton.destroy();
 			this.menuBackground = false;
 
 			if (this.gameMap.map) {
@@ -188,7 +188,7 @@ export default class {
 
 			// this.mapButton.setFrames(2, 2, 2);
 			// this.questButton.setFrames(0, 1, 2);
-			// this.optionsButton.setFrames(0, 1, 2);
+			// this.inventoryButton.setFrames(0, 1, 2);
 
 			// if (this.questMap.text) {
 			// 	this.questMap.text.destroy();
@@ -208,7 +208,7 @@ export default class {
 
 			this.questButton.setFrames(2, 2, 2);
 			this.mapButton.setFrames(0, 1, 2);
-			this.optionsButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
 
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
@@ -224,14 +224,22 @@ export default class {
 			}
 
 			this.questMap.showMap();
-		} else if (button.key == 'optionsButton') {
-			this.optionsButton.setFrames(2, 2, 2);
+		} else if (button.key == 'inventoryButton') {
+			this.inventoryButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
 
 			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
 			}
 
 			if (this.gameMap.map) {
@@ -257,11 +265,19 @@ export default class {
 			if (this.gameMap.map) return;
 			this.mapButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
-			this.optionsButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
 
 			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
 			}
 
 			if (this.gameOptions.muteMusicButton) {
@@ -275,7 +291,7 @@ export default class {
 			if (this.questMap.text) return;
 			this.questButton.setFrames(2, 2, 2);
 			this.mapButton.setFrames(0, 1, 2);
-			this.optionsButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
 
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
@@ -292,7 +308,7 @@ export default class {
 
 			this.questMap.showMap();
 		} else if (this.currentTab == 3) {
-			this.optionsButton.setFrames(2, 2, 2);
+			this.inventoryButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
 
@@ -324,11 +340,19 @@ export default class {
 			if (this.gameMap.map) return;
 			this.mapButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
-			this.optionsButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
 
 			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
 			}
 
 			if (this.gameOptions.muteMusicButton) {
@@ -342,7 +366,7 @@ export default class {
 			if (this.questMap.text) return;
 			this.questButton.setFrames(2, 2, 2);
 			this.mapButton.setFrames(0, 1, 2);
-			this.optionsButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
 
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
@@ -359,13 +383,21 @@ export default class {
 
 			this.questMap.showMap();
 		} else if (this.currentTab == 3) {
-			this.optionsButton.setFrames(2, 2, 2);
+			this.inventoryButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
 
 			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
 			}
 
 			if (this.gameMap.map) {

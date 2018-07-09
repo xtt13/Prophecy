@@ -22,8 +22,8 @@ export default class {
 		this.collision = false;
 		this.muteAttack = false;
 
-		this.playerSpeed = 80;
-		this.playerSpeedDefault = 80;
+		this.playerSpeed = 60;
+		this.playerSpeedDefault = 60;
 
 		this.directon = 'down';
 		this.standing = true;
@@ -288,20 +288,24 @@ export default class {
 		switch (this.direction) {
 			case 'up':
 				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
+				this.player.body.velocity.y = -100;
 				break;
 
 			case 'down':
 				this.player.weapon.fireAtXY(this.player.x, this.player.y + 10);
+				this.player.body.velocity.y = 100;
 				break;
 
 			case 'left':
 			this.player.animations.play('fight_left');
 				this.player.weapon.fireAtXY(this.player.x - 10, this.player.y);
+				this.player.body.velocity.x = -100;
 				break;
 
 			case 'right':
 				this.player.animations.play('fight_right');
 				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
+				this.player.body.velocity.x = 100;
 				break;
 
 			default:
@@ -500,6 +504,7 @@ export default class {
 				break;
 			case 'right':
 				this.player.animations.play('dash_right');
+				
 				break;
 			default:
 		}

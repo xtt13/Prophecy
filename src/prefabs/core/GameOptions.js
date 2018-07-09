@@ -7,13 +7,13 @@ export default class {
 	}
 
 	showOptions() {
-		this.muteMusicButton = this.game.add.button(110, 80, 'muteMusicButton', this.actionOnClick, this, 0, 2, 1);
-		this.muteMusicButton.fixedToCamera = true;
+		// this.muteMusicButton = this.game.add.button(110, 80, 'muteMusicButton', this.actionOnClick, this, 0, 2, 1);
+		// this.muteMusicButton.fixedToCamera = true;
 
-		this.muteSoundButton = this.game.add.button(110, 120, 'muteSoundButton', this.actionOnClick, this, 0, 2, 1);
-		this.muteSoundButton.fixedToCamera = true;
+		// this.muteSoundButton = this.game.add.button(110, 120, 'muteSoundButton', this.actionOnClick, this, 0, 2, 1);
+		// this.muteSoundButton.fixedToCamera = true;
 
-		this.getGamePreferences();
+		// this.getGamePreferences();
 	}
 
 	getGamePreferences() {

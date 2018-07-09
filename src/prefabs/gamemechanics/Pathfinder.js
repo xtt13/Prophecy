@@ -51,7 +51,7 @@ export default class {
 			this.pathfinder.easystar.enableDiagonals();
 		}
 
-		this.pathfinder.easystar.setIterationsPerCalculation(1);
+		// this.pathfinder.easystar.setIterationsPerCalculation(1);
 		this.pathfinder.setGrid(this.layer.layer.data, this.walkables);
 		// console.log(this.map.layers[0].data);
 		// console.log(this.layer);
