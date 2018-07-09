@@ -4,8 +4,8 @@ var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CompressionPlugin = require("compression-webpack-plugin");
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// var CompressionPlugin = require("compression-webpack-plugin");
+// var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Phaser webpack config
 var phaserModule = path.join(__dirname, '/node_modules/phaser-ce/');
@@ -77,16 +77,17 @@ module.exports = {
         removeEmptyAttributes: true
       },
       hash: true
-    }),
+    })
+    // ,
     
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
+    // new CompressionPlugin({
+    //   asset: '[path].gz[query]',
+    //   algorithm: 'gzip',
+    //   threshold: 10240,
+    //   minRatio: 0.8,
+    // }),
 
-    new UglifyJsPlugin()
+    // new UglifyJsPlugin()
   ],
   module: {
     rules: [

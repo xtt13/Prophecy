@@ -3,9 +3,9 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CompressionPlugin = require("compression-webpack-plugin");
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// var CompressionPlugin = require("compression-webpack-plugin");
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var exec = require('script-loader');
 
 //var PrettierPlugin = require("prettier-webpack-plugin");
