@@ -51,7 +51,7 @@ export default class {
 
 		if (this.notification.notificationBar) {
 			this.game.world.bringToTop(this.notification.notificationBar);
-			this.game.world.bringToTop(this.notification.text);
+			this.game.world.bringToTop(this.notification.fontImage);
 		}
 
 		if (this.questMap.questmapBackground) {

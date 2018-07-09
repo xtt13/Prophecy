@@ -29,27 +29,32 @@ export default class {
 		this.notificationBar.fixedToCamera = true;
 		this.notificationBar.alpha = 0;
 
-		this.text = this.game.add.bitmapText(this.notificationBar.x, -20, 'pxlfont', '', 51);
-		this.text.scale.set(0.26);
+		// this.text = this.game.add.bitmapText(this.notificationBar.x, -20, 'pxlfont', '', 51);
+		// this.text.scale.set(0.26);
+
+		this.text = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+        // this.text.setText(content, true, -1, 5, 'left', true)
+		this.fontImage = this.game.add.image(this.notificationBar.x, -20, this.text);
+		this.fontImage.fixedToCamera = true;
+		this.text.setText(this.message, true, -1, 5, 'left', true)
+		this.fontImage.alpha = 0;
+		this.fontImage.anchor.set(0.5);
 
 		// this.text = this.game.add.bitmapText(this.notificationBar.x, this.notificationBar.y - 4, 'pxlfont', '', 15);
-		this.text.text = this.message;
-		this.text.alpha = 0;
-		this.text.fixedToCamera = true;
+		// this.text.text = this.message;
 
 		this.notificationBar.width = this.text.width + 20;
-		this.text.anchor.set(0.5);
 		this.notificationBar.anchor.set(0.5);
 
 		// console.log('Beginn Text: ' + this.text.cameraOffset);
 		// console.log('Beginn notificationBar: ' + this.notificationBar.cameraOffset);
 
-		this.game.add.tween(this.text.cameraOffset).to({ y: this.text.y + 40 }, 800, Phaser.Easing.Back.Out, true);
+		this.game.add.tween(this.fontImage.cameraOffset).to({ y: this.fontImage.y + 40 }, 800, Phaser.Easing.Back.Out, true);
 		this.game.add
 			.tween(this.notificationBar.cameraOffset)
 			.to({ y: this.notificationBar.y + 40 }, 800, Phaser.Easing.Back.Out, true);
 
-		this.game.add.tween(this.text).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(this.fontImage).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 		this.game.add.tween(this.notificationBar).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
 		// console.log('Beginn Text End: ' + this.text.cameraOffset);
@@ -59,16 +64,16 @@ export default class {
 	}
 
 	removeNotification() {
-		this.removeTween = this.game.add.tween(this.text).to({ alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
+		this.removeTween = this.game.add.tween(this.fontImage).to({ alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
 		this.game.add.tween(this.notificationBar).to({ alpha: 0 }, 1000, Phaser.Easing.Back.Out, true);
 
 		this.notificationBar.cameraOffset.y = -20;
-		this.text.cameraOffset.y = -20;
+		this.fontImage.cameraOffset.y = -20;
 
 		this.removeTween.onComplete.add(function() {
 			this.notificationBar.destroy();
 			this.notificationBar = false;
-			this.text.destroy();
+			this.fontImage.destroy();
 			this.bmd.destroy();
 		}, this);
 	}
