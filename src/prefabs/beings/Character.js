@@ -460,6 +460,7 @@ export default class extends Phaser.Sprite {
 				this.talkSymbol.alpha = 0;
 				return;
 			}
+			if(this.level.GUICLASS.ingameMenu.show) return;
 			this.game.world.bringToTop(this.talkSymbol);
 			// this.game.world.setChildIndex(this.talkSymbol, 30);
 			this.talkSymbol.alpha = 1;
