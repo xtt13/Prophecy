@@ -166,11 +166,14 @@ export default {
 
 		// Oracle
 		32: [
-			'I can feel it… Your soul… You are a hero, aren’t you? Such an amazing, strong soul...',
-			'You have to be one of the heroes, chosen by an ancient prophecy... And as such, I have a request. To properly start your journey... To become stronger and find your true purpose.',
+			'I can feel it... ', 
+			'Your soul...',  
+			'You are a hero, aren’t you? \nSuch an amazing, strong soul...',
+			'You have to be one of the heroes, \nchosen by an ancient prophecy... \nAnd as such, I have a request. ', 
+			'To properly start your journey... \nTo become stronger and find your true purpose.',
 			'This request is...',
-			'Please, save my town. Monsters made of vines and leaves tried to attack and take over my town.',
-			'My precious believers need you, Hero [PLAYER NAME] Defeat the leader of these monstrosities. They hide in the woods, deep in the darkness, hidden, unseen…',
+			'Please, save my town. Monsters made of vines \nand leaves tried to attack and \ntake over my town.',
+			'My precious believers need you, Hero [PLAYER NAME] \nDefeat the leader of these monstrosities. \nThey hide in the woods, deep in the darkness, \nhidden, unseen...',
 			'It is your destiny to save us...'
 		],
 

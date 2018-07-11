@@ -12,6 +12,7 @@ export default class extends Phaser.Sprite {
 		this.player = player;
 		this.level = level;
 		this.health = 100;
+		this.radius = 60;
 		this.randomMovement = true;
 		this.anchor.setTo(0.5);
 
@@ -112,6 +113,20 @@ export default class extends Phaser.Sprite {
 
 				// Length, xAnchor, yAnchor
 				this.fishingLine(120, this.x - 22, this.y - 18);
+				break;
+			case 'oracle':
+				this.animations.add('down', [0], 1, false);
+				this.animations.add('up', [0], 1, false);
+				this.animations.add('left', [0], 1, false);
+				this.animations.add('right', [0], 1, false);
+				this.radius = 150;
+				this.talkSymbol.x = this.body.x + 5;
+				this.talkSymbol.y = this.body.y - 65;
+				this.body.setSize(10, 10, 25, 25);
+				this.floatTween = this.game.add
+					.tween(this)
+					.to({ y: this.y - 2 }, 2000, 'Linear', true, 0, 0, true)
+					.loop();
 				break;
 			default:
 				this.body.setSize(10, 15, 0, 0);
@@ -380,6 +395,9 @@ export default class extends Phaser.Sprite {
 				case 'fisher':
 					id = 41;
 					break;
+				case 'oracle':
+					id = 32;
+					break;
 				default:
 			}
 
@@ -437,12 +455,13 @@ export default class extends Phaser.Sprite {
 
 	update() {
 
-		if(this.game.physics.arcade.distanceBetween(this, this.player) < 60){
+		if(this.game.physics.arcade.distanceBetween(this, this.player) < this.radius){
 			if(this.player.talking){
 				this.talkSymbol.alpha = 0;
 				return;
 			}
 			this.game.world.bringToTop(this.talkSymbol);
+			// this.game.world.setChildIndex(this.talkSymbol, 30);
 			this.talkSymbol.alpha = 1;
 			// On E-click
 			if(this.level.inputClass.button_E.isDown){
