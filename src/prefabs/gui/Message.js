@@ -21,6 +21,7 @@ export default class {
 		this.followTween = this.game.add;
 
 		this.wordSound = this.game.add.audio('sfxletters');
+		this.wordSound.allowMultiple = true;
 		
 
 		// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);

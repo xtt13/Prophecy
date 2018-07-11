@@ -475,7 +475,7 @@ export default class extends Phaser.Sprite {
 
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
 
-		if (angle == 2) {
+		if (angle == 2 && this.y > this.player.body.y) {
 			this.game.world.moveUp(this);
 			// this.game.world.setChildIndex(this.player, 1);
 		}

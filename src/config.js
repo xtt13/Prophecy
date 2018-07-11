@@ -14,7 +14,9 @@ export default {
 		width: 580,
 		height: 280,
 
-		renderer: Phaser.AUTO,
+		multiTexture: true,
+
+		renderer: Phaser.WEBGL_MULTI,
 		antialias: true,
 		multiTexture: false,
 		enableDebug: __DEV__ ? true : false

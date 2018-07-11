@@ -531,6 +531,8 @@ export default class extends Phaser.State {
 	}
 
 	create() {
+
+		this.game.renderer.setTexturePriority(['tileset']);
 		
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);

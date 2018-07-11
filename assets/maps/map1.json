@@ -950,7 +950,27 @@
         {
          "draworder":"topdown",
          "name":"Items",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2567,
+                 "height":32,
+                 "id":249,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"flower"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":963.798644469303,
+                 "y":384.736987563335
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -968,7 +988,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":249,
+ "nextobjectid":250,
  "orientation":"orthogonal",
  "properties":
     {

@@ -902,7 +902,8 @@ export default class {
 		this.trees = this.map.createLayer('Trees');
 
 		this.EnemyMovingTiles = this.map.createLayer('EnemyMovingTiles');
-		this.EnemyMovingTiles.alpha = 0;
+		this.EnemyMovingTiles.visible = false;
+		this.EnemyMovingTiles.renderable = false;
 
 		// if (this.map.layers[3].name == 'ForegroundLayer2') {
 			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');

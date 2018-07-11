@@ -19,6 +19,13 @@ export default class extends Phaser.Sprite {
     update() {
         // this.game.physics.arcade.collide(this, this.level.player);
         this.game.physics.arcade.collide(this.level.player.weapon.bullets, this, this.cut, null, this);
+
+        let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
+        console.log(angle);
+		if (angle == 2 && this.y > this.level.player.body.y) {
+			this.game.world.moveUp(this);
+			// this.game.world.setChildIndex(this.player, 1);
+		}
     }
 
     cut() {
@@ -31,7 +38,7 @@ export default class extends Phaser.Sprite {
         px *= 2;
         py *= 2;
 
-        this.cutAnimation = this.game.add.emitter(this.x, this.y, 4);
+        this.cutAnimation = this.game.add.emitter(this.x, this.y, 2);
         this.cutAnimation.angularDrag = 500;
         this.cutAnimation.particleDrag.set(1800);
 
@@ -45,7 +52,7 @@ export default class extends Phaser.Sprite {
 
         this.cutAnimation.minParticleScale = 0.5;
         this.cutAnimation.maxParticleScale = 1;
-        this.cutAnimation.makeParticles('flowerPieces', [0, 1, 2, 3], 4);
+        this.cutAnimation.makeParticles('flowerPieces', [0, 1, 2, 3], 2);
         this.cutAnimation.setAlpha(1, 0, 5000, null, false);
         this.cutAnimation.start(true, 0, null, 10);
     }
