@@ -15,16 +15,22 @@ export default class {
 		this.gameMap = new Gamemap(this.game, this.level, this);
 		this.questMap = new Questmap(this.game, this.level, this);
 		this.gameOptions = new GameOptions(this.game, this.level, this);
+
+		this.UISounds = this.game.add.audioSprite('sfxUI');
+		this.UISounds.allowMultiple = true;
+		// this.UISounds.play(this.rndVoiceSword, 0.5);
 	}
 
 	toggleMenu() {
 		if (!this.show) {
 			this.game.renderer.renderSession.roundPixels = true;
 			this.showMenu();
+			this.openMenuSound();
 			this.show = true;
 		} else {
 			this.game.renderer.renderSession.roundPixels = false;
 			this.closeMenu();
+			this.openMenuSound();
 			this.show = false;
 		}
 	}
@@ -96,6 +102,7 @@ export default class {
 			2
 		);
 		this.mapButton.fixedToCamera = true;
+		this.mapButton.onInputOver.add(this.over, this);
 
 		// Create Questbutton
 		this.questButton = this.game.add.button(
@@ -109,6 +116,7 @@ export default class {
 			2
 		);
 		this.questButton.fixedToCamera = true;
+		this.questButton.onInputOver.add(this.over, this);
 
 		// Create inventoryButton
 		this.inventoryButton = this.game.add.button(
@@ -122,6 +130,7 @@ export default class {
 			2
 		);
 		this.inventoryButton.fixedToCamera = true;
+		this.inventoryButton.onInputOver.add(this.over, this);
 
 		// Set Buttonframes
 		this.mapButton.setFrames(0, 1, 2);
@@ -131,6 +140,18 @@ export default class {
 		// Open Maptab by default
 		// this.gameMap.createMap();
 		this.questMap.showMap();
+	}
+
+	openMenuSound(){
+		this.UISounds.play('openMenu', 0.1);
+	}
+
+	over(){
+		this.UISounds.play('UI1', 0.1);
+	}
+
+	down(){
+		this.UISounds.play('UI2', 0.1);
 	}
 
 	closeMenu() {
@@ -182,6 +203,7 @@ export default class {
 	}
 
 	actionOnClick(button) {
+		this.down();
 		if (button.key == 'mapButton') {
 			// // If Map is active --> return
 			// if (this.gameMap.map) return;

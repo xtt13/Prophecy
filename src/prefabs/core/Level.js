@@ -32,7 +32,7 @@ import Gamescaler from '../gamemechanics/Gamescaler';
 export default class {
 	constructor(game, instruction) {
 		this.game = game;
-		this.game.time.slowMotion = 1.0;
+		// this.game.time.slowMotion = 1.0;
 
 		var time = new Date();
 			

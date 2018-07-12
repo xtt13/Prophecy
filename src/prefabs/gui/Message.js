@@ -21,6 +21,7 @@ export default class {
 		this.followTween = this.game.add;
 
 		this.wordSound = this.game.add.audio('sfxletters');
+		this.wordSound.volume = 0.2;
 		this.wordSound.allowMultiple = true;
 		
 

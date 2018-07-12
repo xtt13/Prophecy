@@ -304,6 +304,61 @@ export default class extends Phaser.State {
 				}
 			}
 		};
+
+		this.sfxUIJSON = {
+			spritemap: {
+				openMenu: {
+					start: 0,
+					end: 1,
+					loop: false
+				},
+				UI1: {
+					start: 1,
+					end: 2,
+					loop: false
+				},
+				UI2: {
+					start: 2,
+					end: 3,
+					loop: false
+				}
+			}
+		};
+
+		this.sfxBirdsJSON = {
+			spritemap: {
+				flyAway: {
+					start: 0,
+					end: 4,
+					loop: false
+				},
+				twitter1: {
+					start: 4,
+					end: 5,
+					loop: false
+				},
+				twitter2: {
+					start: 5,
+					end: 6,
+					loop: false
+				},
+				twitter3: {
+					start: 6,
+					end: 7,
+					loop: false
+				},
+				twitter4: {
+					start: 7,
+					end: 8,
+					loop: false
+				},
+				twitter5: {
+					start: 8,
+					end: 9,
+					loop: false
+				}
+			}
+		};
 	}
 
 	preload() {
@@ -410,7 +465,8 @@ export default class extends Phaser.State {
 		this.load.audiosprite('VxSeeds', 'assets/sounds/vxSeeds.mp3', null, this.VxSeeds);
 		this.load.audiosprite('VxBotanic', 'assets/sounds/VxBotanic.mp3', null, this.VxBotanic);
 		this.load.audiosprite('sfxswordmulti', 'assets/sounds/sfxswordmulti.mp3', null, this.sfxswordmulti);
-
+		this.load.audiosprite('sfxUI', 'assets/sounds/sfxUI.mp3', null, this.sfxUIJSON);
+		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON);
 
 		// Particles
 		this.load.image('rain', 'assets/sprites/particles/rain.png');

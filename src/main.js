@@ -8,6 +8,7 @@ import MainMenuState from './states/MainMenu';
 // import NameState from './states/Name';
 import PreloadState from './states/Preload';
 import GameState from './states/Game';
+import CreditsState from './states/Credits';
 
 import config from './config';
 
@@ -32,7 +33,7 @@ class Game extends Phaser.Game {
 		this.state.add('Preload', PreloadState, false);
 		this.state.add('DeltaStorm', DeltaStormState, false);
 		this.state.add('MainMenu', MainMenuState, false);
-		// this.state.add('Name', NameState, false);
+		this.state.add('Credits', CreditsState, false);
 		this.state.add('Game', GameState, false);
 
 		if (!window.cordova) {

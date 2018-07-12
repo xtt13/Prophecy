@@ -38,7 +38,7 @@ export default class extends Phaser.State {
 		// this.subText.smoothed = false;
 		// this.subText.anchor.set(0.5);
 
-		this.subText = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+		this.subText = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
 		// this.subText.text = 'Click To Move On';
 		this.subText.setText('Click!', true, -1, 5, 'left', true)
 		this.fontImage = this.game.add.image(this.game.camera.width / 2 - 15, this.game.camera.height / 2 + 107, this.subText);
@@ -247,7 +247,7 @@ export default class extends Phaser.State {
 		// create an object to tween with our step value at 0    
 		var colorBlend = {step: 0};    
 		// create the tween on this object and tween its step property to 100    
-		var colorTween = game.add.tween(colorBlend).to({step: 100}, time, Phaser.Easing.Bounce.Out, true, 0, 0, true).loop();        
+		var colorTween = this.game.add.tween(colorBlend).to({step: 100}, time, Phaser.Easing.Bounce.Out, true, 0, 0, true).loop();        
 		// run the interpolateColor function every time the tween updates, feeding it the    
 		// updated value of our tween each time, and set the result as our tint    
 		colorTween.onUpdateCallback(function() {      
