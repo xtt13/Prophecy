@@ -29,8 +29,14 @@ export default class extends Phaser.Sprite {
     }
 
     cut() {
+
+        this.rndVoice = this.game.rnd.pick(['cut1', 'cut2']);
+        this.voice = this.game.add.audioSprite('sfxswordmulti');
+        this.voice.play(this.rndVoice, 0.5);
+
         console.log('CUT!');
         this.alpha = 0;
+        
 
         let px = this.body.velocity.x;
         let py = this.body.velocity.y;
@@ -55,5 +61,11 @@ export default class extends Phaser.Sprite {
         this.cutAnimation.makeParticles('flowerPieces', [0, 1, 2, 3], 2);
         this.cutAnimation.setAlpha(1, 0, 5000, null, false);
         this.cutAnimation.start(true, 0, null, 10);
+
+        
+
+        this.game.time.events.add(500, () => {
+            this.body.enable = false;
+        }, this);
     }
 }

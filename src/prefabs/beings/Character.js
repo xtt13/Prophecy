@@ -292,12 +292,15 @@ export default class extends Phaser.Sprite {
 
 		switch (this.name) {
 			case 'priest':
-				
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3']);
+				this.voice = this.game.add.audioSprite('VxPriest');
+				this.voice.play(this.rndVoice, 2);
 				break;
 
 			case 'smith':
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
 				this.voice = this.game.add.audioSprite('VxSmith');
-				this.voice.play('vx1', 1);
+				this.voice.play(this.rndVoice, 1);
 				
 				break;
 

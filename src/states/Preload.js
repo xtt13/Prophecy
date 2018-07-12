@@ -79,7 +79,28 @@ export default class extends Phaser.State {
 					start: 16,
 					end: 18,
 					loop: false
-				}
+				},
+
+				cut1:{
+					start: 18,
+					end: 19,
+					loop: false
+				},
+				cut2:{
+					start: 19,
+					end: 20,
+					loop: false
+				},
+				reflect1:{
+					start: 20,
+					end: 21,
+					loop: false
+				},
+				reflect2:{
+					start: 21,
+					end: 22,
+					loop: false
+				},
 			}
 		};
 
@@ -225,6 +246,26 @@ export default class extends Phaser.State {
 			}
 		};
 
+		this.VxPriest = {
+			spritemap: {
+				vx1: {
+					start: 0,
+					end: 2,
+					loop: false
+				},
+				vx2: {
+					start: 2,
+					end: 4,
+					loop: false
+				},
+				vx3: {
+					start: 4,
+					end: 6,
+					loop: false
+				}
+			}
+		};
+
 		this.AxThunderstrikeJSON = {
 			spritemap: {
 				hit1: {
@@ -319,6 +360,21 @@ export default class extends Phaser.State {
 				},
 				UI2: {
 					start: 2,
+					end: 3,
+					loop: false
+				}
+			}
+		};
+
+		this.sfxChestJSON = {
+			spritemap: {
+				open: {
+					start: 0,
+					end: 1,
+					loop: false
+				},
+				close: {
+					start: 1,
 					end: 3,
 					loop: false
 				}
@@ -447,7 +503,7 @@ export default class extends Phaser.State {
 		this.load.audio('sfxBridge', 'assets/sounds/sfxBridge.mp3');
 		this.load.audio('sfxPickUp', 'assets/sounds/sfxPickUp.mp3');
 		this.load.audio('sfxfalldown', 'assets/sounds/sfxfalldown.mp3');
-		this.load.audio('sfxfalldown', 'assets/sounds/sfxfalldown.mp3');
+		this.load.audio('sfxGameOver', 'assets/sounds/sfxGameOver.mp3');
 		this.load.audio('sfxstonedoor', 'assets/sounds/sfxstonedoor.mp3');
 		this.load.audio('sfxheartbeat', 'assets/sounds/sfxheartbeat.mp3');
 		this.load.audio('sfxletters', 'assets/sounds/sfxletters.mp3');
@@ -462,11 +518,13 @@ export default class extends Phaser.State {
 		this.load.audiosprite('AxThunderstrike', 'assets/sounds/AxThunderstrike.mp3', null, this.AxThunderstrikeJSON);
 		this.load.audiosprite('PxFootsteps', 'assets/sounds/PxFootsteps.mp3', null, this.pxFootstepsJSON);
 		this.load.audiosprite('VxSmith', 'assets/sounds/VxSmith.mp3', null, this.VxSmith);
+		this.load.audiosprite('VxPriest', 'assets/sounds/VxPriest.mp3', null, this.VxPriest);
 		this.load.audiosprite('VxSeeds', 'assets/sounds/vxSeeds.mp3', null, this.VxSeeds);
 		this.load.audiosprite('VxBotanic', 'assets/sounds/VxBotanic.mp3', null, this.VxBotanic);
 		this.load.audiosprite('sfxswordmulti', 'assets/sounds/sfxswordmulti.mp3', null, this.sfxswordmulti);
 		this.load.audiosprite('sfxUI', 'assets/sounds/sfxUI.mp3', null, this.sfxUIJSON);
-		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON);
+		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON);this.sfxChestJSON
+		this.load.audiosprite('sfxChest', 'assets/sounds/sfxChest.mp3', null, this.sfxChestJSON);
 
 		// Particles
 		this.load.image('rain', 'assets/sprites/particles/rain.png');

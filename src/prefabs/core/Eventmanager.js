@@ -712,6 +712,9 @@ export default class {
 	branch(region) {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
 
+		this.gameOverSound = this.game.add.audio('sfxGameOver');
+		this.gameOverSound.play();
+		
 		this.game.canvas.classList.add('greyscale');
 		this.followPlayer(null, 4000);
 

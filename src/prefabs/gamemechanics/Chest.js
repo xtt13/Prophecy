@@ -31,12 +31,16 @@ export default class extends Phaser.Sprite {
 		this.body.immovable = true;
 		this.body.setSize(14, 11, 1, 11);
 
+		this.chestSound = this.game.add.audioSprite('sfxChest');
+
 		this.game.add.existing(this);
 	}
 
 	openChest() {
 		let chestID = this.id;
 		let searchedChest = null;
+
+	
 
 		for (let i = 0; i < this.level.chests.length; i++) {
 			const chest = this.level.chests[i];
@@ -55,6 +59,8 @@ export default class extends Phaser.Sprite {
 
 	closeChest() {
 		if(!this.action) return;
+
+		this.chestSound.play('close', 1);
 
 		let chestID = this.id;
 		let searchedChest = null;

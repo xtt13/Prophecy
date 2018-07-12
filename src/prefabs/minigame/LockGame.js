@@ -151,6 +151,8 @@ export default class {
 					this.player.body.immovable = false;
 					this.player.movable = true;
 					this.chest.animations.play('open');
+					this.chestSound = this.game.add.audioSprite('sfxChest');
+					this.chestSound.play('open', 1);
 
 					if(this.successQuestID !== undefined){
 						this.level.questManager.addQuest(this.successQuestID);
