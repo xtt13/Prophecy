@@ -8,7 +8,18 @@ export default class extends Phaser.State {
 
     create() {
 
-        console.log(this.game);
+        this.addVillageGlimmer = this.game.add.emitter(this.game.camera.width/2, this.game.camera.height/2, 2000);
+		this.addVillageGlimmer.width = this.game.camera.width;
+		this.addVillageGlimmer.height = this.game.camera.height;
+		this.addVillageGlimmer.minParticleScale = 5;
+		this.addVillageGlimmer.gravity = 0;
+		this.addVillageGlimmer.setYSpeed(-4, 4);
+		this.addVillageGlimmer.setXSpeed(-4, 4);
+		this.addVillageGlimmer.maxRotation = 0;
+		this.addVillageGlimmer.minRotation = 0;
+		this.addVillageGlimmer.setAlpha(0, 1, 2000, Phaser.Easing.Exponential.In, true);
+		this.addVillageGlimmer.makeParticles('particle');
+		this.addVillageGlimmer.start(false, 10000, 1, 0);
 
         this.game.musicPlayer.playMusic('MxTrailer');
 
@@ -26,7 +37,7 @@ export default class extends Phaser.State {
                 .tween(this.logo)
                 .to({
                     alpha: 0
-                }, 5000, Phaser.Easing.Exponential.In, true, 0);
+                }, 5000, 'Linear', true, 0);
 
             this.logoTween.onComplete.add(() => {
                 this.textFade('Development', 'Michael Dorn');

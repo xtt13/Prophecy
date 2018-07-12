@@ -28,6 +28,8 @@ export default class {
 
 		// if(this.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(this.ifQuestID)) return;
 
+		this.lockPickSound = this.game.add.audioSprite('sfxLockPick');
+
 		this.setupGame();
 	}
 
@@ -114,6 +116,7 @@ export default class {
 		// this.game.input.onDown.remove(this.startMoving, this);
 		// this.game.input.onDown.add(this.changeDirection, this);
 		this.bar.rotationDirection = 1;
+		this.lockPickSound.play('roll', 2);
 	}
 
 	changeDirection() {
@@ -123,12 +126,14 @@ export default class {
 		} else {
 			switch (this.currentTry) {
 				case 1:
+					this.lockPickSound.play('win');
 					this.firstTry.tint = 0x00ff11;
 					this.currentTry = 2;
 					this.rotationSpeed = 4;
 					break;
 
 				case 2:
+				this.lockPickSound.play('win');
 					this.secondTry.tint = 0x00ff11;
 					this.currentTry = 3;
 					this.rotationSpeed = 5;
@@ -151,8 +156,10 @@ export default class {
 					this.player.body.immovable = false;
 					this.player.movable = true;
 					this.chest.animations.play('open');
+					this.lockPickSound.stop('roll');
 					this.chestSound = this.game.add.audioSprite('sfxChest');
 					this.chestSound.play('open', 1);
+					
 
 					if(this.successQuestID !== undefined){
 						this.level.questManager.addQuest(this.successQuestID);
@@ -200,6 +207,8 @@ export default class {
 	}
 
 	fail() {
+		this.lockPickSound.stop('roll');
+		this.lockPickSound.play('break');
 		this.bar.rotationDirection = 0;
 		this.bar.tint = 0xff0000;
 		this.dead = true;

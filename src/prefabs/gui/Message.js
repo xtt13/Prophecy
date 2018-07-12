@@ -12,6 +12,7 @@ export default class {
 		this.line = [];
 		this.wordIndex = 0;
 		this.lineIndex = 0;
+		this.endTime = 2000;
 
 		this.playFast = false;
 
@@ -62,16 +63,17 @@ export default class {
 
 	
 
-		// this.level.inputClass.button_E.onDown.add(() => {
-		// 	// console.log('faster');
-		// 	// this.nextWord();
-		// 	// this.wordDelay = 1;
-		// 	// this.lineDelay = 1000;
-		// 	// this.game.time.events.add(1000, () => {
-		// 	// 	this.wordDelay = 100;
-		// 	// 	this.lineDelay = 2000;
-		// 	// }, this);
-		// }, this);
+		this.level.inputClass.button_E.onDown.add(() => {
+			// console.log('faster');
+			this.lineDelay = 500;
+			this.endTime = 1000;
+
+			this.wordRepeat = this.game.time.events.repeat(1, this.line.length, this.nextWord, this);
+
+			// if (this.wordIndex === this.line.length) {
+			// 	this.nextLine();
+			// }
+		}, this);
 
 
 		if (!this.movable) {
@@ -85,7 +87,7 @@ export default class {
 
 	nextLine() {
 		if (this.lineIndex === this.message.length) {
-			this.game.time.events.add(Phaser.Timer.SECOND * 2, this.removeMessage, this);
+			this.game.time.events.add(this.endTime, this.removeMessage, this);
 			return;
 		}
 
@@ -117,22 +119,19 @@ export default class {
 
 	nextWord() {
 
-
-		this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
-		this.wordIndex++;
-
-		this.wordSound.play();
-
-		// If Character Count === Line Count --> Next Line
-		if (this.wordIndex === this.line.length) {
-			this.text.text = this.text.text.concat('\n');
-			this.game.time.events.add(this.lineDelay, this.nextLine, this);
+		if(this.line[this.wordIndex] !== undefined){
+			this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
+			this.wordIndex++;
+	
+			this.wordSound.play();
+	
+			// If Character Count === Line Count --> Next Line
+			if (this.wordIndex === this.line.length) {
+				this.text.text = this.text.text.concat('\n');
+				this.game.time.events.add(this.lineDelay, this.nextLine, this);
+			}
 		}
 
-		// this.text.cleanText(text);
-
-		// this.text.x = Math.floor(this.text.x);
-		// this.text.y = Math.floor(this.text.y);
 	}
 
 	removeMessage() {
@@ -150,7 +149,7 @@ export default class {
 			
 			this.player.body.immovable = false;
 
-			this.game.time.events.add(3000, () => {
+			this.game.time.events.add(this.endTime, () => {
 				this.player.talking = false;
 			});
 		}

@@ -35,28 +35,28 @@ export default class extends Phaser.Sprite {
 		// setSize(width, height, offsetX, offsetY)
 		switch (element.properties.character) {
 			case 'priest':
-				this.body.setSize(10, 15, 5, 20);
+				this.body.setSize(30, 30, -3, 20);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'smith':
-				this.body.setSize(15, 15, 9, 26);
+				this.body.setSize(40, 30, -5, 22);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'botanist':
-				this.body.setSize(15, 15, 5, 30);
+				this.body.setSize(25, 25, 0, 30);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'veteran':
-				this.body.setSize(10, 20, 11, 22);
+				this.body.setSize(40, 30, -5, 22);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
@@ -77,28 +77,28 @@ export default class extends Phaser.Sprite {
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'woman2':
-				this.body.setSize(10, 10, 4, 27);
+				this.body.setSize(30, 30, -8, 20);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'girl1':
-				this.body.setSize(10, 10, 2, 20);
+				this.body.setSize(25, 25, -5, 18);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'girl2':
-				this.body.setSize(10, 10, 2, 20);
+				this.body.setSize(25, 25, -5, 18);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'girl3':
-				this.body.setSize(10, 10, 2, 18);
+				this.body.setSize(25, 25, -5, 18);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);

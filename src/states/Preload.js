@@ -381,6 +381,26 @@ export default class extends Phaser.State {
 			}
 		};
 
+		this.sfxLockPickJSON = {
+			spritemap: {
+				win: {
+					start: 0,
+					end: 1,
+					loop: false
+				},
+				break: {
+					start: 1,
+					end: 2,
+					loop: false
+				},
+				roll: {
+					start: 2,
+					end: 6,
+					loop: false					
+				}
+			}
+		};
+
 		this.sfxBirdsJSON = {
 			spritemap: {
 				flyAway: {
@@ -525,6 +545,7 @@ export default class extends Phaser.State {
 		this.load.audiosprite('sfxUI', 'assets/sounds/sfxUI.mp3', null, this.sfxUIJSON);
 		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON);this.sfxChestJSON
 		this.load.audiosprite('sfxChest', 'assets/sounds/sfxChest.mp3', null, this.sfxChestJSON);
+		this.load.audiosprite('sfxLockPick', 'assets/sounds/sfxLockPick.mp3', null, this.sfxLockPickJSON);
 
 		// Particles
 		this.load.image('rain', 'assets/sprites/particles/rain.png');
