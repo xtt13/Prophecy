@@ -413,16 +413,16 @@ export default class extends Phaser.Sprite {
 
 			this.rndVoice = this.game.rnd.pick(['death1', 'death2', 'death3', 'death4']);
 			this.voice = this.game.add.audioSprite('sfxswordmulti');
-			this.voice.play(this.rndVoice, 0.5);
+			this.voice.play(this.rndVoice, 0.1);
 			
 		} else {
 			this.rndVoiceSword = this.game.rnd.pick(['vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10']);
 			this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
-			this.voiceSword.play(this.rndVoiceSword, 0.5);
-			
+			this.voiceSword.play(this.rndVoiceSword, 0.2);
+
 			this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
 			this.voice = this.game.add.audioSprite('VxSeeds');
-			this.voice.play(this.rndVoice, 0.5);
+			this.voice.play(this.rndVoice, 0.1);
 		}
 
 		// this.inputClass.muteAttack = false;

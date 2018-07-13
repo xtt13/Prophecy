@@ -945,6 +945,12 @@ export default class {
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;
 
+		// if(this.game.rnd.integerInRange(0, 4) == 4){
+		// 	this.tilemapProperties.weather = 'Storm';
+		// 	this.tilemapProperties.athmoSound = 'AtmoWindRain';
+			
+		// }
+
 		// Get Properties for Nightmode
 		this.dayCycle = this.tilemapProperties.dayCycle;
 
