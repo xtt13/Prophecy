@@ -59,6 +59,8 @@ export default class {
 						this.map.putTile(1756, this.bridgeX, this.bridgeY + 1, this.groundLayer);
 						this.map.putTile(1752, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
 					}
+					
+					// console.log(this.bridgeX, this.bridgeY, this.map);
 				// }
 
 			} else if (bridgeDirection == 'down') {

@@ -37,10 +37,15 @@ export default class extends Phaser.Sprite {
 		this.animations.add('dash_up', [82], 1, true);
 		this.animations.add('dash_down', [81], 1, true);
 
-		this.animations.add('static_idle_up', [36], 1, true);
+		this.animations.add('static_idle_up', [34], 1, true);
 		this.animations.add('static_idle_down', [16], 1, true);
-		this.animations.add('static_idle_left', [53], 1, true);
-		this.animations.add('static_idle_right', [70], 1, true);
+		this.animations.add('static_idle_left', [50], 1, true);
+		this.animations.add('static_idle_right', [69], 1, true);
+
+		this.animations.add('static_shoot_up', [116], 1, true);
+		this.animations.add('static_shoot_down', [115], 1, true);
+		this.animations.add('static_shoot_left', [117], 1, true);
+		this.animations.add('static_shoot_right', [118], 1, true);
 
 		this.animations.add('walk_up', [17, 18, 19, 20, 21, 22, 23, 24], this.frameRate, true);
 		this.animations.add('walk_down', [0, 1, 2, 3, 4, 5, 6, 7], this.frameRate, true);
@@ -577,8 +582,8 @@ export default class extends Phaser.Sprite {
 		this.game.world.bringToTop(this.customEmitter);
 
 		if(this.level.inputClass.direction == 'right' || this.level.inputClass.direction == 'down'){
-			// this.game.world.bringToTop(this.playerArm);
-			this.game.world.setChildIndex(this.playerArm, 14);
+			this.game.world.bringToTop(this.playerArm);
+			// this.game.world.setChildIndex(this.playerArm, 25);
 		}
 		this.playerArm.rotation = this.game.physics.arcade.angleToPointer(this.playerArm) - 360;
 

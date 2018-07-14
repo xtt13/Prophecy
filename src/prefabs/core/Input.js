@@ -824,22 +824,22 @@ export default class {
 			let value = this.game.physics.arcade.angleToPointer(this.player);
 
 			if ((value > -2.5 && value < -0.5)) {
-				this.player.animations.play('static_idle_up');
+				this.player.animations.play('static_shoot_up');
 				this.direction = 'up';
 				this.player.playerArm.x = this.player.x + 2;
 				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > 1 && value < 2.5) {
-				this.player.animations.play('static_idle_down');
+				this.player.animations.play('static_shoot_down');
 				this.direction = 'down';
 				this.player.playerArm.x = this.player.x - 7;
 				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > -0.5 && value < 1) {
-				this.player.animations.play('static_idle_right');
+				this.player.animations.play('static_shoot_right');
 				this.direction = 'right';
 				this.player.playerArm.x = this.player.x - 3;
 				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > 2.5 || value < -2.5) {
-				this.player.animations.play('static_idle_left');
+				this.player.animations.play('static_shoot_left');
 				this.direction = 'left';
 				this.player.playerArm.x = this.player.x - 5;
 				this.player.playerArm.y = this.player.y + 4;
@@ -858,22 +858,22 @@ export default class {
 			let value = this.game.physics.arcade.angleToPointer(this.player);
 
 			if ((value > -2.5 && value < -0.5)) {
-				this.player.animations.play('static_idle_up');
+				this.player.animations.play('static_shoot_up');
 				this.direction = 'up';
 				this.player.playerArm.x = this.player.x + 2;
 				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > 1 && value < 2.5) {
-				this.player.animations.play('static_idle_down');
+				this.player.animations.play('static_shoot_down');
 				this.direction = 'down';
 				this.player.playerArm.x = this.player.x - 7;
 				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > -0.5 && value < 1) {
-				this.player.animations.play('static_idle_right');
+				this.player.animations.play('static_shoot_right');
 				this.direction = 'right';
 				this.player.playerArm.x = this.player.x - 3;
 				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > 2.5 || value < -2.5) {
-				this.player.animations.play('static_idle_left');
+				this.player.animations.play('static_shoot_left');
 				this.direction = 'left';
 				this.player.playerArm.x = this.player.x - 5;
 				this.player.playerArm.y = this.player.y + 4;
