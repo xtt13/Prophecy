@@ -22,8 +22,10 @@ export default class {
 		this.collision = false;
 		this.muteAttack = false;
 
-		this.playerSpeed = 90;
-		this.playerSpeedDefault = 90;
+		this.running = false;
+
+		this.playerSpeed = 40;
+		this.playerSpeedDefault = 40;
 
 		this.directon = 'down';
 		this.standing = true;
@@ -247,8 +249,9 @@ export default class {
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
 
-		// this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-		// this.button_SHIFT.onDown.add(this.beginnDash, this);
+		this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
+		this.button_SHIFT.onDown.add(this.addRunning, this);
+		this.button_SHIFT.onUp.add(this.removeRunning, this);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
@@ -279,6 +282,18 @@ export default class {
 			this.button_TAB = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
 			this.button_TAB.onDown.add(this.level.GUICLASS.ingameMenu.toggleMenu, this.level.GUICLASS.ingameMenu);
 		}
+	}
+
+	addRunning(){
+		this.running = true;
+		this.playerSpeed = 100;
+		this.playerSpeedDefault = 100;
+	}
+
+	removeRunning(){
+		this.running = false;
+		this.playerSpeed = 40;
+		this.playerSpeedDefault = 40;
 	}
 
 	attack() {
@@ -527,16 +542,16 @@ export default class {
 			// Bugfix
 			switch (this.direction) {
 				case 'up':
-					this.player.animations.play('run_up', 19, true);
+					this.player.animations.play('walk_up', 19, true);
 					break;
 				case 'down':
-					this.player.animations.play('run_down', 19, true);
+					this.player.animations.play('walk_down', 19, true);
 					break;
 				case 'left':
-					this.player.animations.play('run_left', 19, true);
+					this.player.animations.play('walk_left', 19, true);
 					break;
 				case 'right':
-					this.player.animations.play('run_right', 19, true);
+					this.player.animations.play('walk_right', 19, true);
 					break;
 				default:
 			}
@@ -575,7 +590,7 @@ export default class {
 			if (this.direction == 'left' || this.direction == 'right') {
 				this.player.body.velocity.y = -this.playerSpeed;
 			} else {
-				this.player.animations.play('run_up');
+				this.player.animations.play('walk_up');
 				this.player.body.velocity.y = -this.playerSpeed;
 			}
 			this.direction = 'up';
@@ -584,7 +599,7 @@ export default class {
 			if (this.direction == 'left' || this.direction == 'right') {
 				this.player.body.velocity.y = this.playerSpeed;
 			} else {
-				this.player.animations.play('run_down');
+				this.player.animations.play('walk_down');
 				this.player.body.velocity.y = this.playerSpeed;
 			}
 			this.direction = 'down';
@@ -600,7 +615,7 @@ export default class {
 			} else {
 				this.player.body.velocity.x = -this.playerSpeed;
 				if (this.dash) return;
-				this.player.animations.play('run_left');
+				this.player.animations.play('walk_left');
 			}
 			this.direction = 'left';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
@@ -610,7 +625,7 @@ export default class {
 			} else {
 				this.player.body.velocity.x = this.playerSpeed;
 				if (this.dash) return;
-				this.player.animations.play('run_right');
+				this.player.animations.play('walk_right');
 			}
 			this.direction = 'right';
 		} else {
@@ -633,7 +648,7 @@ export default class {
 						this.player.animations.next();
 					}
 
-					this.player.animations.play('run_up_idle');
+					this.player.animations.play('walk_up_idle');
 
 					if (this.collision) return;
 
@@ -659,7 +674,7 @@ export default class {
 						this.player.animations.next();
 					}
 
-					this.player.animations.play('run_down_idle');
+					this.player.animations.play('walk_down_idle');
 
 					if (this.collision) return;
 
@@ -680,7 +695,7 @@ export default class {
 
 					this.standing = true;
 
-					this.player.animations.play('run_left_idle');
+					this.player.animations.play('walk_left_idle');
 
 					if (this.collision) return;
 
@@ -701,7 +716,7 @@ export default class {
 
 					this.standing = true;
 
-					this.player.animations.play('run_right_idle', 19, false);
+					this.player.animations.play('walk_right_idle', 19, false);
 
 					if (this.collision) return;
 
@@ -734,23 +749,23 @@ export default class {
 			);
 
 			// this.player.rotation = this.stick.rotation;
-			this.player.animations._anims.run_right.speed = 19;
-			this.player.animations._anims.run_left.speed = 19;
-			this.player.animations._anims.run_down.speed = 19;
-			this.player.animations._anims.run_up.speed = 19;
+			this.player.animations._anims.walk_right.speed = 19;
+			this.player.animations._anims.walk_left.speed = 19;
+			this.player.animations._anims.walk_down.speed = 19;
+			this.player.animations._anims.walk_up.speed = 19;
 
-			// console.log('HIER: ' + this.player.animations._anims.run_down.speed * this.stick.force);
+			// console.log('HIER: ' + this.player.animations._anims.walk_down.speed * this.stick.force);
 			
-			this.player.animations._anims.run_down.speed =
-				this.player.animations._anims.run_down.speed * this.stick.force + 0.1;
-			this.player.animations._anims.run_up.speed =
-				this.player.animations._anims.run_up.speed * this.stick.force + 0.1;
-			this.player.animations._anims.run_right.speed =
-				this.player.animations._anims.run_right.speed * this.stick.force + 0.1;
-			this.player.animations._anims.run_left.speed =
-				this.player.animations._anims.run_left.speed * this.stick.force + 0.1;
+			this.player.animations._anims.walk_down.speed =
+				this.player.animations._anims.walk_down.speed * this.stick.force + 0.1;
+			this.player.animations._anims.walk_up.speed =
+				this.player.animations._anims.walk_up.speed * this.stick.force + 0.1;
+			this.player.animations._anims.walk_right.speed =
+				this.player.animations._anims.walk_right.speed * this.stick.force + 0.1;
+			this.player.animations._anims.walk_left.speed =
+				this.player.animations._anims.walk_left.speed * this.stick.force + 0.1;
 
-			// console.log(this.player.animations._anims.run_down.speed)
+			// console.log(this.player.animations._anims.walk_down.speed)
 			// console.log(this.stick.force);
 
 			// if(this.game.input.pointer1.active && this.game.input.pointer2.active){
@@ -764,27 +779,27 @@ export default class {
 
 			if (this.stickRotation <= 2 && this.stickRotation >= 1) {
 				console.log('Down');
-				this.player.animations.play('run_down');
+				this.player.animations.play('walk_down');
 				this.direction = 'down';
 			} else if (this.stickRotation >= -1 && this.stickRotation <= 1) {
 				console.log('Right');
-				this.player.animations.play('run_right');
+				this.player.animations.play('walk_right');
 				this.direction = 'right';
 			} else if (this.stickRotation <= -1 && this.stickRotation >= -2) {
 				console.log('Up');
-				this.player.animations.play('run_up');
+				this.player.animations.play('walk_up');
 				this.direction = 'up';
 			} else {
 				console.log('Left');
-				this.player.animations.play('run_left');
+				this.player.animations.play('walk_left');
 				this.direction = 'left';
 			}
 		} else {
 
-			this.player.animations._anims.run_right.speed = 19;
-			this.player.animations._anims.run_left.speed = 19;
-			this.player.animations._anims.run_down.speed = 19;
-			this.player.animations._anims.run_up.speed = 19;
+			this.player.animations._anims.walk_right.speed = 19;
+			this.player.animations._anims.walk_left.speed = 19;
+			this.player.animations._anims.walk_down.speed = 19;
+			this.player.animations._anims.walk_up.speed = 19;
 
 			this.player.animations.stop();
 			this.player.body.velocity.set(0);
@@ -897,7 +912,12 @@ export default class {
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
 					if (this.dash) return;
-					this.player.animations.play('run_up');
+					if(this.running){
+						this.player.animations.play('run_up');
+					} else {
+						this.player.animations.play('walk_up');
+					}
+					
 				}
 
 				// If Down-Button isDown
@@ -908,7 +928,12 @@ export default class {
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
 					if (this.dash) return;
-					this.player.animations.play('run_down');
+					if(this.running){
+						this.player.animations.play('run_down');
+					} else {
+						this.player.animations.play('walk_down');
+					}
+					
 				}
 
 			} else {
@@ -926,7 +951,12 @@ export default class {
 				} else {
 					this.player.body.velocity.x = -this.playerSpeed;
 					if (this.dash) return;
-					this.player.animations.play('run_left');
+					if(this.running){
+						this.player.animations.play('run_left');
+					} else {
+						this.player.animations.play('walk_left');
+					}
+					
 				}
 
 				// If Right-Button isDown
@@ -939,7 +969,12 @@ export default class {
 				} else {
 					this.player.body.velocity.x = this.playerSpeed;
 					if (this.dash) return;
-					this.player.animations.play('run_right');
+					if(this.running){
+						this.player.animations.play('run_right');
+					} else {
+						this.player.animations.play('walk_right');
+					}
+					
 				}
 
 			} else {
@@ -971,7 +1006,7 @@ export default class {
 						this.player.animations.next();
 					}
 
-					this.player.animations.play('run_up_idle');
+					this.player.animations.play('walk_up_idle');
 
 					if (this.collision) return;
 
@@ -994,7 +1029,7 @@ export default class {
 						this.player.animations.next();
 					}
 
-					this.player.animations.play('run_down_idle');
+					this.player.animations.play('walk_down_idle');
 
 					if (this.collision) return;
 
@@ -1012,7 +1047,7 @@ export default class {
 
 					this.standing = true;
 
-					this.player.animations.play('run_left_idle');
+					this.player.animations.play('walk_left_idle');
 
 					if (this.collision) return;
 
@@ -1030,7 +1065,7 @@ export default class {
 
 					this.standing = true;
 
-					this.player.animations.play('run_right_idle', 19, false);
+					this.player.animations.play('walk_right_idle', 19, false);
 
 					if (this.collision) return;
 
@@ -1071,19 +1106,19 @@ export default class {
 					this.movableSwitch = false;
 					switch (this.direction) {
 						case 'up':
-							this.player.animations.play('run_up_idle');
+							this.player.animations.play('walk_up_idle');
 							break;
 			
 						case 'down':
-							this.player.animations.play('run_down_idle');
+							this.player.animations.play('walk_down_idle');
 							break;
 			
 						case 'left':
-							this.player.animations.play('run_left_idle');
+							this.player.animations.play('walk_left_idle');
 							break;
 			
 						case 'right':
-							this.player.animations.play('run_right_idle');
+							this.player.animations.play('walk_right_idle');
 							break;
 			
 						default:

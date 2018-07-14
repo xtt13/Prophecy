@@ -26,6 +26,7 @@ export default class {
 
 		this.collX = this.collisionLayer.getTileX(this.region.left) + 1;
 		this.collY = this.collisionLayer.getTileY(this.region.top);
+		console.log(this.collX);
 
 		let bridgeCounter = 0;
 		let bridgeInterval = setInterval(() => {
@@ -43,6 +44,7 @@ export default class {
 				this.map.removeTile(this.collX - 1, this.collY, this.collisionLayer);
 
 				// let currentTile = this.map.getTile(this.collX, this.collY, this.groundLayer);
+				// console.log(currentTile);
 				// let currentTileIndex = currentTile.index;
 
 				// if(currentTileIndex !== 36){

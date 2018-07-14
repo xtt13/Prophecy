@@ -256,7 +256,7 @@ export default class {
 
 		}
 		// this.level.player.animations.stop();
-		this.level.player.animations.play('run_up', 19, true);
+		this.level.player.animations.play('walk_up', 19, true);
 	}
 
 	pathfinderMessage(region) {
@@ -658,10 +658,10 @@ export default class {
 		this.level.inputClass.playerSpeed -= 20;
 
 		// Set Animation Speed
-		this.level.player.animations._anims.run_up.speed += 13;
-		this.level.player.animations._anims.run_down.speed += 13;
-		this.level.player.animations._anims.run_left.speed += 8;
-		this.level.player.animations._anims.run_right.speed += 8;
+		this.level.player.animations._anims.walk_up.speed += 13;
+		this.level.player.animations._anims.walk_down.speed += 13;
+		this.level.player.animations._anims.walk_left.speed += 8;
+		this.level.player.animations._anims.walk_right.speed += 8;
 
 	}
 
@@ -682,10 +682,10 @@ export default class {
 		this.level.inputClass.playerSpeed = this.level.inputClass.playerSpeedDefault;
 
 		// Set Animation Speed
-		this.level.player.animations._anims.run_down.speed = 19;
-		this.level.player.animations._anims.run_up.speed = 19;
-		this.level.player.animations._anims.run_left.speed = 19;
-		this.level.player.animations._anims.run_right.speed = 19;
+		this.level.player.animations._anims.walk_down.speed = 19;
+		this.level.player.animations._anims.walk_up.speed = 19;
+		this.level.player.animations._anims.walk_left.speed = 19;
+		this.level.player.animations._anims.walk_right.speed = 19;
 
 	}
 
