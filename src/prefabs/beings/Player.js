@@ -57,10 +57,10 @@ export default class extends Phaser.Sprite {
 		this.animations.add('idle_walk_right', [70, 69, 68, 67, 66, 65, 64, 63, 62], this.frameRate, false);
 		this.animations.add('idle_walk_left', [53, 52, 51, 50, 49, 48, 47, 46, 45], this.frameRate, false);
 
-		this.animations.add('run_up', [91, 92, 93, 94, 95, 96, 97, 98], this.frameRate, false);
-		this.animations.add('run_down', [83, 84, 85, 86, 87, 88, 89, 90], this.frameRate, false);
-		this.animations.add('run_right', [107, 108, 109, 110, 111, 112, 113, 114], this.frameRate, false);
-		this.animations.add('run_left', [99, 100, 101, 102, 103, 104, 105, 106], this.frameRate, false);
+		this.animations.add('run_up', [91, 92, 93, 94, 95, 96, 97, 98], this.frameRate, true);
+		this.animations.add('run_down', [83, 84, 85, 86, 87, 88, 89, 90], this.frameRate, true);
+		this.animations.add('run_right', [107, 108, 109, 110, 111, 112, 113, 114], this.frameRate, true);
+		this.animations.add('run_left', [99, 100, 101, 102, 103, 104, 105, 106], this.frameRate, true);
 
 		this.animations.add('fight_right', [73, 74, 75, 76], this.frameRate, false);
 		this.animations.add('fight_left', [77, 78, 79, 80], this.frameRate, false);
