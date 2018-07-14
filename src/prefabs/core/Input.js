@@ -22,8 +22,8 @@ export default class {
 		this.collision = false;
 		this.muteAttack = false;
 
-		this.playerSpeed = 60;
-		this.playerSpeedDefault = 60;
+		this.playerSpeed = 90;
+		this.playerSpeedDefault = 90;
 
 		this.directon = 'down';
 		this.standing = true;
@@ -516,7 +516,7 @@ export default class {
 
 		this.game.time.events.add(400, () => {
 			this.player.alpha = 1;
-			this.playerSpeed = 60;
+			this.playerSpeed = this.playerSpeedDefault;
 			this.dash = false;
 			// this.player.removeParticles();
 

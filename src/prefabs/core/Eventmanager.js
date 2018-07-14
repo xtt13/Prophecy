@@ -584,7 +584,9 @@ export default class {
 			);
 
 		this.followTween.onComplete.add(() => {
-			this.game.camera.follow(target, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+			// ORIGINAL
+			// this.game.camera.follow(target, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+			this.game.camera.follow(target, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 1, 1);
 
 		}, this);
 	}
@@ -612,7 +614,9 @@ export default class {
 					break;
 
 				case 'topdown':
-					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+					// ORIGINAL
+					// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
+					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 1, 1);
 					break;
 
 				default:

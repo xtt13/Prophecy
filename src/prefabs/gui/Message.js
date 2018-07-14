@@ -24,6 +24,7 @@ export default class {
 		this.wordSound = this.game.add.audio('sfxletters');
 		this.wordSound.volume = 0.2;
 		this.wordSound.allowMultiple = true;
+		console.log(this.wordSound);
 		
 
 		// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);

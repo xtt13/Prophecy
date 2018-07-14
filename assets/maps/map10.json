@@ -1196,7 +1196,7 @@
     {
      "athmoSound":"AxOpenPlain",
      "athmoSoundNight":"AxForest",
-     "cameraMode":"topdown",
+     "cameraMode":"follow",
      "dayCycle":true,
      "ground":"gravel2",
      "lucy":true,
