@@ -18,7 +18,7 @@ export default class extends Phaser.Sprite {
 
 		this.talkSwitch = false;
 
-		
+
 
 		this.game.physics.enable(this);
 		this.body.immovable = true;
@@ -82,13 +82,24 @@ export default class extends Phaser.Sprite {
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
+
+				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
+				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
+				
 				break;
 			case 'girl1':
 				this.body.setSize(25, 25, -5, 18);
+
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
-				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
+				this.animations.add('left', [3], 1, false);
+
+				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
+				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
+
+				// this.animations.play('walk_right');
+
 				break;
 			case 'girl2':
 				this.body.setSize(25, 25, -5, 18);
@@ -103,6 +114,10 @@ export default class extends Phaser.Sprite {
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
+
+				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
+				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
+
 				break;
 			case 'fisher':
 				this.body.setSize(10, 10, 25, 25);
@@ -125,7 +140,9 @@ export default class extends Phaser.Sprite {
 				this.body.setSize(10, 10, 25, 25);
 				this.floatTween = this.game.add
 					.tween(this)
-					.to({ y: this.y - 2 }, 2000, 'Linear', true, 0, 0, true)
+					.to({
+						y: this.y - 2
+					}, 2000, 'Linear', true, 0, 0, true)
 					.loop();
 				break;
 			default:
@@ -140,81 +157,73 @@ export default class extends Phaser.Sprite {
 		game.add.existing(this);
 	}
 
-	runIdleLoop(){
-		this.idleLoop = this.game.time.events.loop(this.game.rnd.integerInRange(2000, 5000), () => {
+	runIdleLoop() {
+		this.idleLoop = this.game.time.events.loop(this.game.rnd.integerInRange(4000, 8000), () => {
 			this.randomDirection();
 		}, this);
 	}
 
-	stopIdleLoop(){
+	stopIdleLoop() {
 		this.game.time.events.remove(this.idleLoop);
 	}
 
-	fishingLine(length, xAnchor, yAnchor){
+	fishingLine(length, xAnchor, yAnchor) {
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.gravity.y = 600;
 
 		var lastRect;
-		var height = 4;        //  Height for the physics body - your image height is 8px
-		var width = 8;         //  This is the width for the physics body. If too small the rectangles will get scrambled together.
-		var maxForce = 20000;   //  The force that holds the rectangles together.
+		var height = 4; //  Height for the physics body - your image height is 8px
+		var width = 8; //  This is the width for the physics body. If too small the rectangles will get scrambled together.
+		var maxForce = 20000; //  The force that holds the rectangles together.
 		var newRect;
-	
-		for (var i = 0; i <= length; i++)
-		{
-			var x = xAnchor;                    //  All rects are on the same x position
-			var y = yAnchor + (i * height);     //  Every new rect is positioned below the last
-	
-			if (i % 2 === 0)
-			{
+
+		for (var i = 0; i <= length; i++) {
+			var x = xAnchor; //  All rects are on the same x position
+			var y = yAnchor + (i * height); //  Every new rect is positioned below the last
+
+			if (i % 2 === 0) {
 				//  Add sprite (and switch frame every 2nd time)
 				newRect = this.game.add.sprite(x, y, 'fishingLineChain', 1);
 				newRect.smoothed = false;
-			}   
-			else
-			{
+			} else {
 				newRect = this.game.add.sprite(x, y, 'fishingLineChain', 0);
 				newRect.smoothed = false;
 				lastRect.bringToTop();
 			}
-	
+
 			//  Enable physicsbody
 			this.game.physics.p2.enable(newRect, false);
-	
+
 			//  Set custom rectangle
 			newRect.body.setRectangle(width, height);
-	
-			if (i === 0)
-			{
+
+			if (i === 0) {
 				newRect.body.static = true;
-			}
-			else
-			{  
+			} else {
 				//  Anchor the first one created
-				newRect.body.velocity.x = 50;      //  Give it a push :) just for fun
-				newRect.body.mass = length / i;     //  Reduce mass for evey rope element
+				newRect.body.velocity.x = 50; //  Give it a push :) just for fun
+				newRect.body.mass = length / i; //  Reduce mass for evey rope element
 			}
-	
+
 			//  After the first rectangle is created we can add the constraint
-			if (lastRect)
-			{
+			if (lastRect) {
 				this.game.physics.p2.createRevoluteConstraint(newRect, [0, -1], lastRect, [0, 1], maxForce);
 			}
-	
+
 			lastRect = newRect;
-	
+
 		}
 	}
 
-	talk(){
+	talk() {
 
 
-		if(this.talkSwitch) return;
+		if (this.talkSwitch) return;
 		this.talkSwitch = true;
 
 		this.stopIdleLoop();
 		this.player.talking = true;
-		
+
 		this.player.turnPlayer(this);
 
 		let value = this.game.physics.arcade.angleToXY(this, this.player.x, this.player.y);
@@ -256,7 +265,7 @@ export default class extends Phaser.Sprite {
 		// 	this.player.animations.play('left');
 		// }
 
-		
+
 
 		// Check if name is in quest, if true -> get dialogueID
 		let resultdialogueID = this.level.questManager.checkQuestDialogue(this.name);
@@ -266,8 +275,8 @@ export default class extends Phaser.Sprite {
 
 		console.log(resultdialogueID, dialogueID, newQuestID);
 
-		if(newQuestID !== undefined && newQuestID !== false){
-			if(!this.level.questManager.checkIfQuestWasDone(newQuestID)){
+		if (newQuestID !== undefined && newQuestID !== false) {
+			if (!this.level.questManager.checkIfQuestWasDone(newQuestID)) {
 				this.level.questManager.addQuest(newQuestID);
 				// this.level.questManager.removeCharacterDialogue(questID, this.name);
 			} else {
@@ -275,7 +284,7 @@ export default class extends Phaser.Sprite {
 			}
 		}
 
-		if(removeQuestID !== undefined && removeQuestID !== false){
+		if (removeQuestID !== undefined && removeQuestID !== false) {
 			this.level.questManager.removeQuest(removeQuestID);
 		}
 
@@ -283,11 +292,11 @@ export default class extends Phaser.Sprite {
 		/////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////////////////
 
-		
 
-		
+
+
 		// this.voice.allowMultiple = true;
-		
+
 
 
 		switch (this.name) {
@@ -301,7 +310,7 @@ export default class extends Phaser.Sprite {
 				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5']);
 				this.voice = this.game.add.audioSprite('VxSmith');
 				this.voice.play(this.rndVoice, 1);
-				
+
 				break;
 
 			case 'botanist':
@@ -311,31 +320,31 @@ export default class extends Phaser.Sprite {
 				break;
 
 			case 'veteran':
-				
+
 				break;
 
 			case 'librarian':
-				
+
 				break;
 
 			case 'woman1':
-				
+
 				break;
 
 			case 'woman2':
-				
+
 				break;
 
 			case 'girl1':
-				
+
 				break;
 
 			case 'girl2':
-				
+
 				break;
 
 			case 'girl3':
-				
+
 				break;
 
 			default:
@@ -429,53 +438,98 @@ export default class extends Phaser.Sprite {
 
 	}
 
-	randomDirection(){
-		
+	randomDirection() {
 		let rndNumber = this.game.rnd.integerInRange(0, 3);
 		switch (rndNumber) {
 			case 0:
 				this.animations.play('down');
 				break;
-			
+
 			case 1:
 				this.animations.play('up');
 				break;
 
 			case 2:
-				this.animations.play('left');
+				if (this.animations._anims.walk_right !== undefined) {
+
+					var walkLeftLoop = this.game.time.events.loop(10, () => {
+						this.animations.play('walk_left');
+						this.talkSymbol.x = this.body.x + 5;
+						this.talkSymbol.y = this.body.y - 30;
+						this.body.velocity.x = -30;
+					}, this);
+
+					this.body.onCollide = new Phaser.Signal();
+					this.body.onCollide.add(() => {		
+						this.game.time.events.remove(walkLeftLoop);
+						this.animations.play('left');
+					}, this);
+
+					this.game.time.events.add(2000, () => {
+						this.game.time.events.remove(walkLeftLoop);
+						this.animations.play('left');
+					});
+
+				} else {
+					this.animations.play('left');
+				}
+
 				break;
 
 			case 3:
-				this.animations.play('right');
+				if (this.animations._anims.walk_right !== undefined) {
+
+					var walkRightLoop = this.game.time.events.loop(50, () => {
+						this.animations.play('walk_right');
+						this.talkSymbol.x = this.body.x + 5;
+						this.talkSymbol.y = this.body.y - 30;
+						this.body.velocity.x = 30;
+					}, this);
+
+					this.body.onCollide = new Phaser.Signal();
+					this.body.onCollide.add(() => {
+						this.game.time.events.remove(walkRightLoop);
+						this.animations.play('right');
+					}, this);
+
+					this.game.time.events.add(2000, () => {
+						this.game.time.events.remove(walkRightLoop);
+						this.animations.play('right');
+					});
+
+				} else {
+					this.animations.play('right');
+				}
+
 				break;
-		
+
 			default:
 				this.animations.play('down');
 				break;
 		}
-		
+
 	}
 
 	update() {
 
-		if(this.game.physics.arcade.distanceBetween(this, this.player) < this.radius){
-			if(this.player.talking){
+		if (this.game.physics.arcade.distanceBetween(this, this.player) < this.radius) {
+			if (this.player.talking) {
 				this.talkSymbol.alpha = 0;
 				return;
 			}
-			if(this.level.GUICLASS.ingameMenu.show) return;
+			if (this.level.GUICLASS.ingameMenu.show) return;
 			this.game.world.bringToTop(this.talkSymbol);
 			// this.game.world.setChildIndex(this.talkSymbol, 30);
 			this.talkSymbol.alpha = 1;
 			// On E-click
-			if(this.level.inputClass.button_E.isDown){
+			if (this.level.inputClass.button_E.isDown) {
 				this.talk();
-			}	
+			}
 		} else {
 			this.talkSymbol.alpha = 0;
 		}
 
-		
+
 
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
 
