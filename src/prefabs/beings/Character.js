@@ -26,7 +26,7 @@ export default class extends Phaser.Sprite {
 
 		// console.log(this);
 
-		this.talkSymbol = this.game.add.sprite(this.body.x + 5, this.body.y - 30, 'characterTalk');
+		this.talkSymbol = this.game.add.sprite(this.body.x + 15, this.body.y - 30, 'characterTalk');
 		this.talkSymbol.smoothed = false;
 		this.talkSymbol.alpha = 0;
 		this.talkSymbol.animations.add('play');
@@ -85,7 +85,7 @@ export default class extends Phaser.Sprite {
 
 				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
 				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
-				
+
 				break;
 			case 'girl1':
 				this.body.setSize(25, 25, -5, 18);
@@ -452,11 +452,12 @@ export default class extends Phaser.Sprite {
 			case 2:
 				if (this.animations._anims.walk_right !== undefined) {
 
-					var walkLeftLoop = this.game.time.events.loop(10, () => {
+					var walkLeftLoop = this.game.time.events.loop(1, () => {
 						this.animations.play('walk_left');
-						this.talkSymbol.x = this.body.x + 5;
-						this.talkSymbol.y = this.body.y - 30;
 						this.body.velocity.x = -30;
+
+						// this.talkSymbol.x = this.body.x + 5;
+						// this.talkSymbol.y = this.body.y - 30;
 					}, this);
 
 					this.body.onCollide = new Phaser.Signal();
@@ -465,7 +466,7 @@ export default class extends Phaser.Sprite {
 						this.animations.play('left');
 					}, this);
 
-					this.game.time.events.add(2000, () => {
+					this.game.time.events.add(1500, () => {
 						this.game.time.events.remove(walkLeftLoop);
 						this.animations.play('left');
 					});
@@ -479,11 +480,13 @@ export default class extends Phaser.Sprite {
 			case 3:
 				if (this.animations._anims.walk_right !== undefined) {
 
-					var walkRightLoop = this.game.time.events.loop(50, () => {
+					var walkRightLoop = this.game.time.events.loop(1, () => {
 						this.animations.play('walk_right');
-						this.talkSymbol.x = this.body.x + 5;
-						this.talkSymbol.y = this.body.y - 30;
 						this.body.velocity.x = 30;
+
+						// this.talkSymbol.x = this.body.x + 5;
+						// this.talkSymbol.y = this.body.y - 30;
+						
 					}, this);
 
 					this.body.onCollide = new Phaser.Signal();
@@ -492,7 +495,7 @@ export default class extends Phaser.Sprite {
 						this.animations.play('right');
 					}, this);
 
-					this.game.time.events.add(2000, () => {
+					this.game.time.events.add(1500, () => {
 						this.game.time.events.remove(walkRightLoop);
 						this.animations.play('right');
 					});
@@ -520,6 +523,8 @@ export default class extends Phaser.Sprite {
 			if (this.level.GUICLASS.ingameMenu.show) return;
 			this.game.world.bringToTop(this.talkSymbol);
 			// this.game.world.setChildIndex(this.talkSymbol, 30);
+			this.talkSymbol.x = this.body.x + 15;
+			this.talkSymbol.y = this.body.y - 30;
 			this.talkSymbol.alpha = 1;
 			// On E-click
 			if (this.level.inputClass.button_E.isDown) {
