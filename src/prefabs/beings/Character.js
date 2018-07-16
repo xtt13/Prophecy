@@ -319,6 +319,12 @@ export default class extends Phaser.Sprite {
 				this.voice.play(this.rndVoice, 0.4);
 				break;
 
+			case 'oracle':
+				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10']);
+				this.voice = this.game.add.audioSprite('VxOracle');
+				this.voice.play(this.rndVoice, 0.4);
+				break;
+
 			case 'veteran':
 
 				break;

@@ -246,6 +246,61 @@ export default class extends Phaser.State {
 			}
 		};
 
+		this.VxOracleJSON = {
+			spritemap: {
+				vx1: {
+					start: 0,
+					end: 3,
+					loop: false
+				},
+				vx2: {
+					start: 3,
+					end: 6,
+					loop: false
+				},
+				vx3: {
+					start: 6,
+					end: 9,
+					loop: false
+				},
+				vx4: {
+					start: 9,
+					end: 12,
+					loop: false
+				},
+				vx5: {
+					start: 12,
+					end: 15,
+					loop: false
+				},
+				vx6: {
+					start: 15,
+					end: 18,
+					loop: false
+				},
+				vx7: {
+					start: 18,
+					end: 21,
+					loop: false
+				},
+				vx8: {
+					start: 22,
+					end: 25,
+					loop: false
+				},
+				vx9: {
+					start: 25,
+					end: 28,
+					loop: false
+				},
+				vx10: {
+					start: 28,
+					end: 33,
+					loop: false
+				}
+			}
+		};
+
 		this.VxPriest = {
 			spritemap: {
 				vx1: {
@@ -546,6 +601,7 @@ export default class extends Phaser.State {
 		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON);this.sfxChestJSON
 		this.load.audiosprite('sfxChest', 'assets/sounds/sfxChest.mp3', null, this.sfxChestJSON);
 		this.load.audiosprite('sfxLockPick', 'assets/sounds/sfxLockPick.mp3', null, this.sfxLockPickJSON);
+		this.load.audiosprite('VxOracle', 'assets/sounds/VxOracle.mp3', null, this.VxOracleJSON);
 
 		// Particles
 		this.load.image('rain', 'assets/sprites/particles/rain.png');

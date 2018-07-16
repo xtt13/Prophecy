@@ -135,6 +135,10 @@ export default class {
 
 		this.GUICLASS = new GUI(this.game, this);
 
+		if(!this.dayCycle){
+			this.GUICLASS.healthBar.fadeOut();
+		}
+
 		if(__DEV__ && config.buildMode){
 			window.addEventListener('beforeunload', (event) => {
 				this.safe.setDEVCoordinates(this.player);
