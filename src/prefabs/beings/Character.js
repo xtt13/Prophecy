@@ -40,6 +40,11 @@ export default class extends Phaser.Sprite {
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
+
+				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
+				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
+				this.animations.add('walk_up', [20, 21, 22, 23, 24, 25, 26, 27], 19, false);
+				this.animations.add('walk_down', [28, 29, 30, 31, 32, 33, 34, 35], 19, false);
 				break;
 			case 'smith':
 				this.body.setSize(40, 30, -5, 22);
@@ -61,6 +66,9 @@ export default class extends Phaser.Sprite {
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
+
+				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
+				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
 				break;
 			case 'librarian':
 				this.body.setSize(10, 10, 5, 28);
@@ -446,13 +454,60 @@ export default class extends Phaser.Sprite {
 
 	randomDirection() {
 		let rndNumber = this.game.rnd.integerInRange(0, 3);
+		
 		switch (rndNumber) {
 			case 0:
+			if (this.animations._anims.walk_down !== undefined) {
+
+				var walkUpLoop = this.game.time.events.loop(1, () => {
+					this.animations.play('walk_down');
+					this.body.velocity.y = 30;
+
+					// this.talkSymbol.x = this.body.x + 5;
+					// this.talkSymbol.y = this.body.y - 30;
+				}, this);
+
+				this.body.onCollide = new Phaser.Signal();
+				this.body.onCollide.add(() => {		
+					this.game.time.events.remove(walkUpLoop);
+					this.animations.play('down');
+				}, this);
+
+				this.game.time.events.add(1000, () => {
+					this.game.time.events.remove(walkUpLoop);
+					this.animations.play('down');
+				});
+
+			} else {
 				this.animations.play('down');
+			}
 				break;
 
 			case 1:
+			if (this.animations._anims.walk_up !== undefined) {
+
+				var walkUpLoop = this.game.time.events.loop(1, () => {
+					this.animations.play('walk_up');
+					this.body.velocity.y = -30;
+
+					// this.talkSymbol.x = this.body.x + 5;
+					// this.talkSymbol.y = this.body.y - 30;
+				}, this);
+
+				this.body.onCollide = new Phaser.Signal();
+				this.body.onCollide.add(() => {		
+					this.game.time.events.remove(walkUpLoop);
+					this.animations.play('up');
+				}, this);
+
+				this.game.time.events.add(1000, () => {
+					this.game.time.events.remove(walkUpLoop);
+					this.animations.play('up');
+				});
+
+			} else {
 				this.animations.play('up');
+			}
 				break;
 
 			case 2:
@@ -472,7 +527,7 @@ export default class extends Phaser.Sprite {
 						this.animations.play('left');
 					}, this);
 
-					this.game.time.events.add(1500, () => {
+					this.game.time.events.add(1000, () => {
 						this.game.time.events.remove(walkLeftLoop);
 						this.animations.play('left');
 					});
@@ -501,7 +556,7 @@ export default class extends Phaser.Sprite {
 						this.animations.play('right');
 					}, this);
 
-					this.game.time.events.add(1500, () => {
+					this.game.time.events.add(1000, () => {
 						this.game.time.events.remove(walkRightLoop);
 						this.animations.play('right');
 					});
