@@ -24,6 +24,9 @@ export default class {
 		this.trail = game.add.group();
 		this.path;
 
+		this.lastX = null;
+		this.lastY = null;
+
 		this.marker;
 
 
@@ -121,6 +124,33 @@ export default class {
 
 		var x = next.x * 32 + 18;
 		var y = next.y * 32 + 18;
+
+		if(this.lastX !== null && this.player.name == 'priest'){
+			// Walk Right
+			if(x > this.lastX){
+				this.player.animations.play('walk_right');
+			}
+
+			// Walk Left
+			if(x < this.lastX){
+				this.player.animations.play('walk_left');
+			}
+
+			// Walk Down
+			if(y > this.lastY){
+				this.player.animations.play('walk_down');
+			}
+
+			// Walk Up
+			if(y < this.lastY){
+				this.player.animations.play('walk_up');
+			}
+
+
+		}
+
+		this.lastX = x;
+		this.lastY = y;
 
 		this.followingPath = true;
 		this.movingTween.target = this.player;
