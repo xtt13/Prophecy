@@ -486,21 +486,8 @@
          "tilewidth":32
         }, 
         {
-         "columns":20,
-         "firstgid":6481,
-         "image":"..\/tilesets\/tileset.png",
-         "imageheight":6400,
-         "imagewidth":640,
-         "margin":0,
-         "name":"tileset",
-         "spacing":0,
-         "tilecount":4000,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
          "columns":45,
-         "firstgid":10481,
+         "firstgid":6481,
          "image":"..\/tilesets\/godrays.png",
          "imageheight":5856,
          "imagewidth":1440,

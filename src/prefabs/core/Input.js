@@ -989,8 +989,9 @@ export default class {
 			// this.player.body.velocity.y = 0;
 			// this.player.body.velocity.x = 0;
 
+
 			if (this.dash) return;
-			if (this.running) return;
+			// if (this.running) return;
 			if (this.walkSwitch) return;
 
 			this.walkSwitch = true;

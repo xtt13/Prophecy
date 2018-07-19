@@ -603,5 +603,7 @@ export default class extends Phaser.Sprite {
 			this.game.world.moveUp(this);
 			// this.game.world.setChildIndex(this.player, 1);
 		}
+
+		this.game.physics.arcade.collide(this, this.level.collisionLayer);
 	}
 }
