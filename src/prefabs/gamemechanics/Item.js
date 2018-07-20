@@ -32,7 +32,16 @@ export default class extends Phaser.Sprite {
 
 		this.animations.play('play');
 
-		
+		// let itemEmitter = this.game.add.emitter(item.x, item.y, 200);
+
+		// itemEmitter.makeParticles('particleStart');
+		// itemEmitter.setRotation(0, 0);
+		// itemEmitter.setAlpha(0.3, 0.8);
+		// itemEmitter.setScale(0.5, 1);
+		// itemEmitter.gravity = -200;
+	
+		// //	false means don't explode all the sprites at once, but instead release at a rate of one particle per 100ms
+		// itemEmitter.start(true, 5000, 5);
 
 		this.game.physics.enable(this);
 		// setSize(width, height, offsetX, offsetY)
@@ -44,14 +53,14 @@ export default class extends Phaser.Sprite {
 	update(){
 		if(this.used) return;
 
-		this.game.physics.arcade.collide(this, this.level.player);
+		// this.game.physics.arcade.collide(this, this.level.player);
 
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
 		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){
 			if (angle > 0) {			
 				this.game.world.bringToTop(this);
 			} else {
-				this.game.world.setChildIndex(this, 15);		
+				this.game.world.setChildIndex(this, 25);		
 			}
 		} else {
 			this.game.world.bringToTop(this);
