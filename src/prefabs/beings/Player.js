@@ -482,7 +482,7 @@ export default class extends Phaser.Sprite {
 
 		this.game.camera.flash(0xc10000, 200);
 		this.GUICLASS.healthBar.removeHeart(1, true);
-		return;
+		// return;
 
 		// 5-1 = 4
 
@@ -499,6 +499,7 @@ export default class extends Phaser.Sprite {
 		// }
 
 		// console.log(this.player.health);
+
 		this.player.health -= 1;
 		
 		this.gameData.playerHealth = this.player.health;
