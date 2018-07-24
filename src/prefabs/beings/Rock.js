@@ -10,6 +10,8 @@ export default class extends Phaser.Sprite {
 		this.map = map;
 		this.layer = layer;
 
+		this.open = false;
+
 
 		this.health = 3;
 		this.dead = false;
@@ -17,9 +19,8 @@ export default class extends Phaser.Sprite {
 		
 		this.anchor.setTo(0.5);
 
-		// this.animations.add('walk', [0, 1, 2, 3, 4], 15, true);
-		// this.animations.add('idle', [0], 1, true);
-		// this.animations.play('walk');
+		this.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 15, false);
+		this.animations.add('close', [13, 14, 15, 16, 17, 18, 19, 20], 15, false);
 
 		this.game.physics.enable(this);
 
@@ -30,7 +31,7 @@ export default class extends Phaser.Sprite {
 		this.weapon.bulletLifespan = 2000;
 		this.weapon.bulletSpeed = 200;
 		this.weapon.fireRate = 400;
-		this.weapon.trackSprite(this, 0, 13, false);
+		this.weapon.trackSprite(this, 0, 35, false);
 
 		game.add.existing(this);
 	}
@@ -47,10 +48,32 @@ export default class extends Phaser.Sprite {
 
 		if (this.distanceBetweenEnemiePlayer < 200) {
             if(angle !== 2){
-                this.weapon.fireAtXY(this.player.body.x, this.player.body.y);
-            }
+				if(!this.animations._anims.open.isPlaying && !this.open){
+					this.animations.play('open');
+
+					this.animations._anims.open.onComplete.add(() => {
+						this.open = true;
+					}, this);
+				}
+				
+				if(this.open){
+					this.weapon.fireAtXY(this.player.body.x, this.player.body.y);
+				}
+                
+            } else {
+				if(!this.animations._anims.close.isPlaying && this.open){
+					this.animations.play('close');
+					this.open = false;
+				}
+				
+			}
             
-        }
+        } else {
+			if(!this.animations._anims.close.isPlaying && this.open){
+				this.animations.play('close');
+				this.open = false;
+			}
+		}
 
         this.game.physics.arcade.collide(this.weapon.bullets, this.player.weapon.bullets, this.reverse, null, this);
         this.game.physics.arcade.collide(this.weapon.bullets, this.player, this.player.bulletHit, null, this);
