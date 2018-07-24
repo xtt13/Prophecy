@@ -40,6 +40,9 @@ export default class {
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = false;
 
+		this.sfxShot = this.game.add.audio('sfxShot');
+		this.sfxShot.allowMultiple = false;
+
 		// this.game.input.gamepad.start();
 		// this.pad1 = this.game.input.gamepad.pad1;
 
@@ -884,6 +887,7 @@ export default class {
 			this.player.body.velocity.y = 0;
 			this.player.body.velocity.x = 0;
 
+			this.sfxShot.play();
 			this.player.weaponGun.fireAtPointer();
 
 		}

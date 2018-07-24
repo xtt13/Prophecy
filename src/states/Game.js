@@ -74,17 +74,17 @@ export default class extends Phaser.State {
 	}
 
 	create() {
-		// iOS & Safari Check
-		let isSafari =
-			navigator.vendor &&
-			navigator.vendor.indexOf('Apple') > -1 &&
-			navigator.userAgent &&
-			!navigator.userAgent.match('CriOS');
+		// // iOS & Safari Check
+		// let isSafari =
+		// 	navigator.vendor &&
+		// 	navigator.vendor.indexOf('Apple') > -1 &&
+		// 	navigator.userAgent &&
+		// 	!navigator.userAgent.match('CriOS');
 
-		if (!isSafari) {
-			this.input.onDown.add(this.toggleFullScreen, this);
-			// this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
-		}
+		// if (!isSafari) {
+		// 	this.input.onDown.add(this.toggleFullScreen, this);
+		// 	// this.input.onTap.add(this.toggleFullScreen, this, null, 'onTap');
+		// }
 
 		this.level = new Level(this.game, this.instruction);
 

@@ -91,8 +91,8 @@ export default class extends Phaser.Sprite {
 				this.animations.add('left', [3], 1, false);
 				this.animations.add('right', [2], 1, false);
 
-				this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
-				this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
+				// this.animations.add('walk_right', [4, 5, 6, 7, 8, 9, 10, 11], 19, false);
+				// this.animations.add('walk_left', [12, 13, 14, 15, 16, 17, 18, 19], 19, false);
 
 				break;
 			case 'girl1':
