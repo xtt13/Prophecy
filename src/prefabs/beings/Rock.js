@@ -23,8 +23,9 @@ export default class extends Phaser.Sprite {
 		this.animations.add('close', [13, 14, 15, 16, 17, 18, 19, 20], 15, false);
 
 		this.game.physics.enable(this);
+		this.body.immovable = true;
 
-        this.body.setSize(13, 10, 5, 7);
+        this.body.setSize(80, 40, 10, 60);
         
         this.weapon = game.add.weapon(10, 'bulletRock');
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
@@ -46,7 +47,13 @@ export default class extends Phaser.Sprite {
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
-		if (this.distanceBetweenEnemiePlayer < 200) {
+		if ((angle == 1 || angle == 2 || angle == 3) && this.y > this.player.body.y) {
+			// this.game.world.moveUp(this);
+			// this.game.world.setChildIndex(this.player, 1);
+			this.game.world.bringToTop(this);
+		}
+
+		if (this.distanceBetweenEnemiePlayer < 150) {
             if(angle !== 2){
 				if(!this.animations._anims.open.isPlaying && !this.open){
 					this.animations.play('open');
