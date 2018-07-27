@@ -859,7 +859,7 @@ export default class {
 					this.eventManager.areaSound.fadeOut(2000);
 				}
 
-				if (this.player.health <= 1) {
+				if (this.player.health < 2) {
 					this.GUICLASS.healthBar.sfxheartbeat.stop();
 				}
 

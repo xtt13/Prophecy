@@ -202,10 +202,10 @@ export default class {
                 this.game.camera.flash(0xc10000, 100, true);
             }, this);
 
-            if (this.sfxheartbeat == undefined) {
-                this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
-                this.sfxheartbeat.loop = true;
-                this.sfxheartbeat.play();
+            if (this.level.sfxheartbeat == undefined) {
+                this.level.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+                this.level.sfxheartbeat.loop = true;
+                this.level.sfxheartbeat.play();
             }
 
         }

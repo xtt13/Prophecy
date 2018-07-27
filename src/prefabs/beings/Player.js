@@ -507,6 +507,17 @@ export default class extends Phaser.Sprite {
 		
 		// this.GUICLASS.healthBar.removeHeart(1, true);
 		// this.game.camera.flash(0xc10000, 200);
+		if(this.player.health < 2){
+			if (this.sfxheartbeat == undefined) {
+				this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+				this.sfxheartbeat.loop = true;
+				this.sfxheartbeat.play();
+			}
+		} else {
+			if (this.sfxheartbeat !== undefined) {
+				this.sfxheartbeat.fadeOut();
+			}
+		}
 
 		if (this.player.health <= 0) {
 			this.gameData.playerHealth = 5;
@@ -516,6 +527,13 @@ export default class extends Phaser.Sprite {
 				this.inputClass.stick.alpha = 0;
 				this.inputClass.stick.enabled = false;
 			}
+
+			console.log(this.sfxheartbeat);
+
+			if(this.sfxheartbeat.isPlaying){
+				this.sfxheartbeat.stop();
+			}
+			
 
 			this.game.state.restart(true, false, {
 				map: this.currentMap,
