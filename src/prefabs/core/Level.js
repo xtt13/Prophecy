@@ -42,8 +42,8 @@ export default class {
 			var timeValue = config.devHour;
 			
 		} else {
-			var timeValue = 11;
-			// var timeValue = time.getHours();
+			// var timeValue = 11;
+			var timeValue = time.getHours();
 		}
 
 
@@ -120,6 +120,7 @@ export default class {
 		// Load Entry Points
 		this.loadEntryPoints();
 
+
 		if(__DEV__ && config.buildMode){
 			let XY = this.safe.getDEVCoordinates();
 			if (XY == undefined) return;
@@ -129,6 +130,14 @@ export default class {
 		} else {
 			// Create Player
 			this.player = new Player(this.game, this.startPoint.x, this.startPoint.y, this);
+		}
+
+		this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+		this.sfxheartbeat.loop = true;
+		// this.sfxheartbeat.allowMultiple = false;
+
+		if(this.player.health < 2){
+			this.sfxheartbeat.play();
 		}
 
 		
@@ -859,8 +868,8 @@ export default class {
 					this.eventManager.areaSound.fadeOut(2000);
 				}
 
-				if (this.player.health <= 1) {
-					this.GUICLASS.healthBar.sfxheartbeat.stop();
+				if(this.sfxheartbeat.isPlaying){
+					this.sfxheartbeat.stop();
 				}
 
 				console.log('Restart');

@@ -14,14 +14,15 @@ export default class {
 
         if (this.level.player.health <= 1) {
             this.flashingLoop = this.game.time.events.loop(850, () => {
-                // this.game.camera.flash(0xc10000, 100, true);
+                this.game.camera.flash(0x930000, 200, true);
             }, this);
 
-            if (this.sfxheartbeat == undefined) {
-                this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
-                this.sfxheartbeat.loop = true;
-                this.sfxheartbeat.play();
-            }
+            // if (this.sfxheartbeat == undefined) {
+            //     this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+            //     this.sfxheartbeat.loop = true;
+            //     this.sfxheartbeat.allowMultiple = false;
+            //     this.sfxheartbeat.play();
+            // }
 
         }
 
@@ -202,10 +203,10 @@ export default class {
                 this.game.camera.flash(0xc10000, 100, true);
             }, this);
 
-            if (this.sfxheartbeat == undefined) {
-                this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
-                this.sfxheartbeat.loop = true;
-                this.sfxheartbeat.play();
+            if (this.level.sfxheartbeat == undefined) {
+                this.level.sfxheartbeat = this.game.add.audio('sfxheartbeat');
+                this.level.sfxheartbeat.loop = true;
+                this.level.sfxheartbeat.play();
             }
 
         }
@@ -314,7 +315,7 @@ export default class {
 
     addHeart(index) {
         if (this.level.player.health <= 1) {
-            this.sfxheartbeat.stop();
+            this.level.sfxheartbeat.stop();
             this.game.time.events.remove(this.flashingLoop);
         }
         this.counter = 1;

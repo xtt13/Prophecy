@@ -24,8 +24,8 @@ export default class {
 
 		this.running = false;
 
-		this.playerSpeed = 40;
-		this.playerSpeedDefault = 40;
+		this.playerSpeed = 100;
+		this.playerSpeedDefault = 100;
 
 		this.directon = 'down';
 		this.standing = true;
@@ -252,9 +252,9 @@ export default class {
 		this.button_SPACEBAR = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.button_SPACEBAR.onDown.add(this.beginnDash, this);
 
-		this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-		this.button_SHIFT.onDown.add(this.addRunning, this);
-		this.button_SHIFT.onUp.add(this.removeRunning, this);
+		// this.button_SHIFT = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
+		// this.button_SHIFT.onDown.add(this.addRunning, this);
+		// this.button_SHIFT.onUp.add(this.removeRunning, this);
 
 		this.button_0 = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
 		this.button_0.onDown.add(this.resetLocalStorage, this);
@@ -919,7 +919,7 @@ export default class {
 					if(this.running){
 						this.player.animations.play('run_up');
 					} else {
-						this.player.animations.play('walk_up');
+						this.player.animations.play('run_up');
 					}
 					
 				}
@@ -935,7 +935,7 @@ export default class {
 					if(this.running){
 						this.player.animations.play('run_down');
 					} else {
-						this.player.animations.play('walk_down');
+						this.player.animations.play('run_down');
 					}
 					
 				}
@@ -958,7 +958,7 @@ export default class {
 					if(this.running){
 						this.player.animations.play('run_left');
 					} else {
-						this.player.animations.play('walk_left');
+						this.player.animations.play('run_left');
 					}
 					
 				}
@@ -976,7 +976,7 @@ export default class {
 					if(this.running){
 						this.player.animations.play('run_right');
 					} else {
-						this.player.animations.play('walk_right');
+						this.player.animations.play('run_right');
 					}
 					
 				}
