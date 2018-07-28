@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 export default class extends Phaser.Sprite {
-	constructor(game, x, y, player, map, layer, properties) {
+	constructor(game, x, y, player, map, layer, properties, level) {
 		super(game, x, y, 'sprout');
 
 		this.game = game;
@@ -11,6 +11,7 @@ export default class extends Phaser.Sprite {
 		this.type = 'sprout';
 		this.mirror = properties.mirror;
 		this.id = properties.id;
+		this.level = level;
 
 		this.shootX = properties.shootX;
 		this.shootY = properties.shootY;
@@ -104,7 +105,7 @@ export default class extends Phaser.Sprite {
 			if(this.levelBuilder.deadSprouts == 4){
 				this.levelBuilder.endBossHead.startHead();
 			}
-			sprout.weapon = game.add.weapon(0, 'bulletBeam');
+			sprout.weapon = this.game.add.weapon(0, 'bulletBeam');
 		}
 		
 	}

@@ -614,6 +614,48 @@ export default class extends Phaser.Sprite {
 		this.game.time.events.add(200, () => {
 			player.tint = 16777215;
 		});
+
+		this.game.camera.flash(0xc10000, 200);
+		this.level.GUICLASS.healthBar.removeHeart(1, true);
+
+		player.health -= 1;
+
+		this.level.gameData.playerHealth = player.health;
+		this.level.safe.setGameConfig(this.level.gameData);
+
+		// this.GUICLASS.healthBar.removeHeart(1, true);
+		// this.game.camera.flash(0xc10000, 200);
+		if (player.health < 2) {
+			if (this.level.sfxheartbeat == undefined) {
+				this.level.sfxheartbeat.play();
+			}
+		} else {
+			if (this.level.sfxheartbeat !== undefined) {
+				this.level.sfxheartbeat.fadeOut();
+			}
+		}
+
+		if (player.health <= 0) {
+			this.level.gameData.playerHealth = 5;
+			this.level.safe.setGameConfig(this.level.gameData);
+
+			if (this.level.inputClass.stick) {
+				this.level.inputClass.stick.alpha = 0;
+				this.level.inputClass.stick.enabled = false;
+			}
+
+
+			if (this.level.sfxheartbeat.isPlaying) {
+				this.level.sfxheartbeat.stop();
+			}
+
+
+			this.game.state.restart(true, false, {
+				map: this.currentMap,
+				targetID: this.lastTargetID,
+				restartType: 'revive'
+			});
+		}
 	}
 
 	update() {

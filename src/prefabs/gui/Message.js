@@ -19,6 +19,8 @@ export default class {
 		this.wordDelay = 100;
 		this.lineDelay = 2000;
 
+		this.counter = 0;
+
 		this.followTween = this.game.add;
 
 		this.wordSound = this.game.add.audio('sfxletters');
@@ -65,14 +67,17 @@ export default class {
 	
 
 		this.level.inputClass.button_E.onDown.add(() => {
+			this.counter++;
+
+			if(this.counter == 1) return;
 			// console.log('faster');
-			this.lineDelay = 500;
+			this.lineDelay = 0;
 			this.endTime = 1000;
 
 			this.wordRepeat = this.game.time.events.repeat(1, this.line.length, this.nextWord, this);
 
 			// if (this.wordIndex === this.line.length) {
-			// 	this.nextLine();
+				this.nextLine();
 			// }
 		}, this);
 
@@ -139,6 +144,8 @@ export default class {
 
 		//FIX END
 		// this.game.renderer.renderSession.roundPixels = false;
+
+		this.counter = 0;
 
 		this.fontImage.destroy();
 		this.text.destroy();
@@ -211,10 +218,13 @@ export default class {
 			.tween(this.downBar.cameraOffset)
 			.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
 
-		this.upperBarTween.onComplete.add(function() {
-			this.upperBar.destroy();
-			this.downBar.destroy();
-			this.upperBar = false;
+		this.upperBarTween.onComplete.add(() => {
+			if(this.upperBar !== undefined){
+				// this.upperBar.destroy();
+				this.downBar.destroy();
+				this.upperBar = false;
+			}
+
 
 			// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 			

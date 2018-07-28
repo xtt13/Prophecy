@@ -2,13 +2,14 @@ import Phaser from 'phaser';
 
 
 export default class extends Phaser.Sprite {
-	constructor(game, x, y, player, map, layer, properties) {
+	constructor(game, x, y, player, map, layer, properties, level) {
 		super(game, x, y, 'rock');
 
 		this.game = game;
 		this.player = player;
 		this.map = map;
 		this.layer = layer;
+		this.level = level;
 
 		this.open = false;
 

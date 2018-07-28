@@ -114,8 +114,9 @@ export default class extends Phaser.Sprite {
     }
 
     hit(){
-        this.game.camera.flash(0xc10000, 200);
+        this.game.camera.flash(0xc10000, 600);
         // this.levelBuilder.level.gameOver(1000);
+        this.game.state.restart(true, false);
 
         // this.game.add.tween(this.levelBuilder.endBossClaw1).to({
 		// 	alpha: 0
@@ -133,25 +134,25 @@ export default class extends Phaser.Sprite {
 		// 	alpha: 0
         // }, 1000, Phaser.Easing.Circular.InOut, true);
         
-        // // this.game.add.tween(this.levelBuilder.endBoss).to({
-		// // 	alpha: 0
-        // // }, 5000, Phaser.Easing.Circular.InOut, true);
+        // this.game.add.tween(this.levelBuilder.endBoss).to({
+		// 	alpha: 0
+        // }, 5000, Phaser.Easing.Circular.InOut, true);
         
-        // // this.game.add.tween(this.levelBuilder.endBoss).to({
-		// // 	alpha: 0
-        // // }, 5000, Phaser.Easing.Circular.InOut, true);
+        // this.game.add.tween(this.levelBuilder.endBoss).to({
+		// 	alpha: 0
+        // }, 5000, Phaser.Easing.Circular.InOut, true);
         
-        // // this.game.add.tween(this.levelBuilder.endBoss).to({
-		// // 	alpha: 0
-        // // }, 5000, Phaser.Easing.Circular.InOut, true);
+        // this.game.add.tween(this.levelBuilder.endBoss).to({
+		// 	alpha: 0
+        // }, 5000, Phaser.Easing.Circular.InOut, true);
         
-        // // this.game.add.tween(this.levelBuilder.endBoss).to({
-		// // 	alpha: 0
-        // // }, 5000, Phaser.Easing.Circular.InOut, true);
+        // this.game.add.tween(this.levelBuilder.endBoss).to({
+		// 	alpha: 0
+        // }, 5000, Phaser.Easing.Circular.InOut, true);
         // this.game.musicPlayer.music.fadeOut(1000);
         // this.game.time.slowMotion = 10.0;
 
-        // this.game.time.events.add(Phaser.Timer.SECOND * 15, () => {
+        // this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
         //     this.game.state.restart(true, false);
         // });
 
