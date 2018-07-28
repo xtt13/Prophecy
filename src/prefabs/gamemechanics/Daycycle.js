@@ -8,7 +8,7 @@ export default class {
 		this.level = level;
 
 		this.night = false;
-		this.darkness = 0.95;
+		this.darkness = 0.9;
 
 		this.createDayCycle();
 	}
@@ -127,15 +127,15 @@ export default class {
 		this.shadowTexture.context.fillStyle = 'rgb(0, 15, 119)';
 		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
 
-		var radius = 60 + this.game.rnd.integerInRange(1,5),
+		var radius = 60 + this.game.rnd.integerInRange(1,2),
         heroX = this.level.player.x - this.game.camera.x,
         heroY = this.level.player.y - this.game.camera.y;
     
 		var gradient = this.shadowTexture.context.createRadialGradient(
 				heroX, heroY, 60 * 0.75,
 				heroX, heroY, radius);
-		gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
-		gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+		gradient.addColorStop(0, 'rgba(150, 150, 150, 1.0)');
+		gradient.addColorStop(1, 'rgba(150, 150, 150, 0.0)');
 
 		this.shadowTexture.context.beginPath();
 		this.shadowTexture.context.fillStyle = gradient;
