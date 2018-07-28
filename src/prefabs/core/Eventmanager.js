@@ -416,6 +416,13 @@ export default class {
 			this.level.inputClass.stick.enabled = false;
 		}
 
+		if (this.level.sfxheartbeat !== undefined) {
+			if(this.level.sfxheartbeat.isPlaying){
+				this.level.sfxheartbeat.stop();
+			}
+		}
+
+
 		this.level.gameData.currentMap = targetMap;
 		this.level.gameData.targetID = targetID;
 		this.level.gameData.direction = direction;

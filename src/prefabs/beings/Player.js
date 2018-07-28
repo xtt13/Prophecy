@@ -20,6 +20,16 @@ export default class extends Phaser.Sprite {
 		this.talking = false;
 		this.attack = false;
 
+		// if(this.health < 2){
+		// 	if (this.level.sfxheartbeat == undefined) {
+		// 		this.level.sfxheartbeat.play();
+		// 	}
+		// } else {
+		// 	if (this.level.sfxheartbeat !== undefined) {
+		// 		this.level.sfxheartbeat.stop();
+		// 	}
+		// }
+
 		// this.blendMode = PIXI.blendModes.OVERLAY;
 		// this.tint = 0x00000FF;
 
@@ -99,7 +109,7 @@ export default class extends Phaser.Sprite {
 
 		// Add Lerp after 1 Second
 		this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
-			if(this.gameData.currentMap == 'map1') return;
+			if (this.gameData.currentMap == 'map1') return;
 
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
@@ -107,14 +117,14 @@ export default class extends Phaser.Sprite {
 					// this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.05, 0.05);
 					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 					break;
-	
+
 				case 'topdown':
 					// Original
 					// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.1, 0.1);
 					this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 1, 1);
-					
+
 					break;
-			
+
 				default:
 					console.warn('Default Camera Mode!');
 					this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
@@ -172,16 +182,16 @@ export default class extends Phaser.Sprite {
 		for (var i = 0; i < this.weaponGun.bullets.children.length; i++) {
 			// this.weaponGun.bullets.children[i].scale.setTo(2);
 			this.weaponGun.bullets.children[i].smoothed = false;
-			
+
 		}
 
 		this.weaponGun.onFire.add(() => {
 			// console.log('BOOOM');
 			// this.game.camera.shake(0.003, 100);
 		}, this);
-		
 
-		
+
+
 
 		game.add.existing(this);
 
@@ -189,20 +199,20 @@ export default class extends Phaser.Sprite {
 
 	}
 
-	playDustAnimation(){
-		if(this.level.inputClass.standing) return;
+	playDustAnimation() {
+		if (this.level.inputClass.standing) return;
 		this.dustAnimation.alpha = 1;
 
-		if(this.level.inputClass.direction == 'left'){
+		if (this.level.inputClass.direction == 'left') {
 			this.dustAnimation.x = this.x;
 			this.dustAnimation.y = this.y + 8;
-		} else if(this.level.inputClass.direction == 'right'){
+		} else if (this.level.inputClass.direction == 'right') {
 			this.dustAnimation.x = this.x - 18;
 			this.dustAnimation.y = this.y + 7;
-		} else if(this.level.inputClass.direction == 'up'){
+		} else if (this.level.inputClass.direction == 'up') {
 			this.dustAnimation.x = this.x - 12;
 			this.dustAnimation.y = this.y + 10;
-		} else if(this.level.inputClass.direction == 'down'){
+		} else if (this.level.inputClass.direction == 'down') {
 			this.dustAnimation.x = this.x - 12;
 			this.dustAnimation.y = this.y - 8;
 		}
@@ -210,37 +220,42 @@ export default class extends Phaser.Sprite {
 		this.dustAnimation.play('run');
 	}
 
-	teleport(){
+	teleport() {
 		this.alpha = 0;
 		this.game.forceSingleUpdate = true;
-		
+
 		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
 		var data = {
 			lifespan: 0
 		};
-	
+
 		this.manager.addData('burst', data);
-	
+
 		this.teleportEmitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL);
-	
+
 		this.teleportEmitter.renderer.pixelSize = 8;
-	
+
 		this.teleportEmitter.addToWorld();
-	
+
 		this.image = this.manager.createImageZone('player');
 
-		this.teleportEmitter.emit('burst', this.x, this.y, { zone: this.image, full: true, spacing: 8, setColor: true });
+		this.teleportEmitter.emit('burst', this.x, this.y, {
+			zone: this.image,
+			full: true,
+			spacing: 8,
+			setColor: true
+		});
 
 		this.teleportEmitter.forEachNew(this.setVelocity, this, this.x, this.y);
 
 		console.log('hi');
 		console.log(this.teleportEmitter);
-    	
+
 	}
 
-	setVelocity(particle, x ,y ){
-		console.log(x,y);
+	setVelocity(particle, x, y) {
+		console.log(x, y);
 		particle.setLife(3000);
 		particle.radiateFrom(x, y, 3);
 	}
@@ -249,7 +264,7 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.on = true;
 		this.customEmitter.x = this.x;
 		this.customEmitter.y = this.y;
-		
+
 		this.emitterLoop = this.game.time.events.loop(1, () => {
 			this.customEmitter.start(true);
 		}, this);
@@ -265,7 +280,7 @@ export default class extends Phaser.Sprite {
 		// console.log('collide');
 
 		// this.inputClass.muteAttack = true;
-		
+
 
 
 
@@ -296,10 +311,10 @@ export default class extends Phaser.Sprite {
 		this.bloodAnimation.minRotation = 0;
 		this.bloodAnimation.particleDrag.set(1800);
 		this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
-		
+
 		// console.log(this.bloodAnimation);
 
-		if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+		if (this.inputClass.direction == 'left' || this.inputClass.direction == 'right') {
 			this.bloodAnimation.setXSpeed(px);
 			this.bloodAnimation.setYSpeed(-400);
 		} else {
@@ -308,14 +323,14 @@ export default class extends Phaser.Sprite {
 		}
 
 		this.bloodAnimation.makeParticles('bloodEnemy', 100);
-		
+
 
 		this.bloodAnimation.start(true, 3000, null, 10);
 
-		
 
 
-		
+
+
 
 		// if (player.attack) {
 
@@ -330,31 +345,31 @@ export default class extends Phaser.Sprite {
 		// 	enemy.body.velocity.x = player.body.velocity.x * 2;
 		// 	enemy.body.velocity.y = player.body.velocity.y * 2;
 
-			// enemy.health -= 1;
+		// enemy.health -= 1;
 
-			// console.log(enemy.health, enemy.health <= 0);
+		// console.log(enemy.health, enemy.health <= 0);
 
-			// if (enemy.health <= 0) {
+		// if (enemy.health <= 0) {
 
-			// 	console.log('die');
+		// 	console.log('die');
 
-			// 	enemy.dead = true;
-			// 	enemy.body.moves = false;
-			// 	enemy.body.enable = false;
+		// 	enemy.dead = true;
+		// 	enemy.body.moves = false;
+		// 	enemy.body.enable = false;
 
-			// 	enemy.animations.stop();
+		// 	enemy.animations.stop();
 
-			// 	if (enemy.itemType !== undefined && enemy.itemType == 'key') {
-			// 		let properties = {};
-			// 		properties.id = enemy.dropItemID;
-			// 		this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
-			// 	}
-	
-			// 	if (enemy.killQuestID !== undefined) {
-			// 		this.questManager.checkKillCondition(enemy.killQuestID);
-			// 	}
-				
-			// }
+		// 	if (enemy.itemType !== undefined && enemy.itemType == 'key') {
+		// 		let properties = {};
+		// 		properties.id = enemy.dropItemID;
+		// 		this.items.push(new Item(this.game, enemy.x, enemy.y + 40, 'item', properties));
+		// 	}
+
+		// 	if (enemy.killQuestID !== undefined) {
+		// 		this.questManager.checkKillCondition(enemy.killQuestID);
+		// 	}
+
+		// }
 
 
 		enemy.health -= 1;
@@ -391,7 +406,7 @@ export default class extends Phaser.Sprite {
 			this.killAnimation.angularDrag = 500;
 			this.killAnimation.particleDrag.set(1800);
 
-			if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+			if (this.inputClass.direction == 'left' || this.inputClass.direction == 'right') {
 				this.killAnimation.setXSpeed(px);
 				this.killAnimation.setYSpeed(400);
 			} else {
@@ -413,7 +428,7 @@ export default class extends Phaser.Sprite {
 			this.bloodAnimation.setAlpha(1, 0, 1000, null, false);
 			// this.bloodAnimation.minParticleSpeed.set(px, 400);
 
-			if(this.inputClass.direction == 'left' || this.inputClass.direction == 'right'){
+			if (this.inputClass.direction == 'left' || this.inputClass.direction == 'right') {
 				this.bloodAnimation.setXSpeed(px);
 				this.bloodAnimation.setYSpeed(300);
 			} else {
@@ -421,13 +436,13 @@ export default class extends Phaser.Sprite {
 				this.bloodAnimation.setYSpeed(py);
 			}
 
-			this.bloodAnimation.makeParticles('blood', 100);	
+			this.bloodAnimation.makeParticles('blood', 100);
 			this.bloodAnimation.start(true, 0, null, 10);
 
 			this.rndVoice = this.game.rnd.pick(['death1', 'death2', 'death3', 'death4']);
 			this.voice = this.game.add.audioSprite('sfxswordmulti');
 			this.voice.play(this.rndVoice, 0.1);
-			
+
 		} else {
 			this.rndVoiceSword = this.game.rnd.pick(['vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10']);
 			this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
@@ -441,11 +456,11 @@ export default class extends Phaser.Sprite {
 		// this.inputClass.muteAttack = false;
 
 
-		
+
 
 	}
 
-	turnPlayer(focusObject){
+	turnPlayer(focusObject) {
 		// console.log('turn');
 		let value = this.game.physics.arcade.angleToXY(this, focusObject.x, focusObject.y);
 
@@ -470,7 +485,7 @@ export default class extends Phaser.Sprite {
 
 	getDamage(player, enemy) {
 		// console.log('collide');
-		if(this.damageSwitch) return;
+		if (this.damageSwitch) return;
 		this.damageSwitch = true;
 		enemy.paralyze = true;
 
@@ -501,16 +516,14 @@ export default class extends Phaser.Sprite {
 		// console.log(this.player.health);
 
 		this.player.health -= 1;
-		
+
 		this.gameData.playerHealth = this.player.health;
 		this.safe.setGameConfig(this.gameData);
-		
+
 		// this.GUICLASS.healthBar.removeHeart(1, true);
 		// this.game.camera.flash(0xc10000, 200);
-		if(this.player.health < 2){
+		if (this.player.health < 2) {
 			if (this.sfxheartbeat == undefined) {
-				this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
-				this.sfxheartbeat.loop = true;
 				this.sfxheartbeat.play();
 			}
 		} else {
@@ -530,10 +543,10 @@ export default class extends Phaser.Sprite {
 
 			console.log(this.sfxheartbeat);
 
-			if(this.sfxheartbeat.isPlaying){
+			if (this.sfxheartbeat.isPlaying) {
 				this.sfxheartbeat.stop();
 			}
-			
+
 
 			this.game.state.restart(true, false, {
 				map: this.currentMap,
@@ -556,11 +569,18 @@ export default class extends Phaser.Sprite {
 			this.level.safe.setItemIDs(this.level.itemIDs);
 		}
 
-		if(item.type == 'potion'){
+		if (item.type == 'potion') {
 			this.level.GUICLASS.healthBar.addHeart(5);
 			this.level.player.health = 5;
 			this.level.gameData.playerHealth = 5;
 			this.level.safe.setGameConfig(this.level.gameData);
+
+			if (this.level.player.health > 1) {
+				this.level.sfxheartbeat.stop();
+				if (this.level.GUICLASS.healthBar.flashingLoop) {
+					this.game.time.events.remove(this.level.GUICLASS.healthBar.flashingLoop);
+				}
+			}
 		}
 
 		if (item.removeQuestID !== undefined) {
@@ -569,7 +589,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (item.ifQuestID !== undefined) {
-			if (this.level.questManager.checkIfQuestExists(item.ifQuestID)){
+			if (this.level.questManager.checkIfQuestExists(item.ifQuestID)) {
 				this.level.questManager.removeQuest(item.ifQuestID);
 				console.log('NewQuestID: ' + item.newQuestID);
 				this.level.questManager.addQuest(item.newQuestID);
@@ -587,7 +607,7 @@ export default class extends Phaser.Sprite {
 		this.level.items.splice(item, 1);
 	}
 
-	bulletHit(player, bullet){
+	bulletHit(player, bullet) {
 		bullet.kill();
 		player.tint = 0xFF0000;
 
@@ -600,7 +620,7 @@ export default class extends Phaser.Sprite {
 		// console.log(this.animations.currentFrame.index);
 		this.game.world.bringToTop(this.customEmitter);
 
-		if(this.level.inputClass.direction == 'right' || this.level.inputClass.direction == 'down'){
+		if (this.level.inputClass.direction == 'right' || this.level.inputClass.direction == 'down') {
 			this.game.world.bringToTop(this.playerArm);
 			// this.game.world.setChildIndex(this.playerArm, 25);
 		}
