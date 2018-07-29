@@ -43,6 +43,8 @@ export default class {
 		this.sfxShot = this.game.add.audio('sfxShot', 0.05);
 		this.sfxShot.allowMultiple = false;
 
+		this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
+
 		// this.game.input.gamepad.start();
 		// this.pad1 = this.game.input.gamepad.pad1;
 
@@ -816,45 +818,45 @@ export default class {
 
 	keyboardUpdate() {
 
-		if (this.game.input.activePointer.rightButton.isDown) {
+		if (this.game.input.activePointer.leftButton.isDown) {
 			this.aiming = true;
 		}
 
-		if (this.aiming) {
-			// this.player.playerArm.visible = true;
+		// if (this.aiming) {
+		// 	// this.player.playerArm.visible = true;
 
 
-			// let value = this.game.physics.arcade.angleToPointer(this.player);
+		// 	let value = this.game.physics.arcade.angleToPointer(this.player);
 
-			// if ((value > -2.5 && value < -0.5)) {
-			// 	this.player.animations.play('static_shoot_up');
-			// 	this.direction = 'up';
-			// 	this.player.playerArm.x = this.player.x + 2;
-			// 	this.player.playerArm.y = this.player.y + 6;
-			// } else if (value > 1 && value < 2.5) {
-			// 	this.player.animations.play('static_shoot_down');
-			// 	this.direction = 'down';
-			// 	this.player.playerArm.x = this.player.x - 7;
-			// 	this.player.playerArm.y = this.player.y + 6;
-			// } else if (value > -0.5 && value < 1) {
-			// 	this.player.animations.play('static_shoot_right');
-			// 	this.direction = 'right';
-			// 	this.player.playerArm.x = this.player.x - 3;
-			// 	this.player.playerArm.y = this.player.y + 6;
-			// } else if (value > 2.5 || value < -2.5) {
-			// 	this.player.animations.play('static_shoot_left');
-			// 	this.direction = 'left';
-			// 	this.player.playerArm.x = this.player.x - 5;
-			// 	this.player.playerArm.y = this.player.y + 4;
-			// }
+		// 	if ((value > -2.5 && value < -0.5)) {
+		// 		this.player.animations.play('static_shoot_up');
+		// 		this.direction = 'up';
+		// 		this.player.playerArm.x = this.player.x + 2;
+		// 		this.player.playerArm.y = this.player.y + 6;
+		// 	} else if (value > 1 && value < 2.5) {
+		// 		this.player.animations.play('static_shoot_down');
+		// 		this.direction = 'down';
+		// 		this.player.playerArm.x = this.player.x - 7;
+		// 		this.player.playerArm.y = this.player.y + 6;
+		// 	} else if (value > -0.5 && value < 1) {
+		// 		this.player.animations.play('static_shoot_right');
+		// 		this.direction = 'right';
+		// 		this.player.playerArm.x = this.player.x - 3;
+		// 		this.player.playerArm.y = this.player.y + 6;
+		// 	} else if (value > 2.5 || value < -2.5) {
+		// 		this.player.animations.play('static_shoot_left');
+		// 		this.direction = 'left';
+		// 		this.player.playerArm.x = this.player.x - 5;
+		// 		this.player.playerArm.y = this.player.y + 4;
+		// 	}
 
 
 
-			this.player.body.velocity.y = 0;
-			this.player.body.velocity.x = 0;
+		// 	this.player.body.velocity.y = 0;
+		// 	this.player.body.velocity.x = 0;
 
-			// return;
-		}
+		// 	// return;
+		// }
 
 		if (this.game.input.activePointer.leftButton.isDown) {
 
@@ -867,23 +869,25 @@ export default class {
 
 			if ((value > -2.5 && value < -0.5)) {
 				// this.player.animations.play('static_shoot_up');
+				this.player.animations.play('fight_up', false);
 				this.direction = 'up';
 			} else if (value > 1 && value < 2.5) {
-				// this.player.animations.play('static_shoot_down');
+				this.player.animations.play('static_idle_down');
 				this.direction = 'down';
 			} else if (value > -0.5 && value < 1) {
 				this.player.animations.play('fight_right', false);
 				this.direction = 'right';
-				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
 				// this.player.body.velocity.x = 70;
 			} else if (value > 2.5 || value < -2.5) {
 				this.player.animations.play('fight_left', false);
 				this.direction = 'left';
 			}
 
-			game.physics.arcade.moveToPointer(this.player, 500);
+			this.game.physics.arcade.moveToPointer(this.player, 150);
+			// this.game.physics.arcade.accelerateToPointer(this.player, Phaser.Input.activePointer, 500, 500, 500)
 
 			this.player.weapon.fireAtPointer();
+			// this.player.playDustAnimation();
 
 			this.game.time.events.add(300, () => {
 				this.currentAttack = false;
@@ -891,9 +895,8 @@ export default class {
 	
 			if(this.muteAttack) return;
 	
-	
+			
 			this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
-			this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
 			this.voiceSword.play(this.rndVoiceSword, 0.5);
 
 

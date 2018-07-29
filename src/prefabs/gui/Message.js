@@ -129,7 +129,7 @@ export default class {
 			this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
 			this.wordIndex++;
 	
-			this.wordSound.play();
+			this.wordSound.play("", 0, 0.2, false, false);
 	
 			// If Character Count === Line Count --> Next Line
 			if (this.wordIndex === this.line.length) {

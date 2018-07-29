@@ -36,6 +36,8 @@ class Game extends Phaser.Game {
 		this.state.add('Credits', CreditsState, false);
 		this.state.add('Game', GameState, false);
 
+		document.addEventListener('contextmenu', event => event.preventDefault());
+
 		if (!window.cordova) {
 			this.state.start('Boot');
 		}
