@@ -787,7 +787,7 @@ export default class {
 
 
 	openBossDoor() {
-		// if(!this.level.questManager.checkIfQuestExists(20)) return;
+		if(!this.level.questManager.checkIfQuestExists(43)) return;
 		if (this.bossDoorOpen) return;
 		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 
