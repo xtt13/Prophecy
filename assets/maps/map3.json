@@ -2013,10 +2013,31 @@
                  "width":32,
                  "x":1026.11497079619,
                  "y":1090.67076544728
+                }, 
+                {
+                 "height":22.0022,
+                 "id":351,
+                 "name":"Bird",
+                 "properties":
+                    {
+                     "jumpDown":false,
+                     "type":"bird"
+                    },
+                 "propertytypes":
+                    {
+                     "jumpDown":"bool",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":22.0022,
+                 "x":548.175841804759,
+                 "y":1013.89483968428
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -2033,7 +2054,7 @@
                     {
                      "character":"woman1",
                      "id":4,
-                     "ifNotQuestID":"20",
+                     "ifNotQuestID":"41,42,43,44,45,46",
                      "nightVersion":false
                     },
                  "propertytypes":
@@ -2052,7 +2073,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -2625,7 +2646,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":351,
+ "nextobjectid":352,
  "orientation":"orthogonal",
  "properties":
     {

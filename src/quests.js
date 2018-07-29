@@ -394,6 +394,310 @@ export default {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'fisher': [17, false, 26]
 			}				
+		},
+
+		// Description
+		27:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		28:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		29:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		30:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		31:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		32:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		33:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		34:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		35:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		36:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		37:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		38:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		39:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Talk with the Priest
+		40:{
+			silent: false,
+			questMessage: 'Talk to the priest!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'priest': [30, 41, 40]
+			}				
+		},
+
+		// Description
+		41:{
+			silent: false,
+			questMessage: 'Enter the temple!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'priest': [30, false, false],
+				'woman1': [31, 42, 41],
+			}				
+		},
+
+		// Description
+		42:{
+			silent: false,
+			questMessage: 'Talk to the oracle!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'oracle': [32, 43, 42]
+			}				
+		},
+
+		// Description
+		43:{
+			silent: false,
+			questMessage: 'Find and Kill the boss!',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		44:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		45:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
+		},
+
+		// Description
+		46:{
+			silent: false,
+			questMessage: 'Questmessage',
+
+			questKillEnemyType: false,
+			questKillEnemyAmount: false,
+			questKillEnemyMap: false,
+			questDeadEnemies: 0,
+
+			dialogues: {
+				// [dialogueID, newQuestID, removeQuestID] no value -> false
+			}				
 		}
 		
 		
