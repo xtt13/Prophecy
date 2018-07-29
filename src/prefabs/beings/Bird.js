@@ -83,8 +83,15 @@ export default class extends Phaser.Sprite {
             
             
         } else {
-            let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
-			if (angle == 1 || angle == 2 || angle == 0) {
+            // let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
+			// if (angle == 1 || angle == 2 || angle == 0) {
+			// 	this.scale.set(1, 1);
+			// } else {
+			// 	this.scale.set(-1, 1);
+            // }
+
+            let angle = this.game.physics.arcade.angleToXY(this.player, this.x, this.y);
+			if (angle > -1.6) {
 				this.scale.set(1, 1);
 			} else {
 				this.scale.set(-1, 1);

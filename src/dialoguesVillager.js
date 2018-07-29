@@ -160,8 +160,8 @@ export default {
 		// Wren
 		31: [
 			'Welcome in the temple, the Oracle’s sanctuary.',
-			'No use of weapons. No talking while the Almighty is speaking. It is very important that you show respect towards our goddess. Understood?',
-			'If you are ready, you now may step in front of the Oracle.'
+			'No use of weapons. No talking while the Almighty \nis speaking. It is very important that you \nshow respect towards our goddess. Understood?',
+			'If you are ready, you now may step in front of \nthe Oracle.'
 		],
 
 		// Oracle

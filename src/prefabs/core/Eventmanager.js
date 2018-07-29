@@ -308,8 +308,8 @@ export default class {
 				Phaser.Timer.SECOND * region.properties.messageWaitingDuration,
 				() => {
 					// ORIGINAL
-					// this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
-					this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+					// this.level.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 
 					this.level.player.movable = true;
 					this.level.player.animations.play('idle_up');
@@ -608,8 +608,8 @@ export default class {
 		this.followTween = this.game.add
 			.tween(this.game.camera)
 			.to({
-					x: this.level.player.x - (this.game.camera.width / 2) - 20,
-					y: this.level.player.y - (this.game.camera.height / 2)
+					x: this.level.player.x - (this.game.camera.width / 2),
+					y: this.level.player.y - (this.game.camera.height / 2) + 35
 				},
 				this.followDuration,
 				Phaser.Easing.Quadratic.InOut,
@@ -620,7 +620,7 @@ export default class {
 
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
-					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.05, 0.05);
 					break;
 
 				case 'topdown':

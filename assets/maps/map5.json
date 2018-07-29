@@ -856,25 +856,6 @@
                  "y":1150.93050725654
                 }, 
                 {
-                 "height":39.6806,
-                 "id":216,
-                 "name":"FS",
-                 "properties":
-                    {
-                     "foreGroundShift":true
-                    },
-                 "propertytypes":
-                    {
-                     "foreGroundShift":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":87.132,
-                 "x":720.769522307223,
-                 "y":521.084485051791
-                }, 
-                {
                  "height":47.9199944440586,
                  "id":220,
                  "name":"",
@@ -1225,12 +1206,12 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":721.148817579891,
-                 "y":515.666475306329
+                 "x":728.971885659843,
+                 "y":1348.73712021597
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
