@@ -40,7 +40,7 @@ export default class {
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = false;
 
-		this.sfxShot = this.game.add.audio('sfxShot');
+		this.sfxShot = this.game.add.audio('sfxShot', 0.05);
 		this.sfxShot.allowMultiple = false;
 
 		// this.game.input.gamepad.start();
@@ -821,32 +821,32 @@ export default class {
 		}
 
 		if (this.aiming) {
-			this.player.playerArm.visible = true;
+			// this.player.playerArm.visible = true;
 
 
-			let value = this.game.physics.arcade.angleToPointer(this.player);
+			// let value = this.game.physics.arcade.angleToPointer(this.player);
 
-			if ((value > -2.5 && value < -0.5)) {
-				this.player.animations.play('static_shoot_up');
-				this.direction = 'up';
-				this.player.playerArm.x = this.player.x + 2;
-				this.player.playerArm.y = this.player.y + 6;
-			} else if (value > 1 && value < 2.5) {
-				this.player.animations.play('static_shoot_down');
-				this.direction = 'down';
-				this.player.playerArm.x = this.player.x - 7;
-				this.player.playerArm.y = this.player.y + 6;
-			} else if (value > -0.5 && value < 1) {
-				this.player.animations.play('static_shoot_right');
-				this.direction = 'right';
-				this.player.playerArm.x = this.player.x - 3;
-				this.player.playerArm.y = this.player.y + 6;
-			} else if (value > 2.5 || value < -2.5) {
-				this.player.animations.play('static_shoot_left');
-				this.direction = 'left';
-				this.player.playerArm.x = this.player.x - 5;
-				this.player.playerArm.y = this.player.y + 4;
-			}
+			// if ((value > -2.5 && value < -0.5)) {
+			// 	this.player.animations.play('static_shoot_up');
+			// 	this.direction = 'up';
+			// 	this.player.playerArm.x = this.player.x + 2;
+			// 	this.player.playerArm.y = this.player.y + 6;
+			// } else if (value > 1 && value < 2.5) {
+			// 	this.player.animations.play('static_shoot_down');
+			// 	this.direction = 'down';
+			// 	this.player.playerArm.x = this.player.x - 7;
+			// 	this.player.playerArm.y = this.player.y + 6;
+			// } else if (value > -0.5 && value < 1) {
+			// 	this.player.animations.play('static_shoot_right');
+			// 	this.direction = 'right';
+			// 	this.player.playerArm.x = this.player.x - 3;
+			// 	this.player.playerArm.y = this.player.y + 6;
+			// } else if (value > 2.5 || value < -2.5) {
+			// 	this.player.animations.play('static_shoot_left');
+			// 	this.direction = 'left';
+			// 	this.player.playerArm.x = this.player.x - 5;
+			// 	this.player.playerArm.y = this.player.y + 4;
+			// }
 
 
 
@@ -857,38 +857,52 @@ export default class {
 		}
 
 		if (this.game.input.activePointer.leftButton.isDown) {
+
 			this.aiming = true;
+
+			if(this.currentAttack) return;
+			this.currentAttack = true;
+
 			let value = this.game.physics.arcade.angleToPointer(this.player);
 
 			if ((value > -2.5 && value < -0.5)) {
-				this.player.animations.play('static_shoot_up');
+				// this.player.animations.play('static_shoot_up');
 				this.direction = 'up';
-				this.player.playerArm.x = this.player.x + 2;
-				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > 1 && value < 2.5) {
-				this.player.animations.play('static_shoot_down');
+				// this.player.animations.play('static_shoot_down');
 				this.direction = 'down';
-				this.player.playerArm.x = this.player.x - 7;
-				this.player.playerArm.y = this.player.y + 6;
 			} else if (value > -0.5 && value < 1) {
-				this.player.animations.play('static_shoot_right');
+				this.player.animations.play('fight_right', false);
 				this.direction = 'right';
-				this.player.playerArm.x = this.player.x - 3;
-				this.player.playerArm.y = this.player.y + 6;
+				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
+				// this.player.body.velocity.x = 70;
 			} else if (value > 2.5 || value < -2.5) {
-				this.player.animations.play('static_shoot_left');
+				this.player.animations.play('fight_left', false);
 				this.direction = 'left';
-				this.player.playerArm.x = this.player.x - 5;
-				this.player.playerArm.y = this.player.y + 4;
 			}
 
+			game.physics.arcade.moveToPointer(this.player, 500);
+
+			this.player.weapon.fireAtPointer();
+
+			this.game.time.events.add(300, () => {
+				this.currentAttack = false;
+			}, this);
+	
+			if(this.muteAttack) return;
+	
+	
+			this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
+			this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
+			this.voiceSword.play(this.rndVoiceSword, 0.5);
 
 
-			this.player.body.velocity.y = 0;
-			this.player.body.velocity.x = 0;
 
-			this.sfxShot.play();
-			this.player.weaponGun.fireAtPointer();
+			// this.player.body.velocity.y = 0;
+			// this.player.body.velocity.x = 0;
+
+			// this.sfxShot.play();
+			// this.player.weaponGun.fireAtPointer();
 
 		}
 

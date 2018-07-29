@@ -37,10 +37,14 @@ export default class extends Phaser.Sprite {
     }
     
     twitter(){
-        this.birdInterval = setInterval(() => { 
+
+
+        this.birdInterval = this.game.time.events.loop(this.game.rnd.integerInRange(3000, 5000), () => {
             this.rndBirdSounds = this.game.rnd.pick(['twitter1', 'twitter2', 'twitter3', 'twitter4', 'twitter5']);
             this.birdSounds.play(this.rndBirdSounds);
-        }, this.game.rnd.integerInRange(3000, 5000));
+        }, this);
+
+        
 
     }
 
@@ -74,7 +78,7 @@ export default class extends Phaser.Sprite {
 		if (this.distanceBetweenEnemiePlayer < 70) {
 
             this.startFlying = true;
-            clearInterval(this.birdInterval);
+            this.game.time.events.remove(this.birdInterval);
             this.birdSounds.play('flyAway');
 
             this.game.time.events.add(6000, () => {
