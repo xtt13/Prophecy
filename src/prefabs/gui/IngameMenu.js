@@ -276,7 +276,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			this.gameOptions.showOptions();
+			// this.gameOptions.showOptions();
 		}
 	}
 

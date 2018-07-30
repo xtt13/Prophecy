@@ -550,8 +550,8 @@
                  "type":"",
                  "visible":true,
                  "width":31.3194022743426,
-                 "x":927.481734541578,
-                 "y":1183.32238468372
+                 "x":716.126725493763,
+                 "y":762.051381810922
                 }, 
                 {
                  "height":63.5585,
@@ -1197,11 +1197,11 @@
     {
      "athmoSound":"AxOpenPlain",
      "athmoSoundNight":"AxForest",
-     "cameraMode":"topdown",
+     "cameraMode":"follow",
      "dayCycle":true,
      "ground":"gravel2",
      "lucy":false,
-     "music":"MxTempleHappy",
+     "music":"MxBeginn",
      "startMusic":false,
      "weather":"Leaves"
     },

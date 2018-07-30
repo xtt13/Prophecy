@@ -1879,30 +1879,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":69.0675660810259,
-                 "y":2133.1719128139
-                }, 
-                {
-                 "gid":2568,
-                 "height":32,
-                 "id":338,
-                 "name":"Seed Enemy",
-                 "properties":
-                    {
-                     "jumpDown":false,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "jumpDown":"bool",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":801.706732247157,
-                 "y":2143.03268777539
+                 "x":246.680525971726,
+                 "y":1777.9459930325
                 }, 
                 {
                  "gid":2568,
@@ -2033,7 +2011,7 @@
                  "visible":true,
                  "width":22.0022,
                  "x":548.175841804759,
-                 "y":1013.89483968428
+                 "y":1023.89483968428
                 }],
          "opacity":1,
          "type":"objectgroup",

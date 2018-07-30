@@ -40,6 +40,8 @@ export default class {
 
 				// Tint Clouds
 				this.level.backgroundLayer.tint = 0x000000;
+				this.level.godrays.visible = false;
+				this.level.godrays.renderable = false;
 
 				// for (var i = 0; i < this.level.characters.length; i++) {
 				// 	this.level.characters[i].tint = 0x999999;
@@ -96,6 +98,8 @@ export default class {
 				console.log('Night');
 				this.night = true;
 
+				this.level.godrays.visible = false;
+				this.level.godrays.renderable = false;
 				this.level.backgroundLayer.tint = 0x000000;
 
 				this.lightSprite.alpha = this.darkness;

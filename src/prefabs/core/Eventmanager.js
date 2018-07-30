@@ -609,7 +609,7 @@ export default class {
 			.tween(this.game.camera)
 			.to({
 					x: this.level.player.x - (this.game.camera.width / 2),
-					y: this.level.player.y - (this.game.camera.height / 2) + 35
+					y: this.level.player.y - (this.game.camera.height / 2) + 30
 				},
 				this.followDuration,
 				Phaser.Easing.Quadratic.InOut,

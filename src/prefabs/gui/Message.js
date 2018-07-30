@@ -68,11 +68,18 @@ export default class {
 
 		this.level.inputClass.button_E.onDown.add(() => {
 			this.counter++;
-
+			console.log(this.counter);
 			if(this.counter == 1) return;
+			
+
 			// console.log('faster');
 			this.lineDelay = 0;
-			this.endTime = 1000;
+			this.endTime = 500;
+
+			if (this.lineIndex === this.message.length) {
+				this.game.time.events.add(300, this.removeMessage, this);
+				return;
+			}
 
 			this.wordRepeat = this.game.time.events.repeat(1, this.line.length, this.nextWord, this);
 
@@ -211,12 +218,18 @@ export default class {
 	}
 
 	removeBars() {
-		this.upperBarTween = this.game.add
+
+		if(this.upperBar !== false){
+			this.upperBarTween = this.game.add
 			.tween(this.upperBar.cameraOffset)
 			.to({ y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
-		this.downBarTween = this.game.add
+		}
+
+		if(this.downBar !== false){
+			this.downBarTween = this.game.add
 			.tween(this.downBar.cameraOffset)
 			.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
+		}
 
 		this.upperBarTween.onComplete.add(() => {
 			if(this.upperBar !== undefined){
