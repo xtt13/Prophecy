@@ -78,7 +78,7 @@ export default class extends Phaser.Sprite {
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'woman1':
-				this.body.setSize(80, 20, -30, 20);
+				this.body.setSize(30, 30, -8, 20);
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
