@@ -40,7 +40,7 @@ export default class extends Phaser.Sprite {
 
 
         this.birdInterval = this.game.time.events.loop(this.game.rnd.integerInRange(3000, 5000), () => {
-            console.log(this.game);
+            if(this.game == null) return;
             this.rndBirdSounds = this.game.rnd.pick(['twitter1', 'twitter2', 'twitter3', 'twitter4', 'twitter5']);
             this.birdSounds.play(this.rndBirdSounds);
         }, this);
