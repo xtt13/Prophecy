@@ -201,7 +201,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	playDustAnimation() {
-		// if (this.level.inputClass.standing) return;
+		if (this.level.inputClass.standing) return;
 		this.dustAnimation.alpha = 1;
 
 		if (this.level.inputClass.direction == 'left') {
@@ -218,7 +218,7 @@ export default class extends Phaser.Sprite {
 			this.dustAnimation.y = this.y - 8;
 		}
 
-		this.dustAnimation.play('run');
+		this.dustAnimation.play('run', false);
 	}
 
 	teleport() {

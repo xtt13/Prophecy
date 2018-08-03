@@ -503,7 +503,7 @@ export default class {
 		this.dashSound.play();
 
 		this.level.GUICLASS.healthBar.dash();
-		this.player.playDustAnimation();
+		// this.player.playDustAnimation();
 
 		// this.player.alpha = 0.5;
 		this.game.add.tween(this.player).to({
@@ -912,6 +912,8 @@ export default class {
 		// If any Movementkey isDown
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 
+			this.standing = false;
+
 			if(this.currentAttack) return;
 
 			this.player.playerArm.visible = false;
@@ -1002,7 +1004,7 @@ export default class {
 				this.player.body.velocity.x = 0;
 			}
 
-			this.standing = false;
+			
 
 		} else {
 			// If no Movementkey isDown
@@ -1019,10 +1021,11 @@ export default class {
 
 			if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) return;
 
+			this.standing = true;
+
 			switch (this.direction) {
 				case 'up':
 
-					this.standing = true;
 
 					while (this.player.animations.currentFrame.index < 24) {
 						this.player.animations.next();
@@ -1045,7 +1048,6 @@ export default class {
 
 				case 'down':
 
-					this.standing = true;
 
 					while (this.player.animations.currentFrame.index < 7) {
 						this.player.animations.next();
@@ -1067,7 +1069,6 @@ export default class {
 
 				case 'left':
 
-					this.standing = true;
 
 					this.player.animations.play('walk_left_idle');
 
@@ -1085,7 +1086,6 @@ export default class {
 
 				case 'right':
 
-					this.standing = true;
 
 					this.player.animations.play('walk_right_idle', 19, false);
 

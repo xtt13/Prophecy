@@ -1190,7 +1190,7 @@
                 }, 
                 {
                  "height":14.1413,
-                 "id":171,
+                 "id":239,
                  "name":"CustomStartpoint",
                  "properties":
                     {
@@ -1206,8 +1206,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":728.971885659843,
-                 "y":1348.73712021597
+                 "x":729.413248103555,
+                 "y":569.239713462483
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1278,7 +1278,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":239,
+ "nextobjectid":240,
  "orientation":"orthogonal",
  "properties":
     {

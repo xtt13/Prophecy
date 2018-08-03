@@ -142,17 +142,23 @@ export default class extends Phaser.Sprite {
 				this.animations.add('up', [0], 1, false);
 				this.animations.add('left', [0], 1, false);
 				this.animations.add('right', [0], 1, false);
+
 				this.radius = 150;
-				this.talkSymbol.x = this.body.x + 5;
-				this.talkSymbol.y = this.body.y - 65;
-				this.body.setSize(10, 10, 25, 25);
-				this.floatTween = this.game.add
-					.tween(this)
-					.to({
-						y: this.y - 2
-					}, 2000, 'Linear', true, 0, 0, true)
-					.loop();
+
+				this.body.setSize(20, 10, 80, 60);
+
+				this.talkSymbol.x = this.body.x + 1;
+				this.talkSymbol.y = this.body.y - 1;
+
+				// this.floatTween = this.game.add
+				// 	.tween(this)
+				// 	.to({
+				// 		y: this.y - 2
+				// 	}, 2000, 'Linear', true, 0, 0, true)
+				// 	.loop();
+
 				break;
+
 			default:
 				this.body.setSize(10, 15, 0, 0);
 		}

@@ -1459,25 +1459,6 @@
                  "y":2203.20114786137
                 }, 
                 {
-                 "height":302.389,
-                 "id":270,
-                 "name":"Cameralock",
-                 "properties":
-                    {
-                     "lockCamera":true
-                    },
-                 "propertytypes":
-                    {
-                     "lockCamera":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":511.604,
-                 "x":305.29352566566,
-                 "y":158.244423963766
-                }, 
-                {
                  "height":4.63795002608845,
                  "id":271,
                  "name":"Teleporter",
@@ -2624,7 +2605,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":352,
+ "nextobjectid":353,
  "orientation":"orthogonal",
  "properties":
     {
