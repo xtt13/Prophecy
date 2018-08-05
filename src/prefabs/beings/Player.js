@@ -415,8 +415,12 @@ export default class extends Phaser.Sprite {
 				this.killAnimation.setYSpeed(py);
 			}
 
-
-			this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
+			if(enemy.type == 'seed'){
+				this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
+			} else {
+				this.killAnimation.makeParticles('predatorPartsSpritesheet', [0, 1, 2, 3], 4);
+			}
+			
 			this.killAnimation.setAlpha(1, 0, 5000, null, false);
 			this.killAnimation.start(true, 0, null, 10);
 			this.game.world.setChildIndex(this.killAnimation, 10);

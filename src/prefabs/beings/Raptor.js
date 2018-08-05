@@ -9,6 +9,7 @@ export default class extends Phaser.Sprite {
 		this.player = player;
 		this.map = map;
         this.layer = layer;
+        this.type = properties.type;
         
 		this.dropItemID = properties.dropItemID;
 		this.itemType = properties.itemType;
@@ -36,7 +37,7 @@ export default class extends Phaser.Sprite {
 
         this.body.setSize(13, 10, 27, 27);
         
-		this.body.bounce.set(1);
+		this.body.bounce.set(1.7);
         this.body.drag.set(1500);
         
 		// this.body.enable = false;
@@ -54,7 +55,7 @@ export default class extends Phaser.Sprite {
 
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
-		if (this.distanceBetweenEnemiePlayer < 200) {
+		if (this.distanceBetweenEnemiePlayer < 170) {
 
 			// if (this.distanceBetweenEnemiePlayer < 100) {
 			// 	this.animations.play('walk');

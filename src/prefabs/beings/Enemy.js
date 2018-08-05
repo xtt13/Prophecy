@@ -8,6 +8,7 @@ export default class extends Phaser.Sprite {
 		this.game = game;
 		this.player = player;
 		this.map = map;
+		this.type = properties.type;
 		this.layer = layer;
 		this.dropItemID = properties.dropItemID;
 		this.itemType = properties.itemType;

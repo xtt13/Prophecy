@@ -2013,6 +2013,26 @@
                  "width":32,
                  "x":374.700513811874,
                  "y":2001.04349595564
+                }, 
+                {
+                 "gid":2570,
+                 "height":32,
+                 "id":355,
+                 "name":"Raptor Enemy",
+                 "properties":
+                    {
+                     "type":"raptor"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":298.842578710645,
+                 "y":1213.38530734633
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2625,7 +2645,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":355,
+ "nextobjectid":356,
  "orientation":"orthogonal",
  "properties":
     {
