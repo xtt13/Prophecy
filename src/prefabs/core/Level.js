@@ -20,10 +20,11 @@ import Lucy from '../beings/Lucy';
 import Eventmanager from './Eventmanager';
 import Questmanager from './Questmanager';
 import Daycycle from '../gamemechanics/Daycycle';
-import LockGame from '../minigame/LockGame';
+// import LockGame from '../minigame/LockGame';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
+import Raptor from '../beings/Raptor';
 import Bird from '../beings/Bird';
 import Flower from '../gamemechanics/Flower';
 import Sprout from '../beings/Sprout';
@@ -570,6 +571,12 @@ export default class {
 			if (element.properties.type == 'rock') {
 				this.enemies.push(
 					new Rock(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
+				);
+			}
+
+			if (element.properties.type == 'raptor') {
+				this.enemies.push(
+					new Raptor(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
 				);
 			}
 

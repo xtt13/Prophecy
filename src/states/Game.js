@@ -131,9 +131,9 @@ export default class extends Phaser.State {
 			// this.level.weather.emitter.debug(20, 200);
 
 			// DEBUG ENEMIES
-			// for (var i = 0; i < this.level.enemies.length; i++) {
-			// 	this.game.debug.body(this.level.enemies[i]);
-			// }
+			for (var i = 0; i < this.level.enemies.length; i++) {
+				this.game.debug.body(this.level.enemies[i]);
+			}
 
 			// this.game.debug.body(this.level.levelBuilder.endBossHead);
 
