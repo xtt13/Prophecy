@@ -24,8 +24,8 @@ export default class {
 
 		this.running = false;
 
-		this.playerSpeed = 100;
-		this.playerSpeedDefault = 100;
+		this.playerSpeed = 90;
+		this.playerSpeedDefault = 90;
 
 		this.directon = 'down';
 		this.standing = true;
@@ -970,7 +970,8 @@ export default class {
 				this.direction = 'left';
 
 				if (this.button_W.isDown || this.button_S.isDown) {
-					this.player.body.velocity.x = -this.playerSpeed / 1.25;
+					this.player.body.velocity.x = -this.playerSpeed / 1.5;
+					this.player.animations.play('run_left');
 				} else {
 					this.player.body.velocity.x = -this.playerSpeed;
 					if (this.dash) return;
@@ -988,7 +989,8 @@ export default class {
 				this.direction = 'right';
 
 				if (this.button_W.isDown || this.button_S.isDown) {
-					this.player.body.velocity.x = this.playerSpeed / 1.25;
+					this.player.body.velocity.x = this.playerSpeed / 1.5;
+					this.player.animations.play('run_right');
 				} else {
 					this.player.body.velocity.x = this.playerSpeed;
 					if (this.dash) return;
