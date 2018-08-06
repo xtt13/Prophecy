@@ -74,6 +74,10 @@ export default {
 			'You got to be careful… This monster is different than anything you have faced before. Be on your guard.',
 			'Hide if necessary. You’d rather be a coward than dead, right?',
 			'I think that’s it… Good luck, [PLAYER NAME]'
+		],
+
+		13:[
+			'AHHHHHHHHH!'
 		]
 
 	}

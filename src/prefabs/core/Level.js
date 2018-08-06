@@ -282,7 +282,7 @@ export default class {
 
 
 
-			if (this.night && !element.properties.nightVersion) return;
+			if ((this.tilemapProperties.weather == 'Storm' && !element.properties.nightVersion) || (this.night && !element.properties.nightVersion)) return;
 			if (!this.night && element.properties.nightVersion) return;
 
 			// Da bei QuestID
@@ -969,11 +969,17 @@ export default class {
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;
 
-		// if(this.game.rnd.integerInRange(0, 4) == 4){
-		// 	this.tilemapProperties.weather = 'Storm';
-		// 	this.tilemapProperties.athmoSound = 'AtmoWindRain';
-			
-		// }
+		console.log(this.map.plus.properties);
+		if(this.game.rnd.integerInRange(1, 8) == 4 && this.tilemapProperties.dayCycle){
+			console.log('HIIII');
+			this.tilemapProperties.weather = 'Storm';
+			this.tilemapProperties.athmoSound = 'AtmoWindRain';	
+		} else {
+			console.log('HOOOO');
+			console.log(this.map.plus.properties);
+			this.tilemapProperties.weather = this.map.plus.properties.weather;
+			this.tilemapProperties.athmoSound = this.map.plus.properties.athmoSound;
+		}
 
 		// Get Properties for Nightmode
 		this.dayCycle = this.tilemapProperties.dayCycle;

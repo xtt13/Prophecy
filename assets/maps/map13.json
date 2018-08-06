@@ -369,6 +369,27 @@
                  "width":2.44795,
                  "x":637.866878546771,
                  "y":287.059814933504
+                }, 
+                {
+                 "height":55.0868140297051,
+                 "id":219,
+                 "name":"Add Quest",
+                 "properties":
+                    {
+                     "addQuest":true,
+                     "questID":36
+                    },
+                 "propertytypes":
+                    {
+                     "addQuest":"bool",
+                     "questID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":44.9759431002022,
+                 "x":467.540617809079,
+                 "y":286.590893243149
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -533,7 +554,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":219,
+ "nextobjectid":220,
  "orientation":"orthogonal",
  "properties":
     {
@@ -560,7 +581,7 @@
      "weather":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.3",
  "tileheight":32,
  "tilesets":[
         {

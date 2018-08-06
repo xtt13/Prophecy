@@ -133,7 +133,13 @@ export default class {
 
 		// Set Values
 		this.fadeDuration = fadeDuration;
-		this.key = (night ? properties.athmoSoundNight : properties.athmoSound);
+		
+		if(night && properties.athmoSound !== 'AtmoWindRain'){
+			this.key = properties.athmoSoundNight;
+		} else {
+			this.key = properties.athmoSound;
+		}
+
 		this.start = true;
 
 

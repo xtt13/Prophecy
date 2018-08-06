@@ -42,7 +42,9 @@ export default class extends Phaser.Sprite {
 		this.body.bounce.set(1.7);
         this.body.drag.set(1500);
         
-		// this.body.enable = false;
+        // this.body.enable = false;
+        
+        // this.blendMode = Phaser.blendModes.MULTIPLY;
 
 		game.add.existing(this);
 	}

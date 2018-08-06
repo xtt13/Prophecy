@@ -2034,7 +2034,7 @@
                     {
                      "character":"smith",
                      "id":5,
-                     "ifNotQuestID":"13,14",
+                     "ifNotQuestID":"13,14, 39",
                      "nightVersion":false
                     },
                  "propertytypes":
@@ -2060,13 +2060,15 @@
                     {
                      "character":"priest",
                      "id":1,
-                     "ifQuestID":13
+                     "ifQuestID":13,
+                     "nightVersion":true
                     },
                  "propertytypes":
                     {
                      "character":"string",
                      "id":"int",
-                     "ifQuestID":"int"
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -2084,7 +2086,7 @@
                     {
                      "character":"botanist",
                      "id":7,
-                     "ifNotQuestID":"13,14",
+                     "ifNotQuestID":"13,14, 37",
                      "nightVersion":false
                     },
                  "propertytypes":
@@ -2214,7 +2216,7 @@
                     {
                      "character":"girl3",
                      "id":11,
-                     "ifNotQuestID":"13,14",
+                     "ifNotQuestID":"13,14, 37, 39",
                      "nightVersion":false
                     },
                  "propertytypes":
@@ -2230,6 +2232,236 @@
                  "width":32,
                  "x":718.385467374817,
                  "y":323.092781034753
+                }, 
+                {
+                 "gid":2545,
+                 "height":32,
+                 "id":389,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "character":"botanist",
+                     "id":7,
+                     "ifQuestID":36,
+                     "nightVersion":false
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":720.425257806469,
+                 "y":1174.63424058736
+                }, 
+                {
+                 "gid":2542,
+                 "height":32,
+                 "id":390,
+                 "name":"Smith",
+                 "properties":
+                    {
+                     "character":"smith",
+                     "id":5,
+                     "ifQuestID":39,
+                     "nightVersion":false
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":695.399691832803,
+                 "y":1174.52411467918
+                }, 
+                {
+                 "gid":2549,
+                 "height":32,
+                 "id":391,
+                 "name":"Girl3",
+                 "properties":
+                    {
+                     "character":"girl3",
+                     "id":11,
+                     "ifQuestID":39,
+                     "nightVersion":false
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":748.60245209799,
+                 "y":1174.76300045082
+                }, 
+                {
+                 "gid":2543,
+                 "height":32,
+                 "id":392,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"priest",
+                     "id":1,
+                     "ifQuestID":39,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":721.542786746707,
+                 "y":929.292051812526
+                }, 
+                {
+                 "gid":2542,
+                 "height":32,
+                 "id":393,
+                 "name":"Smith",
+                 "properties":
+                    {
+                     "character":"smith",
+                     "id":5,
+                     "ifQuestID":39,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":695.634376379203,
+                 "y":1174.85739008749
+                }, 
+                {
+                 "gid":2549,
+                 "height":32,
+                 "id":394,
+                 "name":"Girl3",
+                 "properties":
+                    {
+                     "character":"girl3",
+                     "id":11,
+                     "ifQuestID":39,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":748.757587144441,
+                 "y":1175.0902162993
+                }, 
+                {
+                 "gid":2545,
+                 "height":32,
+                 "id":395,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "character":"botanist",
+                     "id":7,
+                     "ifQuestID":36,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":720.167305974463,
+                 "y":1174.57735883894
+                }, 
+                {
+                 "gid":2543,
+                 "height":32,
+                 "id":396,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"priest",
+                     "id":1,
+                     "ifQuestID":13
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":721.926207379262,
+                 "y":786.419758024198
+                }, 
+                {
+                 "gid":2543,
+                 "height":32,
+                 "id":397,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"priest",
+                     "id":1,
+                     "ifQuestID":39
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":720.426357364264,
+                 "y":929.405459454055
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2258,7 +2490,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":389,
+ "nextobjectid":398,
  "orientation":"orthogonal",
  "properties":
     {

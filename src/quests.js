@@ -534,7 +534,7 @@ export default {
 		// Description
 		36:{
 			silent: false,
-			questMessage: 'Questmessage',
+			questMessage: 'Talk with Viden!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -543,28 +543,33 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'botanist': [26, 37, 36]
 			}				
 		},
 
 		// Description
 		37:{
 			silent: false,
-			questMessage: 'Questmessage',
+			questMessage: 'Free Reya!',
 
-			questKillEnemyType: false,
-			questKillEnemyAmount: false,
-			questKillEnemyMap: false,
+			questKillEnemyType: 'seed',
+			questKillEnemyAmount: 6,
+			questKillEnemyMap: 'map11',
 			questDeadEnemies: 0,
+
+			fightFinishAddQuestID: 38,
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'girl3': [27, false, false],
+				'botanist': [26, false, false]
 			}				
 		},
 
 		// Description
 		38:{
 			silent: false,
-			questMessage: 'Questmessage',
+			questMessage: 'Talk with Reya!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -573,13 +578,14 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'girl3': [28, 39, 38]
 			}				
 		},
 
 		// Description
 		39:{
 			silent: false,
-			questMessage: 'Questmessage',
+			questMessage: 'Talk with Coppus!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -588,6 +594,7 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
+				'smith': [29, 40, 39]
 			}				
 		},
 
