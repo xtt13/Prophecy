@@ -309,24 +309,33 @@ export default class {
 			case 'up':
 				this.player.animations.play('fight_up');
 				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
-				// this.player.body.velocity.y = -40;
+				if(!this.standing){
+					this.player.body.velocity.y = -200;
+				}
+				
 				break;
 
 			case 'down':
 				this.player.weapon.fireAtXY(this.player.x, this.player.y + 10);
-				// this.player.body.velocity.y = 40;
+				if(!this.standing){
+					this.player.body.velocity.y = 200;
+				}
 				break;
 
 			case 'left':
 			this.player.animations.play('fight_left');
 				this.player.weapon.fireAtXY(this.player.x - 10, this.player.y);
-				// this.player.body.velocity.x = -40;
+				if(!this.standing){
+					this.player.body.velocity.x = -200;
+				}
 				break;
 
 			case 'right':
 				this.player.animations.play('fight_right');
 				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
-				// this.player.body.velocity.x = 40;
+				if(!this.standing){
+					this.player.body.velocity.x = 200;
+				}
 				break;
 
 			default:
