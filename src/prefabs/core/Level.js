@@ -222,6 +222,10 @@ export default class {
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);
 
+		if(this.tilemapProperties.disableAttack !== undefined && this.tilemapProperties.disableAttack){
+			this.inputClass.disableAttack = true;
+		}
+
 		this.levelBuilder = new LevelBuilder(this.game, this, this.currentMap);
 
 

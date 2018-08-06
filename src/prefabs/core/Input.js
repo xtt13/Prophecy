@@ -14,6 +14,7 @@ export default class {
 		this.gamepadSupport = false;
 		this.useMobileControl = false;
 		this.walkSwitch = true;
+		this.disableAttack = false;
 		this.dash = false;
 		this.aiming = false;
 		this.movableSwitch = true;
@@ -33,6 +34,9 @@ export default class {
 
 		this.movementloopSpeedDefault = 290;
 		this.movementloopSpeed = 290;
+
+		this.loopFrequency = 50;
+		this.timerMS = 150;
 
 
 		this.movementSound = this.level.map.plus.properties.ground;
@@ -302,6 +306,7 @@ export default class {
 	}
 
 	attack() {
+
 
 		this.currentAttack = true;
 
@@ -867,9 +872,8 @@ export default class {
 
 		// 	// return;
 		// }
-
-		if (this.game.input.activePointer.leftButton.isDown) {
-
+		if (this.game.input.activePointer.leftButton.isDown && !this.disableAttack) {
+			
 			this.aiming = true;
 
 			if(this.currentAttack) return;
@@ -933,17 +937,22 @@ export default class {
 
 			this.walkSwitch = false;
 
-			if (this.game.input.activePointer.leftButton.isDown || this.game.input.activePointer.leftButton.isDown) {
-				this.player.body.velocity.y = 0;
-				this.player.body.velocity.x = 0;
-				return;
-			}
+			// if (this.game.input.activePointer.leftButton.isDown || this.game.input.activePointer.leftButton.isDown) {
+			// 	this.player.body.velocity.y = 0;
+			// 	this.player.body.velocity.x = 0;
+			// 	return;
+			// }
 
 			// If Up-Button isDown
 			if (this.button_W.isDown) {
 
 				this.direction = 'up';
-				this.player.body.velocity.y = -this.playerSpeed;
+
+				if (this.button_A.isDown || this.button_D.isDown) {
+					this.player.body.velocity.y = -this.playerSpeed / 1.3;
+				} else {
+					this.player.body.velocity.y = -this.playerSpeed;
+				}
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
 					if (this.dash) return;
@@ -959,7 +968,13 @@ export default class {
 			} else if (this.button_S.isDown) {
 
 				this.direction = 'down';
-				this.player.body.velocity.y = this.playerSpeed;
+
+				if (this.button_A.isDown || this.button_D.isDown) {
+					this.player.body.velocity.y = this.playerSpeed / 1.3;
+				} else {
+					this.player.body.velocity.y = this.playerSpeed;
+				}
+				
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
 					if (this.dash) return;
@@ -982,7 +997,7 @@ export default class {
 				this.direction = 'left';
 
 				if (this.button_W.isDown || this.button_S.isDown) {
-					this.player.body.velocity.x = -this.playerSpeed / 1.5;
+					this.player.body.velocity.x = -this.playerSpeed / 1.3;
 					this.player.animations.play('run_left');
 				} else {
 					this.player.body.velocity.x = -this.playerSpeed;
@@ -1001,7 +1016,7 @@ export default class {
 				this.direction = 'right';
 
 				if (this.button_W.isDown || this.button_S.isDown) {
-					this.player.body.velocity.x = this.playerSpeed / 1.5;
+					this.player.body.velocity.x = this.playerSpeed / 1.3;
 					this.player.animations.play('run_right');
 				} else {
 					this.player.body.velocity.x = this.playerSpeed;
@@ -1049,11 +1064,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_up = this.game.time.events.loop(50, () => {
+					var loop_up = this.game.time.events.loop(this.loopFrequency, () => {
 						this.player.body.velocity.y = -this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.timerMS, () => {
 						this.game.time.events.remove(loop_up);
 					});
 
@@ -1071,11 +1086,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_down = this.game.time.events.loop(50, () => {
+					var loop_down = this.game.time.events.loop(this.loopFrequency, () => {
 						this.player.body.velocity.y = this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.timerMS, () => {
 						this.game.time.events.remove(loop_down);
 					});
 
@@ -1088,11 +1103,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_left = this.game.time.events.loop(50, () => {
+					var loop_left = this.game.time.events.loop(this.loopFrequency, () => {
 						this.player.body.velocity.x = -this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.timerMS, () => {
 						this.game.time.events.remove(loop_left);
 					});
 
@@ -1105,11 +1120,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_right = this.game.time.events.loop(50, () => {
+					var loop_right = this.game.time.events.loop(this.loopFrequency, () => {
 						this.player.body.velocity.x = this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.timerMS, () => {
 						this.game.time.events.remove(loop_right);
 					});
 
