@@ -24,8 +24,8 @@ export default class {
 
 		this.running = false;
 
-		this.playerSpeed = 90;
-		this.playerSpeedDefault = 90;
+		this.playerSpeed = 100;
+		this.playerSpeedDefault = 100;
 
 		this.directon = 'down';
 		this.standing = true;
@@ -245,8 +245,8 @@ export default class {
 		this.button_D.onDown.add(this.addMovementSound, this);
 		this.button_D.onUp.add(this.removeMovementSound, this);
 
-		this.button_F = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
-		this.button_F.onDown.add(this.attack, this);
+		// this.button_F = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
+		// this.button_F.onDown.add(this.attack, this);
 
 		this.button_E = this.game.input.keyboard.addKey(Phaser.Keyboard.E);
 		// this.button_E.onDown.add(this.attack, this);
@@ -307,6 +307,7 @@ export default class {
 
 		switch (this.direction) {
 			case 'up':
+				this.player.animations.play('fight_up');
 				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
 				// this.player.body.velocity.y = -40;
 				break;
@@ -865,29 +866,31 @@ export default class {
 			if(this.currentAttack) return;
 			this.currentAttack = true;
 
-			let value = this.game.physics.arcade.angleToPointer(this.player);
+			// let value = this.game.physics.arcade.angleToPointer(this.player);
 
-			if ((value > -2.5 && value < -0.5)) {
-				// this.player.animations.play('static_shoot_up');
-				this.player.animations.play('fight_up', false);
-				this.direction = 'up';
-			} else if (value > 1 && value < 2.5) {
-				this.player.animations.play('static_idle_down');
-				this.direction = 'down';
-			} else if (value > -0.5 && value < 1) {
-				this.player.animations.play('fight_right', false);
-				this.direction = 'right';
-				// this.player.body.velocity.x = 70;
-			} else if (value > 2.5 || value < -2.5) {
-				this.player.animations.play('fight_left', false);
-				this.direction = 'left';
-			}
+			// if ((value > -2.5 && value < -0.5)) {
+			// 	// this.player.animations.play('static_shoot_up');
+			// 	this.player.animations.play('fight_up', false);
+			// 	this.direction = 'up';
+			// } else if (value > 1 && value < 2.5) {
+			// 	this.player.animations.play('static_idle_down');
+			// 	this.direction = 'down';
+			// } else if (value > -0.5 && value < 1) {
+			// 	this.player.animations.play('fight_right', false);
+			// 	this.direction = 'right';
+			// 	// this.player.body.velocity.x = 70;
+			// } else if (value > 2.5 || value < -2.5) {
+			// 	this.player.animations.play('fight_left', false);
+			// 	this.direction = 'left';
+			// }
 
-			this.game.physics.arcade.moveToPointer(this.player, 150);
+			// this.game.physics.arcade.moveToPointer(this.player, 150);
 			// this.game.physics.arcade.accelerateToPointer(this.player, Phaser.Input.activePointer, 500, 500, 500)
 
-			this.player.weapon.fireAtPointer();
+			// this.player.weapon.fireAtPointer();
 			// this.player.playDustAnimation();
+
+			this.attack();
 
 			this.game.time.events.add(300, () => {
 				this.currentAttack = false;
@@ -896,8 +899,8 @@ export default class {
 			if(this.muteAttack) return;
 	
 			
-			this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
-			this.voiceSword.play(this.rndVoiceSword, 0.5);
+			// this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
+			// this.voiceSword.play(this.rndVoiceSword, 0.5);
 
 
 

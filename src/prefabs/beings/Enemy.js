@@ -16,7 +16,7 @@ export default class extends Phaser.Sprite {
 		// console.log(properties);
 		this.killQuestID = properties.killQuestID;
 
-		this.health = 3;
+		this.health = 1;
 		this.dead = false;
 		this.paralyze = false;
 		this.attackSoundSwitch = true;

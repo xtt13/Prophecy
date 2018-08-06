@@ -79,7 +79,7 @@ export default class extends Phaser.Sprite {
 
 		this.animations.add('fight_right', [73, 74, 75, 76], this.frameRate, false);
 		this.animations.add('fight_left', [77, 78, 79, 80], this.frameRate, false);
-		this.animations.add('fight_up', [119, 120, 121, 122, 123, 124, 125, 126], 25, false);
+		this.animations.add('fight_up', [119, 120, 121, 122, 123, 124, 125, 126], 35, false);
 
 		// this.animations.play('idle');
 
@@ -97,7 +97,7 @@ export default class extends Phaser.Sprite {
 		this.body.setSize(10, 6, 21, 47);
 
 		// this.body.bounce.set(2);
-		this.body.drag.set(500);
+		this.body.drag.set(1000);
 
 		// No Glitch on Camera
 		this.game.camera.roundPx = true;
