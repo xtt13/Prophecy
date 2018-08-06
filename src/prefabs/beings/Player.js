@@ -39,7 +39,7 @@ export default class extends Phaser.Sprite {
 
 		// this.movementBlocked = false;
 
-		this.frameRate = 19;
+		this.frameRate = 17;
 
 
 		this.animations.add('dash_left', [71], 1, true);

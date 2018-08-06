@@ -18,7 +18,8 @@ export default class extends Phaser.Sprite {
 		this.health = 3;
 		this.dead = false;
 		this.paralyze = false;
-		this.attackSoundSwitch = true;
+        this.attackSoundSwitch = true;
+        this.speed = 180;
 	
 		this.anchor.setTo(0.5);
 
@@ -87,7 +88,7 @@ export default class extends Phaser.Sprite {
 
 			
 
-			this.game.physics.arcade.moveToObject(this, this.player.body, 200);
+			this.game.physics.arcade.moveToObject(this, this.player.body, this.speed);
 
 
 			// if(this.animations.currentAnim.name == "idle"){
