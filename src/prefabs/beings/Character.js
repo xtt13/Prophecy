@@ -9,6 +9,7 @@ export default class extends Phaser.Sprite {
 		this.game = game;
 		this.id = element.properties.id;
 		this.name = element.properties.character;
+		this.disableMovement = element.properties.disableMovement;
 		this.player = player;
 		this.level = level;
 		this.health = 100;
@@ -172,6 +173,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	runIdleLoop() {
+		if(this.disableMovement !== undefined && this.disableMovement) return;
 		this.idleLoop = this.game.time.events.loop(this.game.rnd.integerInRange(4000, 8000), () => {
 			this.randomDirection();
 		}, this);

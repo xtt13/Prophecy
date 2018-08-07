@@ -95,7 +95,7 @@
          "name":"EnemyMovingTiles",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":46,
          "x":0,
          "y":0
@@ -1732,6 +1732,7 @@
                  "properties":
                     {
                      "character":"girl3",
+                     "disableMovement":true,
                      "id":11,
                      "ifQuestID":37,
                      "nightVersion":false
@@ -1739,6 +1740,7 @@
                  "propertytypes":
                     {
                      "character":"string",
+                     "disableMovement":"bool",
                      "id":"int",
                      "ifQuestID":"int",
                      "nightVersion":"bool"
@@ -1747,8 +1749,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":677.776040941072,
-                 "y":1066.81929571868
+                 "x":632.201870583539,
+                 "y":1041.7855965082
                 }, 
                 {
                  "gid":2549,
@@ -1758,6 +1760,7 @@
                  "properties":
                     {
                      "character":"girl3",
+                     "disableMovement":true,
                      "id":11,
                      "ifQuestID":37,
                      "nightVersion":true
@@ -1765,6 +1768,7 @@
                  "propertytypes":
                     {
                      "character":"string",
+                     "disableMovement":"bool",
                      "id":"int",
                      "ifQuestID":"int",
                      "nightVersion":"bool"
@@ -1773,8 +1777,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":678.41112976733,
-                 "y":1066.99352362677
+                 "x":630.911290239761,
+                 "y":1042.60171413964
                 }],
          "opacity":1,
          "type":"objectgroup",

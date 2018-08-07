@@ -19,7 +19,7 @@ export default class {
 
 		this.rotationSpeed = 3;
 		this.maxAngleDifference = 10;
-		this.scaleRate = 0.5;
+		this.scaleRate = 0.25;
 		this.dead = false;
 		this.run = true;
 		this.firstSetup = true;
@@ -100,7 +100,7 @@ export default class {
 	}
 
 	placeBall() {
-		this.ball.x = 200;
+		this.ball.x = 100;
 		do {
 			this.newAngle = this.game.rnd.angle();
 		} while (this.angleDifferenceFunc(this.newAngle, this.ball.ballAngle) < 40);
