@@ -492,7 +492,7 @@ export default class {
 			this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 			// this.doorOpenSound.play();
 
-			this.level.levelBuilder.templeDoor.animations.play('open', 8, false);
+			this.level.levelBuilder.templeDoor.animations.play('open', 12, false);
 			// this.game.camera.shake(0.0015, 2500, true);
 
 

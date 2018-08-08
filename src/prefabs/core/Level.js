@@ -970,7 +970,7 @@ export default class {
 		this.tilemapProperties = this.map.plus.properties;
 
 		console.log(this.map.plus.properties);
-		if(this.game.rnd.integerInRange(1, 8) == 4 && this.tilemapProperties.dayCycle){
+		if(this.game.rnd.integerInRange(1, 3) == 4 && this.tilemapProperties.dayCycle){
 			console.log('HIIII');
 			this.tilemapProperties.weather = 'Storm';
 			this.tilemapProperties.athmoSound = 'AtmoWindRain';	

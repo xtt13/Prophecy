@@ -141,7 +141,7 @@ export default class {
 			// If Character Count === Line Count --> Next Line
 			if (this.wordIndex === this.line.length) {
 				this.text.text = this.text.text.concat('\n');
-				this.game.time.events.add(this.lineDelay, this.nextLine, this);
+				// this.game.time.events.add(this.lineDelay, this.nextLine, this);
 			}
 		}
 
