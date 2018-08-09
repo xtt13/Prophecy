@@ -64,24 +64,28 @@ export default class {
 		this.fontImage = this.game.add.image(this.background.x + 10, this.game.camera.height - 80, this.text);
 		this.fontImage.fixedToCamera = true;
 
-	
+		this.nextGUI = game.add.sprite(this.background.x + this.background.width - 10, this.game.camera.height - 35, 'nextGUI');
+		this.nextGUI.animations.add('run', [0, 1, 2], 3, true);
+		this.nextGUI.animations.play('run');
+		this.nextGUI.fixedToCamera = true;
+		
 
 		this.level.inputClass.button_E.onDown.add(() => {
-			this.counter++;
-			console.log(this.counter);
-			if(this.counter == 1) return;
+			// this.counter++;
+			// console.log(this.counter);
+			// if(this.counter == 1) return;
 			
 
 			// console.log('faster');
 			this.lineDelay = 0;
-			this.endTime = 500;
+			// this.endTime = 500;
 
 			if (this.lineIndex === this.message.length) {
 				this.game.time.events.add(300, this.removeMessage, this);
 				return;
 			}
 
-			this.wordRepeat = this.game.time.events.repeat(1, this.line.length, this.nextWord, this);
+			this.wordRepeat = this.game.time.events.repeat(100, this.line.length, this.nextWord, this);
 
 			// if (this.wordIndex === this.line.length) {
 				this.nextLine();
@@ -141,6 +145,12 @@ export default class {
 			// If Character Count === Line Count --> Next Line
 			if (this.wordIndex === this.line.length) {
 				this.text.text = this.text.text.concat('\n');
+
+				console.log(this.text);
+
+				// this.nextGUI.x = this.text.crop.x + this.text.crop.width;
+				// this.nextGUI.y = this.text.crop.y + this.text.crop.height;
+
 				// this.game.time.events.add(this.lineDelay, this.nextLine, this);
 			}
 		}
@@ -153,7 +163,7 @@ export default class {
 		// this.game.renderer.renderSession.roundPixels = false;
 
 		this.counter = 0;
-
+		this.nextGUI.destroy();
 		this.fontImage.destroy();
 		this.text.destroy();
 		this.background.destroy();
