@@ -760,6 +760,25 @@
                  "width":192.835765092057,
                  "x":604.834885774469,
                  "y":587.310027031369
+                }, 
+                {
+                 "height":23.3191607427347,
+                 "id":399,
+                 "name":"CustomEmitter",
+                 "properties":
+                    {
+                     "type":"ember"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48.0884044407937,
+                 "x":228.747602730594,
+                 "y":902.79007706296
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2501,7 +2520,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":399,
+ "nextobjectid":400,
  "orientation":"orthogonal",
  "properties":
     {

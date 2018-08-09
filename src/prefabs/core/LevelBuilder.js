@@ -105,7 +105,7 @@ export default class {
     }
 
     map2update(){
-        // this.game.world.bringToTop(this.level.fountainSparkling);
+        this.game.world.bringToTop(this.level.emberEmitter);
     }
 
     map3(){

@@ -507,6 +507,25 @@ export default class {
 				this.VillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
 				this.VillageGlimmer.makeParticles('particle');
 				this.VillageGlimmer.start(false, 10000, 5, 0);
+			} else if(element.properties.type == 'ember'){
+				let x = element.x;
+				let y = element.y;
+
+
+
+				this.emberEmitter = this.game.add.emitter(x, y, 100);
+				this.emberEmitter.width = element.width;
+				this.emberEmitter.height = element.height;
+				// this.fireEmitter.maxParticleScale = 1;
+				this.emberEmitter.gravity = 0.5;
+				this.emberEmitter.setAlpha(0, 1, 300, null, true);
+				// this.fireEmitter.minParticleSpeed.set(100);
+				this.emberEmitter.setXSpeed(-1, 1);
+				this.emberEmitter.setYSpeed(0.8);
+				// this.fireEmitter.maxParticleSpeed.set(100);
+				this.emberEmitter.gravity = -20;
+				this.emberEmitter.makeParticles('emberSpritesheet', [0, 1, 2, 3], 100);
+				this.emberEmitter.start(false, 1000, 0.1, 0);
 			}
 
 

@@ -625,6 +625,7 @@ export default class extends Phaser.State {
 		this.load.image('bulletBeam', 'assets/sprites/particles/bulletBeam.png');
 		this.load.spritesheet('treeleaves', 'assets/sprites/particles/treeleaves.png', 3, 3);
 		this.load.spritesheet('fireSpritesheet', 'assets/sprites/particles/fireSpritesheet.png', 1, 1);
+		this.load.spritesheet('emberSpritesheet', 'assets/sprites/particles/emberSpritesheet.png', 1, 1);
 		this.load.spritesheet('sparklingSpritesheet', 'assets/sprites/particles/sparklingSpritesheet.png', 1, 1);
 		
 		
