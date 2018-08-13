@@ -74,9 +74,9 @@ export default class {
 		// 	this.game.camera.flash(0x000000, 8000, true);
         // }
         
-        this.island = this.game.add.sprite(1100, 227, 'island');
-        this.island.anchor.set(0.5);
-        this.island.scale.setTo(0.8);
+        // this.island = this.game.add.sprite(1100, 227, 'island');
+        // this.island.anchor.set(0.5);
+        // this.island.scale.setTo(0.8);
         // this.islandTween = this.game.add
         // 		.tween(this.island)
         // 		.to({ y: this.island.y + 2.5 }, 2000, Phaser.Easing.Back.Out, true, 0, 0, true)

@@ -920,8 +920,9 @@ export default class {
 			// Background Cloud Layer
 			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 			this.backgroundLayer = this.map.createLayer('Clouds');
-			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 			this.backgroundLayer.resizeWorld();
+			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+			
 
 			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 
