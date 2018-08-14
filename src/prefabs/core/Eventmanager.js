@@ -20,6 +20,7 @@ export default class {
 		this.spotViewerPlayed = false;
 		this.spotViewerPlayedSwitch = false;
 		this.areaSoundOnce = false;
+		this.lockCameraActive = false;
 
 		this.level.map.plus.physics.enableObjectLayer('Collision');
 		this.level.map.plus.events.regions.enableObjectLayer('Events');
@@ -553,19 +554,26 @@ export default class {
 
 		// if(this.level.questManager.checkIfQuestWasDone(1) && !this.level.questManager.checkIfQuestWasDone(2)) return;
 
-		// if (this.level.gameData.currentMap == 'map1' && this.level.gameData.targetID == 1) {
-		// 	this.transitionTime = 1;
-		// } else if (this.level.gameData.currentMap == 'map3' && this.level.gameData.targetID == 2 && region.properties.id == 2) {
-		// 	this.transitionTime = 1;
-		// } else {
-			// this.transitionTime = 750;
+		console.log(this.level.gameData.currentMap);
+		if (this.level.gameData.currentMap == undefined) {
+			this.transitionTime = 1;
+		} else if (this.level.gameData.currentMap == 'map3' && this.level.gameData.targetID == 2 && region.properties.id == 2) {
+			this.transitionTime = 1;
+		} else {
 			this.transitionTime = 2000;
-		// }
+		}
+
+		if(region.properties.fast !== undefined && region.properties.fast){
+			if(!this.lockCameraActive){
+				this.transitionTime = 1;
+				this.lockCameraActive = true;
+			}
+		}
+
+		console.log(region);
 
 
 		this.game.camera.unfollow();
-		// this.game.camera.lerp = 0.1;
-		// this.game.camera.focusOnXY(cameraX, cameraY);
 
 		this.game.add
 			.tween(this.game.camera)
@@ -596,7 +604,7 @@ export default class {
 		this.followTween.onComplete.add(() => {
 			// ORIGINAL
 			// this.game.camera.follow(target, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
-			this.game.camera.follow(target, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
+			this.game.camera.follow(target, Phaser.Camera.FOLLOW_FOLLOW, 1, 1);
 
 		}, this);
 	}
@@ -621,6 +629,7 @@ export default class {
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
 					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.05, 0.05);
+					// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 					break;
 
 				case 'topdown':

@@ -18,7 +18,7 @@ export default {
 
 		renderer: Phaser.WEBGL_MULTI,
 		antialias: true,
-		multiTexture: false,
+		// multiTexture: false,
 		enableDebug: __DEV__ ? true : false
 	},
 

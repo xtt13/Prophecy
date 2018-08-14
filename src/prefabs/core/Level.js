@@ -989,14 +989,10 @@ export default class {
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;
 
-		console.log(this.map.plus.properties);
 		if(this.game.rnd.integerInRange(1, 3) == 4 && this.tilemapProperties.dayCycle){
-			console.log('HIIII');
 			this.tilemapProperties.weather = 'Storm';
 			this.tilemapProperties.athmoSound = 'AtmoWindRain';	
 		} else {
-			console.log('HOOOO');
-			console.log(this.map.plus.properties);
 			this.tilemapProperties.weather = this.map.plus.properties.weather;
 			this.tilemapProperties.athmoSound = this.map.plus.properties.athmoSound;
 		}
@@ -1009,7 +1005,12 @@ export default class {
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
 
-		this.game.camera.flash(0x000000, 1500);
+		if(this.gameData.targetID == undefined){
+			this.game.camera.flash(0x000000, 10000);
+		} else {
+			this.game.camera.flash(0x000000, 1500);
+		}
+		
 
 
 
