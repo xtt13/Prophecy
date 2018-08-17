@@ -178,6 +178,7 @@ export default class {
 				break;
 
 			default:
+				this.player.animations.play('static_idle_down');
 				break;
 		}
 

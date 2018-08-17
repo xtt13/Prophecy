@@ -99,6 +99,7 @@ export default class {
         }
         
         this.game.world.bringToTop(this.level.templeFliesEmitter);
+        this.game.world.bringToTop(this.level.fountainSparkling);
     }
     
     map2() {
