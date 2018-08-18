@@ -6,6 +6,8 @@ export default class {
         this.level = level;
         this.player = this.level.player;
 
+        this.tweenMS = 300;
+
         this.dashRatio = {
             value: 1
         };
@@ -339,45 +341,46 @@ export default class {
     }
 
     fadeOut() {
+
         this.game.add.tween(this.healthBar).to({
             alpha: 0
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.healthBarIcon).to({
             alpha: 0
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.heartsShaddow).to({
             alpha: 0
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.hearts).to({
             alpha: 0
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.dashBarFrame).to({
             alpha: 0
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.dashBar).to({
             alpha: 0
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
     }
 
     fadeIn() {
         this.game.add.tween(this.healthBar).to({
             alpha: 1
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.healthBarIcon).to({
             alpha: 1
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.heartsShaddow).to({
             alpha: 1
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.hearts).to({
             alpha: 1
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.dashBarFrame).to({
             alpha: 1
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.dashBar).to({
             alpha: 1
-        }, 1000, Phaser.Easing.Cubic.Out, true);
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
     }
 
     update() {

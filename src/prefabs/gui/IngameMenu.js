@@ -28,20 +28,25 @@ export default class {
 
 	toggleMenu() {
 		if (!this.show) {
-			this.game.renderer.renderSession.roundPixels = true;
+			// this.game.renderer.renderSession.roundPixels = true;
+			
 			this.showMenu();
 			this.openMenuSound();
 			this.show = true;
+			// this.game.paused = true;
 		} else {
 			this.game.renderer.renderSession.roundPixels = false;
+			
 			this.closeMenu();
 			this.openMenuSound();
 			this.show = false;
+			// this.game.paused = false;
 		}
 	}
 
 	showMenu() {
-		this.level.GUICLASS.healthBar.fadeOut();
+		// this.level.GUICLASS.healthBar.fadeOut();
+
 		// Disable Storm, Disable Playermovement, No Camera Lerp
 		this.level.weather.enableStorm = false;
 		this.level.player.movable = false;
@@ -62,9 +67,10 @@ export default class {
 		);
 		this.blackBG.fixedToCamera = true;
 		this.blackBG.alpha = 0;
-		this.game.add
+		this.alphaTween = this.game.add
 				.tween(this.blackBG)
 				.to({ alpha: 0.6 }, 350, Phaser.Easing.Cubic.Out, true);
+
 
 		// Create BitmapData Background
 		this.bmd = this.game.add.bitmapData(400, 200);
@@ -137,10 +143,40 @@ export default class {
 		this.inventoryButton.fixedToCamera = true;
 		this.inventoryButton.onInputOver.add(this.over, this);
 
+		// Create Controlls Button
+		this.controllsButton = this.game.add.button(
+			this.menuBackground.x + 180,
+			this.menuBackground.y,
+			'controllsButton',
+			this.actionOnClick,
+			this,
+			0,
+			1,
+			2
+		);
+		this.controllsButton.fixedToCamera = true;
+		this.controllsButton.onInputOver.add(this.over, this);
+
+		// Create Controlls Button
+		this.optionsButton = this.game.add.button(
+			this.menuBackground.x + 240,
+			this.menuBackground.y,
+			'optionsButton',
+			this.actionOnClick,
+			this,
+			0,
+			1,
+			2
+		);
+		this.optionsButton.fixedToCamera = true;
+		this.optionsButton.onInputOver.add(this.over, this);
+
 		// Set Buttonframes
 		this.mapButton.setFrames(0, 1, 2);
 		this.questButton.setFrames(2, 2, 2);
 		this.inventoryButton.setFrames(0, 1, 2);
+		this.controllsButton.setFrames(0, 1, 2);
+		this.optionsButton.setFrames(0, 1, 2);
 
 		// Open Maptab by default
 		// this.gameMap.createMap();
@@ -160,7 +196,8 @@ export default class {
 	}
 
 	closeMenu() {
-		this.level.GUICLASS.healthBar.fadeIn();
+		// this.level.GUICLASS.healthBar.fadeIn();
+		
 		if (this.menuBackground) {
 			// Enable Storm, Enable Playermovement, Add Camera Lerp
 			this.level.weather.enableStorm = true;
@@ -169,7 +206,7 @@ export default class {
 			// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.07, 0.07);
 
 			// Destroy menuBackground + all buttons
-			this.game.add
+			this.alphaTween = this.game.add
 			.tween(this.blackBG)
 			.to({ alpha: 0 }, 350, Phaser.Easing.Cubic.Out, true);
 
@@ -177,6 +214,8 @@ export default class {
 			this.mapButton.destroy();
 			this.questButton.destroy();
 			this.inventoryButton.destroy();
+			this.controllsButton.destroy();
+			this.optionsButton.destroy();
 			this.menuBackground = false;
 
 			if (this.gameMap.map) {
