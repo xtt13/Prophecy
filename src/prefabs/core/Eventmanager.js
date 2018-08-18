@@ -628,7 +628,7 @@ export default class {
 
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
-					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.05, 0.05);
+					this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.025, 0.025);
 					// this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 					break;
 
@@ -677,10 +677,10 @@ export default class {
 		this.level.inputClass.playerSpeed -= 20;
 
 		// Set Animation Speed
-		this.level.player.animations._anims.walk_up.speed += 13;
-		this.level.player.animations._anims.walk_down.speed += 13;
-		this.level.player.animations._anims.walk_left.speed += 8;
-		this.level.player.animations._anims.walk_right.speed += 8;
+		this.level.player.animations._anims.run_up.speed += 13;
+		this.level.player.animations._anims.run_down.speed += 13;
+		this.level.player.animations._anims.run_left.speed += 8;
+		this.level.player.animations._anims.run_right.speed += 8;
 
 	}
 
@@ -701,10 +701,10 @@ export default class {
 		this.level.inputClass.playerSpeed = this.level.inputClass.playerSpeedDefault;
 
 		// Set Animation Speed
-		this.level.player.animations._anims.walk_down.speed = 19;
-		this.level.player.animations._anims.walk_up.speed = 19;
-		this.level.player.animations._anims.walk_left.speed = 19;
-		this.level.player.animations._anims.walk_right.speed = 19;
+		this.level.player.animations._anims.run_down.speed = 19;
+		this.level.player.animations._anims.run_up.speed = 19;
+		this.level.player.animations._anims.run_left.speed = 19;
+		this.level.player.animations._anims.run_right.speed = 19;
 
 	}
 
