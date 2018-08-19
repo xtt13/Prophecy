@@ -681,19 +681,21 @@ export default class extends Phaser.Sprite {
 		this.customEmitter.y = this.y;
 
 		if (this.level.inputClass.dash) {
-			// this.multiplySprite.frame = this.frame;
-			// this.multiplySprite.alpha = 0.01;
-			// this.bmd.draw(this.multiplySprite, 50, 50);
-			// this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
-			// // this.game.world.setChildIndex(this.bmd, 1);
 
-			// if (this.baseImages[0] !== undefined) {
-			// 	this.game.time.events.add(100, () => {
-			// 		this.baseImages[0].alpha = 0;
-			// 		this.baseImages[0].destroy(true, false);
-			// 		this.baseImages.shift();
-			// 	});
-			// }
+			this.multiplySprite.frame = this.frame;
+			this.multiplySprite.alpha = 0.01;
+			this.bmd.draw(this.multiplySprite, 50, 50);
+			this.baseImages.push(this.bmd.addToWorld(this.x, this.y, 0.5, 0.5));
+			// this.game.world.setChildIndex(this.bmd, 1);
+
+			if (this.baseImages[0] !== undefined) {
+				this.game.time.events.add(100, () => {
+					this.baseImages[0].alpha = 0;
+					this.baseImages[0].destroy(true, false);
+					this.baseImages.shift();
+				});
+			}
+			
 		} else {
 			this.game.time.events.add(200, () => {
 				this.bmd.clear();
