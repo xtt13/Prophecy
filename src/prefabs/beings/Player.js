@@ -188,7 +188,7 @@ export default class extends Phaser.Sprite {
 
 		this.weaponGun.onFire.add(() => {
 			// console.log('BOOOM');
-			// this.game.camera.shake(0.003, 100);
+			this.game.camera.shake(0.003, 100);
 		}, this);
 
 

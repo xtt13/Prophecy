@@ -2529,7 +2529,7 @@
      "cameraMode":"follow",
      "customSize":false,
      "dayCycle":true,
-     "disableAttack":true,
+     "disableAttack":false,
      "ground":"gravel2",
      "lucy":false,
      "music":"MxAncius",

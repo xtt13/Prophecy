@@ -255,6 +255,8 @@ export default class {
 			// this.mapButton.setFrames(2, 2, 2);
 			// this.questButton.setFrames(0, 1, 2);
 			// this.inventoryButton.setFrames(0, 1, 2);
+			// this.controllsButton.setFrames(0, 1, 2);
+			// this.optionsButton.setFrames(0, 1, 2);
 
 			// if (this.questMap.text) {
 			// 	this.questMap.text.destroy();
@@ -275,6 +277,8 @@ export default class {
 			this.questButton.setFrames(2, 2, 2);
 			this.mapButton.setFrames(0, 1, 2);
 			this.inventoryButton.setFrames(0, 1, 2);
+			this.controllsButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
 
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
@@ -294,6 +298,65 @@ export default class {
 			this.inventoryButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
 			this.mapButton.setFrames(0, 1, 2);
+			this.controllsButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
+
+			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
+			}
+
+			if (this.gameMap.map) {
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
+
+			// this.gameOptions.showOptions();
+
+		} else if (button.key == 'controllsButton') {
+			this.controllsButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.mapButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
+
+			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
+			}
+
+			if (this.gameMap.map) {
+				this.gameMap.map.destroy();
+				this.gameMap.mask.destroy();
+				this.gameMap.playerDot.destroy();
+				this.gameMap.map = false;
+			}
+
+			// this.gameOptions.showOptions();
+		} else if (button.key == 'optionsButton') {
+			this.optionsButton.setFrames(2, 2, 2);
+			this.questButton.setFrames(0, 1, 2);
+			this.mapButton.setFrames(0, 1, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
+			this.controllsButton.setFrames(0, 1, 2);
 
 			if (this.questMap.text) {
 				this.questMap.fontImage.destroy();

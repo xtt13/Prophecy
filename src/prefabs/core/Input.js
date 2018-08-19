@@ -833,48 +833,55 @@ export default class {
 
 	keyboardUpdate() {
 
-		if (this.game.input.activePointer.leftButton.isDown) {
+		if (this.game.input.activePointer.rightButton.isDown) {
 			this.aiming = true;
+			this.player.weaponGun.fireAtPointer();
 		}
 
-		// if (this.aiming) {
-		// 	// this.player.playerArm.visible = true;
+		if (this.aiming) {
+			this.player.playerArm.visible = true;
 
 
-		// 	let value = this.game.physics.arcade.angleToPointer(this.player);
+			let value = this.game.physics.arcade.angleToPointer(this.player);
 
-		// 	if ((value > -2.5 && value < -0.5)) {
-		// 		this.player.animations.play('static_shoot_up');
-		// 		this.direction = 'up';
-		// 		this.player.playerArm.x = this.player.x + 2;
-		// 		this.player.playerArm.y = this.player.y + 6;
-		// 	} else if (value > 1 && value < 2.5) {
-		// 		this.player.animations.play('static_shoot_down');
-		// 		this.direction = 'down';
-		// 		this.player.playerArm.x = this.player.x - 7;
-		// 		this.player.playerArm.y = this.player.y + 6;
-		// 	} else if (value > -0.5 && value < 1) {
-		// 		this.player.animations.play('static_shoot_right');
-		// 		this.direction = 'right';
-		// 		this.player.playerArm.x = this.player.x - 3;
-		// 		this.player.playerArm.y = this.player.y + 6;
-		// 	} else if (value > 2.5 || value < -2.5) {
-		// 		this.player.animations.play('static_shoot_left');
-		// 		this.direction = 'left';
-		// 		this.player.playerArm.x = this.player.x - 5;
-		// 		this.player.playerArm.y = this.player.y + 4;
-		// 	}
+			if ((value > -2.5 && value < -0.5)) {
+				this.player.animations.play('static_shoot_up');
+				this.direction = 'up';
+				this.player.playerArm.x = this.player.x + 2;
+				this.player.playerArm.y = this.player.y + 6;
+			} else if (value > 1 && value < 2.5) {
+				this.player.animations.play('static_shoot_down');
+				this.direction = 'down';
+				this.player.playerArm.x = this.player.x - 7;
+				this.player.playerArm.y = this.player.y + 6;
+			} else if (value > -0.5 && value < 1) {
+				this.player.animations.play('static_shoot_right');
+				this.direction = 'right';
+				this.player.playerArm.x = this.player.x - 3;
+				this.player.playerArm.y = this.player.y + 6;
+			} else if (value > 2.5 || value < -2.5) {
+				this.player.animations.play('static_shoot_left');
+				this.direction = 'left';
+				this.player.playerArm.x = this.player.x - 5;
+				this.player.playerArm.y = this.player.y + 4;
+			}
 
 
 
-		// 	this.player.body.velocity.y = 0;
-		// 	this.player.body.velocity.x = 0;
+			this.player.body.velocity.y = 0;
+			this.player.body.velocity.x = 0;
 
-		// 	// return;
-		// }
+			if (this.game.input.activePointer.rightButton.isDown) {
+				this.player.weaponGun.fireAtPointer();
+			}
+
+			// return;
+		}
+		
 		if (this.game.input.activePointer.leftButton.isDown && !this.disableAttack) {
 			
-			this.aiming = true;
+			this.aiming = false;
+			this.player.playerArm.visible = false;
 
 			if(this.currentAttack) return;
 			this.currentAttack = true;

@@ -20,12 +20,14 @@ export default class {
         if (!this.level.questManager.checkIfQuestWasDone(1)){
             this.branch = this.game.add.sprite(1123, 460, 'branch');
             this.branch.anchor.set(0.5);
-            this.bringBranchToTop = true;            
+            this.bringBranchToTop = true;     
+            this.branch.alpha = 0;       
         } else {
             
             this.branch = this.game.add.sprite(1120, 608, 'branch');
             this.branch.anchor.set(0.5);
             this.bringBranchToTop = false;
+            this.branch.alpha = 0;
         }
 
         if (this.level.questManager.checkIfQuestExists(2)){

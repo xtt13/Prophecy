@@ -735,6 +735,8 @@ export default class {
 	branch(region) {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
 
+		this.level.levelBuilder.branch.alpha = 1;
+
 		this.gameOverSound = this.game.add.audio('sfxGameOver');
 		this.gameOverSound.play();
 		
