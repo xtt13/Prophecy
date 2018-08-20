@@ -99,6 +99,8 @@ export default class {
 				this.openBossDoor(region);
 			} else if (region.properties.spotViewer) {
 				this.spotViewer(region);
+			} else if (region.properties.alternateLockCamera){
+				this.alternateLockCamera(region);
 			}
 		});
 
@@ -115,6 +117,8 @@ export default class {
 				this.closeBossDoor(region);
 			} else if (region.properties.spotViewer) {
 				this.followPlayer(region);
+			} else if (region.properties.alternateLockCamera){
+				this.alternateFollowPlayer(region);
 			}
 		});
 	}
@@ -975,6 +979,15 @@ export default class {
 
 			}, this);
 
+	}
+
+	alternateLockCamera(region){
+		console.log('YOOOO');
+		this.game.camera.unfollow();
+	}
+
+	alternateFollowPlayer(region){
+		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.025, 0.025);
 	}
 
 }

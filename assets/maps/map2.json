@@ -2018,6 +2018,44 @@
                  "width":92.812,
                  "x":913.556834698877,
                  "y":681.735903213954
+                }, 
+                {
+                 "height":100.219456945599,
+                 "id":451,
+                 "name":"Alternate Lock Camera",
+                 "properties":
+                    {
+                     "alternateLockCamera":true
+                    },
+                 "propertytypes":
+                    {
+                     "alternateLockCamera":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":290.169456945599,
+                 "x":1182.98533481429,
+                 "y":620.797386530716
+                }, 
+                {
+                 "height":100.219,
+                 "id":452,
+                 "name":"Alternate Lock Camera",
+                 "properties":
+                    {
+                     "alternateLockCamera":true
+                    },
+                 "propertytypes":
+                    {
+                     "alternateLockCamera":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":290.169,
+                 "x":-4.70655939066711,
+                 "y":914.024707481682
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2639,8 +2677,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":846.080290966861,
-                 "y":251.319152606182
+                 "x":721.127148395325,
+                 "y":328.165335287676
                 }, 
                 {
                  "gid":2548,
@@ -2717,8 +2755,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":718.385467374817,
-                 "y":323.092781034753
+                 "x":722.325089706441,
+                 "y":596.008160886904
                 }, 
                 {
                  "gid":2545,
@@ -2977,7 +3015,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":449,
+ "nextobjectid":453,
  "orientation":"orthogonal",
  "properties":
     {
