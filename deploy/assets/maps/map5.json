@@ -1294,6 +1294,30 @@
                  "width":32,
                  "x":718.762848152896,
                  "y":217.151847104067
+                }, 
+                {
+                 "gid":2552,
+                 "height":32,
+                 "id":243,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"oracle",
+                     "id":14,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":719.108555931196,
+                 "y":217.309804212951
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1322,7 +1346,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":243,
+ "nextobjectid":244,
  "orientation":"orthogonal",
  "properties":
     {
