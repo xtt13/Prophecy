@@ -98,6 +98,7 @@ export default class extends Phaser.Sprite {
 
 		// this.body.bounce.set(2);
 		this.body.drag.set(1000);
+		this.body.collideWorldBounds = true;
 
 		// No Glitch on Camera
 		this.game.camera.roundPx = true;
@@ -695,7 +696,7 @@ export default class extends Phaser.Sprite {
 					this.baseImages.shift();
 				});
 			}
-			
+
 		} else {
 			this.game.time.events.add(200, () => {
 				this.bmd.clear();
