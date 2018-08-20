@@ -511,7 +511,11 @@ export default class {
 			} else if(element.properties.type == 'ember'){
 				let x = element.x;
 				let y = element.y;
-
+				console.log(x, y);
+				console.log(this.map);
+				console.log(this.groundLayer);
+				let test = this.map.getTile(746, 747, this.groundLayer);
+				console.log(test);
 
 
 				this.emberEmitter = this.game.add.emitter(x, y, 100);

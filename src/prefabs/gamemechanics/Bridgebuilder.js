@@ -49,15 +49,15 @@ export default class {
 
 				// if(currentTileIndex !== 36){
 					if (bridgeCounter + 1 == bridgeLength) {
-						this.map.putTile(1756, this.bridgeX, this.bridgeY, this.groundLayer);
-						this.map.putTile(1752, this.bridgeX - 1, this.bridgeY, this.groundLayer);
-						this.map.putTile(1756, this.bridgeX, this.bridgeY + 1, this.groundLayer);
-						this.map.putTile(1752, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+						this.map.putTile(2656, this.bridgeX, this.bridgeY, this.groundLayer);
+						this.map.putTile(2652, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+						this.map.putTile(2656, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+						this.map.putTile(2652, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
 					} else {
-						this.map.putTile(1677, this.bridgeX, this.bridgeY, this.groundLayer);
-						this.map.putTile(1675, this.bridgeX - 1, this.bridgeY, this.groundLayer);
-						this.map.putTile(1756, this.bridgeX, this.bridgeY + 1, this.groundLayer);
-						this.map.putTile(1752, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
+						this.map.putTile(2557, this.bridgeX, this.bridgeY, this.groundLayer);
+						this.map.putTile(2555, this.bridgeX - 1, this.bridgeY, this.groundLayer);
+						this.map.putTile(2656, this.bridgeX, this.bridgeY + 1, this.groundLayer);
+						this.map.putTile(2652, this.bridgeX - 1, this.bridgeY + 1, this.groundLayer);
 					}
 					
 					// console.log(this.bridgeX, this.bridgeY, this.map);
