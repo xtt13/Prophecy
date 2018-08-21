@@ -344,6 +344,14 @@ export default class {
     map15update(){
         
     }
+
+    map16(){
+        
+    }
+
+    map16update(){
+        
+    }
     
     update(){
         this[this.level.currentMap + 'update']();

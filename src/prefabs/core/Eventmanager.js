@@ -982,8 +982,11 @@ export default class {
 	}
 
 	alternateLockCamera(region){
-		console.log('YOOOO');
-		this.game.camera.unfollow();
+		this.game.time.events.add(
+			region.properties.timer, () => {
+				this.game.camera.unfollow();
+			});
+		
 	}
 
 	alternateFollowPlayer(region){

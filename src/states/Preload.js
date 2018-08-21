@@ -566,6 +566,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map13', 'assets/maps/map13.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map14', 'assets/maps/map14.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map15', 'assets/maps/map15.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('map16', 'assets/maps/map16.json', null, Phaser.Tilemap.TILED_JSON);
 
 
 		// Load Music
