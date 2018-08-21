@@ -502,9 +502,9 @@ export default class {
 
 
 
-			// this.level.levelBuilder.templeDoor.animations._anims.open.onComplete.add(() => {
-			// 	this.templeDoorOpen = true;
-			// }, this);
+			this.level.levelBuilder.templeDoor.animations._anims.open.onComplete.add(() => {
+				this.templeDoorOpen = true;
+			}, this);
 
 		}
 

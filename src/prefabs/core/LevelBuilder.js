@@ -122,11 +122,20 @@ export default class {
     map4(){
         this.templeDoor = this.game.add.sprite(253, -12, 'templeDoor');
         this.templeDoor.animations.add('open', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39], 18, true);
-        this.templeDoor.animations.add('idle', [17], 1, true);
+        this.templeDoor.animations.add('idle', [39], 1, true);
+        this.game.physics.enable(this.templeDoor);
+        this.templeDoor.body.immovable = true;
     }
 
     map4update(){
-        this.game.world.setChildIndex(this.templeDoor, 1);
+        // this.game.world.setChildIndex(this.templeDoor, 10);
+
+        if(this.level.eventManager.templeDoorOpen){
+            this.game.world.setChildIndex(this.templeDoor, 1);
+        } else {
+            this.game.physics.arcade.collide(this.level.player, this.templeDoor);
+            this.game.world.setChildIndex(this.templeDoor, 10);
+        }
     }
 
     map5(){
