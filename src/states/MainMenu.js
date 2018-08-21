@@ -41,6 +41,9 @@ export default class extends Phaser.State {
 		this.subText = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
 		// this.subText.text = 'Click To Move On';
 		this.subText.setText('Click!', true, -1, 5, 'left', true)
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			this.subText.text = 'Mobile Version coming soon!';
+		}
 		this.fontImage = this.game.add.image(this.game.camera.width / 2 - 15, this.game.camera.height / 2 + 107, this.subText);
 
 		// this.variation2();
@@ -83,6 +86,7 @@ export default class extends Phaser.State {
 		}
 
 		this.input.onDown.add(function() {
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) return;
 			if (this.playOnce) return;
 			this.playOnce = true;
 

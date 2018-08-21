@@ -498,7 +498,7 @@ export default class {
 			// this.doorOpenSound.play();
 
 			this.level.levelBuilder.templeDoor.animations.play('open', 12, false);
-			// this.game.camera.shake(0.0015, 2500, true);
+			this.game.camera.shake(0.0010, 3700, true);
 
 
 

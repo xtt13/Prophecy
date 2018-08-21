@@ -141,6 +141,7 @@ export default class extends Phaser.State {
 			// for (var i = 0; i < this.level.characters.length; i++) {
 			// 	this.game.debug.body(this.level.characters[i]);
 			// }
+
 			// this.game.debug.body(this.level.chests[0]);
 
 			// DEBUG ITEMS

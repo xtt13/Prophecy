@@ -79,7 +79,14 @@ export default class extends Phaser.Sprite {
 				this.animations.add('right', [2], 1, false);
 				break;
 			case 'woman1':
-				this.body.setSize(30, 30, -8, 20);
+				if(this.level.gameData.currentMap == "map3"){
+					this.body.setSize(80, 30, -30, 20);
+					this.talkSymbol.x = this.body.x + 40;
+					this.talkSymbol.y = this.body.y - 1;
+				} else {
+					this.body.setSize(30, 30, -8, 20);
+				}
+				
 				this.animations.add('down', [0], 1, false);
 				this.animations.add('up', [1], 1, false);
 				this.animations.add('left', [3], 1, false);
@@ -146,9 +153,9 @@ export default class extends Phaser.Sprite {
 
 				this.radius = 150;
 
-				this.body.setSize(20, 10, 80, 60);
+				this.body.setSize(40, -20, 100, 60);
 
-				this.talkSymbol.x = this.body.x + 1;
+				this.talkSymbol.x = this.body.x + 10;
 				this.talkSymbol.y = this.body.y - 1;
 
 				// this.floatTween = this.game.add
@@ -592,8 +599,15 @@ export default class extends Phaser.Sprite {
 			if (this.level.GUICLASS.ingameMenu.show) return;
 			this.game.world.bringToTop(this.talkSymbol);
 			// this.game.world.setChildIndex(this.talkSymbol, 30);
-			this.talkSymbol.x = this.body.x + 15;
-			this.talkSymbol.y = this.body.y - 30;
+
+			if(this.name == 'oracle'){
+				this.talkSymbol.x = this.x + 6;
+				this.talkSymbol.y = this.y - 60;
+			} else {
+				this.talkSymbol.x = this.x + 3;
+				this.talkSymbol.y = this.y - 30;
+			}
+
 			this.talkSymbol.alpha = 1;
 			// On E-click
 			if (this.level.inputClass.button_E.isDown) {
