@@ -187,8 +187,12 @@ export default class extends Phaser.Sprite {
 
 		}
 
+		this.sfxShot = this.game.add.audio('sfxShot', 0.05);
+		this.sfxShot.allowMultiple = false;
+
 		this.weaponGun.onFire.add(() => {
 			// console.log('BOOOM');
+			this.sfxShot.play();
 			this.game.camera.shake(0.003, 100);
 		}, this);
 

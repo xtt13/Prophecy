@@ -739,13 +739,15 @@ export default class {
 	branch(region) {
 		if (this.level.questManager.checkIfQuestWasDone(1)) return;
 
+		this.game.musicPlayer.fadeOut();
+		this.level.GUICLASS.healthBar.fadeOut();
 		this.level.levelBuilder.branch.alpha = 1;
 
 		this.gameOverSound = this.game.add.audio('sfxGameOver');
 		this.gameOverSound.play();
 		
 		this.game.canvas.classList.add('greyscale');
-		this.followPlayer(null, 4000);
+		// this.followPlayer(null, 4000);
 
 		this.level.questManager.addQuest(1);
 		this.level.questManager.removeQuest(1);
@@ -770,6 +772,7 @@ export default class {
 		this.game.time.events.add(
 			250,
 			() => {
+				this.game.camera.shake(0.015, 500, true);
 				this.game.camera.flash(0xc10000, 400, true);
 			}, this);
 

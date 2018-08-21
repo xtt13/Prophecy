@@ -44,9 +44,6 @@ export default class {
 		this.pyfootsteps = this.game.add.audioSprite('PxFootsteps');
 		this.pyfootsteps.allowMultiple = false;
 
-		this.sfxShot = this.game.add.audio('sfxShot', 0.05);
-		this.sfxShot.allowMultiple = false;
-
 		this.voiceSword = this.game.add.audioSprite('sfxswordmulti');
 
 		// this.game.input.gamepad.start();
