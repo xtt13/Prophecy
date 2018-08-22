@@ -28,6 +28,11 @@ export default class {
 		this.playerSpeed = 100;
 		this.playerSpeedDefault = 100;
 
+		this.playerControllerSpeed = 100;
+		this.playerControllerSpeedDefault = 100;
+		this.gamePadLoopIdleTime = 10;
+		this.gamePadLoopIdleWaitTime = 200;
+
 		this.directon = 'down';
 		this.standing = true;
 		this.currentAttack = false;
@@ -511,6 +516,7 @@ export default class {
 		this.dash = true;
 		// this.player.addParticles();
 		this.playerSpeed = 250;
+		this.playerControllerSpeed = 250;
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
 
@@ -529,7 +535,6 @@ export default class {
 				break;
 			case 'down':
 				this.player.animations.play('dash_down');
-				console.log('dash down');
 				break;
 			case 'left':
 				this.player.animations.play('dash_left');
@@ -549,6 +554,7 @@ export default class {
 		this.game.time.events.add(400, () => {
 			this.player.alpha = 1;
 			this.playerSpeed = this.playerSpeedDefault;
+			this.playerControllerSpeed = this.playerControllerSpeedDefault;
 			this.dash = false;
 			// this.player.removeParticles();
 
@@ -581,7 +587,7 @@ export default class {
 
 	gamepadUpdate() {
 
-		console.log(this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X), this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y));
+		// console.log(this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X), this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y));
 
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X) < -0.1) {
 			this.gamePadHelper.x = this.player.x - 20;
@@ -605,19 +611,19 @@ export default class {
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
 			if(this.currentAttack) return;
 			if (this.direction == 'left' || this.direction == 'right') {
-				this.player.body.velocity.y = -this.playerSpeed;
+				this.player.body.velocity.y = -this.playerControllerSpeed;
 			} else {
-				this.player.animations.play('walk_up');
-				this.player.body.velocity.y = -this.playerSpeed;
+				this.player.animations.play('run_up');
+				this.player.body.velocity.y = -this.playerControllerSpeed;
 			}
 			this.direction = 'up';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
 			if(this.currentAttack) return;
 			if (this.direction == 'left' || this.direction == 'right') {
-				this.player.body.velocity.y = this.playerSpeed;
+				this.player.body.velocity.y = this.playerControllerSpeed;
 			} else {
-				this.player.animations.play('walk_down');
-				this.player.body.velocity.y = this.playerSpeed;
+				this.player.animations.play('run_down');
+				this.player.body.velocity.y = this.playerControllerSpeed;
 			}
 			this.direction = 'down';
 		} else {
@@ -628,21 +634,21 @@ export default class {
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 			if(this.currentAttack) return;
 			if (this.direction == 'up' || this.direction == 'down') {
-				this.player.body.velocity.x = -this.playerSpeed;
+				this.player.body.velocity.x = -this.playerControllerSpeed;
 			} else {
-				this.player.body.velocity.x = -this.playerSpeed;
+				this.player.body.velocity.x = -this.playerControllerSpeed;
 				if (this.dash) return;
-				this.player.animations.play('walk_left');
+				this.player.animations.play('run_left');
 			}
 			this.direction = 'left';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
 			if(this.currentAttack) return;
 			if (this.direction == 'up' || this.direction == 'down') {
-				this.player.body.velocity.x = this.playerSpeed;
+				this.player.body.velocity.x = this.playerControllerSpeed;
 			} else {
-				this.player.body.velocity.x = this.playerSpeed;
+				this.player.body.velocity.x = this.playerControllerSpeed;
 				if (this.dash) return;
-				this.player.animations.play('walk_right');
+				this.player.animations.play('run_right');
 			}
 			this.direction = 'right';
 		} else {
@@ -669,11 +675,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_up = this.game.time.events.loop(50, () => {
+					var loop_up = this.game.time.events.loop(this.gamePadLoopIdleTime, () => {
 						this.player.body.velocity.y = -this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.gamePadLoopIdleWaitTime, () => {
 						this.game.time.events.remove(loop_up);
 						this.player.body.velocity.y = 0;
 						this.player.body.velocity.x = 0;
@@ -695,11 +701,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_down = this.game.time.events.loop(50, () => {
+					var loop_down = this.game.time.events.loop(this.gamePadLoopIdleTime, () => {
 						this.player.body.velocity.y = this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.gamePadLoopIdleWaitTime, () => {
 						this.game.time.events.remove(loop_down);
 						this.player.body.velocity.y = 0;
 						this.player.body.velocity.x = 0;
@@ -716,11 +722,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_left = this.game.time.events.loop(50, () => {
+					var loop_left = this.game.time.events.loop(this.gamePadLoopIdleTime, () => {
 						this.player.body.velocity.x = -this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.gamePadLoopIdleWaitTime, () => {
 						this.game.time.events.remove(loop_left);
 						this.player.body.velocity.y = 0;
 						this.player.body.velocity.x = 0;
@@ -737,11 +743,11 @@ export default class {
 
 					if (this.collision) return;
 
-					var loop_right = this.game.time.events.loop(50, () => {
+					var loop_right = this.game.time.events.loop(this.gamePadLoopIdleTime, () => {
 						this.player.body.velocity.x = this.playerSpeed;
 					}, this);
 
-					this.game.time.events.add(200, () => {
+					this.game.time.events.add(this.gamePadLoopIdleWaitTime, () => {
 						this.game.time.events.remove(loop_right);
 						this.player.body.velocity.y = 0;
 						this.player.body.velocity.x = 0;

@@ -10,7 +10,7 @@ export default class {
 		this.level = level;
 
 		this.show = false;
-		this.currentTab = 1;
+		this.currentTab = 2;
 
 		this.gameMap = new Gamemap(this.game, this.level, this);
 		this.questMap = new Questmap(this.game, this.level, this);
@@ -40,6 +40,7 @@ export default class {
 			this.closeMenu();
 			this.openMenuSound();
 			this.show = false;
+			this.currentTab = 2;
 			// this.game.paused = false;
 		}
 	}
@@ -393,6 +394,8 @@ export default class {
 		if (this.currentTab > 5) {
 			this.currentTab = 1;
 		}
+
+		console.log(this.currentTab);
 
 		if (this.currentTab == 1) {
 			if (this.gameMap.map) return;

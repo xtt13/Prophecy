@@ -696,7 +696,7 @@ export default class {
 		this.game.time.events.remove(this.level.inputClass.movementloop);
 		this.level.inputClass.movementloop = null;
 		this.level.inputClass.movementloopSpeed = this.level.inputClass.movementloopSpeedDefault;
-		this.level.inputClass.addMovementSound();
+		// this.level.inputClass.addMovementSound();
 
 		// Set new Sound-Type
 		this.level.inputClass.movementSound = this.level.map.plus.properties.ground;
