@@ -10,8 +10,14 @@ export default class {
 	}
 
 	createNotification() {
+
+		this.archivementSound = this.game.add.audio('achivement', 2);
+
 		if (this.type == 'success') {
-			this.archivementSound = this.game.add.audio('achivement', 2);
+			this.archivementSound.play();
+		}
+
+		if (this.type == 'quest') {
 			this.archivementSound.play();
 		}
 

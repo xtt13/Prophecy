@@ -45,6 +45,7 @@ export default class extends Phaser.State {
 			this.subText.text = 'Mobile Version coming soon!';
 		}
 		this.fontImage = this.game.add.image(this.game.camera.width / 2 - 15, this.game.camera.height / 2 + 107, this.subText);
+		this.fontImage.anchor.set(0.5);
 
 		// this.variation2();
 
