@@ -8,6 +8,8 @@ export default class extends Phaser.Sprite {
         this.level = level;
         this.chest = chest;
 
+        this.id = 3;
+        
         this.used = false;
 
         this.anchor.setTo(0.5);
@@ -67,9 +69,9 @@ export default class extends Phaser.Sprite {
         // this.game.physics.arcade.collide(this, this.level.player);
 
         this.game.world.bringToTop(this);
-        this.game.world.bringToTop(this.itemEmitter);
+        // this.game.world.bringToTop(this.itemEmitter);
 
-        if (this.game.physics.arcade.distanceBetween(this, this.level.player) < 30) {
+        if (this.game.physics.arcade.distanceBetween(this, this.level.player) < 50) {
             if (this.action) {
                 this.actionSymbol.alpha = 0;
                 return;

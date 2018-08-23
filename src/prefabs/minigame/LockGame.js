@@ -59,7 +59,7 @@ export default class {
 		this.bar.rotationDirection = 0;
 		this.bar.scale.set(this.scaleRate);
 
-		this.firstTry = this.game.add.sprite(this.x - 40, this.y, 'LockGameBall');
+		this.firstTry = this.game.add.sprite(this.x - 18, this.y, 'LockGameBall');
 		this.firstTry.anchor.set(0.5);
 		this.firstTry.ballAngle = -90;
 		this.firstTry.scale.set(this.scaleRate);
@@ -69,7 +69,7 @@ export default class {
 		this.secondTry.ballAngle = -90;
 		this.secondTry.scale.set(this.scaleRate);
 
-		this.thirdTry = this.game.add.sprite(this.x + 40, this.y, 'LockGameBall');
+		this.thirdTry = this.game.add.sprite(this.x + 18, this.y, 'LockGameBall');
 		this.thirdTry.anchor.set(0.5);
 		this.thirdTry.ballAngle = -90;
 		this.thirdTry.scale.set(this.scaleRate);
@@ -161,7 +161,10 @@ export default class {
 					this.chestSound = this.game.add.audioSprite('sfxChest');
 					this.chestSound.play('open', 1);
 
-					this.energyStone = new EnergyStone(this.game, this.chest.x + 18, this.chest.y - 15, this.level, this.chest);
+					this.game.time.events.add(500, () => {
+						this.energyStone = new EnergyStone(this.game, this.chest.x + 18, this.chest.y - 15, this.level, this.chest);
+					}, this);
+					
 					
 
 					if(this.successQuestID !== undefined){

@@ -11,6 +11,7 @@ export default class extends Phaser.Sprite {
 
 		this.action = false;
 		this.openSwitch = false;
+		this.disableActionSymbol = false;
 
 		this.properties = properties;
 
@@ -83,7 +84,7 @@ export default class extends Phaser.Sprite {
         this.game.physics.arcade.collide(this, this.level.player);
 		
 
-		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){
+		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40 && !this.disableActionSymbol){
 			if(this.action){
 				this.actionSymbol.alpha = 0;
 				return;
