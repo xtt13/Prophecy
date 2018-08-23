@@ -290,7 +290,7 @@ export default class {
 
 		if (this.level.pathfinder == undefined) {
 
-			this.pathfinderCharacter.animations.play('down');
+			this.pathfinderCharacter.animations.play('walk_down', 25);
 
 			this.level.pathfinder = new Pathfinder(
 				this.game,
@@ -360,7 +360,7 @@ export default class {
 									this.endDestinationX = region.properties.endDestinationX;
 									this.endDestinationY = region.properties.endDestinationY;
 
-									this.pathfinderCharacter.animations.play('up');
+									this.pathfinderCharacter.animations.play('walk_up');
 
 									this.level.pathfinder = new Pathfinder(
 										this.game,

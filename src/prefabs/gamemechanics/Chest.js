@@ -17,7 +17,7 @@ export default class extends Phaser.Sprite {
         // this.anchor.setTo(0.5);
 		// this.scale.setTo(1.25);
 		
-		this.actionSymbol = this.game.add.sprite(this.x + 15, this.y - 10, 'actionSymbol');
+		this.actionSymbol = this.game.add.sprite(this.x + 22, this.y - 8, 'actionSymbol');
 		this.actionSymbol.smoothed = false;
 		this.actionSymbol.alpha = 0;
 		// this.actionSymbol.animations.add('play');
@@ -29,7 +29,7 @@ export default class extends Phaser.Sprite {
 
 		this.game.physics.enable(this);
 		this.body.immovable = true;
-		this.body.setSize(14, 11, 1, 11);
+		this.body.setSize(14, 20, 8, 15);
 
 		this.chestSound = this.game.add.audioSprite('sfxChest');
 
@@ -83,7 +83,7 @@ export default class extends Phaser.Sprite {
         this.game.physics.arcade.collide(this, this.level.player);
 		
 
-		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 30){
+		if(this.game.physics.arcade.distanceBetween(this, this.level.player) < 40){
 			if(this.action){
 				this.actionSymbol.alpha = 0;
 				return;

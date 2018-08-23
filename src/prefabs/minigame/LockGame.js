@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import EnergyStone from '../gamemechanics/EnergyStone';
 
 export default class {
 	constructor(game, x, y, player, chest, level, properties) {
@@ -90,7 +91,7 @@ export default class {
 			this.game.add.tween(this.secondTry).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 			this.game.add.tween(this.thirdTry).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 
-			this.game.add.tween(this.player).to({ alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+			// this.game.add.tween(this.player).to({ alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
 
 			this.player.body.immovable = true;
 			this.firstSetup = false;
@@ -151,7 +152,7 @@ export default class {
 					this.game.add.tween(this.secondTry).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 					this.game.add.tween(this.thirdTry).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 
-					this.game.add.tween(this.player).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+					// this.game.add.tween(this.player).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 
 					this.player.body.immovable = false;
 					this.player.movable = true;
@@ -159,6 +160,8 @@ export default class {
 					this.lockPickSound.stop('roll');
 					this.chestSound = this.game.add.audioSprite('sfxChest');
 					this.chestSound.play('open', 1);
+
+					this.energyStone = new EnergyStone(this.game, this.chest.x + 18, this.chest.y - 15, this.level, this.chest);
 					
 
 					if(this.successQuestID !== undefined){
