@@ -24,8 +24,8 @@ export default class extends Phaser.Sprite {
 		// this.actionSymbol.animations.play('play', 2, true);
 
 
-        this.animations.add('open', [0, 1, 2, 3, 4, 5], 15, false);
-        this.animations.add('close', [5, 4, 3, 2, 1, 0], 15, false);
+        this.animations.add('open', [0, 1, 2, 3, 4], 15, false);
+        this.animations.add('close', [4, 3, 2, 1, 0], 15, false);
 
 		this.game.physics.enable(this);
 		this.body.immovable = true;
