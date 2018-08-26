@@ -66,7 +66,7 @@ export default class {
 					.to({ volume: this.fadeVolumeTo }, this.fadeDuration, Phaser.Easing.Linear.None, true);
 			}, this);
 		}
-		console.log(this.music);
+		// console.log(this.music);
 	}
 
 	fadeOutFadeIn(key){
@@ -113,11 +113,13 @@ export default class {
 		this.game.load.start();
 		// this.game.load.onLoadStart.add(function() {}, this);
 		this.game.load.onLoadComplete.add(() => {
+			console.log('Loading Complete');
 			this.music = this.game.add.audio(key, this.globalVolume, true);
+			this.music.stop();
 			this.music.allowMultiple = false;
 			this.music.onDecoded.add(() => {
 				// this.music.fadeIn(this.fadeDuration, true);
-
+				
 				this.music.play();
 				this.music.volume = 0;
 				console.log('Loaded play');

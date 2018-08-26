@@ -94,6 +94,9 @@ export default class extends Phaser.State {
 			if(this.sfxheartbeat !== undefined){
 				this.sfxheartbeat.fadeOut();
 			}
+
+			this.game.soundManager.fadeOut();
+			
 			this.game.camera.fade(0x000000, 4000, true);
 			this.startSound = this.game.add.audio('startGame', 0.3);
 			this.startSound.play();

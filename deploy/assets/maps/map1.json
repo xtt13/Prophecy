@@ -1066,7 +1066,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1111,7 +1111,7 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":843.444365628979,
+                 "x":844.444365628979,
                  "y":354.849204756503
                 }, 
                 {
