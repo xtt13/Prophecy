@@ -40,8 +40,8 @@ export default class {
 		this.ring = this.game.add.sprite(this.x, this.y, 'LockGameRing');
 		this.ring.anchor.set(0.5);
 		this.ring.smoothed = false;
-		this.ring.alpha = 0.5;
-		this.ring.scale.set(this.scaleRate);
+		// this.ring.alpha = 0.5;
+		// this.ring.scale.set(this.scaleRate);
 
 		this.ball = this.game.add.sprite(this.x, this.y, 'LockGameBall');
 		this.ball.anchor.set(0.5);
@@ -51,7 +51,7 @@ export default class {
 
 		this.placeBall();
 
-		this.bar = this.game.add.sprite(this.x, this.y, 'LockGameBar');
+		this.bar = this.game.add.sprite(this.x - 12, this.y + 23, 'LockGameBar');
 		this.bar.anchor.set(0, 0.5);
 		this.bar.angle = -90;
 		this.bar.crossingBall = false;
@@ -59,17 +59,17 @@ export default class {
 		this.bar.rotationDirection = 0;
 		this.bar.scale.set(this.scaleRate);
 
-		this.firstTry = this.game.add.sprite(this.x - 18, this.y, 'LockGameBall');
+		this.firstTry = this.game.add.sprite(this.x - 30, this.y + 25, 'LockGameBall');
 		this.firstTry.anchor.set(0.5);
 		this.firstTry.ballAngle = -90;
 		this.firstTry.scale.set(this.scaleRate);
 
-		this.secondTry = this.game.add.sprite(this.x, this.y, 'LockGameBall');
+		this.secondTry = this.game.add.sprite(this.x - 12, this.y + 25, 'LockGameBall');
 		this.secondTry.anchor.set(0.5);
 		this.secondTry.ballAngle = -90;
 		this.secondTry.scale.set(this.scaleRate);
 
-		this.thirdTry = this.game.add.sprite(this.x + 18, this.y, 'LockGameBall');
+		this.thirdTry = this.game.add.sprite(this.x + 6, this.y + 25, 'LockGameBall');
 		this.thirdTry.anchor.set(0.5);
 		this.thirdTry.ballAngle = -90;
 		this.thirdTry.scale.set(this.scaleRate);
