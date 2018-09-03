@@ -17,10 +17,17 @@ export default class {
 	}
 
 	map1() {
-        this.sleeping = true;
-        this.level.player.movable = false;
 
-        this.level.player.animations.play('sleep');
+        this.sleeping = true;
+        this.standUpApproval = false;
+
+        console.log(this.level.gameData.targetID);
+        if(this.level.gameData.targetID == undefined || this.level.gameData.targetID == 1){
+            this.level.player.movable = false;
+            this.standUpApproval = true;
+            this.level.player.animations.play('sleep');
+        }
+       
 
         if (!this.level.questManager.checkIfQuestWasDone(1)){
             this.branch = this.game.add.sprite(1131, 1210, 'branch');
@@ -111,6 +118,8 @@ export default class {
 
         if (this.level.inputClass.button_A.isDown || this.level.inputClass.button_D.isDown || this.level.inputClass.button_W.isDown || this.level.inputClass.button_S.isDown) {
             if(!this.sleeping) return;
+            if(!this.standUpApproval) return;
+            
             console.log('standup');
             this.sleeping = false;
             this.level.player.animations.play('standUp');

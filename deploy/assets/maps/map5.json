@@ -799,7 +799,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1205,7 +1205,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1255,7 +1255,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1265,7 +1265,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1321,7 +1321,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1331,7 +1331,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1412,7 +1412,7 @@
                 {
                  "animation":[
                         {
-                         "duration":500,
+                         "duration":900,
                          "tileid":381
                         }, 
                         {
@@ -1452,7 +1452,7 @@
                 {
                  "animation":[
                         {
-                         "duration":500,
+                         "duration":1200,
                          "tileid":421
                         }, 
                         {
@@ -1472,7 +1472,7 @@
                 {
                  "animation":[
                         {
-                         "duration":1000,
+                         "duration":2000,
                          "tileid":441
                         }, 
                         {
@@ -1492,7 +1492,7 @@
                 {
                  "animation":[
                         {
-                         "duration":1000,
+                         "duration":200,
                          "tileid":461
                         }, 
                         {
