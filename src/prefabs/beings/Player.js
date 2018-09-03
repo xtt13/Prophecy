@@ -83,6 +83,8 @@ export default class extends Phaser.Sprite {
 
 		this.animations.add('sleep', [127], 1, false);
 		this.animations.add('standUp', [127, 128, 127, 127, 127, 127, 127, 127, 128, 127, 127, 128, 127, 127, 127, 127, 127, 127, 127, 127, 128, 127, 127, 127, 127, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);
+		this.animations.add('standUpFast', [127, 127, 127, 128, 127, 127, 127, 127, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);
+		this.animations.add('die', [136, 135, 134, 133, 133, 132, 131, 130, 129, 128, 127], 8, false);
 
 		// this.animations.play('idle');
 

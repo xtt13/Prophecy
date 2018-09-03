@@ -654,8 +654,8 @@
                  "type":"",
                  "visible":true,
                  "width":101.173269852066,
-                 "x":1047.95934205207,
-                 "y":1394.45431940049
+                 "x":1043.673423675,
+                 "y":1351.59513562983
                 }, 
                 {
                  "height":161.639523454158,
@@ -1066,7 +1066,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1153,8 +1153,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":1090.65560595772,
-                 "y":1397.31905938688
+                 "x":1087.32211388667,
+                 "y":1362.55549921735
                 }, 
                 {
                  "height":14.1413,
@@ -1694,48 +1694,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":784.052462456555,
-                 "y":1210.3099219621
-                }, 
-                {
-                 "gid":2567,
-                 "height":32,
-                 "id":296,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"flower"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":1087.08757540638,
-                 "y":1238.64324982913
-                }, 
-                {
-                 "gid":2567,
-                 "height":32,
-                 "id":297,
-                 "name":"",
-                 "properties":
-                    {
-                     "type":"flower"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":1040.4437770515,
-                 "y":1358.43688720078
+                 "x":671.828013558759,
+                 "y":1287.26382977773
                 }, 
                 {
                  "gid":2567,
@@ -1759,7 +1719,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

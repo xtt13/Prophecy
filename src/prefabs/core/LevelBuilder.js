@@ -27,6 +27,10 @@ export default class {
             this.standUpApproval = true;
             this.level.player.animations.play('sleep');
         }
+
+        if( this.level.gameData.targetID == 3){
+            this.level.player.animations.play('sleep');
+        }
        
 
         if (!this.level.questManager.checkIfQuestWasDone(1)){
@@ -48,6 +52,11 @@ export default class {
         
 
         if (this.level.questManager.checkIfQuestWasDone(1) && this.level.questManager.checkIfQuestExists(2)){
+
+            this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+                this.level.player.animations.play('standUpFast');
+            }, this);
+
             this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
                 this.level.inputClass.direction = 'up';
                 this.level.player.animations.play('static_idle_up');
@@ -119,8 +128,7 @@ export default class {
         if (this.level.inputClass.button_A.isDown || this.level.inputClass.button_D.isDown || this.level.inputClass.button_W.isDown || this.level.inputClass.button_S.isDown) {
             if(!this.sleeping) return;
             if(!this.standUpApproval) return;
-            
-            console.log('standup');
+
             this.sleeping = false;
             this.level.player.animations.play('standUp');
             this.level.player.animations._anims.standUp.onComplete.add(() => {

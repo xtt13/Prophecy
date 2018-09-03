@@ -746,7 +746,7 @@ export default class {
 		this.gameOverSound = this.game.add.audio('sfxGameOver');
 		this.gameOverSound.play();
 		
-		this.game.canvas.classList.add('greyscale');
+		
 		// this.followPlayer(null, 4000);
 
 		this.level.questManager.addQuest(1);
@@ -772,8 +772,10 @@ export default class {
 		this.game.time.events.add(
 			250,
 			() => {
+				this.level.player.animations.play('die');
 				this.game.camera.shake(0.015, 500, true);
 				this.game.camera.flash(0xc10000, 400, true);
+				
 			}, this);
 
 		this.game.time.events.add(
@@ -785,6 +787,7 @@ export default class {
 					alpha: 0
 				}, 250, Phaser.Easing.Bounce.Out, true);
 
+				this.game.canvas.classList.add('greyscale');
 				this.level.gameOver();
 
 				this.game.time.events.add(
