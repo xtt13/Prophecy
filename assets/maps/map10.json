@@ -84,7 +84,7 @@
          "name":"Godrays",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":65,
          "x":0,
          "y":0
@@ -504,7 +504,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -539,7 +539,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -587,7 +587,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1411,8 +1411,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":1829.7685845838,
-                 "y":1285.71845272069
+                 "x":1902.93931629112,
+                 "y":1298.63093478668
                 }, 
                 {
                  "height":14.1413,
@@ -1432,8 +1432,8 @@
                  "type":"",
                  "visible":true,
                  "width":14.1413,
-                 "x":1833.39356951427,
-                 "y":1289.26709790914
+                 "x":1890.78237869648,
+                 "y":1300.0274996308
                 }, 
                 {
                  "height":14.1413,
@@ -1500,7 +1500,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1646,7 +1646,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1918,7 +1918,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1933,7 +1933,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":304,
+ "nextobjectid":305,
  "orientation":"orthogonal",
  "properties":
     {

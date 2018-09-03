@@ -47,7 +47,7 @@ export default class {
 		this.ball.anchor.set(0.5);
 		this.ball.ballAngle = -90;
 		this.ball.smoothed = false;
-		this.ball.scale.set(this.scaleRate);
+		// this.ball.scale.set(this.scaleRate);
 
 		this.placeBall();
 
@@ -57,22 +57,25 @@ export default class {
 		this.bar.crossingBall = false;
 		this.bar.smoothed = false;
 		this.bar.rotationDirection = 0;
-		this.bar.scale.set(this.scaleRate);
+		// this.bar.scale.set(this.scaleRate);
 
-		this.firstTry = this.game.add.sprite(this.x - 30, this.y + 25, 'LockGameBall');
+		this.firstTry = this.game.add.sprite(this.x - 42, this.y + 29, 'LockGameBar');
+		this.firstTry.angle = -90;
 		this.firstTry.anchor.set(0.5);
-		this.firstTry.ballAngle = -90;
-		this.firstTry.scale.set(this.scaleRate);
+		// this.firstTry.ballAngle = -90;
+		// this.firstTry.scale.set(this.scaleRate);
 
-		this.secondTry = this.game.add.sprite(this.x - 12, this.y + 25, 'LockGameBall');
+		this.secondTry = this.game.add.sprite(this.x - 12, this.y + 29, 'LockGameBar');
+		this.secondTry.angle = -90;
 		this.secondTry.anchor.set(0.5);
-		this.secondTry.ballAngle = -90;
-		this.secondTry.scale.set(this.scaleRate);
+		// this.secondTry.ballAngle = -90;
+		// this.secondTry.scale.set(this.scaleRate);
 
-		this.thirdTry = this.game.add.sprite(this.x + 6, this.y + 25, 'LockGameBall');
+		this.thirdTry = this.game.add.sprite(this.x + 18, this.y + 29, 'LockGameBar');
+		this.thirdTry.angle = -90;
 		this.thirdTry.anchor.set(0.5);
-		this.thirdTry.ballAngle = -90;
-		this.thirdTry.scale.set(this.scaleRate);
+		// this.thirdTry.ballAngle = -90;
+		// this.thirdTry.scale.set(this.scaleRate);
 
 		if (this.firstSetup) {
 			this.ring.alpha = 0;
@@ -109,6 +112,7 @@ export default class {
 		this.ball.ballAngle = this.newAngle;
 		this.ball.x = this.ring.x + 88 * Math.cos(Phaser.Math.degToRad(this.ball.ballAngle));
 		this.ball.y = this.ring.y + 88 * Math.sin(Phaser.Math.degToRad(this.ball.ballAngle));
+		this.ball.rotation = this.game.physics.arcade.angleBetween(this.ball, this.ring) + 1.5;
 	}
 
 	startMoving() {

@@ -255,26 +255,37 @@ export default class {
 		this.down();
 		if (button.key == 'mapButton') {
 			// // If Map is active --> return
-			// if (this.gameMap.map) return;
+			if (this.gameMap.map) return;
 
-			// this.mapButton.setFrames(2, 2, 2);
-			// this.questButton.setFrames(0, 1, 2);
-			// this.inventoryButton.setFrames(0, 1, 2);
-			// this.controllsButton.setFrames(0, 1, 2);
-			// this.optionsButton.setFrames(0, 1, 2);
 
-			// if (this.questMap.text) {
-			// 	this.questMap.text.destroy();
-			// 	this.questMap.text = false;
-			// }
+			this.questButton.setFrames(0, 1, 2);
+			this.mapButton.setFrames(2, 2, 2);
+			this.inventoryButton.setFrames(0, 1, 2);
+			this.controllsButton.setFrames(0, 1, 2);
+			this.optionsButton.setFrames(0, 1, 2);
 
-			// if (this.gameOptions.muteMusicButton) {
-			// 	this.gameOptions.muteMusicButton.destroy();
-			// 	this.gameOptions.muteSoundButton.destroy();
-			// 	this.gameOptions.muteMusicButton = false;
-			// }
 
-			// this.gameMap.createMap();
+			if (this.questMap.text) {
+				this.questMap.fontImage.destroy();
+				this.questMap.fontImage = false;
+				this.questMap.text.destroy();
+				this.questMap.text = false;
+				this.questMap.fontImageMastered.destroy();
+				this.questMap.fontImageMastered = false;
+				this.questMap.heading1Sprite.destroy();
+				this.questMap.heading1Sprite = false;
+				this.questMap.heading2Sprite.destroy();
+				this.questMap.heading2Sprite = false;
+			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.muteMusicButton = false;
+			}
+
+			this.gameMap.createMap();
+			
 		} else if (button.key == 'questButton') {
 			// If Questmap is active --> return
 			if (this.questMap.text) return;

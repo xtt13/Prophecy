@@ -694,6 +694,8 @@ export default class extends Phaser.Sprite {
 			// this.game.world.setChildIndex(this.bmd, 1);
 
 			if (this.baseImages[0] !== undefined) {
+				this.game.world.setChildIndex(this.baseImages[0], 1);
+				// this.game.world.setChildIndex(this.baseImages[1], 1);
 				this.game.time.events.add(100, () => {
 					this.baseImages[0].alpha = 0;
 					this.baseImages[0].destroy(true, false);

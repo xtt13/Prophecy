@@ -8,22 +8,22 @@ export default class {
 
 		this.mapValues = {
 			map1: {
-				x: 112,
-				y: 128,
-				width: 64,
-				height: 64
+				x: 504,
+				y: 592,
+				width: 159,
+				height: 242
 			},
 			map2: {
-				x: 92,
-				y: 66,
-				width: 64,
-				height: 64
+				x: 342,
+				y: 464,
+				width: 150,
+				height: 144
 			},
 			map3: {
-				x: 91,
-				y: 2,
-				width: 64,
-				height: 64
+				x: 370,
+				y: 241,
+				width: 106,
+				height: 223
 			},
 			map4: {
 				x: 27,
@@ -31,11 +31,17 @@ export default class {
 				width: 64,
 				height: 64
 			},
-			map6: {
-				x: 27,
-				y: 21,
-				width: 64,
-				height: 64
+			map10: {
+				x: 308,
+				y: 747,
+				width: 211,
+				height: 139
+			},
+			map11: {
+				x: 339,
+				y: 608,
+				width: 149,
+				height: 139
 			}
 		};
 	}
@@ -54,7 +60,9 @@ export default class {
 		this.calculateValues();
 		this.game.renderer.renderSession.roundPixels = true;
 
-		this.map = this.game.add.sprite(this.game.camera.width / 2 - 100, this.game.camera.height / 2 - 90, 'newGameMap');
+		this.map = this.game.add.sprite(this.game.camera.width / 2 - 470, this.game.camera.height / 2 - 500, 'newGameMap');
+		// this.map.x = this.map.x - this.map.width/2;
+		// this.map.x = this.map.y - this.map.height/2;
 		this.map.fixedToCamera = true;
 		this.map.inputEnabled = true;
 		this.map.input.enableDrag(false);
