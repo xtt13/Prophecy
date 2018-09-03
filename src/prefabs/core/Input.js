@@ -1155,7 +1155,7 @@ export default class {
 
 			// Bugfix Talking Move
 			if(!this.player.movable){
-				this.player.animations.stop();
+				// this.player.animations.stop();
 				return;
 			}
 

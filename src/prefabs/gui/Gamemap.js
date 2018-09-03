@@ -96,6 +96,9 @@ export default class {
 
 		this.playerDot = this.game.add.sprite(this.map.x + this.playerPX, this.map.y + this.playerPY, this.bmdPlayer);
 
+		this.map.x = this.map.x + this.playerPX;
+		this.map.y = this.map.y + this.playerPY;
+
 		this.playerDot.anchor.set(0.5);
 
 		this.playerDot.mask = this.mask;

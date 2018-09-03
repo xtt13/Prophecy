@@ -17,6 +17,11 @@ export default class {
 	}
 
 	map1() {
+        this.sleeping = true;
+        this.level.player.movable = false;
+
+        this.level.player.animations.play('sleep');
+
         if (!this.level.questManager.checkIfQuestWasDone(1)){
             this.branch = this.game.add.sprite(1131, 1210, 'branch');
             this.branch.anchor.set(0.5);
@@ -33,6 +38,7 @@ export default class {
         if (this.level.questManager.checkIfQuestExists(2)){
             this.level.player.movable = false;
         }
+        
 
         if (this.level.questManager.checkIfQuestWasDone(1) && this.level.questManager.checkIfQuestExists(2)){
             this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
@@ -102,6 +108,17 @@ export default class {
         
         this.game.world.bringToTop(this.level.templeFliesEmitter);
         this.game.world.bringToTop(this.level.fountainSparkling);
+
+        if (this.level.inputClass.button_A.isDown || this.level.inputClass.button_D.isDown || this.level.inputClass.button_W.isDown || this.level.inputClass.button_S.isDown) {
+            if(!this.sleeping) return;
+            console.log('standup');
+            this.sleeping = false;
+            this.level.player.animations.play('standUp');
+            this.level.player.animations._anims.standUp.onComplete.add(() => {
+                this.level.player.movable = true;
+            }, this);
+        }
+        
     }
     
     map2() {
