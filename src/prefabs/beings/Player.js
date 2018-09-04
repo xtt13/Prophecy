@@ -41,7 +41,6 @@ export default class extends Phaser.Sprite {
 
 		this.frameRate = 17;
 
-
 		this.animations.add('dash_left', [71], 1, true);
 		this.animations.add('dash_right', [72], 1, true);
 		this.animations.add('dash_up', [82], 1, true);
@@ -82,7 +81,7 @@ export default class extends Phaser.Sprite {
 		this.animations.add('fight_up', [119, 120, 121, 122, 123, 124, 125, 126], 35, false);
 
 		this.animations.add('sleep', [127], 1, false);
-		this.animations.add('standUp', [127, 128, 127, 127, 127, 127, 127, 127, 128, 127, 127, 128, 127, 127, 127, 127, 127, 127, 127, 127, 128, 127, 127, 127, 127, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);
+		this.animations.add('standUp', [127, 128, 127, 127, 127, 127, 127, 127, 128, 127, 127, 128, 127, 127, 127, 127, 127, 127, 127, 127, 128, 128, 128, 128, 128, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);
 		this.animations.add('standUpFast', [127, 127, 127, 128, 127, 127, 127, 127, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);
 		this.animations.add('die', [136, 135, 134, 133, 133, 132, 131, 130, 129, 128, 127], 8, false);
 
@@ -259,9 +258,6 @@ export default class extends Phaser.Sprite {
 		});
 
 		this.teleportEmitter.forEachNew(this.setVelocity, this, this.x, this.y);
-
-		console.log('hi');
-		console.log(this.teleportEmitter);
 
 	}
 
