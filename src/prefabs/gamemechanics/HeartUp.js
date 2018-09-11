@@ -58,10 +58,27 @@ export default class extends Phaser.Sprite {
 
     heartUp(){
         this.used = true;
+
+        
     }
 
     update() {
         if (this.used){
+            
+            // if(this.level.player.health < 5){
+            //     this.level.GUICLASS.healthBar.addHeart(this.level.player.health++);
+            //     this.level.player.health += 1;
+            //     this.level.gameData.playerHealth += 1;
+            //     this.level.safe.setGameConfig(this.level.gameData);
+            // }
+
+			// if (this.level.player.health > 1) {
+			// 	this.level.sfxheartbeat.stop();
+			// 	if (this.level.GUICLASS.healthBar.flashingLoop) {
+			// 		this.game.time.events.remove(this.level.GUICLASS.healthBar.flashingLoop);
+			// 	}
+            // }
+            
             this.destroy();
             return;
         }

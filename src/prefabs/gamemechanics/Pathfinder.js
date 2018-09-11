@@ -149,6 +149,30 @@ export default class {
 
 		}
 
+		if(this.lastX !== null && this.player.name == 'woman1'){
+			// Walk Right
+			if(x > this.lastX){
+				this.player.animations.play('walk_right');
+			}
+
+			// Walk Left
+			if(x < this.lastX){
+				this.player.animations.play('walk_left');
+			}
+
+			// Walk Down
+			if(y > this.lastY){
+				this.player.animations.play('walk_down');
+			}
+
+			// Walk Up
+			if(y < this.lastY){
+				this.player.animations.play('walk_up');
+			}
+
+
+		}
+
 		this.lastX = x;
 		this.lastY = y;
 
