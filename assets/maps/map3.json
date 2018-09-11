@@ -2020,6 +2020,7 @@
                  "properties":
                     {
                      "character":"woman1",
+                     "disableMovement":true,
                      "id":4,
                      "ifNotQuestID":"41,42,43,44,45,46",
                      "nightVersion":false
@@ -2027,6 +2028,7 @@
                  "propertytypes":
                     {
                      "character":"string",
+                     "disableMovement":"bool",
                      "id":"int",
                      "ifNotQuestID":"string",
                      "nightVersion":"bool"
@@ -2040,7 +2042,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

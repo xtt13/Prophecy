@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import HeartUp from './HeartUp';
 
 export default class extends Phaser.Sprite {
     constructor(game, x, y, type, properties, level) {
@@ -8,6 +9,8 @@ export default class extends Phaser.Sprite {
         this.type = type;
         this.level = level;
         this.anchor.setTo(0.5);
+
+        this.used = false;
 
 
         this.game.physics.enable(this);
@@ -28,6 +31,9 @@ export default class extends Phaser.Sprite {
     }
 
     cut() {
+
+        if(this.used) return;
+        this.used = true;
 
         this.rndVoice = this.game.rnd.pick(['cut1', 'cut2']);
         this.voice = this.game.add.audioSprite('sfxswordmulti');
@@ -60,6 +66,10 @@ export default class extends Phaser.Sprite {
         this.cutAnimation.makeParticles('flowerPieces', [0, 1, 2, 3], 2);
         this.cutAnimation.setAlpha(1, 0, 5000, null, false);
         this.cutAnimation.start(true, 0, null, 10);
+
+        if(this.game.rnd.integerInRange(1, 4) == 4){
+            new HeartUp(this.game, this.x, this.y - 20, this.level);
+        }
 
         
 
