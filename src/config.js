@@ -32,7 +32,7 @@ export default {
 	startMap: 'map1',
 	secureLS: false,
 	devHour: 11,
-	devStartState: 'Game',
+	devStartState: 'Credits',
 	serviceWorker: false,
 	allowFastTravel: true,
 	buildMode: false
