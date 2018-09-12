@@ -2,8 +2,8 @@
 import Phaser from 'phaser';
 
 export default class extends Phaser.State {
-    init() {
-
+    init(param) {
+        this.param = param;
     }
 
     create() {
@@ -54,10 +54,13 @@ export default class extends Phaser.State {
         
         
         
-
+        this.game.soundManager.fadeOut();
         this.game.musicPlayer.playMusic('MxTrailer');
 
-        this.game.camera.flash(0x000000, 8000);
+        if(this.param !== undefined && this.param !== 'skip'){
+            this.game.camera.flash(0x000000, 8000);
+        }
+        
 
         this.logo = this.game.add.sprite(this.game.camera.width / 2, this.game.camera.height / 2 - 10, 'logo');
         this.logo.anchor.set(0.5);
@@ -76,7 +79,7 @@ export default class extends Phaser.State {
             this.logoTween.onComplete.add(() => {
                 this.textFade('Development', 'Michael Dorn');
 
-                this.game.time.events.add(10000, () => {
+                this.game.time.events.add(8000, () => {
                     this.textFade('Game Art', 'Kang Wang\nSabine Rimmer\nNina Leinwatter\nCarina Bichler\nIsabella Griessenberger');
                 }, this);
 
@@ -84,35 +87,35 @@ export default class extends Phaser.State {
                     this.textFade('Sound and Music', 'Roland K$stler');
                 }, this);
 
-                this.game.time.events.add(30000, () => {
+                this.game.time.events.add(28000, () => {
                     this.textFade('Project Management', 'Manuela Abdalla');
                 }, this);
 
-                this.game.time.events.add(40000, () => {
+                this.game.time.events.add(35000, () => {
                     this.textFade('Story', 'Lia Lembacher');
                 }, this);
 
-                this.game.time.events.add(50000, () => {
+                this.game.time.events.add(42000, () => {
                     this.textFade('Video', 'Jan Rogner');
                 }, this);
 
-                this.game.time.events.add(60000, () => {
+                this.game.time.events.add(50000, () => {
                     this.textFade('Social Media', 'Felix Kirsch');
                 }, this);
 
-                this.game.time.events.add(70000, () => {
+                this.game.time.events.add(57000, () => {
                     this.textFade('Voices', 'Priest: Samuel Luftensteiner \n Smith: Michael Hauptmann');
                 }, this);
 
-                this.game.time.events.add(80000, () => {
-                    this.textFade('Special Thanks To:', 'Richard Davey (Phaser)\nColinvella (Tilemap Plus)');
+                this.game.time.events.add(65000, () => {
+                    this.textFade('Special Thanks To:', 'Richard Davey (Creater of Phaser)\nColin Vella (Creater of Tilemap Plus)');
                 }, this);
 
-                this.game.time.events.add(90000, () => {
+                this.game.time.events.add(72000, () => {
                     this.textFade('Thank You!', 'For playing Prophecy of the Fallen!');
                 }, this);
 
-                this.game.time.events.add(100000, () => {
+                this.game.time.events.add(950000, () => {
                     // Redirect Menu
                     this.state.start('MainMenu', true, false);
                 }, this);
@@ -144,12 +147,14 @@ export default class extends Phaser.State {
         this.textImage.alpha = 0;
         this.textImage.scale.set(1);
 
+        // Headline Alpha Tween In
         this.fadeInTweenHeadline = this.game.add
             .tween(this.headlineImage)
             .to({
                 alpha: 1
             }, 5000, Phaser.Easing.Exponential.In, true, 0);
 
+         // Text Alpha Tween In
         this.game.time.events.add(1000, () => {
             this.fadeInTweenText = this.game.add
                 .tween(this.textImage)
@@ -164,13 +169,13 @@ export default class extends Phaser.State {
                 .tween(this.headlineImage)
                 .to({
                     alpha: 0
-                }, 5000, Phaser.Easing.Exponential.In, true, 0);
+                }, 4000, 'Linear', true, 0);
 
             this.fadeOutTweenText = this.game.add
                 .tween(this.textImage)
                 .to({
                     alpha: 0
-                }, 5000, Phaser.Easing.Exponential.In, true, 0);
+                }, 4000, 'Linear', true, 0);
 
         }, this);
 

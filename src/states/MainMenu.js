@@ -28,6 +28,9 @@ export default class extends Phaser.State {
 		// this.logo.scale.setTo(0.2);
 		this.logo.smoothed = false;
 
+		this.credits = this.game.add.sprite(20, this.game.camera.height - 15, 'credits');
+		this.credits.smoothed = false;
+
 		// this.subText = this.game.add.bitmapText(
 		// 	this.game.camera.width / 2,
 		// 	this.game.camera.height / 2 + 107,
@@ -47,32 +50,32 @@ export default class extends Phaser.State {
 		this.fontImage = this.game.add.image(this.game.camera.width / 2 - 15, this.game.camera.height / 2 + 107, this.subText);
 		// this.fontImage.anchor.set(0.5);
 
-		// this.variation2();
+		this.variation1();
 
 		var chosenValue = this.game.rnd.integerInRange(0, 3);
 
-		switch (chosenValue) {
-			case 0:
-				this.variation1();
-				break;
+		// switch (chosenValue) {
+		// 	case 0:
+		// 		this.variation1();
+		// 		break;
 
-			case 1:
-			this.variation2();
-				break;
+		// 	case 1:
+		// 	this.variation2();
+		// 		break;
 
-			case 2:
-			this.variation3();
-				break;
+		// 	case 2:
+		// 	this.variation3();
+		// 		break;
 
-			case 3:
-			this.variation4();
-				break;
+		// 	case 3:
+		// 	this.variation4();
+		// 		break;
 		
-			default:
-				break;
-		}
+		// 	default:
+		// 		break;
+		// }
 
-		
+		this.button_C = this.game.input.keyboard.addKey(Phaser.Keyboard.C);
 
 
 		let isSafari =
@@ -275,6 +278,10 @@ export default class extends Phaser.State {
 	preload() {}
 
 	update() {
+		if(this.button_C.isDown){
+			this.state.start('Credits', true, false, 'skip');
+		}
+
 		if (!this.pad1.connected) {
 			this.subText.text = 'Click!';
 		} else {
