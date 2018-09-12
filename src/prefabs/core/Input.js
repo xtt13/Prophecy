@@ -25,8 +25,8 @@ export default class {
 
 		this.running = false;
 
-		this.playerSpeed = 100;
-		this.playerSpeedDefault = 100;
+		this.playerSpeed = 120;
+		this.playerSpeedDefault = 120;
 
 		this.playerControllerSpeed = 100;
 		this.playerControllerSpeedDefault = 100;
