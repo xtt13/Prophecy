@@ -17,7 +17,7 @@ export default class extends Phaser.State {
 		this.game.scale.pageAlignHorizontally = true;
 
 		// enable crisp rendering
-		this.game.renderer.renderSession.roundPixels = true;
+		// this.game.renderer.renderSession.roundPixels = true;
 		this.game.time.advancedTiming = true;
 		Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 

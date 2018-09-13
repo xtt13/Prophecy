@@ -712,7 +712,9 @@ export default class {
 		if (this.dayCycle) {
 			this.game.world.bringToTop(this.dayCycleClass.lightSprite);
 			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
-			this.dayCycleClass.updateShadowTexture();
+			// if(this.night){
+				this.dayCycleClass.updateShadowTexture();
+			// }
 		}
 
 		// Update Weather

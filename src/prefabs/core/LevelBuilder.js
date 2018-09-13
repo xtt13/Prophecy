@@ -327,8 +327,6 @@ export default class {
         this.bossDoor.animations.add('close', [32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0], 8, true);
         this.bossDoor.animations.add('idle', [32], 1, true);
 
-        // this.game.renderer.renderSession.roundPixels = true;
-        // console.log(this.game.renderer.renderSession);
 
         // if(this.level.gameData.targetID == 3){
         //     this.bossDoor.animations.play('open', 100, false);

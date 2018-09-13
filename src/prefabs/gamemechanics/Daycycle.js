@@ -54,7 +54,7 @@ export default class {
 				console.log('Dawn');
 
 				this.level.backgroundLayer.tint = 0x848484;
-				this.lightSprite.alpha = this.darkness;
+				this.lightSprite.alpha = 0.5;
 
 				this.night = false;
 				// this.level.player.tint = 0x383838;
@@ -82,7 +82,7 @@ export default class {
 				this.night = false;
 
 				this.level.backgroundLayer.tint = 0x848484;
-				this.lightSprite.alpha = this.darkness;
+				this.lightSprite.alpha = 0.5;
 				// this.level.player.tint = 0x454545;
 				
 				for (var i = 0; i < this.level.characters.length; i++) {
