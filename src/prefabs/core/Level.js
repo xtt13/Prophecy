@@ -925,10 +925,13 @@ export default class {
 
 		if (this.map.plus.properties.dayCycle) {
 			// Background Cloud Layer
-			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-			this.backgroundLayer = this.map.createLayer('Clouds');
-			this.backgroundLayer.resizeWorld();
-			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+			if(this.gameData.currentMap !== 'map2'){
+				this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+				this.backgroundLayer = this.map.createLayer('Clouds');
+				this.backgroundLayer.resizeWorld();
+				this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+			}
+
 			
 
 			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
@@ -946,6 +949,7 @@ export default class {
 
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
+		// this.groundLayer.enableScrollDelta = false;
 		this.detailGroundLayer = this.map.createLayer('DetailBackgroundLayer');
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');

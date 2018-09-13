@@ -62,7 +62,7 @@ export default {
 
 		//
 		10: [
-			'One last thing before we enter the village! \nYou will encounter many different people! \nMaybe they can help you figure out \nwhy you ended up here.', 'But to do so, you will have to talk to the them. \nUse the [BUTTON] to interact with the towns folks.',
+			'One last thing before we enter the village! \nYou will encounter many different people! \nMaybe they can help you figure out \nwhy you ended up here.', 'But to do so, you will have to talk to the them. \nUse the E-Button to interact with the towns folks.',
 			'Another thing! Especially the high priest and \nthe priestess don\'t like monsters. ', 'Since I, too, look like one, it will \nprobably be for the best if I stayed invisible \nand silent during our stay in the village.','You can still use my powers, but I will not \nbe able to interact with you, Levi. \nBe careful, young hero.'
 		],
 
@@ -73,7 +73,7 @@ export default {
 		12: [
 			'You got to be careful… This monster is different than anything you have faced before. Be on your guard.',
 			'Hide if necessary. You’d rather be a coward than dead, right?',
-			'I think that’s it… Good luck, [PLAYER NAME]'
+			'I think that’s it… Good luck'
 		],
 
 		13:[
