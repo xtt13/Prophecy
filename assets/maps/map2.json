@@ -84,7 +84,7 @@
          "name":"Godrays",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":46,
          "x":0,
          "y":0
@@ -1052,7 +1052,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1062,7 +1062,7 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1347,8 +1347,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":203.919183687457,
-                 "x":617.82112022535,
+                 "width":158.350011453683,
+                 "x":663.390292459124,
                  "y":173.541176569732
                 }, 
                 {
@@ -2068,7 +2068,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -2603,8 +2603,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":273.975015241823,
-                 "y":897.910653844503
+                 "x":344.533604070046,
+                 "y":846.251687023839
                 }, 
                 {
                  "gid":2543,
@@ -3020,7 +3020,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

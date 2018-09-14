@@ -135,7 +135,7 @@ export default class extends Phaser.State {
         this.headline.setText(headline, true, -1, 5, 'left', true);
 
         this.text = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
-        this.text.setText(text, true, -1, 5, 'left', true);
+        this.text.setText(text, true, -1, 5, 'center', true);
 
         this.headlineImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2 - 50, this.headline);
         this.headlineImage.anchor.setTo(0.5);

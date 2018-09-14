@@ -39,7 +39,6 @@ export default class extends Phaser.Sprite {
         this.voice = this.game.add.audioSprite('sfxswordmulti');
         this.voice.play(this.rndVoice, 0.5);
 
-        console.log('CUT!');
         this.alpha = 0;
         
 

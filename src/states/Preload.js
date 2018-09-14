@@ -641,7 +641,7 @@ export default class extends Phaser.State {
 
 		// Villager		
 		this.load.spritesheet('priest', 'assets/sprites/villager/priest.png', 35, 50);
-		this.load.spritesheet('smith', 'assets/sprites/villager/smith.png', 31, 45);
+		this.load.spritesheet('smith', 'assets/sprites/villager/smith.png', 31, 48);
 		this.load.spritesheet('botanist', 'assets/sprites/villager/botanist.png', 25, 50);
 		this.load.spritesheet('librarian', 'assets/sprites/villager/librarian.png', 16, 48);
 		this.load.spritesheet('girl1', 'assets/sprites/villager/girl1.png', 14, 35);
