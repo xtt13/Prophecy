@@ -14,7 +14,7 @@ export default {
 
 		//
 		2: [
-			'Oh, seems like the path is falling apart! There \nare platforms you can reach by using \nthe [BUTTON].',
+			'Oh, seems like the path is falling apart! There \nare platforms you can reach by using \nthe Space-Button.',
 			'You should give it a try!'		
 		],
 
