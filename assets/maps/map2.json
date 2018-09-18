@@ -2090,6 +2090,31 @@
                  "width":27.0067,
                  "x":97.7124841187559,
                  "y":907.089846082063
+                }, 
+                {
+                 "height":158.95,
+                 "id":464,
+                 "name":"AtmoWaterStill",
+                 "properties":
+                    {
+                     "nightMode":false,
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"AxEmber"
+                    },
+                 "propertytypes":
+                    {
+                     "nightMode":"bool",
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":249.717,
+                 "x":130.549238397481,
+                 "y":846.695407230629
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3091,7 +3116,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":464,
+ "nextobjectid":465,
  "orientation":"orthogonal",
  "properties":
     {
