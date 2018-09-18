@@ -53,8 +53,10 @@ export default class extends Phaser.State {
         this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
         
         
+        // if(this.game.soundManager.sound !== undefined){
+        //     this.game.soundManager.fadeOut();
+        // }
         
-        this.game.soundManager.fadeOut();
         this.game.musicPlayer.playMusic('MxTrailer');
 
         if(this.param !== undefined && this.param !== 'skip'){

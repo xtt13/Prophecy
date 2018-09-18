@@ -28,8 +28,21 @@ export default class extends Phaser.State {
 		// this.logo.scale.setTo(0.2);
 		this.logo.smoothed = false;
 
-		this.credits = this.game.add.sprite(20, this.game.camera.height - 15, 'credits');
+		this.credits = this.game.add.sprite(20, this.game.camera.height - 10, 'credits');
 		this.credits.smoothed = false;
+		this.credits.inputEnabled = true;
+
+		this.credits.events.onInputDown.add( () => {
+			this.state.start('Credits', true, false, 'skip');
+		}, this);
+
+		this.credits.events.onInputOver.add( () => {
+			this.credits.tint = 0x00ffdb;
+		}, this);
+
+		this.credits.events.onInputOut.add( () => {
+			this.credits.tint = 0xFFFFFF;
+		}, this);
 
 		// this.subText = this.game.add.bitmapText(
 		// 	this.game.camera.width / 2,

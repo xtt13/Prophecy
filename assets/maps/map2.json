@@ -2065,6 +2065,31 @@
                  "width":27.0067,
                  "x":546.468695077313,
                  "y":946.240808695728
+                }, 
+                {
+                 "height":4.95876,
+                 "id":462,
+                 "name":"Teleporter",
+                 "properties":
+                    {
+                     "direction":"up",
+                     "port":true,
+                     "targetID":1,
+                     "targetMap":"map17"
+                    },
+                 "propertytypes":
+                    {
+                     "direction":"string",
+                     "port":"bool",
+                     "targetID":"int",
+                     "targetMap":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":27.0067,
+                 "x":97.7124841187559,
+                 "y":907.089846082063
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2241,6 +2266,27 @@
                  "width":14.1413,
                  "x":552.694798804691,
                  "y":961.355150631484
+                }, 
+                {
+                 "height":14.1413,
+                 "id":463,
+                 "name":"CustomStartpoint",
+                 "properties":
+                    {
+                     "id":8,
+                     "startPointType":"custom"
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "startPointType":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":14.1413,
+                 "x":102.919283956937,
+                 "y":926.616222406766
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3045,7 +3091,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":462,
+ "nextobjectid":464,
  "orientation":"orthogonal",
  "properties":
     {

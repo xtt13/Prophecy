@@ -393,6 +393,33 @@ export default class {
     map16update(){
         
     }
+
+
+    map17(){
+        
+    }
+
+    map17update(){
+        
+    }
+
+
+    map18(){
+        
+    }
+
+    map18update(){
+        
+    }
+
+
+    map19(){
+        
+    }
+
+    map19update(){
+        
+    }
     
     update(){
         this[this.level.currentMap + 'update']();
