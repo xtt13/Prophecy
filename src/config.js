@@ -33,6 +33,6 @@ export default {
 	devHour: 11,
 	devStartState: 'Game',
 	serviceWorker: false,
-	allowFastTravel: true,
+	allowFastTravel: __DEV__ ? true : false,
 	buildMode: false
 };
