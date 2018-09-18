@@ -140,7 +140,7 @@ export default {
 		// Reya
 		27: ['AHHHHHHHHH!!'],
 		28: [
-			'Thank you so, so much! Your name is [PLAYER NAME]? May you be blessed by the Oracle.',
+			'Thank you so, so much! May you be blessed by the Oracle.',
 			'Let’s go back, Dad is probably worried sick.'
 		],
 
@@ -173,7 +173,7 @@ export default {
 			'To properly start your journey... \nTo become stronger and find your true purpose.',
 			'This request is...',
 			'Please, save my town. Monsters made of vines \nand leaves tried to attack and \ntake over my town.',
-			'My precious believers need you, Hero [PLAYER NAME] \nDefeat the leader of these monstrosities. \nThey hide in the woods, deep in the darkness, \nhidden, unseen...',
+			'My precious believers need you! \nDefeat the leader of these monstrosities. \nThey hide in the woods, deep in the darkness, \nhidden, unseen...',
 			'It is your destiny to save us...'
 		],
 

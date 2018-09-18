@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
 import Level from '../prefabs/core/Level';
+import config from '../config';
 
 // Phaser.Tilemap.prototype.setCollisionBetween = function (start, stop, collides, layer, recalculate) {
 
@@ -110,11 +111,15 @@ export default class extends Phaser.State {
 
 	render() {
 		// Debugging
-		if (__DEV__) {
+		if (__DEV__ && config.enableDebug) {
 			// this.game.debug.currentAlpha = 0.2;
 
 			// this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
-			this.game.debug.text(this.game.time.fps.toString() + ' FPS', 510, 30, '#00ff00', '10px Pixeled');
+
+			if(config.showFPS){
+				this.game.debug.text(this.game.time.fps.toString() + ' FPS', 510, 30, '#00ff00', '10px Pixeled');
+			}
+			
 
 			// DEBUG SOUND
 			// this.game.debug.soundInfo(this.level.weather.weatherSound, 20, 50);
