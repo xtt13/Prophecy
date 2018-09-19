@@ -7,13 +7,20 @@ export default class {
 	}
 
 	showOptions() {
-		// this.muteMusicButton = this.game.add.button(110, 80, 'muteMusicButton', this.actionOnClick, this, 0, 2, 1);
-		// this.muteMusicButton.fixedToCamera = true;
+		this.muteMusicButton = this.game.add.button(240, 100, 'muteMusicButton', this.actionOnClick, this, 0, 2, 1);
+		this.muteMusicButton.fixedToCamera = true;
 
-		// this.muteSoundButton = this.game.add.button(110, 120, 'muteSoundButton', this.actionOnClick, this, 0, 2, 1);
-		// this.muteSoundButton.fixedToCamera = true;
+		this.muteSoundButton = this.game.add.button(240, 130, 'muteSoundButton', this.actionOnClick, this, 0, 2, 1);
+		this.muteSoundButton.fixedToCamera = true;
 
-		// this.getGamePreferences();
+		this.FSmodeButton = this.game.add.button(240, 160, 'FSmodeButton', this.actionOnClick, this, 0, 2, 1);
+		this.FSmodeButton.fixedToCamera = true;
+
+		this.getGamePreferences();
+
+		// this.fullScreenMode = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+		// this.fullScreenMode.setText('Beta 1.0', true, -1, 5, 'left', true)
+		// this.fullScreenModeImage = this.game.add.image(this.game.camera.width - 90, this.game.camera.height - 10, this.versionText);
 	}
 
 	getGamePreferences() {
@@ -33,6 +40,14 @@ export default class {
 		} else {
 			this.muteSound = false;
 			this.muteSoundButton.setFrames(0, 2, 1);
+		}
+
+		if (this.game.scale.isFullScreen) {
+			// this.muteSound = true;
+			this.FSmodeButton.setFrames(1, 1, 1);
+		} else {
+			// this.muteSound = false;
+			this.FSmodeButton.setFrames(0, 2, 1);
 		}
 	}
 
@@ -60,6 +75,14 @@ export default class {
 				this.muteSound = true;
 				this.muteSoundButton.setFrames(1, 1, 1);
 				this.game.soundManager.fadeOut();
+			}
+		} else if (button.key == 'FSmodeButton'){
+			if (this.game.scale.isFullScreen) {
+				this.game.scale.stopFullScreen();
+				this.FSmodeButton.setFrames(0, 2, 1);
+			} else {
+				this.game.scale.startFullScreen(false, false);
+				this.FSmodeButton.setFrames(1, 1, 1);
 			}
 		}
 

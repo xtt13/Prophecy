@@ -246,8 +246,16 @@ export default class {
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
+
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
+
+
 		}
 	}
 
@@ -278,9 +286,14 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -303,9 +316,14 @@ export default class {
 				this.gameMap.map = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -328,6 +346,17 @@ export default class {
 				this.questMap.heading1Sprite = false;
 				this.questMap.heading2Sprite.destroy();
 				this.questMap.heading2Sprite = false;
+			}
+
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.muteMusicButton = false;
 			}
 
 			if (this.gameMap.map) {
@@ -358,6 +387,7 @@ export default class {
 				this.questMap.heading2Sprite.destroy();
 				this.questMap.heading2Sprite = false;
 			}
+			
 
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
@@ -365,6 +395,15 @@ export default class {
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
 			}
+
+			if (this.gameOptions.muteMusicButton) {
+				this.gameOptions.muteMusicButton.destroy();
+				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.muteMusicButton = false;
+			}
+
+			this.controllsSprite = this.game.add.sprite(720, 470, 'instructionsInGame');
 
 			// this.gameOptions.showOptions();
 		} else if (button.key == 'optionsButton') {
@@ -387,6 +426,10 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
 				this.gameMap.mask.destroy();
@@ -394,7 +437,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			// this.gameOptions.showOptions();
+			this.gameOptions.showOptions();
 		}
 	}
 
@@ -429,9 +472,14 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -451,9 +499,14 @@ export default class {
 				this.gameMap.map = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -468,6 +521,10 @@ export default class {
 			if (this.questMap.text) {
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+			}
+
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
 			}
 
 			if (this.gameMap.map) {
@@ -508,6 +565,10 @@ export default class {
 			if (this.questMap.text) {
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+			}
+
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
 			}
 
 			if (this.gameMap.map) {
@@ -548,9 +609,14 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -570,9 +636,14 @@ export default class {
 				this.gameMap.map = false;
 			}
 
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
+			}
+
 			if (this.gameOptions.muteMusicButton) {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
+				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -595,6 +666,10 @@ export default class {
 				this.questMap.heading1Sprite = false;
 				this.questMap.heading2Sprite.destroy();
 				this.questMap.heading2Sprite = false;
+			}
+
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
 			}
 
 			if (this.gameMap.map) {
@@ -635,6 +710,10 @@ export default class {
 			if (this.questMap.text) {
 				this.questMap.text.destroy();
 				this.questMap.text = false;
+			}
+
+			if(this.controllsSprite){
+				this.controllsSprite.destroy();
 			}
 
 			if (this.gameMap.map) {

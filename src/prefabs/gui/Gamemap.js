@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 
 export default class {
 	constructor(game, level, ingameMenu) {
@@ -64,8 +65,8 @@ export default class {
 		// this.map.x = this.map.x - this.map.width/2;
 		// this.map.x = this.map.y - this.map.height/2;
 		this.map.fixedToCamera = true;
-		this.map.inputEnabled = true;
-		this.map.input.enableDrag(false);
+
+		
 
 		this.mask = this.game.add.graphics(300, 180);
 		this.mask.beginFill(0xffffff);
@@ -102,6 +103,17 @@ export default class {
 		this.playerDot.anchor.set(0.5);
 
 		this.playerDot.mask = this.mask;
+
+
+
+		// this.map.hitArea = PIXI.Rectangle;
+
+		this.map.hitArea = new Phaser.Rectangle(this.ingameMenu.menuBackground.x, this.ingameMenu.menuBackground.y, this.ingameMenu.menuBackground.width, this.ingameMenu.menuBackground.height);
+		console.log(this.map.hitArea);
+		console.log(this.ingameMenu.menuBackground.x, this.ingameMenu.menuBackground.y);
+		this.map.inputEnabled = true;	
+		this.map.input.enableDrag(false);
+
 	}
 
 	calculateValues() {

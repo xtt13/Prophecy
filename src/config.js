@@ -19,8 +19,8 @@ export default {
 		renderer: Phaser.WEBGL_MULTI,
 		antialias: true,
 		
-		enableDebug: false
-		// enableDebug: __DEV__ ? true : false
+		// enableDebug: false
+		enableDebug: __DEV__ ? true : false
 	},
 
 	localStorageName: 'prophecy',
@@ -33,7 +33,7 @@ export default {
 	startMap: 'map1',
 	secureLS: false,
 	devHour: 11,
-	devStartState: 'MainMenu',
+	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: __DEV__ ? true : false,
 	buildMode: false,

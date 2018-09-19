@@ -78,11 +78,17 @@ export default class {
 			this.game.world.bringToTop(this.ingameMenu.optionsButton);
 
 			if (this.ingameMenu.gameMap.map) {
+				
 				this.game.world.bringToTop(this.ingameMenu.gameMap.mask);
 				this.game.world.bringToTop(this.ingameMenu.gameMap.map);
 				this.game.world.bringToTop(this.ingameMenu.gameMap.playerDot);
 
 				this.ingameMenu.gameMap.update();
+
+			}
+
+			if(this.ingameMenu.controllsSprite){
+				this.game.world.bringToTop(this.ingameMenu.controllsSprite);
 			}
 
 			if (this.ingameMenu.questMap.text) {
@@ -96,6 +102,7 @@ export default class {
 			if (this.ingameMenu.gameOptions.muteMusicButton) {
 				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteMusicButton);
 				this.game.world.bringToTop(this.ingameMenu.gameOptions.muteSoundButton);
+				this.game.world.bringToTop(this.ingameMenu.gameOptions.FSmodeButton);
 			}
 		}
 

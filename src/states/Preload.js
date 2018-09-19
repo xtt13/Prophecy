@@ -737,7 +737,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('inventoryButton', 'assets/input/inventoryButton.png', 60, 20);
 		this.load.spritesheet('muteMusicButton', 'assets/input/muteMusicButton.png', 90, 20);
 		this.load.spritesheet('muteSoundButton', 'assets/input/muteSoundButton.png', 90, 20);
-
+		this.load.spritesheet('FSmodeButton', 'assets/input/FSmodeButton.png', 90, 20);
 
 		// Load Weather Sprites
 		this.load.image('cloud', 'assets/sprites/cloud.png');
@@ -751,8 +751,10 @@ export default class extends Phaser.State {
 		this.load.image('gamePadHelper', 'assets/sprites/gui/gamePadHelper.png');
 		this.load.image('actionSymbol', 'assets/sprites/gui/actionSymbol.png');
 		this.load.image('credits', 'assets/sprites/gui/credits.png');
+		this.load.image('instructionsInGame', 'assets/sprites/gui/instructionsInGame.png');
 		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 15, 12);
 		this.load.spritesheet('nextGUI', 'assets/sprites/gui/nextGUI.png', 7, 7);
+		
 		// this.load.image('cursor', 'assets/sprites/gui/cursor.png');
 
 
