@@ -494,7 +494,10 @@ export default class extends Phaser.State {
 
 	preload() {
 
-		this.text = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+		this.instructions = this.game.add.image(0, 0, 'instructions');
+
+
+		// this.text = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
         // this.text.setText(content, true, -1, 5, 'left', true)
         // this.text.fixedWidth = 200;
 		this.fontImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2, this.text);
@@ -502,28 +505,57 @@ export default class extends Phaser.State {
 		// this.fontImage.fixedToCamera = true;
 		this.fontImage.scale.set(2);
 
-		this.recommendedText = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
-		this.recommendedText.setText('For performance reasons, the use of Google Chrome is recommended', true, -1, 5, 'left', true)
-		this.recommendedImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2 + 100, this.recommendedText);
-		this.recommendedImage.anchor.setTo(0.5);
-		// this.recommendedImage.scale.set(2);
+		this.preloadBar = this.game.add.image(172, 220, 'preloadBar');
+		this.load.setPreloadSprite(this.preloadBar);
+
 
 		// this.game.canvas.oncontextmenu = function (e) {
 		// 	e.preventDefault();
 		// };
 
-		this.addVillageGlimmer = this.game.add.emitter(this.game.camera.width/2, this.game.camera.height/2, 2000);
-		this.addVillageGlimmer.width = this.game.camera.width;
-		this.addVillageGlimmer.height = this.game.camera.height;
-		this.addVillageGlimmer.minParticleScale = 5;
-		this.addVillageGlimmer.gravity = 0;
-		this.addVillageGlimmer.setYSpeed(-4, 4);
-		this.addVillageGlimmer.setXSpeed(-4, 4);
-		this.addVillageGlimmer.maxRotation = 0;
-		this.addVillageGlimmer.minRotation = 0;
-		this.addVillageGlimmer.setAlpha(0, 1, 4000, Phaser.Easing.Exponential.In, true);
-		this.addVillageGlimmer.makeParticles('particle');
-		this.addVillageGlimmer.start(false, 10000, 1, 0);
+		// this.addVillageGlimmer = this.game.add.emitter(this.game.camera.width/2, this.game.camera.height/2, 2000);
+		// this.addVillageGlimmer.width = this.game.camera.width;
+		// this.addVillageGlimmer.height = this.game.camera.height;
+		// this.addVillageGlimmer.minParticleScale = 5;
+		// this.addVillageGlimmer.gravity = 0;
+		// this.addVillageGlimmer.setYSpeed(-4, 4);
+		// this.addVillageGlimmer.setXSpeed(-4, 4);
+		// this.addVillageGlimmer.maxRotation = 0;
+		// this.addVillageGlimmer.minRotation = 0;
+		// this.addVillageGlimmer.setAlpha(0, 1, 4000, Phaser.Easing.Exponential.In, true);
+		// this.addVillageGlimmer.makeParticles('particle');
+		// this.addVillageGlimmer.start(false, 10000, 1, 0);
+
+		let emitter = this.game.add.emitter(-500, 0, 400);
+		emitter.fixedToCamera = true;
+		emitter.width = this.game.camera.width * 2;
+		emitter.angle = -30;
+		emitter.makeParticles('rain');
+		emitter.minParticleScale = 0.1;
+		emitter.maxParticleScale = 0.5;
+		emitter.setYSpeed(200, 310);
+		emitter.setXSpeed(-5, 5);
+		emitter.minRotation = 180;
+		emitter.maxRotation = 0;
+		emitter.gravity = 200;
+		emitter.start(false, 2500, 1, 0);
+
+		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
+		this.autumnGlimmerEmitter.fixedToCamera = true;
+		this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
+		this.autumnGlimmerEmitter.height = this.game.world.bounds.height;
+		this.autumnGlimmerEmitter.minParticleScale = 0.1;
+		this.autumnGlimmerEmitter.maxParticleScale = 0.5;
+		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
+		this.autumnGlimmerEmitter.setYSpeed(300);
+		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
+		this.autumnGlimmerEmitter.minParticleScale = 0.25;
+		this.autumnGlimmerEmitter.maxParticleScale = 1;
+		this.autumnGlimmerEmitter.gravity = 0.5;
+		this.autumnGlimmerEmitter.minRotation = 25;
+		this.autumnGlimmerEmitter.setAlpha(0.5, 1);
+		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
+		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
 
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
@@ -612,11 +644,11 @@ export default class extends Phaser.State {
 		this.load.audiosprite('VxOracle', 'assets/sounds/VxOracle.mp3', null, this.VxOracleJSON);
 
 		// Particles
-		this.load.image('rain', 'assets/sprites/particles/rain.png');
+		// this.load.image('rain', 'assets/sprites/particles/rain.png');
 		this.load.image('snow', 'assets/sprites/particles/snow.png');
 		this.load.image('fly', 'assets/sprites/particles/fly.png');
 		this.load.image('waterdrop', 'assets/sprites/particles/waterdrop.png');
-		this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
+		// this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
 		this.load.image('particleStart', 'assets/sprites/particles/particleStart.png');
 		this.load.image('leave', 'assets/sprites/particles/leave.png');
 		this.load.image('blackParticle', 'assets/sprites/particles/blackParticle.png');
@@ -731,7 +763,7 @@ export default class extends Phaser.State {
 
 		// Load Fonts
 		// this.load.bitmapFont('pxlfont', 'assets/fonts/font.png', 'assets/fonts/font.xml');
-		this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
+		// this.load.bitmapFont('pxlfont', 'assets/fonts/prophecy.png', 'assets/fonts/prophecy.fnt');
 		// this.load.bitmapFont('minecraftia', 'assets/fonts/minecraftia-black.png', 'assets/fonts/minecraftia.xml');
 		// this.load.image('carinaFont', 'assets/fonts/carinaFont.png');
 	}
@@ -758,7 +790,7 @@ export default class extends Phaser.State {
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
 			if (typeof ipc == 'undefined') {
 				var content = '' + progress;
-				this.text.setText(content, true, -1, 5, 'left', true)
+				// this.text.setText(content, true, -1, 5, 'left', true)
 
 				// this.graphics.clear();
 				// this.graphics = game.add.graphics(this.text.x + 3, this.text.y + 5);

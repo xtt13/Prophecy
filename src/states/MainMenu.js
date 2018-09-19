@@ -44,6 +44,12 @@ export default class extends Phaser.State {
 			this.credits.tint = 0xFFFFFF;
 		}, this);
 
+
+		this.versionText = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
+		this.versionText.setText('Beta 1.0', true, -1, 5, 'left', true)
+		this.versionImage = this.game.add.image(this.game.camera.width - 90, this.game.camera.height - 10, this.versionText);
+		
+
 		// this.subText = this.game.add.bitmapText(
 		// 	this.game.camera.width / 2,
 		// 	this.game.camera.height / 2 + 107,
@@ -61,6 +67,8 @@ export default class extends Phaser.State {
 			this.subText.text = 'Mobile Version coming soon!';
 		}
 		this.fontImage = this.game.add.image(this.game.camera.width / 2 - 15, this.game.camera.height / 2 + 107, this.subText);
+
+		this.game.add.tween(this.fontImage).to( { tint: 0xe0be00 }, 10000, Phaser.Easing.Exponential.In, true, 0, 0, false).loop();
 		// this.fontImage.anchor.set(0.5);
 
 		this.variation1();
