@@ -48,8 +48,6 @@ export default class extends Phaser.State {
 	preload() {
 		// this.load.bitmapFont('font', 'assets/fonts/font.png', 'assets/fonts/font.xml');
 		this.load.image('carinaFont', 'assets/fonts/carinaFont.png');
-		this.load.image('rain', 'assets/sprites/particles/rain.png');
-		this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
 		this.load.image('instructions', 'assets/sprites/gui/instructions.png');
 		this.load.image('preloadBar', 'assets/sprites/gui/preloadBar.png');
 	}

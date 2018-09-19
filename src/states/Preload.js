@@ -526,36 +526,38 @@ export default class extends Phaser.State {
 		// this.addVillageGlimmer.makeParticles('particle');
 		// this.addVillageGlimmer.start(false, 10000, 1, 0);
 
-		let emitter = this.game.add.emitter(-500, 0, 400);
-		emitter.fixedToCamera = true;
-		emitter.width = this.game.camera.width * 2;
-		emitter.angle = -30;
-		emitter.makeParticles('rain');
-		emitter.minParticleScale = 0.1;
-		emitter.maxParticleScale = 0.5;
-		emitter.setYSpeed(200, 310);
-		emitter.setXSpeed(-5, 5);
-		emitter.minRotation = 180;
-		emitter.maxRotation = 0;
-		emitter.gravity = 200;
-		emitter.start(false, 2500, 1, 0);
+		// RAIN AND GLIMMER
 
-		this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
-		this.autumnGlimmerEmitter.fixedToCamera = true;
-		this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
-		this.autumnGlimmerEmitter.height = this.game.world.bounds.height;
-		this.autumnGlimmerEmitter.minParticleScale = 0.1;
-		this.autumnGlimmerEmitter.maxParticleScale = 0.5;
-		this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
-		this.autumnGlimmerEmitter.setYSpeed(300);
-		this.autumnGlimmerEmitter.setXSpeed(-300, 300);
-		this.autumnGlimmerEmitter.minParticleScale = 0.25;
-		this.autumnGlimmerEmitter.maxParticleScale = 1;
-		this.autumnGlimmerEmitter.gravity = 0.5;
-		this.autumnGlimmerEmitter.minRotation = 25;
-		this.autumnGlimmerEmitter.setAlpha(0.5, 1);
-		this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
-		this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
+		// let emitter = this.game.add.emitter(-500, 0, 400);
+		// emitter.fixedToCamera = true;
+		// emitter.width = this.game.camera.width * 2;
+		// emitter.angle = -30;
+		// emitter.makeParticles('rain');
+		// emitter.minParticleScale = 0.1;
+		// emitter.maxParticleScale = 0.5;
+		// emitter.setYSpeed(200, 310);
+		// emitter.setXSpeed(-5, 5);
+		// emitter.minRotation = 180;
+		// emitter.maxRotation = 0;
+		// emitter.gravity = 200;
+		// emitter.start(false, 2500, 1, 0);
+
+		// this.autumnGlimmerEmitter = this.game.add.emitter(-500, 0, 150);
+		// this.autumnGlimmerEmitter.fixedToCamera = true;
+		// this.autumnGlimmerEmitter.width = this.game.world.bounds.width;
+		// this.autumnGlimmerEmitter.height = this.game.world.bounds.height;
+		// this.autumnGlimmerEmitter.minParticleScale = 0.1;
+		// this.autumnGlimmerEmitter.maxParticleScale = 0.5;
+		// this.autumnGlimmerEmitter.setScale(-2, 2, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
+		// this.autumnGlimmerEmitter.setYSpeed(300);
+		// this.autumnGlimmerEmitter.setXSpeed(-300, 300);
+		// this.autumnGlimmerEmitter.minParticleScale = 0.25;
+		// this.autumnGlimmerEmitter.maxParticleScale = 1;
+		// this.autumnGlimmerEmitter.gravity = 0.5;
+		// this.autumnGlimmerEmitter.minRotation = 25;
+		// this.autumnGlimmerEmitter.setAlpha(0.5, 1);
+		// this.autumnGlimmerEmitter.makeParticles('glimmerParticle');
+		// this.autumnGlimmerEmitter.start(false, 5000, 5, 0);
 
 
 		this.graphics = game.add.graphics(this.game.camera.width / 2, this.game.camera.height / 2);
@@ -644,11 +646,12 @@ export default class extends Phaser.State {
 		this.load.audiosprite('VxOracle', 'assets/sounds/VxOracle.mp3', null, this.VxOracleJSON);
 
 		// Particles
-		// this.load.image('rain', 'assets/sprites/particles/rain.png');
+		this.load.image('particle', 'assets/sprites/particles/particle.png');
+		this.load.image('rain', 'assets/sprites/particles/rain.png');
 		this.load.image('snow', 'assets/sprites/particles/snow.png');
 		this.load.image('fly', 'assets/sprites/particles/fly.png');
 		this.load.image('waterdrop', 'assets/sprites/particles/waterdrop.png');
-		// this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
+		this.load.image('glimmerParticle', 'assets/sprites/particles/glimmerParticle.png');
 		this.load.image('particleStart', 'assets/sprites/particles/particleStart.png');
 		this.load.image('leave', 'assets/sprites/particles/leave.png');
 		this.load.image('blackParticle', 'assets/sprites/particles/blackParticle.png');
