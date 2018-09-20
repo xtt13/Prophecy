@@ -123,6 +123,7 @@ export default class extends Phaser.State {
 			
 			this.game.camera.fade(0x000000, 4000, true);
 			this.startSound = this.game.add.audio('startGame', 0.3);
+			this.startSound.allowMultiple = false;
 			this.startSound.play();
 			this.game.add.tween(this.fontImage).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 			this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
@@ -354,6 +355,7 @@ export default class extends Phaser.State {
 					this.startSwitch = false;
 					this.game.camera.fade(0x000000, 4000, true);
 					this.startSound = this.game.add.audio('startGame', 0.3);
+					this.startSound.allowMultiple = false;
 					this.startSound.play();
 					this.game.add.tween(this.fontImage).to({ alpha: 0 }, 2000, Phaser.Easing.Back.Out, true);
 					this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {

@@ -1023,6 +1023,17 @@
                  "width":103.214539255807,
                  "x":159.751326531605,
                  "y":249.993243425853
+                }, 
+                {
+                 "height":55.2258772682057,
+                 "id":475,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":42.5342160326553,
+                 "x":32.5866977669537,
+                 "y":903.852090693925
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2181,6 +2192,44 @@
                  "width":27.0067,
                  "x":98.5506815330133,
                  "y":229.522900551718
+                }, 
+                {
+                 "height":93.9356011834118,
+                 "id":474,
+                 "name":"FS",
+                 "properties":
+                    {
+                     "foreGroundShift":true
+                    },
+                 "propertytypes":
+                    {
+                     "foreGroundShift":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72.6724973724831,
+                 "x":18.0320839038864,
+                 "y":894.616255937639
+                }, 
+                {
+                 "height":121.126809303376,
+                 "id":476,
+                 "name":"SoundAreaDog",
+                 "properties":
+                    {
+                     "soundAreaDog":true
+                    },
+                 "propertytypes":
+                    {
+                     "soundAreaDog":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":161.086538218358,
+                 "x":361.762251947612,
+                 "y":676.988813932483
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3203,7 +3252,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":473,
+ "nextobjectid":477,
  "orientation":"orthogonal",
  "properties":
     {

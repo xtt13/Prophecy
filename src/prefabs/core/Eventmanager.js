@@ -101,6 +101,8 @@ export default class {
 				this.spotViewer(region);
 			} else if (region.properties.alternateLockCamera){
 				this.alternateLockCamera(region);
+			} else if (region.properties.soundAreaDog){
+				this.soundAreaDog(region);
 			}
 		});
 
@@ -494,8 +496,8 @@ export default class {
 			// if(!this.level.questManager.checkIfQuestExists(20)) return;
 			if (this.templeDoorOpen) return;
 
-			this.doorOpenSound = this.game.add.audio('sfxstonedoor');
-			// this.doorOpenSound.play();
+			this.doorOpenSound = this.game.add.audio('sfxTempleDoor');
+			this.doorOpenSound.play();
 
 			this.level.levelBuilder.templeDoor.animations.play('open', 12, false);
 			this.game.camera.shake(0.0010, 3700, true);
@@ -688,6 +690,14 @@ export default class {
 
 	}
 
+	soundAreaDog(region){
+		if(this.voiceDog !== undefined && this.voiceDog.isPlaying) return;
+		this.rndVoiceDog = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8']);
+		this.voiceDog = this.game.add.audioSprite('VxDog');
+		this.voiceDog.play(this.rndVoiceDog, 0.3);
+
+	}
+
 	stairsLeave() {
 		// Return on Fall Down
 		if (this.level.fallDown) return;
@@ -720,7 +730,7 @@ export default class {
 		this.areaSoundOnce = true;
 
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
-		this.areaSound.fadeIn(4000);
+		this.areaSound.fadeIn(4000, true);
 	}
 
 	soundAreaLeave(region) {
