@@ -668,6 +668,7 @@ export default class extends Phaser.State {
 		this.load.audio('AxEmber', 'assets/sounds/AxEmber.mp3');
 		this.load.audio('sfxSword', 'assets/sounds/sfxSword.mp3');
 		this.load.audio('AxForest', 'assets/sounds/AxForest.mp3');
+		this.load.audio('AxOracleArea', 'assets/sounds/AxOracleArea.mp3');
 		this.load.audio('AxCrickets', 'assets/sounds/AxCrickets.mp3');
 		this.load.audio('sfxShot', 'assets/sounds/sfxShot.mp3');
 

@@ -730,7 +730,11 @@ export default class {
 		this.areaSoundOnce = true;
 
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
-		this.areaSound.fadeIn(4000, true);
+		if(region.properties.fadeDuration !== undefined){
+			this.areaSound.fadeIn(region.properties.fadeDuration, true);
+		} else {
+			this.areaSound.fadeIn(4000, true);
+		}
 	}
 
 	soundAreaLeave(region) {
