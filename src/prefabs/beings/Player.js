@@ -177,13 +177,15 @@ export default class extends Phaser.Sprite {
 		this.playerArm.anchor.set(0.5, 0);
 		this.playerArm.visible = false;
 
-		this.weaponGun = this.game.add.weapon(30, 'bulletBeam');
+		this.weaponGun = this.game.add.weapon(30, 'bullet');
+		this.weaponGun.addBulletAnimation('fire', [0, 1, 3], 12);
+		// this.weaponGun.setBulletFrames(0, 8, true);
 		this.weaponGun.bulletKillType = Phaser.Weapon.KILL_LIFESPAN;
 		this.weaponGun.bulletLifespan = 2000;
 		this.weaponGun.bulletSpeed = 400;
 		this.weaponGun.fireRate = 1000;
 		// this.weaponGun.bulletAngleVariance = 10;
-		this.weaponGun.trackSprite(this.playerArm, 0, 10, true);
+		this.weaponGun.trackSprite(this.playerArm, -3, 25, true);
 
 		for (var i = 0; i < this.weaponGun.bullets.children.length; i++) {
 			// this.weaponGun.bullets.children[i].scale.setTo(2);

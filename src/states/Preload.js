@@ -671,6 +671,7 @@ export default class extends Phaser.State {
 		this.load.audio('AxOracleArea', 'assets/sounds/AxOracleArea.mp3');
 		this.load.audio('AxCrickets', 'assets/sounds/AxCrickets.mp3');
 		this.load.audio('sfxShot', 'assets/sounds/sfxShot.mp3');
+		this.load.audio('mxCrappy', 'assets/sounds/mxCrappy.mp3');
 
 
 		// Load AudioSpriteSheets
@@ -718,6 +719,7 @@ export default class extends Phaser.State {
 		this.load.image('playerArm', 'assets/sprites/player/playerArm.png');
 		this.load.image('invisibleAttack', 'assets/sprites/player/invisibleAttack.png');
 		this.load.image('bulletPlayer', 'assets/sprites/player/bulletPlayer.png');
+		this.load.spritesheet('bullet', 'assets/sprites/player/bulletAnimation.png', 55, 15);
 
 
 		// Villager		

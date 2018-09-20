@@ -598,6 +598,31 @@
                  "width":73.3168,
                  "x":153.22269682116,
                  "y":438.062877772385
+                }, 
+                {
+                 "height":78.8716499596728,
+                 "id":287,
+                 "name":"mxCrappy",
+                 "properties":
+                    {
+                     "nightMode":false,
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"mxCrappy"
+                    },
+                 "propertytypes":
+                    {
+                     "nightMode":"bool",
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":122.398184468257,
+                 "x":432.150053050117,
+                 "y":294.001037530086
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -910,7 +935,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":287,
+ "nextobjectid":288,
  "orientation":"orthogonal",
  "properties":
     {
