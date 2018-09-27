@@ -42,6 +42,10 @@ export default class {
 		this.ring.smoothed = false;
 		// this.ring.alpha = 0.5;
 		// this.ring.scale.set(this.scaleRate);
+		this.ring.animations.add('null', [0], 1, false);
+		this.ring.animations.add('one', [1], 1, false);
+		this.ring.animations.add('two', [2], 1, false);
+		this.ring.animations.add('three', [3], 1, false);
 
 		this.ball = this.game.add.sprite(this.x, this.y, 'LockGameBall');
 		this.ball.anchor.set(0.5);
@@ -51,48 +55,23 @@ export default class {
 
 		this.placeBall();
 
-		this.bar = this.game.add.sprite(this.x - 12, this.y + 23, 'LockGameBar');
+		this.bar = this.game.add.sprite(this.x-4, this.y + 15, 'LockGameBar');
 		this.bar.anchor.set(0, 0.5);
-		this.bar.angle = -90;
+		// this.bar.angle = -90;
 		this.bar.crossingBall = false;
 		this.bar.smoothed = false;
 		this.bar.rotationDirection = 0;
 		// this.bar.scale.set(this.scaleRate);
 
-		this.firstTry = this.game.add.sprite(this.x - 42, this.y + 29, 'LockGameBar');
-		this.firstTry.angle = -90;
-		this.firstTry.anchor.set(0.5);
-		// this.firstTry.ballAngle = -90;
-		// this.firstTry.scale.set(this.scaleRate);
-
-		this.secondTry = this.game.add.sprite(this.x - 12, this.y + 29, 'LockGameBar');
-		this.secondTry.angle = -90;
-		this.secondTry.anchor.set(0.5);
-		// this.secondTry.ballAngle = -90;
-		// this.secondTry.scale.set(this.scaleRate);
-
-		this.thirdTry = this.game.add.sprite(this.x + 18, this.y + 29, 'LockGameBar');
-		this.thirdTry.angle = -90;
-		this.thirdTry.anchor.set(0.5);
-		// this.thirdTry.ballAngle = -90;
-		// this.thirdTry.scale.set(this.scaleRate);
 
 		if (this.firstSetup) {
 			this.ring.alpha = 0;
 			this.ball.alpha = 0;
 			this.bar.alpha = 0;
 
-			this.firstTry.alpha = 0;
-			this.secondTry.alpha = 0;
-			this.thirdTry.alpha = 0;
-
 			this.game.add.tween(this.ring).to({ alpha: 0.5 }, 2000, Phaser.Easing.Linear.None, true);
 			this.game.add.tween(this.bar).to({ alpha: 0.5 }, 2000, Phaser.Easing.Linear.None, true);
 			this.game.add.tween(this.ball).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
-
-			this.game.add.tween(this.firstTry).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
-			this.game.add.tween(this.secondTry).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
-			this.game.add.tween(this.thirdTry).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 
 			// this.game.add.tween(this.player).to({ alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
 
@@ -132,29 +111,26 @@ export default class {
 			switch (this.currentTry) {
 				case 1:
 					this.lockPickSound.play('win');
-					this.firstTry.tint = 0x00ff11;
+					this.ring.animations.play('one');
 					this.currentTry = 2;
 					this.rotationSpeed = 4;
 					break;
 
 				case 2:
 				this.lockPickSound.play('win');
-					this.secondTry.tint = 0x00ff11;
+					this.ring.animations.play('two');
 					this.currentTry = 3;
 					this.rotationSpeed = 5;
 					break;
 
 				case 3:
-					this.thirdTry.tint = 0x00ff11;
+					this.ring.animations.play('three');
 					this.run = false;
 
 					this.game.add.tween(this.ring).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 					this.game.add.tween(this.bar).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 					this.game.add.tween(this.ball).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 
-					this.game.add.tween(this.firstTry).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
-					this.game.add.tween(this.secondTry).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
-					this.game.add.tween(this.thirdTry).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
 
 					// this.game.add.tween(this.player).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
 
@@ -234,10 +210,6 @@ export default class {
 		this.bar.destroy();
 		this.ring.destroy();
 		this.ball.destroy();
-
-		this.firstTry.destroy();
-		this.secondTry.destroy();
-		this.thirdTry.destroy();
 
 		this.setupGame();
 	}

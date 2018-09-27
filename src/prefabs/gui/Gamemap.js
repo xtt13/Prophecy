@@ -61,10 +61,6 @@ export default class {
 		this.calculateValues();
 		this.game.renderer.renderSession.roundPixels = true;
 
-		this.map = this.game.add.sprite(this.game.camera.width / 2 - 470, this.game.camera.height / 2 - 500, 'newGameMap');
-		// this.map.x = this.map.x - this.map.width/2;
-		// this.map.x = this.map.y - this.map.height/2;
-		this.map.fixedToCamera = true;
 
 		
 
@@ -72,14 +68,6 @@ export default class {
 		this.mask.beginFill(0xffffff);
 		this.mask.drawRect(this.game.camera.width / 2 - 500, this.game.camera.height / 2 - 259, 400, 180);
 		this.mask.fixedToCamera = true;
-
-		this.map.mask = this.mask;
-
-		this.bmdPlayer = this.game.add.bitmapData(6, 6);
-		this.bmdPlayer.ctx.beginPath();
-		this.bmdPlayer.ctx.rect(0, 0, 6, 6);
-		this.bmdPlayer.ctx.fillStyle = '#FF00FF';
-		this.bmdPlayer.ctx.fill();
 
 		if (this.playerDot) {
 			this.playerDot.destroy();
@@ -92,27 +80,30 @@ export default class {
 			}
 		}
 
+
 		this.playerPX = this.piece.x + this.valueX * this.piece.width;
 		this.playerPY = this.piece.y + this.valueY * this.piece.height;
 
-		this.playerDot = this.game.add.sprite(this.map.x + this.playerPX, this.map.y + this.playerPY, this.bmdPlayer);
+		// -180 -360
+		console.log(this.game.camera.width / 2 - 470, this.game.camera.height / 2 - 500);
 
-		this.map.x = this.map.x + this.playerPX;
-		this.map.y = this.map.y + this.playerPY;
+		// 432 521.6
+		console.log(this.playerPX, this.playerPY);
+		this.map = this.game.add.sprite(this.game.camera.width / 2 - this.playerPX, this.game.camera.height / 2 - this.playerPY, 'newGameMap');
+		this.map.fixedToCamera = true;
+		this.map.mask = this.mask;
 
+		this.playerDot = this.game.add.sprite(this.map.x + this.playerPX, this.map.y + this.playerPY, 'playerDot');
 		this.playerDot.anchor.set(0.5);
-
 		this.playerDot.mask = this.mask;
-
 
 
 		// this.map.hitArea = PIXI.Rectangle;
 
-		this.map.hitArea = new Phaser.Rectangle(this.ingameMenu.menuBackground.x, this.ingameMenu.menuBackground.y, this.ingameMenu.menuBackground.width, this.ingameMenu.menuBackground.height);
-		console.log(this.map.hitArea);
-		console.log(this.ingameMenu.menuBackground.x, this.ingameMenu.menuBackground.y);
-		this.map.inputEnabled = true;	
-		this.map.input.enableDrag(false);
+		// this.map.hitArea = new Phaser.Rectangle(this.ingameMenu.menuBackground.x, this.ingameMenu.menuBackground.y, this.ingameMenu.menuBackground.width, this.ingameMenu.menuBackground.height);
+
+		// this.map.inputEnabled = true;	
+		// this.map.input.enableDrag(false);
 
 	}
 
@@ -127,7 +118,7 @@ export default class {
 
 	update() {
 		this.playerDot.x = this.map.x + this.playerPX;
-		this.playerDot.y = this.map.y + this.playerPY;
+		this.playerDot.y = this.map.y + this.playerPY - 5;
 	}
 
 	removeMap() {

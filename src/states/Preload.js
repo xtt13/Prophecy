@@ -620,7 +620,8 @@ export default class extends Phaser.State {
 			
 
 		// LockGame Sprites
-		this.load.image('LockGameRing', 'assets/sprites/lockgame/LockGameRing.png');
+		this.load.spritesheet('LockGameRing', 'assets/sprites/lockgame/LockGameRing.png', 192, 224);
+		// this.load.image('LockGameRing', 'assets/sprites/lockgame/LockGameRing.png');
 		this.load.image('LockGameBar', 'assets/sprites/lockgame/LockGameBar.png');
 		this.load.image('LockGameBall', 'assets/sprites/lockgame/LockGameBall.png');
 
@@ -797,6 +798,7 @@ export default class extends Phaser.State {
 		this.load.image('actionSymbol', 'assets/sprites/gui/actionSymbol.png');
 		this.load.image('credits', 'assets/sprites/gui/credits.png');
 		this.load.image('instructionsInGame', 'assets/sprites/gui/instructionsInGame.png');
+		this.load.image('playerDot', 'assets/sprites/gui/playerDot.png');
 		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 15, 12);
 		this.load.spritesheet('nextGUI', 'assets/sprites/gui/nextGUI.png', 7, 7);
 		

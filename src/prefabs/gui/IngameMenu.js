@@ -403,7 +403,8 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			this.controllsSprite = this.game.add.sprite(720, 470, 'instructionsInGame');
+			this.controllsSprite = this.game.add.sprite(130, 80, 'instructionsInGame');
+			this.controllsSprite.fixedToCamera = true;
 
 			// this.gameOptions.showOptions();
 		} else if (button.key == 'optionsButton') {

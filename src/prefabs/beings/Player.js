@@ -78,7 +78,7 @@ export default class extends Phaser.Sprite {
 
 		this.animations.add('fight_right', [73, 74, 75, 76], this.frameRate, false);
 		this.animations.add('fight_left', [77, 78, 79, 80], this.frameRate, false);
-		this.animations.add('fight_up', [119, 120, 121, 122, 123, 124, 125, 126], 35, false);
+		this.animations.add('fight_up', [119, 120, 121, 122, 123, 124, 125, 126], this.frameRate, false);
 
 		this.animations.add('sleep', [127], 1, false);
 		this.animations.add('standUp', [127, 128, 127, 127, 127, 127, 127, 127, 128, 127, 127, 128, 127, 127, 127, 127, 127, 127, 127, 127, 128, 128, 128, 128, 128, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);

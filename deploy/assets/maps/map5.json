@@ -1179,7 +1179,7 @@
                  "y":309.2885914037
                 }, 
                 {
-                 "height":1059.99974189108,
+                 "height":521.594185619402,
                  "id":240,
                  "name":"AtmoWaterStill",
                  "properties":
@@ -1201,7 +1201,32 @@
                  "visible":true,
                  "width":734.948746131108,
                  "x":369.341812730946,
-                 "y":166.003853088887
+                 "y":755.667564066996
+                }, 
+                {
+                 "height":308.111261468648,
+                 "id":246,
+                 "name":"AtmoShine",
+                 "properties":
+                    {
+                     "nightMode":false,
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"AxOracleArea"
+                    },
+                 "propertytypes":
+                    {
+                     "nightMode":"bool",
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":760.682401955738,
+                 "x":367.432401522834,
+                 "y":118.830574000333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1346,7 +1371,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":246,
+ "nextobjectid":247,
  "orientation":"orthogonal",
  "properties":
     {

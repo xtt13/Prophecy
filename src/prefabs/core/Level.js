@@ -753,9 +753,6 @@ export default class {
 			this.game.world.bringToTop(this.lockGame.ring);
 			this.game.world.bringToTop(this.lockGame.ball);
 			this.game.world.bringToTop(this.lockGame.bar);
-			this.game.world.bringToTop(this.lockGame.firstTry);
-			this.game.world.bringToTop(this.lockGame.secondTry);
-			this.game.world.bringToTop(this.lockGame.thirdTry);
 		}
 
 
