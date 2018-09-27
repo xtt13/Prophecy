@@ -586,7 +586,7 @@ export default class {
 			if (element.properties.type == 'bird') {
 				if(this.night) return;
 				this.birds.push(
-					new Bird(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties)
+					new Bird(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties, this)
 				);
 			}
 

@@ -2,13 +2,14 @@ import Phaser from 'phaser';
 
 
 export default class extends Phaser.Sprite {
-	constructor(game, x, y, player, map, layer, properties) {
+	constructor(game, x, y, player, map, layer, properties, level) {
 		super(game, x, y, 'bird');
 
 		this.game = game;
 		this.player = player;
 		this.map = map;
-		this.layer = layer;
+        this.layer = layer;
+        this.level = level;
 
         
         this.startFlying = false;
@@ -53,7 +54,13 @@ export default class extends Phaser.Sprite {
 
         // console.log(this.game.world.children);
         // this.game.world.bringToTop(this);
-        this.game.world.setChildIndex(this, this.game.world.children.length-2);
+        if(this.level.GUICLASS.ingameMenu.menuBackground || this.level.GUICLASS.message){
+            // this.game.world.setChildIndex(this, this.game.world.children.length-1);
+        } else {
+            this.game.world.bringToTop(this);
+            // this.game.world.setChildIndex(this, this.game.world.children.length-17);
+        }
+
         this.body.checkCollision.none = true;
 
         if(this.startFlying){
