@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import Questmap from './Questmap';
 import Gamemap from './Gamemap';
 import GameOptions from './../core/GameOptions';
+import Inventory from './Inventory';
 
 export default class {
 	constructor(game, level) {
@@ -15,6 +16,7 @@ export default class {
 		this.gameMap = new Gamemap(this.game, this.level, this);
 		this.questMap = new Questmap(this.game, this.level, this);
 		this.gameOptions = new GameOptions(this.game, this.level, this);
+		this.inventory = new Inventory(this.game, this.level, this);
 
 		this.UISounds = this.game.add.audioSprite('sfxUI');
 		this.UISounds.sounds['UI1'].allowMultiple = true;
@@ -254,6 +256,10 @@ export default class {
 				this.controllsSprite.destroy();
 			}
 
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
+			}
+
 
 
 		}
@@ -297,6 +303,10 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
+			}
+
 			this.gameMap.createMap();
 			
 		} else if (button.key == 'questButton') {
@@ -325,6 +335,10 @@ export default class {
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
 				this.gameOptions.muteMusicButton = false;
+			}
+
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
 			}
 
 			this.questMap.showMap();
@@ -366,6 +380,8 @@ export default class {
 				this.gameMap.map = false;
 			}
 
+			this.inventory.show();
+
 			// this.gameOptions.showOptions();
 
 		} else if (button.key == 'controllsButton') {
@@ -403,6 +419,10 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
+			}
+
 			this.controllsSprite = this.game.add.sprite(130, 80, 'instructionsInGame');
 			this.controllsSprite.fixedToCamera = true;
 
@@ -436,6 +456,10 @@ export default class {
 				this.gameMap.mask.destroy();
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
 			}
 
 			this.gameOptions.showOptions();
@@ -484,6 +508,10 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
+			}
+
 			// this.gameMap.createMap();
 		} else if (this.currentTab == 2) {
 			if (this.questMap.text) return;
@@ -511,6 +539,10 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
+			}
+
 			this.questMap.showMap();
 		} else if (this.currentTab == 3) {
 			this.inventoryButton.setFrames(2, 2, 2);
@@ -535,7 +567,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			this.gameOptions.showOptions();
+			// this.gameOptions.showOptions();
 		} else if (this.currentTab == 4) {
 
 			this.inventoryButton.setFrames(0, 1, 2);
@@ -554,6 +586,10 @@ export default class {
 				this.gameMap.mask.destroy();
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
 			}
 
 		} else if (this.currentTab == 5) {
@@ -577,6 +613,10 @@ export default class {
 				this.gameMap.mask.destroy();
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
+			}
+
+			if(this.inventory.textImage){
+				this.inventory.textImage.destroy();
 			}
 		}
 	}
@@ -649,6 +689,7 @@ export default class {
 			}
 
 			this.questMap.showMap();
+			
 		} else if (this.currentTab == 3) {
 			this.inventoryButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
@@ -680,7 +721,9 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			this.gameOptions.showOptions();
+			this.inventory.show();
+
+			
 		} else if (this.currentTab == 4) {
 
 			this.inventoryButton.setFrames(0, 1, 2);
@@ -700,6 +743,8 @@ export default class {
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
 			}
+
+
 
 		} else if (this.currentTab == 5) {
 			this.inventoryButton.setFrames(0, 1, 2);
@@ -723,6 +768,8 @@ export default class {
 				this.gameMap.playerDot.destroy();
 				this.gameMap.map = false;
 			}
+
+			this.gameOptions.showOptions();
 		}
 	}
 

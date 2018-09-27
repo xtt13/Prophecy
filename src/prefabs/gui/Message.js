@@ -95,6 +95,7 @@ export default class {
 
 		if (!this.movable) {
 			this.player.movable = false;
+			this.player.animations.stop();
 			this.player.body.immovable = true;
 		}
 

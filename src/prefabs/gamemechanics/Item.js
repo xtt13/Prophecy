@@ -60,7 +60,7 @@ export default class extends Phaser.Sprite {
 			if (angle > 0) {			
 				this.game.world.bringToTop(this);
 			} else {
-				this.game.world.setChildIndex(this, 25);		
+				this.game.world.setChildIndex(this, 32);		
 			}
 		} else {
 			this.game.world.bringToTop(this);

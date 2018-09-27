@@ -91,6 +91,10 @@ export default class {
 				this.game.world.bringToTop(this.ingameMenu.controllsSprite);
 			}
 
+			if(this.ingameMenu.inventory.textImage){
+				this.game.world.bringToTop(this.ingameMenu.inventory.textImage);
+			}
+
 			if (this.ingameMenu.questMap.text) {
 				this.game.world.bringToTop(this.ingameMenu.questMap.text);
 				this.game.world.bringToTop(this.ingameMenu.questMap.fontImage);

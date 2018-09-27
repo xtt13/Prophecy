@@ -55,7 +55,7 @@ export default {
 		9: [
 			'Oh no! Do you see this? These are the monsters\nI\'ve been talking about! Seems like there \nis no way around. We have to get down \nthere and fight.',
 			'... You don\'t have a weapon? No worries! \nI will lend you my powers! I can not use them \nmyself because my form is too weak right \nnow, but you can!',
-			'All you have to do is press [BUTTON]. The best \nway to learn how to fight is to fight! \nYou got this!',
+			'All you have to do is press the left cursor Button. The best \nway to learn how to fight is to fight! \nYou got this!',
 			'Quick, we should leave this place, or else \nwe might be surrounded by monsters again in \nno time.',
 			'We\'re almost there! \nAalis is right over there...'
 		],
