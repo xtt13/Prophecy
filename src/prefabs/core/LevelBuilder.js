@@ -115,7 +115,7 @@ export default class {
 
     map1update(){
         if(this.bringBranchToTop){
-            this.game.world.setChildIndex(this.branch, 38);
+            // this.game.world.setChildIndex(this.branch, 38);
         
         }     
         if(this.level.items[0] !== undefined){
