@@ -88,6 +88,8 @@ export default class {
 	}
 
 	fadeOut() {
+		if(this.music == undefined) return;
+		
 			this.music.fadeOut(2000);
 
 			this.music.onFadeComplete.add(() => {
