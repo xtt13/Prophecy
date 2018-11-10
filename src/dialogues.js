@@ -79,6 +79,10 @@ export default {
 
 		13:[
 			'AHHHHHHHHH!'
+		],
+
+		14:[
+			'Dedicated to Sabine Rimmer.\n\nHer great animations made me alive.'
 		]
 
 	}

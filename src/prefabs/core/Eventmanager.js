@@ -132,7 +132,6 @@ export default class {
 		const removeQuestID = region.properties.removeQuestID;
 		const addQuestID = region.properties.addQuestID;
 
-
 		if (!this.level.questManager.checkIfQuestExists(ifQuestID) && ifQuestID !== undefined) return;
 		if (this.level.questManager.checkIfQuestWasDone(ifQuestID)) return;
 
