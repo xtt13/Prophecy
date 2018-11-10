@@ -219,7 +219,7 @@ export default {
 		},
 		15: {
 			silent: false,
-			questMessage: 'Talk to the priest!',
+			questMessage: 'Find the priest!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,

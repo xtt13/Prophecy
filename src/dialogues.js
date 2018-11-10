@@ -42,27 +42,28 @@ export default {
 		// Chest Dialogue
 		7: [
 			'There we go! Seems like they locked up the \nitem that could help us reactivate the bridge \nin this treasure chest!',
-			'... What are you waiting for? \nYou think you can just open it? \nThis isn\'t a video game, Levi.',
+			'... What are you waiting for? \nYou think you can just open it?',
 			'You have to pick the lock by pressing the \nE-Button! Oh, one more thing! \nIf you fail three times, the chests will close \ntheir locks for a short period of time.',
 			'So if you mess up, you have to wait for a bit \nuntil you can try again.'
 		],
 
 		// Bridge Success
 		8: [
-			'You did it!'
+			'You did it!',
+			'Let\'s find the village!'
 		],
 
 		9: [
 			'Oh no! Do you see this? These are the monsters\nI\'ve been talking about! Seems like there \nis no way around. We have to get down \nthere and fight.',
 			'... You don\'t have a weapon? No worries! \nI will lend you my powers! I can not use them \nmyself because my form is too weak right \nnow, but you can!',
-			'All you have to do is press the left cursor Button. The best \nway to learn how to fight is to fight! \nYou got this!',
+			'All you have to do is press the left \nMouse-Button. The best way to learn how to fight is to fight! \nYou got this!',
 			'Quick, we should leave this place, or else \nwe might be surrounded by monsters again in \nno time.',
-			'We\'re almost there! \nAalis is right over there...'
+			'We\'re almost there! \tThe village is right over there...'
 		],
 
 		//
 		10: [
-			'One last thing before we enter the village! \nYou will encounter many different people! \nMaybe they can help you figure out \nwhy you ended up here.', 'But to do so, you will have to talk to the them. \nUse the E-Button to interact with the towns folks.',
+			'One last thing before we enter the village! \nYou will encounter many different people! \nMaybe they can help you figure out \nwhy you ended up here.', 'But to do so, you will have to talk to the them. \nUse the E-Button to interact with the towns \nfolks.',
 			'Another thing! Especially the high priest and \nthe priestess don\'t like monsters. ', 'Since I, too, look like one, it will \nprobably be for the best if I stayed invisible \nand silent during our stay in the village.','You can still use my powers, but I will not \nbe able to interact with you, Levi. \nBe careful, young hero.'
 		],
 

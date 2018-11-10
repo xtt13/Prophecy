@@ -20,6 +20,8 @@ export default class extends Phaser.Sprite {
 		this.talking = false;
 		this.attack = false;
 
+		this.dead = false;
+
 		// if(this.health < 2){
 		// 	if (this.level.sfxheartbeat == undefined) {
 		// 		this.level.sfxheartbeat.play();
@@ -508,6 +510,8 @@ export default class extends Phaser.Sprite {
 			enemy.paralyze = false;
 		}, this);
 
+		if(this.dead) return;
+
 		this.game.camera.flash(0xc10000, 200);
 		this.GUICLASS.healthBar.removeHeart(1, true);
 		// return;
@@ -560,12 +564,8 @@ export default class extends Phaser.Sprite {
 				this.sfxheartbeat.stop();
 			}
 
-
-			this.game.state.restart(true, false, {
-				map: this.currentMap,
-				targetID: this.lastTargetID,
-				restartType: 'revive'
-			});
+			this.dead = true;
+			this.player.die();
 		}
 
 		// enemy.body.velocity.x = player.body.velocity.x;
@@ -622,6 +622,9 @@ export default class extends Phaser.Sprite {
 
 	bulletHit(player, bullet) {
 		bullet.kill();
+
+		if(this.dead) return;
+
 		player.tint = 0xFF0000;
 
 		this.game.time.events.add(200, () => {
@@ -663,12 +666,67 @@ export default class extends Phaser.Sprite {
 			}
 
 
-			this.game.state.restart(true, false, {
-				map: this.currentMap,
-				targetID: this.lastTargetID,
-				restartType: 'revive'
-			});
+			this.dead = true;
+			this.player.die();
+
+
+			// this.game.state.restart(true, false, {
+			// 	map: this.currentMap,
+			// 	targetID: this.lastTargetID,
+			// 	restartType: 'revive'
+			// });
 		}
+	}
+
+	die(){
+		this.game.musicPlayer.fadeOut();
+		this.level.GUICLASS.healthBar.fadeOut();
+		if (this.level.GUICLASS.healthBar.flashingLoop) {
+			this.game.time.events.remove(this.level.GUICLASS.healthBar.flashingLoop);
+		}
+
+		this.gameOverSound = this.game.add.audio('sfxGameOver');
+		this.gameOverSound.play();
+		
+		this.level.player.health = 5;
+		this.level.gameData.playerHealth = 5;
+		this.level.safe.setGameConfig(this.level.gameData);
+		this.level.player.movable = false;
+
+
+		this.game.time.events.add(
+			250,
+			() => {
+				this.level.player.animations.play('die');
+				this.game.camera.flash(0xc10000, 400, true);
+				
+			}, this);
+
+		this.game.time.events.add(
+			2000,
+			() => {
+
+				this.game.canvas.classList.add('greyscale');
+				this.level.gameOver();
+
+				this.game.time.events.add(
+					5000,
+					() => {
+						this.game.camera.fade(0x000000, 5000, true);
+					}, this);
+			}, this);
+
+		this.game.time.events.add(
+			13000,
+			() => {
+				this.game.canvas.classList.remove('greyscale');
+				this.game.state.restart(true, false, {
+					map: this.currentMap,
+					targetID: this.lastTargetID,
+					restartType: 'revive'
+				});
+			}, this);
+
 	}
 
 	update() {
