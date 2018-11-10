@@ -109,7 +109,7 @@ export default {
 		18: [],
 
 		// Schmied
-		19: ['Blabla Get me some weed'],
+		19: ['I need (...)!'],
 		20: ['There you go. Thank you for getting the \nmaterials needed. \nPleasure doing business with you.'],
 
 		// Viden
