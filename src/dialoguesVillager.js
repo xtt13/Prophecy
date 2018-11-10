@@ -8,7 +8,6 @@ export default {
 
 		// Botanic
 		1: [
-
 			'Hello! Do you need plant seeds?',
 			'No? Alright! Come back anytime you want!'
 		],
@@ -22,8 +21,8 @@ export default {
 
 		// Librarian
 		3: [
-			'Hmm',
-			'Oh, I havent even noticed you.'
+			'Oh, I havent even noticed you.\nI\'m the librarian.',
+			'Feel free to read whatever you want!\nBut stay quiet!'
 		],
 
 		// Smith
@@ -88,7 +87,7 @@ export default {
 		// Molly
 		13: [
 			'I can not believe this! Some filthy thief got \nher or his hands on my fishing rods! \nI can’t catch fish without it. Tsk!',
-			'Hey! You! Have you seen my fishing rod? I will \ngive you a great reward if you find the thief \nand return my rod. It would mean the world to me.'
+			'Hey! You! Have you seen my fishing rod? I will \ngive you a great reward if you find the thief \nand return my rod. It would mean the world \nto me.'
 		],
 		14: [
 			'There it is! I hope this thief got what he deserved.',

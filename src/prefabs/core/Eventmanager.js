@@ -693,6 +693,9 @@ export default class {
 		if(this.voiceDog !== undefined && this.voiceDog.isPlaying) return;
 		this.rndVoiceDog = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8']);
 		this.voiceDog = this.game.add.audioSprite('VxDog');
+		this.voiceDog.allowMultiple = true;
+		console.log(this.rndVoiceDog);
+		console.log(this.voiceDog);
 		this.voiceDog.play(this.rndVoiceDog, 0.3);
 
 	}
