@@ -99,6 +99,8 @@ export default class {
 				this.openBossDoor(region);
 			} else if (region.properties.spotViewer) {
 				this.spotViewer(region);
+			} else if (region.properties.dash){
+				this.dash(region);
 			} else if (region.properties.alternateLockCamera){
 				this.alternateLockCamera(region);
 			} else if (region.properties.soundAreaDog){
@@ -117,6 +119,8 @@ export default class {
 				this.soundAreaLeave(region);
 			} else if (region.properties.openBossDoor) {
 				this.closeBossDoor(region);
+			} else if (region.properties.dash){
+				this.dashLeave(region);
 			} else if (region.properties.spotViewer) {
 				this.followPlayer(region);
 			} else if (region.properties.alternateLockCamera){
@@ -1001,6 +1005,26 @@ export default class {
 
 			}, this);
 
+	}
+
+	dash(region){
+		if(this.level.inputClass.dash){
+			this.level.inputClass.dash = false;
+			this.level.player.body.drag.set(10000);
+			this.level.player.animations.stop();
+			this.game.time.events.add(
+				200,
+				() => {
+					this.level.player.body.drag.set(1000);
+				}, this);
+
+		} else {
+			this.level.player.body.drag.set(1000);
+		}
+	}
+
+	dashLeave(region){
+			this.level.player.body.drag.set(1000);
 	}
 
 	alternateLockCamera(region){

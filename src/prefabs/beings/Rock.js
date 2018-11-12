@@ -44,7 +44,7 @@ export default class extends Phaser.Sprite {
         
         this.game.world.setChildIndex(this.weapon.bullets, 20);
 
-        // console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
+        console.log(Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y)));
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
 		this.distanceBetweenEnemiePlayer = this.game.physics.arcade.distanceBetween(this, this.player);
 
@@ -55,7 +55,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (this.distanceBetweenEnemiePlayer < 150) {
-            if(angle !== 2){
+            if(angle == -0 || angle == -1 || angle == -2){
 				if(!this.animations._anims.open.isPlaying && !this.open){
 					this.animations.play('open');
 
@@ -65,6 +65,7 @@ export default class extends Phaser.Sprite {
 				}
 				
 				if(this.open){
+					console.log('fire');
 					this.weapon.fireAtXY(this.player.body.x, this.player.body.y);
 				}
                 
