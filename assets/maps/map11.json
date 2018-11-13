@@ -620,7 +620,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1507,6 +1507,101 @@
                  "width":65.9864367147236,
                  "x":1149.76770350027,
                  "y":1131.92298024051
+                }, 
+                {
+                 "height":48.3630966344783,
+                 "id":333,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":6.91075151774453,
+                 "x":1321.97346342134,
+                 "y":1065.13108664996
+                }, 
+                {
+                 "height":5.71563392412077,
+                 "id":334,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":43.4657209221823,
+                 "x":1345.4784383481,
+                 "y":1035.91260674328
+                }, 
+                {
+                 "height":5.71563,
+                 "id":335,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":53.9891007200222,
+                 "x":1317.23142582387,
+                 "y":976.095383559956
+                }, 
+                {
+                 "height":5.71563,
+                 "id":336,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":53.9891,
+                 "x":1284.37480425902,
+                 "y":852.539333676171
+                }, 
+                {
+                 "height":5.71563,
+                 "id":337,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":53.9891,
+                 "x":1283.89559017012,
+                 "y":908.367775032347
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2186,7 +2281,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":333,
+ "nextobjectid":338,
  "orientation":"orthogonal",
  "properties":
     {

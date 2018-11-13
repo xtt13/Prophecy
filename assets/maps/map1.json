@@ -1156,6 +1156,63 @@
                  "width":44.3076599431058,
                  "x":1040.72151346009,
                  "y":1863.52628952442
+                }, 
+                {
+                 "height":14.5449,
+                 "id":314,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":67.573876472115,
+                 "x":1099.78214978263,
+                 "y":1579.52961339422
+                }, 
+                {
+                 "height":14.5449,
+                 "id":315,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":75.2301215494733,
+                 "x":1090.16809508199,
+                 "y":1804.16232368066
+                }, 
+                {
+                 "height":14.5449,
+                 "id":316,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":53.2288894804774,
+                 "x":1061.71316827276,
+                 "y":1930.88942039808
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1827,7 +1884,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":314,
+ "nextobjectid":317,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1887,6 +1944,69 @@
          "spacing":0,
          "tilecount":4000,
          "tileheight":32,
+         "tiles":
+            {
+             "2846":
+                {
+                 "animation":[
+                        {
+                         "duration":100,
+                         "tileid":2846
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2847
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2848
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2849
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2850
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2851
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2852
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2853
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2854
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2855
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2856
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2857
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2858
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2859
+                        }]
+                }
+            },
          "tilewidth":32
         }, 
         {
