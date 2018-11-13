@@ -21,7 +21,7 @@ export default {
 
 		// Librarian
 		3: [
-			'Oh, I havent even noticed you.\nI\'m the librarian.',
+			'Oh, I havent even noticed you.\nI\'m the librarian!',
 			'Feel free to read whatever you want!\nBut stay quiet!'
 		],
 

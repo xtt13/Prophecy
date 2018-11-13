@@ -386,27 +386,6 @@
                  "y":598.325922940671
                 }, 
                 {
-                 "height":223.332448548813,
-                 "id":271,
-                 "name":"Lock Camera",
-                 "properties":
-                    {
-                     "ifQuestID":2,
-                     "lockCamera":true
-                    },
-                 "propertytypes":
-                    {
-                     "ifQuestID":"int",
-                     "lockCamera":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":405.31008040201,
-                 "x":849.684113261716,
-                 "y":765.980508160043
-                }, 
-                {
                  "height":55.1863499839383,
                  "id":272,
                  "name":"quickSave",
@@ -683,6 +662,158 @@
                  "width":40.3215,
                  "x":299.505916666667,
                  "y":586.394216666667
+                }, 
+                {
+                 "height":3.71730552150268,
+                 "id":294,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48.7532,
+                 "x":1030.4924064261,
+                 "y":909.988439017136
+                }, 
+                {
+                 "height":3.71730552150268,
+                 "id":295,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48.7532,
+                 "x":1031.48103717252,
+                 "y":880.988603788927
+                }, 
+                {
+                 "height":3.71731,
+                 "id":296,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48.7532,
+                 "x":1033.29327434815,
+                 "y":783.469912103717
+                }, 
+                {
+                 "height":3.71731,
+                 "id":297,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48.7532,
+                 "x":1030.94986719694,
+                 "y":746.836844228048
+                }, 
+                {
+                 "height":35.9207698076049,
+                 "id":298,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2.71876706989815,
+                 "x":1197.49698077701,
+                 "y":635.398270808183
+                }, 
+                {
+                 "height":35.9208,
+                 "id":299,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2.71877,
+                 "x":1161.06165459374,
+                 "y":634.985390842657
+                }, 
+                {
+                 "height":35.9208,
+                 "id":300,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2.71877,
+                 "x":1070.64424821085,
+                 "y":635.811120581314
+                }, 
+                {
+                 "height":2.0658505226869,
+                 "id":302,
+                 "name":"Dash",
+                 "properties":
+                    {
+                     "dash":true
+                    },
+                 "propertytypes":
+                    {
+                     "dash":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48.7532,
+                 "x":1030.28670869906,
+                 "y":656.660811578589
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -865,13 +996,13 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":294,
+ "nextobjectid":303,
  "orientation":"orthogonal",
  "properties":
     {
      "athmoSound":"AxOpenPlain",
      "athmoSoundNight":"AxForest",
-     "cameraMode":"follow",
+     "cameraMode":"",
      "dayCycle":true,
      "ground":"gravel2",
      "lucy":true,
