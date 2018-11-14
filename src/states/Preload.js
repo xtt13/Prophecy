@@ -787,6 +787,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('muteMusicButton', 'assets/input/muteMusicButton.png', 90, 20);
 		this.load.spritesheet('muteSoundButton', 'assets/input/muteSoundButton.png', 90, 20);
 		this.load.spritesheet('FSmodeButton', 'assets/input/FSmodeButton.png', 90, 20);
+		this.load.spritesheet('resetButton', 'assets/input/resetButton.png', 90, 20);
 
 		// Load Weather Sprites
 		this.load.image('cloud', 'assets/sprites/cloud.png');

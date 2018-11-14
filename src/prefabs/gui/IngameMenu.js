@@ -249,6 +249,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -300,6 +301,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -334,6 +336,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -370,6 +373,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -416,6 +420,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -505,6 +510,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -536,6 +542,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -658,6 +665,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 
@@ -685,6 +693,7 @@ export default class {
 				this.gameOptions.muteMusicButton.destroy();
 				this.gameOptions.muteSoundButton.destroy();
 				this.gameOptions.FSmodeButton.destroy();
+				this.gameOptions.resetButton.destroy();
 				this.gameOptions.muteMusicButton = false;
 			}
 

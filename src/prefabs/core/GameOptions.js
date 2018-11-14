@@ -16,6 +16,9 @@ export default class {
 		this.FSmodeButton = this.game.add.button(240, 160, 'FSmodeButton', this.actionOnClick, this, 0, 2, 1);
 		this.FSmodeButton.fixedToCamera = true;
 
+		this.resetButton = this.game.add.button(240, 190, 'resetButton', this.actionOnClick, this, 0, 2, 1);
+		this.resetButton.fixedToCamera = true;
+
 		this.getGamePreferences();
 
 		// this.fullScreenMode = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
@@ -83,6 +86,28 @@ export default class {
 			} else {
 				this.game.scale.startFullScreen(false, false);
 				this.FSmodeButton.setFrames(1, 1, 1);
+			}
+		} else if (button.key == 'resetButton'){
+
+			// Confirmbox
+			let result = confirm('Do you really want to reset your Gamedata?');
+
+			// If Result is true
+			if (result){
+
+				// Create Notification
+				this.level.GUICLASS.createNotification('saving', 'Reset Gamedata!');
+
+				// Clear Local Storage
+				localStorage.clear();
+
+				// FadeOut Music
+				this.game.musicPlayer.fadeOut();
+
+				// Wait 3 sec -> Restart
+				this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
+					this.game.state.start('MainMenu', true, false);
+				});
 			}
 		}
 

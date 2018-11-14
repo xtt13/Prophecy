@@ -183,23 +183,23 @@ export default {
 
 		// Viden
 		33: [
-			'I would love to properly research these monsters \nbut... These are too many. Nobody would survive \ngoing outside right now. It\'s way too dangerous.'
+			'I would love to properly research these \nmonsters but... These are too many. ','Nobody would survive going outside right now. \nIt\'s way too dangerous.'
 		],
 
 		// Bromium
 		34: [
-			'Of course this has to happen when our village is without a hero! Let\'s pray to the Oracle that nobody gets seriously hurt and these monsters leave soon.'
+			'Of course this has to happen when our village \nis without a hero! Let\'s pray to the Oracle \nthat nobody gets seriously hurt and these \nmonsters leave soon.'
 		],
 
 		// Librarian
 		35: [
-			'I already looked through all the books, but \nnothing! Not a single book holds the information \nto help me come up with a solution to this mess. ', 
+			'I already looked through all the books, but \nnothing! Not a single book holds the \ninformation to help me come up with a solution \nto this mess. ', 
 			'Without someone strong enough to face these \nmonsters, it seems we can not do much besides \nawaiting, praying and hoping for the best.'
 		],
 
 		// Smith
 		36: [
-			'I would fight these monsters, but I can not risk \nit. If I get hurt or worse, who would take care \nof my beautiful daughters?'
+			'I would fight these monsters, but I can not \nrisk it. If I get hurt or worse, who would take \ncare of my beautiful daughters?'
 		],
 
 		// Girl1
@@ -209,7 +209,7 @@ export default {
 
 		// Girl2
 		38: [
-			'I would love to fight with my Dad, but he won\'t \nallow my sisters or me to leave the house. \nAt all. Ugh.'
+			'I would love to fight with my Dad, but he \nwon\'t allow my sisters or me to leave the \nhouse. At all. Ugh.'
 		],
 
 		// Girl3

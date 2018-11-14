@@ -502,7 +502,59 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2545,
+                 "height":32,
+                 "id":278,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "character":"botanist",
+                     "id":7,
+                     "ifQuestID":14,
+                     "nightVersion":false
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":257.956271346146,
+                 "y":323.319574052551
+                }, 
+                {
+                 "gid":2545,
+                 "height":32,
+                 "id":279,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "character":"botanist",
+                     "id":7,
+                     "ifQuestID":14,
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":258.796374870284,
+                 "y":323.357110186377
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -530,7 +582,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":278,
+ "nextobjectid":280,
  "orientation":"orthogonal",
  "properties":
     {
@@ -557,7 +609,7 @@
      "weather":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.3",
+ "tiledversion":"1.1.6",
  "tileheight":32,
  "tilesets":[
         {
