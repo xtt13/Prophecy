@@ -1128,7 +1128,7 @@
                  "y":1078.46516803822
                 }, 
                 {
-                 "height":30.7153,
+                 "height":81.5781519527702,
                  "id":261,
                  "name":"Message",
                  "properties":
@@ -1155,8 +1155,8 @@
                  "type":"",
                  "visible":true,
                  "width":66.8451,
-                 "x":721.427932255242,
-                 "y":45.343202791122
+                 "x":1227.33165614262,
+                 "y":330.538479812012
                 }, 
                 {
                  "height":46.7588597042761,
@@ -1602,6 +1602,32 @@
                  "width":53.9891,
                  "x":1283.89559017012,
                  "y":908.367775032347
+                }, 
+                {
+                 "gid":2568,
+                 "height":32,
+                 "id":338,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"10",
+                     "jumpDown":false,
+                     "killQuestID":11,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":599.257133978973,
+                 "y":1060.18209125278
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2281,7 +2307,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":338,
+ "nextobjectid":339,
  "orientation":"orthogonal",
  "properties":
     {

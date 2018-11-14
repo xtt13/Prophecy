@@ -309,8 +309,8 @@ export default class {
 				400
 			);
 
-			// this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
-			this.followTarget(this.level.characters[0]);
+			this.game.camera.follow(this.level.characters[0], Phaser.Camera.FOLLOW_LOCKON, 0.08, 0.08);
+			// this.followTarget(this.level.characters[0]);
 
 			this.level.player.movable = false;
 			//1641

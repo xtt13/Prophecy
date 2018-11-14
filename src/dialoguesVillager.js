@@ -16,12 +16,12 @@ export default {
 		// Veteran
 		2: [
 			'What do you want?',
-			'Say something or leave. I don\'t have time \nfor that.'
+			'Say something or leave! \nI don\'t have time for that.'
 		],
 
 		// Librarian
 		3: [
-			'Oh, I havent even noticed you.\nI\'m the librarian!',
+			'Oh, I haven\'t even noticed you.\nI\'m the librarian!',
 			'Feel free to read whatever you want!\nBut stay quiet!'
 		],
 
@@ -113,7 +113,7 @@ export default {
 		20: ['There you go. Thank you for getting the \nmaterials needed. \nPleasure doing business with you.'],
 
 		// Viden
-		21: ['Would you mind helping me out a little? \nI need you to cut at least ten flowers \nand collect the petals for me.', 'It will help my research a lot.'],
+		21: ['Would you mind helping me out a little?', 'I need you to cut at least ten flowers \nand collect the petals for me.', 'It will help my research a lot!'],
 		22: ['Thank you so much, young man. I appreciate your help.'],
 
 		// Bromium
@@ -125,8 +125,8 @@ export default {
 		// Ally
 		24: [
 			'Dad said I’m not allowed to leave the town but \nmy doll is gone!',
-			'I want my doll back. It must be somewhere. \nMaybe on the way to the temple? Or in the woods? \nI can not remember...',
-			'Can you help me, Sir? Please. Pleaaseee!'
+			'I want my doll back. It must be somewhere. \nMaybe on the way to the temple? \nOr in the woods? I can not remember...',
+			'Can you help me, Sir? \nPlease! Pleaaseee!'
 		],
 		25: ['Thank you so much!! \nI will tell Dad and everyone else how \nawesome you are!'],
 

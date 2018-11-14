@@ -536,7 +536,7 @@
                  "y":745.23197288963
                 }, 
                 {
-                 "height":187.657275500134,
+                 "height":170.965999901495,
                  "id":240,
                  "name":"AxTicking",
                  "properties":
@@ -556,13 +556,13 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":249.717,
-                 "x":180.807745504908,
+                 "width":312.630269564101,
+                 "x":148.067166446039,
                  "y":596.003666537078
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

@@ -311,6 +311,7 @@ export default class extends Phaser.Sprite {
 		if (newQuestID !== undefined && newQuestID !== false) {
 			if (!this.level.questManager.checkIfQuestWasDone(newQuestID)) {
 				this.level.questManager.addQuest(newQuestID);
+				this.level.GUICLASS.createNotification('success', 'Questupdate');
 				// this.level.questManager.removeCharacterDialogue(questID, this.name);
 			} else {
 				dialogueID = false;
