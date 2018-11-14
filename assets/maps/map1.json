@@ -1213,6 +1213,33 @@
                  "width":53.2288894804774,
                  "x":1061.71316827276,
                  "y":1930.88942039808
+                }, 
+                {
+                 "height":127.639,
+                 "id":317,
+                 "name":"Message",
+                 "properties":
+                    {
+                     "id":16,
+                     "ifQuestID":6,
+                     "message":true,
+                     "movable":true,
+                     "readable":true
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "ifQuestID":"int",
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30.5775,
+                 "x":756.521515563308,
+                 "y":1982.26195383742
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1884,7 +1911,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":317,
+ "nextobjectid":318,
  "orientation":"orthogonal",
  "properties":
     {

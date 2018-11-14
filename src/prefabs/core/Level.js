@@ -25,6 +25,7 @@ import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
 import Raptor from '../beings/Raptor';
+import Blob from '../beings/Blob';
 import Bird from '../beings/Bird';
 import Flower from '../gamemechanics/Flower';
 import Sprout from '../beings/Sprout';
@@ -605,6 +606,12 @@ export default class {
 			if (element.properties.type == 'raptor') {
 				this.enemies.push(
 					new Raptor(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
+				);
+			}
+
+			if (element.properties.type == 'blob') {
+				this.enemies.push(
+					new Blob(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
 				);
 			}
 

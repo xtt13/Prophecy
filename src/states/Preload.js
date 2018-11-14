@@ -742,6 +742,7 @@ export default class extends Phaser.State {
 
 		// Enemies
 		this.load.spritesheet('enemy', 'assets/sprites/enemies/enemy.png', 18, 18);
+		this.load.spritesheet('blob', 'assets/sprites/enemies/blob.png', 36, 36);
 		this.load.spritesheet('bird', 'assets/sprites/enemies/bird.png', 16, 16);
 		this.load.spritesheet('enemyPartsSpritesheet', 'assets/sprites/enemies/enemyPartsSpritesheet.png', 16, 16);
 		this.load.spritesheet('predatorPartsSpritesheet', 'assets/sprites/enemies/predatorPartsSpritesheet.png', 16, 16);
@@ -757,7 +758,7 @@ export default class extends Phaser.State {
 
 
 		// Items
-		this.load.spritesheet('item', 'assets/sprites/items/testitem.png', 25, 27);
+		// this.load.spritesheet('item', 'assets/sprites/items/testitem.png', 25, 27);
 		this.load.spritesheet('potion', 'assets/sprites/items/potion.png', 32, 32);
 		this.load.image('doll', 'assets/sprites/items/doll.png');
 		this.load.image('energyStone', 'assets/sprites/items/energyStone.png');

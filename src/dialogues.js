@@ -87,6 +87,10 @@ export default {
 
 		15:[
 			'Did you hear that?'
+		],
+
+		16: [
+			'One more thing! \nBy pressing the Tab-Key, you can always check \nyour current quests!'
 		]
 
 	}

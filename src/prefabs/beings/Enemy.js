@@ -34,7 +34,7 @@ export default class extends Phaser.Sprite {
 		this.animations.add('idle', [10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 10, true);
 		
 		this.scale.set(1, 1);
-		this.game.time.events.add(Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 8), () => {
+		this.game.time.events.add(Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 3), () => {
 			// if(this.game.rnd.integerInRange(0, 1)){
 			// 	this.scale.set(1, 1);
 			// }

@@ -427,15 +427,23 @@ export default class extends Phaser.Sprite {
 
 			if(enemy.type == 'seed'){
 				this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
+				enemy.kill();
+			} else if(enemy.type == 'raptor'){
+				this.killAnimation.makeParticles('predatorPartsSpritesheet', [0, 1, 2, 3], 4);
+				enemy.kill();
 			} else {
 				this.killAnimation.makeParticles('predatorPartsSpritesheet', [0, 1, 2, 3], 4);
+				enemy.animations.play('hit', false);
+				enemy.animations._anims.hit.onComplete.add(() => {
+					enemy.kill();
+				}, this);
 			}
 			
 			this.killAnimation.setAlpha(1, 0, 5000, null, false);
 			this.killAnimation.start(true, 0, null, 10);
 			this.game.world.setChildIndex(this.killAnimation, 10);
 
-			enemy.kill();
+			
 
 			this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
 			this.bloodAnimation.angularDrag = 500;
