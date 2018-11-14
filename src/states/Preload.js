@@ -163,12 +163,12 @@ export default class extends Phaser.State {
 					end: 10,
 					loop: false
 				},
-				vx7: {
+				vx6: {
 					start: 10,
 					end: 12,
 					loop: false
 				},
-				vx8: {
+				vx7: {
 					start: 12,
 					end: 14,
 					loop: false

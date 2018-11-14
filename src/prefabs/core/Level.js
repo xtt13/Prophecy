@@ -731,6 +731,10 @@ export default class {
 			this.game.world.bringToTop(this.weather.templeFliesEmitter);
 		}
 
+		if(this.fireEmitter){
+			this.game.world.bringToTop(this.fireEmitter);
+		}
+
 		// Here cause of NightTexture
 		if(!this.eventManager.spotViewerPlayed){
 			this.game.world.bringToTop(this.treeDetails);

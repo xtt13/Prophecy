@@ -627,15 +627,17 @@ export default class extends Phaser.Sprite {
 			this.talkSymbol.alpha = 0;
 		}
 
-
+		this.game.physics.arcade.collide(this, this.level.collisionLayer);
 
 		let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
+		
 
 		if (angle == 2 && this.y > this.player.body.y) {
+			if(this.name == 'librarian') return;
 			this.game.world.moveUp(this);
 			// this.game.world.setChildIndex(this.player, 1);
 		}
 
-		this.game.physics.arcade.collide(this, this.level.collisionLayer);
+		
 	}
 }

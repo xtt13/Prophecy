@@ -1944,6 +1944,69 @@
          "spacing":0,
          "tilecount":4000,
          "tileheight":32,
+         "tiles":
+            {
+             "2846":
+                {
+                 "animation":[
+                        {
+                         "duration":100,
+                         "tileid":2846
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2847
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2848
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2849
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2850
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2851
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2852
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2853
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2854
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2855
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2856
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2857
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2858
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":2859
+                        }]
+                }
+            },
          "tilewidth":32
         }, 
         {
