@@ -46,7 +46,7 @@ export default class extends Phaser.State {
 
 
 		this.versionText = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
-		this.versionText.setText('Beta 1.0', true, -1, 5, 'left', true)
+		this.versionText.setText('Beta 1.1', true, -1, 5, 'left', true)
 		this.versionImage = this.game.add.image(this.game.camera.width - 90, this.game.camera.height - 10, this.versionText);
 		
 

@@ -4,7 +4,7 @@ export default {
 
 		//
 		1: [
-			'Hello? Are you okay?\n\n\n(Press E-Key)',
+			'Hello? Are you okay?\n\n\n(Press @-Key)',
 			'My name is Lucy! Pleased to meet you! Uh...',
 			'Levi! Alright.',
 			'This? It\'s the Forest of Eritel! You seem to \nbe lost. There is a village nearby, just \nfollow the path!',
@@ -91,6 +91,10 @@ export default {
 
 		16: [
 			'One more thing! \nBy pressing the Tab-Key, you can always check \nyour current quests!'
+		],
+
+		17:[
+			'\"The Tales of the ancient heroes\"', '...'
 		]
 
 	}

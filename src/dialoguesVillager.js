@@ -22,7 +22,7 @@ export default {
 		// Librarian
 		3: [
 			'Oh, I haven\'t even noticed you.\nI\'m the librarian!',
-			'Feel free to read whatever you want!\nBut stay quiet!'
+			'Feel free to read whatever you want!\nBut please stay quiet!'
 		],
 
 		// Smith

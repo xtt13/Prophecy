@@ -367,7 +367,9 @@ export default class {
     }
 
     map13update(){
-        
+        if(this.level.emberEmitter){
+			this.game.world.bringToTop(this.level.emberEmitter);
+		}
     }
 
     map14(){

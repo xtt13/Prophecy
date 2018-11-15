@@ -517,10 +517,35 @@
                  "width":80.968,
                  "x":455.259778741724,
                  "y":736.748748706826
+                }, 
+                {
+                 "height":37.8230075807536,
+                 "id":261,
+                 "name":"Message",
+                 "properties":
+                    {
+                     "id":17,
+                     "message":true,
+                     "movable":false,
+                     "readable":true
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "message":"bool",
+                     "movable":"bool",
+                     "readable":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":41.4349601818356,
+                 "x":267.722510945353,
+                 "y":285.855279191344
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -615,7 +640,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":261,
+ "nextobjectid":262,
  "orientation":"orthogonal",
  "properties":
     {
