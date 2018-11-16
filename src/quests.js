@@ -1,7 +1,7 @@
 export default {
 	quests: {
 
-		// Not Set
+		// Not Set 
 		1: {
 			silent: false,
 			questMessage: '',
