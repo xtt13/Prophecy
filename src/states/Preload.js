@@ -806,8 +806,6 @@ export default class extends Phaser.State {
 		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 15, 12);
 		this.load.spritesheet('nextGUI', 'assets/sprites/gui/nextGUI.png', 7, 7);
 		
-		// this.load.image('cursor', 'assets/sprites/gui/cursor.png');
-
 
 		// Other
 		this.load.image('island', 'assets/sprites/island.png');
@@ -846,16 +844,6 @@ export default class extends Phaser.State {
 		this.loadingprogress = this.load.onFileComplete.add(progress => {
 			if (typeof ipc == 'undefined') {
 				var content = '' + progress;
-				// this.text.setText(content, true, -1, 5, 'left', true)
-
-				// this.graphics.clear();
-				// this.graphics = game.add.graphics(this.text.x + 3, this.text.y + 5);
-				// this.graphics.lineStyle(1, 0x49ffc5, 1);
-				// this.graphics.scale.setTo(9);
-
-				// var newValue = parseInt((progress/10)/2);
-
-				// this.graphics.arc(0, 0, 3, -1.6, newValue, false);
 
 			}
 
