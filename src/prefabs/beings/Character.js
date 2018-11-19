@@ -204,15 +204,15 @@ export default class extends Phaser.Sprite {
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.gravity.y = 600;
 
-		var lastRect;
-		var height = 4; //  Height for the physics body - your image height is 8px
-		var width = 8; //  This is the width for the physics body. If too small the rectangles will get scrambled together.
-		var maxForce = 20000; //  The force that holds the rectangles together.
-		var newRect;
+		let lastRect;
+		let height = 4; //  Height for the physics body - your image height is 8px
+		let width = 8; //  This is the width for the physics body. If too small the rectangles will get scrambled together.
+		let maxForce = 20000; //  The force that holds the rectangles together.
+		let newRect;
 
-		for (var i = 0; i <= length; i++) {
-			var x = xAnchor; //  All rects are on the same x position
-			var y = yAnchor + (i * height); //  Every new rect is positioned below the last
+		for (let i = 0; i <= length; i++) {
+			let x = xAnchor; //  All rects are on the same x position
+			let y = yAnchor + (i * height); //  Every new rect is positioned below the last
 
 			if (i % 2 === 0) {
 				//  Add sprite (and switch frame every 2nd time)
@@ -485,7 +485,7 @@ export default class extends Phaser.Sprite {
 			case 0:
 			if (this.animations._anims.walk_down !== undefined) {
 
-				var walkUpLoop = this.game.time.events.loop(1, () => {
+				let walkUpLoop = this.game.time.events.loop(1, () => {
 					this.animations.play('walk_down');
 					this.body.velocity.y = 30;
 
@@ -512,7 +512,7 @@ export default class extends Phaser.Sprite {
 			case 1:
 			if (this.animations._anims.walk_up !== undefined) {
 
-				var walkUpLoop = this.game.time.events.loop(1, () => {
+				let walkUpLoop = this.game.time.events.loop(1, () => {
 					this.animations.play('walk_up');
 					this.body.velocity.y = -30;
 
@@ -539,7 +539,7 @@ export default class extends Phaser.Sprite {
 			case 2:
 				if (this.animations._anims.walk_right !== undefined) {
 
-					var walkLeftLoop = this.game.time.events.loop(1, () => {
+					let walkLeftLoop = this.game.time.events.loop(1, () => {
 						this.animations.play('walk_left');
 						this.body.velocity.x = -30;
 
@@ -567,7 +567,7 @@ export default class extends Phaser.Sprite {
 			case 3:
 				if (this.animations._anims.walk_right !== undefined) {
 
-					var walkRightLoop = this.game.time.events.loop(1, () => {
+					let walkRightLoop = this.game.time.events.loop(1, () => {
 						this.animations.play('walk_right');
 						this.body.velocity.x = 30;
 

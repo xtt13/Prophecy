@@ -1631,7 +1631,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -2141,32 +2141,6 @@
                 {
                  "gid":2568,
                  "height":32,
-                 "id":331,
-                 "name":"Seed Enemy",
-                 "properties":
-                    {
-                     "ifQuestID":"11",
-                     "jumpDown":false,
-                     "killQuestID":11,
-                     "type":"seed"
-                    },
-                 "propertytypes":
-                    {
-                     "ifQuestID":"string",
-                     "jumpDown":"bool",
-                     "killQuestID":"int",
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":951.688022284123,
-                 "y":1050.29526462396
-                }, 
-                {
-                 "gid":2568,
-                 "height":32,
                  "id":332,
                  "name":"Seed Enemy",
                  "properties":
@@ -2189,6 +2163,32 @@
                  "width":32,
                  "x":957.816155988858,
                  "y":1119.93314763231
+                }, 
+                {
+                 "gid":2568,
+                 "height":32,
+                 "id":339,
+                 "name":"Seed Enemy",
+                 "properties":
+                    {
+                     "ifQuestID":"10",
+                     "jumpDown":false,
+                     "killQuestID":11,
+                     "type":"seed"
+                    },
+                 "propertytypes":
+                    {
+                     "ifQuestID":"string",
+                     "jumpDown":"bool",
+                     "killQuestID":"int",
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":819.347646807905,
+                 "y":1159.17417887104
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2307,7 +2307,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":339,
+ "nextobjectid":340,
  "orientation":"orthogonal",
  "properties":
     {

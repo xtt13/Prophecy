@@ -18,7 +18,7 @@ import "script-loader!../src/plugins/phaser-virtual-joystick.min.js";
 
 class Game extends Phaser.Game {
 	constructor() {
-		var isSafari =
+		let isSafari =
 			navigator.vendor &&
 			navigator.vendor.indexOf('Apple') > -1 &&
 			navigator.userAgent &&
@@ -60,25 +60,3 @@ if(config.serviceWorker) {
 	};
 
 }
-
-// if (window.cordova) {
-// 	var app = {
-// 		initialize: function() {
-// 			document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-// 		},
-
-// 		// deviceready Event Handler
-// 		onDeviceReady: function() {
-// 			this.receivedEvent('deviceready');
-
-// 			// When the device is ready, start Phaser Boot state.
-// 			window.game.state.start('Boot');
-// 		},
-
-// 		receivedEvent: function(id) {
-// 			console.log('Received Event: ' + id);
-// 		}
-// 	};
-
-// 	app.initialize();
-// }
