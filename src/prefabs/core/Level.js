@@ -934,16 +934,12 @@ export default class {
 		if (this.map.plus.properties.dayCycle) {
 			// Background Cloud Layer
 			
-			// if(this.gameData.currentMap !== 'map2'){
+			if(this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax){
 				this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
 				this.backgroundLayer = this.map.createLayer('Clouds');
 				this.backgroundLayer.resizeWorld();
 				this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-			// }
-
-			
-
-			// this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+			}
 
 		}
 
