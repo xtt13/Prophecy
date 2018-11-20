@@ -37,12 +37,12 @@ export default class {
 		// this.game.time.slowMotion = 1.0;
 
 		var time = new Date();
-			
+
 
 		/*eslint no-undef: */
 		if (__DEV__) {
 			var timeValue = config.devHour;
-			
+
 		} else {
 			// var timeValue = 11;
 			var timeValue = time.getHours();
@@ -89,7 +89,7 @@ export default class {
 		this.fallDownSwitch = true;
 		this.fallDownLayer = 0;
 		this.lastDirection = null;
-		
+
 
 		this.game.forceSingleUpdate = true;
 
@@ -123,7 +123,7 @@ export default class {
 		this.loadEntryPoints();
 
 
-		if(__DEV__ && config.buildMode){
+		if (__DEV__ && config.buildMode) {
 			let XY = this.safe.getDEVCoordinates();
 			if (XY == undefined) return;
 
@@ -138,19 +138,19 @@ export default class {
 		this.sfxheartbeat.loop = true;
 		// this.sfxheartbeat.allowMultiple = false;
 
-		if(this.player.health < 2){
+		if (this.player.health < 2) {
 			this.sfxheartbeat.play();
 		}
 
-		
+
 
 		this.GUICLASS = new GUI(this.game, this);
 
-		if(!this.dayCycle){
+		if (!this.dayCycle) {
 			this.GUICLASS.healthBar.fadeOut();
 		}
 
-		if(__DEV__ && config.buildMode){
+		if (__DEV__ && config.buildMode) {
 			window.addEventListener('beforeunload', (event) => {
 				this.safe.setDEVCoordinates(this.player);
 				this.gameData.direction = this.inputClass.direction;
@@ -224,7 +224,7 @@ export default class {
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);
 
-		if(this.tilemapProperties.disableAttack !== undefined && this.tilemapProperties.disableAttack){
+		if (this.tilemapProperties.disableAttack !== undefined && this.tilemapProperties.disableAttack) {
 			this.inputClass.disableAttack = true;
 		}
 
@@ -280,7 +280,7 @@ export default class {
 		elementsArr.forEach(function (element) {
 
 			// Nicht bei Nacht und nightVersion == false
-			
+
 
 
 
@@ -319,7 +319,7 @@ export default class {
 		// Find specific items
 		elementsArr.forEach(function (element) {
 
-			if(element.properties.ifQuestID !== undefined){
+			if (element.properties.ifQuestID !== undefined) {
 				if (!this.questManager.checkIfQuestExists(element.properties.ifQuestID)) return;
 			}
 
@@ -342,7 +342,7 @@ export default class {
 				let y = element.y;
 				this.items.push(new Item(this.game, x, y, 'potion', element.properties, this));
 			}
-			if (element.properties.type == 'flower'){
+			if (element.properties.type == 'flower') {
 				let x = element.x;
 				let y = element.y;
 				new Flower(this.game, x, y, 'flower', element.properties, this);
@@ -355,7 +355,7 @@ export default class {
 		let elementsArr = this.findObjectsByType(true, this.map, 'Chests');
 		// Find specific items
 		elementsArr.forEach(function (element) {
-			
+
 			// if (this.itemIDs.includes(element.properties.id)) return;
 			let x = element.x - 10;
 			let y = element.y + 10;
@@ -372,168 +372,161 @@ export default class {
 		//Find specific emitter
 		elementsArr.forEach(function (element) {
 
-			if (element.properties.type == 'tree') {
+			let x, y;
 
-				let x = element.x + element.width / 2;
-				let y = element.y + element.height / 2;
+			//.start(explode, lifespan, frequency, quantity, forceQuantity)
+			switch (element.properties.type) {
+				case 'tree':
 
+					x = element.x + element.width / 2;
+					y = element.y + element.height / 2;
 
-				let customEmitter = this.game.add.emitter(x, y, 10);
-				customEmitter.width = element.width;
-				customEmitter.height = element.height;
-				customEmitter.minParticleScale = 0.5;
-				customEmitter.maxParticleScale = 1;
-				customEmitter.gravity = 0.5;
-				customEmitter.setScale(-1, 1, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
-				customEmitter.setYSpeed(100);
-				customEmitter.setXSpeed(-100, 100);
-				customEmitter.gravity = 0.5;
-				customEmitter.makeParticles('treeleaves', [0, 1]);
-				customEmitter.start(false, 3000, 400, 0);
+					let customEmitter = this.game.add.emitter(x, y, 10);
+					customEmitter.width = element.width;
+					customEmitter.height = element.height;
+					customEmitter.minParticleScale = 0.5;
+					customEmitter.maxParticleScale = 1;
+					customEmitter.gravity = 0.5;
+					customEmitter.setScale(-1, 1, 1, 1, 3000, Phaser.Easing.Sinusoidal.InOut, true);
+					customEmitter.setYSpeed(100);
+					customEmitter.setXSpeed(-100, 100);
+					customEmitter.gravity = 0.5;
+					customEmitter.makeParticles('treeleaves', [0, 1]);
+					customEmitter.start(false, 3000, 400, 0);
+					break;
 
-			} else if (element.properties.type == 'water') {
+				case 'water':
 
-				let x = element.x + this.map.tileWidth;
-				let y = element.y + this.map.tileHeight;
+					x = element.x + this.map.tileWidth;
+					y = element.y + this.map.tileHeight;
 
+					this.waterEmitter = this.game.add.emitter(x, y, 50);
+					this.waterEmitter.width = element.width;
+					this.waterEmitter.height = element.height;
+					this.waterEmitter.setYSpeed(0.1, -0.1);
+					this.waterEmitter.setXSpeed(0.1, -0.1);
+					this.waterEmitter.rotation = 0;
+					this.waterEmitter.gravity = 0;
+					this.waterEmitter.setAlpha(0.3, 0.8, 1000, Phaser.Easing.Exponential.In, true);
+					this.waterEmitter.makeParticles('waterdrop');
+					this.waterEmitter.start(false, 3000, 20);
+					break;
 
-				this.waterEmitter = this.game.add.emitter(x, y, 50);
-				this.waterEmitter.width = element.width;
-				this.waterEmitter.height = element.height;
-				// this.waterEmitter.minParticleScale = 0.1;
-				// this.waterEmitter.maxParticleScale = 0.8;
-				// waterEmitter.maxParticleSpeed.setTo(2, 2);
-				this.waterEmitter.setYSpeed(0.1, -0.1);
-				this.waterEmitter.setXSpeed(0.1, -0.1);
-				this.waterEmitter.rotation = 0;
-				this.waterEmitter.gravity = 0;
-				this.waterEmitter.setAlpha(0.3, 0.8, 1000, Phaser.Easing.Exponential.In, true);
-				this.waterEmitter.makeParticles('waterdrop');
+				case 'fire':
 
-				//(explode, lifespan, frequency, quantity, forceQuantity)
-				this.waterEmitter.start(false, 3000, 20);
+					x = element.x;
+					y = element.y;
 
-			} else if (element.properties.type == 'fire') {
+					this.fireEmitter = this.game.add.emitter(x, y, 100);
+					this.fireEmitter.width = element.width;
+					this.fireEmitter.height = element.height;
+					this.fireEmitter.gravity = 0.5;
+					this.fireEmitter.setAlpha(0, 1, 300, null, true);
+					this.fireEmitter.setXSpeed(-1, 1);
+					this.fireEmitter.setYSpeed(0.8);
+					this.fireEmitter.gravity = -20;
+					this.fireEmitter.makeParticles('fireSpritesheet', [0, 1, 2, 3], 100);
+					this.fireEmitter.start(false, 1000, 0.1, 0);
+					break;
 
-				let x = element.x;
-				let y = element.y;
+				case 'fountainSparkling':
 
+					x = element.x + (element.width / 2);
+					y = element.y + (element.height / 2);
 
+					this.fountainSparkling = this.game.add.emitter(x, y, 100);
+					this.fountainSparkling.width = element.width;
+					this.fountainSparkling.height = element.height;
+					this.fountainSparkling.maxParticleScale = 1;
+					this.fountainSparkling.maxRotation = 0;
+					this.fountainSparkling.gravity = 0;
+					this.fountainSparkling.setXSpeed(0, 0);
+					this.fountainSparkling.setYSpeed(0);
+					this.fountainSparkling.maxParticleSpeed.set(1);
+					this.fountainSparkling.makeParticles('sparklingSpritesheet', [0, 1, 2, 3], 100);
+					this.fountainSparkling.start(false, 1000, 0.1, 0);
+					break;
 
-				this.fireEmitter = this.game.add.emitter(x, y, 100);
-				this.fireEmitter.width = element.width;
-				this.fireEmitter.height = element.height;
-				// this.fireEmitter.maxParticleScale = 1;
-				this.fireEmitter.gravity = 0.5;
-				this.fireEmitter.setAlpha(0, 1, 300, null, true);
-				// this.fireEmitter.minParticleSpeed.set(100);
-				this.fireEmitter.setXSpeed(-1, 1);
-				this.fireEmitter.setYSpeed(0.8);
-				// this.fireEmitter.maxParticleSpeed.set(100);
-				this.fireEmitter.gravity = -20;
-				this.fireEmitter.makeParticles('fireSpritesheet', [0, 1, 2, 3], 100);
-				this.fireEmitter.start(false, 1000, 0.1, 0);
+				case 'flies':
 
-			} else if (element.properties.type == 'fountainSparkling') {
-				let x = element.x + (element.width / 2);
-				let y = element.y + (element.height / 2);
+					x = element.x + (element.width / 2);
+					y = element.y + (element.height / 2);
 
-				this.fountainSparkling = this.game.add.emitter(x, y, 100);
-				this.fountainSparkling.width = element.width;
-				this.fountainSparkling.height = element.height;
-				this.fountainSparkling.maxParticleScale = 1;
-				this.fountainSparkling.maxRotation = 0;
-				// this.fountainSparkling.maxParticleScale = 1;
-				this.fountainSparkling.gravity = 0;
+					this.templeFliesEmitter = this.game.add.emitter(x, y, 30);
+					this.templeFliesEmitter.width = element.width;
+					this.templeFliesEmitter.height = element.height;
+					this.templeFliesEmitter.minParticleScale = 0.1;
+					this.templeFliesEmitter.maxParticleScale = 0.5;
 
-				// this.fountainSparkling.setAlpha(0.5, 1, 300, null, true);
-				// this.fountainSparkling.minParticleSpeed.set(100);
-				this.fountainSparkling.setXSpeed(0, 0);
-				this.fountainSparkling.setYSpeed(0);
-				this.fountainSparkling.maxParticleSpeed.set(1);
-				this.fountainSparkling.makeParticles('sparklingSpritesheet', [0, 1, 2, 3], 100);
-				this.fountainSparkling.start(false, 1000, 0.1, 0);
+					this.templeFliesEmitter.setYSpeed(-5, 5);
+					this.templeFliesEmitter.setXSpeed(5, -5);
 
-			} else if (element.properties.type == 'flies') {
-				let x = element.x + (element.width / 2);
-				let y = element.y + (element.height / 2);
+					this.templeFliesEmitter.gravity = 0.5;
+					this.templeFliesEmitter.minRotation = 0;
+					this.templeFliesEmitter.maxRotation = 0;
+					this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
+					this.templeFliesEmitter.makeParticles('fly');
+					this.templeFliesEmitter.start(false, 10000, 5, 0);
+					break;
 
-				this.templeFliesEmitter = this.game.add.emitter(x, y, 30);
-				// emitter.fixedToCamera = true;
-				this.templeFliesEmitter.width = element.width;
-				this.templeFliesEmitter.height = element.height;
-				// this.templeFliesEmitter.angle = -10;
-				this.templeFliesEmitter.minParticleScale = 0.1;
-				this.templeFliesEmitter.maxParticleScale = 0.5;
-				// emitter.maxParticleSpeed.setTo(2, 2);
+				case 'startGlimmer':
 
-				this.templeFliesEmitter.setYSpeed(-5, 5);
-				this.templeFliesEmitter.setXSpeed(5, -5);
+					x = element.x + (element.width / 2);
+					y = element.y + (element.height / 2);
 
-				this.templeFliesEmitter.gravity = 0.5;
-				this.templeFliesEmitter.minRotation = 0;
-				this.templeFliesEmitter.maxRotation = 0;
-				this.templeFliesEmitter.setAlpha(0.7, 1, 1000, Phaser.Easing.Exponential.In, true);
-				this.templeFliesEmitter.makeParticles('fly');
-				this.templeFliesEmitter.start(false, 10000, 5, 0);
-			} else if (element.properties.type == 'startGlimmer') {
-				let x = element.x + (element.width / 2);
-				let y = element.y + (element.height / 2);
+					this.addVillageGlimmer = this.game.add.emitter(x, y, 30);
+					this.addVillageGlimmer.width = element.width;
+					this.addVillageGlimmer.height = element.height;
+					this.addVillageGlimmer.minParticleScale = 2;
+					this.addVillageGlimmer.gravity = 0;
+					this.addVillageGlimmer.setYSpeed(-0.5, 0.5);
+					this.addVillageGlimmer.setXSpeed(-0.5, 0.5);
+					this.addVillageGlimmer.maxRotation = 0;
+					this.addVillageGlimmer.minRotation = 0;
+					this.addVillageGlimmer.makeParticles('particleStart');
+					this.addVillageGlimmer.start(false, 0, 5, 0);
+					break;
 
-				this.addVillageGlimmer = this.game.add.emitter(x, y, 30);
-				this.addVillageGlimmer.width = element.width;
-				this.addVillageGlimmer.height = element.height;
-				this.addVillageGlimmer.minParticleScale = 2;
-				this.addVillageGlimmer.gravity = 0;
-				this.addVillageGlimmer.setYSpeed(-0.5, 0.5);
-				this.addVillageGlimmer.setXSpeed(-0.5, 0.5);
-				this.addVillageGlimmer.maxRotation = 0;
-				this.addVillageGlimmer.minRotation = 0;
-				// this.addVillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
-				this.addVillageGlimmer.makeParticles('particleStart');
-				this.addVillageGlimmer.start(false, 0, 5, 0);
+				case 'villageGlimmer':
 
-			} else if (element.properties.type == 'villageGlimmer') {
-				let x = element.x + (element.width / 2);
-				let y = element.y + (element.height / 2);
+					x = element.x + (element.width / 2);
+					y = element.y + (element.height / 2);
 
-				this.VillageGlimmer = this.game.add.emitter(x, y, 100);
-				this.VillageGlimmer.width = element.width;
-				this.VillageGlimmer.height = element.height;
-				this.VillageGlimmer.minParticleScale = 5;
-				this.VillageGlimmer.gravity = 0;
-				this.VillageGlimmer.setYSpeed(-4, 4);
-				this.VillageGlimmer.setXSpeed(-4, 4);
-				this.VillageGlimmer.maxRotation = 0;
-				this.VillageGlimmer.minRotation = 0;
-				this.VillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
-				this.VillageGlimmer.makeParticles('particle');
-				this.VillageGlimmer.start(false, 10000, 5, 0);
-			} else if(element.properties.type == 'ember'){
-				let x = element.x;
-				let y = element.y;
-				console.log(x, y);
-				console.log(this.map);
-				console.log(this.groundLayer);
-				let test = this.map.getTile(746, 747, this.groundLayer);
-				console.log(test);
+					this.VillageGlimmer = this.game.add.emitter(x, y, 100);
+					this.VillageGlimmer.width = element.width;
+					this.VillageGlimmer.height = element.height;
+					this.VillageGlimmer.minParticleScale = 5;
+					this.VillageGlimmer.gravity = 0;
+					this.VillageGlimmer.setYSpeed(-4, 4);
+					this.VillageGlimmer.setXSpeed(-4, 4);
+					this.VillageGlimmer.maxRotation = 0;
+					this.VillageGlimmer.minRotation = 0;
+					this.VillageGlimmer.setAlpha(0, 1, 5000, Phaser.Easing.Exponential.In, true);
+					this.VillageGlimmer.makeParticles('particle');
+					this.VillageGlimmer.start(false, 10000, 5, 0);
+					break;
 
+				case 'ember':
 
-				this.emberEmitter = this.game.add.emitter(x, y, 100);
-				this.emberEmitter.width = element.width;
-				this.emberEmitter.height = element.height;
-				// this.fireEmitter.maxParticleScale = 1;
-				this.emberEmitter.gravity = 0.5;
-				this.emberEmitter.setAlpha(0, 1, 300, null, true);
-				// this.fireEmitter.minParticleSpeed.set(100);
-				this.emberEmitter.setXSpeed(-1, 1);
-				this.emberEmitter.setYSpeed(0.8);
-				// this.fireEmitter.maxParticleSpeed.set(100);
-				this.emberEmitter.gravity = -20;
-				this.emberEmitter.makeParticles('emberSpritesheet', [0, 1, 2, 3], 100);
-				this.emberEmitter.start(false, 1000, 0.1, 0);
+					x = element.x;
+					y = element.y;
+
+					this.emberEmitter = this.game.add.emitter(x, y, 100);
+					this.emberEmitter.width = element.width;
+					this.emberEmitter.height = element.height;
+					this.emberEmitter.gravity = 0.5;
+					this.emberEmitter.setAlpha(0, 1, 300, null, true);
+					this.emberEmitter.setXSpeed(-1, 1);
+					this.emberEmitter.setYSpeed(0.8);
+					this.emberEmitter.gravity = -20;
+					this.emberEmitter.makeParticles('emberSpritesheet', [0, 1, 2, 3], 100);
+					this.emberEmitter.start(false, 1000, 0.1, 0);
+					break;
+
+				default:
+					console.warn('No matching Emitter!');
+					break;
 			}
-
 
 		}, this);
 	}
@@ -544,75 +537,65 @@ export default class {
 
 		// Find specific enemy
 		elementsArr.forEach(function (element) {
-			
+
 			const killQuestID = element.properties.killQuestID;
 			const ifQuestID = element.properties.ifQuestID;
-
-			// if (killQuestID !== undefined && !this.questManager.checkIfQuestWasDone(killQuestID)) {
-			// if (ifQuestID !== undefined && !this.questManager.checkIfQuestExists(ifQuestID)) return;
 
 			// Nicht bei QuestID
 			if (ifQuestID !== undefined) {
 				let valueElem = element.properties.ifQuestID;
 				console.log(valueElem);
 				let questEntries = valueElem.split(',');
-				// console.log(questEntries);
-
-				// for (var e = 0; e < questEntries.length; e++) {
-				// 	console.log(e);
-				// 	console.log(questEntries[e]);
-				// 	let check = this.questManager.checkIfQuestExists(parseInt(questEntries[e]));
-				// 	console.log(check);
-				// 	if (!check) return;
-				// }
 
 				console.log(questEntries[0], questEntries[1]);
 
 				let check1 = this.questManager.checkIfQuestExists(parseInt(questEntries[0]))
 				let check2 = this.questManager.checkIfQuestExists(parseInt(questEntries[1]))
 
-				if(!check1 && !check2) return;
+				if (!check1 && !check2) return;
 
 			}
 
-			if (element.properties.type == 'seed') {
-				this.enemies.push(
-					new Enemy(this.game, element.x, element.y, this.player, this.map, this.EnemyMovingTiles, element.properties)
-				);
-			}
+			switch (element.properties.type) {
+				case 'seed':
+					this.enemies.push(
+						new Enemy(this.game, element.x, element.y, this.player, this.map, this.EnemyMovingTiles, element.properties)
+					);
+					break;
 
+				case 'bird':
+					if (this.night) return;
+					this.birds.push(
+						new Bird(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties, this)
+					);
+					break;
 
-			// }
+				case 'sprout':
+					this.enemies.push(
+						new Sprout(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
+					);
+					break;
 
-			if (element.properties.type == 'bird') {
-				if(this.night) return;
-				this.birds.push(
-					new Bird(this.game, element.x, element.y, this.player, this.map, this.groundLayer, element.properties, this)
-				);
-			}
+				case 'rock':
+					this.enemies.push(
+						new Rock(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
+					);
+					break;
 
-			if (element.properties.type == 'sprout') {
-				this.enemies.push(
-					new Sprout(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
-				);
-			}
+				case 'raptor':
+					this.enemies.push(
+						new Raptor(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
+					);
+					break;
 
-			if (element.properties.type == 'rock') {
-				this.enemies.push(
-					new Rock(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
-				);
-			}
+				case 'blob':
+					this.enemies.push(
+						new Blob(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
+					);
+					break;
 
-			if (element.properties.type == 'raptor') {
-				this.enemies.push(
-					new Raptor(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
-				);
-			}
-
-			if (element.properties.type == 'blob') {
-				this.enemies.push(
-					new Blob(this.game, element.x, element.y, this.player, this.map, this.collisionLayer, element.properties, this)
-				);
+				default:
+					break;
 			}
 
 		}, this);
@@ -627,16 +610,12 @@ export default class {
 			if (container.indexOf(targetType) || container.toString() == targetType) {
 				element.y -= tilemap.tileHeight / 2;
 				element.x += tilemap.tileHeight / 2;
-				// element.width += tilemap.tileHeight / 2;
-				// element.height -= tilemap.tileHeight / 2;
 				result.push(element);
 			}
 		}, this);
 
 		return result;
 	}
-
-	enemyCollision() {}
 
 	weaponGunWallCollision(bullet) {
 		this.game.camera.shake(0.003, 100);
@@ -667,16 +646,14 @@ export default class {
 			this.pathfinder.followPath();
 		}
 
-		// Collisionhandler
-		this.game.physics.arcade.collide(this.enemies, this.enemies, this.enemyCollision);
+		// Collisionhandler	
 		this.game.physics.arcade.collide(this.player, this.enemies, this.player.getDamage, null, this);
 		this.game.physics.arcade.collide(this.player.weapon.bullets, this.enemies, this.player.fight, null, this);
 		this.game.physics.arcade.collide(this.player.weaponGun.bullets, this.collisionLayer, this.weaponGunWallCollision, null, this);
 		this.game.physics.arcade.collide(this.enemies, this.collisionLayer);
-
+		this.game.physics.arcade.collide(this.enemies, this.enemies);
 		this.game.physics.arcade.collide(this.player, this.characters);
-		this.game.physics.arcade.collide(this.player, this.collisionLayer, this.enemyCollision);
-		// this.game.physics.arcade.collide(this.player, this.items, this.player.collideWithItem, null, this);
+		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 
 		// If the player is not falling down
 		if (!this.fallDown) {
@@ -692,19 +669,9 @@ export default class {
 			this.game.world.bringToTop(this.foregroundLayer);
 			this.game.world.bringToTop(this.foregroundLayer2);
 			this.game.world.bringToTop(this.trees);
-
-
-			// if(this.foregroundLayer2 !== undefined){
-			// 	this.game.world.bringToTop(this.foregroundLayer2);
-			// }			
 		}
 
-
-		// this.game.world.bringToTop(this.foregroundLayer2);
-
 		this.game.world.bringToTop(this.godrays);
-
-
 
 		// TilemapPlus Physics
 		this.map.plus.physics.collideWith(this.player);
@@ -719,36 +686,21 @@ export default class {
 		if (this.dayCycle) {
 			this.game.world.bringToTop(this.dayCycleClass.lightSprite);
 			this.dayCycleClass.lightSprite.reset(this.game.camera.x - 5, this.game.camera.y - 5);
-			// if(this.night){
-				this.dayCycleClass.updateShadowTexture();
-			// }
+			this.dayCycleClass.updateShadowTexture();
 		}
 
 		// Update Weather
 		this.weather.updateWeather();
 
 		// If clouds == true -> bringtoTop (Layer)
-		if (this.weather.clouds) {
-			this.game.world.bringToTop(this.weather.clouds);
-		}
-
+		if (this.weather.clouds) this.game.world.bringToTop(this.weather.clouds);
 
 		// If Templeflies -> bringToTop
-		if (this.weather.templeFliesEmitter) {
-			this.game.world.bringToTop(this.weather.templeFliesEmitter);
-		}
-
-		if(this.fireEmitter){
-			this.game.world.bringToTop(this.fireEmitter);
-		}
+		if (this.weather.templeFliesEmitter) this.game.world.bringToTop(this.weather.templeFliesEmitter);
+		if (this.fireEmitter) this.game.world.bringToTop(this.fireEmitter);
 
 		// Here cause of NightTexture
-		if(!this.eventManager.spotViewerPlayed){
-			this.game.world.bringToTop(this.treeDetails);
-		}
-		
-		
-
+		if (!this.eventManager.spotViewerPlayed) this.game.world.bringToTop(this.treeDetails);
 
 		this.levelBuilder.update();
 
@@ -759,28 +711,8 @@ export default class {
 		this.GUICLASS.update();
 
 		// If Lockpicker == true -> update()
-		if (this.lockGame) {
-			this.lockGame.update();
-			this.game.world.bringToTop(this.lockGame.ring);
-			this.game.world.bringToTop(this.lockGame.ball);
-			this.game.world.bringToTop(this.lockGame.bar);
-		}
+		if (this.lockGame) this.lockGame.update();
 
-
-	}
-
-	slowDownTile(player, tile) {
-
-		// player.body.friction.set(200);
-
-
-		// if(player.body.velocity.x >= 40){
-		// 	player.body.velocity.x++;
-		// }
-
-		// if(player.body.velocity.x <= -40){
-		// 	player.body.velocity.x--;
-		// }
 	}
 
 	fallDownCheck(sprite, tile) {
@@ -850,11 +782,13 @@ export default class {
 				this.fallDownProcess(sprite, tile);
 				return;
 			} else {
+
 				if (this.inputClass.direction !== this.lastDirection) {
 					setTimeout(() => {
 						this.lastDirection = null;
 					}, 1000);
 				}
+
 			}
 
 		}
@@ -913,7 +847,7 @@ export default class {
 					this.eventManager.areaSound.fadeOut(2000);
 				}
 
-				if(this.sfxheartbeat.isPlaying){
+				if (this.sfxheartbeat.isPlaying) {
 					this.sfxheartbeat.stop();
 				}
 
@@ -929,19 +863,14 @@ export default class {
 	initMap() {
 		// Add current map
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
-		// this.map = this.game.add.tilemap('map4');
 
-		if (this.map.plus.properties.dayCycle) {
-			// Background Cloud Layer
-			
-			if(this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax){
-				this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-				this.backgroundLayer = this.map.createLayer('Clouds');
-				this.backgroundLayer.resizeWorld();
-				this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-			}
-
+		if ((this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax) || this.map.plus.properties.dayCycle) {
+			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+			this.backgroundLayer = this.map.createLayer('Clouds');
+			this.backgroundLayer.resizeWorld();
+			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
 		}
+
 
 		if (this.map.plus.properties.customSize) {
 			this.gameScaler = new Gamescaler(this.game, this, this.map.plus.properties.customWidth, this.map.plus.properties.customHeight);
@@ -954,42 +883,30 @@ export default class {
 
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
-		// this.groundLayer.enableScrollDelta = false;
 		this.detailGroundLayer = this.map.createLayer('DetailBackgroundLayer');
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.foregroundLayer = this.map.createLayer('ForegroundLayer');
 		this.treeDetails = this.map.createLayer('TreeDetails');
 		this.trees = this.map.createLayer('Trees');
 
+		// Enemy Moving Tiles
 		this.EnemyMovingTiles = this.map.createLayer('EnemyMovingTiles');
 		this.EnemyMovingTiles.visible = false;
 		this.EnemyMovingTiles.renderable = false;
 
-		// if (this.map.layers[3].name == 'ForegroundLayer2') {
-			this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
-		// }
+		this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
 
 
 		//  Resize the world
-
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
 		this.foregroundLayer.resizeWorld();
+		this.foregroundLayer2.resizeWorld();
 
-		if (this.map.layers[3].name == 'ForegroundLayer2') {
-			this.foregroundLayer2.resizeWorld();
-		}
-
+		// Godrays
 		this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
 		this.godrays = this.map.createLayer('Godrays');
 		this.godrays.smoothed = false;
-		// this.godrays.tint = 0x8cfff7;
-		// this.game.add.tween(this.godrays).to( { alpha: 0.3 }, 5000, 'Linear', true, 0, 0, true).loop();
-
-
-		// Alpha of Foregroundlayer 0.9
-		this.foregroundLayer.alpha = 1;
-		this.foregroundLayer2.alpha = 1;
 
 		// Set Collision Tiles
 		this.map.setCollision(2482, true, 'CollisionLayer');
@@ -997,17 +914,14 @@ export default class {
 		// Set tileCallback for abyss
 		this.map.setTileIndexCallback(2481, this.fallDownCheck, this, this.collisionLayer);
 
-		// // Set SlowDownTile
-		// this.map.setTileIndexCallback(4, this.slowDownTile, this, this.collisionLayer);
-
 		// this.collisionLayer.debug = true;
 
 		// Get Map Properties
 		this.tilemapProperties = this.map.plus.properties;
 
-		if(this.game.rnd.integerInRange(1, 3) == 4 && this.tilemapProperties.dayCycle){
+		if (this.game.rnd.integerInRange(1, 3) == 4 && this.tilemapProperties.dayCycle) {
 			this.tilemapProperties.weather = 'Storm';
-			this.tilemapProperties.athmoSound = 'AtmoWindRain';	
+			this.tilemapProperties.athmoSound = 'AtmoWindRain';
 		} else {
 			this.tilemapProperties.weather = this.map.plus.properties.weather;
 			this.tilemapProperties.athmoSound = this.map.plus.properties.athmoSound;
@@ -1016,23 +930,19 @@ export default class {
 		// Get Properties for Nightmode
 		this.dayCycle = this.tilemapProperties.dayCycle;
 
-		// this.collisionLayer.debug = true;
-
 		// Enable Tile Animations
 		this.map.plus.animation.enable();
 
-		if(this.gameData.targetID == undefined){
+		// Slow Transition Game Begin
+		if (this.gameData.targetID == undefined) {
 			this.game.camera.flash(0x000000, 10000);
 		} else {
 			this.game.camera.flash(0x000000, 1500);
 		}
-		
-
-
 
 	}
 
-	gameOver(time){
+	gameOver(time) {
 		this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
 		this.sfxheartbeat.play();
 		this.sfxheartbeat.fadeOut(2000);
@@ -1040,12 +950,12 @@ export default class {
 		let duration = time;
 		let easing = Phaser.Easing.Circular.InOut;
 
-		if(this.backgroundLayer !== undefined){
+		if (this.backgroundLayer !== undefined) {
 			this.game.add.tween(this.backgroundLayer).to({
 				alpha: 0
 			}, duration, easing, true);
 		}
-		
+
 		this.game.add.tween(this.groundLayer).to({
 			alpha: 0
 		}, duration, easing, true);
@@ -1088,8 +998,8 @@ export default class {
 		if (this.preferences.muteSound) {
 			this.muteSound = true;
 		} else {
-				
-			this.game.soundManager.initSound(this.tilemapProperties, true, 2000, this.night);		
+
+			this.game.soundManager.initSound(this.tilemapProperties, true, 2000, this.night);
 			this.muteSound = false;
 		}
 	}

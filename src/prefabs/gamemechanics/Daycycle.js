@@ -17,6 +17,7 @@ export default class {
 		if (this.level.dayCycle) {
 			this.shadowTexture = this.game.add.bitmapData(this.game.width + 200, this.game.height + 200);
 			this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
+			this.lightSprite.name = "NightLayer";
 
 			this.time = new Date();
 			// console.log('NACHT');

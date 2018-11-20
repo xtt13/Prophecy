@@ -32,7 +32,7 @@ export default {
 	enemies: true,
 	startMap: 'map1',
 	secureLS: false,
-	devHour: 12,
+	devHour: 22,
 	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: __DEV__ ? true : false,

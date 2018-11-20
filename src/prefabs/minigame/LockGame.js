@@ -167,6 +167,11 @@ export default class {
 	}
 
 	update() {
+
+		this.game.world.bringToTop(this.ring);
+		this.game.world.bringToTop(this.ball);
+		this.game.world.bringToTop(this.bar);
+
 		if(this.level.inputClass.button_E.isDown){
 			// if(this.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(this.ifQuestID)) return;
 

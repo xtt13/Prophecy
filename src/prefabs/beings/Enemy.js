@@ -74,6 +74,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
+		console.log(this.game.world.children);
 		if(this.dead) return;
 		if(this.paralyze){
 			this.animations.play('wait');
