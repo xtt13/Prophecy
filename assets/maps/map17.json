@@ -623,6 +623,31 @@
                  "width":122.398184468257,
                  "x":432.150053050117,
                  "y":294.001037530086
+                }, 
+                {
+                 "height":188.621531292106,
+                 "id":289,
+                 "name":"AxTicking",
+                 "properties":
+                    {
+                     "nightMode":false,
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"AxTicking"
+                    },
+                 "propertytypes":
+                    {
+                     "nightMode":"bool",
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":182.537,
+                 "x":180.998377294057,
+                 "y":200.257835385402
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -935,13 +960,13 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":288,
+ "nextobjectid":290,
  "orientation":"orthogonal",
  "properties":
     {
      "athmoSound":"",
      "athmoSoundNight":"",
-     "cameraMode":"follow",
+     "cameraMode":"",
      "dayCycle":false,
      "ground":"hard3",
      "lucy":false,
