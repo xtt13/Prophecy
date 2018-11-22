@@ -3,10 +3,8 @@
 /*eslint no-duplicate-imports: "error"*/
 
 import config from './../../config';
-
 import Phaser from 'phaser';
 import 'phaser-tilemap-plus';
-
 import Player from '../beings/Player';
 import Enemy from '../beings/Enemy';
 import Character from '../beings/Character';
@@ -20,7 +18,6 @@ import Lucy from '../beings/Lucy';
 import Eventmanager from './Eventmanager';
 import Questmanager from './Questmanager';
 import Daycycle from '../gamemechanics/Daycycle';
-// import LockGame from '../minigame/LockGame';
 import GUI from '../gui/GUI';
 import Battery from './Battery';
 import Rock from '../beings/Rock';
@@ -34,10 +31,8 @@ import Gamescaler from '../gamemechanics/Gamescaler';
 export default class {
 	constructor(game, instruction) {
 		this.game = game;
-		// this.game.time.slowMotion = 1.0;
 
 		var time = new Date();
-
 
 		/*eslint no-undef: */
 		if (__DEV__) {
@@ -90,9 +85,7 @@ export default class {
 		this.fallDownLayer = 0;
 		this.lastDirection = null;
 
-
 		this.game.forceSingleUpdate = true;
-
 
 		// Arrays
 		this.characters = [];
@@ -136,7 +129,6 @@ export default class {
 
 		this.sfxheartbeat = this.game.add.audio('sfxheartbeat');
 		this.sfxheartbeat.loop = true;
-		// this.sfxheartbeat.allowMultiple = false;
 
 		if (this.player.health < 2) {
 			this.sfxheartbeat.play();
@@ -186,8 +178,6 @@ export default class {
 		// Create Lucy
 		this.lucy = this.tilemapProperties.lucy ? new Lucy(this.game, this.player.x + 10, this.player.y - 10, this) : false;
 
-
-
 		// Set Player inside GUIClass
 		this.GUICLASS.setLevel(this);
 
@@ -199,9 +189,6 @@ export default class {
 
 		// Load Enemies
 		if (config.enemies) this.loadEnemies();
-
-		// // Load GamePeople
-		// this.loadPeople();
 
 		// Load Custom Emitter
 		this.loadEmitter();
@@ -218,8 +205,8 @@ export default class {
 		// Load GamePeople
 		this.loadPeople();
 
-		// Saving Notification
-		// this.GUICLASS.createNotification('saving', 'Saving ...');
+		// Test Notification
+		// this.GUICLASS.createNotification('saving', 'Testttttaaat ...');
 
 		// Init InputClass
 		this.inputClass = new Input(this.game, this);
@@ -864,11 +851,15 @@ export default class {
 		// Add current map
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 
-		if ((this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax) || this.map.plus.properties.dayCycle) {
-			this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-			this.backgroundLayer = this.map.createLayer('Clouds');
-			this.backgroundLayer.resizeWorld();
-			this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+		if (this.map.plus.properties.dayCycle) {
+			if(this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax){
+				console.log('Parallax BG');
+			
+				this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+				this.backgroundLayer = this.map.createLayer('Clouds');
+				this.backgroundLayer.resizeWorld();
+				this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+			}
 		}
 
 
@@ -880,6 +871,8 @@ export default class {
 
 		//  Connect with Tileset
 		this.map.addTilesetImage('tileset', 'tileset', 32, 32);
+
+		
 
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');
@@ -907,6 +900,11 @@ export default class {
 		this.godrays = this.map.addTilesetImage('Godrays', 'Godrays');
 		this.godrays = this.map.createLayer('Godrays');
 		this.godrays.smoothed = false;
+
+		// this.spriteBatch = new Phaser.SpriteBatch(this.game.world);
+		// this.spriteBatch.add(this.groundLayer);
+		// this.spriteBatch.add(this.detailGroundLayer);
+		// this.spriteBatch.add(this.foregroundLayer);
 
 		// Set Collision Tiles
 		this.map.setCollision(2482, true, 'CollisionLayer');

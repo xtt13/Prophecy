@@ -409,6 +409,31 @@
                  "width":44.9759431002022,
                  "x":496.722951273359,
                  "y":203.533482614045
+                }, 
+                {
+                 "height":182.895384145099,
+                 "id":221,
+                 "name":"AxEmber",
+                 "properties":
+                    {
+                     "nightMode":false,
+                     "once":false,
+                     "soundArea":true,
+                     "soundkey":"AxEmber"
+                    },
+                 "propertytypes":
+                    {
+                     "nightMode":"bool",
+                     "once":"bool",
+                     "soundArea":"bool",
+                     "soundkey":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":178.899800081516,
+                 "x":182.62585705646,
+                 "y":280.577298093702
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -544,7 +569,7 @@
                  "visible":true,
                  "width":32,
                  "x":384.058030275515,
-                 "y":157.53776489642
+                 "y":161.104098705265
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -573,7 +598,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":221,
+ "nextobjectid":222,
  "orientation":"orthogonal",
  "properties":
     {

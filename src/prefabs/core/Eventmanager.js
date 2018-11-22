@@ -99,11 +99,11 @@ export default class {
 				this.openBossDoor(region);
 			} else if (region.properties.spotViewer) {
 				this.spotViewer(region);
-			} else if (region.properties.dash){
+			} else if (region.properties.dash) {
 				this.dash(region);
-			} else if (region.properties.alternateLockCamera){
+			} else if (region.properties.alternateLockCamera) {
 				this.alternateLockCamera(region);
-			} else if (region.properties.soundAreaDog){
+			} else if (region.properties.soundAreaDog) {
 				this.soundAreaDog(region);
 			}
 		});
@@ -119,11 +119,11 @@ export default class {
 				this.soundAreaLeave(region);
 			} else if (region.properties.openBossDoor) {
 				this.closeBossDoor(region);
-			} else if (region.properties.dash){
+			} else if (region.properties.dash) {
 				this.dashLeave(region);
 			} else if (region.properties.spotViewer) {
 				this.followPlayer(region);
-			} else if (region.properties.alternateLockCamera){
+			} else if (region.properties.alternateLockCamera) {
 				this.alternateFollowPlayer(region);
 			}
 		});
@@ -427,7 +427,7 @@ export default class {
 		}
 
 		if (this.level.sfxheartbeat !== undefined) {
-			if(this.level.sfxheartbeat.isPlaying){
+			if (this.level.sfxheartbeat.isPlaying) {
 				this.level.sfxheartbeat.stop();
 			}
 		}
@@ -572,8 +572,8 @@ export default class {
 			this.transitionTime = 2000;
 		}
 
-		if(region.properties.fast !== undefined && region.properties.fast){
-			if(!this.lockCameraActive){
+		if (region.properties.fast !== undefined && region.properties.fast) {
+			if (!this.lockCameraActive) {
 				this.transitionTime = 1;
 				this.lockCameraActive = true;
 			}
@@ -587,24 +587,24 @@ export default class {
 		this.game.add
 			.tween(this.game.camera)
 			.to({
-					x: cameraX - this.game.camera.width / 2,
-					y: cameraY - this.game.camera.height / 2
-				},
+				x: cameraX - this.game.camera.width / 2,
+				y: cameraY - this.game.camera.height / 2
+			},
 				this.transitionTime,
 				Phaser.Easing.Quadratic.InOut,
 				true
 			);
 	}
 
-	followTarget(target, duration){
+	followTarget(target, duration) {
 		this.followDuration = duration || 2000;
 
 		this.followTween = this.game.add
 			.tween(this.game.camera)
 			.to({
-					x: target.x - (this.game.camera.width / 2) - 20,
-					y: target.y - (this.game.camera.height / 2)
-				},
+				x: target.x - (this.game.camera.width / 2) - 20,
+				y: target.y - (this.game.camera.height / 2)
+			},
 				this.followDuration,
 				Phaser.Easing.Quadratic.InOut,
 				true
@@ -625,9 +625,9 @@ export default class {
 		this.followTween = this.game.add
 			.tween(this.game.camera)
 			.to({
-					x: this.level.player.x - (this.game.camera.width / 2),
-					y: this.level.player.y - (this.game.camera.height / 2) + 30
-				},
+				x: this.level.player.x - (this.game.camera.width / 2),
+				y: this.level.player.y - (this.game.camera.height / 2) + 30
+			},
 				this.followDuration,
 				Phaser.Easing.Quadratic.InOut,
 				true
@@ -693,8 +693,8 @@ export default class {
 
 	}
 
-	soundAreaDog(region){
-		if(this.voiceDog !== undefined && this.voiceDog.isPlaying) return;
+	soundAreaDog(region) {
+		if (this.voiceDog !== undefined && this.voiceDog.isPlaying) return;
 		this.rndVoiceDog = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7']);
 		this.voiceDog = this.game.add.audioSprite('VxDog');
 		this.voiceDog.allowMultiple = true;
@@ -734,7 +734,7 @@ export default class {
 		this.areaSoundOnce = true;
 
 		this.areaSound = this.game.add.audio(region.properties.soundkey);
-		if(region.properties.fadeDuration !== undefined){
+		if (region.properties.fadeDuration !== undefined) {
 			this.areaSound.fadeIn(region.properties.fadeDuration, true);
 		} else {
 			this.areaSound.fadeIn(4000, true);
@@ -763,8 +763,8 @@ export default class {
 
 		this.gameOverSound = this.game.add.audio('sfxGameOver');
 		this.gameOverSound.play();
-		
-		
+
+
 		// this.followPlayer(null, 4000);
 
 		this.level.questManager.addQuest(1);
@@ -793,7 +793,7 @@ export default class {
 				this.level.player.animations.play('die');
 				this.game.camera.shake(0.015, 500, true);
 				this.game.camera.flash(0xc10000, 400, true);
-				
+
 			}, this);
 
 		this.game.time.events.add(
@@ -826,7 +826,7 @@ export default class {
 
 
 	openBossDoor() {
-		if(!this.level.questManager.checkIfQuestExists(43)) return;
+		if (!this.level.questManager.checkIfQuestExists(43)) return;
 		if (this.bossDoorOpen) return;
 		this.doorOpenSound = this.game.add.audio('sfxstonedoor');
 
@@ -962,9 +962,9 @@ export default class {
 			this.game.add
 				.tween(this.game.camera)
 				.to({
-						x: focusX - this.game.camera.width / 2,
-						y: focusY - this.game.camera.height / 2
-					},
+					x: focusX - this.game.camera.width / 2,
+					y: focusY - this.game.camera.height / 2
+				},
 					transitionTime,
 					Phaser.Easing.Quadratic.InOut,
 					true
@@ -1005,8 +1005,8 @@ export default class {
 
 	}
 
-	dash(region){
-		if(this.level.inputClass.dash){
+	dash(region) {
+		if (this.level.inputClass.dash) {
 			this.level.inputClass.dash = false;
 			this.level.player.body.drag.set(10000);
 			this.level.player.animations.stop();
@@ -1021,19 +1021,19 @@ export default class {
 		}
 	}
 
-	dashLeave(region){
-			this.level.player.body.drag.set(1000);
+	dashLeave(region) {
+		this.level.player.body.drag.set(1000);
 	}
 
-	alternateLockCamera(region){
+	alternateLockCamera(region) {
 		this.game.time.events.add(
 			region.properties.timer, () => {
 				this.game.camera.unfollow();
 			});
-		
+
 	}
 
-	alternateFollowPlayer(region){
+	alternateFollowPlayer(region) {
 		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.025, 0.025);
 	}
 

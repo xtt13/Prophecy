@@ -917,12 +917,14 @@
                  "properties":
                     {
                      "character":"girl2",
+                     "disableMovement":true,
                      "id":10,
                      "nightVersion":true
                     },
                  "propertytypes":
                     {
                      "character":"string",
+                     "disableMovement":"bool",
                      "id":"int",
                      "nightVersion":"bool"
                     },

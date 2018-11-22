@@ -447,7 +447,35 @@
         {
          "draworder":"topdown",
          "name":"People",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2543,
+                 "height":32,
+                 "id":230,
+                 "name":"",
+                 "properties":
+                    {
+                     "character":"priest",
+                     "disableMovement":true,
+                     "id":1,
+                     "ifNotQuestID":"13",
+                     "nightVersion":true
+                    },
+                 "propertytypes":
+                    {
+                     "character":"string",
+                     "disableMovement":"bool",
+                     "id":"int",
+                     "ifNotQuestID":"string",
+                     "nightVersion":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":366.31338264963,
+                 "y":350.020847343645
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -475,7 +503,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":230,
+ "nextobjectid":231,
  "orientation":"orthogonal",
  "properties":
     {
@@ -500,7 +528,7 @@
      "weather":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.3",
+ "tiledversion":"1.1.6",
  "tileheight":32,
  "tilesets":[
         {

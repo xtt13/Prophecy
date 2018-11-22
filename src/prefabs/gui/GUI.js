@@ -19,21 +19,6 @@ export default class {
 		this.questMap = new Questmap(this.game, this);
 		this.gameMap = new Gamemap(this.game, this, this.level);
 		this.ingameMenu = new IngameMenu(this.game, this.level);
-
-		// this.game.canvas.style.cursor = "none";
-		// this.cursor = this.game.add.sprite(this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY, 'cursor');
-		// this.cursor.scale.set(1.5);
-		// this.cursor.smoothed = false;
-	}
-
-	updateGUI(option, value) {
-		switch (option) {
-			case 'hp':
-				break;
-			case 'defence':
-				break;
-			default:
-		}
 	}
 
 	update() {
@@ -44,9 +29,7 @@ export default class {
 			this.game.world.bringToTop(this.message.upperBar);
 			this.game.world.bringToTop(this.message.downBar);
 			this.game.world.bringToTop(this.message.nextGUI);
-			this.game.world.bringToTop(this.message.fontImage);
-			
-			
+			this.game.world.bringToTop(this.message.fontImage);			
 		}
 
 		if (this.notification.notificationBar) {
@@ -114,27 +97,6 @@ export default class {
 		this.healthBar.update();
 
 		this.game.world.bringToTop(this.healthBar.healthBarGroup);
-
-		// this.game.world.bringToTop(this.cursor);
-		// this.cursor.x = this.game.input.mousePointer.worldX;
-		// this.cursor.y = this.game.input.mousePointer.worldY;
-
-		// this.game.world.bringToTop(this.cursor);
-		
-
-		// let onePSx = this.game.world.width / 100;
-		// onePSx = onePSx.toFixed(1);
-
-		// let xValue = (this.player.x / onePSx) / 100;
-		// xValue = xValue.toFixed(1);
-
-		// let onePSy = this.game.world.height / 100;
-		// onePSy = onePSy.toFixed(1);
-
-		// let yValue = (this.player.y / onePSy) / 100;
-		// yValue = yValue.toFixed(1);
-
-		// console.log(xValue, yValue);
 	}
 
 	createMessage(message, playerMovable, readable) {
