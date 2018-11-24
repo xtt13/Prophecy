@@ -422,6 +422,14 @@ export default class {
     map19update(){
         
     }
+
+    map20(){
+        
+    }
+
+    map20update(){
+        
+    }
     
     update(){
         this[this.level.currentMap + 'update']();

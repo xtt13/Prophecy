@@ -2789,6 +2789,7 @@
      "ground":"gravel2",
      "lucy":true,
      "music":"MxTempleHappy",
+     "parallaxType":"clouds",
      "startMusic":true,
      "weather":"Leaves"
     },
@@ -2802,6 +2803,7 @@
      "ground":"string",
      "lucy":"bool",
      "music":"string",
+     "parallaxType":"string",
      "startMusic":"bool",
      "weather":"string"
     },

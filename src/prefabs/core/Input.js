@@ -446,10 +446,10 @@ export default class {
 			
 
 			case "5":
-				// Village2
-				this.level.gameData.currentMap = 'map2';
-				this.level.gameData.targetID = '3';
-				this.level.gameData.direction = 'down';
+				// Dungeon
+				this.level.gameData.currentMap = 'map20';
+				this.level.gameData.targetID = '1';
+				this.level.gameData.direction = 'up';
 				this.level.safe.setGameConfig(this.level.gameData);
 				this.game.state.restart(true, false);
 				break;

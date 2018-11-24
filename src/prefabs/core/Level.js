@@ -851,16 +851,44 @@ export default class {
 		// Add current map
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 
-		if (this.map.plus.properties.dayCycle) {
-			if(this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax){
+		// if (this.map.plus.properties.dayCycle) {
+			if (this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax) {
 				console.log('Parallax BG');
-			
-				this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-				this.backgroundLayer = this.map.createLayer('Clouds');
-				this.backgroundLayer.resizeWorld();
-				this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+
+				console.log(this.map.plus.properties.parallaxType);
+				
+				switch (this.map.plus.properties.parallaxType) {
+					case 'clouds':
+						this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+						this.backgroundLayer = this.map.createLayer('Clouds');
+						this.backgroundLayer.resizeWorld();
+						this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+						break;
+
+					case 'dungeon':
+						console.log('Inside');
+						
+						this.backgroundTileset = this.map.addTilesetImage('Dungeon', 'Dungeon');
+						this.backgroundLayer = this.map.createLayer('Dungeon');
+						this.backgroundLayer.resizeWorld();
+						this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+						break;
+
+					default:
+						console.warn('TilesetImage not found!!!');
+						this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+						this.backgroundLayer = this.map.createLayer('Clouds');
+						this.backgroundLayer.resizeWorld();
+						this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+						break;
+				}
+
+				console.log(this.game.world);
+				
+
+
 			}
-		}
+		// }
 
 
 		if (this.map.plus.properties.customSize) {
@@ -872,7 +900,7 @@ export default class {
 		//  Connect with Tileset
 		this.map.addTilesetImage('tileset', 'tileset', 32, 32);
 
-		
+
 
 		//  Define Layers
 		this.groundLayer = this.map.createLayer('BackgroundLayer');

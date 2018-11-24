@@ -2005,6 +2005,7 @@
      "ground":"gravel2",
      "lucy":true,
      "music":"MxBeginn",
+     "parallaxType":"clouds",
      "startMusic":true,
      "weather":"Leaves"
     },
@@ -2018,6 +2019,7 @@
      "ground":"string",
      "lucy":"bool",
      "music":"string",
+     "parallaxType":"string",
      "startMusic":"bool",
      "weather":"string"
     },

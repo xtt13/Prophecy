@@ -2307,7 +2307,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":340,
+ "nextobjectid":341,
  "orientation":"orthogonal",
  "properties":
     {
@@ -2319,6 +2319,7 @@
      "ground":"gravel2",
      "lucy":true,
      "music":"MxBeginn",
+     "parallaxType":"clouds",
      "startMusic":true,
      "weather":"Leaves"
     },
@@ -2332,6 +2333,7 @@
      "ground":"string",
      "lucy":"bool",
      "music":"string",
+     "parallaxType":"string",
      "startMusic":"bool",
      "weather":"string"
     },

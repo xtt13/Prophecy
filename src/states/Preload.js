@@ -645,6 +645,7 @@ export default class extends Phaser.State {
 		this.load.tilemap('map17', 'assets/maps/map17.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map18', 'assets/maps/map18.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('map19', 'assets/maps/map19.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('map20', 'assets/maps/map20.json', null, Phaser.Tilemap.TILED_JSON);
 
 
 		// Load Music
@@ -767,6 +768,7 @@ export default class extends Phaser.State {
 		// Load Tilesets
 		this.load.image('tileset', 'assets/tilesets/tileset.png');
 		this.load.image('Clouds', 'assets/tilesets/Clouds.png');
+		this.load.image('Dungeon', 'assets/tilesets/Dungeon.png');
 		this.load.image('Godrays', 'assets/tilesets/godrays.png');
 
 
