@@ -1,6 +1,6 @@
 # Prophecy of the Fallen - Browsergame
 
-![](http://www.michaeldorn.at/potf/Preview.gif)
+![](http://www.michaeldorn.at/potf/screenshot1.png)
 
 > A journey about a hero who has to find out the truth about the legendary Oracle and her ancient prophecies.
 
@@ -39,8 +39,8 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 * Coming soon!
 
-## Images
-![](http://www.michaeldorn.at/potf/screenshot1.png)
+## Screenshots
+![](http://www.michaeldorn.at/potf/screenshot8.png)
 ![](http://www.michaeldorn.at/potf/screenshot2.png)
 ![](http://www.michaeldorn.at/potf/screenshot3.png)
 ![](http://www.michaeldorn.at/potf/screenshot4.png)
