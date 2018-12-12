@@ -206,55 +206,55 @@ export default class extends Phaser.State {
 	}
 
 	variation3(){
-		this.game.soundManager.initSound({athmoSound: 'AxBotanic'}, true, 2000);
-		this.sfxheartbeat = this.game.add.audio('sfxheartbeat', 0.05);
-		this.sfxheartbeat.loop = true;
-		this.sfxheartbeat.play();
+		// this.game.soundManager.initSound({athmoSound: 'AxBotanic'}, true, 2000);
+		// this.sfxheartbeat = this.game.add.audio('sfxheartbeat', 0.05);
+		// this.sfxheartbeat.loop = true;
+		// this.sfxheartbeat.play();
 
 
-		this.tweenTint(this.subText, 0xFFFFFF, 0x49ffc5, 850);
+		// this.tweenTint(this.subText, 0xFFFFFF, 0x49ffc5, 850);
 
-		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+		// this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 		
-		var data = {
-			lifespan: 3000,
-			// red: { min: 200, max: 255 },
-			// green: 50,
-			// blue: { min: 200, max: 255 },
+		// var data = {
+		// 	lifespan: 3000,
+		// 	// red: { min: 200, max: 255 },
+		// 	// green: 50,
+		// 	// blue: { min: 200, max: 255 },
 
-			red: 73,
-			green: 255,
-			blue: 197,
+		// 	red: 73,
+		// 	green: 255,
+		// 	blue: 197,
 
-			// alpha: { initial: 0, value: 1, control: [ { x: 0, y: 0 }, { x: 0.5, y: 1 }, { x: 1, y: 0 } ] }
+		// 	// alpha: { initial: 0, value: 1, control: [ { x: 0, y: 0 }, { x: 0.5, y: 1 }, { x: 1, y: 0 } ] }
 
-			alpha: {min: 0.5, max: 1},
+		// 	alpha: {min: 0.5, max: 1},
 
 			
-			// vx: { min: 1, max: 0 },
-			// vy: { min: 1, max: 1 }
-		};
+		// 	// vx: { min: 1, max: 0 },
+		// 	// vy: { min: 1, max: 1 }
+		// };
 
-		this.manager.addData('basic', data);
+		// this.manager.addData('basic', data);
 
-		var line = this.manager.createLineZone(0, -30, this.game.camera.width, -30);
+		// var line = this.manager.createLineZone(0, -30, this.game.camera.width, -30);
 
-		//  This creates a Pixel Renderer.
-		//  It works by rendering just pixels (it can't render images or textures)
-		//  The red, green and blue properties of the particle data control the
-		//  color of the pixel particles.
+		// //  This creates a Pixel Renderer.
+		// //  It works by rendering just pixels (it can't render images or textures)
+		// //  The red, green and blue properties of the particle data control the
+		// //  color of the pixel particles.
 	
-		this.emitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL, new Phaser.Point(0, 0.03));
+		// this.emitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL, new Phaser.Point(0, 0.03));
 	
-		//  The autoClear property tells the Pixel emitter to not clear ifself before
-		//  rendering. You can then clear it yourself via renderer.clear() (see the update method)
-		this.emitter.renderer.autoClear = false;
+		// //  The autoClear property tells the Pixel emitter to not clear ifself before
+		// //  rendering. You can then clear it yourself via renderer.clear() (see the update method)
+		// this.emitter.renderer.autoClear = false;
 	
-		this.emitter.renderer.pixelSize = 1;
+		// this.emitter.renderer.pixelSize = 1;
 	
-		this.emitter.addToWorld();
+		// this.emitter.addToWorld();
 	
-		this.emitter.emit('basic', 0, 0, { zone: line, total: 1, repeat: -1, frequency: 1000 });
+		// this.emitter.emit('basic', 0, 0, { zone: line, total: 1, repeat: -1, frequency: 1000 });
 	
 
 	}

@@ -16,7 +16,7 @@ export default class {
 			navigator.userAgent &&
 			!navigator.userAgent.match('CriOS');
 
-		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+		// this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
 		if (config.weather) {
 			this.createWeather(type);

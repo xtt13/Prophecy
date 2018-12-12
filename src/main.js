@@ -5,15 +5,14 @@ import Phaser from 'phaser';
 import BootState from './states/Boot';
 import DeltaStormState from './states/DeltaStorm';
 import MainMenuState from './states/MainMenu';
-// import NameState from './states/Name';
 import PreloadState from './states/Preload';
 import GameState from './states/Game';
 import CreditsState from './states/Credits';
 
 import config from './config';
 
-import "script-loader!../src/plugins/particle-storm.min.js";
-import "script-loader!../src/plugins/phaser-virtual-joystick.min.js";
+// import "script-loader!../src/plugins/particle-storm.min.js";
+// import "script-loader!../src/plugins/phaser-virtual-joystick.min.js";
 
 
 class Game extends Phaser.Game {

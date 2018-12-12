@@ -84,8 +84,8 @@ export default class {
 
 				if (this.isMobileDevice() || config.forceMobile) {
 					console.log('Use Mobile');
-					this.useMobileControl = true;
-					this.useMobile();
+					// this.useMobileControl = true;
+					// this.useMobile();
 				} else {
 					this.useKeyboard();
 				}
@@ -110,7 +110,7 @@ export default class {
 			this.pad.destroy();
 		}
 
-		this.pad = this.game.plugins.add(Phaser.VirtualJoystick);
+		// this.pad = this.game.plugins.add(Phaser.VirtualJoystick);
 
 		// console.log(this.pad);
 		// this.stick = this.pad.addDPad(0, 0, 200, 'dpad');

@@ -235,33 +235,33 @@ export default class extends Phaser.Sprite {
 	}
 
 	teleport() {
-		this.alpha = 0;
-		this.game.forceSingleUpdate = true;
+		// this.alpha = 0;
+		// this.game.forceSingleUpdate = true;
 
-		this.manager = this.game.plugins.add(Phaser.ParticleStorm);
+		// this.manager = this.game.plugins.add(Phaser.ParticleStorm);
 
-		var data = {
-			lifespan: 0
-		};
+		// var data = {
+		// 	lifespan: 0
+		// };
 
-		this.manager.addData('burst', data);
+		// this.manager.addData('burst', data);
 
-		this.teleportEmitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL);
+		// this.teleportEmitter = this.manager.createEmitter(Phaser.ParticleStorm.PIXEL);
 
-		this.teleportEmitter.renderer.pixelSize = 8;
+		// this.teleportEmitter.renderer.pixelSize = 8;
 
-		this.teleportEmitter.addToWorld();
+		// this.teleportEmitter.addToWorld();
 
-		this.image = this.manager.createImageZone('player');
+		// this.image = this.manager.createImageZone('player');
 
-		this.teleportEmitter.emit('burst', this.x, this.y, {
-			zone: this.image,
-			full: true,
-			spacing: 8,
-			setColor: true
-		});
+		// this.teleportEmitter.emit('burst', this.x, this.y, {
+		// 	zone: this.image,
+		// 	full: true,
+		// 	spacing: 8,
+		// 	setColor: true
+		// });
 
-		this.teleportEmitter.forEachNew(this.setVelocity, this, this.x, this.y);
+		// this.teleportEmitter.forEachNew(this.setVelocity, this, this.x, this.y);
 
 	}
 

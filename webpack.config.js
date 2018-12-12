@@ -125,7 +125,7 @@ module.exports = {
     tls: 'empty'
   },
   externals: {
-    'particle-storm': 'particle-storm.min' 
+    // 'particle-storm': 'particle-storm.min' 
   },
   resolve: {
     alias: {
