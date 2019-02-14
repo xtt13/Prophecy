@@ -47,6 +47,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 ![](http://www.michaeldorn.at/potf/screenshot5.png)
 ![](http://www.michaeldorn.at/potf/screenshot6.png)
 ![](http://www.michaeldorn.at/potf/screenshot7.png)
+## Gamemap
 ![](http://www.michaeldorn.at/potf/map.png)
 
 

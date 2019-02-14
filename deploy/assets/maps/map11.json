@@ -2307,7 +2307,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":340,
+ "nextobjectid":341,
  "orientation":"orthogonal",
  "properties":
     {
@@ -2315,9 +2315,11 @@
      "athmoSoundNight":"AxForest",
      "cameraMode":"follow",
      "dayCycle":true,
+     "enableParallax":false,
      "ground":"gravel2",
      "lucy":true,
      "music":"MxBeginn",
+     "parallaxType":"clouds",
      "startMusic":true,
      "weather":"Leaves"
     },
@@ -2327,9 +2329,11 @@
      "athmoSoundNight":"string",
      "cameraMode":"string",
      "dayCycle":"bool",
+     "enableParallax":"bool",
      "ground":"string",
      "lucy":"bool",
      "music":"string",
+     "parallaxType":"string",
      "startMusic":"bool",
      "weather":"string"
     },

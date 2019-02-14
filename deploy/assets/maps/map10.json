@@ -2001,9 +2001,11 @@
      "athmoSoundNight":"AxForest",
      "cameraMode":"follow",
      "dayCycle":true,
+     "enableParallax":true,
      "ground":"gravel2",
      "lucy":true,
      "music":"MxBeginn",
+     "parallaxType":"clouds",
      "startMusic":true,
      "weather":"Leaves"
     },
@@ -2013,9 +2015,11 @@
      "athmoSoundNight":"string",
      "cameraMode":"string",
      "dayCycle":"bool",
+     "enableParallax":"bool",
      "ground":"string",
      "lucy":"bool",
      "music":"string",
+     "parallaxType":"string",
      "startMusic":"bool",
      "weather":"string"
     },

@@ -57,12 +57,12 @@ export default class {
                 this.level.player.animations.play('standUpFast');
             }, this);
 
-            this.game.time.events.add(Phaser.Timer.SECOND * 4, () => {
+            this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
                 this.level.inputClass.direction = 'up';
                 this.level.player.animations.play('static_idle_up');
             }, this);
 
-            this.game.time.events.add(Phaser.Timer.SECOND * 5, () => {
+            this.game.time.events.add(Phaser.Timer.SECOND * 6, () => {
 
                 let messageID = 1;
                 const all_messages = Object.values(dialogues.dialogues);
