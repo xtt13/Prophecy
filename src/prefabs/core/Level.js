@@ -33,6 +33,7 @@ export default class {
 		this.game = game;
 
 		var time = new Date();
+		
 
 		/*eslint no-undef: */
 		if (__DEV__) {
@@ -853,9 +854,7 @@ export default class {
 
 		// if (this.map.plus.properties.dayCycle) {
 			if (this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax) {
-				console.log('Parallax BG');
 
-				console.log(this.map.plus.properties.parallaxType);
 				
 				switch (this.map.plus.properties.parallaxType) {
 					case 'clouds':
@@ -866,7 +865,6 @@ export default class {
 						break;
 
 					case 'dungeon':
-						console.log('Inside');
 						
 						this.backgroundTileset = this.map.addTilesetImage('Dungeon', 'Dungeon');
 						this.backgroundLayer = this.map.createLayer('Dungeon');
@@ -883,7 +881,6 @@ export default class {
 						break;
 				}
 
-				console.log(this.game.world);
 				
 
 
@@ -934,11 +931,20 @@ export default class {
 		// this.spriteBatch.add(this.detailGroundLayer);
 		// this.spriteBatch.add(this.foregroundLayer);
 
-		// Set Collision Tiles
-		this.map.setCollision(2482, true, 'CollisionLayer');
+		// Set Collision Tiles (BUGFIX :( )
+		if(this.gameData.currentMap == 'map1'){
+			this.map.setCollision(2, true, 'CollisionLayer');
+		} else {
+			this.map.setCollision(2482, true, 'CollisionLayer');
+		}
+		
 
 		// Set tileCallback for abyss
-		this.map.setTileIndexCallback(2481, this.fallDownCheck, this, this.collisionLayer);
+		if(this.gameData.currentMap == 'map1'){
+			this.map.setTileIndexCallback(1, this.fallDownCheck, this, this.collisionLayer);
+		} else {
+			this.map.setTileIndexCallback(2481, this.fallDownCheck, this, this.collisionLayer);
+		}
 
 		// this.collisionLayer.debug = true;
 

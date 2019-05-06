@@ -22,13 +22,13 @@ export default class {
 			this.time = new Date();
 			// console.log('NACHT');
 
+
 			/*eslint no-undef: */
 			if (__DEV__) {
 				this.timeValue = config.devHour;
 				
 				// this.timeValue = this.time.getHours();
 			} else {
-				// this.timeValue = 11;
 				this.timeValue = this.time.getHours();
 			}
 

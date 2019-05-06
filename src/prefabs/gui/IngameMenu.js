@@ -22,7 +22,6 @@ export default class {
 		this.UISounds.sounds['UI1'].allowMultiple = true;
 		this.UISounds.sounds['UI2'].allowMultiple = true;
 		this.UISounds.sounds['openMenu'].allowMultiple = true;
-		console.log(this.UISounds);
 		// this.UISounds.allowMultiple = true;
 
 		// this.UISounds.play(this.rndVoiceSword, 0.5);

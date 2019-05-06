@@ -380,7 +380,6 @@ export default class {
 									);
 								}
 
-								console.log(region.properties.removeQuestID);
 								if (region.properties.removeQuestID !== undefined) {
 									this.level.questManager.removeQuest(region.properties.removeQuestID);
 								}
@@ -563,7 +562,6 @@ export default class {
 
 		// if(this.level.questManager.checkIfQuestWasDone(1) && !this.level.questManager.checkIfQuestWasDone(2)) return;
 
-		console.log(this.level.gameData.currentMap);
 		if (this.level.gameData.currentMap == undefined) {
 			this.transitionTime = 1;
 		} else if (this.level.gameData.currentMap == 'map3' && this.level.gameData.targetID == 2 && region.properties.id == 2) {
@@ -579,7 +577,6 @@ export default class {
 			}
 		}
 
-		console.log(region);
 
 
 		this.game.camera.unfollow();

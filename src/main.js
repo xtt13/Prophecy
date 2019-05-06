@@ -11,10 +11,6 @@ import CreditsState from './states/Credits';
 
 import config from './config';
 
-// import "script-loader!../src/plugins/particle-storm.min.js";
-// import "script-loader!../src/plugins/phaser-virtual-joystick.min.js";
-
-
 class Game extends Phaser.Game {
 	constructor() {
 		let isSafari =
