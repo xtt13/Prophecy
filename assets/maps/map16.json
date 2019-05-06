@@ -374,31 +374,6 @@
                  "width":91.6351733284484,
                  "x":19.2126386517677,
                  "y":304.960144354888
-                }, 
-                {
-                 "height":53.1894217394271,
-                 "id":248,
-                 "name":"Message",
-                 "properties":
-                    {
-                     "id":14,
-                     "message":true,
-                     "movable":true,
-                     "readable":true
-                    },
-                 "propertytypes":
-                    {
-                     "id":"int",
-                     "message":"bool",
-                     "movable":"bool",
-                     "readable":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":95.8576026603166,
-                 "x":223.635156912974,
-                 "y":210.598173146678
                 }],
          "opacity":1,
          "type":"objectgroup",

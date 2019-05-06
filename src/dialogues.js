@@ -4,12 +4,12 @@ export default {
 
 		//
 		1: [
-			'Hello? Are you okay?\n\n\n(Press E-Key)',
-			'My name is Lucy! Pleased to meet you! Uh...',
-			'Levi! Alright.',
-			'This? It\'s the Forest of Eritel! You seem to \nbe lost. There is a village nearby, just \nfollow the path!',
+			'Hello? Are you okay? I saw a branch hit you!\n\n(Press E-Key)',
+			'My name is Lucy! Pleased to meet you! Uh... What\'s your name?',
+			'Levi! Alright. Nice to meet you!',
+			'You want to know where you are? It\'s the Forest of Eritel! You seem to \nbe lost. There is a village nearby, just \nfollow the path!',
 			'Though! It must be scary around here for \nsomeone who isn\'t familiar with these woods! ',
-			'How about that: \nI\'ll stay with you for now, Levi!'
+			'How about that: \nI\'ll stay with you for a while, Levi!'
 		],
 
 		//
