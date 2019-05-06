@@ -510,15 +510,15 @@
                  "y":992.566546374264
                 }, 
                 {
-                 "height":106.412510409919,
+                 "height":108.840755759829,
                  "id":327,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":34.5455106258289,
-                 "x":735.325869035502,
-                 "y":930.261250424108
+                 "width":37.9450541157032,
+                 "x":731.926325545628,
+                 "y":927.833005074198
                 }, 
                 {
                  "height":64.7728324234292,
@@ -554,7 +554,7 @@
                  "y":1114.01332114405
                 }, 
                 {
-                 "height":34.826520395281,
+                 "height":36.9195339161483,
                  "id":331,
                  "name":"",
                  "rotation":0,
@@ -571,8 +571,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":98.3849201166688,
-                 "x":831.047842932393,
+                 "width":102.15234445423,
+                 "x":827.280418594832,
                  "y":1184.10169343955
                 }, 
                 {
@@ -598,15 +598,15 @@
                  "y":1106.61268556005
                 }, 
                 {
-                 "height":37.4385094249271,
+                 "height":49.5996444641973,
                  "id":335,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":74.006355839972,
-                 "x":1088.76409385747,
-                 "y":1147.96917852945
+                 "width":78.5667814796984,
+                 "x":1084.20366821774,
+                 "y":1135.80804349018
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1127,27 +1127,6 @@
                  "y":405.66897212795
                 }, 
                 {
-                 "height":139.331,
-                 "id":265,
-                 "name":"Lock Camera",
-                 "properties":
-                    {
-                     "ifQuestID":2,
-                     "lockCamera":true
-                    },
-                 "propertytypes":
-                    {
-                     "ifQuestID":"int",
-                     "lockCamera":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":512.094,
-                 "x":1521.65775843563,
-                 "y":1283.6217221214
-                }, 
-                {
                  "height":55.9173,
                  "id":274,
                  "name":"FS",
@@ -1323,63 +1302,6 @@
                  "y":1863.52628952442
                 }, 
                 {
-                 "height":14.5449,
-                 "id":314,
-                 "name":"Dash",
-                 "properties":
-                    {
-                     "dash":true
-                    },
-                 "propertytypes":
-                    {
-                     "dash":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":79.4362726761483,
-                 "x":1087.9197535786,
-                 "y":1579.52961339422
-                }, 
-                {
-                 "height":14.5449,
-                 "id":315,
-                 "name":"Dash",
-                 "properties":
-                    {
-                     "dash":true
-                    },
-                 "propertytypes":
-                    {
-                     "dash":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":75.2301215494733,
-                 "x":1090.16809508199,
-                 "y":1804.16232368066
-                }, 
-                {
-                 "height":14.5449,
-                 "id":316,
-                 "name":"Dash",
-                 "properties":
-                    {
-                     "dash":true
-                    },
-                 "propertytypes":
-                    {
-                     "dash":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53.2288894804774,
-                 "x":1061.71316827276,
-                 "y":1930.88942039808
-                }, 
-                {
                  "height":127.639,
                  "id":317,
                  "name":"Message",
@@ -1428,10 +1350,33 @@
                  "width":124.657,
                  "x":1027.8340607508,
                  "y":1958.82839012904
+                }, 
+                {
+                 "height":25.6969,
+                 "id":338,
+                 "name":"quickSave",
+                 "properties":
+                    {
+                     "direction":"down",
+                     "quickSave":true,
+                     "targetID":2
+                    },
+                 "propertytypes":
+                    {
+                     "direction":"string",
+                     "quickSave":"bool",
+                     "targetID":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":179.326,
+                 "x":565.943101150656,
+                 "y":935.773439215949
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1604,6 +1549,27 @@
                  "width":14.1413,
                  "x":1081.83499772918,
                  "y":1985.13648926596
+                }, 
+                {
+                 "height":14.1413,
+                 "id":337,
+                 "name":"CustomStartpoint",
+                 "properties":
+                    {
+                     "id":2,
+                     "startPointType":"custom"
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "startPointType":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":14.1413,
+                 "x":644.521536245652,
+                 "y":910.777891610918
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2120,7 +2086,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":337,
+ "nextobjectid":339,
  "orientation":"orthogonal",
  "properties":
     {

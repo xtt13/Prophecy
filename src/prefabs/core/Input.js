@@ -295,13 +295,13 @@ export default class {
 		}
 	}
 
-	addRunning(){
+	addRunning() {
 		this.running = true;
 		this.playerSpeed = 100;
 		this.playerSpeedDefault = 100;
 	}
 
-	removeRunning(){
+	removeRunning() {
 		this.running = false;
 		this.playerSpeed = 40;
 		this.playerSpeedDefault = 40;
@@ -316,23 +316,23 @@ export default class {
 			case 'up':
 				this.player.animations.play('fight_up');
 				this.player.weapon.fireAtXY(this.player.x, this.player.y - 10);
-				if(!this.standing){
+				if (!this.standing) {
 					this.player.body.velocity.y = -200;
 				}
-				
+
 				break;
 
 			case 'down':
 				this.player.weapon.fireAtXY(this.player.x, this.player.y + 10);
-				if(!this.standing){
+				if (!this.standing) {
 					this.player.body.velocity.y = 200;
 				}
 				break;
 
 			case 'left':
-			this.player.animations.play('fight_left');
+				this.player.animations.play('fight_left');
 				this.player.weapon.fireAtXY(this.player.x - 10, this.player.y);
-				if(!this.standing){
+				if (!this.standing) {
 					this.player.body.velocity.x = -200;
 				}
 				break;
@@ -340,7 +340,7 @@ export default class {
 			case 'right':
 				this.player.animations.play('fight_right');
 				this.player.weapon.fireAtXY(this.player.x + 10, this.player.y);
-				if(!this.standing){
+				if (!this.standing) {
 					this.player.body.velocity.x = 200;
 				}
 				break;
@@ -352,7 +352,7 @@ export default class {
 			this.currentAttack = false;
 		}, this);
 
-		if(this.muteAttack) return;
+		if (this.muteAttack) return;
 
 
 		this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
@@ -388,7 +388,7 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			if (this.movementloop == null) {
 				this.movementloop = this.game.time.events.loop(this.movementloopSpeed, () => {
-					this.pyfootsteps.play(this.movementSound, 0.3);					
+					this.pyfootsteps.play(this.movementSound, 0.3);
 				}, this);
 			}
 		}
@@ -398,15 +398,15 @@ export default class {
 		if (this.button_A.isDown || this.button_D.isDown || this.button_W.isDown || this.button_S.isDown) {
 			return;
 		} else {
-			
+
 			this.game.time.events.remove(this.movementloop);
 			this.movementloop = null;
 		}
 	}
 
-	numberKey(key){
+	numberKey(key) {
 		if (this.level == undefined) return;
-		if(!config.allowFastTravel) return;
+		if (!config.allowFastTravel) return;
 		switch (key.event.key) {
 			case "1":
 				// Start
@@ -415,7 +415,7 @@ export default class {
 				this.level.gameData.direction = 'down';
 				this.level.safe.setGameConfig(this.level.gameData);
 				this.game.state.restart(true, false);
-				
+
 				break;
 			case "2":
 				// Forest1
@@ -425,7 +425,7 @@ export default class {
 				this.level.safe.setGameConfig(this.level.gameData);
 				this.game.state.restart(true, false);
 				break;
-			
+
 			case "3":
 				// Forest2
 				this.level.gameData.currentMap = 'map11';
@@ -443,7 +443,7 @@ export default class {
 				this.level.safe.setGameConfig(this.level.gameData);
 				this.game.state.restart(true, false);
 				break;
-			
+
 
 			case "5":
 				// Dungeon
@@ -453,9 +453,9 @@ export default class {
 				this.level.safe.setGameConfig(this.level.gameData);
 				this.game.state.restart(true, false);
 				break;
-			
+
 			case "6":
-		
+
 				// Village
 				this.level.gameData.currentMap = 'map2';
 				this.level.gameData.targetID = '2';
@@ -465,7 +465,7 @@ export default class {
 				break;
 
 			case "7":
-		
+
 				// Boss
 				this.level.gameData.currentMap = 'map9';
 				this.level.gameData.targetID = '1';
@@ -493,9 +493,9 @@ export default class {
 				this.level.safe.setGameConfig(this.level.gameData);
 				this.game.state.restart(true, false);
 				break;
-		
 
-		
+
+
 			default:
 				break;
 		}
@@ -506,22 +506,63 @@ export default class {
 		localStorage.clear();
 		this.game.musicPlayer.fadeOut();
 		// this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
-			this.game.state.start('MainMenu', true, false);
+		this.game.state.start('MainMenu', true, false);
 		// });
 	}
 
 	beginnDash() {
 		// if (this.level.GUICLASS.healthBar.dashRatio.value <= 0.1) return;
 
+		console.log('heeey');
+
 		this.dash = true;
-		// this.player.addParticles();
+
 		this.playerSpeed = 250;
 		this.playerControllerSpeed = 250;
+
 		this.dashSound = this.game.add.audio('sfxfalldown', 0.25);
 		this.dashSound.play();
 
 		this.level.GUICLASS.healthBar.dash();
 		// this.player.playDustAnimation();
+
+		let dashInterval = setInterval(() => {
+			switch (this.direction) {
+				case 'up':
+					this.player.body.velocity.y = -this.playerSpeed;
+					break;
+				case 'down':
+					this.player.body.velocity.y = this.playerSpeed;
+					break;
+				case 'left':
+					this.player.body.velocity.x = -this.playerSpeed;
+					break;
+				case 'right':
+					this.player.body.velocity.x = this.playerSpeed;
+					break;
+				default:
+			}
+		}, 10);
+
+		this.game.time.events.add(300, () => {
+			clearInterval(dashInterval);
+
+			switch (this.direction) {
+				case 'up':
+				this.player.animations.play('walk_up_idle');
+					break;
+				case 'down':
+				this.player.animations.play('walk_down_idle');
+					break;
+				case 'left':
+				this.player.animations.play('walk_left_idle');
+					break;
+				case 'right':
+				this.player.animations.play('walk_right_idle');
+					break;
+				default:
+			}
+		});
 
 		// this.player.alpha = 0.5;
 		this.game.add.tween(this.player).to({
@@ -541,7 +582,7 @@ export default class {
 				break;
 			case 'right':
 				this.player.animations.play('dash_right');
-				
+
 				break;
 			default:
 		}
@@ -563,27 +604,27 @@ export default class {
 			}, 250, Phaser.Easing.Elastic.Out, true);
 
 			// Bugfix
-			switch (this.direction) {
-				case 'up':
-					this.player.animations.play('walk_up', 19, true);
-					break;
-				case 'down':
-					this.player.animations.play('walk_down', 19, true);
-					break;
-				case 'left':
-					this.player.animations.play('walk_left', 19, true);
-					break;
-				case 'right':
-					this.player.animations.play('walk_right', 19, true);
-					break;
-				default:
-			}
+			// switch (this.direction) {
+			// 	case 'up':
+			// 		this.player.animations.play('walk_up', 19, true);
+			// 		break;
+			// 	case 'down':
+			// 		this.player.animations.play('walk_down', 19, true);
+			// 		break;
+			// 	case 'left':
+			// 		this.player.animations.play('walk_left', 19, true);
+			// 		break;
+			// 	case 'right':
+			// 		this.player.animations.play('walk_right', 19, true);
+			// 		break;
+			// 	default:
+			// }
 		});
 
 
 	}
 
-	onGamepadUp() {}
+	onGamepadUp() { }
 
 	gamepadUpdate() {
 
@@ -606,10 +647,10 @@ export default class {
 		}
 
 
-		
+
 
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 			if (this.direction == 'left' || this.direction == 'right') {
 				this.player.body.velocity.y = -this.playerControllerSpeed;
 			} else {
@@ -618,7 +659,7 @@ export default class {
 			}
 			this.direction = 'up';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 			if (this.direction == 'left' || this.direction == 'right') {
 				this.player.body.velocity.y = this.playerControllerSpeed;
 			} else {
@@ -632,7 +673,7 @@ export default class {
 		}
 
 		if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 			if (this.direction == 'up' || this.direction == 'down') {
 				this.player.body.velocity.x = -this.playerControllerSpeed;
 			} else {
@@ -642,7 +683,7 @@ export default class {
 			}
 			this.direction = 'left';
 		} else if (this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 			if (this.direction == 'up' || this.direction == 'down') {
 				this.player.body.velocity.x = this.playerControllerSpeed;
 			} else {
@@ -661,7 +702,7 @@ export default class {
 			this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) == 0
 		) {
 			if (this.dash) return;
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 			switch (this.direction) {
 				case 'up':
 
@@ -778,7 +819,7 @@ export default class {
 			this.player.animations._anims.walk_up.speed = 19;
 
 			// console.log('HIER: ' + this.player.animations._anims.walk_down.speed * this.stick.force);
-			
+
 			this.player.animations._anims.walk_down.speed =
 				this.player.animations._anims.walk_down.speed * this.stick.force + 0.1;
 			this.player.animations._anims.walk_up.speed =
@@ -827,7 +868,7 @@ export default class {
 			this.player.animations.stop();
 			this.player.body.velocity.set(0);
 
-			
+
 
 			// this.player.body.velocity.set(0);
 			this.pyfootsteps.stop();
@@ -880,13 +921,13 @@ export default class {
 
 			// return;
 		}
-		
+
 		if (this.game.input.activePointer.leftButton.isDown && !this.disableAttack) {
-			
+
 			this.aiming = false;
 			this.player.playerArm.visible = false;
 
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 			this.currentAttack = true;
 
 			// let value = this.game.physics.arcade.angleToPointer(this.player);
@@ -918,10 +959,10 @@ export default class {
 			this.game.time.events.add(300, () => {
 				this.currentAttack = false;
 			}, this);
-	
-			if(this.muteAttack) return;
-	
-			
+
+			if (this.muteAttack) return;
+
+
 			// this.rndVoiceSword = this.game.rnd.pick(['vx1', 'vx2']);
 			// this.voiceSword.play(this.rndVoiceSword, 0.5);
 
@@ -940,7 +981,7 @@ export default class {
 
 			this.standing = false;
 
-			if(this.currentAttack) return;
+			if (this.currentAttack) return;
 
 			this.player.playerArm.visible = false;
 			this.aiming = false;
@@ -966,12 +1007,12 @@ export default class {
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
 					if (this.dash) return;
-					if(this.running){
+					if (this.running) {
 						this.player.animations.play('run_up');
 					} else {
 						this.player.animations.play('run_up');
 					}
-					
+
 				}
 
 				// If Down-Button isDown
@@ -984,16 +1025,16 @@ export default class {
 				} else {
 					this.player.body.velocity.y = this.playerSpeed;
 				}
-				
+
 
 				if (!this.button_A.isDown && !this.button_D.isDown) {
 					if (this.dash) return;
-					if(this.running){
+					if (this.running) {
 						this.player.animations.play('run_down');
 					} else {
 						this.player.animations.play('run_down');
 					}
-					
+
 				}
 
 			} else {
@@ -1012,12 +1053,12 @@ export default class {
 				} else {
 					this.player.body.velocity.x = -this.playerSpeed;
 					if (this.dash) return;
-					if(this.running){
+					if (this.running) {
 						this.player.animations.play('run_left');
 					} else {
 						this.player.animations.play('run_left');
 					}
-					
+
 				}
 
 				// If Right-Button isDown
@@ -1031,19 +1072,19 @@ export default class {
 				} else {
 					this.player.body.velocity.x = this.playerSpeed;
 					if (this.dash) return;
-					if(this.running){
+					if (this.running) {
 						this.player.animations.play('run_right');
 					} else {
 						this.player.animations.play('run_right');
 					}
-					
+
 				}
 
 			} else {
 				this.player.body.velocity.x = 0;
 			}
 
-			
+
 
 		} else {
 			// If no Movementkey isDown
@@ -1154,34 +1195,34 @@ export default class {
 		if (this.player) {
 
 			// Bugfix Talking Move
-			if(!this.player.movable){
+			if (!this.player.movable) {
 				// this.player.animations.stop();
 				return;
 			}
 
 			// If the Player should not walk
 			if (!this.player.movable) {
-				
-				if(this.movableSwitch){
-					
+
+				if (this.movableSwitch) {
+
 					this.movableSwitch = false;
 					switch (this.direction) {
 						case 'up':
 							this.player.animations.play('walk_up_idle');
 							break;
-			
+
 						case 'down':
 							this.player.animations.play('walk_down_idle');
 							break;
-			
+
 						case 'left':
 							this.player.animations.play('walk_left_idle');
 							break;
-			
+
 						case 'right':
 							this.player.animations.play('walk_right_idle');
 							break;
-			
+
 						default:
 							break;
 					}
