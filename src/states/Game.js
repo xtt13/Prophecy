@@ -47,7 +47,7 @@ export default class extends Phaser.State {
 		console.log('PAUSED');
 	}
 
-	resumed() {}
+	resumed() { }
 
 	render() {
 		// Debugging
@@ -56,10 +56,10 @@ export default class extends Phaser.State {
 
 			// this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
 
-			if(config.showFPS){
+			if (config.showFPS) {
 				this.game.debug.text(this.game.time.fps.toString() + ' FPS', 510, 30, '#00ff00', '10px Pixeled');
 			}
-			
+
 
 			// DEBUG SOUND
 			// this.game.debug.soundInfo(this.level.weather.weatherSound, 20, 50);
@@ -93,7 +93,7 @@ export default class extends Phaser.State {
 			// for (var i = 0; i < this.level.items.length; i++) {
 			// 	this.game.debug.body(this.level.items[i]);
 			// }
-			
+
 			// DEBUG POINTER
 			// this.game.debug.pointer(this.game.input.activePointer );
 

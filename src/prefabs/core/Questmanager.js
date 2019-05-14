@@ -36,7 +36,7 @@ export default class {
 		this.level.safe.setQuests(this.quests);
 	}
 
-	getQuestByID(questID){
+	getQuestByID(questID) {
 		let quest = quests.quests[questID];
 		return quest;
 	}
@@ -73,12 +73,12 @@ export default class {
 		var keys = Object.values(this.quests);
 
 		// Reverse Array
-		var reversed = keys.reverse(); 
+		var reversed = keys.reverse();
 
 		// Return Dialogue Array
 		for (let i = 0; i < reversed.length; i++) {
 			if (i == 0) continue;
-			if(reversed[i].dialogues[character]){
+			if (reversed[i].dialogues[character]) {
 				return reversed[i].dialogues[character];
 			}
 		}

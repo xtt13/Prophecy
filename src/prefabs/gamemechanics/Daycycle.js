@@ -26,7 +26,7 @@ export default class {
 			/*eslint no-undef: */
 			if (__DEV__) {
 				this.timeValue = config.devHour;
-				
+
 				// this.timeValue = this.time.getHours();
 			} else {
 				this.timeValue = this.time.getHours();
@@ -40,7 +40,7 @@ export default class {
 				this.lightSprite.alpha = this.darkness;
 
 				// Tint Clouds
-				this.level.backgroundLayer.tint = 0x000000;
+				//this.level.backgroundLayer.tint = 0x000000;
 				this.level.godrays.visible = false;
 				this.level.godrays.renderable = false;
 
@@ -54,7 +54,7 @@ export default class {
 			} else if (this.timeValue >= 6 && this.timeValue < 8) {
 				console.log('Dawn');
 
-				this.level.backgroundLayer.tint = 0x848484;
+				//this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.5;
 
 				this.night = false;
@@ -82,10 +82,12 @@ export default class {
 
 				this.night = false;
 
-				this.level.backgroundLayer.tint = 0x848484;
+				console.log(this.level.map.layers[0]);
+
+				//this.level.backgroundLayer.tint = 0x848484;
 				this.lightSprite.alpha = 0.5;
 				// this.level.player.tint = 0x454545;
-				
+
 				for (var i = 0; i < this.level.characters.length; i++) {
 					this.level.characters[i].tint = 0x383838;
 				}
@@ -101,7 +103,7 @@ export default class {
 
 				this.level.godrays.visible = false;
 				this.level.godrays.renderable = false;
-				this.level.backgroundLayer.tint = 0x000000;
+				//this.level.backgroundLayer.tint = 0x000000;
 
 				this.lightSprite.alpha = this.darkness;
 
@@ -132,19 +134,19 @@ export default class {
 		this.shadowTexture.context.fillStyle = 'rgb(0, 15, 119)';
 		this.shadowTexture.context.fillRect(0, 0, this.game.width + 400, this.game.height + 400);
 
-		var radius = 60 + this.game.rnd.integerInRange(1,2),
-        heroX = this.level.player.x - this.game.camera.x,
-        heroY = this.level.player.y - this.game.camera.y;
-    
+		var radius = 60 + this.game.rnd.integerInRange(1, 2),
+			heroX = this.level.player.x - this.game.camera.x,
+			heroY = this.level.player.y - this.game.camera.y;
+
 		var gradient = this.shadowTexture.context.createRadialGradient(
-				heroX, heroY, 60 * 0.75,
-				heroX, heroY, radius);
+			heroX, heroY, 60 * 0.75,
+			heroX, heroY, radius);
 		gradient.addColorStop(0, 'rgba(150, 150, 150, 1.0)');
 		gradient.addColorStop(1, 'rgba(150, 150, 150, 0.0)');
 
 		this.shadowTexture.context.beginPath();
 		this.shadowTexture.context.fillStyle = gradient;
-		this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI*2, false);
+		this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
 		this.shadowTexture.context.fill();
 
 		this.shadowTexture.dirty = true;

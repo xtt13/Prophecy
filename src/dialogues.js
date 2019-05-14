@@ -15,7 +15,7 @@ export default {
 		//
 		2: [
 			'Oh, seems like the path is falling apart! There \nare platforms you can reach by using \nthe Space-Key.',
-			'You should give it a try!'		
+			'You should give it a try!'
 		],
 
 		3: [
@@ -32,7 +32,7 @@ export default {
 		// Bridge Dialogue
 		5: [
 			'Oh, right! The villagers of Aalis use many \nmechanisms to keep the monsters out of their \ntown. This is one of said mechanisms.',
-			'To continue, you have to explore a little, \nmaybe you can find a way to activate \nthe bridge again.'	
+			'To continue, you have to explore a little, \nmaybe you can find a way to activate \nthe bridge again.'
 		],
 
 		6: [
@@ -64,28 +64,28 @@ export default {
 		//
 		10: [
 			'One last thing before we enter the village! \nYou will encounter many different people! \nMaybe they can help you figure out \nwhy you ended up here.', 'But to do so, you will have to talk to the them. \nUse the E-Key to interact with the towns \nfolks.',
-			'Another thing! Especially the high priest and \nthe priestess don\'t like monsters. ', 'Since I, too, look like one, it will \nprobably be for the best if I stayed invisible \nand silent during our stay in the village.','You can still use my powers, but I will not \nbe able to interact with you, Levi. \nBe careful, young hero.'
+			'Another thing! Especially the high priest and \nthe priestess don\'t like monsters. ', 'Since I, too, look like one, it will \nprobably be for the best if I stayed invisible \nand silent during our stay in the village.', 'You can still use my powers, but I will not \nbe able to interact with you, Levi. \nBe careful, young hero.'
 		],
 
 		11: [
 			"Press the E-Key to collect items!"
 		],
-		
+
 		12: [
 			'You got to be careful… This monster is different than anything you have faced before. Be on your guard.',
 			'Hide if necessary. You’d rather be a coward than dead, right?',
 			'I think that’s it… Good luck'
 		],
 
-		13:[
+		13: [
 			'AHHHHHHHHH!'
 		],
 
-		14:[
+		14: [
 			'Dedicated to Sabine Rimmer.\n\nHer great animations made me alive.'
 		],
 
-		15:[
+		15: [
 			'Did you hear that?'
 		],
 
@@ -93,7 +93,7 @@ export default {
 			'One more thing! \nBy pressing the Tab-Key, you can always check \nyour current quests!'
 		],
 
-		17:[
+		17: [
 			'\"The Tales of the ancient heroes\"', '...'
 		]
 

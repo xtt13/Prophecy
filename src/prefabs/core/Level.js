@@ -33,7 +33,6 @@ export default class {
 		this.game = game;
 
 		var time = new Date();
-		
 
 		/*eslint no-undef: */
 		if (__DEV__) {
@@ -49,7 +48,6 @@ export default class {
 
 			this.night = true;
 
-
 		} else if (timeValue >= 6 && timeValue < 8) {
 
 			this.night = false;
@@ -57,7 +55,6 @@ export default class {
 		} else if (timeValue >= 8 && timeValue < 18) {
 
 			this.night = false;
-
 
 		} else if (timeValue >= 18 && timeValue < 21) {
 
@@ -134,7 +131,6 @@ export default class {
 		if (this.player.health < 2) {
 			this.sfxheartbeat.play();
 		}
-
 
 
 		this.GUICLASS = new GUI(this.game, this);
@@ -853,38 +849,38 @@ export default class {
 		this.map = this.game.add.tilemap(this.gameData.currentMap);
 
 		// if (this.map.plus.properties.dayCycle) {
-			if (this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax) {
-
-				
-				switch (this.map.plus.properties.parallaxType) {
-					case 'clouds':
-						this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-						this.backgroundLayer = this.map.createLayer('Clouds');
-						this.backgroundLayer.resizeWorld();
-						this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-						break;
-
-					case 'dungeon':
-						
-						this.backgroundTileset = this.map.addTilesetImage('Dungeon', 'Dungeon');
-						this.backgroundLayer = this.map.createLayer('Dungeon');
-						this.backgroundLayer.resizeWorld();
-						this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-						break;
-
-					default:
-						console.warn('TilesetImage not found!!!');
-						this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
-						this.backgroundLayer = this.map.createLayer('Clouds');
-						this.backgroundLayer.resizeWorld();
-						this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
-						break;
-				}
-
-				
+		if (this.map.plus.properties.enableParallax !== undefined && this.map.plus.properties.enableParallax) {
 
 
+			switch (this.map.plus.properties.parallaxType) {
+				case 'clouds':
+					this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+					this.backgroundLayer = this.map.createLayer('Clouds');
+					this.backgroundLayer.resizeWorld();
+					this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+					break;
+
+				case 'dungeon':
+
+					this.backgroundTileset = this.map.addTilesetImage('Dungeon', 'Dungeon');
+					this.backgroundLayer = this.map.createLayer('Dungeon');
+					this.backgroundLayer.resizeWorld();
+					this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+					break;
+
+				default:
+					console.warn('TilesetImage not found!!!');
+					this.backgroundTileset = this.map.addTilesetImage('Clouds', 'Clouds');
+					this.backgroundLayer = this.map.createLayer('Clouds');
+					this.backgroundLayer.resizeWorld();
+					this.backgroundLayer.scrollFactorX = this.backgroundLayer.scrollFactorY = 0.5;
+					break;
 			}
+
+
+
+
+		}
 		// }
 
 
@@ -915,6 +911,7 @@ export default class {
 		this.foregroundLayer2 = this.map.createLayer('ForegroundLayer2');
 
 
+
 		//  Resize the world
 		this.groundLayer.resizeWorld();
 		this.detailGroundLayer.resizeWorld();
@@ -932,15 +929,15 @@ export default class {
 		// this.spriteBatch.add(this.foregroundLayer);
 
 		// Set Collision Tiles (BUGFIX :( )
-		if(this.gameData.currentMap == 'map1'){
+		if (this.gameData.currentMap == 'map1') {
 			this.map.setCollision(2, true, 'CollisionLayer');
 		} else {
 			this.map.setCollision(2482, true, 'CollisionLayer');
 		}
-		
+
 
 		// Set tileCallback for abyss
-		if(this.gameData.currentMap == 'map1'){
+		if (this.gameData.currentMap == 'map1') {
 			this.map.setTileIndexCallback(1, this.fallDownCheck, this, this.collisionLayer);
 		} else {
 			this.map.setTileIndexCallback(2481, this.fallDownCheck, this, this.collisionLayer);

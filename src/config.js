@@ -8,8 +8,8 @@ export default {
 		// width: 900,
 		// height: 400,
 
-		 //width: 790,
-		 //height: 380,
+		//width: 790,
+		//height: 380,
 
 		width: 580,
 		height: 280,
@@ -18,7 +18,7 @@ export default {
 
 		renderer: Phaser.WEBGL_MULTI,
 		antialias: true,
-		
+
 		// enableDebug: false
 		enableDebug: __DEV__ ? true : false
 	},
@@ -32,7 +32,7 @@ export default {
 	enemies: true,
 	startMap: 'map1',
 	secureLS: false,
-	devHour: 11,
+	devHour: 20,
 	devStartState: 'Game',
 	serviceWorker: false,
 	allowFastTravel: __DEV__ ? true : false,

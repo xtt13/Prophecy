@@ -549,16 +549,16 @@ export default class {
 
 			switch (this.direction) {
 				case 'up':
-				this.player.animations.play('walk_up_idle');
+					this.player.animations.play('walk_up_idle');
 					break;
 				case 'down':
-				this.player.animations.play('walk_down_idle');
+					this.player.animations.play('walk_down_idle');
 					break;
 				case 'left':
-				this.player.animations.play('walk_left_idle');
+					this.player.animations.play('walk_left_idle');
 					break;
 				case 'right':
-				this.player.animations.play('walk_right_idle');
+					this.player.animations.play('walk_right_idle');
 					break;
 				default:
 			}
