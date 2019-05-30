@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import EnergyStone from '../gamemechanics/EnergyStone';
+import dialogues from '../../dialogues';
 
 export default class {
 	constructor(game, x, y, player, chest, level, properties) {
@@ -27,8 +28,6 @@ export default class {
 		this.currentTry = 1;
 		this.moving = false;
 
-		// if(this.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(this.ifQuestID)) return;
-
 		this.lockPickSound = this.game.add.audioSprite('sfxLockPick');
 
 		this.setupGame();
@@ -55,7 +54,7 @@ export default class {
 
 		this.placeBall();
 
-		this.bar = this.game.add.sprite(this.x-4, this.y + 15, 'LockGameBar');
+		this.bar = this.game.add.sprite(this.x - 4, this.y + 15, 'LockGameBar');
 		this.bar.anchor.set(0, 0.5);
 		// this.bar.angle = -90;
 		this.bar.crossingBall = false;
@@ -117,7 +116,7 @@ export default class {
 					break;
 
 				case 2:
-				this.lockPickSound.play('win');
+					this.lockPickSound.play('win');
 					this.ring.animations.play('two');
 					this.currentTry = 3;
 					this.rotationSpeed = 5;
@@ -143,15 +142,27 @@ export default class {
 
 					this.game.time.events.add(500, () => {
 						this.energyStone = new EnergyStone(this.game, this.chest.x + 18, this.chest.y - 15, this.level, this.chest);
-					}, this);
-					
-					
 
-					if(this.successQuestID !== undefined){
+						const all_messages = Object.values(dialogues.dialogues);
+
+						for (let i = 0; i < all_messages.length; i++) {
+							if (i + 1 == 18) {
+								const message = all_messages[i];
+
+								this.level.GUICLASS.createMessage(message, true, true);
+								break;
+							}
+						}
+
+					}, this);
+
+
+
+					if (this.successQuestID !== undefined) {
 						this.level.questManager.addQuest(this.successQuestID);
 					}
 
-					if(this.removeQuestID !== undefined){
+					if (this.removeQuestID !== undefined) {
 						this.level.questManager.removeQuest(this.removeQuestID);
 					}
 
@@ -172,15 +183,15 @@ export default class {
 		this.game.world.bringToTop(this.ball);
 		this.game.world.bringToTop(this.bar);
 
-		if(this.level.inputClass.button_E.isDown){
+		if (this.level.inputClass.button_E.isDown) {
 			// if(this.ifQuestID !== undefined && !this.level.questManager.checkIfQuestExists(this.ifQuestID)) return;
 
-			if(this.moving && !this.dead){
+			if (this.moving && !this.dead) {
 				this.changeDirection();
 			} else {
 				this.startMoving();
 			}
-			
+
 		}
 
 		if (this.run) {
@@ -206,7 +217,6 @@ export default class {
 		this.currentTry = 1;
 		this.rotationSpeed = 3;
 
-		this.game.camera.flash(0xff0000, 200);
 
 		if (window.navigator.vibrate !== undefined && 'vibrate' in window.navigator) {
 			window.navigator.vibrate(500);

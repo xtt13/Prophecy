@@ -24,15 +24,15 @@ export default class extends Phaser.Sprite {
         this.game.physics.arcade.collide(this.level.player.weapon.bullets, this, this.cut, null, this);
 
         let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.level.player, this.x, this.y));
-		if (angle == 2 && this.y > this.level.player.body.y) {
-			this.game.world.moveUp(this);
-			// this.game.world.setChildIndex(this.player, 1);
-		}
+        if (angle == 2 && this.y > this.level.player.body.y) {
+            this.game.world.moveUp(this);
+            // this.game.world.setChildIndex(this.player, 1);
+        }
     }
 
     cut() {
 
-        if(this.used) return;
+        if (this.used) return;
         this.used = true;
 
         this.rndVoice = this.game.rnd.pick(['cut1', 'cut2']);
@@ -40,7 +40,7 @@ export default class extends Phaser.Sprite {
         this.voice.play(this.rndVoice, 0.5);
 
         this.alpha = 0;
-        
+
 
         let px = this.body.velocity.x;
         let py = this.body.velocity.y;
@@ -66,11 +66,11 @@ export default class extends Phaser.Sprite {
         this.cutAnimation.setAlpha(1, 0, 5000, null, false);
         this.cutAnimation.start(true, 0, null, 10);
 
-        if(this.game.rnd.integerInRange(1, 4) == 4){
-            new HeartUp(this.game, this.x, this.y - 20, this.level);
-        }
+        // if(this.game.rnd.integerInRange(1, 4) == 4){
+        new HeartUp(this.game, this.x, this.y - 20, this.level);
+        // }
 
-        
+
 
         this.game.time.events.add(500, () => {
             this.body.enable = false;

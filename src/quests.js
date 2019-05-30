@@ -13,7 +13,7 @@ export default {
 
 			dialogues: {
 
-			} 
+			}
 		},
 
 		// Branch falls down
@@ -27,8 +27,8 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
-			} 
+
+			}
 		},
 
 		// First Lucy Dialogue
@@ -42,8 +42,8 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
-			} 
+
+			}
 		},
 
 		// Dash Tutorial
@@ -58,7 +58,7 @@ export default {
 
 			dialogues: {
 
-			} 
+			}
 		},
 
 		// Dash Try it again!
@@ -72,7 +72,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 
@@ -87,7 +87,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 
@@ -102,7 +102,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 
@@ -117,7 +117,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 
@@ -132,7 +132,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 
@@ -147,7 +147,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 
@@ -164,7 +164,7 @@ export default {
 			fightFinishAddQuestID: 12,
 
 			dialogues: {
-				
+
 			}
 		},
 		12: {
@@ -177,7 +177,7 @@ export default {
 			questDeadEnemies: 0,
 
 			dialogues: {
-				
+
 			}
 		},
 		13: {
@@ -302,7 +302,7 @@ export default {
 				'girl3': [25, false, 20]
 			}
 		},
-		21:{
+		21: {
 			silent: false,
 			questMessage: 'Talk with the smith!',
 
@@ -318,9 +318,9 @@ export default {
 				'woman2': [13, false, false]
 			}
 		},
-		22:{
+		22: {
 			silent: false,
-			questMessage: 'Get weed!',
+			questMessage: 'Get questitem!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -333,12 +333,12 @@ export default {
 				// Nur zeitweise
 				'smith': [41, 23, 22],
 				'woman2': [13, false, false],
-				
+
 			}
 		},
-		23:{
+		23: {
 			silent: false,
-			questMessage: 'Return weed!',
+			questMessage: 'Return questitem!',
 
 			questKillEnemyType: false,
 			questKillEnemyAmount: false,
@@ -350,9 +350,9 @@ export default {
 				'fisher': [15, false, false],
 				'smith': [20, 24, 23],
 				'woman2': [13, false, false]
-			}			
+			}
 		},
-		24:{
+		24: {
 			silent: false,
 			questMessage: 'Return spear!',
 
@@ -365,9 +365,9 @@ export default {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'fisher': [16, 25, 24],
 				'woman2': [13, false, false]
-			}				
+			}
 		},
-		25:{
+		25: {
 			silent: false,
 			questMessage: 'Return Fishing Rod!',
 
@@ -379,9 +379,9 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'woman2': [14, 26, 25]
-			}				
+			}
 		},
-		26:{
+		26: {
 			silent: true,
 			questMessage: 'Return Fish!',
 
@@ -393,11 +393,11 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'fisher': [17, false, 26]
-			}				
+			}
 		},
 
 		// Description
-		27:{
+		27: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -408,11 +408,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		28:{
+		28: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -423,11 +423,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		29:{
+		29: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -438,11 +438,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		30:{
+		30: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -453,11 +453,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		31:{
+		31: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -468,11 +468,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		32:{
+		32: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -483,11 +483,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		33:{
+		33: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -498,11 +498,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		34:{
+		34: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -513,11 +513,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		35:{
+		35: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -528,11 +528,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		36:{
+		36: {
 			silent: false,
 			questMessage: 'Talk with Viden!',
 
@@ -544,11 +544,11 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'botanist': [26, 37, 36]
-			}				
+			}
 		},
 
 		// Description
-		37:{
+		37: {
 			silent: false,
 			questMessage: 'Free Reya!',
 
@@ -563,11 +563,11 @@ export default {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'girl3': [27, false, false],
 				'botanist': [26, false, false]
-			}				
+			}
 		},
 
 		// Description
-		38:{
+		38: {
 			silent: false,
 			questMessage: 'Talk with Reya!',
 
@@ -579,11 +579,11 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'girl3': [28, 39, 38]
-			}				
+			}
 		},
 
 		// Description
-		39:{
+		39: {
 			silent: false,
 			questMessage: 'Talk with Coppus!',
 
@@ -595,11 +595,11 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'smith': [29, 40, 39]
-			}				
+			}
 		},
 
 		// Talk with the Priest
-		40:{
+		40: {
 			silent: false,
 			questMessage: 'Talk to the priest!',
 
@@ -611,11 +611,11 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'priest': [30, 41, 40]
-			}				
+			}
 		},
 
 		// Description
-		41:{
+		41: {
 			silent: false,
 			questMessage: 'Enter the temple!',
 
@@ -628,11 +628,11 @@ export default {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'priest': [30, false, false],
 				'woman1': [31, 42, 41],
-			}				
+			}
 		},
 
 		// Description
-		42:{
+		42: {
 			silent: false,
 			questMessage: 'Talk to the oracle!',
 
@@ -644,11 +644,11 @@ export default {
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
 				'oracle': [32, 43, 42]
-			}				
+			}
 		},
 
 		// Description
-		43:{
+		43: {
 			silent: false,
 			questMessage: 'Find and Kill the boss!',
 
@@ -659,11 +659,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		44:{
+		44: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -674,11 +674,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		45:{
+		45: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -689,11 +689,11 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		},
 
 		// Description
-		46:{
+		46: {
 			silent: false,
 			questMessage: 'Questmessage',
 
@@ -704,9 +704,9 @@ export default {
 
 			dialogues: {
 				// [dialogueID, newQuestID, removeQuestID] no value -> false
-			}				
+			}
 		}
-		
-		
+
+
 	}
 };

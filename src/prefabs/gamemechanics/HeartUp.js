@@ -8,16 +8,15 @@ export default class extends Phaser.Sprite {
         this.level = level;
 
         // this.id = 4;
-        
+
         this.used = false;
 
         this.anchor.setTo(0.5);
-        
+
 
         this.game.physics.enable(this);
 
-        // setSize(width, height, offsetX, offsetY)
-        this.body.setSize(10, 18, 10, 18);
+        this.body.setSize(20, 20, -6, -6);
 
         this.body.immovable = true;
 
@@ -52,36 +51,29 @@ export default class extends Phaser.Sprite {
         // this.itemEmitter.maxParticleSpeed.set(1);
         // this.itemEmitter.makeParticles('sparklingSpritesheet', [0, 1, 2, 3], 40);
         // this.itemEmitter.start(false, 1000, 0.1, 0);
-    
+
 
     }
 
-    heartUp(){
+    heartUp() {
         this.used = true;
+        console.log(this.level);
+        if (this.level.player.health < 5) {
+            this.level.GUICLASS.healthBar.addHeart(1);
+            this.level.player.health += 1;
+            this.level.gameData.playerHealth += 1;
+            this.level.safe.setGameConfig(this.level.gameData);
+        }
 
-        
     }
 
     update() {
-        if (this.used){
-            
-            // if(this.level.player.health < 5){
-            //     this.level.GUICLASS.healthBar.addHeart(this.level.player.health++);
-            //     this.level.player.health += 1;
-            //     this.level.gameData.playerHealth += 1;
-            //     this.level.safe.setGameConfig(this.level.gameData);
-            // }
-
-			// if (this.level.player.health > 1) {
-			// 	this.level.sfxheartbeat.stop();
-			// 	if (this.level.GUICLASS.healthBar.flashingLoop) {
-			// 		this.game.time.events.remove(this.level.GUICLASS.healthBar.flashingLoop);
-			// 	}
-            // }
-            
+        if (this.used) {
             this.destroy();
             return;
         }
+
+        // this.game.debug.body(this);
 
         this.game.physics.arcade.collide(this, this.level.player, this.heartUp, null, this);
 

@@ -27,6 +27,7 @@ export default class {
 
 		this.playerSpeed = 120;
 		this.playerSpeedDefault = 120;
+		this.playerSpeedDash = 250;
 
 		this.playerControllerSpeed = 100;
 		this.playerControllerSpeedDefault = 100;
@@ -513,8 +514,6 @@ export default class {
 	beginnDash() {
 		// if (this.level.GUICLASS.healthBar.dashRatio.value <= 0.1) return;
 
-		console.log('heeey');
-
 		this.dash = true;
 
 		this.playerSpeed = 250;
@@ -529,16 +528,16 @@ export default class {
 		let dashInterval = setInterval(() => {
 			switch (this.direction) {
 				case 'up':
-					this.player.body.velocity.y = -this.playerSpeed;
+					this.player.body.velocity.y = -this.playerSpeedDash;
 					break;
 				case 'down':
-					this.player.body.velocity.y = this.playerSpeed;
+					this.player.body.velocity.y = this.playerSpeedDash;
 					break;
 				case 'left':
-					this.player.body.velocity.x = -this.playerSpeed;
+					this.player.body.velocity.x = -this.playerSpeedDash;
 					break;
 				case 'right':
-					this.player.body.velocity.x = this.playerSpeed;
+					this.player.body.velocity.x = this.playerSpeedDash;
 					break;
 				default:
 			}
@@ -1116,7 +1115,7 @@ export default class {
 					if (this.collision) return;
 
 					var loop_up = this.game.time.events.loop(this.loopFrequency, () => {
-						this.player.body.velocity.y = -this.playerSpeed;
+						this.player.body.velocity.y = -this.playerSpeed / 1.5;
 					}, this);
 
 					this.game.time.events.add(this.timerMS, () => {
@@ -1138,7 +1137,7 @@ export default class {
 					if (this.collision) return;
 
 					var loop_down = this.game.time.events.loop(this.loopFrequency, () => {
-						this.player.body.velocity.y = this.playerSpeed;
+						this.player.body.velocity.y = this.playerSpeed / 1.5;
 					}, this);
 
 					this.game.time.events.add(this.timerMS, () => {
@@ -1155,7 +1154,7 @@ export default class {
 					if (this.collision) return;
 
 					var loop_left = this.game.time.events.loop(this.loopFrequency, () => {
-						this.player.body.velocity.x = -this.playerSpeed;
+						this.player.body.velocity.x = -this.playerSpeed / 1.5;
 					}, this);
 
 					this.game.time.events.add(this.timerMS, () => {
@@ -1172,7 +1171,7 @@ export default class {
 					if (this.collision) return;
 
 					var loop_right = this.game.time.events.loop(this.loopFrequency, () => {
-						this.player.body.velocity.x = this.playerSpeed;
+						this.player.body.velocity.x = this.playerSpeed / 1.5;
 					}, this);
 
 					this.game.time.events.add(this.timerMS, () => {

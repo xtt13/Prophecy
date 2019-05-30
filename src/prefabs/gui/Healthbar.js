@@ -11,7 +11,7 @@ export default class {
         this.dashRatio = {
             value: 1
         };
-        this.waitTimer = this.game.time.events.add(100, () => {});
+        this.waitTimer = this.game.time.events.add(100, () => { });
 
 
         if (this.level.player.health <= 1) {
@@ -180,6 +180,9 @@ export default class {
             this.heartsShaddow.add(heartShaddow);
         }
 
+        this.symbol = this.game.add.sprite(19, 20, 'actionSymbol');
+        this.symbol.fixedToCamera = true;
+
         // this.removeHeart(3);
 
         this.healthBarGroup.add(this.healthBarIcon);
@@ -189,6 +192,7 @@ export default class {
         this.healthBarGroup.add(this.dashBarFrame);
         this.healthBarGroup.add(this.dashBar);
         this.healthBarGroup.add(this.heartExplosion);
+        this.healthBarGroup.add(this.symbol);
 
 
     }
@@ -222,23 +226,23 @@ export default class {
         // this.buildLoop = this.game.time.events.loop(500, () => {
 
 
-            var removeHeart = this.game.add.tween(this.hearts.children[healthIndex].scale).to({
-                x: 0,
-                y: 0
-            }, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
+        var removeHeart = this.game.add.tween(this.hearts.children[healthIndex].scale).to({
+            x: 0,
+            y: 0
+        }, 500, Phaser.Easing.Bounce.Out, true, 0, 0, false);
 
-            this.hearts.children[healthIndex].alpha = 0;
-            this.hearts.children[healthIndex].scale.set(0);
+        this.hearts.children[healthIndex].alpha = 0;
+        this.hearts.children[healthIndex].scale.set(0);
 
 
 
-            this.heartExplosion = this.game.add.emitter(this.hearts.children[healthIndex].x, this.hearts.children[healthIndex].y, 100);
-            this.heartExplosion.fixedToCamera = true;
-            this.heartExplosion.setAlpha(1, 0, 2000, null, false);
-            this.heartExplosion.setXSpeed(100);
-            this.heartExplosion.setYSpeed(-100);
-            this.heartExplosion.makeParticles('bloodHeart', 100);
-            this.heartExplosion.start(true, 0, null, 10);
+        this.heartExplosion = this.game.add.emitter(this.hearts.children[healthIndex].x, this.hearts.children[healthIndex].y, 100);
+        this.heartExplosion.fixedToCamera = true;
+        this.heartExplosion.setAlpha(1, 0, 2000, null, false);
+        this.heartExplosion.setXSpeed(100);
+        this.heartExplosion.setYSpeed(-100);
+        this.heartExplosion.makeParticles('bloodHeart', 100);
+        this.heartExplosion.start(true, 0, null, 10);
 
 
 
@@ -316,11 +320,14 @@ export default class {
     }
 
     addHeart(index) {
+        console.log('UPPP');
         if (this.level.player.health <= 1) {
             this.level.sfxheartbeat.stop();
             this.game.time.events.remove(this.flashingLoop);
         }
+
         this.counter = 1;
+
         this.buildLoop = this.game.time.events.loop(500, () => {
 
             this.game.add.tween(this.hearts.getChildAt(this.counter)).to({
@@ -331,10 +338,12 @@ export default class {
                 y: 1
             }, 500, Phaser.Easing.Bounce.Out, true, 2000, 0, false);
 
-            this.counter++;
             if (this.counter == index) {
                 this.game.time.events.remove(this.buildLoop);
             }
+
+            this.counter++;
+
         }, this);
 
 
@@ -360,6 +369,9 @@ export default class {
         this.game.add.tween(this.dashBar).to({
             alpha: 0
         }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.symbol).to({
+            alpha: 0
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
     }
 
     fadeIn() {
@@ -379,6 +391,9 @@ export default class {
             alpha: 1
         }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
         this.game.add.tween(this.dashBar).to({
+            alpha: 1
+        }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
+        this.game.add.tween(this.symbol).to({
             alpha: 1
         }, this.tweenMS, Phaser.Easing.Cubic.Out, true);
     }

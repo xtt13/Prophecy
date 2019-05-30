@@ -5,16 +5,16 @@ export default {
 		//
 		1: [
 			'Hello? Are you okay? I saw a branch hit you!\n\n(Press E-Key)',
-			'My name is Lucy! Pleased to meet you! Uh... What\'s your name?',
+			'My name is Lucy! Pleased to meet you! \nUh... What\'s your name?',
 			'Levi! Alright. Nice to meet you!',
-			'You want to know where you are? It\'s the Forest of Eritel! You seem to \nbe lost. There is a village nearby, just \nfollow the path!',
+			'You want to know where you are? It\'s the Forest \nof Eritel! You seem to be lost. There is \na village nearby, just follow the path!',
 			'Though! It must be scary around here for \nsomeone who isn\'t familiar with these woods! ',
 			'How about that: \nI\'ll stay with you for a while, Levi!'
 		],
 
 		//
 		2: [
-			'Oh, seems like the path is falling apart! There \nare platforms you can reach by using \nthe Space-Key.',
+			'Oh, seems like the path is falling apart! There \nare platforms you can reach. Try to dash by \nusing the Space-Key.',
 			'You should give it a try!'
 		],
 
@@ -43,8 +43,7 @@ export default {
 		7: [
 			'There we go! Seems like they locked up the \nitem that could help us reactivate the bridge \nin this treasure chest!',
 			'... What are you waiting for? \nDo you think you can just open it?',
-			'You have to pick the lock by pressing the \nE-Key!', 'Oh, one more thing! \nIf you fail three times, the chests will close \ntheir locks for a short period of time.',
-			'So if you mess up, you have to wait for a bit \nuntil you can try again.'
+			'You have to pick the lock by pressing the \nE-Key!'
 		],
 
 		// Bridge Success
@@ -95,6 +94,10 @@ export default {
 
 		17: [
 			'\"The Tales of the ancient heroes\"', '...'
+		],
+
+		18: [
+			'Yeah! You did it! \nGrab the item by pressing the E-Button'
 		]
 
 	}

@@ -616,21 +616,10 @@ export default class {
 	}
 
 	followPlayer(event, duration) {
-		// this.followDuration = duration  || 1000;
-		this.followDuration = duration || 2000;
 
-		this.followTween = this.game.add
-			.tween(this.game.camera)
-			.to({
-				x: this.level.player.x - (this.game.camera.width / 2),
-				y: this.level.player.y - (this.game.camera.height / 2) + 30
-			},
-				this.followDuration,
-				Phaser.Easing.Quadratic.InOut,
-				true
-			);
+		this.game.camera.follow(this.level.player, Phaser.Camera.FOLLOW_LOCKON, 0.025, 0.025);
 
-		this.followTween.onComplete.add(() => {
+		this.game.time.events.add(Phaser.Timer.SECOND * 2, () => {
 
 			switch (this.level.tilemapProperties.cameraMode) {
 				case 'follow':
@@ -650,7 +639,8 @@ export default class {
 					break;
 			}
 
-		}, this);
+		});
+
 	}
 
 	startMusic() {

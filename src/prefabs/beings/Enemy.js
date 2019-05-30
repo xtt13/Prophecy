@@ -20,7 +20,7 @@ export default class extends Phaser.Sprite {
 		this.dead = false;
 		this.paralyze = false;
 		this.attackSoundSwitch = true;
-		
+
 		this.finderCall = true;
 		this.closeSpeed = this.game.rnd.integerInRange(100, 150);
 		this.farSpeed = this.game.rnd.integerInRange(200, 400);
@@ -32,7 +32,7 @@ export default class extends Phaser.Sprite {
 		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 15, true);
 		this.animations.add('wait', [0], 15, true);
 		this.animations.add('idle', [10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 10, true);
-		
+
 		this.scale.set(1, 1);
 		this.game.time.events.add(Phaser.Timer.SECOND * this.game.rnd.integerInRange(1, 3), () => {
 			// if(this.game.rnd.integerInRange(0, 1)){
@@ -74,9 +74,8 @@ export default class extends Phaser.Sprite {
 	}
 
 	update() {
-		console.log(this.game.world.children);
-		if(this.dead) return;
-		if(this.paralyze){
+		if (this.dead) return;
+		if (this.paralyze) {
 			this.animations.play('wait');
 			return;
 		}
@@ -103,7 +102,7 @@ export default class extends Phaser.Sprite {
 				// console.log('flip right');
 			}
 
-			if(this.attackSoundSwitch){
+			if (this.attackSoundSwitch) {
 				this.attackSoundSwitch = false;
 				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10', 'vx11', 'vx12', 'vx13', 'vx14', 'vx15']);
 				this.voice = this.game.add.audioSprite('VxSeeds');
@@ -113,7 +112,7 @@ export default class extends Phaser.Sprite {
 				}, this);
 			}
 
-			
+
 
 			this.finderCall = true;
 
@@ -125,14 +124,14 @@ export default class extends Phaser.Sprite {
 
 			// console.log(this.animations.currentAnim.currentFrame.index);
 
-			if(this.animations.currentAnim.name == "idle"){
+			if (this.animations.currentAnim.name == "idle") {
 				this.animations._anims.idle.stop();
 			}
 
 			this.animations.play('walk');
-			
 
-			
+
+
 
 
 		}
@@ -140,13 +139,11 @@ export default class extends Phaser.Sprite {
 		if (this.distanceBetweenEnemiePlayer > 120 && this.distanceBetweenEnemiePlayer < 400 && this.finderCall) {
 			// console.log('Calculate');
 
-			if(this.animations.currentAnim.name == "idle"){
+			if (this.animations.currentAnim.name == "idle") {
 				this.animations._anims.idle.stop();
 			}
-			
-			this.animations.play('walk');
 
-			if(this.attackSoundSwitch){
+			if (this.attackSoundSwitch) {
 				this.attackSoundSwitch = false;
 				this.rndVoice = this.game.rnd.pick(['vx1', 'vx2', 'vx3', 'vx4', 'vx5', 'vx6', 'vx7', 'vx8', 'vx9', 'vx10', 'vx11', 'vx12', 'vx13', 'vx14', 'vx15']);
 				this.voice = this.game.add.audioSprite('VxSeeds');
@@ -155,7 +152,7 @@ export default class extends Phaser.Sprite {
 					this.attackSoundSwitch = true;
 				}, this);
 			}
-			
+
 			let angle = Math.ceil(this.game.physics.arcade.angleToXY(this.player, this.x, this.y));
 			if (angle == 1 || angle == 2 || angle == 0) {
 				this.scale.set(-1, 1);
@@ -164,7 +161,7 @@ export default class extends Phaser.Sprite {
 				this.scale.set(1, 1);
 				// console.log('flip right');
 			}
-			
+
 
 			this.pathfinder = new Pathfinder(
 				this.game,
@@ -180,6 +177,7 @@ export default class extends Phaser.Sprite {
 		}
 
 		if (this.pathfinder && this.startMoving) {
+			this.animations.play('walk');
 			this.pathfinder.followPath();
 		}
 
