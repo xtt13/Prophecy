@@ -27,7 +27,7 @@ export default class {
 		this.wordSound.volume = 0.2;
 		this.wordSound.allowMultiple = true;
 		console.log(this.wordSound);
-		
+
 
 		// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 0.5, 0.5);
 
@@ -44,9 +44,9 @@ export default class {
 		bmd.ctx.fill();
 
 		bmd.ctx.fill();
-        bmd.ctx.beginPath();
-        bmd.line(0, 0, 300, 0, '#49ffc5', 4);
-        bmd.ctx.fill();
+		bmd.ctx.beginPath();
+		bmd.line(0, 0, 300, 0, '#49ffc5', 4);
+		bmd.ctx.fill();
 
 		this.background = game.add.sprite(this.game.camera.width / 2 - bmd.width / 2, this.game.camera.height - 90, bmd);
 		this.background.fixedToCamera = true;
@@ -59,8 +59,8 @@ export default class {
 
 		this.text = game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
 		let content = "";
-        this.text.setText(content, true, -1, 5, 'left', true)
-        // this.text.fixedWidth = 200;
+		this.text.setText(content, true, -1, 5, 'left', true)
+		// this.text.fixedWidth = 200;
 		this.fontImage = this.game.add.image(this.background.x + 10, this.game.camera.height - 80, this.text);
 		this.fontImage.fixedToCamera = true;
 
@@ -68,13 +68,13 @@ export default class {
 		this.nextGUI.animations.add('run', [0, 1, 2], 3, true);
 		this.nextGUI.animations.play('run');
 		this.nextGUI.fixedToCamera = true;
-		
+
 
 		this.level.inputClass.button_E.onDown.add(() => {
 			// this.counter++;
 			// console.log(this.counter);
 			// if(this.counter == 1) return;
-			
+
 
 			// console.log('faster');
 			this.lineDelay = 0;
@@ -88,7 +88,7 @@ export default class {
 			this.wordRepeat = this.game.time.events.repeat(100, this.line.length, this.nextWord, this);
 
 			// if (this.wordIndex === this.line.length) {
-				this.nextLine();
+			this.nextLine();
 			// }
 		}, this);
 
@@ -137,12 +137,12 @@ export default class {
 
 	nextWord() {
 
-		if(this.line[this.wordIndex] !== undefined){
+		if (this.line[this.wordIndex] !== undefined) {
 			this.text.text = this.text.text.concat(this.line[this.wordIndex] + ' ');
 			this.wordIndex++;
-	
+
 			this.wordSound.play("", 0, 0.2, false, false);
-	
+
 			// If Character Count === Line Count --> Next Line
 			if (this.wordIndex === this.line.length) {
 				this.text.text = this.text.text.concat('\n');
@@ -172,7 +172,7 @@ export default class {
 		this.level.GUICLASS.healthBar.fadeIn();
 		if (!this.movable) {
 			this.player.movable = true;
-			
+
 			this.player.body.immovable = false;
 
 			this.game.time.events.add(this.endTime, () => {
@@ -181,18 +181,18 @@ export default class {
 		}
 	}
 
-	update(){
+	update() {
 
 		// if(this.level.inputClass.button_SPACEBAR.isDown ){
 		// 	console.log(this);
-				
+
 		// 	if(this.playFast) return;
 		// 	this.playFast = true;
 
 		// 	this.line = this.message[this.lineIndex].split(' ');
 		// 	this.wordIndex = 0;
-	
-	
+
+
 		// 	this.text.text = '';
 		// 	this.lineIndex++;
 		// 	this.nextLine();		
@@ -230,20 +230,20 @@ export default class {
 
 	removeBars() {
 
-		if(this.upperBar !== false){
+		if (this.upperBar !== false) {
 			this.upperBarTween = this.game.add
-			.tween(this.upperBar.cameraOffset)
-			.to({ y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
+				.tween(this.upperBar.cameraOffset)
+				.to({ y: this.game.camera.height }, 1000, Phaser.Easing.Linear.None, true);
 		}
 
-		if(this.downBar !== false){
+		if (this.downBar !== false) {
 			this.downBarTween = this.game.add
-			.tween(this.downBar.cameraOffset)
-			.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
+				.tween(this.downBar.cameraOffset)
+				.to({ y: this.game.camera.height - this.game.camera.height - 20 }, 1000, Phaser.Easing.Linear.None, true);
 		}
 
 		this.upperBarTween.onComplete.add(() => {
-			if(this.upperBar !== undefined){
+			if (this.upperBar !== undefined) {
 				// this.upperBar.destroy();
 				this.downBar.destroy();
 				this.upperBar = false;
@@ -251,17 +251,17 @@ export default class {
 
 
 			// this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
-			
+
 			// switch (this.level.tilemapProperties.cameraMode) {
 			// 	case 'follow':
 			// 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 			// 		break;
-	
+
 			// 	case 'topdown':
 			// 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.07, 0.07);
 			// 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT, 0.1, 0.1);
 			// 		break;
-			
+
 			// 	default:
 			// 		console.warn('Default Camera Mode!');
 			// 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);

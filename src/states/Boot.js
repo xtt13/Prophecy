@@ -46,5 +46,6 @@ export default class extends Phaser.State {
 		this.load.image('carinaFont', 'assets/fonts/carinaFont.png');
 		this.load.image('instructions', 'assets/sprites/gui/instructions.png');
 		this.load.image('preloadBar', 'assets/sprites/gui/preloadBar.png');
+		this.load.image('logoShort', 'assets/sprites/gui/logoShort.png');
 	}
 }

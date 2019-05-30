@@ -59,10 +59,10 @@ export default class {
 
 	createMap() {
 		this.calculateValues();
-		this.game.renderer.renderSession.roundPixels = true;
+		// this.game.renderer.renderSession.roundPixels = true;
 
 
-		
+
 
 		this.mask = this.game.add.graphics(300, 180);
 		this.mask.beginFill(0xffffff);
@@ -122,7 +122,7 @@ export default class {
 	}
 
 	removeMap() {
-		this.game.renderer.renderSession.roundPixels = false;
+		// this.game.renderer.renderSession.roundPixels = false;
 		if (this.map) {
 			this.gameMapbackground.destroy();
 			this.gameMapbackground = false;

@@ -51,13 +51,14 @@ export default class extends Phaser.State {
 
 	render() {
 		// Debugging
-		if (__DEV__ && config.enableDebug) {
+
+		if (config.phaserConfig.enableDebug) {
 			// this.game.debug.currentAlpha = 0.2;
 
 			// this.game.debug.text('Version: 1.5.4', 20, 20, '#00ff00', '10px Pixeled');
-
 			if (config.showFPS) {
-				this.game.debug.text(this.game.time.fps.toString() + ' FPS', 510, 30, '#00ff00', '10px Pixeled');
+
+				this.game.debug.text(this.game.time.fps.toString() + ' FPS', 95, 30, '#00ff00', '10px Pixeled');
 			}
 
 

@@ -25,9 +25,9 @@ export default class {
 
 		this.running = false;
 
-		this.playerSpeed = 120;
-		this.playerSpeedDefault = 120;
-		this.playerSpeedDash = 250;
+		this.playerSpeed = 110;
+		this.playerSpeedDefault = 110;
+		this.playerSpeedDash = 110;
 
 		this.playerControllerSpeed = 100;
 		this.playerControllerSpeedDefault = 100;
@@ -324,6 +324,7 @@ export default class {
 				break;
 
 			case 'down':
+				this.player.animations.play('fight_down');
 				this.player.weapon.fireAtXY(this.player.x, this.player.y + 10);
 				if (!this.standing) {
 					this.player.body.velocity.y = 200;

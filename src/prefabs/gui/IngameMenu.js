@@ -36,7 +36,7 @@ export default class {
 			this.show = true;
 			// this.game.paused = true;
 		} else {
-			this.game.renderer.renderSession.roundPixels = false;
+			// this.game.renderer.renderSession.roundPixels = false;
 
 			this.closeMenu();
 			this.openMenuSound();
@@ -252,11 +252,11 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -292,7 +292,7 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -304,12 +304,12 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
 			this.gameMap.createMap();
-			
+
 		} else if (button.key == 'questButton') {
 			// If Questmap is active --> return
 			if (this.questMap.text) return;
@@ -327,7 +327,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -339,7 +339,7 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -364,7 +364,7 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -406,7 +406,7 @@ export default class {
 				this.questMap.heading2Sprite.destroy();
 				this.questMap.heading2Sprite = false;
 			}
-			
+
 
 			if (this.gameMap.map) {
 				this.gameMap.map.destroy();
@@ -423,7 +423,7 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -451,7 +451,7 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -462,7 +462,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -501,7 +501,7 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -513,7 +513,7 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -533,7 +533,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -545,7 +545,7 @@ export default class {
 				this.gameOptions.muteMusicButton = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -562,7 +562,7 @@ export default class {
 				this.questMap.text = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -594,7 +594,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 
@@ -610,7 +610,7 @@ export default class {
 				this.questMap.text = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -621,7 +621,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			if(this.inventory.textImage){
+			if (this.inventory.textImage) {
 				this.inventory.textImage.destroy();
 			}
 		}
@@ -656,7 +656,7 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -684,7 +684,7 @@ export default class {
 				this.gameMap.map = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -697,7 +697,7 @@ export default class {
 			}
 
 			this.questMap.showMap();
-			
+
 		} else if (this.currentTab == 3) {
 			this.inventoryButton.setFrames(2, 2, 2);
 			this.questButton.setFrames(0, 1, 2);
@@ -718,7 +718,7 @@ export default class {
 				this.questMap.heading2Sprite = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 
@@ -731,7 +731,7 @@ export default class {
 
 			this.inventory.show();
 
-			
+
 		} else if (this.currentTab == 4) {
 
 			this.inventoryButton.setFrames(0, 1, 2);
@@ -766,7 +766,7 @@ export default class {
 				this.questMap.text = false;
 			}
 
-			if(this.controllsSprite){
+			if (this.controllsSprite) {
 				this.controllsSprite.destroy();
 			}
 

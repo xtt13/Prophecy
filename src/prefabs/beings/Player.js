@@ -16,7 +16,7 @@ export default class extends Phaser.Sprite {
 		this.safe = this.level.safe;
 
 		this.movable = true;
-		this.playerSpeed = 130;
+		this.playerSpeed = 0;
 		this.talking = false;
 		this.attack = false;
 
@@ -79,8 +79,9 @@ export default class extends Phaser.Sprite {
 		this.animations.add('run_left', [99, 100, 101, 102, 103, 104, 105, 106], this.frameRate, true);
 
 		this.animations.add('fight_right', [73, 74, 75, 76], this.frameRate, false);
-		this.animations.add('fight_left', [77, 78, 79, 80], this.frameRate, false);
+		this.animations.add('fight_left', [145, 146, 147, 148, 149, 150, 151, 152], 12, false);
 		this.animations.add('fight_up', [119, 120, 121, 122, 123, 124, 125, 126], this.frameRate, false);
+		this.animations.add('fight_down', [137, 138, 139, 140, 141, 142, 143, 144], this.frameRate, false);
 
 		this.animations.add('sleep', [127], 1, false);
 		this.animations.add('standUp', [127, 128, 127, 127, 127, 127, 127, 127, 128, 127, 127, 128, 127, 127, 127, 127, 127, 127, 127, 127, 128, 128, 128, 128, 128, 128, 129, 130, 131, 132, 133, 133, 134, 135, 136], 5, false);
@@ -108,8 +109,7 @@ export default class extends Phaser.Sprite {
 
 		// No Glitch on Camera
 		this.game.camera.roundPx = true;
-
-		this.game.renderer.renderSession.roundPixels = false;
+		this.game.renderer.renderSession.roundPixels = true;
 
 		this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
 		// this.game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN, 0.07, 0.07);
@@ -425,10 +425,10 @@ export default class extends Phaser.Sprite {
 				this.killAnimation.setYSpeed(py);
 			}
 
-			if(enemy.type == 'seed'){
+			if (enemy.type == 'seed') {
 				this.killAnimation.makeParticles('enemyPartsSpritesheet', [0, 1, 2, 3], 4);
 				enemy.kill();
-			} else if(enemy.type == 'raptor'){
+			} else if (enemy.type == 'raptor') {
 				this.killAnimation.makeParticles('predatorPartsSpritesheet', [0, 1, 2, 3], 4);
 				enemy.kill();
 			} else {
@@ -438,12 +438,12 @@ export default class extends Phaser.Sprite {
 					enemy.kill();
 				}, this);
 			}
-			
+
 			this.killAnimation.setAlpha(1, 0, 5000, null, false);
 			this.killAnimation.start(true, 0, null, 10);
 			this.game.world.setChildIndex(this.killAnimation, 10);
 
-			
+
 
 			this.bloodAnimation = this.game.add.emitter(enemy.x, enemy.y, 100);
 			this.bloodAnimation.angularDrag = 500;
@@ -518,7 +518,7 @@ export default class extends Phaser.Sprite {
 			enemy.paralyze = false;
 		}, this);
 
-		if(this.dead) return;
+		if (this.dead) return;
 
 		this.game.camera.flash(0xc10000, 200);
 		this.GUICLASS.healthBar.removeHeart(1, true);
@@ -631,7 +631,7 @@ export default class extends Phaser.Sprite {
 	bulletHit(player, bullet) {
 		bullet.kill();
 
-		if(this.dead) return;
+		if (this.dead) return;
 
 		player.tint = 0xFF0000;
 
@@ -686,7 +686,7 @@ export default class extends Phaser.Sprite {
 		}
 	}
 
-	die(){
+	die() {
 		this.game.musicPlayer.fadeOut();
 		this.level.GUICLASS.healthBar.fadeOut();
 		if (this.level.GUICLASS.healthBar.flashingLoop) {
@@ -695,7 +695,7 @@ export default class extends Phaser.Sprite {
 
 		this.gameOverSound = this.game.add.audio('sfxGameOver');
 		this.gameOverSound.play();
-		
+
 		this.level.player.health = 5;
 		this.level.gameData.playerHealth = 5;
 		this.level.safe.setGameConfig(this.level.gameData);
@@ -707,7 +707,7 @@ export default class extends Phaser.Sprite {
 			() => {
 				this.level.player.animations.play('die');
 				this.game.camera.flash(0xc10000, 400, true);
-				
+
 			}, this);
 
 		this.game.time.events.add(

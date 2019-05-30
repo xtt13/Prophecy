@@ -6,7 +6,7 @@ import config from '../config.js';
 
 export default class extends Phaser.State {
 	init() {
-		
+
 
 		this.sfxswordmulti = {
 			spritemap: {
@@ -81,22 +81,22 @@ export default class extends Phaser.State {
 					loop: false
 				},
 
-				cut1:{
+				cut1: {
 					start: 18,
 					end: 19,
 					loop: false
 				},
-				cut2:{
+				cut2: {
 					start: 19,
 					end: 20,
 					loop: false
 				},
-				reflect1:{
+				reflect1: {
 					start: 20,
 					end: 21,
 					loop: false
 				},
-				reflect2:{
+				reflect2: {
 					start: 21,
 					end: 22,
 					loop: false
@@ -491,7 +491,7 @@ export default class extends Phaser.State {
 				roll: {
 					start: 2,
 					end: 6,
-					loop: false					
+					loop: false
 				}
 			}
 		};
@@ -538,8 +538,10 @@ export default class extends Phaser.State {
 
 
 		// this.text = this.game.add.retroFont('carinaFont', 7, 7, Phaser.RetroFont.TEXT_SET1, 18, 0, 2, 0, 1);
-        // this.text.setText(content, true, -1, 5, 'left', true)
-        // this.text.fixedWidth = 200;
+		// this.text.setText(content, true, -1, 5, 'left', true)
+		// this.text.fixedWidth = 200;
+		this.logoShort = this.game.add.image(185, 10, 'logoShort');
+
 		this.fontImage = this.game.add.image(this.game.camera.width / 2, this.game.camera.height / 2, this.text);
 		this.fontImage.anchor.setTo(0.5);
 		// this.fontImage.fixedToCamera = true;
@@ -608,7 +610,7 @@ export default class extends Phaser.State {
 		// Lucy
 		this.load.image('lucy', 'assets/sprites/lucy/lucy.png');
 		this.load.spritesheet('lucyShadow', 'assets/sprites/lucy/lucyShadow.png', 20, 9);
-		
+
 
 		// Endboss
 		this.load.image('endBoss', 'assets/sprites/endboss/endBoss.png');
@@ -617,7 +619,7 @@ export default class extends Phaser.State {
 		this.load.image('endBossNeck', 'assets/sprites/endboss/endBossNeck.png');
 		this.load.image('endBossClaw1', 'assets/sprites/endboss/endBossClaw1.png');
 		this.load.image('endBossClaw2', 'assets/sprites/endboss/endBossClaw2.png');
-			
+
 
 		// LockGame Sprites
 		this.load.spritesheet('LockGameRing', 'assets/sprites/lockgame/LockGameRing.png', 192, 224);
@@ -687,7 +689,7 @@ export default class extends Phaser.State {
 		this.load.audiosprite('VxBotanic', 'assets/sounds/VxBotanic.mp3', null, this.VxBotanic);
 		this.load.audiosprite('sfxswordmulti', 'assets/sounds/sfxswordmulti.mp3', null, this.sfxswordmulti);
 		this.load.audiosprite('sfxUI', 'assets/sounds/sfxUI.mp3', null, this.sfxUIJSON);
-		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON);this.sfxChestJSON
+		this.load.audiosprite('sfxBirds', 'assets/sounds/sfxBirds.mp3', null, this.sfxBirdsJSON); this.sfxChestJSON
 		this.load.audiosprite('sfxChest', 'assets/sounds/sfxChest.mp3', null, this.sfxChestJSON);
 		this.load.audiosprite('sfxLockPick', 'assets/sounds/sfxLockPick.mp3', null, this.sfxLockPickJSON);
 		this.load.audiosprite('VxOracle', 'assets/sounds/VxOracle.mp3', null, this.VxOracleJSON);
@@ -714,11 +716,11 @@ export default class extends Phaser.State {
 		this.load.spritesheet('fireSpritesheet', 'assets/sprites/particles/fireSpritesheet.png', 1, 1);
 		this.load.spritesheet('emberSpritesheet', 'assets/sprites/particles/emberSpritesheet.png', 1, 1);
 		this.load.spritesheet('sparklingSpritesheet', 'assets/sprites/particles/sparklingSpritesheet.png', 1, 1);
-		
-		
+
+
 
 		// Player
-		this.load.spritesheet('player', 'assets/sprites/player/player.png', 55, 55);
+		this.load.spritesheet('player', 'assets/sprites/player/PlayerAnimationsBiggerSize.png', 66, 66);
 		this.load.spritesheet('dustAnimation', 'assets/sprites/player/dustAnimation.png', 20, 15);
 		this.load.image('playerArm', 'assets/sprites/player/playerArm.png');
 		this.load.image('invisibleAttack', 'assets/sprites/player/invisibleAttack.png');
@@ -751,7 +753,7 @@ export default class extends Phaser.State {
 		this.load.spritesheet('raptor', 'assets/sprites/enemies/raptor.png', 64, 64);
 		this.load.image('bulletRock', 'assets/sprites/enemies/bulletRock.png');
 		this.load.image('sprout', 'assets/sprites/enemies/sprout.png');
-			
+
 
 		// Doors
 		this.load.spritesheet('templeDoor', 'assets/sprites/doors/templeDoor.png', 72, 108);
@@ -807,7 +809,7 @@ export default class extends Phaser.State {
 		this.load.image('playerDot', 'assets/sprites/gui/playerDot.png');
 		this.load.spritesheet('characterTalk', 'assets/sprites/gui/talk.png', 15, 12);
 		this.load.spritesheet('nextGUI', 'assets/sprites/gui/nextGUI.png', 7, 7);
-		
+
 
 		// Other
 		this.load.image('island', 'assets/sprites/island.png');
@@ -827,7 +829,7 @@ export default class extends Phaser.State {
 	create() {
 
 		this.game.renderer.setTexturePriority(['tileset']);
-		
+
 		this.game.musicPlayer = new Musicplayer(this.game);
 		this.game.soundManager = new Soundmanager(this.game);
 
@@ -839,7 +841,7 @@ export default class extends Phaser.State {
 		}
 	}
 
-	render() {}
+	render() { }
 
 	loadUpdate() {
 		// Log Loadingprogress
