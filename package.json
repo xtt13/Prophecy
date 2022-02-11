@@ -21,7 +21,7 @@
     "license": "MIT",
     "devDependencies": {
         "@orange-games/phaser-input": "^2.0.5",
-        "ajv": "^5.5.2",
+        "ajv": "^6.12.3",
         "babel-core": "^6.25.0",
         "babel-eslint": "^7.2.3",
         "babel-loader": "^7.1.1",
